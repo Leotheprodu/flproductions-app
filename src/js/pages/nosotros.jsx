@@ -1,6 +1,6 @@
 import React from 'react';
-import { renderRoot } from "./main";
-import { Header } from './header';
+import { renderRoot } from "../main";
+import { Header } from '../components/header';
 
 export function NosotrosRender () {
 

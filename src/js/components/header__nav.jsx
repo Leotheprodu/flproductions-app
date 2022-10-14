@@ -1,9 +1,9 @@
 import propTypes from 'prop-types'
-import { BlogRender } from './blog';
-import { ContactoRender } from './contacto';
-import { InicioRender } from './inicio';
-import { NosotrosRender } from './nosotros';
-import { ServiciosRender } from './servicios';
+import { BlogRender } from '../pages/blog';
+import { ContactoRender } from '../pages/contacto';
+import { InicioRender } from '../pages/inicio';
+import { NosotrosRender } from '../pages/nosotros';
+import { ServiciosRender } from '../pages/servicios';
 
 let claseInteligente = 'nav-normal'
 
