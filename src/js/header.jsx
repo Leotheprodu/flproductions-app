@@ -6,25 +6,27 @@ export function Header ({imgName, pagina}) {
 
   return (
 
-    <div className="header">
+    <div className={"header"+" "+pagina+"-contenedor"}>
 
       <NavMenu pagina={pagina}/>
 
-      <div>
-        <picture>
-          <source srcSet={"build/img/"+imgName+".avif"} type="image/avif" />
-          <source srcSet={"build/img/"+imgName+".webp"} type="mage/webp" />
-          <img className="header-img" src={"build/img/"+imgName+".png"} alt={imgName} loading="lazy" width={200} height={300} />
-
+      <div className="header__contenedor-imagen">
+        
+        <picture className="header__contenedor__picture">
+          {/* <source srcSet={"build/img/"+imgName+".avif"} type="image/avif" />
+          <source srcSet={"build/img/"+imgName+".webp"} type="image/webp" />
+          <source srcSet={"build/img/"+imgName+".png"} type="image/png" /> */}
+          <img className={pagina+"-img"} style={{ backgroundImage:`url(${"build/img/"+imgName})` }} loading="lazy" />
         </picture>
-
         <div className="header__socialIcons">
 
-        <SocialIcons claseCSS='header__socialIcons__icons' />
+          <SocialIcons size={24} claseCSS='header__socialIcons__icons' />
 
         </div>
-        
+
       </div>
+
+
     </div>
 
   )
@@ -38,6 +40,7 @@ Header.propTypes = {
 }
 Header.defaultProps = {
 
-  imgName: "header-main"
+  imgName: "header-main",
+  pagina: "default",
 
 }

@@ -22,13 +22,13 @@ font-size: 1.6rem;
     }
 }
 p {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: v.$negro;
     line-height: 1.5;
 }
 .contenedor {
     width: 95%;
-    max-width: 120rem;
+    max-width: 100rem;
     margin: 0 auto;
 }
 a {
@@ -52,5 +52,17 @@ img {
     height: 100%;
 
     display: block;
+}
+.default-img {
+    margin: 0 auto;
+    z-index: 10;
+    min-width: 30rem;
+}
+
+.default-contenedor {
+    max-width: 100%;
+    margin: 0 auto; 
+    max-height: 50rem;
+    overflow: hidden;  
 }
 

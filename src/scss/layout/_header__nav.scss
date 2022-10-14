@@ -15,29 +15,14 @@
     background-color: v.$primario;
     color: v.$blanco;
     justify-content: center;
-    padding-top: 2rem;
+    padding-top: 2.5rem;
     height: 6rem;
-    button{
-        width: 4rem;
-        height: 3rem;
-        border: none;
-        background-color:v.$secundario;
-        display: none;
-        &:hover{
-            cursor: pointer;
-        }
-        
-    }
-
-    .nav-toggle{
-        align-items: center;
-        color: v.$blanco;
-    }
+    margin: 0 0 1rem 0;
     
 
-    h1{
+    .header__web-tittle{
         display: none;
-        font-size: 2rem;
+        font-size: 2.8rem;
         padding-left: 10rem;
         margin: 0;
         color: v.$secundario;
@@ -57,7 +42,7 @@
         display: flex;
         gap: 2rem;
         justify-content: center;
-        font-size: 1.1rem;
+        font-size: 1.4rem;
         z-index: 1;
 
         
@@ -100,28 +85,16 @@
         padding-top: 0.5rem;
 
         nav{
-            display: grid;
-            grid-template-columns: repeat(3,1fr);
-            grid-template-rows: 2;
+            /* display: grid;
+            grid-template-columns: repeat(2,1fr);
+            grid-template-rows: 2; */
             height: 7rem;
             align-items: center;
             justify-items: center;
             gap: 1rem;
-
-            
-            /* position: fixed; 
-            top: 1rem;
-            right: 1rem;*/
             
         
         }
 
-        /* button {
-            display: block;
-        } */
     }
-}
-
-.clickbuttonmenu{
-    display: none;
 }

@@ -1,17 +1,12 @@
-import { IconMenu2 } from '@tabler/icons';
 import propTypes from 'prop-types'
-/* import { useState } from 'react' */
+import { BlogRender } from './blog';
+import { ContactoRender } from './contacto';
+import { InicioRender } from './inicio';
+import { NosotrosRender } from './nosotros';
+import { ServiciosRender } from './servicios';
 
 let claseInteligente = 'nav-normal'
 
-/* const paginas = {
-  'Inicio': '#',
-  'Acerca de Nosotros': '#',
-  'Blog': '#',
-  'contacto': '#',
-  'servicios': '#'
-
-} */
 
 export function NavMenu({pagina}) {
 
@@ -22,7 +17,7 @@ export function NavMenu({pagina}) {
     }
   }
   function nosotros() {
-    if(pagina ==='acerca de nosotros') {
+    if(pagina ==='nosotros') {
 
       return "nav_menu-active"
     }
@@ -46,47 +41,19 @@ export function NavMenu({pagina}) {
     }
   }
 
-  /* const [clasenueva, setCounter] = useState( claseInteligente );
-  
-  function botonMenu () {
-
-    if(claseInteligente === 'nav-normal') {
-  
-      setCounter('clickbuttonmenu')
-      claseInteligente = 'clickbuttonmenu'
-  
-    }else if(claseInteligente === 'clickbuttonmenu'){
-      
-      setCounter('nav-normal')
-      claseInteligente = 'nav-normal'
-    }
-  } */
-
   return(
+
     <div className='header__nav'>
 
-      <h1>FLProductions</h1>
+      <a href="#" onClick={InicioRender} className='header__web-tittle'>FLProductions</a>
 
       <nav>
 
-        <button>
-
-          <IconMenu2
-            /* onClick={botonMenu} */
-            className="nav-toggle"
-            size={24} // set custom `width` and `height`
-            stroke={1}  // set `stroke-width`
-
-          />
-
-        </button>
-
-
-        <a className={claseInteligente+" "+ inicio()} href="#">Inicio</a>
-        <a className={claseInteligente+" "+ nosotros()} href="#">Acerca de Nosotros</a>
-        <a className={claseInteligente+" "+ blog()} href="#">Blog</a>
-        <a className={claseInteligente+" "+ contacto()} href="#">Contacto</a>
-        <a className={claseInteligente+" "+ servicios()} href="#">Servicios</a>
+        <a onClick={InicioRender} className={claseInteligente+" "+ inicio()} href="#">Inicio</a>
+        <a onClick={NosotrosRender} className={claseInteligente+" "+ nosotros()} href="#">Nosotros</a>
+        <a onClick={BlogRender} className={claseInteligente+" "+ blog()} href="#">Blog</a>
+        <a onClick={ContactoRender} className={claseInteligente+" "+ contacto()} href="#">Contacto</a>
+        <a onClick={ServiciosRender} className={claseInteligente+" "+ servicios()} href="#">Servicios</a>
         
 
       </nav>
@@ -99,6 +66,7 @@ export function NavMenu({pagina}) {
 
 
 }
+
 
 NavMenu.propTypes = {
     

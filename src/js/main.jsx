@@ -2,18 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { Header } from './header';
 import '../css/app.css';
+import { InicioRender } from './inicio';
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+export const renderRoot = ReactDOM.createRoot(document.getElementById('root'))
 
-  <React.StrictMode>
-
-    <Header imgName="header-main" pagina="inicio"/>
-
-    <div>
-  
-      
-    </div>
-    
-
-  </React.StrictMode>
-)
+InicioRender()
