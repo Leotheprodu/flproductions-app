@@ -3,6 +3,8 @@ import { renderRoot } from "../main";
 import { Header } from '../components/header';
 import { InfoCard } from '../components/info-card';
 import { IconVideo, IconMicrophone, IconZoomMoney } from '@tabler/icons';
+import { Footer } from '../components/footer';
+
 
 const tamano = 40
 const grosor = 2
@@ -107,7 +109,8 @@ export function InicioRender() {
         </div>
 
       </div>
-
+      
+      <Footer />
       
   
     </React.StrictMode>

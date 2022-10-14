@@ -1,0 +1,13 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.footer{
+background-color: v.$primario;
+height: 7rem;
+width: 100%;
+display: grid;
+@include m.grid(2,30%);
+    p{
+        margin: 0;
+    }
+}
