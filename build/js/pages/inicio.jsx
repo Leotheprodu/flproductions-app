@@ -49,7 +49,7 @@ export function InicioRender() {
             }
             titulo='MARKETING Y PUBLICIDAD MUSICAL'
             
-            texto='Te asesoramos y ayudamos a: Distribuir tu musica en plataformas virtuales, que tu música llegue a miles de personas, alcanzar tus metas en redes sociales, generar ingresos con tu música, mucho más.'
+            texto={'Te asesoramos y ayudamos a: Distribuir tu musica en plataformas virtuales, que tu música llegue a miles de personas, alcanzar tus metas en redes sociales, generar ingresos con tu música, mucho más.'}
 
           />
               <InfoCard 
@@ -68,35 +68,45 @@ export function InicioRender() {
           
         </div>{/* cards */}
       </div>{/* info1 */}
-<div className='contenedor'>
-  <div className='inicio_info1'>
-    <h3>Acerca de Nosotros</h3>
 
-    <p>
-      Somos algo más que sólo un estudio de grabación en Costa Rica, no nos limitamos a hacer únicamente nuestro trabajo, queremos que en cada proyecto, cada canción lleve nuestro ADN, damos siempre lo mejor de nosotros y definitivamente hacer esto, es nuestra misión de vida.
+      <div className='contenedor'>
+        <div className='inicio_info1'>
+          <h3>Acerca de Nosotros</h3>
 
-    </p>
+          <p>
+            Somos algo más que sólo un estudio de grabación en Costa Rica, no nos limitamos a hacer únicamente nuestro trabajo, queremos que en cada proyecto, cada canción lleve nuestro ADN, damos siempre lo mejor de nosotros y definitivamente hacer esto, es nuestra misión de vida.
+          </p>
 
-  </div>
-  <div>
-    <div>
-      
-    </div>
-    <div>
-      <h4>Hola!</h4>
-      <p>
-        Éste soy yo, Leo, a través de los años me he dado cuenta que lo que hace diferente el estudio FLProductions de todos los demás, definitivamente no es el equipo, ni las instalaciones, es el conocimiento que continuamente se esta actualizando y siempre tratamos de emplearlo de la mejor manera en cada proyecto, cada canción se hace con amor, con todas las ganas de hacerlo lo mejor posible y eso es lo que quiero que ustedes, obtengan de mi.
+        </div>
+        <div className='inicio_mensaje-leo'>
+          <div className='inicio_mensaje-leo_foto'>
 
-      </p>
+            <img src="build\img\leo-serrano1.png" alt="leotheprodu" />
 
-      <p>
-        Gracias por motivarme a ser mejor cada día y siempre a dar lo mejor de mí.        
-      </p>
-    </div>
+          </div>
+          <div>
+            <h4>¡Hola!</h4>
+            <p className='inicio_mensaje-leo_parrafo-principal'>
+              "Éste soy yo, Leo, soy el productor y fundador del estudio FLProductions. A través de los años me he dado cuenta que lo que hace diferente al estudio de todos los demás, definitivamente no es el hardware, ni las instalaciones, es el conocimiento que continuamente lo estoy actualizando y con mas de 15 años de experiencia siempre tratamos de emplearlo de la mejor manera en cada proyecto, cada canción se hace con amor, dandole la importancia que se merece y eso es lo que quiero que ustedes obtengan de mi."
+            </p>
 
-  </div>
+            <p>
+              Gracias por motivarme a ser mejor cada día y siempre a dar lo mejor de mí.        
+            </p>
 
-</div>
+            <div className='inicio_mensaje-leo_firma'>
+              <img className='inicio_mensaje-leo_firma-firma' src="build\img\leoserrano-signature.png" alt="leofirma" />
+              <div>
+                <p>Leo Serrano</p>
+
+                <p className='inicio_mensaje-leo_firma_titulo'>Productor Musical</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
 
       
   

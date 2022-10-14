@@ -1,0 +1,10 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.pagelayer-shape-fill{
+    fill: v.$blanco;
+}
+.pagelayer-svg{
+    width: 100%;
+    height: 6rem;
+}

@@ -73,4 +73,48 @@
         grid-template-columns: repeat(3,1fr);
         gap: 2.5rem;
     }
+
+}
+.inicio_mensaje-leo{
+    display: grid;
+    
+
+    @include m.tablet {
+        @include m.grid(2,2rem);
+    }
+
+    h4{
+        font-size: 3rem;
+    }
+}
+.inicio_mensaje-leo_foto{
+        width: 40rem;
+        height: 50rem;
+        
+        
+    img{
+        border-radius: 30%;
+        
+        background-color: v.$secundario;
+    }
+}
+.inicio_mensaje-leo_parrafo-principal {
+    font-style: italic;
+    text-align: justify;
+    line-height: 2;
+}
+.inicio_mensaje-leo_firma {
+    width: 30rem;
+    display: grid;
+    @include m.grid(2,1rem);
+
+    .inicio_mensaje-leo_firma_titulo{
+        color: gray;
+        padding-top: 2rem;
+    }
+}
+
+.inicio_mensaje-leo_firma-firma{
+    width: 10rem;
+    height: 15rem;
 }
