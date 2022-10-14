@@ -53,10 +53,24 @@
             margin-top: 7rem;
         }
     }
+    h3{
+        text-transform: uppercase;
+        margin-bottom: 0;
+        margin-top: 12rem;
+
+    }
 
     P{
         padding-left: 2rem; 
     
     }
 
+}
+.inicio_info1_servicios-cards{
+    display: grid;
+    padding: 1rem;
+    @include m.tablet {
+        grid-template-columns: repeat(3,1fr);
+        gap: 2.5rem;
+    }
 }
