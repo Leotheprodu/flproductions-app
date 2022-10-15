@@ -1,6 +1,7 @@
 import React from 'react';
 import { renderRoot } from "../main";
 import { Header } from '../components/header';
+import { Footer } from '../components/footer';
 
 export function ServiciosRender () {
 
@@ -15,6 +16,7 @@ export function ServiciosRender () {
         
       </div>
       
+      <Footer/>
   
     </React.StrictMode>
   )

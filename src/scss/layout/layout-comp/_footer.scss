@@ -1,0 +1,43 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.footer{
+background-color: v.$primario;
+height: 8rem;
+width: 100%;
+display: grid;
+align-items: center;
+display: flex;
+flex-direction: column;
+margin: 0 auto;
+padding-left: 0.2rem;
+padding-right: 0.2rem;
+
+
+
+@include m.tablet {
+    @include m.grid(2,30%);
+}
+    p{
+        margin: 0;
+        color: v.$blanco;
+        text-align: center;
+        padding-left: 0rem;
+
+        @include m.tablet {
+            padding-left: 3rem;
+        }
+
+        span{
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: v.$secundario;
+        }
+    }
+}
+
+.footer_social-icons{
+    max-width: 40rem;
+    display: flex;
+    gap: 3rem;
+}

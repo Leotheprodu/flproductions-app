@@ -12,11 +12,11 @@ export function Footer () {
 
         <div className="footer">
 
-            <div>
-                <SocialIcons size={24} claseCSS='header__socialIcons__icons' />
+            <p><span>© 2013 - {actualYear} FLProductions</span> - creado por LeotheProdu</p>
+            <div className="footer_social-icons">
+                <SocialIcons size={25} />
             </div>
 
-            <p>© 2013 - {actualYear} FLProductions - creado por LeotheProdu</p>
 
         </div>
 

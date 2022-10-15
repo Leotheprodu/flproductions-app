@@ -1,0 +1,47 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.palabras-del-equipo{
+    display: grid;
+    
+
+    @include m.tablet {
+        @include m.grid(2,2rem);
+    }
+
+    h4{
+        font-size: 3rem;
+    }
+}
+.palabras-del-equipo_foto{
+        max-width: 40rem;
+        max-height: 50rem;
+        margin: 0 auto;
+        
+        
+    img{
+        border-radius: 30%;
+        
+        background-color: v.$secundario;
+    }
+}
+.palabras-del-equipo_parrafo-principal {
+    font-style: italic;
+    text-align: justify;
+    line-height: 2;
+}
+.palabras-del-equipo_firma {
+    width: 30rem;
+    display: grid;
+    @include m.grid(2,1rem);
+
+    .palabras-del-equipo_firma_titulo{
+        color: gray;
+        padding-top: 2rem;
+    }
+}
+
+.palabras-del-equipo_firma-firma{
+    width: 10rem;
+    height: 15rem;
+}

@@ -20,7 +20,7 @@ export function Header ({imgName, pagina}) {
         </picture>
         <div className="header__socialIcons">
 
-          <SocialIcons size={24} claseCSS='header__socialIcons__icons' />
+          <SocialIcons size={24} />
 
         </div>
 

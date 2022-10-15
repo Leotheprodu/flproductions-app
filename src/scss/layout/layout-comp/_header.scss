@@ -23,21 +23,3 @@
     }
 
 }
-
-.header__socialIcons__icons{
-    transition-property: top;
-    transition-duration: .2s;
-    transition-timing-function: ease-in-out;
-    position: relative;
-    top: 0;
-    color: v.$secundario;
-    
-    &:hover{
-        top: -7px;
-        transition-property: top;
-        transition-duration: .2s;
-        transition-timing-function: ease-in-out;
-    }
-
-
-}
