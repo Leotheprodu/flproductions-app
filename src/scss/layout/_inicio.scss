@@ -9,7 +9,6 @@
     outline: none;
     padding: 15rem;
     
-    /* max-height: 30rem; */
     margin: 2rem auto 0 auto;
     z-index: 1;
     
@@ -20,47 +19,13 @@
         background-size:cover;
         max-width: 80%;
     }
-    
-    
-
 }
 .inicio-contenedor {
     max-width: 100%;
     margin: 0 auto; 
     background-color: v.$primario;
-
-    
 }
 
-.inicio_info1 {
-    
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding: 1rem;
-    
-    h1{
-        text-transform: uppercase;
-        font-weight: 700;
-        text-align: center;
-        margin-bottom: 0;
-        font-size: 2.5rem;
-        margin-top: 2rem;
-        
-
-        @include m.tablet {
-            font-size: 4rem;
-            margin-top: 7rem;
-        }
-    }
-    h3{
-        text-transform: uppercase;
-        margin-bottom: 0;
-        margin-top: 12rem;
-
-    }
-
-}
 .inicio_info1_servicios-cards{
     display: grid;
     padding: 1rem;
@@ -68,5 +33,4 @@
         grid-template-columns: repeat(3,1fr);
         gap: 2.5rem;
     }
-
 }

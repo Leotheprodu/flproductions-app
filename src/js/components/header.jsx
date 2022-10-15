@@ -10,9 +10,9 @@ export function Header ({imgName, pagina}) {
 
       <NavMenu pagina={pagina}/>
 
-      <div className="header__contenedor-imagen">
+      <div>
         
-        <picture className="header__contenedor__picture">
+        <picture>
           {/* <source srcSet={"build/img/"+imgName+".avif"} type="image/avif" />
           <source srcSet={"build/img/"+imgName+".webp"} type="image/webp" />
           <source srcSet={"build/img/"+imgName+".png"} type="image/png" /> */}

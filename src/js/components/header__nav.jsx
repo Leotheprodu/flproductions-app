@@ -5,8 +5,6 @@ import { InicioRender } from '../pages/inicio';
 import { NosotrosRender } from '../pages/nosotros';
 import { ServiciosRender } from '../pages/servicios';
 
-let claseInteligente = 'nav-normal'
-
 
 export function NavMenu({pagina}) {
 
@@ -49,11 +47,11 @@ export function NavMenu({pagina}) {
 
       <nav>
 
-        <a onClick={InicioRender} className={claseInteligente+" "+ inicio()} href="#">Inicio</a>
-        <a onClick={NosotrosRender} className={claseInteligente+" "+ nosotros()} href="#">Nosotros</a>
-        <a onClick={BlogRender} className={claseInteligente+" "+ blog()} href="#">Blog</a>
-        <a onClick={ContactoRender} className={claseInteligente+" "+ contacto()} href="#">Contacto</a>
-        <a onClick={ServiciosRender} className={claseInteligente+" "+ servicios()} href="#">Servicios</a>
+        <a onClick={InicioRender} className={inicio()} href="#">Inicio</a>
+        <a onClick={NosotrosRender} className={nosotros()} href="#">Nosotros</a>
+        <a onClick={BlogRender} className={blog()} href="#">Blog</a>
+        <a onClick={ContactoRender} className={contacto()} href="#">Contacto</a>
+        <a onClick={ServiciosRender} className={servicios()} href="#">Servicios</a>
         
 
       </nav>
