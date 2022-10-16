@@ -1,0 +1,20 @@
+
+
+.aparecerElemento{
+    opacity: 0;
+    transition: all 0.5s;
+}
+
+.fxMostrarArriba {
+animation: fxMostrarArriba 1s;
+
+}
+
+@keyframes fxMostrarArriba{
+    0% {
+        transform: translateY(6rem);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}

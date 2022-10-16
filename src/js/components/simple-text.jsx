@@ -2,17 +2,18 @@ import propTypes from 'prop-types'
 
 
 export function SimpleText({titulo,texto,cssClass,tipo}) {
-  if(tipo=1) {
+  if(tipo===1) {
     return(
 
-    
       <div className={cssClass}>
         <h1>{titulo}</h1>
 
         <p>{texto}</p>
       </div>
-    )
-  }else if(tipo=2) {
+    );
+    
+  }else if(tipo===2) {
+    
     return(
 
     
@@ -21,11 +22,11 @@ export function SimpleText({titulo,texto,cssClass,tipo}) {
 
         <p>{texto}</p>
       </div>
-    )
-  }
+    );
+  };
 
-    
-}
+
+};
 
 
 SimpleText.propTypes = {
@@ -39,6 +40,6 @@ SimpleText.propTypes = {
 SimpleText.defaultProps = {
 
   cssClass: "simple-text_info",
-  tipo: 2
+  tipo: 2,
 
 }
