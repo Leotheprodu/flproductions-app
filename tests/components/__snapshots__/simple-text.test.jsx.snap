@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SimpleText pruebas locas crear snapshot 1`] = `
+<div>
+  <div
+    class="simple-text_info fxElement"
+  >
+    <h3>
+      Acerca de Nosotros
+    </h3>
+    <p>
+      Somos algo más que sólo un estudio de grabación en Costa Rica, no nos limitamos a hacer únicamente nuestro trabajo, queremos que en cada proyecto, cada canción lleve nuestro ADN, damos siempre lo mejor de nosotros y definitivamente hacer esto, es nuestra misión de vida.
+    </p>
+  </div>
+</div>
+`;
