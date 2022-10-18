@@ -1,10 +1,6 @@
 import propTypes from 'prop-types';
 import {useRef, useEffect} from 'react';
 
-
-
-
-
 export function SimpleText({titulo,texto,fxElement,tipo}) {
 
     const ref = useRef(null);
