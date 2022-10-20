@@ -2,7 +2,7 @@
 @use 'base/variables' as v;
 
 
-.nav_menu-active{
+.active{
     font-weight: bold;
     text-decoration:underline;
     
@@ -38,7 +38,7 @@
 
     }
 
-    nav{
+    .header__links{
         display: flex;
         gap: 2rem;
         justify-content: center;
@@ -55,7 +55,7 @@
         }
 
 
-        a {
+        .header__links__link {
             color: v.$blanco; 
             text-transform: uppercase;
             transition-property: color;
@@ -84,7 +84,7 @@
     .header__nav{ 
         padding-top: 0.5rem;
 
-        nav{
+        .header__links__link{
             /* display: grid;
             grid-template-columns: repeat(2,1fr);
             grid-template-rows: 2; */

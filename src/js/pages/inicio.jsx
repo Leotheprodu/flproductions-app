@@ -1,24 +1,21 @@
 import React from 'react';
-import { renderRoot } from "../main";
+import { IconVideo, IconMicrophone, IconZoomMoney } from '@tabler/icons';
 import { Header } from '../components/header';
 import { InfoCard } from '../components/info-card';
-import { IconVideo, IconMicrophone, IconZoomMoney } from '@tabler/icons';
 import { Footer } from '../components/footer';
 import { PalabrasDelEquipo } from '../components/palabras-del-equipo';
 import { SimpleText } from '../components/simple-text';
-
-
 
 const tamano = 40
 const grosor = 2
 
 
-export function InicioRender() {
+export function HomePage() {
 
-  renderRoot.render(
-
+  return(
+    
     <React.StrictMode>
-  
+
       <Header imgName="header-main.png" pagina="inicio"/>
   
       <div className='contenedor'>
@@ -87,7 +84,6 @@ export function InicioRender() {
       
       <Footer />
       
-  
     </React.StrictMode>
   )
 

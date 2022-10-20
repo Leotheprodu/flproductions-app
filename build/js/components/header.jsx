@@ -8,16 +8,15 @@ export function Header ({imgName, pagina}) {
 
     <div className={"header"+" "+pagina+"-contenedor"}>
 
-      <NavMenu pagina={pagina}/>
+      <NavMenu />
 
       <div>
         
         <picture>
-          {/* <source srcSet={"build/img/"+imgName+".avif"} type="image/avif" />
-          <source srcSet={"build/img/"+imgName+".webp"} type="image/webp" />
-          <source srcSet={"build/img/"+imgName+".png"} type="image/png" /> */}
+
           <img className={pagina+"-img"} style={{ backgroundImage:`url(${"build/img/"+imgName})` }} loading="lazy" />
         </picture>
+        
         <div className="header__socialIcons">
 
           <SocialIcons size={24} />

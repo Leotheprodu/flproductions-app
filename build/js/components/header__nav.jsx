@@ -1,73 +1,29 @@
 import propTypes from 'prop-types'
-import { BlogRender } from '../pages/blog';
-import { ContactoRender } from '../pages/contacto';
-import { InicioRender } from '../pages/inicio';
-import { NosotrosRender } from '../pages/nosotros';
-import { ServiciosRender } from '../pages/servicios';
+import { NavLink } from 'react-router-dom';
 
 
-export function NavMenu({pagina}) {
-
-  function inicio() {
-    if(pagina ==='inicio') {
-
-      return "nav_menu-active"
-    }
-  }
-  function nosotros() {
-    if(pagina ==='nosotros') {
-
-      return "nav_menu-active"
-    }
-  }
-  function blog() {
-    if(pagina ==='blog') {
-
-      return "nav_menu-active"
-    }
-  }
-  function contacto() {
-    if(pagina ==='contacto') {
-
-      return "nav_menu-active"
-    }
-  }
-  function servicios() {
-    if(pagina ==='servicios') {
-
-      return "nav_menu-active"
-    }
-  }
+export function NavMenu() {
 
   return(
 
-    <div className='header__nav'>
+          <div className='header__nav'>
 
-      <a href="#" onClick={InicioRender} className='header__web-tittle'>FLProductions</a>
+            <a href="/" className='header__web-tittle'>FLProductions</a>
 
-      <nav>
+            <nav className='header__links'>
+              <NavLink to='/' end className='header__links__link'>Inicio</NavLink>
+              <NavLink to='/nosotros' className='header__links__link'>Nosotros</NavLink>
+              <NavLink to='/contacto' className='header__links__link'>Contacto</NavLink>
+              <NavLink to='/blog' className='header__links__link'>Blog</NavLink>
+              <NavLink to='/servicios' className='header__links__link'>Servicio</NavLink>
 
-        <a onClick={InicioRender} className={inicio()} href="#">Inicio</a>
-        <a onClick={NosotrosRender} className={nosotros()} href="#">Nosotros</a>
-        <a onClick={BlogRender} className={blog()} href="#">Blog</a>
-        <a onClick={ContactoRender} className={contacto()} href="#">Contacto</a>
-        <a onClick={ServiciosRender} className={servicios()} href="#">Servicios</a>
-        
+            </nav>
+            
 
-      </nav>
-      
+          </div>
 
-    </div>
-
+  
 
   )
 
-
-}
-
-
-NavMenu.propTypes = {
-    
-  pagina: propTypes.string.isRequired,
-  
 }
