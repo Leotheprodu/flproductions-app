@@ -1,4 +1,5 @@
 import { IconVideo, IconMicrophone, IconZoomMoney } from '@tabler/icons';
+import { Helmet } from 'react-helmet';
 import { InfoCard } from '../components/info-card';
 import { PalabrasDelEquipo } from '../components/palabras-del-equipo';
 import { SimpleText } from '../components/simple-text';
@@ -12,7 +13,10 @@ export function HomePage() {
   return(
     
     <>
-  
+    <Helmet>
+      <title>FLProductions | Inicio</title>
+      <meta name="description" content="Somos un estudio de grabación y producción musical en Costa Rica, ofrecemos todo para tu proyecto musical." />
+    </Helmet>
       <div className='contenedor'>
         <SimpleText 
           tipo={1} 
