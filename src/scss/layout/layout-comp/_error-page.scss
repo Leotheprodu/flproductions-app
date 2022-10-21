@@ -8,40 +8,66 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
+    padding-bottom: 15rem;
+
+    .error-page__errorType {
+        font-size: 9rem;
+        color: #23bceb;
+        z-index: 0;
+        font-weight: 700;
+        margin: 0 auto;
+        
+    }
 
     h1{
         color: v.$secundario;
         font-size: 13rem;
+        z-index: 1;
+        margin: 0;
     }
     h2 {
         color: v.$blanco;
         font-size: 3rem;
         font-weight: 700;
+        z-index: 1;
 
     }
 
     p {
         color: v.$blanco;
-        font-size: 3rem;
     }
 
 }
 
 .error-page__redirigir{
+    z-index: 1;
     font-size: 1.9rem;
-    transition: transform .2s;
-    button {
+    .error-page__redirigir__button {
         border: 0;
         color: v.$blanco;
         background-color: v.$secundario;
-        height: 5rem;
+        height: 10rem;
+        width: 10rem;
         font-weight: 700;
-            &:hover{
-                box-shadow: 7px 6px 8px #1888aa;
-                transform: scale(1.03);
-            }
+        transition: transform .2s;
+        text-transform: uppercase;
+        margin: 0 auto;
+        padding-top: 3.5rem;
+        border-radius: 100%;
+        &:hover{
+            box-shadow: 7px 6px 8px #1888aa;
+            transform: scale(1.03);
+        }
 
+        a {
+            color: v.$blanco;
+            font-size: 3rem;
+
+        }
         
     }
+}
+.error-page__redirigir__text {
+    font-size: 1.9rem;
+    font-weight: 200;
 }
