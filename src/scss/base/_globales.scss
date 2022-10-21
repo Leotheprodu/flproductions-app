@@ -31,6 +31,13 @@ p {
     max-width: 120rem;
     margin: 0 auto;
 }
+.contenedor-main {
+    width: 97%;
+    max-width: 120rem;
+    margin: 0 auto;
+    min-height:100vh;
+    position:relative;
+}
 a {
     text-decoration: none;
 }

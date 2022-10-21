@@ -2,7 +2,7 @@
 @use 'base/variables' as v;
 
 
-.nosotros-img{
+.root2-img{
     margin: 0 auto;
     z-index: 10;
     height: 100%;
@@ -13,15 +13,5 @@
     background-position: center center;
     background-size:cover;
     filter:brightness(30%);
-    /* filter:opacity(30%); */
     
-}
-
-.nosotros-contenedor {
-    max-width: 100%;
-    margin: 0 auto; 
-    max-height: 50rem;
-    overflow: hidden;
-    z-index: 11;
-
 }

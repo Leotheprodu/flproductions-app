@@ -1,17 +1,33 @@
 @use 'base/mixins' as m;
 @use 'base/variables' as v;
 
+.socialIcons{
+    max-width: 40rem;
+    margin: 0 auto;
+    display: flex;
+    gap: 4rem;
+    justify-content: center;
+    z-index: 1;
+    
+
+    @include m.tablet {
+        /* margin-right: 13%; */
+        /* padding-bottom: 2rem; */
+    }
+
+
+}
 
 .social-icon{
     transition-property: top;
     transition-duration: .2s;
     transition-timing-function: ease-in-out;
     position: relative;
-    top: 0;
+    top: 0rem;
     color: v.$secundario;
     
     &:hover{
-        top: -7px;
+        top: -0.7rem;
         transition-property: top;
         transition-duration: .2s;
         transition-timing-function: ease-in-out;

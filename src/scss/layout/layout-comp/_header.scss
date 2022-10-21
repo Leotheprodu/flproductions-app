@@ -6,20 +6,16 @@
     background-color: v.$primario;
     display: block;
 }
-
-/* SocialIcons Personalizado para el header */
-
-.header__socialIcons{
-    max-width: 40rem;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-around;
-    z-index: 5;
+.header-img {
+    display: block;
+    height: 100%;
+    width: 100%;
+    outline: none;
+    padding: 15rem;
     
-
-    @include m.tablet {
-        margin-right: 13%;
-        padding-bottom: 2rem;
-    }
-
+    z-index: 1;
+    
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size:contain;
 }

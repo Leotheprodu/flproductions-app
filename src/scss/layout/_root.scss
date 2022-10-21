@@ -1,0 +1,12 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.root-socialIcons{
+    position:relative;
+    margin: 0 auto;
+    margin-top: -4rem;
+
+    @include m.desktopXL {
+        left: 20%;
+    }
+}

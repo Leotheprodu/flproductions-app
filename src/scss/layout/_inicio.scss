@@ -2,30 +2,6 @@
 @use 'base/variables' as v;
 
 
-.inicio-img {
-    display: block;
-    height: 100%;
-    width: 100%;
-    outline: none;
-    padding: 15rem;
-    
-    margin: 2rem auto 0 auto;
-    z-index: 1;
-    
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size:contain;
-    @include m.desktopXL {
-        background-size:cover;
-        max-width: 80%;
-    }
-}
-.inicio-contenedor {
-    max-width: 100%;
-    margin: 0 auto; 
-    background-color: v.$primario;
-}
-
 .inicio_info1_servicios-cards{
     display: grid;
     padding: 1rem;

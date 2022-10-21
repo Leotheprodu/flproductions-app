@@ -1,5 +1,4 @@
-import propTypes from 'prop-types'
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 
 export function NavMenu() {
@@ -8,7 +7,7 @@ export function NavMenu() {
 
           <div className='header__nav'>
 
-            <a href="/" className='header__web-tittle'>FLProductions</a>
+            <Link to="/" className='header__web-tittle'>FLProductions</Link>
 
             <nav className='header__links'>
               <NavLink to='/' end className='header__links__link'>Inicio</NavLink>

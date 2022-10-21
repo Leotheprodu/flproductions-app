@@ -17,7 +17,7 @@
     justify-content: center;
     padding-top: 2.5rem;
     height: 6rem;
-    margin: 0 0 1rem 0;
+    /* margin: 0 0 1rem 0; */
     
 
     .header__web-tittle{
@@ -82,7 +82,7 @@
 
 @media (max-width: 480px) {
     .header__nav{ 
-        padding-top: 0.5rem;
+        
 
         .header__links__link{
             /* display: grid;

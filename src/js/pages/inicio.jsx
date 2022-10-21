@@ -1,22 +1,17 @@
-import React from 'react';
 import { IconVideo, IconMicrophone, IconZoomMoney } from '@tabler/icons';
-import { Header } from '../components/header';
 import { InfoCard } from '../components/info-card';
-import { Footer } from '../components/footer';
 import { PalabrasDelEquipo } from '../components/palabras-del-equipo';
 import { SimpleText } from '../components/simple-text';
 
-const tamano = 40
-const grosor = 2
+const InfoCardSize = 40
+const infoCardStroke = 2
 
 
 export function HomePage() {
 
   return(
     
-    <React.StrictMode>
-
-      <Header imgName="header-main.png" pagina="inicio"/>
+    <>
   
       <div className='contenedor'>
         <SimpleText 
@@ -29,9 +24,8 @@ export function HomePage() {
           <InfoCard 
             icon={
               <IconMicrophone 
-              className='inicio_info1_servicios-cards_icon' 
-              size={tamano} 
-              stroke={grosor}/>
+              size={InfoCardSize} 
+              stroke={infoCardStroke}/>
             }
             titulo='GRABACIÓN Y PRODUCCIÓN MUSICAL'
             texto='Con mas de 10 años de experiencia ofreciendo grabaciones profesionales, producción de instrumentales, mezcla y masterización cristalina, potente, siempre actualizada, al máximo volumen y de alta calidad. Hacemos que cada proyecto siempre llegue al próximo nivel. Trabajamos de todo tipo de género musical.'
@@ -40,9 +34,8 @@ export function HomePage() {
           <InfoCard 
             icon={
               <IconZoomMoney 
-              className='inicio_info1_servicios-cards_icon' 
-              size={tamano} 
-              stroke={grosor}/>
+              size={InfoCardSize} 
+              stroke={infoCardStroke}/>
             }
             titulo='MARKETING Y PUBLICIDAD MUSICAL'
             texto={'Te asesoramos y ayudamos a: Distribuir tu musica en plataformas virtuales, que tu música llegue a miles de personas, alcanzar tus metas en redes sociales, generar ingresos con tu música, mucho más.'}
@@ -51,9 +44,8 @@ export function HomePage() {
               <InfoCard 
                 icon={
                 <IconVideo 
-                  className='inicio_info1_servicios-cards_icon' 
-                  size={tamano} 
-                  stroke={grosor}
+                  size={InfoCardSize} 
+                  stroke={infoCardStroke}
                 />}
                 titulo='FOTOGRAFÍA Y PRODUCCIÓN AUDIOVISUAL'
                 texto='Contamos con equipos modernos que graban en 4K, luces, maquina de humo, estabilizadores, lentes, drone y un equipo de personas que trabajan con excelencia, además contamos con fotógrafos apasionados que te harán lucir como el artista que eres.'
@@ -82,9 +74,8 @@ export function HomePage() {
 
       </div>{/* seccion 2 Acerca de Nosotros */}
       
-      <Footer />
       
-    </React.StrictMode>
+    </>
   )
 
 }
