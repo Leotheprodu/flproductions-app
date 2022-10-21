@@ -13,7 +13,7 @@ export function HomePage() {
   return(
     
     <>
-   {/*  <Helmet>
+    {/* <Helmet>
       <title>FLProductions | Inicio</title>
       <meta name="description" content="Somos un estudio de grabación y producción musical en Costa Rica, ofrecemos todo para tu proyecto musical." />
     </Helmet> */}

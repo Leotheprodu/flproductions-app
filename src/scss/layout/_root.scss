@@ -6,7 +6,7 @@
     margin: 0 auto;
     margin-top: -4rem;
 
-    @include m.desktopXL {
-        left: 20%;
+    @include m.desktop {
+        padding-left:  67rem;
     }
 }
