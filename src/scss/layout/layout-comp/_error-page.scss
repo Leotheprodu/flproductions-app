@@ -1,0 +1,47 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.error-page {
+    background-color: v.$primario;
+    height: 100vh;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+
+    h1{
+        color: v.$secundario;
+        font-size: 13rem;
+    }
+    h2 {
+        color: v.$blanco;
+        font-size: 3rem;
+        font-weight: 700;
+
+    }
+
+    p {
+        color: v.$blanco;
+        font-size: 3rem;
+    }
+
+}
+
+.error-page__redirigir{
+    font-size: 1.9rem;
+    transition: transform .2s;
+    button {
+        border: 0;
+        color: v.$blanco;
+        background-color: v.$secundario;
+        height: 5rem;
+        font-weight: 700;
+            &:hover{
+                box-shadow: 7px 6px 8px #1888aa;
+                transform: scale(1.03);
+            }
+
+        
+    }
+}
