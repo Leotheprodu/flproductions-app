@@ -3,11 +3,10 @@ import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { useRouteError } from "react-router-dom";
 
 
-export default function ErrorPage() {
+export function ErrorPage() {
   
   
   const error = useRouteError();
-  console.error(error);
   useEffect(() => { document.body.style.backgroundColor = '#1ab5e6' }, [])
   return (
     <div className='error-page contenedor'>
@@ -27,7 +26,7 @@ export default function ErrorPage() {
         <h2>Parece que este enlace no existe</h2>
         <div className='error-page__redirigir'>
 
-          <p className='error-page__redirigir__text'>Te recomendamos ir a la pgina principal</p>
+          <p className='error-page__redirigir__text'>Te recomendamos ir a la página principal</p>
           <a href="/">
             <div className='error-page__redirigir__button'>
               Ir

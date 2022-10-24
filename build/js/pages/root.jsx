@@ -1,9 +1,6 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import { Header } from '../components/header';
-import { Footer } from '../components/footer';
-import { NavMenu } from '../components/header__nav';
-import { SocialIcons } from '../components/social-icons';
+import { Header, Footer, NavMenu, SocialIcons } from '../components';
 
 
 export function Root() {

@@ -1,8 +1,6 @@
 import { IconVideo, IconMicrophone, IconZoomMoney } from '@tabler/icons';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import { InfoCard } from '../components/info-card';
-import { PalabrasDelEquipo } from '../components/palabras-del-equipo';
-import { SimpleText } from '../components/simple-text';
+import { PalabrasDelEquipo, SimpleText, InfoCard } from '../components';
 
 const InfoCardSize = 40
 const infoCardStroke = 2
