@@ -1,4 +1,4 @@
-import propTypes from 'prop-types'
+import PropTypes from 'prop-types'
 
 export function InfoCard ({icon, titulo, texto}){
 

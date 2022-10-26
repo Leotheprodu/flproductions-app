@@ -1,4 +1,4 @@
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import {useRef, useEffect} from 'react';
 
 export function SimpleText({titulo,texto,fxElement,tipo}) {
@@ -55,10 +55,10 @@ export function SimpleText({titulo,texto,fxElement,tipo}) {
 
 SimpleText.propTypes = {
     
-  titulo: propTypes.string.isRequired,
-  tipo: propTypes.number.isRequired, //1: contiene un h1 y 2: contiene un h3
-  texto: propTypes.string.isRequired,
-  fxElement: propTypes.string,
+  titulo: PropTypes.string.isRequired,
+  tipo: PropTypes.number.isRequired, //1: contiene un h1 y 2: contiene un h3
+  texto: PropTypes.string.isRequired,
+  fxElement: PropTypes.string,
   
 }
 SimpleText.defaultProps = {

@@ -1,4 +1,4 @@
-import propTypes from 'prop-types'
+import PropTypes from 'prop-types'
 
 export function PalabrasDelEquipo({titulo, texto, nombre, puesto, foto, firma}) {
 
@@ -32,11 +32,11 @@ export function PalabrasDelEquipo({titulo, texto, nombre, puesto, foto, firma}) 
 
 PalabrasDelEquipo.propTypes = {
     
-  titulo: propTypes.string,
-  texto: propTypes.string.isRequired,
-  nombre: propTypes.string.isRequired,
-  puesto: propTypes.string.isRequired,
-  foto: propTypes.string.isRequired,
-  firma: propTypes.string,
+  titulo: PropTypes.string,
+  texto: PropTypes.string.isRequired,
+  nombre: PropTypes.string.isRequired,
+  puesto: PropTypes.string.isRequired,
+  foto: PropTypes.string.isRequired,
+  firma: PropTypes.string,
   
 }

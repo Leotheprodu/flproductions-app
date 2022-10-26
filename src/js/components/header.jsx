@@ -1,4 +1,4 @@
-import propTypes from 'prop-types'
+import PropTypes from 'prop-types'
 
 export function Header ({imgName, pagina}) {
 
@@ -23,8 +23,8 @@ export function Header ({imgName, pagina}) {
 }
 Header.propTypes = {
     
-  pagina: propTypes.string.isRequired,
-  imgName: propTypes.string.isRequired,
+  pagina: PropTypes.string.isRequired,
+  imgName: PropTypes.string.isRequired,
   
 }
 Header.defaultProps = {
