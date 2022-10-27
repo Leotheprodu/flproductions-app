@@ -18,3 +18,17 @@ animation: fxMostrarArriba 1s;
         transform: translateY(0);
     }
 }
+
+.fxMostrarIzquierda {
+    animation: fxMostrarIzquierda 1s;
+    
+    }
+    
+    @keyframes fxMostrarIzquierda{
+        0% {
+            transform: translateX(6rem);
+        }
+        100%{
+            transform: translateX(0);
+        }
+    }

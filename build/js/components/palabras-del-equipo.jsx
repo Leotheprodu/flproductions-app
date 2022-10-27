@@ -1,9 +1,37 @@
-import propTypes from 'prop-types'
+import PropTypes from 'prop-types'
+import { useEffect, useRef } from 'react';
 
 export function PalabrasDelEquipo({titulo, texto, nombre, puesto, foto, firma}) {
 
+  const ref = useRef(null);
+
+    useEffect(() => {
+      const ElementWithFX = ref.current;
+      
+
+      function mostrarScroll(){
+        const scrollTop = document.documentElement.scrollTop;
+        const alturaElemento = ElementWithFX.offsetTop;
+
+        if (alturaElemento - 200 < scrollTop) {
+          ElementWithFX.style.opacity = 1;
+          ElementWithFX.classList.add('fxMostrarArriba');
+          
+        }
+      }     
+      if (ElementWithFX !== null){
+        document.addEventListener('scroll',mostrarScroll);
+      }
+      
+      return () => {
+        document.removeEventListener('scroll',mostrarScroll);
+      }
+
+      
+    },[]);
+
     return(
-      <div className='palabras-del-equipo'>
+      <div ref={ref} className='palabras-del-equipo fxElement'>
         <div className='palabras-del-equipo_foto'>
 
           <img src={foto} alt={nombre} />
@@ -32,11 +60,11 @@ export function PalabrasDelEquipo({titulo, texto, nombre, puesto, foto, firma}) 
 
 PalabrasDelEquipo.propTypes = {
     
-  titulo: propTypes.string,
-  texto: propTypes.string.isRequired,
-  nombre: propTypes.string.isRequired,
-  puesto: propTypes.string.isRequired,
-  foto: propTypes.string.isRequired,
-  firma: propTypes.string,
+  titulo: PropTypes.string,
+  texto: PropTypes.string.isRequired,
+  nombre: PropTypes.string.isRequired,
+  puesto: PropTypes.string.isRequired,
+  foto: PropTypes.string.isRequired,
+  firma: PropTypes.string,
   
 }

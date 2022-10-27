@@ -1,5 +1,5 @@
 import { IconBrandFacebook, IconBrandYoutube, IconBrandInstagram, IconBrandTwitch } from '@tabler/icons';
-import propTypes from 'prop-types'
+import PropTypes from 'prop-types'
 
 export function SocialIcons({size, stroke, claseCSS}) {
 
@@ -51,9 +51,9 @@ export function SocialIcons({size, stroke, claseCSS}) {
 
 SocialIcons.propTypes = {
     
-    size: propTypes.number.isRequired,
-    stroke: propTypes.number.isRequired,
-    claseCSS: propTypes.string,
+    size: PropTypes.number.isRequired,
+    stroke: PropTypes.number.isRequired,
+    claseCSS: PropTypes.string,
     
 }
 

@@ -14,7 +14,7 @@ export function NavMenu() {
               <NavLink to='/nosotros' className='header__links__link'>Nosotros</NavLink>
               <NavLink to='/contacto' className='header__links__link'>Contacto</NavLink>
               <NavLink to='/blog' className='header__links__link'>Blog</NavLink>
-              <NavLink to='/servicios' className='header__links__link'>Servicio</NavLink>
+              <NavLink to='/servicios' className='header__links__link'>Servicios</NavLink>
 
             </nav>
             

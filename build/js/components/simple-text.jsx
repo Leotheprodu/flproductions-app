@@ -1,28 +1,32 @@
-import propTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import {useRef, useEffect} from 'react';
 
-export function SimpleText({titulo,texto,fxElement,tipo}) {
+export function SimpleText({titulo,texto,tipo}) {
 
     const ref = useRef(null);
-    
+
     useEffect(() => {
-      const el1 = ref.current;
+      const ElementWithFX = ref.current;
       
+
       function mostrarScroll(){
-        let scrollTop = document.documentElement.scrollTop
-        let alturaAnimado = el1.offsetTop;
-        if (alturaAnimado - 600 < scrollTop) {
-          el1.style.opacity = 1;
-          if(tipo !== 1 && fxElement === 'fxElement') {
-            el1.classList.add('fxMostrarArriba')
-          }
+        const scrollTop = document.documentElement.scrollTop;
+        const alturaElemento = ElementWithFX.offsetTop;
+
+        if (alturaElemento - 200 < scrollTop) {
+          ElementWithFX.style.opacity = 1;
+          ElementWithFX.classList.add('fxMostrarIzquierda');
           
         }
-        
+      }     
+      if (ElementWithFX !== null){
+        document.addEventListener('scroll',mostrarScroll);
       }
-    
       
-      window.addEventListener('scroll',mostrarScroll);
+      return () => {
+        document.removeEventListener('scroll',mostrarScroll);
+      }
+
       
     },[]);
     
@@ -41,7 +45,7 @@ export function SimpleText({titulo,texto,fxElement,tipo}) {
     return(
 
     
-      <div /* onScroll={mostrarScroll} */ ref={ref} className={'simple-text_info'+' '+fxElement}>
+      <div ref={ref} className={ 'simple-text_info fxElement' }>
         <h3>{titulo}</h3>
 
         <p>{texto}</p>
@@ -55,10 +59,9 @@ export function SimpleText({titulo,texto,fxElement,tipo}) {
 
 SimpleText.propTypes = {
     
-  titulo: propTypes.string.isRequired,
-  tipo: propTypes.number.isRequired, //1: contiene un h1 y 2: contiene un h3
-  texto: propTypes.string.isRequired,
-  fxElement: propTypes.string,
+  titulo: PropTypes.string.isRequired,
+  tipo: PropTypes.number.isRequired, //1: contiene un h1 y 2: contiene un h3
+  texto: PropTypes.string.isRequired,
   
 }
 SimpleText.defaultProps = {

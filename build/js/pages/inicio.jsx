@@ -60,7 +60,6 @@ export function HomePage() {
 
         <div className='contenedor'>
           <SimpleText 
-            fxElement='fxElement'
             titulo='Acerca de Nosotros' 
             texto='Somos algo más que sólo un estudio de grabación en Costa Rica, no nos limitamos a hacer únicamente nuestro trabajo, queremos que en cada proyecto, cada canción lleve nuestro ADN, damos siempre lo mejor de nosotros y definitivamente hacer esto, es nuestra misión de vida.' 
           />
