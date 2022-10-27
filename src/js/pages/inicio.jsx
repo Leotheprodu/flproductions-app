@@ -1,6 +1,6 @@
 import { IconVideo, IconMicrophone, IconZoomMoney } from '@tabler/icons';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import { PalabrasDelEquipo, SimpleText, InfoCard } from '../components';
+import { PalabrasDelEquipo, SimpleText, InfoCard, FormulariodeContacto } from '../components';
 
 const InfoCardSize = 40
 const infoCardStroke = 2
@@ -75,6 +75,25 @@ export function HomePage() {
           />
 
         </div>{/* seccion 2 Acerca de Nosotros */}
+
+        <div className='inicio__contact-Form'>
+          <svg className='pagelayer-svg'>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+          <path className='pagelayer-shape-fill' d="M1000,99v-99l-1000,0v99h0.1l333.8,-92.8l309.2,69.8l118.8,-16.6"></path>
+          </svg>
+          </svg>
+          
+
+            <FormulariodeContacto />
+          
+
+          <svg className='pagelayer-svg'>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none" >
+          <path className='pagelayer-shape-fill' d="M0,1v99h1000v-99h-0.1l-333.8,92.8l-309.2,-69.8l-118.8,16.6"></path>
+          </svg>
+          </svg>
+
+        </div>
         
         
       </HelmetProvider>

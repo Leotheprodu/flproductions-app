@@ -1,0 +1,29 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.contact-info{
+    transition: transform .2s;
+    &:hover{
+        transform: scale(1.03);
+    }
+}
+
+.contact-info__icon{
+    display: flex;
+    background-color: v.$secundario;
+    border-radius: 50%;
+    width: 9rem;
+    height: 9rem;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+.contact-info__titulo{
+    text-transform: uppercase;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 2.2rem;
+}
+.contact-info__parrafo{
+    color: v.$blanco;
+}

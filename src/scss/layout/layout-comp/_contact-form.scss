@@ -3,8 +3,63 @@
 
 .pagelayer-shape-fill{
     fill: v.$blanco;
+    height: 100%;
 }
 .pagelayer-svg{
     width: 100%;
     height: 6rem;
+    
+    
+}
+
+.contacto-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    color: v.$blanco;
+    height: 50rem;
+    align-items: center;
+    justify-content: center;
+
+    @include m.tablet {
+        
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+}
+.contacto_info-Icons{
+order: 2;
+text-align: center;
+display: grid;
+grid-template-columns: repeat(2,1fr);
+gap: 2rem;
+@include m.tablet {
+    order: 1;
+}
+}
+.formulario {
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+    order: 1;
+    @include m.tablet {
+        width: 60%;
+        background-color: rgba(0, 0, 0, 0.06);
+        order: 2;
+        
+
+        
+    }
+    h3{
+        text-align: center;
+        
+    }
+
+}
+.contact__button{
+    display: flex;
+    justify-content: center;
+    button {
+        font-size: 1.5rem;
+
+    }
 }
