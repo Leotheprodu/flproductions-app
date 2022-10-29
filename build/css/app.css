@@ -349,6 +349,16 @@ p {
 
 a {
   text-decoration: none;
+  color: #1ab5e6;
+  transition-property: color;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+}
+a:hover {
+  color: #ebc246;
+  transition-property: color;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
 }
 
 h1, h2, h3 {
@@ -472,6 +482,12 @@ img {
 }
 .palabras-del-equipo h4 {
   font-size: 3rem;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .palabras-del-equipo h4 {
+    text-align: left;
+  }
 }
 
 .palabras-del-equipo_foto {
@@ -488,6 +504,10 @@ img {
   font-style: italic;
   text-align: justify;
   line-height: 2;
+}
+.palabras-del-equipo_parrafo-principal span {
+  color: #1ab5e6;
+  font-size: 3rem;
 }
 
 .palabras-del-equipo_firma {
@@ -549,20 +569,22 @@ img {
   display: grid;
   grid-template-columns: 1fr;
   color: #FFFFFF;
-  height: 50rem;
   align-items: center;
   justify-content: center;
 }
 @media (min-width: 768px) {
   .contacto-grid {
     grid-template-columns: repeat(2, 1fr);
+    height: 50rem;
   }
 }
 
 .contacto_info-Icons {
   order: 2;
   text-align: center;
+  margin: 9rem auto 0 auto;
   display: grid;
+  max-width: 50rem;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
 }
@@ -571,12 +593,27 @@ img {
     order: 1;
   }
 }
+.contacto_info-Icons a {
+  text-decoration: none;
+  color: #FFFFFF;
+  transition-property: color;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+}
+.contacto_info-Icons a:hover {
+  color: rgb(235, 235, 235);
+  transition-property: color;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+}
 
 .formulario {
   display: flex;
   flex-direction: column;
-  height: 50%;
+  height: 80%;
   order: 1;
+  margin-bottom: 10rem;
+  justify-content: center;
 }
 @media (min-width: 768px) {
   .formulario {
@@ -595,6 +632,19 @@ img {
 }
 .contact__button button {
   font-size: 1.5rem;
+}
+
+.recaptcha {
+  display: flex;
+  justify-content: center;
+}
+
+.contact-form__mensaje-status {
+  text-align: center;
+  background-color: rgba(255, 0, 0, 0.397);
+  color: #FFFFFF;
+  width: 20rem;
+  margin: 1rem auto;
 }
 
 .footer {
@@ -863,6 +913,7 @@ img {
   justify-content: center;
   align-items: center;
   margin: 0 auto;
+  box-shadow: 5px 6px 10px rgba(0, 0, 0, 0.1725490196);
 }
 
 .contact-info__titulo {

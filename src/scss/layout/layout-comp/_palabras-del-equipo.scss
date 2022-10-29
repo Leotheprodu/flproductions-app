@@ -11,6 +11,10 @@
 
     h4{
         font-size: 3rem;
+        text-align: center;
+        @include m.tablet {
+            text-align: left;
+        }
     }
 }
 .palabras-del-equipo_foto{
@@ -29,6 +33,10 @@
     font-style: italic;
     text-align: justify;
     line-height: 2;
+    span{
+        color: v.$primario;
+        font-size: 3rem;
+    }
 }
 .palabras-del-equipo_firma {
     width: 30rem;

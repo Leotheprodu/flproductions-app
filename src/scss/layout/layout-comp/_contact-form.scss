@@ -16,31 +16,49 @@
     display: grid;
     grid-template-columns: 1fr;
     color: v.$blanco;
-    height: 50rem;
     align-items: center;
     justify-content: center;
 
     @include m.tablet {
         
         grid-template-columns: repeat(2, 1fr);
+        height: 50rem;
     }
     
 }
 .contacto_info-Icons{
 order: 2;
 text-align: center;
+margin: 9rem auto 0 auto;
 display: grid;
+max-width: 50rem;
 grid-template-columns: repeat(2,1fr);
 gap: 2rem;
 @include m.tablet {
     order: 1;
 }
+a{
+    text-decoration: none;
+    color: v.$blanco;
+    transition-property: color;
+    transition-duration: .3s;
+    transition-timing-function: ease-out;
+    &:hover{
+        color: rgb(235, 235, 235);
+        transition-property: color;
+        transition-duration: .3s;
+        transition-timing-function: ease-out;
+    }
+}
+
 }
 .formulario {
     display: flex;
     flex-direction: column;
-    height: 50%;
+    height: 80%;
     order: 1;
+    margin-bottom: 10rem;
+    justify-content: center;
     @include m.tablet {
         width: 60%;
         background-color: rgba(0, 0, 0, 0.06);
@@ -62,4 +80,15 @@ gap: 2rem;
         font-size: 1.5rem;
 
     }
+}
+.recaptcha{
+    display: flex;
+    justify-content: center;
+}
+.contact-form__mensaje-status{
+    text-align: center;
+    background-color: rgba(255, 0, 0, 0.397);
+    color: v.$blanco;
+    width: 20rem;
+    margin: 1rem auto;
 }

@@ -38,6 +38,16 @@ p {
 }
 a {
     text-decoration: none;
+    color: v.$primario;
+    transition-property: color;
+    transition-duration: .3s;
+    transition-timing-function: ease-out;
+    &:hover{
+        color: v.$secundario;
+        transition-property: color;
+        transition-duration: .3s;
+        transition-timing-function: ease-out;
+    }
 }
 h1,h2,h3 {
     margin: 0 0 5rem 0;

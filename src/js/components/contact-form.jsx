@@ -1,96 +1,138 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { ContactInfo } from "./contact-info";
-import { IconMapPin, IconPhone, IconMail } from '@tabler/icons';
-
+import { IconMapPin, IconBrandWhatsapp, IconMail } from '@tabler/icons';
+import ReCAPTCHA from "react-google-recaptcha";
+import emailjs from 'emailjs-com'
 export function FormulariodeContacto() {
 
-  const er = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  const [formStatus, setFormStatus] = useState('Enviar')
-  const InfoCardSize = 40
-  const infoCardStroke = 2
+  const [formStatus, setFormStatus] = useState('')
+  const [statusenviado, setStatusEnviado] = useState(false)
+  const captcha = useRef(null);
+  const InfoCardSize = 40;
+  const infoCardStroke = 2;
+
+  const onChange = () => {
+    if(captcha.current.getValue()){
+      setFormStatus('');
+    }
+  }
 
   const onSubmit = (e) => {
-    e.preventDefault()
-    setFormStatus('Enviando...')
-    const { name, email, message } = e.target.elements
-    let conFom = {
-      name: name.value,
-      email: email.value,
-      message: message.value,
-    }
-    setFormStatus('Enviado Correctamente')
-    console.log(conFom)
+    e.preventDefault();
+    setFormStatus('Enviando mensaje');
+    if(captcha.current.getValue()){
+      const { nombre, email, mensaje } = e.target.elements
+      let infoContacto = {
+        nombre: nombre.value,
+        email: email.value,
+        mensaje: mensaje.value,
+      }
+      emailjs.send('service_51za005', 'template_tzuzku9', infoContacto, 'hu1gXn4JXbvqONlBp')
+      .then(function(response) {
+        console.log('SUCCESS!', response.status, response.text);
+        setFormStatus('Mensaje enviado Correctamente');
+        setStatusEnviado(true);
+      },  function(error) {
+            console.log('FAILED...', error);
+          } 
+      );
+
+      /* console.log(conFom); */
+    }else setFormStatus('Por favor acepta el captcha');
+    
   }
 
   return (
     <>
   
       <div className="contacto-grid">
-      <div className="contacto_info-Icons">
-      <ContactInfo 
-      icon={
-        <IconMapPin
-        size={InfoCardSize} 
-        stroke={infoCardStroke}
-        />
-      }
-      titulo='Dirección'
-      parrafo='Herediana de Siquirres, Limón Costa Rica'
-      
-      />
-      <ContactInfo 
-      icon={
-        <IconPhone
-        size={InfoCardSize} 
-        stroke={infoCardStroke}
-        />
-      }
-      titulo='Dirección'
-      parrafo='Herediana de Siquirres, Limón Costa Rica'
-      
-      />
-      <ContactInfo 
-      icon={
-        <IconMail
-        size={InfoCardSize} 
-        stroke={infoCardStroke}
-        />
-      }
-      titulo='Dirección'
-      parrafo='Herediana de Siquirres, Limón Costa Rica'
-      
-      />
-      </div>
-      
-
-        <div className=" formulario container mt-5 ">
-          <h3 className="mb-3">Contacto</h3>
-          <form onSubmit={onSubmit} >
-            <div className="mb-3">
-              <label className="form-label" htmlFor="nombre">
-                Nombre
-              </label>
-              <input className="form-control" type="text" id="nombre" required />
-            </div>
-            <div className="mb-3">
-              <label className="form-label" htmlFor="email">
-                Email
-              </label>
-              <input className="form-control" type="email" id="email" required />
-            </div>
-            <div className="mb-3">
-              <label className="form-label" htmlFor="mensaje">
-                Mensaje
-              </label>
-              <textarea className="form-control" id="mensaje" required />
-            </div>
-            <div className="contact__button">
-            <button className="btn btn-danger" type="submit">
-              Enviar
-            </button>
-            </div>
-          </form>
+        <div className="contacto_info-Icons contenedor">
+          <ContactInfo 
+          icon={
+            <IconMapPin
+            size={InfoCardSize} 
+            stroke={infoCardStroke}
+            />
+          }
+          titulo='Dirección'
+          parrafo='Herediana de Siquirres, Limón Costa Rica'
+          link='https://goo.gl/maps/iBQjkYs7n49ywDXE8'
+          
+          />
+          <ContactInfo 
+          icon={
+            <IconBrandWhatsapp
+            size={InfoCardSize} 
+            stroke={infoCardStroke}
+            />
+          }
+          titulo='Whatsapp'
+          parrafo='+50663017707'
+          link='https://wa.me/50663017707?text=Me%20gustaría%20saber%20más%20de%20ustedes,%20'
+          
+          />
+          <ContactInfo 
+          icon={
+            <IconMail
+            size={InfoCardSize} 
+            stroke={infoCardStroke}
+            />
+          }
+          titulo='Email'
+          parrafo='leoserrano@flproductionscr.com'
+          link='mailto:leoserrano@flproductionscr.com'
+          
+          />
         </div>
+      
+      
+        <div className=" formulario container mt-5 ">
+
+          <h3 className="mb-3">Contacto</h3>
+          {!statusenviado &&  
+            <form onSubmit={onSubmit}>
+              <div className="mb-3">
+                <label className="form-label" htmlFor="nombre">
+                  Nombre
+                </label>
+                <input className="form-control" type="text" id="nombre" required />
+              </div>
+              <div className="mb-3">
+                <label className="form-label" htmlFor="email">
+                  Email
+                </label>
+                <input className="form-control" type="email" id="email" required />
+              </div>
+              <div className="mb-3">
+                <label className="form-label" htmlFor="mensaje">
+                  Mensaje
+                </label>
+                <textarea className="form-control" id="mensaje" required />
+              </div>
+              <div className="recaptcha">
+                <ReCAPTCHA 
+                  ref={captcha}
+                  sitekey="6LdqhcAiAAAAAE8hwgEptpxIcQHsW_c2S_AfkFmw"
+                  onChange={onChange}
+                />
+              </div>
+              <div>
+                <p className="contact-form__mensaje-status">{formStatus}</p>
+              </div>
+              <div className="contact__button">
+                <button className="btn btn-danger" type="submit">
+                  Enviar
+                </button>
+              </div>
+            </form>
+          }
+          {statusenviado && 
+            <div>
+              <p className="contact-form__mensaje-status">{formStatus}</p>
+            </div>
+          }
+        </div>
+        
       </div>
 
     </>
