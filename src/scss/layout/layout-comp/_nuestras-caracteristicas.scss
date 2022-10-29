@@ -1,0 +1,35 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.nuestras-caracteristicas{
+    width: 80%;
+    margin: 17rem auto;
+    display: grid;
+
+    @include m.tablet {
+        
+    grid-template-columns: 30% 40% 30%;
+    
+    }
+}
+
+.nuestras-caracteristicas__titulo{
+    grid-row: 1/2;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    @include m.tablet {
+        grid-row: 1/1;
+        grid-column: 2/3;
+    }
+    h2{
+        color: v.$primario;
+        margin-bottom: 2rem;
+    }
+    p{
+        color: v.$secundario;
+        font-size: 2rem;
+        font-weight: 700;
+    }
+}

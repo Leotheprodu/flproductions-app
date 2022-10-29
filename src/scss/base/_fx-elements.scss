@@ -32,3 +32,17 @@ animation: fxMostrarArriba 1s;
             transform: translateX(0);
         }
     }
+
+    .fxMostrarSkew {
+        animation: fxMostrarSkew 1s;
+        
+        }
+        
+        @keyframes fxMostrarSkew{
+            0% {
+                transform:rotate(90deg)
+            }
+            100%{
+                transform: rotate(0);
+            }
+        }

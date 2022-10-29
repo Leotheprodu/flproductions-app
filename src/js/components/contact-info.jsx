@@ -1,6 +1,5 @@
 
-
-
+import PropTypes from 'prop-types';
 
 export function ContactInfo({icon, titulo, parrafo, link}) {
 
@@ -24,4 +23,13 @@ export function ContactInfo({icon, titulo, parrafo, link}) {
 
     )
 
+}
+
+ContactInfo.propTypes = {
+    
+    icon: PropTypes.object.isRequired,
+    titulo: PropTypes.string.isRequired,
+    parrafo: PropTypes.string.isRequired,
+    link: PropTypes.string,
+    
 }

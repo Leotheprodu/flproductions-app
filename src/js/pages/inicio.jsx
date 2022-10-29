@@ -1,6 +1,6 @@
 import { IconVideo, IconMicrophone, IconZoomMoney } from '@tabler/icons';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import { PalabrasDelEquipo, SimpleText, InfoCard, FormulariodeContacto } from '../components';
+import { PalabrasDelEquipo, SimpleText, InfoCard, FormulariodeContacto, NuestrasCaracteristicas } from '../components';
 
 const InfoCardSize = 40
 const infoCardStroke = 2
@@ -58,7 +58,7 @@ export function HomePage() {
           </div>{/* cards */}
         </div>{/* info1 */}
 
-        <div className='contenedor'>
+        <div className='contenedor acerca-de-nosotros'>
           <SimpleText 
             titulo='Acerca de Nosotros' 
             texto='Somos algo más que sólo un estudio de grabación en Costa Rica, no nos limitamos a hacer únicamente nuestro trabajo, queremos que en cada proyecto, cada canción lleve nuestro ADN, damos siempre lo mejor de nosotros y definitivamente hacer esto, es nuestra misión de vida.' 
@@ -75,7 +75,11 @@ export function HomePage() {
           />
 
         </div>{/* seccion 2 Acerca de Nosotros */}
+        <div className='inicio__Caracteristicas'>
+          <NuestrasCaracteristicas />       
+        </div>
 
+        <h3 className="inicio__contact-form__title">Contáctenos</h3>
         <div className='inicio__contact-Form'>
           <svg className='pagelayer-svg'>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">

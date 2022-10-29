@@ -1,8 +1,9 @@
 import { useRef, useState } from "react";
-import { ContactInfo } from "./contact-info";
 import { IconMapPin, IconBrandWhatsapp, IconMail } from '@tabler/icons';
 import ReCAPTCHA from "react-google-recaptcha";
 import emailjs from 'emailjs-com'
+import { ContactInfo } from "../components";
+
 export function FormulariodeContacto() {
 
   const [formStatus, setFormStatus] = useState('')
@@ -19,7 +20,7 @@ export function FormulariodeContacto() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    setFormStatus('Enviando mensaje');
+    setFormStatus('...Enviando');
     if(captcha.current.getValue()){
       const { nombre, email, mensaje } = e.target.elements
       let infoContacto = {
@@ -35,15 +36,15 @@ export function FormulariodeContacto() {
       },  function(error) {
             console.log('FAILED...', error);
           } 
-      );
-
-      /* console.log(conFom); */
-    }else setFormStatus('Por favor acepta el captcha');
-    
-  }
-
-  return (
-    <>
+          );
+          
+          /* console.log(conFom); */
+        }else setFormStatus('Por favor acepta el captcha');
+        
+      }
+      
+      return (
+        <>
   
       <div className="contacto-grid">
         <div className="contacto_info-Icons contenedor">
@@ -80,15 +81,13 @@ export function FormulariodeContacto() {
           }
           titulo='Email'
           parrafo='leoserrano@flproductionscr.com'
-          link='mailto:leoserrano@flproductionscr.com'
           
           />
         </div>
       
       
-        <div className=" formulario container mt-5 ">
+        <div className="formulario">
 
-          <h3 className="mb-3">Contacto</h3>
           {!statusenviado &&  
             <form onSubmit={onSubmit}>
               <div className="mb-3">
@@ -107,7 +106,7 @@ export function FormulariodeContacto() {
                 <label className="form-label" htmlFor="mensaje">
                   Mensaje
                 </label>
-                <textarea className="form-control" id="mensaje" required />
+                <textarea className="form-control2" id="mensaje" required />
               </div>
               <div className="recaptcha">
                 <ReCAPTCHA 
@@ -120,7 +119,7 @@ export function FormulariodeContacto() {
                 <p className="contact-form__mensaje-status">{formStatus}</p>
               </div>
               <div className="contact__button">
-                <button className="btn btn-danger" type="submit">
+                <button type="submit">
                   Enviar
                 </button>
               </div>

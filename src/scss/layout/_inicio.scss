@@ -5,10 +5,23 @@
 .inicio_info1_servicios-cards{
     display: grid;
     padding: 1rem;
+    scroll-snap-align: center;
     @include m.tablet {
         grid-template-columns: repeat(3,1fr);
         gap: 2.5rem;
     }
+}
+.acerca-de-nosotros{
+    scroll-snap-align: center;
+}
+.inicio__contact-form__title{
+    text-align: center;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    color: v.$negro;
+    font-size: 4rem;
+    margin-top: 4rem;
+    
 }
 
 .inicio__contact-Form {
@@ -18,6 +31,10 @@
     background-position: center center;
     background-size: cover;
     background-attachment:fixed;
+    scroll-snap-align: center;
     
+}
+.inicio__Caracteristicas{
+    scroll-snap-align: center;
 }
 
