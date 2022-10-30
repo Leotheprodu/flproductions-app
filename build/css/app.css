@@ -1013,6 +1013,7 @@ img {
   width: 80%;
   margin: 17rem auto;
   display: grid;
+  align-items: center;
 }
 @media (min-width: 768px) {
   .nuestras-caracteristicas {
@@ -1041,4 +1042,36 @@ img {
   color: #ebc246;
   font-size: 2rem;
   font-weight: 700;
+}
+
+.testimonio {
+  display: flex;
+  flex-direction: column;
+  max-width: 70%;
+  margin: 0 auto;
+}
+.testimonio h3 {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 4rem;
+}
+.testimonio h4 {
+  font-size: 2.5rem;
+  margin-top: 1rem;
+}
+.testimonio p {
+  font-style: italic;
+  color: rgb(46, 46, 46);
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.testimonio__imagen {
+  width: 12rem;
+  display: flex;
+  margin: 0 auto;
+}
+.testimonio__imagen img {
+  height: 12rem;
+  border-radius: 50%;
+  box-shadow: 3px 4px 10px rgba(0, 0, 0, 0.3647058824);
 }

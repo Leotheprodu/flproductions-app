@@ -1,10 +1,10 @@
 import { IconVideo, IconMicrophone, IconZoomMoney } from '@tabler/icons';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import { PalabrasDelEquipo, SimpleText, InfoCard, FormulariodeContacto, NuestrasCaracteristicas } from '../components';
+import { PalabrasDelEquipo, SimpleText, InfoCard, FormulariodeContacto, NuestrasCaracteristicas, Testimonio } from '../components';
+import { testimonios } from '../components/database/database';
 
 const InfoCardSize = 40
 const infoCardStroke = 2
-
 
 export function HomePage() {
 
@@ -77,6 +77,12 @@ export function HomePage() {
         </div>{/* seccion 2 Acerca de Nosotros */}
         <div className='inicio__Caracteristicas'>
           <NuestrasCaracteristicas />       
+        </div>
+        <div>
+          <Testimonio
+          testimonios={testimonios}
+          
+          />
         </div>
 
         <h3 className="inicio__contact-form__title">Contáctenos</h3>

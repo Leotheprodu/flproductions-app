@@ -39,7 +39,7 @@ export function PalabrasDelEquipo({titulo, texto, nombre, puesto, foto, firma}) 
         </div>
         <div className='contenedor'>
           <h4>{titulo}</h4>
-          <p className='palabras-del-equipo_parrafo-principal'><span>"</span>{texto}<span>"</span></p>
+          <p className='palabras-del-equipo_parrafo-principal'><span>" </span>{texto}<span> "</span></p>
 
           <div className='palabras-del-equipo_firma'>
             <img className='palabras-del-equipo_firma-firma' src={firma} alt={nombre+" firma"} />
