@@ -1,7 +1,6 @@
 import { IconVideo, IconMicrophone, IconZoomMoney } from '@tabler/icons';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { PalabrasDelEquipo, SimpleText, InfoCard, FormulariodeContacto, NuestrasCaracteristicas, Testimonio } from '../components';
-import { testimonios } from '../components/database/database';
 
 const InfoCardSize = 40
 const infoCardStroke = 2
@@ -20,7 +19,7 @@ export function HomePage() {
           <SimpleText 
             tipo={1} 
             titulo='Estudio de grabación y producción musical' 
-            texto='Desde Siquirres de Limón, Costa Rica, ofrecemos un servicio profesional de grabación y producción musical, queremos ofrecerte todo lo que necesitas para que tu proyecto musical sea todo un éxito.' 
+            texto={<p>Desde Siquirres de Limón, Costa Rica, ofrecemos un servicio profesional de grabación y producción musical, queremos ofrecerte todo lo que necesitas para que tu proyecto musical sea todo un éxito.</p>} 
           />
 
           <div className='inicio_info1_servicios-cards'>
@@ -61,7 +60,7 @@ export function HomePage() {
         <div className='contenedor acerca-de-nosotros'>
           <SimpleText 
             titulo='Acerca de Nosotros' 
-            texto='Somos algo más que sólo un estudio de grabación en Costa Rica, no nos limitamos a hacer únicamente nuestro trabajo, queremos que en cada proyecto, cada canción lleve nuestro ADN, damos siempre lo mejor de nosotros y definitivamente hacer esto, es nuestra misión de vida.' 
+            texto={<p>Somos algo más que sólo un estudio de grabación en Costa Rica, no nos limitamos a hacer únicamente nuestro trabajo, queremos que en cada proyecto, cada canción lleve nuestro ADN, damos siempre lo mejor de nosotros y definitivamente hacer esto, es nuestra misión de vida.</p>} 
           />
 
           <PalabrasDelEquipo 
@@ -79,10 +78,7 @@ export function HomePage() {
           <NuestrasCaracteristicas />       
         </div>
         <div>
-          <Testimonio
-          testimonios={testimonios}
-          
-          />
+          <Testimonio />
         </div>
 
         <h3 className="inicio__contact-form__title">Contáctenos</h3>

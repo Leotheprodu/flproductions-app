@@ -9,3 +9,4 @@ export * from './testimonio';
 export * from './contact-form';
 export * from './contact-info';
 export * from './nuestras-caracteristicas';
+export * from './algunas-producciones';

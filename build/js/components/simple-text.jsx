@@ -36,7 +36,7 @@ export function SimpleText({titulo,texto,tipo}) {
       <div className={'simple-text_info'}>
         <h1>{titulo}</h1>
 
-        <p>{texto}</p>
+        {texto}
       </div>
     );
 
@@ -48,7 +48,7 @@ export function SimpleText({titulo,texto,tipo}) {
       <div ref={ref} className={ 'simple-text_info fxElement' }>
         <h3>{titulo}</h3>
 
-        <p>{texto}</p>
+        {texto}
       </div>
     );
   };
@@ -59,9 +59,9 @@ export function SimpleText({titulo,texto,tipo}) {
 
 SimpleText.propTypes = {
     
-  titulo: PropTypes.string.isRequired,
+  titulo: PropTypes.string,
   tipo: PropTypes.number.isRequired, //1: contiene un h1 y 2: contiene un h3
-  texto: PropTypes.string.isRequired,
+  texto: PropTypes.object.isRequired,
   
 }
 SimpleText.defaultProps = {

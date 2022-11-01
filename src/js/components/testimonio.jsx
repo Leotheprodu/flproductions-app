@@ -1,12 +1,12 @@
 import { Carousel } from 'react-responsive-carousel';
-import PropTypes from 'prop-types'
+import { testimonios } from '../components/database/database';
 
-export function Testimonio({testimonios}) {
+export function Testimonio() {
 
     return(
 
         <div className="testimonio">
-            <h3>Testimonios</h3>
+            <h3>Lo que dicen los clientes</h3>
 
             <Carousel 
             autoPlay 
@@ -42,10 +42,4 @@ export function Testimonio({testimonios}) {
 
 
     )
-}
-
-Testimonio.propTypes = {
-    
-    testimonios: PropTypes.array.isRequired,
-    
 }
