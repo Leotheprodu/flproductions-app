@@ -1,0 +1,28 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.galeria-de-imagenes{
+    margin-bottom: 2rem;
+    padding: 3rem;
+
+    h3{
+        margin-top: 10rem;
+        text-align: center;
+        font-size: 4rem;
+    }
+    img{
+        padding: 2rem;
+        transition: transform .5s;
+        border-radius: 4px;
+        box-shadow: 3px 1px 7px 1px rgba(0,0,0,0.34);
+            -webkit-box-shadow: 3px 1px 7px 1px rgba(0,0,0,0.34);
+            -moz-box-shadow: 3px 1px 7px 1px rgba(0,0,0,0.34);
+        
+
+
+        &:hover{
+            transform: scale(1.05);
+            
+        }
+    }
+}

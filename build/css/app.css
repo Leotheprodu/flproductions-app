@@ -520,6 +520,37 @@ img {
   filter: brightness(30%);
 }
 
+.contacto__contact-form__title {
+  margin-bottom: 10rem;
+  padding-top: 10rem;
+  text-align: center;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.contacto-container {
+  background-color: #1ab5e6;
+  overflow: hidden;
+  padding-bottom: 20rem;
+}
+
+.contacto__map {
+  overflow: hidden;
+  background-color: #1ab5e6;
+  /* height:40rem ; */
+}
+.contacto__map svg {
+  transform: scale(1.2);
+}
+.contacto__map iframe {
+  border: 0;
+  width: 100%;
+  height: 50rem;
+  box-shadow: -4px 1px 24px 1px rgba(0, 0, 0, 0.51);
+  -webkit-box-shadow: -4px 1px 24px 1px rgba(0, 0, 0, 0.51);
+  -moz-box-shadow: -4px 1px 24px 1px rgba(0, 0, 0, 0.51);
+}
+
 .palabras-del-equipo {
   display: grid;
 }
@@ -1192,4 +1223,25 @@ img {
   color: gray;
   text-align: center;
   font-size: 2rem;
+}
+
+.galeria-de-imagenes {
+  margin-bottom: 2rem;
+  padding: 3rem;
+}
+.galeria-de-imagenes h3 {
+  margin-top: 10rem;
+  text-align: center;
+  font-size: 4rem;
+}
+.galeria-de-imagenes img {
+  padding: 2rem;
+  transition: transform 0.5s;
+  border-radius: 4px;
+  box-shadow: 3px 1px 7px 1px rgba(0, 0, 0, 0.34);
+  -webkit-box-shadow: 3px 1px 7px 1px rgba(0, 0, 0, 0.34);
+  -moz-box-shadow: 3px 1px 7px 1px rgba(0, 0, 0, 0.34);
+}
+.galeria-de-imagenes img:hover {
+  transform: scale(1.05);
 }

@@ -72,3 +72,31 @@ export const algunasProducciones = [
     }, */
 
 ]
+
+
+export const fotosDelEstudio = [
+    {
+        src: "build/img/foto-estudio1.webp",
+        width:3264,
+        height:2448,
+        alt: 'foto del estudio',
+        title: 'Setup del estudio'
+    },
+    {
+        src: "build/img/foto-estudio2.webp",
+        width:1249,
+        height:937,
+        alt: 'foto del estudio',
+        title: 'Setup del estudio'
+    },
+    {
+        src: "build/img/foto-estudio3.webp",
+        width:6000,
+        height:4000,
+        alt: 'foto del estudio',
+        title: 'Setup del estudio, Bajo Yamaha'
+    },
+
+
+
+]

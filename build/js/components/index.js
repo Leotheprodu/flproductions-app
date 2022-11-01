@@ -10,3 +10,4 @@ export * from './contact-form';
 export * from './contact-info';
 export * from './nuestras-caracteristicas';
 export * from './algunas-producciones';
+export * from './galeria-de-imagenes';

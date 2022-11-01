@@ -1,5 +1,5 @@
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import { AlgunasProducciones, PalabrasDelEquipo, SimpleText, Testimonio } from '../components';
+import { AlgunasProducciones, GaleriaDeImagenes, PalabrasDelEquipo, SimpleText, Testimonio } from '../components';
 
 export function AboutPage () {
 
@@ -45,7 +45,11 @@ export function AboutPage () {
         
 
         <div className='contenedor'>
-          <AlgunasProducciones/>
+          <AlgunasProducciones />
+        </div>
+
+        <div className='contenedor'>
+          <GaleriaDeImagenes />
         </div>
           
         

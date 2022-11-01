@@ -18,7 +18,8 @@
     "react-helmet-async": "^1.3.0",
     "react-photo-album": "^1.16.1",
     "react-responsive-carousel": "^3.2.23",
-    "react-router-dom": "^6.4.2"
+    "react-router-dom": "^6.4.2",
+    "yet-another-react-lightbox": "^2.2.1"
   },
   "author": "LeotheProdu",
   "license": "ISC",
