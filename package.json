@@ -1,10 +1,11 @@
 {
   "name": "flproductions",
+  "homepage": ".",
   "private": true,
   "version": "1.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "INLINE_RUNTIME_CHUNK=false vite build",
     "preview": "vite preview",
     "test": "jest --watchAll"
   },

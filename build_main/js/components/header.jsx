@@ -10,7 +10,7 @@ export function Header ({imgName, pagina}) {
         
         <picture>
 
-          <img className={pagina+"-img"} style={{ backgroundImage:`url(${"build/img/"+imgName})` }} loading="lazy" />
+          <img className={pagina+"-img"} style={{ backgroundImage:`url(${"build_main/img/"+imgName})` }} loading="lazy" />
         </picture>
 
       </div>

@@ -14,13 +14,13 @@ function css(done) {
     src('src/scss/**/*.scss') //ideantificar archivo de sass
         .pipe(plumber()) //para que siga ejecutando aunque hayan errores
         .pipe(sass()) //compilarlo
-        .pipe(dest('build/css')) //almacenar en hd
+        .pipe(dest('build_main/css')) //almacenar en hd
 
     done();
 }
 function javascript(done) {
     src('src/js/**/*.{js,jsx}')
-        .pipe(dest('build/js'))
+        .pipe(dest('build_main/js'))
     done()
 }
 
@@ -37,7 +37,7 @@ function imagenes(done) {
     }
     src('src/img/**/*.{jpg,png}')
     .pipe(cache(imagemin(opciones)))
-    .pipe(dest('build/img'))
+    .pipe(dest('build_main/img'))
 
     done()
 }
@@ -49,7 +49,7 @@ function versionWebp(done) {
     
     src('src/img/**/*.{jpg,png}')
         .pipe(webp(opciones))
-        .pipe(dest('build/img'))
+        .pipe(dest('build_main/img'))
 
     done()
 }
@@ -60,7 +60,7 @@ function versionAvif(done) {
     
     src('src/img/**/*.{jpg,png}')
         .pipe(avif(opciones))
-        .pipe(dest('build/img'))
+        .pipe(dest('build_main/img'))
 
     done()
 }
