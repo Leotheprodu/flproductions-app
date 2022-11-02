@@ -6,7 +6,7 @@ import '../css/app.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 
-const router = createBrowserRouter([
+export const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
