@@ -5,7 +5,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "INLINE_RUNTIME_CHUNK=false vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "test": "jest --watchAll"
   },
