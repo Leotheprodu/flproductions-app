@@ -20,7 +20,6 @@ jobs:
       run: |
         npm install
         npm run build
-        npm run test
     
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.3.2
@@ -31,5 +30,5 @@ jobs:
         dangerous-clean-slate: true
         local-dir: ./dist/
         exclude: |
-          **/build_main/img/**
+          ./build_main/img/**
           
