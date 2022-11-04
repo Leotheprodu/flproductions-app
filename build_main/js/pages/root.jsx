@@ -1,14 +1,16 @@
-import React from 'react';
+/* import React from 'react'; */
 import { Outlet } from 'react-router-dom';
 import { Header, Footer, NavMenu, SocialIcons } from '../components';
+import TawkMessengerReact from '@tawk.to/tawk-messenger-react';
+
 
 
 export function Root() {
 
   return(
     
-    <React.StrictMode>
-
+   /*  <React.StrictMode> */
+<>
       <NavMenu/>
 
       <Header imgName="header-main.png" pagina="header"/>
@@ -23,10 +25,14 @@ export function Root() {
         <Outlet />
       
       </div>
-      
+      <div>
+        <TawkMessengerReact
+          propertyId="5803024f304e8e75855baa7f"
+          widgetId="default"/>
+      </div>
       <Footer />
-      
-    </React.StrictMode>
+      </>
+    /* </React.StrictMode> */
   )
 
 }
