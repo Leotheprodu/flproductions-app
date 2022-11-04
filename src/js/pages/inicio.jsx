@@ -14,6 +14,12 @@ export function HomePage() {
         <Helmet>
           <title>FLProductions | Inicio</title>
           <meta name="description" content="Somos un estudio de grabación y producción musical en Costa Rica, ofrecemos todo para tu proyecto musical." />
+          <meta property="og:title" content="FLProductions | Inicio" />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="https://flproductionscr.com/" />
+          <meta property="og:image" content="https://flproductionscr.com/build_main/img/header-main.png" />
+          <meta property="og:image:width" content="400" />
+          <meta property="og:image:height" content="300" />
         </Helmet>
         <div className='contenedor'>
           <SimpleText 
