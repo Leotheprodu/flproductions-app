@@ -36,6 +36,12 @@ export function ContactPage () {
       <Helmet>
         <title>FLProductions | Contacto</title>
         <meta name="description" content="Información de contacto de los estudios de FLProductions Costa Rica." />
+        <meta property="og:title" content="FLProductions | contacto" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://flproductionscr.com/contacto" />
+        <meta property="og:image" content="https://flproductionscr.com/build_main/img/header-main.png" />
+        <meta property="og:image:width" content="400" />
+        <meta property="og:image:height" content="300" />
       </Helmet>
 
 
