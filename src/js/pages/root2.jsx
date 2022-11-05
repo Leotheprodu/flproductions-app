@@ -10,7 +10,7 @@ export function Root2 () {
 
       <NavMenu />
       
-      <Header imgName="Portada-pagina-leotheprodu.webp" pagina="root2"/>
+      <Header imgName="https://flproductionscr.com/build_main/img/Portada-pagina-leotheprodu.webp" pagina="root2"/>
 
       <div className='root-socialIcons'>
         <SocialIcons size={24} />

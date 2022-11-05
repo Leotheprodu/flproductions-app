@@ -75,8 +75,8 @@ export function HomePage() {
             texto='Éste soy yo, Leo, soy el productor y fundador del estudio FLProductions. A través de los años me he dado cuenta que lo que hace diferente al estudio de todos los demás, definitivamente no es el hardware, ni las instalaciones, es el conocimiento que continuamente lo estoy actualizando y con mas de 15 años de experiencia siempre tratamos de emplearlo de la mejor manera en cada proyecto, cada canción se hace con amor, dandole la importancia que se merece y eso es lo que quiero que ustedes obtengan de mi. ¡Gracias por motivarme a ser mejor cada día, lo que siempre me hace dar lo mejor de mí!'
             nombre='Leo Serrano'
             puesto='Productor Musical'
-            foto='build_main\img\leo-serrano1.webp'
-            firma='build_main\img\leoserrano-signature.webp'
+            foto='https://flproductionscr.com/build_main/img/leo-serrano1.webp'
+            firma='https://flproductionscr.com/build_main/img/leoserrano-signature.webp'
           />
 
         </div>{/* seccion 2 Acerca de Nosotros */}

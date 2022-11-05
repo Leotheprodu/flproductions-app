@@ -13,7 +13,7 @@ export function Root() {
 <>
       <NavMenu/>
 
-      <Header imgName="header-main.png" pagina="header"/>
+      <Header imgLink="https://flproductionscr.com/build_main/img/header-main.png" pagina="header"/>
     
       <div className='root-socialIcons'>
         <SocialIcons size={24} />
