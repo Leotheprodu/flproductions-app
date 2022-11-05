@@ -1,0 +1,20 @@
+{
+  "name": "flproductions",
+  "homepage": ".",
+  "private": true,
+  "version": "1.0.0",
+  
+  "scripts": {
+    "start": "node app.mjs"
+  },
+  "dependencies": {
+  
+    "express": "^4.18.2"
+  },
+  "author": "LeotheProdu",
+  "license": "ISC",
+
+  "engines": {
+    "node": "18.11.0"
+  }
+}
