@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 
-export function Header ({imgName, pagina}) {
+export function Header ({imgLink, pagina}) {
 
   return (
 
@@ -10,7 +10,7 @@ export function Header ({imgName, pagina}) {
         
         <picture>
 
-          <img className={pagina+"-img"} style={{ backgroundImage:`url(${"build_main/img/"+imgName})` }} loading="lazy" />
+          <img className={pagina+"-img"} style={{ backgroundImage:`url(${imgLink})` }} loading="lazy" />
         </picture>
 
       </div>
@@ -24,12 +24,12 @@ export function Header ({imgName, pagina}) {
 Header.propTypes = {
     
   pagina: PropTypes.string.isRequired,
-  imgName: PropTypes.string.isRequired,
+  imgLink: PropTypes.string.isRequired,
   
 }
 Header.defaultProps = {
 
-  imgName: "header-main",
+  imgLink: "https://flproductionscr.com/build_main/img/header-main.png",
   pagina: "default",
 
 }

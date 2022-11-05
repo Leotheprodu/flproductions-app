@@ -21,7 +21,7 @@ export function GaleriaDeImagenes() {
     function imagenClick(e) {
         setOpen(true);
         let primerImagen = e.target.src;
-        const filtrados = fotosDelEstudio.filter(item => `https://flproductionscr.com/${item.src}` !== primerImagen);
+        const filtrados = fotosDelEstudio.filter( item => item.src !== primerImagen);
         setNuevoArray([
             {
             src: primerImagen,
