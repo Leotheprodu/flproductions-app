@@ -56,7 +56,7 @@ export function FormulariodeContacto() {
             />
           }
           titulo='Dirección'
-          parrafo='Herediana de Siquirres, Limón Costa Rica'
+          parrafo='Siquirres, Limón Costa Rica'
           link='https://goo.gl/maps/iBQjkYs7n49ywDXE8'
           
           />

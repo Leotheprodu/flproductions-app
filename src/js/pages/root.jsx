@@ -20,11 +20,11 @@ export function Root() {
       </div>
       
 
-      <div className='contenedor-main'>
+      <main className='contenedor-main'>
       
         <Outlet />
       
-      </div>
+      </main>
       <div>
         <TawkMessengerReact
           propertyId="5803024f304e8e75855baa7f"

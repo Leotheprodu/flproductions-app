@@ -2,7 +2,7 @@ import { IconBrandInstagram, IconBrandSpotify } from "@tabler/icons";
 import { useState, useEffect } from "react";
 import { YoutubeEmbed } from "./Helpers/youtubeEmbed";
 
-export function ProduccionesDestacadas() {
+export function ProduccionesDestacadas(props) {
     
     const [producciones, setProducciones] = useState([]);
     const [artistas, setArtistas] = useState([]);
@@ -17,8 +17,8 @@ export function ProduccionesDestacadas() {
         .then((res) => res.json())
         .then((data) => setArtistas(data));
     }, []);
-    const produccionesDestacadas = producciones.filter(elemento => elemento.destacado === 1);
     const [youtubeLink, setyoutubeLink] = useState('');
+    const produccionesDestacadas = producciones.filter(elemento => elemento.destacado === 1);
     const [instagramLink, setinstagramLink] = useState('');
     const [spotifyLink, setSpotifyLink] = useState('');
     const [artistaItem, setartistaItem] = useState('');
@@ -34,7 +34,6 @@ export function ProduccionesDestacadas() {
         setSpotifyLink(spotify_link);
         setartistaItem(artistas.find(element => element.id === id_artista).nombre);
         setinstagramLink(artistas.find(element => element.id === id_artista).instagram);
-
     }
 
 
@@ -46,11 +45,7 @@ export function ProduccionesDestacadas() {
             <div className="algunas-producciones__botones">
 
                 {
-                    /* algunasProducciones.map(({ nombre, artista, youtube, instagram, descripcion }) => (
-                        <div className="algunas-producciones__boton" key={ youtube }>
-                            <p onClick={ () => prueba( youtube, instagram, artista, descripcion, nombre ) }>{ nombre }</p>
-                        </div>
-                    )) */
+                    
                     produccionesDestacadas.map(({id, nombre, descripcion, id_artista, spotify_link, youtube_id, destacado}) => (
                         <div className="algunas-producciones__boton" key={ id }>
                             <p onClick={ () => onClickStateAsign( nombre, descripcion, id_artista, spotify_link, youtube_id, destacado) }>{ nombre }</p>

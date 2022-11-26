@@ -32,6 +32,26 @@ app.get("/api", (req, res) => {
   res.json({ message: "FLProductions" });
   
 });
+app.get("/api/artistas", (req, res) => {
+  const connection = mysql.createConnection(credentials);
+  connection.query('SELECT * FROM artistas', (error, result) =>{
+    if(error) {
+      res.status(500).send(error);
+    }else {
+      res.status(200).send(result);
+    }
+  });
+});
+app.get("/api/artistas/producciones", (req, res) => {
+  const connection = mysql.createConnection(credentials);
+  connection.query('SELECT * FROM producciones', (error, result) =>{
+    if(error) {
+      res.status(500).send(error);
+    }else {
+      res.status(200).send(result);
+    }
+  });
+});
 
 app.get("/api/servicios", (req, res) => {
   const connection = mysql.createConnection(credentials);

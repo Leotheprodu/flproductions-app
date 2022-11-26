@@ -63,10 +63,11 @@
     }
 
 }
-.algunas-producciones__detalles__instagram{
+.algunas-producciones__detalles__links{
     display: flex;
     gap: 4rem;
     justify-content: center;
+    flex-wrap: wrap;
     a{
         display: flex;
         p{

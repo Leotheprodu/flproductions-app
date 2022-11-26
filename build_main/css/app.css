@@ -664,9 +664,12 @@ img {
 .contacto_info-Icons {
   order: 2;
   text-align: center;
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
   margin: 0 auto;
-  max-width: 50rem;
+  max-width: 60rem;
   grid-template-columns: repeat(2, 50%);
   gap: 1rem;
 }
@@ -1099,8 +1102,13 @@ img {
 .testimonio {
   display: flex;
   flex-direction: column;
-  max-width: 50%;
+  max-width: 90%;
   margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .testimonio {
+    max-width: 60%;
+  }
 }
 .testimonio h3 {
   text-align: center;
@@ -1200,15 +1208,16 @@ img {
   box-shadow: 7px 6px 8px rgba(0, 0, 0, 0.1647058824);
 }
 
-.algunas-producciones__detalles__instagram {
+.algunas-producciones__detalles__links {
   display: flex;
   gap: 4rem;
   justify-content: center;
+  flex-wrap: wrap;
 }
-.algunas-producciones__detalles__instagram a {
+.algunas-producciones__detalles__links a {
   display: flex;
 }
-.algunas-producciones__detalles__instagram a p {
+.algunas-producciones__detalles__links a p {
   color: #FFFFFF;
 }
 

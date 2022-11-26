@@ -10,7 +10,7 @@ export function Footer () {
     
     return(
 
-        <div className="footer">
+        <footer className="footer">
 
             <div className="footer_content">
                 
@@ -20,11 +20,7 @@ export function Footer () {
 
             </div>
 
-            
-            
-
-
-        </div>
+        </footer>
 
     )
 }

@@ -5,8 +5,11 @@
 .testimonio{
     display: flex;
     flex-direction: column;
-    max-width: 50%;
+    max-width: 90%;
     margin: 0 auto;
+    @include m.tablet {
+        max-width: 60%;
+    }
     h3{
         text-align: center;
         text-transform: uppercase;
