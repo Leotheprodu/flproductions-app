@@ -2,10 +2,10 @@ import { IconBrandInstagram, IconBrandSpotify } from "@tabler/icons";
 import { useState, useEffect } from "react";
 import { YoutubeEmbed } from "./Helpers/youtubeEmbed";
 
-export function ProduccionesDestacadas(props) {
-    
+export function ProduccionesDestacadas() {
     const [producciones, setProducciones] = useState([]);
     const [artistas, setArtistas] = useState([]);
+    
 
     useEffect(() => {
         fetch('http://localhost:5000/api/artistas/producciones')
@@ -17,14 +17,17 @@ export function ProduccionesDestacadas(props) {
         .then((res) => res.json())
         .then((data) => setArtistas(data));
     }, []);
+
+
     const [youtubeLink, setyoutubeLink] = useState('');
-    const produccionesDestacadas = producciones.filter(elemento => elemento.destacado === 1);
+    const produccionesDestacadas = producciones.filter(element => element.destacado === 1);
     const [instagramLink, setinstagramLink] = useState('');
     const [spotifyLink, setSpotifyLink] = useState('');
     const [artistaItem, setartistaItem] = useState('');
     const [nombreItem, setnombreItem] = useState('');
     const [descripcionItem, setdescripcionItem] = useState('');
     const [onClick, setonClick] = useState(false);
+    
 
     const onClickStateAsign = (nombre, descripcion, id_artista, spotify_link, youtube_id) => {
         setyoutubeLink(youtube_id);
@@ -34,9 +37,10 @@ export function ProduccionesDestacadas(props) {
         setSpotifyLink(spotify_link);
         setartistaItem(artistas.find(element => element.id === id_artista).nombre);
         setinstagramLink(artistas.find(element => element.id === id_artista).instagram);
+        youtube = youtube_id;
     }
-
-
+    
+    
     return(
         <div className="algunas-producciones">
 
@@ -46,9 +50,9 @@ export function ProduccionesDestacadas(props) {
 
                 {
                     
-                    produccionesDestacadas.map(({id, nombre, descripcion, id_artista, spotify_link, youtube_id, destacado}) => (
+                    produccionesDestacadas.map(({id, nombre, descripcion, id_artista, spotify_link, youtube_id}) => (
                         <div className="algunas-producciones__boton" key={ id }>
-                            <p onClick={ () => onClickStateAsign( nombre, descripcion, id_artista, spotify_link, youtube_id, destacado) }>{ nombre }</p>
+                            <p onClick={ () => onClickStateAsign( nombre, descripcion, id_artista, spotify_link, youtube_id) }>{ nombre }</p>
                         </div>
                     ))
                 }

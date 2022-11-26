@@ -20,60 +20,6 @@ export const testimonios = [
 
 ];
 
-export const algunasProducciones = [
-    {
-        nombre: 'Madrugada',
-        artista: 'El Verzah',
-        youtube: '9Vvq-7BVYCc',
-        instagram: 'https://www.instagram.com/elverzah/',
-        descripcion: 'Trabajo hecho el 15 de febrero del 2020, grabado, mezclado y masterizado por LeotheProdu en FLProductions, el instrumental tambien creado por Leo.',
-    },
-    {
-        nombre: 'Cash',
-        artista: 'Cesar JS',
-        youtube: 'tucuoq0B0Cc',
-        instagram: 'https://www.instagram.com/cesar_js506/',
-        descripcion: 'Trabajo hecho el 23 de mayo del 2021, grabado, mezclado y masterizado por LeotheProdu en FLProductions, el instrumental creado por BSHMNT.',
-    },
-    {
-        nombre: 'Como Tu',
-        artista: 'BlackStyle Addams',
-        youtube: 'Cpg4uJ7ViLI',
-        instagram: 'https://www.instagram.com/blackstyle.music/',
-        descripcion: 'Trabajo hecho el 15 de mayo del 2021, grabado, mezclado y masterizado por LeotheProdu en FLProductions.',
-    },
-    {
-        nombre: 'Cuanto Te Amo',
-        artista: 'Los Hermanos Cortés',
-        youtube: 'a6NS_IUh4i8',
-        instagram: 'https://www.instagram.com/loshermanoscortescr/',
-        descripcion: 'Trabajo hecho el 29 de Julio del 2021, grabado, mezclado y masterizado por LeotheProdu en FLProductions, el instrumental tambien creado por Leo junto a Salva Jirón.',
-    },
-    {
-        nombre: 'Pensándote',
-        artista: 'Rousses',
-        youtube: 'ymQVxS0H7fE',
-        instagram: 'https://www.instagram.com/roussesofficial/',
-        descripcion: 'Trabajo hecho el 20 de Enero del 2021, grabado, mezclado y masterizado por LeotheProdu en FLProductions.',
-    },
-    {
-        nombre: 'Circles',
-        artista: 'Jormen',
-        youtube: 'FjcwkhnuNYY',
-        instagram: 'https://www.instagram.com/jormencarr/',
-        descripcion: 'Trabajo hecho el 17 de Agosto del 2019, grabado, mezclado y masterizado por LeotheProdu en FLProductions, además de la creacion del instrumental hecha por Leo.',
-    },
-    /*  {
-        nombre: '',
-        artista: '',
-        youtube: '',
-        instagram: '',
-        descripcion: '',
-    }, */
-
-]
-
-
 export const fotosDelEstudio = [
     {
         src: "https://flproductionscr.com/build_main/img/foto-estudio1.webp",
