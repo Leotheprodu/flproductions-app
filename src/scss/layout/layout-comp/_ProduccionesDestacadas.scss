@@ -6,7 +6,7 @@
     h2{
         text-align: center;
         margin-top: 3rem;
-        margin-bottom: 0;
+        margin-bottom: 6rem;
     }
 
 }
@@ -17,6 +17,8 @@
     padding: 1rem;
     justify-content: center;
     flex-wrap: wrap;
+    margin-bottom: 6rem;
+
 }
 
 .algunas-producciones__boton{
@@ -68,10 +70,13 @@
     gap: 4rem;
     justify-content: center;
     flex-wrap: wrap;
+    
     a{
         display: flex;
+        align-items: center;
+        gap: 0.5rem;
         p{
-            color: v.$blanco;
+            color: gray;
         }
     }
 }
@@ -79,6 +84,8 @@
     
     h3{
         margin-bottom: 2rem;
+        font-weight: 400;
+        font-size: 2.5rem;
         text-align: center;
         span{
             color: v.$secundario;

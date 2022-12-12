@@ -57,36 +57,35 @@ export function ProduccionesDestacadas() {
                     ))
                 }
             </div>
-            {
-                onClick &&
+            { onClick &&
                 <div className="algunas-producciones__detalles contenedor">
-                <div className="algunas-producciones__detalles__texto">
+                    <div className="algunas-producciones__detalles__texto">
 
-                    <h3>Nombre: <span>{nombreItem}</span>, interpretado por: <span>{artistaItem}</span></h3>
+                        <h3>Nombre: <span>{nombreItem}</span>, interpretado por: <span>{artistaItem}</span></h3>
 
-                    <p>{descripcionItem}</p>
-                </div>
-                
-                <div className="algunas-producciones__detalles__links">
+                        <p>{descripcionItem}</p>
+                    </div>
                     
-                    {
-                        spotifyLink &&
-                        <a target='_blank' href={spotifyLink}>
-                        <IconBrandSpotify size={50}/>
-                        <p>Spotify</p>
+                    <div className="algunas-producciones__detalles__links">
+                        
+                        { spotifyLink &&
+                            <a target='_blank' href={spotifyLink}>
+                                <IconBrandSpotify stroke={1} size={30}/>
+                                <p>Spotify</p>
+                            </a>
+
+                        }
+
+                        <a target='_blank' href={instagramLink}>
+                            <IconBrandInstagram stroke={1} size={30}/>
+                            <p>{artistaItem}</p>
                         </a>
-
-                    }
-                    <a target='_blank' href={instagramLink}>
-                        <IconBrandInstagram size={50}/>
-                        <p>{artistaItem}</p>
-                    </a>
-                    <a target='_blank' href='https://www.instagram.com/leotheprodu/'>
-                        <IconBrandInstagram size={50}/>
-                        <p>LeotheProdu</p>
-                    </a>
-                    
-                </div>
+                        <a target='_blank' href='https://www.instagram.com/leotheprodu/'>
+                            <IconBrandInstagram stroke={1} size={30}/>
+                            <p>LeotheProdu</p>
+                        </a>
+                        
+                    </div>
                 </div>
             }
 
