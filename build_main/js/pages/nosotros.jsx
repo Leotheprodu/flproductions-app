@@ -1,8 +1,5 @@
-import { useEffect } from 'react';
-import { useState } from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import { ProduccionesDestacadas, GaleriaDeImagenes, PalabrasDelEquipo, SimpleText, Testimonio } from '../components';
-import { YoutubeEmbed } from '../components/Helpers/youtubeEmbed';
+import { ProduccionesDestacadasNosotros, GaleriaDeImagenes, PalabrasDelEquipo, SimpleText, Testimonio } from '../components';
 
 export function AboutPage () {
 
@@ -54,7 +51,7 @@ export function AboutPage () {
         
 
         <div className='contenedor'>
-          <ProduccionesDestacadas />
+          <ProduccionesDestacadasNosotros />
         </div>
 
         <div className='contenedor'>

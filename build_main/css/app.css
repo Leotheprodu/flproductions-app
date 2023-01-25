@@ -1168,9 +1168,11 @@ img {
 }
 
 .algunas-producciones__boton {
+  display: flex;
+  flex-direction: column;
   background-color: #1ab5e6;
-  width: 15rem;
-  height: 6rem;
+  width: 20rem;
+  height: 15rem;
   display: flex;
   align-items: center;
   justify-content: center;

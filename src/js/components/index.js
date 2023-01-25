@@ -11,3 +11,5 @@ export * from './contact-info';
 export * from './nuestras-caracteristicas';
 export * from './ProduccionesDestacadas';
 export * from './galeria-de-imagenes';
+export * from './ListadoProducciones';
+export * from './DetalleProducciones';

@@ -20,6 +20,6 @@ export function YoutubeEmbed({ embedId }) {
 }
 
 
-YoutubeEmbed.propTypes = {
+/* YoutubeEmbed.propTypes = {
     embedId: PropTypes.string.isRequired
-};
+}; */
