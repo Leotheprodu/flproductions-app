@@ -343,9 +343,42 @@ p {
   margin: 0 auto;
 }
 
+.contenedor-basic {
+  width: 97%;
+  margin: 0 auto;
+}
+
 .contenedor-main {
   min-height: 100vh;
   position: relative;
+}
+
+.center {
+  text-align: center;
+  align-items: center;
+}
+.center p {
+  text-align: center;
+}
+
+.beatplaying {
+  transform: scale(1.05);
+}
+
+.player-wrapper {
+  position: relative;
+  padding-top: 100%;
+}
+@media (min-width: 768px) {
+  .player-wrapper {
+    padding-top: 30%;
+  }
+}
+
+.react-player {
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 a {

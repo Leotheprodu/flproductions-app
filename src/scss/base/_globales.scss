@@ -1,5 +1,5 @@
 @use 'variables' as v;
-
+@use 'base/mixins' as m;
 html {
     font-size: 62.5%;
     box-sizing: border-box;
@@ -33,10 +33,41 @@ p {
     max-width: 120rem;
     margin: 0 auto;
 }
+.contenedor-basic {
+    width: 97%;  
+    margin: 0 auto;
+}
 .contenedor-main {
     min-height:100vh;
     position:relative;
 }
+.center {
+    text-align: center;
+    align-items: center;
+    p {
+        text-align: center;
+    }
+}
+.beatplaying {
+    transform: scale(1.05);
+}
+
+.player-wrapper {
+    @include m.tablet {
+        padding-top: 30%
+    }
+    position: relative;
+    padding-top: 100% /* Player ratio: 100 / (1280 / 720) */
+  }
+  .reproductor-musica{
+    
+  }
+  
+  .react-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
 a {
     text-decoration: none;
     color: v.$primario;

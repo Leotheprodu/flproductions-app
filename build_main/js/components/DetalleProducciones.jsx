@@ -6,7 +6,6 @@ import { YoutubeEmbed } from "./Helpers/youtubeEmbed";
 export const DetalleProducciones = ({infoProduccion}) => {
 const { nombre, descripcion, instagramLink, artistaItem, spotify_link, youtube_id } = infoProduccion
 
-
   return (
     <div className="algunas-producciones__detalles contenedor">
         <div className="algunas-producciones__detalles__texto">
@@ -37,7 +36,7 @@ const { nombre, descripcion, instagramLink, artistaItem, spotify_link, youtube_i
             
         </div>
         <div  className="contenedor algunas-producciones__videoDiv">
-            <YoutubeEmbed embedId={youtube_id}/>
+            <YoutubeEmbed embedId = {youtube_id}/>
         </div>
     </div>
   )
