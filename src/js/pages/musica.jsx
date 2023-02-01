@@ -1,13 +1,15 @@
 import { useState } from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import { ProduccionesDestacadasNosotros, GaleriaDeImagenes, PalabrasDelEquipo, SimpleText, Testimonio } from '../components';
-import { DetalleProducciones, ListadoProducciones } from "../components";
-import { useArtistasBD, useProduccionesArtistasBD } from '../components/hooks/useFetchBD';
+import { SimpleText } from '../components';
+import { ListadoProducciones } from "../components";
+import { useProduccionesArtistasBD } from '../components/hooks/useFetchBD';
 import ReactPlayer from 'react-player';
+import { useRef } from 'react';
+
+
 export function Musica() {
 
     const {produccionesArtistas} = useProduccionesArtistasBD('http://localhost:5000/api/artistas/producciones');
-    const {artistas} = useArtistasBD('http://localhost:5000/api/artistas');
 
 
 
@@ -15,20 +17,22 @@ export function Musica() {
     const [infoProduccion, setInfoProduccion ] = useState({});
     const [onClick, setonClick] = useState(false);
     
+    const [playing, setPlaying] = useState(false);
+    const [progress, setProgress] = useState(0);
+    const playerRef = useRef(null);
 
     const selectedSong = (song) => {
-        const {nombre, descripcion, id_artista, spotify_link, youtube_id} = song
+        const {id, nombre, descripcion, nombre_artista, instagram, spotify_link, youtube_id} = song
         setonClick(true);
-        const artistaItem = artistas.find(element => element.id === id_artista).nombre;
-        const instagramLink = artistas.find(element => element.id === id_artista).instagram;
 
         setInfoProduccion({
             nombre,
             descripcion,
             spotify_link,
             youtube_id,
-            artistaItem,
-            instagramLink
+            nombre_artista,
+            instagram,
+            id
         });
 
         
@@ -68,30 +72,48 @@ export function Musica() {
                             width='100%'
                             height='100%'
                             url= {`https://www.youtube.com/watch?v=${infoProduccion.youtube_id}`}
-                            controls = 'true'
+                            playing = {playing}
+                            ref={playerRef}
+                            onProgress={({ played }) => setProgress(played)}
                             
                         />
+                        
+                        
                     </div>
                 }
                 
 
                 <div className='contenedor-basic'>
+                    <div>
                     <h2>Destacados</h2>
-                <ListadoProducciones songArray={produccionesDestacadas} selectedSong={selectedSong}/>
+                    </div>
+                    <ListadoProducciones 
+                        songArray={produccionesDestacadas} 
+                        selectedSong={selectedSong} 
+                        selectedSongId ={infoProduccion.id}
+                        playing={playing} 
+                        setPlaying={setPlaying} 
+                        progress={progress} 
+                        playerRef={playerRef}
+                    />
+                    <div>
+                    <h2>Toda la Musica</h2>
 
-                <h2>Toda la Musica</h2>
-                <ListadoProducciones songArray={produccionesArtistas} selectedSong={selectedSong}/>
+                    </div>
+                    <ListadoProducciones 
+                        songArray={produccionesArtistas} 
+                        selectedSong={selectedSong} 
+                        selectedSongId ={infoProduccion.id}
+                        playing={playing} 
+                        setPlaying={setPlaying} 
+                        progress={progress} 
+                        playerRef={playerRef}
+                    />
                 </div>
 
-                <div className='nosotros__testimonios'>
-
-                    
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-                        <path fill="#ffffff" fillOpacity="1" d="M0,288L48,272C96,256,192,224,288,197.3C384,171,480,149,576,165.3C672,181,768,235,864,250.7C960,267,1056,245,1152,250.7C1248,256,1344,288,1392,304L1440,320L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-                    </svg>
+                <div className='Informacion-adicional-musicapage'>
+                    <SimpleText titulo='Conoce Algunos de nuestros Clientes'/>
                 </div>
-
-
 
 
 

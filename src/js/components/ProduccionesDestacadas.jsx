@@ -1,12 +1,11 @@
 
 import { useState } from "react";
 import { DetalleProducciones, ListadoProducciones } from "../components";
-import { useArtistasBD, useProduccionesArtistasBD } from "./hooks/useFetchBD";
+import { useProduccionesArtistasBD } from "./hooks/useFetchBD";
 
 
 export function ProduccionesDestacadasNosotros() {
     const {produccionesArtistas} = useProduccionesArtistasBD('http://localhost:5000/api/artistas/producciones');
-    const {artistas} = useArtistasBD('http://localhost:5000/api/artistas');
 
 
 
@@ -16,18 +15,16 @@ export function ProduccionesDestacadasNosotros() {
     
 
     const selectedSong = (song) => {
-        const {nombre, descripcion, id_artista, spotify_link, youtube_id} = song
+        const {nombre, descripcion, nombre_artista, instagram, spotify_link, youtube_id} = song
         setonClick(true);
-        const artistaItem = artistas.find(element => element.id === id_artista).nombre;
-        const instagramLink = artistas.find(element => element.id === id_artista).instagram;
 
         setInfoProduccion({
             nombre,
             descripcion,
             spotify_link,
             youtube_id,
-            artistaItem,
-            instagramLink
+            nombre_artista,
+            instagram
         });
         
         

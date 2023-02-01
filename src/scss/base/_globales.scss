@@ -1,53 +1,66 @@
 @use 'variables' as v;
 @use 'base/mixins' as m;
+
 html {
     font-size: 62.5%;
     box-sizing: border-box;
     /* scroll-snap-type: y proximity; */
-    
+
 }
+
 *,
 *:before,
 *:after {
     box-sizing: inherit;
 }
-body{
-font-family: v.$fuente_principal;
-font-size: 1.6rem;
+
+body {
+    font-family: v.$fuente_principal;
+    font-size: 1.6rem;
 
 
     &.fijar-body {
         overflow: hidden;
     }
+
     &.body-scroll {
         padding-top: 8.6rem;
     }
 }
+
 p {
     font-size: 1.5rem;
     color: v.$negro;
     line-height: 1.5;
 }
+
 .contenedor {
     width: 97%;
     max-width: 120rem;
     margin: 0 auto;
 }
+
 .contenedor-basic {
-    width: 97%;  
+    width: 97%;
     margin: 0 auto;
+    overflow: hidden;
+    
 }
+
 .contenedor-main {
-    min-height:100vh;
-    position:relative;
+    min-height: 100vh;
+    position: relative;
 }
+
 .center {
     text-align: center;
     align-items: center;
+
     p {
         text-align: center;
     }
 }
+
 .beatplaying {
     transform: scale(1.05);
 }
@@ -56,43 +69,52 @@ p {
     @include m.tablet {
         padding-top: 30%
     }
+
     position: relative;
-    padding-top: 100% /* Player ratio: 100 / (1280 / 720) */
-  }
-  .reproductor-musica{
-    
-  }
-  
-  .react-player {
+    padding-top: 100%
+    /* Player ratio: 100 / (1280 / 720) */
+}
+
+.react-player {
     position: absolute;
     top: 0;
     left: 0;
-  }
+}
+
+
 a {
     text-decoration: none;
     color: v.$primario;
     transition-property: color;
     transition-duration: .3s;
     transition-timing-function: ease-out;
-    &:hover{
+
+    &:hover {
         color: v.$secundario;
         transition-property: color;
         transition-duration: .3s;
         transition-timing-function: ease-out;
     }
 }
-h1,h2,h3 {
+
+h1,
+h2,
+h3 {
     margin: 0 0 5rem 0;
 }
+
 h1 {
     font-size: 4rem;
 }
+
 h2 {
     font-size: 3.6rem;
 }
+
 h3 {
     font-size: 3rem;
 }
+
 img {
     max-width: 100%;
     width: 100%;
@@ -100,6 +122,7 @@ img {
 
     display: block;
 }
+
 .default-img {
     margin: 0 auto;
     z-index: 10;
@@ -108,8 +131,7 @@ img {
 
 .default-contenedor {
     max-width: 100%;
-    margin: 0 auto; 
+    margin: 0 auto;
     max-height: 50rem;
-    overflow: hidden;  
+    overflow: hidden;
 }
-

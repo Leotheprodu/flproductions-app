@@ -4,13 +4,13 @@ import { YoutubeEmbed } from "./Helpers/youtubeEmbed";
 
 
 export const DetalleProducciones = ({infoProduccion}) => {
-const { nombre, descripcion, instagramLink, artistaItem, spotify_link, youtube_id } = infoProduccion
+const { nombre, descripcion, nombre_artista, instagram, spotify_link, youtube_id } = infoProduccion
 
   return (
     <div className="algunas-producciones__detalles contenedor">
         <div className="algunas-producciones__detalles__texto">
 
-            <h3>Nombre: <span>{nombre}</span>, interpretado por: <span>{artistaItem}</span></h3>
+            <h3>Nombre: <span>{nombre}</span>, interpretado por: <span>{nombre_artista}</span></h3>
 
             <p>{descripcion}</p>
         </div>
@@ -25,9 +25,9 @@ const { nombre, descripcion, instagramLink, artistaItem, spotify_link, youtube_i
 
             }
 
-            <a target='_blank' href={instagramLink}>
+            <a target='_blank' href={instagram}>
                 <IconBrandInstagram stroke={1} size={30}/>
-                <p>{artistaItem}</p>
+                <p>{nombre_artista}</p>
             </a>
             <a target='_blank' href='https://www.instagram.com/leotheprodu/'>
                 <IconBrandInstagram stroke={1} size={30}/>

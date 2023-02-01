@@ -1,23 +1,45 @@
-import { useRef } from "react";
+import { IconPlayerPause, IconPlayerPlay, IconPlayerStop } from "@tabler/icons";
 
-export const ListadoProducciones = ({songArray, selectedSong}) => {
-    /* const songRef = useRef(null);
+export const ListadoProducciones = ({songArray, selectedSong, selectedSongId, playing, setPlaying, progress, playerRef}) => {
 
-    const songCurrent = songRef.current;
-    if songCurrent  
-    songCurrent.classList.add('beatplaying'); */
-    
-    
     return (
         <div className="algunas-producciones__botones">
 
             {
                 
                 songArray.map((song) => (
-                    <div /* ref={songRef} */ onClick={ () => selectedSong(song) } className="algunas-producciones__boton" key={ song.id }>
+                    
+                    <div onClick={ () => selectedSong(song) } className={`algunas-producciones__boton ${song.id === selectedSongId ? "selected" : ""}`} key={ song.id }>
                         <img src={`https://img.youtube.com/vi/${song.youtube_id}/mqdefault.jpg`} alt={ `imagen de ${song.nombre}` } />
-                        <p>{ song.nombre }</p>
+                        <div className="algunas-producciones__texto">
+                            <p className="texto-1">{ song.nombre }</p>
+                            <p className="texto-2">{ song.nombre_artista }</p>
+
+
+                            <div className="algunas-producciones__repbutton">
+
+                                {
+                                    song.id === selectedSongId &&
+                                    <>
+                                        <button onClick={() => setPlaying(!playing)}>
+                                            {playing ? <IconPlayerPause/> : <IconPlayerPlay/>}
+                                        </button>
+                                        <input 
+                                            type="range" 
+                                            min={0} 
+                                            max={1} 
+                                            step={0.01} 
+                                            value={progress} 
+                                            onChange={e => playerRef.current.seekTo(e.target.value * playerRef.current.getDuration())} 
+                                        />
+                                    </>
+                                }
+                                
+                            </div>
+
+                        </div>
                     </div>
+                    
                 ))
             }
         </div>
