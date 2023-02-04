@@ -1,14 +1,14 @@
 import { IconPlayerPause, IconPlayerPlay, IconPlayerStop } from "@tabler/icons";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useState } from "react";
 import ReactPlayer from 'react-player';
 
 
 
 
-export const ListadoProducciones = ({songArray, playing, infoProduccion, selectedSong, idComp, idCompActual, pause, setPause, ended, setEnded, setPlaying, progressDuration, setprogressDuration, progress, setProgress, durationSeconds, setdurationSeconds}) => {
+export const ListadoProducciones = ({songArray, playing, infoProduccion, selectedSong, idComp, idCompActual, pause, setPause, ended, setEnded, setPlaying, progressDuration, setprogressDuration, progress, setProgress }) => {
 
-    const [duration, setDuration] = useState('');
+    const [duration, setDuration] = useState('0:00');
     const playerRef = useRef(null);
 
     const handleStopButtonClick = (e) => {
@@ -32,21 +32,33 @@ export const ListadoProducciones = ({songArray, playing, infoProduccion, selecte
         const minutes = Math.floor(seconds / 60);
         const remainingSeconds = (seconds % 60) - 1;
         const formattedSeconds = remainingSeconds < 10 ? `0${remainingSeconds}` : `${remainingSeconds}`;
-        setdurationSeconds(seconds);
         setDuration(`${minutes}:${formattedSeconds}`);
 
     }
     const handleonChangeRange = (e) => {
         playerRef.current.seekTo(e.target.value * playerRef.current.getDuration())
-        const segundos = () => progress * durationSeconds
-        console.log(segundos);
-        const minutes = Math.floor(segundos / 60);
-        const remainingSeconds = (segundos % 60) - 1;
+    }
+
+    const handleProgress = ({played, playedSeconds}) => {
+        setProgress(played);
+        let minutes = 0;
+        const remainingSeconds = Math.ceil(playedSeconds % 60) % 60;
+        if (playedSeconds < 59 && minutes === 0) {
+        minutes = Math.floor(playedSeconds / 60);
+        } else if (remainingSeconds === 0 && minutes === 0 && playedSeconds > 0) {
+            minutes = Math.floor(playedSeconds / 60) + 1;
+        }else if (remainingSeconds === 0 && playedSeconds >= 60) {
+            minutes = Math.floor(playedSeconds / 60) + 1;
+        } else {
+            minutes = Math.floor(playedSeconds / 60);
+        }
+        
         const formattedSeconds = remainingSeconds < 10 ? `0${remainingSeconds}` : `${remainingSeconds}`;
 
         setprogressDuration(`${minutes}:${formattedSeconds}`);
-    }
+        
 
+    }
 
 
     return (
@@ -72,7 +84,7 @@ export const ListadoProducciones = ({songArray, playing, infoProduccion, selecte
                                         onEnded = {() => setEnded(true) }
                                         onDuration = { handleDuration }
                                         ref={playerRef}
-                                        onProgress={({ played }) => setProgress(played)}
+                                        onProgress={handleProgress}
                                         
                                     />
                                 </div>

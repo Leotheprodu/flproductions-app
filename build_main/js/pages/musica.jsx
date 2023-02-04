@@ -18,9 +18,8 @@ export function Musica() {
     const [infoProduccion, setInfoProduccion ] = useState({});
     const [idCompActual, setidCompActual ] = useState(null);
     const [ended, setEnded] = useState(false);
-    const [progressDuration, setprogressDuration] = useState('');
+    const [progressDuration, setprogressDuration] = useState('0:00');
     const [progress, setProgress] = useState(0);
-    const [durationSeconds, setdurationSeconds] = useState(0);
     
 
     const selectedSong = (song, idComp) => {
@@ -92,8 +91,6 @@ export function Musica() {
                         setprogressDuration = {setprogressDuration}
                         progress = {progress}
                         setProgress = {setProgress}
-                        durationSeconds ={durationSeconds}
-                        setdurationSeconds ={setdurationSeconds}
                         
                         
                         />
@@ -117,8 +114,6 @@ export function Musica() {
                         setprogressDuration = {setprogressDuration}
                         progress = {progress}
                         setProgress = {setProgress}
-                        durationSeconds ={durationSeconds}
-                        setdurationSeconds ={setdurationSeconds}
                     />
                 </div>
 
