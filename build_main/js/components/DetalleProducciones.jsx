@@ -35,9 +35,7 @@ const { nombre, descripcion, nombre_artista, instagram, spotify_link, youtube_id
             </a>
             
         </div>
-        <div  className="contenedor algunas-producciones__videoDiv">
-            <YoutubeEmbed embedId = {youtube_id}/>
-        </div>
+
     </div>
   )
 }

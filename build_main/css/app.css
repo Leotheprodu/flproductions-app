@@ -362,24 +362,24 @@ p {
   text-align: center;
 }
 
-.beatplaying {
-  transform: scale(1.05);
-}
-
+/* .beatplaying {
+    transform: scale(1.05);
+} */
 .player-wrapper {
   position: relative;
-  padding-top: 100%;
-}
-@media (min-width: 768px) {
-  .player-wrapper {
-    padding-top: 30%;
-  }
+  height: 20rem;
+  width: 25rem;
+  padding-top: 56.25%;
 }
 
 .react-player {
   position: absolute;
   top: 0;
   left: 0;
+  height: 15rem;
+  width: 25rem;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
 }
 
 a {
@@ -1209,8 +1209,8 @@ img {
   display: flex;
   flex-direction: column;
   background-color: #1ab5e6;
-  width: 20rem;
-  height: 20rem;
+  width: 25rem;
+  height: 25rem;
   align-items: center;
   justify-content: center;
   transition: transform 0.3s;
@@ -1218,12 +1218,11 @@ img {
 }
 .algunas-producciones__boton:hover {
   transform: scale(1.01);
-  cursor: pointer;
   box-shadow: 4px 2px 5px rgba(0, 0, 0, 0.0352941176);
 }
 .algunas-producciones__boton img {
-  height: 15rem;
-  width: 20rem;
+  height: 20rem;
+  width: 25rem;
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
 }
@@ -1247,19 +1246,19 @@ img {
 }
 
 .algunas-producciones__boton.selected {
-  /*  margin: 0 3rem; */
-  transform: scale(1.3);
-  box-shadow: 5px 3px 10px rgba(0, 0, 0, 0.1215686275);
+  margin: 0 3rem;
+  transform: scale(1.6);
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.0823529412);
 }
 
 .algunas-producciones__repbutton {
   display: flex;
-  margin-bottom: 2rem;
-  /* input[type="range"]::-webkit-slider-thumb {
-      background: v.$primario;
-    } */
+  position: relative;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
 }
-.algunas-producciones__repbutton button {
+.algunas-producciones__repbutton .boton-playstop-listadoproducciones, .algunas-producciones__repbutton .boton-stop-listadoproducciones {
   display: flex;
   align-items: center;
   border: none;
@@ -1271,10 +1270,57 @@ img {
   opacity: 1;
   transition: opacity 0.15s ease-in-out;
   transition: transform 0.2s;
+  cursor: pointer;
+  transition: opacity 0.2s;
 }
-.algunas-producciones__repbutton button:active {
+.algunas-producciones__repbutton .boton-playstop-listadoproducciones:active, .algunas-producciones__repbutton .boton-stop-listadoproducciones:active {
   opacity: 0.5;
   transform: scale(1.2);
+}
+.algunas-producciones__repbutton .boton-playstop-listadoproducciones:hover, .algunas-producciones__repbutton .boton-stop-listadoproducciones:hover {
+  opacity: 0.9;
+}
+.algunas-producciones__repbutton .boton-stop-listadoproducciones {
+  position: absolute;
+  right: 16.5rem;
+  bottom: 2rem;
+  transform: scale(0.7);
+}
+.algunas-producciones__repbutton .boton-stop-listadoproducciones:active {
+  transform: scale(1);
+}
+.algunas-producciones__repbutton .duration-listadoproducciones {
+  position: absolute;
+  right: -2.2rem;
+  color: #FFFFFF;
+  font-size: 1rem;
+}
+.algunas-producciones__repbutton .progressduration-listadoproducciones {
+  color: #FFFFFF;
+  font-size: 1rem;
+}
+.algunas-producciones__repbutton input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  background: #FFFFFF;
+  height: 0.5rem;
+  border-radius: 0.1rem;
+  outline: none;
+  opacity: 1;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+.algunas-producciones__repbutton input[type=range]:hover {
+  opacity: 0.9;
+}
+.algunas-producciones__repbutton input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 1.5rem;
+  width: 1.5rem;
+  background: #ebc246;
+  border-radius: 50%;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1215686275);
+  cursor: pointer;
 }
 
 .algunas-producciones__videoDiv {
@@ -1284,16 +1330,10 @@ img {
 .algunas-producciones__detalles {
   display: flex;
   flex-direction: column;
-  background-color: #000000;
-  color: #FFFFFF;
+  color: #1ab5e6;
   border-radius: 10px;
   margin-bottom: 2rem;
   padding: 1rem;
-  transition: transform 0.2s;
-}
-.algunas-producciones__detalles:hover {
-  transform: scale(1.05);
-  box-shadow: 7px 6px 8px rgba(0, 0, 0, 0.1647058824);
 }
 
 .algunas-producciones__detalles__links {

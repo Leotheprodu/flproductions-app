@@ -61,24 +61,25 @@ p {
     }
 }
 
-.beatplaying {
+/* .beatplaying {
     transform: scale(1.05);
-}
+} */
 
 .player-wrapper {
-    @include m.tablet {
-        padding-top: 30%
-    }
-
-    position: relative;
-    padding-top: 100%
-    /* Player ratio: 100 / (1280 / 720) */
+    position: relative; 
+    height: 20rem;
+    width: 25rem;
+    padding-top: 56.25%
 }
 
 .react-player {
     position: absolute;
     top: 0;
     left: 0;
+    height: 15rem;
+    width: 25rem;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
 }
 
 

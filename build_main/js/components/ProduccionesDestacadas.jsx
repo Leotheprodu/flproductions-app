@@ -7,28 +7,32 @@ import { useProduccionesArtistasBD } from "./hooks/useFetchBD";
 export function ProduccionesDestacadasNosotros() {
     const {produccionesArtistas} = useProduccionesArtistasBD('http://localhost:5000/api/artistas/producciones');
 
-
-
     const produccionesDestacadas = produccionesArtistas.filter(element => element.destacado === 1);
-    const [infoProduccion, setInfoProduccion ] = useState({});
-    const [onClick, setonClick] = useState(false);
+    const [playing, setPlaying] = useState(false);
     
 
-    const selectedSong = (song) => {
-        const {nombre, descripcion, nombre_artista, instagram, spotify_link, youtube_id} = song
-        setonClick(true);
+    const [infoProduccion, setInfoProduccion ] = useState({});
+    const [idCompActual, setidCompActual ] = useState(null);
+    const [pause, setPause] = useState(false);
 
+    const selectedSong = (song, idComp) => {
+        const {id, nombre, descripcion, nombre_artista, instagram, spotify_link, youtube_id} = song
+        !playing && setPlaying(true)
         setInfoProduccion({
             nombre,
             descripcion,
             spotify_link,
             youtube_id,
             nombre_artista,
-            instagram
+            instagram,
+            id,
         });
+        setidCompActual(idComp);
+
         
         
     };
+    const clickBoton = () =>  setPlaying(!playing);
     
     
     return(
@@ -36,11 +40,22 @@ export function ProduccionesDestacadasNosotros() {
 
             <h2>Algunas producciones hechas por nosotros</h2>
 
-            <ListadoProducciones songArray={produccionesDestacadas} selectedSong={selectedSong}/>
+            <ListadoProducciones 
+                songArray={produccionesDestacadas}
+                clickBoton= {clickBoton}
+                playing ={playing}
+                infoProduccion={infoProduccion}
+                selectedSong = {selectedSong}
+                idComp = {1}
+                idCompActual = {idCompActual}
+                pause ={pause}
+                setPause ={setPause}
+                />
 
-            { onClick &&
+            { playing &&
                 <DetalleProducciones infoProduccion={infoProduccion}/>
             }
+            
 
         </div>
 

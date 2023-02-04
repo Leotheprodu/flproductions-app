@@ -1,30 +1,31 @@
+
 import { useState } from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { SimpleText } from '../components';
 import { ListadoProducciones } from "../components";
 import { useProduccionesArtistasBD } from '../components/hooks/useFetchBD';
-import ReactPlayer from 'react-player';
-import { useRef } from 'react';
+
+
 
 
 export function Musica() {
 
     const {produccionesArtistas} = useProduccionesArtistasBD('http://localhost:5000/api/artistas/producciones');
-
-
-
     const produccionesDestacadas = produccionesArtistas.filter(element => element.destacado === 1);
-    const [infoProduccion, setInfoProduccion ] = useState({});
-    const [onClick, setonClick] = useState(false);
-    
     const [playing, setPlaying] = useState(false);
+    const [pause, setPause] = useState(false);
+
+    const [infoProduccion, setInfoProduccion ] = useState({});
+    const [idCompActual, setidCompActual ] = useState(null);
+    const [ended, setEnded] = useState(false);
+    const [progressDuration, setprogressDuration] = useState('');
     const [progress, setProgress] = useState(0);
-    const playerRef = useRef(null);
+    const [durationSeconds, setdurationSeconds] = useState(0);
+    
 
-    const selectedSong = (song) => {
+    const selectedSong = (song, idComp) => {
         const {id, nombre, descripcion, nombre_artista, instagram, spotify_link, youtube_id} = song
-        setonClick(true);
-
+        !playing && setPlaying(true)
         setInfoProduccion({
             nombre,
             descripcion,
@@ -32,13 +33,17 @@ export function Musica() {
             youtube_id,
             nombre_artista,
             instagram,
-            id
+            id,
         });
+        setidCompActual(idComp);
+        playing && setEnded(false);
+
+        
+        
 
         
         
     };
-
     return (
         
         <>
@@ -65,22 +70,6 @@ export function Musica() {
                     <p>Encuentra aqui toda la musica que graban nuestros clientes.</p>
                     
                 </div>
-                { onClick &&
-                    <div className='player-wrapper reproductor-musica'>
-                        <ReactPlayer 
-                            className='react-player'
-                            width='100%'
-                            height='100%'
-                            url= {`https://www.youtube.com/watch?v=${infoProduccion.youtube_id}`}
-                            playing = {playing}
-                            ref={playerRef}
-                            onProgress={({ played }) => setProgress(played)}
-                            
-                        />
-                        
-                        
-                    </div>
-                }
                 
 
                 <div className='contenedor-basic'>
@@ -88,26 +77,48 @@ export function Musica() {
                     <h2>Destacados</h2>
                     </div>
                     <ListadoProducciones 
-                        songArray={produccionesDestacadas} 
-                        selectedSong={selectedSong} 
-                        selectedSongId ={infoProduccion.id}
-                        playing={playing} 
-                        setPlaying={setPlaying} 
-                        progress={progress} 
-                        playerRef={playerRef}
-                    />
+                        songArray={produccionesDestacadas}
+                        playing ={playing}
+                        infoProduccion={infoProduccion}
+                        selectedSong = {selectedSong}
+                        idComp = {1}
+                        idCompActual = {idCompActual}
+                        pause ={pause}
+                        setPause ={setPause}
+                        ended = {ended}
+                        setEnded = {setEnded}
+                        setPlaying = {setPlaying}
+                        progressDuration = {progressDuration}
+                        setprogressDuration = {setprogressDuration}
+                        progress = {progress}
+                        setProgress = {setProgress}
+                        durationSeconds ={durationSeconds}
+                        setdurationSeconds ={setdurationSeconds}
+                        
+                        
+                        />
                     <div>
                     <h2>Toda la Musica</h2>
 
                     </div>
                     <ListadoProducciones 
-                        songArray={produccionesArtistas} 
-                        selectedSong={selectedSong} 
-                        selectedSongId ={infoProduccion.id}
-                        playing={playing} 
-                        setPlaying={setPlaying} 
-                        progress={progress} 
-                        playerRef={playerRef}
+                        songArray={produccionesArtistas}
+                        playing ={playing}
+                        infoProduccion={infoProduccion}
+                        selectedSong = {selectedSong}
+                        idComp = {2}
+                        idCompActual = {idCompActual}
+                        pause ={pause}
+                        setPause ={setPause}
+                        ended = {ended}
+                        setEnded = {setEnded}
+                        setPlaying = {setPlaying}
+                        progressDuration = {progressDuration}
+                        setprogressDuration = {setprogressDuration}
+                        progress = {progress}
+                        setProgress = {setProgress}
+                        durationSeconds ={durationSeconds}
+                        setdurationSeconds ={setdurationSeconds}
                     />
                 </div>
 
