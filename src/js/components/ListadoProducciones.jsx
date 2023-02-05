@@ -1,4 +1,4 @@
-import { IconPlayerPause, IconPlayerPlay, IconPlayerStop } from "@tabler/icons";
+import { IconDotsVertical, IconMicrophone, IconPlayerPause, IconPlayerPlay, IconPlayerStop, IconPlaylist } from "@tabler/icons";
 import { useEffect, useRef } from "react";
 import { useState } from "react";
 import ReactPlayer from 'react-player';
@@ -6,15 +6,19 @@ import ReactPlayer from 'react-player';
 
 
 
-export const ListadoProducciones = ({songArray, playing, infoProduccion, selectedSong, idComp, idCompActual, pause, setPause, ended, setEnded, setPlaying, progressDuration, setprogressDuration, progress, setProgress }) => {
+export const ListadoProducciones = ({songArray, playing, infoProduccion, selectedSong, idComp, idCompActual, pause, setPause, ended, setEnded, setPlaying, progressDuration, setprogressDuration, progress, setProgress, clickInfoButton, setClickInfoButton }) => {
 
     const [duration, setDuration] = useState('0:00');
     const playerRef = useRef(null);
+    const [volume, setVolume] = useState(0.5);
+    
+
 
     const handleStopButtonClick = (e) => {
         e.preventDefault()
-        setPlaying(!playing);
+        setPlaying(false);
         setEnded(true);
+        setClickInfoButton(false);
     };
 
     const handlePlayButtonClick = (e) => {
@@ -59,6 +63,12 @@ export const ListadoProducciones = ({songArray, playing, infoProduccion, selecte
         
 
     }
+    const handleInfoButton = () => {
+        setClickInfoButton(!clickInfoButton)
+    }
+    const handleFullScreen = () => {
+
+    }
 
 
     return (
@@ -71,6 +81,7 @@ export const ListadoProducciones = ({songArray, playing, infoProduccion, selecte
                     <div onClick={ () => selectedSong(song, idComp, ended) } className={`algunas-producciones__boton ${song.id === infoProduccion.id && idComp === idCompActual && !ended ? "selected" : ""}`} key={ song.id }> 
                             { 
                                 song.id === infoProduccion.id && idComp === idCompActual && !ended &&
+
                                 <div className='player-wrapper'>
                                     
                                     <ReactPlayer 
@@ -78,6 +89,10 @@ export const ListadoProducciones = ({songArray, playing, infoProduccion, selecte
                                         width='100%'
                                         height='100%'
                                         url= {`https://www.youtube.com/watch?v=${infoProduccion.youtube_id}`}
+                                        config={{
+                                            youtube: {
+                                                playerVars: { fs: 1 }
+                                            },}}
                                         playing = {playing}
                                         onPause = { () => setPause(true) }
                                         onPlay = { handlePlay }
@@ -85,6 +100,8 @@ export const ListadoProducciones = ({songArray, playing, infoProduccion, selecte
                                         onDuration = { handleDuration }
                                         ref={playerRef}
                                         onProgress={handleProgress}
+                                        volume={volume}
+
                                         
                                     />
                                 </div>
@@ -105,6 +122,8 @@ export const ListadoProducciones = ({songArray, playing, infoProduccion, selecte
                             }
 
                         <div className="algunas-producciones__texto">
+                        
+
                             <p className="texto-1">{ song.nombre }</p>
                             <p className="texto-2">{ song.nombre_artista }</p>
 
@@ -114,6 +133,28 @@ export const ListadoProducciones = ({songArray, playing, infoProduccion, selecte
                                 {
                                     song.id === infoProduccion.id && idComp === idCompActual && !ended &&
                                     <div className="algunas-producciones__repbutton">
+                                        {
+                                            clickInfoButton && 
+                                            <div className="elementos-info-reproductor" >
+                                                <ul>
+                                                    <li>
+                                                    <IconPlaylist color="#1ab5e6"/>
+                                                        <p>informacion de la cancion</p>
+                                                    </li>
+                                                    <li>
+                                                    <IconMicrophone color="#1ab5e6"/>
+                                                        <p>informacion del artista</p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        }
+                                        <button
+                                            onClick={handleInfoButton}
+                                            className="boton-info-reproductor"
+                                        >
+
+                                        <IconDotsVertical />
+                                        </button>
                                         <button 
                                             className="boton-stop-listadoproducciones"
                                             onClick={handleStopButtonClick}
@@ -121,6 +162,15 @@ export const ListadoProducciones = ({songArray, playing, infoProduccion, selecte
                                         >
                                             <IconPlayerStop  />
                                         </button>
+                                        <input
+                                            type="range"
+                                            min={0}
+                                            max={1}
+                                            step={0.25}
+                                            value={volume}
+                                            onChange={(e) => setVolume(parseFloat(e.target.value))}
+                                            className= "control-volumen-listadoproducciones"
+                                        />
                                         <button 
                                             className="boton-playstop-listadoproducciones"
                                             onClick={handlePlayButtonClick}
@@ -130,13 +180,14 @@ export const ListadoProducciones = ({songArray, playing, infoProduccion, selecte
                                             {!pause ? <IconPlayerPause/> : <IconPlayerPlay/>}
                                         </button>
                                         <p className="progressduration-listadoproducciones">{progressDuration}</p>
-                                        <input 
+                                        <input  
                                             type="range" 
                                             min={0} 
                                             max={1} 
                                             step={0.01} 
                                             value={progress} 
-                                            onChange={handleonChangeRange} 
+                                            onChange={handleonChangeRange}
+                                            className ="barra-de-despazamiento-listadoproducciones"
                                             />
                                             <p className="duration-listadoproducciones">{duration}</p>
                                     </div>

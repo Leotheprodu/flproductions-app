@@ -14,14 +14,19 @@
 
 
 .algunas-producciones__botones {
+    
     display: flex;
-    height: 25rem;
+    justify-content: center;
     gap: 1rem;
     padding: 1rem;
-    justify-content: left;
     flex-wrap: wrap;
     /* flex-flow: wrap; */
-    margin-bottom: 6rem;
+    margin-bottom: 5rem;
+    position: relative;
+    @include m.tablet {
+        justify-content: left;
+        
+    }
 
 }
 
@@ -34,8 +39,8 @@
     height: 25rem;
     align-items: center;
     justify-content: center;
-    transition: transform .3s;
-    border-radius: 2px;
+    transition: transform 1s;
+    border-radius: 2rem;
 
     &:hover {
         transform: scale(1.01);
@@ -45,8 +50,8 @@
     img {
         height: 20rem;
         width: 25rem;
-        border-top-left-radius: 2px;
-        border-top-right-radius: 2px;
+        border-top-left-radius: 2rem;
+        border-top-right-radius: 2rem;
     }
 
     .algunas-producciones__texto {
@@ -73,9 +78,10 @@
 }
 
 .algunas-producciones__boton.selected {
-    margin: 0 3rem;
+    margin: 2rem 3rem;
+    z-index: 2;
 
-    transform: scale(1.6);
+    transform: scale(1.4);
     box-shadow: 2px 2px 6px #00000015;
 }
 
@@ -96,13 +102,12 @@
         box-shadow: 2px 2px 2px #0000001f;
         color: v.$primario;
         opacity: 1;
-        transition: opacity 0.15s ease-in-out;
-        transition: transform .2s;
+        transition: opacity 0.3s ease-in-out;
+        transition: transform .5s;
         cursor: pointer;
-        transition: opacity .2s;
 
         &:active {
-            opacity: 0.5;
+            opacity: .5;
             transform: scale(1.2);
         }
         &:hover {
@@ -111,8 +116,8 @@
     }
     .boton-stop-listadoproducciones {
         position: absolute;
-        right: 16.5rem;
-        bottom: 2rem;
+        right: 17.3rem;
+        bottom: 2.7rem;
         transform: scale(.7);
         &:active {
             
@@ -130,7 +135,7 @@
         font-size: 1rem;  
     }
 
-    input[type="range"] {
+    .barra-de-despazamiento-listadoproducciones,.control-volumen-listadoproducciones {
         -webkit-appearance: none;
         width: 100%;
         background: v.$blanco;
@@ -141,23 +146,96 @@
 
         -webkit-transition: .2s;
         transition: opacity .2s;
+
+
+        &:hover {
+            opacity: .9;
+        }
+        
+        &::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 1.5rem;
+            width: 1.5rem;
+            background: v.$secundario;
+            border-radius: 50%;
+            box-shadow: 2px 2px 2px #0000001f;
+            cursor: pointer;
+        }
     }
 
-    input[type="range"]:hover {
-        opacity: .9;
+    .control-volumen-listadoproducciones{
+        position:absolute;
+        left: -3.5rem;
+        bottom: 2rem;
+        transform: rotate(-90deg);
+        width: 4rem;
+        height: .3rem;
+        margin: 0;
+    }
+    .boton-info-reproductor{
+        position:absolute;
+        bottom: 5.3rem;
+        right: -3rem;
+        display: flex;
+        align-items: center;
+        border: none;
+        background: none;
+        color: v.$blanco;
+        &:hover{
+            cursor: pointer;
+        }
+        &:active {
+            
+            transform: scale(1.1);
+        }
+    
+        
     }
 
-    input[type="range"]::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        height: 1.5rem;
-        width: 1.5rem;
-        background: v.$secundario;
-        border-radius: 50%;
-        box-shadow: 2px 2px 2px #0000001f;
+
+
+
+}
+.elementos-info-reproductor{
+    position: absolute;
+    display: flex;
+    right: -1rem;
+    top: -2.5rem;
+    height: 8rem;
+    width: 18rem;
+    z-index: 5;
+    background-color: v.$blanco;
+    border-radius: 1rem;
+    box-shadow: 2px 2px 6px #0000000c;
+    ul {
+        padding: 0;
+        width: 18rem;
+        margin: 0 ;
+        margin-top: 1rem;
+    }
+    li {
+        display: flex;
+        gap: .5rem;
+        list-style: none;
+        align-items:flex-start;
+        justify-content: center;
         cursor: pointer;
+        margin: .5rem;
+        
+        &:hover{
+            background-color: rgba(0, 0, 0, 0.048);
+        }
+        
     }
+    p {
+        
+        margin: 0rem;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        color: v.$primario;
+        
 
-
+    }
 }
 
 
@@ -211,4 +289,22 @@
         text-align: center;
         font-size: 2rem;
     }
+}
+
+.player-wrapper {
+    position: relative; 
+    height: 20rem;
+    width: 25rem;
+    padding-top: 56.25%;
+
+}
+
+.react-player {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 15rem;
+    width: 25rem;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
 }

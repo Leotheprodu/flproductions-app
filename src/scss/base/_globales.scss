@@ -43,7 +43,6 @@ p {
 .contenedor-basic {
     width: 97%;
     margin: 0 auto;
-    overflow: hidden;
     
 }
 
@@ -65,22 +64,7 @@ p {
     transform: scale(1.05);
 } */
 
-.player-wrapper {
-    position: relative; 
-    height: 20rem;
-    width: 25rem;
-    padding-top: 56.25%
-}
 
-.react-player {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 15rem;
-    width: 25rem;
-    border-top-left-radius: 2px;
-    border-top-right-radius: 2px;
-}
 
 
 a {

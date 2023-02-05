@@ -20,7 +20,7 @@ export function Musica() {
     const [ended, setEnded] = useState(false);
     const [progressDuration, setprogressDuration] = useState('0:00');
     const [progress, setProgress] = useState(0);
-    
+    const [clickInfoButton, setClickInfoButton] = useState(false);
 
     const selectedSong = (song, idComp) => {
         const {id, nombre, descripcion, nombre_artista, instagram, spotify_link, youtube_id} = song
@@ -36,8 +36,7 @@ export function Musica() {
         });
         setidCompActual(idComp);
         playing && setEnded(false);
-
-        
+        clickInfoButton && setClickInfoButton(!clickInfoButton);
         
 
         
@@ -91,6 +90,8 @@ export function Musica() {
                         setprogressDuration = {setprogressDuration}
                         progress = {progress}
                         setProgress = {setProgress}
+                        clickInfoButton ={clickInfoButton}
+                        setClickInfoButton ={setClickInfoButton}
                         
                         
                         />
@@ -114,6 +115,8 @@ export function Musica() {
                         setprogressDuration = {setprogressDuration}
                         progress = {progress}
                         setProgress = {setProgress}
+                        clickInfoButton ={clickInfoButton}
+                        setClickInfoButton ={setClickInfoButton}
                     />
                 </div>
 

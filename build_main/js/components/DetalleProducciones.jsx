@@ -1,10 +1,10 @@
 import { IconBrandInstagram, IconBrandSpotify } from "@tabler/icons";
-import { YoutubeEmbed } from "./Helpers/youtubeEmbed";
+
 
 
 
 export const DetalleProducciones = ({infoProduccion}) => {
-const { nombre, descripcion, nombre_artista, instagram, spotify_link, youtube_id } = infoProduccion
+const { nombre, descripcion, nombre_artista, instagram, spotify_link } = infoProduccion
 
   return (
     <div className="algunas-producciones__detalles contenedor">
