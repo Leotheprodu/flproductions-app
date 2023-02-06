@@ -47,7 +47,7 @@ export function NuestrasCaracteristicas() {
                     stroke={infoCardStroke}/>
                 }
                 titulo='CONOCIMIENTO'
-                texto='La experiencia de la mano con el conocimiento que aumenta continuamente hacen que cada decisión que se toma, a nivel de composición, mezcla, edición, selección de sonido, etc; sean lo mas acertadas posible, además, nos encanta enseñar y compartir lo que sabemos, de seguro que en cada sesión ¡algo nuevo vas a aprender!'
+                texto='Nuestro orgullo radica en nuestro conocimiento constante e incesante en la industria musical. Gracias a él, podemos tomar decisiones precisas en la composición, mezcla, edición y selección de sonido. Además, nos encanta enseñar y compartir lo que sabemos, y siempre estamos abiertos a aprender de nuestros clientes en cada sesión'
 
                 />
                 <InfoCard 
@@ -57,7 +57,7 @@ export function NuestrasCaracteristicas() {
                     stroke={infoCardStroke}/>
                 }
                 titulo='SERVICIO PERSONALIZADO'
-                texto='Nosotros ofrecemos algunos servicios, pero si usted necesita algo diferente, nosotros nos ajustamos a sus necesidades sin problemas.'
+                texto='Ofrecemos una amplia gama de servicios, pero si tienes necesidades específicas, estamos dispuestos a personalizar nuestra oferta para ajustarnos a tus requerimientos. ¡Trabajamos contigo para asegurarnos de que obtengas lo que necesitas!'
                 
 
                 />
@@ -68,7 +68,7 @@ export function NuestrasCaracteristicas() {
                     stroke={infoCardStroke}/>
                 }
                 titulo='EXCELENCIA'
-                texto='En FLProductions esto es lo mas importante, siempre tratamos de dar lo mejor de nosotros, es gratificante cuando haces lo que amas y nosotros amamos hacer música, siempre damos el 200%, porque trabajar en esto es algo que nos apasiona.'
+                texto='En FLProductions, la excelencia es un valor que guía todo lo que hacemos. Nos dedicamos a dar lo mejor de nosotros en cada proyecto que abordamos, porque amamos la música y estamos apasionados por nuestro trabajo. Trabajamos con dedicación y entrega total para crear experiencias musicales únicas y significativas para nuestros clientes. Cada proyecto es una oportunidad para explorar nuevas ideas y perfeccionar nuestras habilidades, y esa combinación de pasión y compromiso es lo que nos impulsa a seguir creando algo especial.'
 
                 />
 
@@ -96,7 +96,7 @@ export function NuestrasCaracteristicas() {
                     stroke={infoCardStroke}/>
                 }
                 titulo='PRECIOS BAJOS'
-                texto='En precios, definitivamente somos los mas bajos del mercado, ¡son tan bajos que te vas a sorprender!'
+                texto='En FLProductions, nos esforzamos por ofrecer un servicio de alta calidad a precios accesibles. Nos enorgullece poder ofrecer precios competitivos, pero sin comprometer la excelencia de nuestro trabajo. ¡Te garantizamos que el resultado de nuestro servicio excederá tus expectativas, y a un precio que te sorprenderá agradablemente!'
 
                 />
                 <InfoCard 
@@ -106,7 +106,7 @@ export function NuestrasCaracteristicas() {
                     stroke={infoCardStroke}/>
                 }
                 titulo='EQUIPO E INSTRUMENTOS'
-                texto='Nada mejor que tener los instrumentos y el equipo a mano cuando mas se necesita y lo mas importante alguien que sepa manejarlos, con nosotros puedes tener la certeza que nada nos falta y lo que tenemos es de la mejor calidad posible, el equipo de trabajo es lo mas profesional posible.'
+                texto='Para lograr un sonido impresionante, es fundamental tener acceso a instrumentos y equipo de alta calidad, y es aún más importante tener a alguien que sepa utilizarlos. En FLProductions, nos aseguramos de tener todo lo que necesitas para tus sesiones de grabación, incluyendo microfonos de calidad superior. Nuestro equipo de trabajo está compuesto por profesionales altamente capacitados para ayudarte a lograr el sonido perfecto, independientemente de tu género musical.'
 
                 />
                 <InfoCard 
@@ -116,7 +116,7 @@ export function NuestrasCaracteristicas() {
                     stroke={infoCardStroke}/>
                 }
                 titulo='UN AMIGO MÁS'
-                texto='Algo interesante que nos ha pasado, es que todos nuestros clientes, han terminado siendo nuestros amigos, porque se pasa tan divertido en las sesiones, se disfruta tanto que definitivamente, la buena experiencia une a las personas. ¡ven y compruébalo!'
+                texto='Nuestro estudio es más que un lugar para grabar, es un lugar donde la música y la amistad se unen. Nos encanta crear un ambiente acogedor y relajado para nuestros clientes, donde puedan sentirse cómodos y libres de expresarse. Además, nos esforzamos por ofrecer una experiencia única y divertida en cada sesión, por lo que es común que nuestros clientes se conviertan en amigos. ¡Ven a visitarnos y haz nuevos amigos mientras creamos música juntos!'
 
                 />
 

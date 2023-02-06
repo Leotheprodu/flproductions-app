@@ -24,8 +24,8 @@ export function HomePage() {
         <div className='contenedor'>
           <SimpleText 
             tipo={1} 
-            titulo='Estudio de grabación y producción musical' 
-            texto={<p>Desde Siquirres de Limón, Costa Rica, ofrecemos un servicio profesional de grabación y producción musical, queremos ofrecerte todo lo que necesitas para que tu proyecto musical sea todo un éxito.</p>} 
+            titulo='FLProductions: Tu Destino para Grabaciones y Producción Musical de Alta Calidad' 
+            texto={<p>Bienvenida a FLProductions, su estudio de grabación musical de alta calidad dirigido por LeotheProdu. Ofrecemos una amplia gama de servicios musicales, incluyendo la producción de instrumentales, grabaciones, mezclas y masterizaciones con la tecnología de vanguardia y un equipo altamente capacitado. Nuestros ingenieros de sonido, compositores y productores son expertos en lograr un sonido profesional único y de alta calidad. Reserva su sesión de grabación con LeotheProdu y experimenta la diferencia en calidad en FLProductions.</p>} 
           />
 
           <div className='inicio_info1_servicios-cards'>
@@ -35,8 +35,8 @@ export function HomePage() {
                 size={InfoCardSize} 
                 stroke={infoCardStroke}/>
               }
-              titulo='GRABACIÓN Y PRODUCCIÓN MUSICAL'
-              texto='Con mas de 10 años de experiencia ofreciendo grabaciones profesionales, producción de instrumentales, mezcla y masterización cristalina, potente, siempre actualizada, al máximo volumen y de alta calidad. Hacemos que cada proyecto siempre llegue al próximo nivel. Trabajamos de todo tipo de género musical.'
+              titulo='Grabaciones y Producción Musical de Alta Calidad en FLProductions'
+              texto='Nuestra experiencia de más de 10 años en la industria musical se traduce en grabaciones profesionales de alta calidad, producción de instrumentales, mezclas y masterizaciones cristalinas y potentes. Mantenemos nuestros equipos y procesos actualizados para garantizar resultados sobresalientes en cada proyecto, independientemente del género musical. Eleva tu música al siguiente nivel con FLProductions.'
 
             />
             <InfoCard 
@@ -45,8 +45,8 @@ export function HomePage() {
                 size={InfoCardSize} 
                 stroke={infoCardStroke}/>
               }
-              titulo='MARKETING Y PUBLICIDAD MUSICAL'
-              texto={'Te asesoramos y ayudamos a: Distribuir tu musica en plataformas virtuales, que tu música llegue a miles de personas, alcanzar tus metas en redes sociales, generar ingresos con tu música, mucho más.'}
+              titulo='Marketing y Publicidad Musical para impulsar tu carrera'
+              texto={'En FLProductions, te brindamos asesoramiento y apoyo en la distribución de tu música en plataformas virtuales, para que llegue a un público más amplio. Además, te ayudamos a alcanzar tus metas en redes sociales y generar ingresos con tu música. Te brindamos todo lo que necesitas para impulsar tu carrera musical y alcanzar el éxito.'}
 
             />
                 <InfoCard 
@@ -55,8 +55,8 @@ export function HomePage() {
                     size={InfoCardSize} 
                     stroke={infoCardStroke}
                   />}
-                  titulo='FOTOGRAFÍA Y PRODUCCIÓN AUDIOVISUAL'
-                  texto='Contamos con equipos modernos que graban en 4K, luces, maquina de humo, estabilizadores, lentes, drone y un equipo de personas que trabajan con excelencia, además contamos con fotógrafos apasionados que te harán lucir como el artista que eres.'
+                  titulo='Fotografía y Producción Audiovisual de Alta Calidad'
+                  texto='Contamos con un equipo de profesionales altamente capacitados en fotografía y producción audiovisual. Nuestros equipos modernos graban en 4K y contamos con luces, maquina de humo, estabilizadores, lentes, drone y un equipo de personas que trabajan con excelencia. Te aseguramos que lucirás como el artista que eres.'
       
                 />
             
@@ -65,14 +65,14 @@ export function HomePage() {
 
         <div className='contenedor acerca-de-nosotros'>
           <SimpleText 
-            titulo='Acerca de Nosotros' 
-            texto={<p>Somos algo más que sólo un estudio de grabación en Costa Rica, no nos limitamos a hacer únicamente nuestro trabajo, queremos que en cada proyecto, cada canción lleve nuestro ADN, damos siempre lo mejor de nosotros y definitivamente hacer esto, es nuestra misión de vida.</p>} 
+            titulo='Acerca de Nosotros - Más que un estudio de grabación' 
+            texto={<p>Somos un equipo apasionado por la música y la producción de audio. En FLProductions, nos dedicamos a hacer más que sólo grabaciones en Costa Rica. Para nosotros, cada proyecto es una oportunidad para dejar nuestra huella en la música y dar lo mejor de nosotros. Queremos que cada canción lleve nuestro ADN y transmita nuestro compromiso con la calidad y la excelencia. Es nuestra misión de vida, y es con este espíritu que trabajamos para brindar a nuestros clientes la confianza de saber que están en buenas manos.</p>} 
           />
 
           <PalabrasDelEquipo 
-            titulo={'¡Hola!'}
+            titulo={'¡Bienvenidos a FLProductions!'}
 
-            texto='Éste soy yo, Leo, soy el productor y fundador del estudio FLProductions. A través de los años me he dado cuenta que lo que hace diferente al estudio de todos los demás, definitivamente no es el hardware, ni las instalaciones, es el conocimiento que continuamente lo estoy actualizando y con mas de 15 años de experiencia siempre tratamos de emplearlo de la mejor manera en cada proyecto, cada canción se hace con amor, dandole la importancia que se merece y eso es lo que quiero que ustedes obtengan de mi. ¡Gracias por motivarme a ser mejor cada día, lo que siempre me hace dar lo mejor de mí!'
+            texto='Soy Leo, el apasionado productor y fundador de FLProductions. Con más de 15 años de experiencia en el mundo musical, he descubierto que lo que nos hace únicos no son solo nuestro hardware o software, sino nuestra pasión por el arte de la música y la dedicación a aplicar todo lo que hemos aprendido en cada proyecto. Aquí en FLProductions, amamos lo que hacemos y eso se siente en cada nota que producimos. Gracias por inspirarnos a ser mejores cada día y por permitirnos dar lo mejor de nosotros en cada canción. ¡Estamos emocionados de trabajar contigo y dar vida a tus visiones musicales!'
             nombre='Leo Serrano'
             puesto='Productor Musical'
             foto='https://flproductionscr.com/build_main/img/leo-serrano1.webp'
