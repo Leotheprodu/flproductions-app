@@ -1149,9 +1149,11 @@ img {
   margin: 0 auto;
 }
 .testimonio__imagen img {
+  width: 12rem;
   height: 12rem;
   border-radius: 50%;
-  box-shadow: 3px 4px 10px rgba(0, 0, 0, 0.3647058824);
+  box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.1921568627);
+  object-fit: cover;
 }
 
 .video-responsive {
