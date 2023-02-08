@@ -2,12 +2,14 @@
 @use 'base/variables' as v;
 
 .root-socialIcons{
-    position:relative;
+    
     margin: 0 auto;
-    margin-top: -4rem;
+    margin-top: 0.6rem;
 
     @include m.desktop {
-        padding-left:  67rem;
+        position: absolute;
+        right: 2rem;
+        /* padding-left:  100rem; */
     }
 }
 .root2-img{

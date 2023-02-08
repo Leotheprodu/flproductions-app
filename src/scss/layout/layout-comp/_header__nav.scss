@@ -21,13 +21,16 @@
     
 
     .header__web-tittle{
+        position: absolute;
         display: none;
         font-size: 2.8rem;
         padding-left: 10rem;
         margin: 0;
         color: v.$secundario;
         @include m.tablet {
-            display:block;
+            display:flex;
+            align-items:flex-start;
+            top: 1.5rem;
         }
     }
     
@@ -44,6 +47,7 @@
         justify-content: center;
         font-size: 1.4rem;
         z-index: 1;
+        
 
         
         
@@ -93,8 +97,35 @@
             justify-items: center;
             gap: 1rem;
             
+            
         
         }
 
     }
 }
+
+.header__submenu {
+    display: none;
+  }
+  
+  .header__submenu-parent:hover .header__submenu,
+  .header__submenu-parent[aria-expanded="true"] .header__submenu {
+    display: flex;
+    flex-direction: column;
+    justify-content:baseline;
+    padding: .7rem;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: .5rem;
+    gap: .2rem;
+    background-color: v.$secundario;
+    z-index: 1;
+    border-radius: 2%;
+    a:hover{
+        color: v.$primario;
+    }
+  }
+  .header__submenu-parent{
+    
+  }

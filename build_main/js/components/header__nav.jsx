@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 
 
 
 export function NavMenu() {
+  const [submenuOpen, setSubmenuOpen] = useState(false);
 
 
   return(
@@ -15,10 +17,15 @@ export function NavMenu() {
               <NavLink to='/' end className='header__links__link'>Inicio</NavLink>
               <NavLink to='/nosotros' className='header__links__link'>Nosotros</NavLink>
               <NavLink to='/contacto' className='header__links__link'>Contacto</NavLink>
-              <NavLink to='/musica' className='header__links__link'>Musica</NavLink>
-              {/* 
-              <NavLink to='/servicios' className='header__links__link'>Servicios</NavLink> */}
-
+              <div className='header__submenu-parent'>
+                <NavLink to='/musica' className='header__links__link'>Musica</NavLink>
+                
+                  <nav className='header__submenu'>
+                    <NavLink to='/generos' className='header__links__link'>Generos</NavLink>
+                    <NavLink to='/artistas' className='header__links__link'>Artistas</NavLink>
+                  </nav>
+                
+              </div>
             </nav>
             
 
