@@ -5,14 +5,17 @@
     max-width: 40rem;
     margin: 0 auto;
     display: flex;
-    gap: 4rem;
-    justify-content: center;
+    gap: 3rem;
     z-index: 1;
+    order: 1;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
     
-
+    
     @include m.tablet {
-        /* margin-right: 13%; */
-        /* padding-bottom: 2rem; */
+        margin-left: 10rem;
+        margin-top: 0;
     }
 
 
@@ -24,7 +27,7 @@
     transition-timing-function: ease-in-out;
     position: relative;
     top: 0rem;
-    color: v.$secundario;
+    color: v.$blanco;
     
     &:hover{
         top: -0.7rem;

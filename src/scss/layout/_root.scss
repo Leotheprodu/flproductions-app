@@ -2,26 +2,9 @@
 @use 'base/variables' as v;
 
 .root-socialIcons{
-    
-    margin: 0 auto;
-    margin-top: 0.6rem;
-
     @include m.desktop {
-        position: absolute;
-        right: 2rem;
+        margin: 0 auto;
+
         /* padding-left:  100rem; */
     }
-}
-.root2-img{
-    margin: 0 auto;
-    z-index: 10;
-    height: 100%;
-    width: 100%;
-    outline: none;
-    padding: 20rem;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size:cover;
-    filter:brightness(30%);
-    
 }

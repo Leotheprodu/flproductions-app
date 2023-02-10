@@ -514,29 +514,11 @@ img {
   scroll-snap-align: center;
 }
 
-.root-socialIcons {
-  margin: 0 auto;
-  margin-top: 0.6rem;
-}
 @media (min-width: 992px) {
   .root-socialIcons {
-    position: absolute;
-    right: 2rem;
+    margin: 0 auto;
     /* padding-left:  100rem; */
   }
-}
-
-.root2-img {
-  margin: 0 auto;
-  z-index: 10;
-  height: 100%;
-  width: 100%;
-  outline: none;
-  padding: 20rem;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  filter: brightness(30%);
 }
 
 .contacto__contact-form__title {
@@ -548,14 +530,13 @@ img {
 }
 
 .contacto-container {
-  background-color: #1ab5e6;
+  background-color: #ebc246;
   overflow: hidden;
   padding-bottom: 20rem;
 }
 
 .contacto__map {
   overflow: hidden;
-  background-color: #1ab5e6;
   /* height:40rem ; */
 }
 .contacto__map svg {
@@ -804,25 +785,17 @@ img {
   background-color: #1ab5e6;
   height: 8rem;
   width: 100%;
-}
-
-.footer_content {
-  height: 8rem;
-  width: 80%;
-  display: grid;
+  display: flex;
   align-items: center;
-  /* justify-content:left; */
-  margin: 0 auto;
-  padding-left: 0.2rem;
-  padding-right: 0.2rem;
+  flex-direction: column;
 }
 @media (min-width: 768px) {
-  .footer_content {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30%;
+  .footer {
+    justify-content: space-between;
+    flex-direction: row;
   }
 }
+
 .footer_content p {
   margin: 0;
   color: #FFFFFF;
@@ -838,6 +811,12 @@ img {
   font-weight: 700;
   font-size: 1.8rem;
   color: #ebc246;
+}
+
+@media (min-width: 768px) {
+  .footer_content2 {
+    margin-right: 4rem;
+  }
 }
 
 .header {
@@ -861,14 +840,17 @@ img {
   max-width: 40rem;
   margin: 0 auto;
   display: flex;
-  gap: 4rem;
-  justify-content: center;
+  gap: 3rem;
   z-index: 1;
+  order: 1;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
 }
 @media (min-width: 768px) {
   .socialIcons {
-    /* margin-right: 13%; */
-    /* padding-bottom: 2rem; */
+    margin-left: 10rem;
+    margin-top: 0;
   }
 }
 
@@ -878,7 +860,7 @@ img {
   transition-timing-function: ease-in-out;
   position: relative;
   top: 0rem;
-  color: #ebc246;
+  color: #FFFFFF;
 }
 .social-icon:hover {
   top: -0.7rem;
@@ -894,17 +876,21 @@ img {
 
 .header__nav {
   /* position: fixed; */
+  flex-direction: column;
   width: 100%;
   display: flex;
   background-color: #1ab5e6;
   color: #FFFFFF;
   justify-content: center;
-  padding-top: 2.5rem;
   height: 6rem;
   /* margin: 0 0 1rem 0; */
 }
+@media (min-width: 768px) {
+  .header__nav {
+    flex-direction: row;
+  }
+}
 .header__nav .header__web-tittle {
-  position: absolute;
   display: none;
   font-size: 2.8rem;
   padding-left: 10rem;
@@ -914,28 +900,27 @@ img {
 @media (min-width: 768px) {
   .header__nav .header__web-tittle {
     display: flex;
-    align-items: flex-start;
-    top: 1.5rem;
+    align-items: center;
   }
 }
 @media (min-width: 768px) {
   .header__nav {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    padding-right: 5rem;
+    justify-content: space-between;
   }
 }
 .header__nav .header__links {
   display: flex;
-  gap: 2rem;
+  align-items: center;
   justify-content: center;
+  gap: 2rem;
   font-size: 1.4rem;
   z-index: 1;
+  order: -1;
 }
 @media (min-width: 768px) {
   .header__nav .header__links {
-    grid-column: 2/3;
-    gap: 4rem;
-    justify-content: left;
+    order: 0;
   }
 }
 .header__nav .header__links .header__links__link {
@@ -953,17 +938,22 @@ img {
   color: #ebc246;
 }
 
-@media (max-width: 480px) {
-  .header__nav .header__links__link {
-    /* display: grid;
-    grid-template-columns: repeat(2,1fr);
-    grid-template-rows: 2; */
-    height: 7rem;
-    align-items: center;
-    justify-items: center;
-    gap: 1rem;
-  }
-}
+/* @media (max-width: 480px) {
+    .header__nav{ 
+
+
+        .header__links__link{
+            height: 7rem;
+            align-items: center;
+            justify-items: center;
+            gap: 1rem;
+
+
+
+        }
+
+    }
+} */
 .header__submenu {
   display: none;
 }
@@ -1089,7 +1079,7 @@ img {
 
 .contact-info__icon {
   display: flex;
-  background-color: #ebc246;
+  background-color: #1ab5e6;
   border-radius: 50%;
   width: 9rem;
   height: 9rem;

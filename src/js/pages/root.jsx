@@ -14,10 +14,6 @@ export function Root() {
       <NavMenu/>
 
       {/* <Header imgLink="https://flproductionscr.com/build_main/img/header-main.webp" pagina="header"/> */}
-    
-      <div className='root-socialIcons'>
-        <SocialIcons size={24} />
-      </div>
       
 
       <main className='contenedor-main'>

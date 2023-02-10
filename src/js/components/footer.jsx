@@ -16,8 +16,11 @@ export function Footer () {
                 
             <p><span>© 2013 - {actualYear} FLProductions</span> - creado por LeotheProdu</p>
             
-            <SocialIcons size={25} />
 
+            </div>
+            <div className="footer_content2">
+
+            <SocialIcons size={25} />
             </div>
 
         </footer>
