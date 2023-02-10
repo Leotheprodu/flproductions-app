@@ -11,6 +11,7 @@ export function ContactPage () {
       <Helmet>
         <title>FLProductions | Contacto</title>
         <meta name="description" content="Información de contacto de los estudios de FLProductions Costa Rica." />
+        <meta property="og:description" content="Información de contacto de los estudios de FLProductions Costa Rica." />
         <meta property="og:title" content="FLProductions | contacto" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://flproductionscr.com/contacto" />

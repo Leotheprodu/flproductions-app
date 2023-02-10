@@ -4,6 +4,8 @@ import { createBrowserRouter, RouterProvider} from 'react-router-dom';
 import { HomePage, ContactPage, Musica, AboutPage, ServicesPage, Root, ErrorPage } from './pages';
 import '../css/app.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { SongDetail } from "./components";
+import { ArtistDetail } from "./components";
 
 
 export const router = createBrowserRouter([
@@ -20,13 +22,19 @@ export const router = createBrowserRouter([
         path: "contacto",
         element: <ContactPage />,
       },
-      /* {
-        path: "blog",
-        element: <BlogPage />,
-      }, */
       {
         path: "musica",
         element: <Musica />,
+      },
+      {
+        path: "/musica/producciones/:id",
+        element: <SongDetail />,
+
+      },
+      {
+        path: "/musica/artistas/:artist_name",
+        element: <ArtistDetail />,
+
       },
       {
         path: "nosotros",

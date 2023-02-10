@@ -13,3 +13,5 @@ export * from './ProduccionesDestacadas';
 export * from './galeria-de-imagenes';
 export * from './ListadoProducciones';
 export * from './DetalleProducciones';
+export * from './SongDetail';
+export * from './ArtistDetail';

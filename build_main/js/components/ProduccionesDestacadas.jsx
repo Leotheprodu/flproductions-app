@@ -5,7 +5,7 @@ import { useProduccionesArtistasBD } from "./hooks/useFetchBD";
 
 
 export function ProduccionesDestacadasNosotros() {
-    const {produccionesArtistas} = useProduccionesArtistasBD('https://flproductionscr.com/api/artistas/producciones');
+    const {produccionesArtistas} = useProduccionesArtistasBD('http://localhost:5000/api/artistas/producciones');
 
     const produccionesDestacadas = produccionesArtistas.filter(element => element.destacado === 1);
     const [playing, setPlaying] = useState(false);

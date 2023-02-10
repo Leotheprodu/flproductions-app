@@ -13,7 +13,8 @@ export function HomePage() {
       <HelmetProvider>
         <Helmet>
           <title>FLProductions | Inicio</title>
-          <meta name="description" content="Somos un estudio de grabación y producción musical en Costa Rica, ofrecemos todo para tu proyecto musical." />
+          <meta name="description" content="Estudio de grabación y producción musical en Costa Rica. Ofrecemos un enfoque personalizado y profesional para ayudar a artistas y músicos a realizar sus proyectos. Visítanos para saber más." />
+          <meta property="og:description" content="Estudio de grabación y producción musical en Costa Rica. Ofrecemos un enfoque personalizado y profesional para ayudar a artistas y músicos a realizar sus proyectos. Visítanos para saber más."/>
           <meta property="og:title" content="FLProductions | Inicio" />
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://flproductionscr.com/" />

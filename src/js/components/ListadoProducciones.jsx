@@ -2,6 +2,7 @@ import { IconDotsVertical, IconMicrophone, IconPlayerPause, IconPlayerPlay, Icon
 import { useEffect, useRef } from "react";
 import { useState } from "react";
 import ReactPlayer from 'react-player';
+import { Link } from "react-router-dom";
 
 
 
@@ -67,6 +68,7 @@ export const ListadoProducciones = ({songArray, playing, infoProduccion, selecte
     }
     const handleInfoButton = () => {
         setClickInfoButton(!clickInfoButton)
+
     }
     const handleFullScreen = () => {
 
@@ -141,11 +143,11 @@ export const ListadoProducciones = ({songArray, playing, infoProduccion, selecte
                                                 <ul>
                                                     <li>
                                                     <IconPlaylist color="#1ab5e6"/>
-                                                        <p>informacion de la cancion</p>
+                                                        <Link to={`producciones/${infoProduccion.id}`}>informacion de la cancion</Link>
                                                     </li>
                                                     <li>
                                                     <IconMicrophone color="#1ab5e6"/>
-                                                        <p>informacion del artista</p>
+                                                        <Link to={`artistas/${infoProduccion.nombre_artista}`}>informacion del artista</Link>
                                                     </li>
                                                 </ul>
                                             </div>

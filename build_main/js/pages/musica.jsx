@@ -9,7 +9,7 @@ import { useProduccionesArtistasBD } from '../components/hooks/useFetchBD';
 
 
 export function Musica() {
-    const {produccionesArtistas} = useProduccionesArtistasBD('https://flproductionscr.com/api/artistas/producciones' );
+    const {produccionesArtistas} = useProduccionesArtistasBD('http://localhost:5000/api/artistas/producciones' );
     const produccionesDestacadas = produccionesArtistas.filter(element => element.destacado === 1);
     const [playing, setPlaying] = useState(false);
     const [pause, setPause] = useState(false);
@@ -22,7 +22,7 @@ export function Musica() {
     const [clickInfoButton, setClickInfoButton] = useState(false);
 
     const selectedSong = (song, idComp) => {
-        const {id, nombre, descripcion, nombre_artista, instagram, spotify_link, youtube_id} = song
+        const {id, nombre, descripcion, nombre_artista, instagram, spotify_link, youtube_id, id_artista} = song
         !playing && setPlaying(true)
         setInfoProduccion({
             nombre,
@@ -32,6 +32,7 @@ export function Musica() {
             nombre_artista,
             instagram,
             id,
+            id_artista
         });
         setidCompActual(idComp);
         playing && setEnded(false);
@@ -49,6 +50,7 @@ export function Musica() {
                 <Helmet>
                     <title>FLProductions | Musica</title>
                     <meta name="description" content="Musica de Clientes del estudio FLProductions." />
+                    <meta property="og:description" content="Musica de Clientes del estudio FLProductions." />
                     <meta property="og:title" content="FLProductions | Musica" />
                     <meta property="og:type" content="website" />
                     <meta property="og:url" content="https://flproductionscr.com/musica" />

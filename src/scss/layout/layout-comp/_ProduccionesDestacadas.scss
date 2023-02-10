@@ -181,6 +181,7 @@
         border: none;
         background: none;
         color: v.$blanco;
+        
         &:hover{
             cursor: pointer;
         }
@@ -307,4 +308,8 @@
     width: 25rem;
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;
+}
+
+.elementos-info-reproductor a{
+    font-size: 1.2rem;
 }
