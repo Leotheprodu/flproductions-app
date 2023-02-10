@@ -20,7 +20,6 @@ export function NuestrasCaracteristicas() {
 
             if (alturaElemento - 200 < scrollTop) {
             ElementWithFX.style.opacity = 1;
-            ElementWithFX.classList.add('fxMostrarSkew');
             
             }
         }     
