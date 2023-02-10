@@ -7,6 +7,8 @@ import ReactPlayer from 'react-player';
 
 
 export const ListadoProducciones = ({songArray, playing, infoProduccion, selectedSong, idComp, idCompActual, pause, setPause, ended, setEnded, setPlaying, progressDuration, setprogressDuration, progress, setProgress, clickInfoButton, setClickInfoButton }) => {
+    
+
 
     const [duration, setDuration] = useState('0:00');
     const playerRef = useRef(null);
