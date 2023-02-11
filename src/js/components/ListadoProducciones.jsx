@@ -143,11 +143,11 @@ export const ListadoProducciones = ({songArray, playing, infoProduccion, selecte
                                                 <ul>
                                                     <li>
                                                     <IconPlaylist color="#1ab5e6"/>
-                                                        <Link to={`producciones/${infoProduccion.id}`}>informacion de la cancion</Link>
+                                                        <Link to={`/musica/producciones/${infoProduccion.id}`}>informacion de la cancion</Link>
                                                     </li>
                                                     <li>
                                                     <IconMicrophone color="#1ab5e6"/>
-                                                        <Link to={`artistas/${infoProduccion.nombre_artista}`}>informacion del artista</Link>
+                                                        <Link to={`/musica/artistas/${infoProduccion.nombre_artista}`}>informacion del artista</Link>
                                                     </li>
                                                 </ul>
                                             </div>
