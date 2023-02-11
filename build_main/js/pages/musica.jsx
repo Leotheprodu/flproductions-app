@@ -1,8 +1,7 @@
 
 import { useState } from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import { SimpleText } from '../components';
-import { ListadoProducciones } from "../components";
+import { SimpleText, AppMusic } from '../components';
 import { useProduccionesArtistasBD } from '../components/hooks/useFetchBD';
 
 
@@ -75,7 +74,7 @@ export function Musica() {
                     <div>
                     <h2>Destacados</h2>
                     </div>
-                    <ListadoProducciones 
+                    <AppMusic 
                         songArray={produccionesDestacadas}
                         playing ={playing}
                         infoProduccion={infoProduccion}
@@ -100,7 +99,7 @@ export function Musica() {
                     <h2>Toda la Musica</h2>
 
                     </div>
-                    <ListadoProducciones 
+                    <AppMusic 
                         songArray={produccionesArtistas}
                         playing ={playing}
                         infoProduccion={infoProduccion}
