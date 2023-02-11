@@ -1,23 +1,40 @@
-import { IconBrandInstagram } from "@tabler/icons";
-import { useState } from "react";
-import { algunasProducciones } from "./database/database";
+import { IconBrandInstagram, IconBrandSpotify } from "@tabler/icons";
+import { useState, useEffect } from "react";
 import { YoutubeEmbed } from "./Helpers/youtubeEmbed";
 
-export function AlgunasProducciones() {
+export function ProduccionesDestacadas() {
+    
+    const [producciones, setProducciones] = useState([]);
+    const [artistas, setArtistas] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:5000/api/artistas/producciones')
+        .then((res) => res.json())
+        .then((data) => setProducciones(data));
+    }, []);
+    useEffect(() => {
+        fetch('http://localhost:5000/api/artistas')
+        .then((res) => res.json())
+        .then((data) => setArtistas(data));
+    }, []);
+    const produccionesDestacadas = producciones.filter(elemento => elemento.destacado === 1);
     const [youtubeLink, setyoutubeLink] = useState('');
     const [instagramLink, setinstagramLink] = useState('');
+    const [spotifyLink, setSpotifyLink] = useState('');
     const [artistaItem, setartistaItem] = useState('');
     const [nombreItem, setnombreItem] = useState('');
     const [descripcionItem, setdescripcionItem] = useState('');
     const [onClick, setonClick] = useState(false);
 
-    const prueba = (youtube, instagram, artista, descripcion, nombre) => {
-        setyoutubeLink(youtube);
+    const onClickStateAsign = (nombre, descripcion, id_artista, spotify_link, youtube_id) => {
+        setyoutubeLink(youtube_id);
         setonClick(true);
-        setinstagramLink(instagram);
-        setartistaItem(artista);
         setdescripcionItem(descripcion);
         setnombreItem(nombre);
+        setSpotifyLink(spotify_link);
+        setartistaItem(artistas.find(element => element.id === id_artista).nombre);
+        setinstagramLink(artistas.find(element => element.id === id_artista).instagram);
+
     }
 
 
@@ -25,14 +42,18 @@ export function AlgunasProducciones() {
         <div className="algunas-producciones">
 
             <h2>Algunas producciones hechas por nosotros</h2>
-            
 
             <div className="algunas-producciones__botones">
 
                 {
-                    algunasProducciones.map(({ nombre, artista, youtube, instagram, descripcion }) => (
+                    /* algunasProducciones.map(({ nombre, artista, youtube, instagram, descripcion }) => (
                         <div className="algunas-producciones__boton" key={ youtube }>
                             <p onClick={ () => prueba( youtube, instagram, artista, descripcion, nombre ) }>{ nombre }</p>
+                        </div>
+                    )) */
+                    produccionesDestacadas.map(({id, nombre, descripcion, id_artista, spotify_link, youtube_id, destacado}) => (
+                        <div className="algunas-producciones__boton" key={ id }>
+                            <p onClick={ () => onClickStateAsign( nombre, descripcion, id_artista, spotify_link, youtube_id, destacado) }>{ nombre }</p>
                         </div>
                     ))
                 }
@@ -47,8 +68,16 @@ export function AlgunasProducciones() {
                     <p>{descripcionItem}</p>
                 </div>
                 
-                <div className="algunas-producciones__detalles__instagram">
+                <div className="algunas-producciones__detalles__links">
                     
+                    {
+                        spotifyLink &&
+                        <a target='_blank' href={spotifyLink}>
+                        <IconBrandSpotify size={50}/>
+                        <p>Spotify</p>
+                        </a>
+
+                    }
                     <a target='_blank' href={instagramLink}>
                         <IconBrandInstagram size={50}/>
                         <p>{artistaItem}</p>
@@ -57,6 +86,7 @@ export function AlgunasProducciones() {
                         <IconBrandInstagram size={50}/>
                         <p>LeotheProdu</p>
                     </a>
+                    
                 </div>
                 </div>
             }

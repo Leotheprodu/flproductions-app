@@ -9,14 +9,13 @@
     color: v.$blanco;
 }
 .contacto-container{
-    background-color: v.$primario;
+    background-color: v.$secundario;
     overflow: hidden;
     padding-bottom: 20rem;
    
 }
 .contacto__map{
 overflow: hidden;
-background-color: v.$primario;
 /* height:40rem ; */
     svg{
         transform: scale(1.2)

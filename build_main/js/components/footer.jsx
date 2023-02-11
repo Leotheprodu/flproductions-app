@@ -10,21 +10,20 @@ export function Footer () {
     
     return(
 
-        <div className="footer">
+        <footer className="footer">
 
             <div className="footer_content">
                 
             <p><span>© 2013 - {actualYear} FLProductions</span> - creado por LeotheProdu</p>
             
-            <SocialIcons size={25} />
 
             </div>
+            <div className="footer_content2">
 
-            
-            
+            <SocialIcons size={25} />
+            </div>
 
-
-        </div>
+        </footer>
 
     )
 }

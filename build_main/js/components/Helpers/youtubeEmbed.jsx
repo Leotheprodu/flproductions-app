@@ -2,6 +2,8 @@ import PropTypes from "prop-types";
 
 export function YoutubeEmbed({ embedId }) {
     
+    
+
     return(
 
         <div className="video-responsive">
@@ -20,6 +22,6 @@ export function YoutubeEmbed({ embedId }) {
 }
 
 
-YoutubeEmbed.propTypes = {
+/* YoutubeEmbed.propTypes = {
     embedId: PropTypes.string.isRequired
-};
+}; */

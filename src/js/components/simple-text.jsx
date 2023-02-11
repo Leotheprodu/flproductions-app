@@ -61,7 +61,6 @@ SimpleText.propTypes = {
     
   titulo: PropTypes.string,
   tipo: PropTypes.number.isRequired, //1: contiene un h1 y 2: contiene un h3
-  texto: PropTypes.object.isRequired,
   
 }
 SimpleText.defaultProps = {

@@ -10,13 +10,17 @@
 
 .header__nav {
     /* position: fixed; */
+    flex-direction: column;
     width: 100%;
     display: flex;
     background-color: v.$primario;
     color: v.$blanco;
     justify-content: center;
-    padding-top: 2.5rem;
     height: 6rem;
+
+    @include m.tablet {
+        flex-direction: row;
+    }
     /* margin: 0 0 1rem 0; */
     
 
@@ -26,32 +30,36 @@
         padding-left: 10rem;
         margin: 0;
         color: v.$secundario;
+        
         @include m.tablet {
-            display:block;
+            display:flex;
+            align-items:center;
+            
         }
     }
     
 
     @include m.tablet {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        padding-right: 5rem;
+        justify-content: space-between;
 
     }
 
     .header__links{
         display: flex;
-        gap: 2rem;
+        align-items: center;
         justify-content: center;
+        gap: 2rem;
         font-size: 1.4rem;
         z-index: 1;
+        order: -1;
+        
 
         
         
         
         @include m.tablet {
-            grid-column: 2 / 3;
-            gap: 4rem;
-            justify-content: left;
+            order: 0;
         }
 
 
@@ -80,21 +88,45 @@
 }
 
 
-@media (max-width: 480px) {
+/* @media (max-width: 480px) {
     .header__nav{ 
         
 
         .header__links__link{
-            /* display: grid;
-            grid-template-columns: repeat(2,1fr);
-            grid-template-rows: 2; */
             height: 7rem;
             align-items: center;
             justify-items: center;
             gap: 1rem;
             
+            
         
         }
 
     }
-}
+} */
+
+.header__submenu {
+    display: none;
+  }
+  
+  .header__submenu-parent:hover .header__submenu,
+  .header__submenu-parent[aria-expanded="true"] .header__submenu {
+    display: flex;
+    flex-direction: column;
+    justify-content:baseline;
+    padding: .7rem;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: .5rem;
+    gap: .2rem;
+    background-color: v.$secundario;
+    z-index: 1;
+    border-radius: 2%;
+    a:hover{
+        color: v.$primario;
+    }
+  }
+  .header__submenu-parent{
+    
+  }

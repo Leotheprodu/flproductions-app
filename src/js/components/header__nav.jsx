@@ -1,31 +1,36 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import { SocialIcons } from './social-icons';
 
 
 
 export function NavMenu() {
 
-  const [data, setData] = useState(null);
-
-  useEffect(() => {
-    fetch("/api")
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
-  }, []);
 
   return(
 
           <div className='header__nav'>
+            <div>
+              <Link to="/" className='header__web-tittle'>FLProductions</Link>
+              <div className='root-socialIcons'>
+                <SocialIcons size={20} />
+              </div>
 
-            <Link to="/" className='header__web-tittle'>{!data ? "FLP" : data}</Link>
+            </div>
 
             <nav className='header__links'>
               <NavLink to='/' end className='header__links__link'>Inicio</NavLink>
               <NavLink to='/nosotros' className='header__links__link'>Nosotros</NavLink>
               <NavLink to='/contacto' className='header__links__link'>Contacto</NavLink>
-              {/* <NavLink to='/blog' className='header__links__link'>Blog</NavLink>
-              <NavLink to='/servicios' className='header__links__link'>Servicios</NavLink> */}
-
+                <NavLink to='/musica' className='header__links__link'>Musica</NavLink>
+              {/* <div className='header__submenu-parent'>
+                
+                  <nav className='header__submenu'>
+                    <NavLink to='/generos' className='header__links__link'>Generos</NavLink>
+                    <NavLink to='/artistas' className='header__links__link'>Artistas</NavLink>
+                  </nav>
+                
+              </div> */}
             </nav>
             
 

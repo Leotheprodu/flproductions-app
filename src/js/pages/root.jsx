@@ -13,18 +13,14 @@ export function Root() {
 <>
       <NavMenu/>
 
-      <Header imgLink="https://flproductionscr.com/build_main/img/header-main.png" pagina="header"/>
-    
-      <div className='root-socialIcons'>
-        <SocialIcons size={24} />
-      </div>
+      {/* <Header imgLink="https://flproductionscr.com/build_main/img/header-main.webp" pagina="header"/> */}
       
 
-      <div className='contenedor-main'>
+      <main className='contenedor-main'>
       
         <Outlet />
       
-      </div>
+      </main>
       <div>
         <TawkMessengerReact
           propertyId="5803024f304e8e75855baa7f"
