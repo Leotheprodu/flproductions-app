@@ -1,6 +1,6 @@
 
 import { useState } from "react";
-import { DetalleProducciones, ListadoProducciones } from "../components";
+import { DetalleProducciones, AppMusic } from "../components";
 import { useProduccionesArtistasBD } from "./hooks/useFetchBD";
 
 
@@ -46,7 +46,7 @@ export function ProduccionesDestacadasNosotros() {
 
             <h2>Algunas producciones hechas por nosotros</h2>
 
-                <ListadoProducciones 
+                <AppMusic 
                     songArray={produccionesDestacadas}
                     playing ={playing}
                     infoProduccion={infoProduccion}
