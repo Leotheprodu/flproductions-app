@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom"
-import { useProducciones_HTTP_Fetch } from "../hooks/useFetchBD";
+import { useProducciones_HTTP_Fetch } from "../hooks/useProducciones_HTTP_Fetch";
 
 
 export const ArtistDetail = () => {
@@ -9,7 +9,7 @@ export const ArtistDetail = () => {
     const [produccionActual, setproduccionActual] = useState(null);
     const {producciones_HTTP_Fetch} = useProducciones_HTTP_Fetch('http://localhost:5000/api/artistas/producciones');
     const produccionesArtistas = producciones_HTTP_Fetch.filter(element => element.tipo_obra === 0);
-    
+
     useEffect(() => {
         if (produccionesArtistas) {
             setproduccionActual(produccionesArtistas.filter(element => element.nombre_artista === artist_name));

@@ -1,45 +1,18 @@
 
-import { useState } from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import { SimpleText, AppMusic, HandleAppMusic } from '../components';
-import { useProducciones_HTTP_Fetch } from '../components/hooks/useFetchBD';
+import { SimpleText, AppMusic, useHandleAppMusic, useProducciones_HTTP_Fetch } from '../components';
 
 export function Musica() {
+
+    // IMPORTAMOS LAS PRODUCCIONES DE LA BASE DE DATOS
 
     const {producciones_HTTP_Fetch} = useProducciones_HTTP_Fetch('http://localhost:5000/api/artistas/producciones' );
     const produccionesArtistas = producciones_HTTP_Fetch.filter(element => element.tipo_obra === 0);
     const produccionesDestacadas = produccionesArtistas.filter(element => element.destacado === 1);
 
-    const [playing, setPlaying] = useState(false);
-    const [pause, setPause] = useState(false);
-    const [infoProduccion, setInfoProduccion ] = useState({});
-    const [idCompActual, setidCompActual ] = useState(null);
-    const [ended, setEnded] = useState(false);
-    const [progressDuration, setprogressDuration] = useState('0:00');
-    const [progress, setProgress] = useState(0);
-    const [clickInfoButton, setClickInfoButton] = useState(false);
-
-    const selectedSong = (song, idComp) => {
-        const {id, nombre, descripcion, nombre_artista, instagram, spotify_link, youtube_id, id_artista} = song
-        !playing && setPlaying(true)
-        setInfoProduccion({
-            nombre,
-            descripcion,
-            spotify_link,
-            youtube_id,
-            nombre_artista,
-            instagram,
-            id,
-            id_artista
-        });
-        setidCompActual(idComp);
-        playing && setEnded(false);
-        clickInfoButton && setClickInfoButton(!clickInfoButton);
-        
-
-        
-        
-    };
+    //ESTE HOOK MANEJA EL REPRODUCTOR DE AUDIO PARA QUE REPRODUZCA UNA CANCION A LA VEZ
+    const [playing, setPlaying, pause, setPause, infoProduccion, idCompActual, ended, setEnded, progressDuration, setprogressDuration, progress, setProgress, clickInfoButton, setClickInfoButton, selectedSong] = useHandleAppMusic();
+    
     return (
         
         <>

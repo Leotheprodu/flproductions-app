@@ -18,7 +18,8 @@ export * from './app_music/DetalleProducciones';
 export * from './app_music/SongDetail';
 export * from './app_music/ArtistDetail';
 export * from './app_music/ItemAppMusic';
-export * from './app_music/HandleAppMusic';
+export * from './hooks/useHandleAppMusic';
+export * from './hooks/useProducciones_HTTP_Fetch';
 
 /* Helpers */
 export * from './Spinner';
