@@ -14,9 +14,10 @@ export const useProducciones_HTTP_Fetch = (url) => {
     
     
     
-    return { 
+    return [
+
         producciones_HTTP_Fetch
-    }
+    ] 
 
 }
 

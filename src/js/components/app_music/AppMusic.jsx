@@ -1,11 +1,11 @@
-import { useRef } from "react";
+
+import { useHandleItemAppMusic } from "..";
 import { useState } from "react";
+import { useRef } from "react";
 import { ItemAppMusic } from "./ItemAppMusic";
 
 export const AppMusic = ({songArray, playing, infoProduccion, selectedSong, idComp, idCompActual, pause, setPause, ended, setEnded, setPlaying, progressDuration, setprogressDuration, progress, setProgress, clickInfoButton, setClickInfoButton }) => {
     
-
-
     const [duration, setDuration] = useState('0:00');
     const playerRef = useRef(null);
     const [volume, setVolume] = useState(0.5);

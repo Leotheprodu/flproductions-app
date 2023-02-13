@@ -7,7 +7,7 @@ import { useProducciones_HTTP_Fetch } from "../hooks/useProducciones_HTTP_Fetch"
 export const ArtistDetail = () => {
     const {artist_name} = useParams();
     const [produccionActual, setproduccionActual] = useState(null);
-    const {producciones_HTTP_Fetch} = useProducciones_HTTP_Fetch('http://localhost:5000/api/artistas/producciones');
+    const [producciones_HTTP_Fetch] = useProducciones_HTTP_Fetch('http://localhost:5000/api/artistas/producciones');
     const produccionesArtistas = producciones_HTTP_Fetch.filter(element => element.tipo_obra === 0);
 
     useEffect(() => {
