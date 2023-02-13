@@ -9,11 +9,16 @@ export * from './testimonio';
 export * from './contact-form';
 export * from './contact-info';
 export * from './nuestras-caracteristicas';
-export * from './ProduccionesDestacadas';
 export * from './galeria-de-imagenes';
-export * from './AppMusic';
-export * from './DetalleProducciones';
-export * from './SongDetail';
-export * from './ArtistDetail';
-export * from './ItemAppMusic';
+
+/* AppMusic */
+export * from './app_music/AppMusic';
+export * from './app_music/ProduccionesDestacadas';
+export * from './app_music/DetalleProducciones';
+export * from './app_music/SongDetail';
+export * from './app_music/ArtistDetail';
+export * from './app_music/ItemAppMusic';
+export * from './app_music/HandleAppMusic';
+
+/* Helpers */
 export * from './Spinner';

@@ -2,20 +2,20 @@
 import { useEffect, useState } from "react";
 
 
-export const useProduccionesArtistasBD = (url) => {
+export const useProducciones_HTTP_Fetch = (url) => {
     
-    const [produccionesArtistas, setproduccionesArtistas] = useState([]);
+    const [producciones_HTTP_Fetch, setProducciones_HTTP_Fetch] = useState([]);
     
     useEffect(() => {
         fetch(url)
         .then((res) => res.json())
-        .then((data) => setproduccionesArtistas(data));
+        .then((data) => setProducciones_HTTP_Fetch(data));
     }, []);
     
     
     
     return { 
-        produccionesArtistas
+        producciones_HTTP_Fetch
     }
 
 }

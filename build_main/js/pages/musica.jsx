@@ -1,18 +1,17 @@
 
 import { useState } from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import { SimpleText, AppMusic } from '../components';
-import { useProduccionesArtistasBD } from '../components/hooks/useFetchBD';
-
-
-
+import { SimpleText, AppMusic, HandleAppMusic } from '../components';
+import { useProducciones_HTTP_Fetch } from '../components/hooks/useFetchBD';
 
 export function Musica() {
-    const {produccionesArtistas} = useProduccionesArtistasBD('http://localhost:5000/api/artistas/producciones' );
+
+    const {producciones_HTTP_Fetch} = useProducciones_HTTP_Fetch('http://localhost:5000/api/artistas/producciones' );
+    const produccionesArtistas = producciones_HTTP_Fetch.filter(element => element.tipo_obra === 0);
     const produccionesDestacadas = produccionesArtistas.filter(element => element.destacado === 1);
+
     const [playing, setPlaying] = useState(false);
     const [pause, setPause] = useState(false);
-
     const [infoProduccion, setInfoProduccion ] = useState({});
     const [idCompActual, setidCompActual ] = useState(null);
     const [ended, setEnded] = useState(false);

@@ -1,13 +1,12 @@
 
 import { useState } from "react";
-import { DetalleProducciones, AppMusic } from "../components";
-import { useProduccionesArtistasBD } from "./hooks/useFetchBD";
+import { DetalleProducciones, AppMusic } from "..";
+import { useProducciones_HTTP_Fetch } from "../hooks/useFetchBD";
 
 
 export function ProduccionesDestacadasNosotros() {
-    const {produccionesArtistas} = useProduccionesArtistasBD('http://localhost:5000/api/artistas/producciones');
-
-    const produccionesDestacadas = produccionesArtistas.filter(element => element.destacado === 1);
+    const {producciones_HTTP_Fetch} = useProducciones_HTTP_Fetch('http://localhost:5000/api/artistas/producciones');
+    const produccionesDestacadas = producciones_HTTP_Fetch.filter(element => element.destacado === 1);
     const [playing, setPlaying] = useState(false);
     const [pause, setPause] = useState(false);
     
@@ -38,7 +37,6 @@ export function ProduccionesDestacadasNosotros() {
         
         
     };
-    const clickBoton = () =>  setPlaying(!playing);
     
     
     return(
