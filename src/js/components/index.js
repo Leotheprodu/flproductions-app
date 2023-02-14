@@ -30,4 +30,5 @@ export * from './hooks/useHandleItemAppMusic';
 /* Helpers */
 export * from './simple-text';
 export * from './Spinner';
+export * from './MetaInjector';
 

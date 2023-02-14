@@ -1,6 +1,6 @@
 
-import { Helmet, HelmetProvider } from 'react-helmet-async';
-import { SimpleText, AppMusic, useHandleAppMusic, useProducciones_HTTP_Fetch } from '../components';
+import { HelmetProvider } from 'react-helmet-async';
+import { SimpleText, AppMusic, useHandleAppMusic, useProducciones_HTTP_Fetch, MetaInjector } from '../components';
 
 export function Musica() {
 
@@ -15,93 +15,96 @@ export function Musica() {
     
     return (
         
-        <>
-            <HelmetProvider>
+        
+        <HelmetProvider>
 
-                <Helmet>
-                    <title>FLProductions | Musica</title>
-                    <meta name="description" content="Musica de Clientes del estudio FLProductions." />
-                    <meta property="og:description" content="Musica de Clientes del estudio FLProductions." />
-                    <meta property="og:title" content="FLProductions | Musica" />
-                    <meta property="og:type" content="website" />
-                    <meta property="og:url" content="https://flproductionscr.com/musica" />
-                    <meta property="og:image" content="https://flproductionscr.com/build_main/img/header-main.png" />
-                    <meta property="og:image:width" content="400" />
-                    <meta property="og:image:height" content="300" />
-                </Helmet>
+            <MetaInjector
+                title='Musica'
+                description='Musica de clientes del estudio FLProductions'
+                type='website'
+                url='https://flproductionscr.com/musica'
+                image='https://flproductionscr.com/build_main/img/header-main.png'
+                keywords='musica, artistas, destacados, producciones, music'
+                robots='index, follow'
+            />
 
-                <div className='contenedor-basic center'>
-                    <SimpleText
-                        tipo={1}
-                        titulo='Musica de nuestros clientes'
+            <div className='contenedor-basic center'>
 
-                    />
-                    
-                    <p>Encuentra aqui toda la musica que graban nuestros clientes.</p>
-                    
-                </div>
+                <SimpleText
+                    tipo={1}
+                    titulo='Musica de nuestros clientes'
+
+                />
                 
+                <p>Encuentra aqui toda la musica que graban nuestros clientes.</p>
+                
+            </div>
+            
 
-                <div className='contenedor-basic'>
-                    <div>
+            <div className='contenedor-basic'>
+                <div>
                     <h2>Destacados</h2>
-                    </div>
-                    <AppMusic 
-                        songArray={produccionesDestacadas}
-                        playing ={playing}
-                        infoProduccion={infoProduccion}
-                        selectedSong = {selectedSong}
-                        idComp = {1}
-                        idCompActual = {idCompActual}
-                        pause ={pause}
-                        setPause ={setPause}
-                        ended = {ended}
-                        setEnded = {setEnded}
-                        setPlaying = {setPlaying}
-                        progressDuration = {progressDuration}
-                        setprogressDuration = {setprogressDuration}
-                        progress = {progress}
-                        setProgress = {setProgress}
-                        clickInfoButton ={clickInfoButton}
-                        setClickInfoButton ={setClickInfoButton}
-                        
-                        
-                        />
-                    <div>
+                </div>
+
+                <AppMusic 
+                    songArray={produccionesDestacadas}
+                    playing ={playing}
+                    infoProduccion={infoProduccion}
+                    selectedSong = {selectedSong}
+                    idComp = {1}
+                    idCompActual = {idCompActual}
+                    pause ={pause}
+                    setPause ={setPause}
+                    ended = {ended}
+                    setEnded = {setEnded}
+                    setPlaying = {setPlaying}
+                    progressDuration = {progressDuration}
+                    setprogressDuration = {setprogressDuration}
+                    progress = {progress}
+                    setProgress = {setProgress}
+                    clickInfoButton ={clickInfoButton}
+                    setClickInfoButton ={setClickInfoButton}
+                    
+                    
+                />
+
+                <div>
+
                     <h2>Toda la Musica</h2>
 
-                    </div>
-                    <AppMusic 
-                        songArray={produccionesArtistas}
-                        playing ={playing}
-                        infoProduccion={infoProduccion}
-                        selectedSong = {selectedSong}
-                        idComp = {2}
-                        idCompActual = {idCompActual}
-                        pause ={pause}
-                        setPause ={setPause}
-                        ended = {ended}
-                        setEnded = {setEnded}
-                        setPlaying = {setPlaying}
-                        progressDuration = {progressDuration}
-                        setprogressDuration = {setprogressDuration}
-                        progress = {progress}
-                        setProgress = {setProgress}
-                        clickInfoButton ={clickInfoButton}
-                        setClickInfoButton ={setClickInfoButton}
-                    />
                 </div>
 
-                <div className='Informacion-adicional-musicapage'>
-                    <SimpleText titulo='Conoce Algunos de nuestros Clientes'/>
-                </div>
+                <AppMusic 
+                    songArray={produccionesArtistas}
+                    playing ={playing}
+                    infoProduccion={infoProduccion}
+                    selectedSong = {selectedSong}
+                    idComp = {2}
+                    idCompActual = {idCompActual}
+                    pause ={pause}
+                    setPause ={setPause}
+                    ended = {ended}
+                    setEnded = {setEnded}
+                    setPlaying = {setPlaying}
+                    progressDuration = {progressDuration}
+                    setprogressDuration = {setprogressDuration}
+                    progress = {progress}
+                    setProgress = {setProgress}
+                    clickInfoButton ={clickInfoButton}
+                    setClickInfoButton ={setClickInfoButton}
+                />
+            </div>
+
+            <div className='Informacion-adicional-musicapage'>
+                <SimpleText titulo='Conoce Algunos de nuestros Clientes'/>
+            </div>
 
 
 
-            </HelmetProvider>
+        </HelmetProvider>
 
 
-        </>
+        
     )
 
 }
