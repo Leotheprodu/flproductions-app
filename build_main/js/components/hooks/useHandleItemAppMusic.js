@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { useRef } from "react";
 
-export const useHandleItemAppMusic = (setPlaying, setEnded, setClickInfoButton, setprogressDuration, setPause, playing, setProgress, clickInfoButton) => {
+export const useHandleItemAppMusic = (setPlaying, setEnded, setClickInfoButton, playing, setPause, setProgress, setprogressDuration, clickInfoButton) => {
 
     const [duration, setDuration] = useState('0:00');
     const playerRef = useRef(null);
     const [volume, setVolume] = useState(0.5);
-
 
     const handleStopButtonClick = (e) => {
         e.preventDefault()
@@ -14,7 +13,6 @@ export const useHandleItemAppMusic = (setPlaying, setEnded, setClickInfoButton, 
         setEnded(true);
         setClickInfoButton(false);
     };
-
     const handlePlayButtonClick = (e) => {
         e.preventDefault()
         setPlaying(!playing);
@@ -25,7 +23,6 @@ export const useHandleItemAppMusic = (setPlaying, setEnded, setClickInfoButton, 
         setEnded(false)
 
     }
-
     const handleDuration = (seconds) => {
         const minutes = Math.floor(seconds / 60);
         const remainingSeconds = (seconds % 60) - 1;
@@ -36,7 +33,6 @@ export const useHandleItemAppMusic = (setPlaying, setEnded, setClickInfoButton, 
     const handleonChangeRange = (e) => {
         playerRef.current.seekTo(e.target.value * playerRef.current.getDuration())
     }
-
     const handleProgress = ({played, playedSeconds}) => {
         setProgress(played);
         let minutes = 0;
@@ -63,19 +59,9 @@ export const useHandleItemAppMusic = (setPlaying, setEnded, setClickInfoButton, 
     }
 
     return [
-        duration, setDuration,
+        duration,
         volume, setVolume,
-        playerRef,
-        handleStopButtonClick,
-        handlePlayButtonClick,
-        handlePlay,
-        handleDuration,
-        handleonChangeRange,
-        handleProgress,
-        handleInfoButton,
-        
-
-
-
+        playerRef, 
+        handleStopButtonClick, handlePlayButtonClick, handlePlay, handleDuration, handleonChangeRange, handleProgress, handleInfoButton
     ]
 }
