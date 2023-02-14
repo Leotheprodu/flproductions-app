@@ -20,6 +20,7 @@ export * from './app_music/DetalleProducciones';
 export * from './app_music/SongDetail';
 export * from './app_music/ArtistDetail';
 export * from './app_music/ItemAppMusic';
+export * from './app_music/BotonesAppMusic';
 
 /* Hooks personalizados */
 export * from './hooks/useHandleAppMusic';

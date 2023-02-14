@@ -1,8 +1,6 @@
-import { IconDotsVertical, IconMicrophone, IconPlayerPause, IconPlayerPlay, IconPlayerStop, IconPlaylist } from "@tabler/icons";
+
 import ReactPlayer from 'react-player';
-import { Link } from "react-router-dom";
-
-
+import { BotonesAppMusic } from '..';
 
 export const ItemAppMusic = ({ playing, infoProduccion, selectedSong, idComp, idCompActual, pause, setPause, ended, setEnded, progressDuration, progress, clickInfoButton, song, handlePlay, handleDuration, playerRef, handleProgress, volume, handleInfoButton, handleStopButtonClick, setVolume, handlePlayButtonClick, handleonChangeRange, duration }) => {
 
@@ -39,19 +37,8 @@ export const ItemAppMusic = ({ playing, infoProduccion, selectedSong, idComp, id
                 </div>
 
             }
-            {song.id !== infoProduccion.id &&
-                <img src={`https://img.youtube.com/vi/${song.youtube_id}/mqdefault.jpg`} alt={`imagen de ${song.nombre}`} />
-
-            }
-
-            {song.id === infoProduccion.id && idComp !== idCompActual &&
-                <img src={`https://img.youtube.com/vi/${song.youtube_id}/mqdefault.jpg`} alt={`imagen de ${song.nombre}`} />
-
-            }
-            {song.id === infoProduccion.id && idComp === idCompActual && ended &&
-                <img src={`https://img.youtube.com/vi/${song.youtube_id}/mqdefault.jpg`} alt={`imagen de ${song.nombre}`} />
-
-            }
+            {(song.id !== infoProduccion.id || (song.id === infoProduccion.id && idComp !== idCompActual) || (song.id === infoProduccion.id && idComp === idCompActual && ended)) && 
+            <img src={`https://img.youtube.com/vi/${song.youtube_id}/mqdefault.jpg`} alt={`imagen de ${song.nombre}`} />}
 
             <div className="algunas-producciones__texto">
 
@@ -64,65 +51,21 @@ export const ItemAppMusic = ({ playing, infoProduccion, selectedSong, idComp, id
 
                 {
                     song.id === infoProduccion.id && idComp === idCompActual && !ended &&
-                    <div className="algunas-producciones__repbutton">
-                        {
-                            clickInfoButton &&
-                            <div className="elementos-info-reproductor" >
-                                <ul>
-                                    <li>
-                                        <IconPlaylist color="#1ab5e6" />
-                                        <Link to={`/musica/producciones/${infoProduccion.id}`}>informacion de la cancion</Link>
-                                    </li>
-                                    <li>
-                                        <IconMicrophone color="#1ab5e6" />
-                                        <Link to={`/musica/artistas/${infoProduccion.nombre_artista}`}>informacion del artista</Link>
-                                    </li>
-                                </ul>
-                            </div>
-                        }
-                        <button
-                            onClick={handleInfoButton}
-                            className="boton-info-reproductor"
-                        >
-
-                            <IconDotsVertical />
-                        </button>
-                        <button
-                            className="boton-stop-listadoproducciones"
-                            onClick={handleStopButtonClick}
-
-                        >
-                            <IconPlayerStop />
-                        </button>
-                        <input
-                            type="range"
-                            min={0}
-                            max={1}
-                            step={0.25}
-                            value={volume}
-                            onChange={(e) => setVolume(parseFloat(e.target.value))}
-                            className="control-volumen-listadoproducciones"
-                        />
-                        <button
-                            className="boton-playstop-listadoproducciones"
-                            onClick={handlePlayButtonClick}
-
-                        >
-
-                            {!pause ? <IconPlayerPause /> : <IconPlayerPlay />}
-                        </button>
-                        <p className="progressduration-listadoproducciones">{progressDuration}</p>
-                        <input
-                            type="range"
-                            min={0}
-                            max={1}
-                            step={0.01}
-                            value={progress}
-                            onChange={handleonChangeRange}
-                            className="barra-de-despazamiento-listadoproducciones"
-                        />
-                        <p className="duration-listadoproducciones">{duration}</p>
-                    </div>
+                    <BotonesAppMusic 
+                        clickInfoButton={clickInfoButton}
+                        infoProduccion={infoProduccion}
+                        handleInfoButton={handleInfoButton}
+                        handleStopButtonClick={handleStopButtonClick}
+                        volume={volume}
+                        setVolume={setVolume}
+                        handlePlayButtonClick={handlePlayButtonClick}
+                        pause={pause}
+                        progressDuration={progressDuration}
+                        progress={progress}
+                        handleonChangeRange={handleonChangeRange}
+                        duration={duration}
+                    />
+                    
                 }
 
 
