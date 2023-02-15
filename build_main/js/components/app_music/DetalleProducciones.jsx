@@ -1,37 +1,42 @@
-import { IconBrandInstagram, IconBrandSpotify } from "@tabler/icons";
+import { IconMicrophone, IconBrandSpotify } from "@tabler/icons";
 
 
 
 
 export const DetalleProducciones = ({infoProduccion}) => {
-const { nombre, descripcion, nombre_artista, instagram, spotify_link } = infoProduccion
-
+const { descripcion, nombre_artista, spotify_link, estilo, genero, fecha_lanzamiento } = infoProduccion
+const fecha = new Date(fecha_lanzamiento);
+    const dia = fecha.getDate().toString().padStart(2, '0');
+    const mes = (fecha.getMonth() + 1).toString().padStart(2, '0');
+    const anio = fecha.getFullYear().toString();
+    const fechaFormateada = `${dia}/${mes}/${anio}`;
   return (
     <div className="algunas-producciones__detalles contenedor">
         <div className="algunas-producciones__detalles__texto">
 
-            <h3>Nombre: <span>{nombre}</span>, interpretado por: <span>{nombre_artista}</span></h3>
 
             <p>{descripcion}</p>
+
         </div>
-        
+        <div className="songDetail__appmusic__masdetalles">
+                <p><span>Estilo:</span> {`${estilo}`}</p>
+                <p><span>Genero Musical:</span> {`${genero}`}</p>
+                <p><span>Fecha de Lanzamiento:</span> {`${fechaFormateada}`}</p>
+
+            </div>
         <div className="algunas-producciones__detalles__links">
             
             { spotify_link &&
                 <a target='_blank' href={spotify_link}>
                     <IconBrandSpotify stroke={1} size={30}/>
-                    <p>Spotify</p>
+                    <p>Escuchar en Spotify</p>
                 </a>
 
             }
 
-            <a target='_blank' href={instagram}>
-                <IconBrandInstagram stroke={1} size={30}/>
-                <p>{nombre_artista}</p>
-            </a>
-            <a target='_blank' href='https://www.instagram.com/leotheprodu/'>
-                <IconBrandInstagram stroke={1} size={30}/>
-                <p>LeotheProdu</p>
+            <a href={`/musica/artistas/${nombre_artista}`}>
+                <IconMicrophone stroke={1} size={30}/>
+                <p>{`mas de ${nombre_artista}`}</p>
             </a>
             
         </div>

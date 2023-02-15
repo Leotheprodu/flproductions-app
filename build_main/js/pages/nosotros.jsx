@@ -87,7 +87,7 @@ export function AboutPage () {
               />
                   
 
-          { playing &&
+          { !ended && playing &&
               <DetalleProducciones infoProduccion={infoProduccion}/>
           }
             

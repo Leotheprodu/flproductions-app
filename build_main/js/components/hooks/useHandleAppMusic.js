@@ -13,7 +13,7 @@ export const useHandleAppMusic = () => {
     const [clickInfoButton, setClickInfoButton] = useState(false);
 
     const selectedSong = (song, idComp) => {
-        const {id, nombre, descripcion, nombre_artista, instagram, spotify_link, youtube_id, id_artista} = song
+        const {id, nombre, descripcion, nombre_artista, instagram, spotify_link, youtube_id, id_artista, estilo, genero, fecha_lanzamiento} = song
         !playing && setPlaying(true)
         setInfoProduccion({
             nombre,
@@ -23,7 +23,10 @@ export const useHandleAppMusic = () => {
             nombre_artista,
             instagram,
             id,
-            id_artista
+            id_artista,
+            estilo,
+            genero,
+            fecha_lanzamiento
         });
         setidCompActual(idComp);
         playing && setEnded(false);

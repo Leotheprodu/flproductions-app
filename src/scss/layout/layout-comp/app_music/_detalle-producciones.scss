@@ -1,0 +1,14 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.detalle-producciones__imgcontenedor {
+    width: 15rem;
+    height: 15rem;
+    margin: 0 auto;
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10%;
+    }
+}
