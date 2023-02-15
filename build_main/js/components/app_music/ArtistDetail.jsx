@@ -1,35 +1,97 @@
 import { useState } from "react";
 import { useEffect } from "react";
+import { HelmetProvider } from "react-helmet-async";
 import { useParams } from "react-router-dom"
-import { useProducciones_HTTP_Fetch } from "../hooks/useProducciones_HTTP_Fetch";
-
+import { useArtistasBD, useProducciones_HTTP_Fetch, useHandleAppMusic, SocialIcons, MetaInjector, AppMusic } from "..";
 
 export const ArtistDetail = () => {
     const {artist_name} = useParams();
-    const [produccionActual, setproduccionActual] = useState(null);
+    const [artistaActual, setArtistaActual] = useState(null);
     const [producciones_HTTP_Fetch] = useProducciones_HTTP_Fetch('http://localhost:5000/api/artistas/producciones');
-    const produccionesArtistas = producciones_HTTP_Fetch.filter(element => element.tipo_obra === 0);
-
-    useEffect(() => {
-        if (produccionesArtistas) {
-            setproduccionActual(produccionesArtistas.filter(element => element.nombre_artista === artist_name));
-        }
-    }, [produccionesArtistas, artist_name]);
+    const [artistas] = useArtistasBD('http://localhost:5000/api/artistas');
+    const produccionesArtista = producciones_HTTP_Fetch.filter(element => element.nombre_artista === artist_name)
+    const [playing, setPlaying, pause, setPause, infoProduccion, idCompActual, ended, setEnded, progressDuration, setprogressDuration, progress, setProgress, clickInfoButton, setClickInfoButton, selectedSong] = useHandleAppMusic();
     
-    if (!produccionActual) {
+    
+    useEffect(() => {
+        if (artistas) {
+            setArtistaActual(artistas.filter(element => element.nombre_artista === artist_name));
+        }
+    }, [artistas, artist_name]);
+    
+    if (!artistaActual) {
         return <div className="lds-ring"><div></div><div></div><div></div><div></div></div>;
     }
     
-    if (!produccionActual.length) {
+    if (!artistaActual.length) {
         return <div>Lo sentimos, No se encontraron datos</div>;
     }
-    const {nombre_artista} = produccionActual[0];
+
+    const {nombre_artista, instagram, spotify, info} = artistaActual[0];
 
     
     return (
-        <div>
-            <h1>{nombre_artista}</h1>
+        <HelmetProvider>
+            <MetaInjector
+
+                title={nombre_artista}
+                description={info}
+                type='website'
+                url={`https://flproductionscr.com/musica/artistas/${artist_name}`}
+                image='https://flproductionscr.com/build_main/img/header-main.png'
+                keywords={`${nombre_artista}, artista, cantante, musica, Costa Rica`}
+                robots='index, follow'
+                
+            />
+
+            <div className="artist-detail__title">
+                <h1>{nombre_artista}</h1>
+
+                <SocialIcons
+                    instagram={instagram}
+                    claseCSS= 'artistdetail__socialicons'
+                    size={35}
+                    spotify={spotify}
+                
+                />
             
-        </div>
+            </div>
+
+            <div className="artistdetail__info">
+                <p>{info}</p>
+            </div>
+
+            <div className='artistdetail__music contenedor-basic'>
+                <div>
+                    <h2>{`Musica de ${nombre_artista}`}</h2>
+                </div>
+
+                <AppMusic 
+                    songArray={produccionesArtista}
+                    playing ={playing}
+                    infoProduccion={infoProduccion}
+                    selectedSong = {selectedSong}
+                    idComp = {1}
+                    idCompActual = {idCompActual}
+                    pause ={pause}
+                    setPause ={setPause}
+                    ended = {ended}
+                    setEnded = {setEnded}
+                    setPlaying = {setPlaying}
+                    progressDuration = {progressDuration}
+                    setprogressDuration = {setprogressDuration}
+                    progress = {progress}
+                    setProgress = {setProgress}
+                    clickInfoButton ={clickInfoButton}
+                    setClickInfoButton ={setClickInfoButton}
+                    
+                    
+                />
+
+            
+            </div>
+
+
+        </HelmetProvider>
     );
 }

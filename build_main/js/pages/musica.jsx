@@ -96,7 +96,7 @@ export function Musica() {
             </div>
 
             <div className='Informacion-adicional-musicapage'>
-                <SimpleText titulo='Conoce Algunos de nuestros Clientes'/>
+            
             </div>
 
 

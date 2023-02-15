@@ -33,8 +33,8 @@ export const useArtistasBD = (url) => {
     
     
     
-    return { 
+    return [ 
         artistas
-    }
+    ]
 
 }

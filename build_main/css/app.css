@@ -557,6 +557,7 @@ img {
 @media (min-width: 992px) {
   .root-socialIcons {
     margin: 0 auto;
+    margin-left: 10rem;
     /* padding-left:  100rem; */
   }
 }
@@ -877,7 +878,6 @@ img {
 }
 
 .socialIcons {
-  max-width: 40rem;
   margin: 0 auto;
   display: flex;
   gap: 3rem;
@@ -889,7 +889,6 @@ img {
 }
 @media (min-width: 768px) {
   .socialIcons {
-    margin-left: 10rem;
     margin-top: 0;
   }
 }
@@ -1515,4 +1514,32 @@ img {
 }
 .galeria-de-imagenes img:hover {
   transform: scale(1.05);
+}
+
+.artist-detail__title {
+  margin-top: 6rem;
+}
+.artist-detail__title h1 {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+.artist-detail__title .artistdetail__socialicons {
+  color: #ebc246;
+}
+
+.artistdetail__info {
+  display: flex;
+  justify-content: center;
+}
+
+.artistdetail__music {
+  margin-top: 10rem;
+}
+.artistdetail__music h2 {
+  font-size: 3rem;
+  color: #1ab5e6;
 }

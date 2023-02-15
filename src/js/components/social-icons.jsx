@@ -1,42 +1,65 @@
-import { IconBrandFacebook, IconBrandYoutube, IconBrandInstagram, IconBrandTwitch } from '@tabler/icons';
+import { IconBrandFacebook, IconBrandYoutube, IconBrandInstagram, IconBrandTwitch, IconBrandSpotify } from '@tabler/icons';
 import PropTypes from 'prop-types'
 
-export function SocialIcons({size, stroke, claseCSS}) {
+export function SocialIcons({size, stroke, claseCSS, facebook, youtube, instagram, twitch, spotify}) {
 
     return (
 
         
         <div className="socialIcons">
+            {
+                facebook &&
+                    <a href={facebook} target="_blank">
+                        <IconBrandFacebook 
+                            className={'social-icon'+' '+claseCSS}
+                            size={size}
+                            stroke={stroke}
+                        />
+                    </a>
+            }
 
-            <a href="https://www.facebook.com/FLProductionscr" target="_blank">
-                <IconBrandFacebook 
-                    className={'social-icon'+' '+claseCSS}
-                    size={size} // set custom `width` and `height`
-                    stroke={stroke}
-                   /*  strokeLinejoin="miter" // override other SVG props */
-                />
-            </a>
-            <a href="https://www.youtube.com/channel/UCAVKw7wP-yKPGSbCd1BJ7mw" target="_blank">
-                <IconBrandYoutube
-                    className={'social-icon'+' '+claseCSS}
-                    size={size} // set custom `width` and `height`
-                    stroke={stroke}  // set `stroke-width`
-                />
-            </a>
-            <a href="https://www.instagram.com/leotheprodu/" target="_blank">
-                <IconBrandInstagram 
-                    className={'social-icon'+' '+claseCSS}
-                    size={size} // set custom `width` and `height`
-                    stroke={stroke}  // set `stroke-width`
-                />
-            </a>
-            <a href="https://www.twitch.tv/leotheprodu" target="_blank">
-                <IconBrandTwitch 
-                    className={'social-icon'+' '+claseCSS}
-                    size={size} // set custom `width` and `height`
-                    stroke={stroke}  // set `stroke-width`
-                />
-            </a>
+            {
+                youtube &&
+                    <a href={youtube} target="_blank">
+                        <IconBrandYoutube
+                            className={'social-icon'+' '+claseCSS}
+                            size={size}
+                            stroke={stroke}
+                        />
+                    </a>
+
+            }
+            {
+                instagram &&
+                    <a href={instagram} target="_blank">
+                        <IconBrandInstagram 
+                            className={'social-icon'+' '+claseCSS}
+                            size={size}
+                            stroke={stroke}
+                        />
+                    </a>
+            }
+
+            {
+                twitch &&
+                    <a href={twitch} target="_blank">
+                        <IconBrandTwitch 
+                            className={'social-icon'+' '+claseCSS}
+                            size={size} 
+                            stroke={stroke}
+                        />
+                    </a>
+            }
+            {
+                spotify &&
+                    <a href={spotify} target="_blank">
+                        <IconBrandSpotify 
+                            className={'social-icon'+' '+claseCSS}
+                            size={size} 
+                            stroke={stroke}
+                        />
+                    </a>
+            }
 
 
         </div>

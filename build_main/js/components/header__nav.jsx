@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { SocialIcons } from './social-icons';
 
@@ -13,7 +12,13 @@ export function NavMenu() {
             <div>
               <Link to="/" className='header__web-tittle'>FLProductions</Link>
               <div className='root-socialIcons'>
-                <SocialIcons size={20} />
+                <SocialIcons 
+                  size={20}
+                  facebook = 'https://www.facebook.com/FLProductionscr'
+                  youtube='https://www.youtube.com/channel/UCAVKw7wP-yKPGSbCd1BJ7mw'
+                  instagram='https://www.instagram.com/leotheprodu/'
+                  twitch='https://www.twitch.tv/leotheprodu'
+                />
               </div>
 
             </div>

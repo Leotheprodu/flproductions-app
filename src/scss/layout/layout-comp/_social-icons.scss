@@ -2,7 +2,6 @@
 @use 'base/variables' as v;
 
 .socialIcons{
-    max-width: 40rem;
     margin: 0 auto;
     display: flex;
     gap: 3rem;
@@ -14,7 +13,6 @@
     
     
     @include m.tablet {
-        margin-left: 10rem;
         margin-top: 0;
     }
 
