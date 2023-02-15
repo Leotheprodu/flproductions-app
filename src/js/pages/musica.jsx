@@ -1,6 +1,6 @@
 
 import { HelmetProvider } from 'react-helmet-async';
-import { SimpleText, AppMusic, useHandleAppMusic, useProducciones_HTTP_Fetch, MetaInjector } from '../components';
+import { SimpleText, AppMusic, useHandleAppMusic, useProducciones_HTTP_Fetch, MetaInjector, ArtistList } from '../components';
 
 export function Musica() {
 
@@ -27,18 +27,19 @@ export function Musica() {
                 keywords='musica, artistas, destacados, producciones, music'
                 robots='index, follow'
             />
-
             <div className='contenedor-basic center'>
 
                 <SimpleText
                     tipo={1}
                     titulo='Musica de nuestros clientes'
-
-                />
+                    
+                    />
                 
                 <p>Encuentra aqui toda la musica que graban nuestros clientes.</p>
                 
             </div>
+
+                <ArtistList listadoCanciones={producciones_HTTP_Fetch}/>
             
 
             <div className='contenedor-basic'>

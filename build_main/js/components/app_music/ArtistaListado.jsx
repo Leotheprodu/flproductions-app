@@ -1,7 +1,7 @@
 
 
-export const ArtistaListado = () => {
+export const ArtistList = () => {
   return (
-    <div>ArtistaListado</div>
+    <div>ArtistList</div>
   )
 }

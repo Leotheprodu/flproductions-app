@@ -1543,3 +1543,16 @@ img {
 .BotonesAppMusic__boton-info-reproductor:active {
   transform: scale(1.1);
 }
+
+.ArtistList {
+  display: flex;
+  gap: 0.5rem;
+  flex-flow: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 10rem 1rem;
+}
+.ArtistList a {
+  background-color: rgba(0, 0, 0, 0.075);
+  padding: 1.5rem;
+}

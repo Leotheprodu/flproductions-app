@@ -1,0 +1,16 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.ArtistList{
+    display: flex;
+    gap: .5rem;
+    flex-flow: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 10rem 1rem;
+
+    a{
+        background-color: rgba(0, 0, 0, 0.075);
+        padding: 1.5rem;
+    }
+}
