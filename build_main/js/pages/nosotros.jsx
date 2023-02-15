@@ -3,7 +3,7 @@ import { GaleriaDeImagenes, PalabrasDelEquipo, SimpleText, Testimonio, DetallePr
 
 export function AboutPage () {
 
-  const [producciones_HTTP_Fetch] = useProducciones_HTTP_Fetch('https://flproductionscr.com/api/artistas/producciones');
+  const [producciones_HTTP_Fetch] = useProducciones_HTTP_Fetch('https://flproductionscr.com/api/artistas/producciones', 'http://localhost:5000/api/artistas/producciones');
   const produccionesDestacadas = producciones_HTTP_Fetch.filter(element => element.destacado === 1);
   
   const [playing, setPlaying, pause, setPause, infoProduccion, idCompActual, ended, setEnded, progressDuration, setprogressDuration, progress, setProgress, clickInfoButton, setClickInfoButton, selectedSong] = useHandleAppMusic();

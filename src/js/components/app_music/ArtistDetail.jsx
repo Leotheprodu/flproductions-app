@@ -7,8 +7,8 @@ import { useArtistasBD, useProducciones_HTTP_Fetch, useHandleAppMusic, SocialIco
 export const ArtistDetail = () => {
     const {artist_name} = useParams();
     const [artistaActual, setArtistaActual] = useState(null);
-    const [producciones_HTTP_Fetch] = useProducciones_HTTP_Fetch('https://flproductionscr.com/api/artistas/producciones');
-    const [artistas] = useArtistasBD('https://flproductionscr.com/api/artistas');
+    const [producciones_HTTP_Fetch] = useProducciones_HTTP_Fetch('https://flproductionscr.com/api/artistas/producciones', 'http://localhost:5000/api/artistas/producciones');
+    const [artistas] = useArtistasBD('https://flproductionscr.com/api/artistas', 'http://localhost:5000/api/artistas');
     const produccionesArtista = producciones_HTTP_Fetch.filter(element => element.nombre_artista === artist_name)
     const [playing, setPlaying, pause, setPause, infoProduccion, idCompActual, ended, setEnded, progressDuration, setprogressDuration, progress, setProgress, clickInfoButton, setClickInfoButton, selectedSong] = useHandleAppMusic();
     

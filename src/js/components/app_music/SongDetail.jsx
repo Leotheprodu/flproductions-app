@@ -7,7 +7,7 @@ import { DetalleProducciones, useProducciones_HTTP_Fetch, useHandleAppMusic, Met
 export const SongDetail = () => {
     const {id} = useParams();
     const [produccionActual, setproduccionActual] = useState(null);
-    const [producciones_HTTP_Fetch] = useProducciones_HTTP_Fetch('https://flproductionscr.com/api/artistas/producciones');
+    const [producciones_HTTP_Fetch] = useProducciones_HTTP_Fetch('https://flproductionscr.com/api/artistas/producciones', 'http://localhost:5000/api/artistas/producciones');
     const produccionesArtistas = producciones_HTTP_Fetch.filter(element => element.tipo_obra === 0);
     const [playing, setPlaying, pause, setPause, infoProduccion, idCompActual, ended, setEnded, progressDuration, setprogressDuration, progress, setProgress, clickInfoButton, setClickInfoButton, selectedSong] = useHandleAppMusic();
 

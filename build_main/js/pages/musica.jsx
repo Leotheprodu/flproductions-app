@@ -6,7 +6,7 @@ export function Musica() {
 
     // IMPORTAMOS LAS PRODUCCIONES DE LA BASE DE DATOS
 
-    const [producciones_HTTP_Fetch] = useProducciones_HTTP_Fetch('https://flproductionscr.com/api/artistas/producciones' );
+    const [producciones_HTTP_Fetch] = useProducciones_HTTP_Fetch('https://flproductionscr.com/api/artistas/producciones', 'http://localhost:5000/api/artistas/producciones');
     const produccionesArtistas = producciones_HTTP_Fetch.filter(element => element.tipo_obra === 0);
     const produccionesDestacadas = produccionesArtistas.filter(element => element.destacado === 1);
 
