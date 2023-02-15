@@ -11,20 +11,20 @@ const fecha = new Date(fecha_lanzamiento);
     const anio = fecha.getFullYear().toString();
     const fechaFormateada = `${dia}/${mes}/${anio}`;
   return (
-    <div className="algunas-producciones__detalles contenedor">
-        <div className="algunas-producciones__detalles__texto">
+    <div className="detalle-producciones contenedor">
+        <div className="detalle-producciones__texto">
 
 
             <p>{descripcion}</p>
 
         </div>
-        <div className="songDetail__appmusic__masdetalles">
+        <div className="detalle-producciones__appmusic__masdetalles">
                 <p><span>Estilo:</span> {`${estilo}`}</p>
                 <p><span>Genero Musical:</span> {`${genero}`}</p>
                 <p><span>Fecha de Lanzamiento:</span> {`${fechaFormateada}`}</p>
 
             </div>
-        <div className="algunas-producciones__detalles__links">
+        <div className="detalle-producciones__links">
             
             { spotify_link &&
                 <a target='_blank' href={spotify_link}>

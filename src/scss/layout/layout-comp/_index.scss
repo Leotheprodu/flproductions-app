@@ -10,8 +10,10 @@
 @forward 'contact-info';
 @forward 'nuestras-caracteristicas';
 @forward 'testimonio';
-@forward 'ProduccionesDestacadas';
 @forward 'galeria-de-imagenes';
 @forward './app_music/artist-detail';
 @forward './app_music/detalle-producciones';
 @forward './app_music/songDetail';
+@forward './app_music/AppMusic';
+@forward './app_music/ItemAppMusic';
+@forward './app_music/BotonesAppMusic';

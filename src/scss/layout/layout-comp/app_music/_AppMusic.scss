@@ -1,0 +1,21 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.AppMusic {
+    
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+    flex-wrap: wrap;
+    /* flex-flow: wrap; */
+    margin-bottom: 5rem;
+    position: relative;
+    @include m.tablet {
+        justify-content: left;
+        
+    }
+
+}
+
+

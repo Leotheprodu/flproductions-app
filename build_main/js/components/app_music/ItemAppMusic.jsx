@@ -7,14 +7,14 @@ export const ItemAppMusic = ({ playing, infoProduccion, selectedSong, idComp, id
     return (
 
 
-        <div onClick={() => selectedSong(song, idComp, ended)} className={`algunas-producciones__boton ${song.id === infoProduccion.id && idComp === idCompActual && !ended ? "selected" : ""}`}>
+        <div onClick={() => selectedSong(song, idComp, ended)} className={`ItemAppMusic ${song.id === infoProduccion.id && idComp === idCompActual && !ended ? "selected" : ""}`}>
             {
                 song.id === infoProduccion.id && idComp === idCompActual && !ended &&
 
-                <div className='player-wrapper'>
+                <div className='ItemAppMusic__player-wrapper'>
 
                     <ReactPlayer
-                        className='react-player'
+                        className='ItemAppMusic__react-player'
                         width='100%'
                         height='100%'
                         url={`https://www.youtube.com/watch?v=${infoProduccion.youtube_id}`}
@@ -40,11 +40,11 @@ export const ItemAppMusic = ({ playing, infoProduccion, selectedSong, idComp, id
             {(song.id !== infoProduccion.id || (song.id === infoProduccion.id && idComp !== idCompActual) || (song.id === infoProduccion.id && idComp === idCompActual && ended)) && 
             <img src={`https://img.youtube.com/vi/${song.youtube_id}/mqdefault.jpg`} alt={`imagen de ${song.nombre}`} />}
 
-            <div className="algunas-producciones__texto">
+            <div className="ItemAppMusic__texto">
 
 
-                <p className="texto-1">{song.nombre}</p>
-                <p className="texto-2">{song.nombre_artista}</p>
+                <p className="ItemAppMusic__texto-1">{song.nombre}</p>
+                <p className="ItemAppMusic__texto-2">{song.nombre_artista}</p>
 
 
 

@@ -5,24 +5,11 @@
     padding: 2rem;
     margin-top: 10rem;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.songDetail__appmusic__masdetalles{
-    padding: 2rem;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    gap: 2rem;
-    p{
-        background-color: v.$secundario;
-        color:v.$blanco;
-        margin: 0;
-        padding: 1rem;
-        border-radius: 2px;
-        span{
-            font-weight: bold;
-        }
+    @include m.tablet {
+        flex-direction: row;
     }
 }
+
