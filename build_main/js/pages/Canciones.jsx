@@ -2,7 +2,7 @@
 import { HelmetProvider } from 'react-helmet-async';
 import { SimpleText, AppMusic, useHandleAppMusic, useProducciones_HTTP_Fetch, MetaInjector, ArtistList } from '../components';
 
-export function Musica() {
+export function Canciones() {
 
     // IMPORTAMOS LAS PRODUCCIONES DE LA BASE DE DATOS
 
@@ -19,7 +19,7 @@ export function Musica() {
         <HelmetProvider>
 
             <MetaInjector
-                title='Musica'
+                title='Canciones'
                 description='Musica de clientes del estudio FLProductions'
                 type='website'
                 url='https://flproductionscr.com/musica'
@@ -28,18 +28,10 @@ export function Musica() {
                 robots='index, follow'
             />
             <div className='contenedor-basic center'>
-
-                <SimpleText
-                    tipo={1}
-                    titulo='Musica de nuestros clientes'
-                    
-                    />
-                
-                <p>Encuentra aqui toda la musica que graban nuestros clientes.</p>
+                <ArtistList listadoCanciones={produccionesArtistas}/>
                 
             </div>
 
-                <ArtistList listadoCanciones={produccionesArtistas}/>
             
 
             <div className='contenedor-basic'>

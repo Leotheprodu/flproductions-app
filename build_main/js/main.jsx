@@ -1,7 +1,7 @@
 
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider} from 'react-router-dom';
-import { HomePage, ContactPage, Musica, AboutPage, ServicesPage, Root, ErrorPage } from './pages';
+import { HomePage, ContactPage, Canciones, AboutPage, ServicesPage, Root, ErrorPage } from './pages';
 import '../css/app.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { SongDetail } from "./components";
@@ -23,16 +23,16 @@ export const router = createBrowserRouter([
         element: <ContactPage />,
       },
       {
-        path: "musica",
-        element: <Musica />,
+        path: "canciones",
+        element: <Canciones />,
       },
       {
-        path: "/musica/producciones/:id",
+        path: "/canciones/:id",
         element: <SongDetail />,
 
       },
       {
-        path: "/musica/artistas/:artist_name",
+        path: "/artistas/:artist_name",
         element: <ArtistDetail />,
 
       },

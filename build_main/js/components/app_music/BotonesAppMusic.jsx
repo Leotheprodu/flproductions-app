@@ -12,11 +12,11 @@ export const BotonesAppMusic = ({ clickInfoButton, infoProduccion, handleInfoBut
                     <ul>
                         <li>
                             <IconPlaylist color="#1ab5e6" />
-                            <Link to={`/musica/producciones/${infoProduccion.id}`}>informacion de la cancion</Link>
+                            <Link to={`/canciones/${infoProduccion.id}`}>informacion de la cancion</Link>
                         </li>
                         <li>
                             <IconMicrophone color="#1ab5e6" />
-                            <Link to={`/musica/artistas/${infoProduccion.nombre_artista}`}>informacion del artista</Link>
+                            <Link to={`/artistas/${infoProduccion.nombre_artista}`}>informacion del artista</Link>
                         </li>
                     </ul>
                 </div>

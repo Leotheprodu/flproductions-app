@@ -28,18 +28,10 @@ export function Canciones() {
                 robots='index, follow'
             />
             <div className='contenedor-basic center'>
-
-                <SimpleText
-                    tipo={1}
-                    titulo='Musica de nuestros clientes'
-                    
-                    />
-                
-                <p>Encuentra aqui toda la musica que graban nuestros clientes.</p>
+                <ArtistList listadoCanciones={produccionesArtistas}/>
                 
             </div>
 
-                <ArtistList listadoCanciones={produccionesArtistas}/>
             
 
             <div className='contenedor-basic'>

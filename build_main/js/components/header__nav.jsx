@@ -27,15 +27,14 @@ export function NavMenu() {
               <NavLink to='/' end className='header__links__link'>Inicio</NavLink>
               <NavLink to='/nosotros' className='header__links__link'>Nosotros</NavLink>
               <NavLink to='/contacto' className='header__links__link'>Contacto</NavLink>
-                <NavLink to='/musica' className='header__links__link'>Musica</NavLink>
-              {/* <div className='header__submenu-parent'>
+              <div className='header__submenu-parent'>
+                <p className='header__links__link__musica'>Musica</p>
                 
-                  <nav className='header__submenu'>
-                    <NavLink to='/generos' className='header__links__link'>Generos</NavLink>
-                    <NavLink to='/artistas' className='header__links__link'>Artistas</NavLink>
-                  </nav>
+                <nav className='header__submenu'>
+                  <NavLink to='/canciones' className='header__links__link'>Canciones</NavLink>
+                </nav>
                 
-              </div> */}
+              </div>
             </nav>
             
 

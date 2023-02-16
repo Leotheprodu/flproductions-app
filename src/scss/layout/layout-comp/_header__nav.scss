@@ -80,6 +80,21 @@
             }
         
         }
+        .header__links__link__musica{
+            color: v.$blanco; 
+            text-transform: uppercase;
+            transition-property: color;
+            transition-duration: 1s;
+            transition-timing-function: ease-out;
+            margin: 0;
+            &:hover {
+                cursor: pointer;
+                transition-property: color;
+                transition-duration: 1s;
+                transition-timing-function: ease-out;
+                color: v.$secundario;
+            }
+        }
         
         
     }
@@ -107,26 +122,30 @@
 
 .header__submenu {
     display: none;
-  }
-  
-  .header__submenu-parent:hover .header__submenu,
-  .header__submenu-parent[aria-expanded="true"] .header__submenu {
+}
+
+.header__submenu-parent{
+    position: relative;
+}
+
+.header__submenu-parent:hover .header__submenu,
+.header__submenu-parent[aria-expanded="true"] .header__submenu {
     display: flex;
     flex-direction: column;
     justify-content:baseline;
     padding: .7rem;
     align-items: center;
-    width: 100%;
-    height: 100%;
+    width: 12rem;
+    height: 3rem;
     margin: .5rem;
     gap: .2rem;
     background-color: v.$secundario;
     z-index: 1;
     border-radius: 2%;
+    position: absolute;
+    right: -1rem;
+    top: 1.3rem;
     a:hover{
         color: v.$primario;
     }
-  }
-  .header__submenu-parent{
-    
-  }
+}

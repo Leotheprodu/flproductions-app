@@ -34,7 +34,7 @@ const fecha = new Date(fecha_lanzamiento);
 
             }
 
-            <a href={`/musica/artistas/${nombre_artista}`}>
+            <a href={`/artistas/${nombre_artista}`}>
                 <IconMicrophone stroke={1} size={30}/>
                 <p>{`mas de ${nombre_artista}`}</p>
             </a>
