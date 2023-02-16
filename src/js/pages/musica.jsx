@@ -39,7 +39,7 @@ export function Musica() {
                 
             </div>
 
-                <ArtistList listadoCanciones={producciones_HTTP_Fetch}/>
+                <ArtistList listadoCanciones={produccionesArtistas}/>
             
 
             <div className='contenedor-basic'>
