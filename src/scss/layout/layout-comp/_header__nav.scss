@@ -102,24 +102,6 @@
 
 }
 
-
-/* @media (max-width: 480px) {
-    .header__nav{ 
-        
-
-        .header__links__link{
-            height: 7rem;
-            align-items: center;
-            justify-items: center;
-            gap: 1rem;
-            
-            
-        
-        }
-
-    }
-} */
-
 .header__submenu {
     display: none;
 }
@@ -138,10 +120,10 @@
     justify-content:baseline;
     padding: .7rem;
     align-items: center;
-    width: 12rem;
-    height: 3rem;
+    width: 15rem;
+    height: 6rem;
     margin: .5rem;
-    gap: .2rem;
+    gap: .7rem;
     background-color: v.$secundario;
     z-index: 1;
     border-radius: 2%;

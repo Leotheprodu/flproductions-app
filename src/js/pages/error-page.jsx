@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
 import { useRouteError } from "react-router-dom";
-
+import { MetaInjector } from '../components';
 
 export function ErrorPage() {
   

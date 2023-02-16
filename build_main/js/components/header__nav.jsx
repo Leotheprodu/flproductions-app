@@ -34,6 +34,7 @@ export function NavMenu() {
                 
                 <nav className='header__submenu'>
                   <NavLink to='/canciones' className='header__links__link'>Canciones</NavLink>
+                  <NavLink to='/instrumentales' className='header__links__link'>Instrumentales</NavLink>
                 </nav>
                 
               </div>

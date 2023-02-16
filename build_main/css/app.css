@@ -991,22 +991,6 @@ img {
   color: #ebc246;
 }
 
-/* @media (max-width: 480px) {
-    .header__nav{ 
-
-
-        .header__links__link{
-            height: 7rem;
-            align-items: center;
-            justify-items: center;
-            gap: 1rem;
-
-
-
-        }
-
-    }
-} */
 .header__submenu {
   display: none;
 }
@@ -1025,10 +1009,10 @@ img {
   justify-content: baseline;
   padding: 0.7rem;
   align-items: center;
-  width: 12rem;
-  height: 3rem;
+  width: 15rem;
+  height: 6rem;
   margin: 0.5rem;
-  gap: 0.2rem;
+  gap: 0.7rem;
   background-color: #ebc246;
   z-index: 1;
   border-radius: 2%;
