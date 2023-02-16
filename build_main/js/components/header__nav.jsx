@@ -1,3 +1,4 @@
+import { IconPlayerPlay } from '@tabler/icons';
 import { NavLink, Link } from 'react-router-dom';
 import { SocialIcons } from './social-icons';
 
@@ -28,6 +29,7 @@ export function NavMenu() {
               <NavLink to='/nosotros' className='header__links__link'>Nosotros</NavLink>
               <NavLink to='/contacto' className='header__links__link'>Contacto</NavLink>
               <div className='header__submenu-parent'>
+                <IconPlayerPlay size={15}/>
                 <p className='header__links__link__musica'>Musica</p>
                 
                 <nav className='header__submenu'>
