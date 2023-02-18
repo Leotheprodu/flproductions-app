@@ -1,22 +1,49 @@
 import { IconDotsVertical, IconMicrophone, IconPlayerPause, IconPlayerPlay, IconPlayerStop, IconPlaylist } from "@tabler/icons";
 import { Link } from "react-router-dom";
 
-export const BotonesAppMusic = ({ clickInfoButton, infoProduccion, handleInfoButton, handleStopButtonClick, volume, setVolume, handlePlayButtonClick, pause, progressDuration, progress, handleonChangeRange, duration }) => {
+export const BotonesAppMusic = ({ clickInfoButton, infoProduccion, handleInfoButton, handleStopButtonClick, volume, setVolume, handlePlayButtonClick, pause, progressDuration, progress, handleonChangeRange, duration, tipo_obra_general }) => {
 
 
     return (
         <div className="BotonesAppMusic">
             {
-                clickInfoButton &&
+                clickInfoButton && tipo_obra_general === 0 &&
+                <div className="BotonesAppMusic__elementos-info-reproductor" >
+                    <ul>
+                    <li>
+                            
+                            <Link to={`/canciones/${infoProduccion.id}`}>
+                                <IconPlaylist color="#1ab5e6" size={20} />
+                                <p>info de la Cancion</p>
+                            </Link>
+                        </li>
+                        <li>
+                            
+                                <Link to={`/artistas/${infoProduccion.nombre_artista}`}>
+                                    <IconMicrophone  color="#1ab5e6" size={20} />
+                                    <p>info del Artista</p>
+                                </Link>
+                        </li>
+                    </ul>
+                </div>
+            }
+            {
+                clickInfoButton && tipo_obra_general === 1 &&
                 <div className="BotonesAppMusic__elementos-info-reproductor" >
                     <ul>
                         <li>
-                            <IconPlaylist color="#1ab5e6" />
-                            <Link to={`/canciones/${infoProduccion.id}`}>informacion de la cancion</Link>
+                            
+                            <Link to={`/instrumentales/${infoProduccion.id}`}>
+                                <IconPlaylist color="#1ab5e6" size={20}/>
+                                <p>info del Instrumental</p>
+                            </Link>
                         </li>
                         <li>
-                            <IconMicrophone color="#1ab5e6" />
-                            <Link to={`/artistas/${infoProduccion.nombre_artista}`}>informacion del artista</Link>
+                            
+                                <Link to={`/productores/${infoProduccion.nombre_artista}`}>
+                                    <IconMicrophone color="#1ab5e6" size={20} />
+                                    <p>info del Productor</p>
+                                </Link>
                         </li>
                     </ul>
                 </div>

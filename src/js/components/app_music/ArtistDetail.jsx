@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom"
 import { useArtistasBD, useProducciones_HTTP_Fetch, useHandleAppMusic, SocialIcons, MetaInjector, AppMusic } from "..";
 
 export const ArtistDetail = () => {
+    const tipo_obra_general = 0
     const {artist_name} = useParams();
     const [artistaActual, setArtistaActual] = useState(null);
     const [producciones_HTTP_Fetch] = useProducciones_HTTP_Fetch('api/artistas/producciones');
@@ -16,7 +17,7 @@ export const ArtistDetail = () => {
     
     useEffect(() => {
         if (artistas) {
-            setArtistaActual(artistas.filter(element => element.nombre_artista === artist_name && element.tipo !== '0'));
+            setArtistaActual(artistas.filter(element => element.nombre_artista === artist_name && element.tipo_obra !== tipo_obra_general));
         }
     }, [artistas, artist_name]);
     
@@ -85,6 +86,7 @@ export const ArtistDetail = () => {
                     setProgress = {setProgress}
                     clickInfoButton ={clickInfoButton}
                     setClickInfoButton ={setClickInfoButton}
+                    tipo_obra_general = {tipo_obra_general}
                     
                     
                 />

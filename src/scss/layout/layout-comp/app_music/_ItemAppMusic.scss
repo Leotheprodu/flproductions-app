@@ -5,48 +5,79 @@
     display: flex;
     flex-direction: column;
     background-color: v.$primario;
-    width: 25rem;
-    height: 25rem;
+    width: 27rem;
+    height: 27rem;
     align-items: center;
-    justify-content: center;
+    justify-content: start;
     transition: transform 1s;
     border-radius: 2rem;
+    
 
     &:hover {
         transform: scale(1.01);
         box-shadow: 4px 2px 5px #00000009;
     }
+    .ItemAppMusic__imagen{
+        height: 18rem;
+        width: 27rem;
+    }
 
     img {
-        height: 20rem;
-        width: 25rem;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
         border-top-left-radius: 2rem;
         border-top-right-radius: 2rem;
+
     }
 
-    .ItemAppMusic__texto {
-        position: relative;
-        height: 10rem;
+    
+}
+.ItemAppMusic__texto {
+    position: relative;
+    height: 5rem;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    justify-content: center;
+    color: v.$blanco;
+
+    
+}
+.ItemAppMusic__texto__titulo {
+    display: flex;
+    align-items:baseline;
+    justify-content: center;
+    gap: .5rem;
+    height: 3rem;
+    .ItemAppMusic__texto-1 {
         margin: 0;
-        padding: 0;
-        text-align: center;
+        font-size: 2rem;
         color: v.$blanco;
-
-        .ItemAppMusic__texto-1 {
-            margin: 0;
-            font-size: 2rem;
-            color: v.$blanco;
-        }
-
-        .ItemAppMusic__texto-2 {
-            margin: 0;
-            font-size: 1.5rem;
-            color: v.$secundario;
-        }
     }
 
+    .ItemAppMusic__texto-2 {
+        margin: 0;
+        font-size: 1.5rem;
+        color: v.$secundario;
+        
+    }
+    
 }
 
+.ItemAppMusic__texto-3 {
+    margin: 0;
+    font-size: 1.7rem;
+    color: v.$secundario;
+    
+}
+.ItemAppMusic__botones{
+    position: relative;
+    height: 8rem;
+    width: 19rem;
+    margin: 0;
+    padding: 0;
+}
 .ItemAppMusic.selected {
     margin: 2rem 3rem;
     z-index: 2;
@@ -56,18 +87,20 @@
 }
 .ItemAppMusic__player-wrapper {
     position: relative; 
-    height: 20rem;
-    width: 25rem;
+    height: 18rem;
+    width: 27rem;
     padding-top: 56.25%;
-
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    overflow: hidden;
 }
 
 .ItemAppMusic__react-player {
     position: absolute;
     top: 0;
     left: 0;
-    height: 15rem;
-    width: 25rem;
+    height: 100%;
+    width: 100%;
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;
 }

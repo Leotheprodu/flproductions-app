@@ -2,7 +2,7 @@
 import ReactPlayer from 'react-player';
 import { BotonesAppMusic } from '..';
 
-export const ItemAppMusic = ({ playing, infoProduccion, selectedSong, idComp, idCompActual, pause, setPause, ended, setEnded, progressDuration, progress, clickInfoButton, song, handlePlay, handleDuration, playerRef, handleProgress, volume, handleInfoButton, handleStopButtonClick, setVolume, handlePlayButtonClick, handleonChangeRange, duration }) => {
+export const ItemAppMusic = ({ playing, infoProduccion, selectedSong, idComp, idCompActual, pause, setPause, ended, setEnded, progressDuration, progress, clickInfoButton, song, handlePlay, handleDuration, playerRef, handleProgress, volume, handleInfoButton, handleStopButtonClick, setVolume, handlePlayButtonClick, handleonChangeRange, duration, tipo_obra_general }) => {
 
     return (
 
@@ -37,20 +37,31 @@ export const ItemAppMusic = ({ playing, infoProduccion, selectedSong, idComp, id
                 </div>
 
             }
+            
+
             {(song.id !== infoProduccion.id || (song.id === infoProduccion.id && idComp !== idCompActual) || (song.id === infoProduccion.id && idComp === idCompActual && ended)) && 
-            <img src={`https://img.youtube.com/vi/${song.youtube_id}/mqdefault.jpg`} alt={`imagen de ${song.nombre}`} />}
+            <div className='ItemAppMusic__imagen'>
+                <img src={`https://img.youtube.com/vi/${song.youtube_id}/mqdefault.jpg`} alt={`imagen de ${song.nombre}`} />
+            </div>}
 
             <div className="ItemAppMusic__texto">
 
-
-                <p className="ItemAppMusic__texto-1">{song.nombre}</p>
-                <p className="ItemAppMusic__texto-2">{song.nombre_artista}</p>
-
-
-
-
+                <div className='ItemAppMusic__texto__titulo'>
+                    <p className="ItemAppMusic__texto-1">{song.nombre}</p>
+                    <p className="ItemAppMusic__texto-1">-</p>
+                    <p className="ItemAppMusic__texto-2">{`${song.nombre_artista}`}</p>
+                </div>
                 {
-                    song.id === infoProduccion.id && idComp === idCompActual && !ended &&
+                    tipo_obra_general === 1 &&
+                    <p className="ItemAppMusic__texto-3">{song.genero}</p>
+                }
+
+
+            </div>
+
+            {
+                song.id === infoProduccion.id && idComp === idCompActual && !ended &&
+                <div className='ItemAppMusic__botones'>
                     <BotonesAppMusic 
                         clickInfoButton={clickInfoButton}
                         infoProduccion={infoProduccion}
@@ -64,13 +75,15 @@ export const ItemAppMusic = ({ playing, infoProduccion, selectedSong, idComp, id
                         progress={progress}
                         handleonChangeRange={handleonChangeRange}
                         duration={duration}
-                    />
-                    
-                }
+                        tipo_obra_general={tipo_obra_general}
+                        />
+                </div>
+                
+            }
 
 
 
-            </div>
+            
         </div>
     )
 

@@ -39,17 +39,11 @@ export const router = createBrowserRouter([
         path: "nosotros",
         element: <AboutPage />,
       },
+      {
+        path: "/instrumentales",
+        element: <Instrumentales />,
+      }
     ],
-  },
-  {
-    path: "/instrumentales",
-  element: <RootInstrumentales />,
-  children: [
-    {
-      path: "/instrumentales",
-      element: <Instrumentales />,
-    }
-  ],
   }
   
 ]);

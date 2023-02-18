@@ -15,13 +15,16 @@ export * from './footer';
 
 /* AppMusic */
 export * from './app_music/AppMusic';
-export * from './app_music/ProduccionesDestacadas';
 export * from './app_music/DetalleProducciones';
 export * from './app_music/SongDetail';
 export * from './app_music/ArtistDetail';
 export * from './app_music/ItemAppMusic';
 export * from './app_music/BotonesAppMusic';
 export * from './app_music/ArtistList';
+export * from './app_music/GenreList';
+
+/* BeatPlayer */
+export * from './beat_player/BeatPlayer';
 
 /* Hooks personalizados */
 export * from './hooks/useHandleAppMusic';

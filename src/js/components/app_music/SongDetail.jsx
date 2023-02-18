@@ -5,10 +5,11 @@ import { useParams } from "react-router-dom"
 import { DetalleProducciones, useProducciones_HTTP_Fetch, useHandleAppMusic, MetaInjector, AppMusic } from "..";
 
 export const SongDetail = () => {
+    const tipo_obra_general = 0
     const {id} = useParams();
     const [produccionActual, setproduccionActual] = useState(null);
     const [producciones_HTTP_Fetch] = useProducciones_HTTP_Fetch('api/artistas/producciones');
-    const produccionesArtistas = producciones_HTTP_Fetch.filter(element => element.tipo_obra === 0);
+    const produccionesArtistas = producciones_HTTP_Fetch.filter(element => element.tipo_obra === tipo_obra_general);
     const [playing, setPlaying, pause, setPause, infoProduccion, idCompActual, ended, setEnded, progressDuration, setprogressDuration, progress, setProgress, clickInfoButton, setClickInfoButton, selectedSong] = useHandleAppMusic();
 
 
@@ -61,6 +62,7 @@ export const SongDetail = () => {
                             setProgress = {setProgress}
                             clickInfoButton ={clickInfoButton}
                             setClickInfoButton ={setClickInfoButton}
+                            tipo_obra_general = {tipo_obra_general}
                             
                             
                         />

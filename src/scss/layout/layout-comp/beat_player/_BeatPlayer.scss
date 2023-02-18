@@ -1,0 +1,7 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.beat_player{
+    background-color: v.$secundario;
+    height: 5rem;
+}

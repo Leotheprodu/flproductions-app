@@ -31,7 +31,6 @@ export const useHandleAppMusic = () => {
         setidCompActual(idComp);
         playing && setEnded(false);
         clickInfoButton && setClickInfoButton(!clickInfoButton);
-        
 
         
         
