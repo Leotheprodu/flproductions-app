@@ -879,17 +879,12 @@ img {
 
 .socialIcons {
   margin: 0;
-  display: none;
+  display: flex;
   gap: 3rem;
   z-index: 1;
   order: 1;
   justify-content: center;
   align-items: center;
-}
-@media (min-width: 768px) {
-  .socialIcons {
-    display: flex;
-  }
 }
 
 .social-icon {

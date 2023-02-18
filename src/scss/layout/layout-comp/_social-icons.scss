@@ -3,19 +3,12 @@
 
 .socialIcons{
     margin: 0;
-    display: none;
+    display: flex;
     gap: 3rem;
     z-index: 1;
     order: 1;
     justify-content: center;
     align-items: center;
-    
-    
-    @include m.tablet {
-        display: flex;
-    }
-
-
 
 }
 
@@ -35,4 +28,10 @@
     }
 
 
+}
+.root-socialIcons{
+    display: none;
+    @include m.celular {
+        display: flex; 
+    }
 }
