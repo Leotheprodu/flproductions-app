@@ -2,10 +2,10 @@ import { HelmetProvider } from 'react-helmet-async';
 import { GaleriaDeImagenes, PalabrasDelEquipo, SimpleText, Testimonio, DetalleProducciones, AppMusic, useHandleAppMusic, useProducciones_HTTP_Fetch, MetaInjector } from '../components';
 
 export function AboutPage () {
-
+  const tipo_obra_general = 0
   const [producciones_HTTP_Fetch] = useProducciones_HTTP_Fetch('api/artistas/producciones');
-  const produccionesDestacadas = producciones_HTTP_Fetch.filter(element => element.destacado === 1);
-  
+  const produccionesArtistas = producciones_HTTP_Fetch.filter(element => element.tipo_obra === tipo_obra_general);
+  const produccionesDestacadas = produccionesArtistas.filter(element => element.destacado === 1);
   const [playing, setPlaying, pause, setPause, infoProduccion, idCompActual, ended, setEnded, progressDuration, setprogressDuration, progress, setProgress, clickInfoButton, setClickInfoButton, selectedSong] = useHandleAppMusic();
 
   return(
@@ -88,7 +88,7 @@ export function AboutPage () {
                   
 
           { !ended && playing &&
-              <DetalleProducciones infoProduccion={infoProduccion}/>
+              <DetalleProducciones infoProduccion={infoProduccion} tipo_obra_general={tipo_obra_general}/>
           }
             
 

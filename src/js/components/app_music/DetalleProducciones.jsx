@@ -3,7 +3,7 @@ import { IconMicrophone, IconBrandSpotify } from "@tabler/icons";
 
 
 
-export const DetalleProducciones = ({infoProduccion}) => {
+export const DetalleProducciones = ({infoProduccion, tipo_obra_general}) => {
 const { descripcion, nombre_artista, spotify_link, estilo, genero, fecha_lanzamiento } = infoProduccion
 const fecha = new Date(fecha_lanzamiento);
     const dia = fecha.getDate().toString().padStart(2, '0');
@@ -33,11 +33,19 @@ const fecha = new Date(fecha_lanzamiento);
                 </a>
 
             }
-
-            <a href={`/artistas/${nombre_artista}`}>
-                <IconMicrophone stroke={1} size={30}/>
-                <p>{`mas de ${nombre_artista}`}</p>
-            </a>
+            
+            { tipo_obra_general !== 1 &&
+                <a href={`/artistas/${nombre_artista}`}>
+                    <IconMicrophone stroke={1} size={30}/>
+                    <p>{`mas de ${nombre_artista}`}</p>
+                </a>
+            }
+            { tipo_obra_general === 1 &&
+                <a href={`/productores/${nombre_artista}`}>
+                    <IconMicrophone stroke={1} size={30}/>
+                    <p>{`mas de ${nombre_artista}`}</p>
+                </a>
+            }
             
         </div>
 

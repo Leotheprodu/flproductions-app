@@ -1,4 +1,4 @@
-import { IconDotsVertical, IconMicrophone, IconPlayerPause, IconPlayerPlay, IconPlayerStop, IconPlaylist } from "@tabler/icons";
+import { IconDotsVertical, IconFileDownload, IconMicrophone, IconPlayerPause, IconPlayerPlay, IconPlayerStop, IconPlaylist } from "@tabler/icons";
 import { Link } from "react-router-dom";
 
 export const BotonesAppMusic = ({ clickInfoButton, infoProduccion, handleInfoButton, handleStopButtonClick, volume, setVolume, handlePlayButtonClick, pause, progressDuration, progress, handleonChangeRange, duration, tipo_obra_general }) => {
@@ -44,6 +44,13 @@ export const BotonesAppMusic = ({ clickInfoButton, infoProduccion, handleInfoBut
                                     <IconMicrophone color="#1ab5e6" size={20} />
                                     <p>info del Productor</p>
                                 </Link>
+                        </li>
+                        <li>
+                            
+                                <a>
+                                    <IconFileDownload color="#1ab5e6" size={20} />
+                                    <p>descargar mp3</p>
+                                </a>
                         </li>
                     </ul>
                 </div>
