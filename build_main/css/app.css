@@ -1361,7 +1361,7 @@ img {
   display: flex;
   flex-direction: column;
   background-color: #1ab5e6;
-  width: 27rem;
+  width: 25rem;
   height: 27rem;
   align-items: center;
   justify-content: start;
@@ -1374,7 +1374,7 @@ img {
 }
 .ItemAppMusic .ItemAppMusic__imagen {
   height: 18rem;
-  width: 27rem;
+  width: 25rem;
 }
 .ItemAppMusic img {
   height: 100%;
@@ -1429,14 +1429,14 @@ img {
 .ItemAppMusic.selected {
   margin: 2rem 3rem;
   z-index: 2;
-  transform: scale(1.4);
+  transform: scale(1.3);
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.0823529412);
 }
 
 .ItemAppMusic__player-wrapper {
   position: relative;
   height: 18rem;
-  width: 27rem;
+  width: 25rem;
   padding-top: 56.25%;
   border-top-left-radius: 2rem;
   border-top-right-radius: 2rem;
