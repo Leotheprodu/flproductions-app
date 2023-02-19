@@ -554,14 +554,6 @@ img {
   scroll-snap-align: center;
 }
 
-@media (min-width: 992px) {
-  .root-socialIcons {
-    margin: 0 auto;
-    margin-left: 10rem;
-    /* padding-left:  100rem; */
-  }
-}
-
 .contacto__contact-form__title {
   margin-bottom: 10rem;
   padding-top: 10rem;
@@ -590,6 +582,34 @@ img {
   box-shadow: -4px 1px 24px 1px rgba(0, 0, 0, 0.51);
   -webkit-box-shadow: -4px 1px 24px 1px rgba(0, 0, 0, 0.51);
   -moz-box-shadow: -4px 1px 24px 1px rgba(0, 0, 0, 0.51);
+}
+
+.instrumentales {
+  margin-top: 9rem;
+}
+.instrumentales h2 {
+  color: #ebc246;
+  margin-bottom: 1rem;
+}
+
+.canciones__filtros {
+  display: grid;
+  gap: 2rem;
+}
+@media (min-width: 768px) {
+  .canciones__filtros {
+    grid-template-columns: 0.5fr 1fr 1fr;
+  }
+}
+
+.instrumentales__destacados {
+  background-color: #ebc246;
+  padding-top: 5rem;
+  padding-bottom: 3rem;
+}
+.instrumentales__destacados h2 {
+  color: #FFFFFF;
+  margin-bottom: 1rem;
 }
 
 .palabras-del-equipo {
@@ -886,6 +906,11 @@ img {
   justify-content: center;
   align-items: center;
 }
+@media (min-width: 768px) {
+  .socialIcons {
+    padding-left: 10rem;
+  }
+}
 
 .social-icon {
   transition-property: top;
@@ -900,6 +925,15 @@ img {
   transition-property: top;
   transition-duration: 0.2s;
   transition-timing-function: ease-in-out;
+}
+
+.root-socialIcons {
+  display: none;
+}
+@media (min-width: 768px) {
+  .root-socialIcons {
+    display: flex;
+  }
 }
 
 .active {
@@ -1585,20 +1619,69 @@ img {
   transform: scale(1.1);
 }
 
+.ArtistList__Main {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 1px 1px 40px rgba(0, 0, 0, 0.0941176471);
+  height: 100%;
+  align-items: center;
+}
+.ArtistList__Main h4 {
+  color: #ebc246;
+  margin: 0;
+}
+
 .ArtistList {
   display: flex;
   gap: 0.5rem;
   flex-flow: wrap;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
-  margin: 10rem 1rem;
+  margin: 2rem 2rem;
 }
-.ArtistList a {
-  background-color: rgba(0, 0, 0, 0.075);
-  padding: 1.5rem;
+.ArtistList p {
+  background-color: #1ab5e6;
+  padding: 0.2rem;
+  margin: 0;
+  color: #FFFFFF;
+  font-size: 1.4rem;
+  border-radius: 2px;
+  cursor: pointer;
+}
+.ArtistList option {
+  background-color: #1ab5e6;
+  padding: 0.4rem;
+  margin: 0;
+  color: #FFFFFF;
+  font-size: 1.6rem;
+  border-radius: 2px;
+  cursor: pointer;
 }
 
-.beat_player {
+.ArtistList__reset {
+  display: grid;
+  gap: 0.2rem;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 2rem;
+}
+@media (min-width: 768px) {
+  .ArtistList__reset {
+    grid-column: 1/4;
+  }
+}
+.ArtistList__reset p {
   background-color: #ebc246;
-  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.2rem;
+  margin: 0;
+  color: #FFFFFF;
+  width: 15rem;
+  height: 4rem;
+  font-size: 1.4rem;
+  border-radius: 2px;
+  cursor: pointer;
+  text-transform: uppercase;
 }

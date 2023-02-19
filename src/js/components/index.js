@@ -24,6 +24,7 @@ export * from './app_music/ItemAppMusic';
 export * from './app_music/BotonesAppMusic';
 export * from './app_music/ArtistList';
 export * from './app_music/GenreList';
+export * from './app_music/StyleList';
 
 /* BeatPlayer */
 export * from './beat_player/BeatPlayer';

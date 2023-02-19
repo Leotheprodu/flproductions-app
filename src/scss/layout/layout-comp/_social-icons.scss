@@ -9,6 +9,9 @@
     order: 1;
     justify-content: center;
     align-items: center;
+    @include m.tablet {
+        padding-left: 10rem;
+    }
 
 }
 
@@ -31,7 +34,7 @@
 }
 .root-socialIcons{
     display: none;
-    @include m.celular {
+    @include m.tablet {
         display: flex; 
     }
 }

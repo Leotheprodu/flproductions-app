@@ -24,6 +24,13 @@ export const BotonesAppMusic = ({ clickInfoButton, infoProduccion, handleInfoBut
                                     <p>info del Artista</p>
                                 </Link>
                         </li>
+                        <li>
+                            
+                                <a href={`https://www.y2mate.com/es/youtube-mp3/${infoProduccion.youtube_id}`} rel="noopener noreferrer" target={"_blank"} >
+                                    <IconFileDownload color="#1ab5e6" size={20} />
+                                    <p>Descargar mp3</p>
+                                </a>
+                        </li>
                     </ul>
                 </div>
             }
@@ -47,9 +54,9 @@ export const BotonesAppMusic = ({ clickInfoButton, infoProduccion, handleInfoBut
                         </li>
                         <li>
                             
-                                <a>
+                                <a href={`https://www.y2mate.com/es/youtube-mp3/${infoProduccion.youtube_id}`} rel="noopener noreferrer" target={"_blank"} >
                                     <IconFileDownload color="#1ab5e6" size={20} />
-                                    <p>descargar mp3</p>
+                                    <p>Descargar mp3</p>
                                 </a>
                         </li>
                     </ul>

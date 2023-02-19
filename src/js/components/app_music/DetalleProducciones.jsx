@@ -4,7 +4,7 @@ import { IconMicrophone, IconBrandSpotify } from "@tabler/icons";
 
 
 export const DetalleProducciones = ({infoProduccion, tipo_obra_general}) => {
-const { descripcion, nombre_artista, spotify_link, estilo, genero, fecha_lanzamiento } = infoProduccion
+const { descripcion, nombre_artista, spotify_link, estilo, genero, fecha_lanzamiento, bpm, key } = infoProduccion
 const fecha = new Date(fecha_lanzamiento);
     const dia = fecha.getDate().toString().padStart(2, '0');
     const mes = (fecha.getMonth() + 1).toString().padStart(2, '0');
@@ -22,6 +22,8 @@ const fecha = new Date(fecha_lanzamiento);
                 <p><span>Estilo:</span> {`${estilo}`}</p>
                 <p><span>Genero Musical:</span> {`${genero}`}</p>
                 <p><span>Fecha de Lanzamiento:</span> {`${fechaFormateada}`}</p>
+                <p><span>Key:</span> {`${key}`}</p>
+                <p><span>bpm:</span> {`${bpm}`}</p>
 
             </div>
         <div className="detalle-producciones__links">

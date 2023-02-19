@@ -1,18 +1,28 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
-export const GenreList = ({ listadoCanciones, tipo_obra_general }) => {
+
+export const GenreList = ({ listadoCanciones, tipo_obra_general, produccioneFiltradas, setProduccioneFiltradas }) => {
   const [generos, setGeneros] = useState(null);
-  const produccionesArtistas = listadoCanciones.filter((genero, index, array) => {
+
+  const produccionesArtistas = produccioneFiltradas.filter((genero, index, array) => {
     return !array.slice(0, index).some(p => p.genero === genero.genero);
   });
 
   useEffect(() => {
-    if (listadoCanciones) {
+    if (produccioneFiltradas) {
       setGeneros(produccionesArtistas.map(element => element.genero).sort());
     }
-  }, [listadoCanciones]);
+  }, [produccioneFiltradas]);
 
+  const handleFilteredList = (e) => {
+    const filtro = e.target.innerText;
+    setProduccioneFiltradas(produccioneFiltradas.filter(element => element.genero.includes(filtro)));
+    
+    if (generos.length === 1) {
+      setProduccioneFiltradas(listadoCanciones);
+    }
+  
+  }
   if (!generos) {
     return <div className="lds-ring"><div></div><div></div><div></div><div></div></div>;
   }
@@ -20,30 +30,24 @@ export const GenreList = ({ listadoCanciones, tipo_obra_general }) => {
   if (!generos.length) {
     return <div>Lo sentimos, No se encontraron datos</div>;
   }
-  if (tipo_obra_general === 1) {
-
-    return (
+  
+  
+  return (
+    <>
+    <div className="ArtistList__Main">
+      <h4>Genero Musical</h4>
       <div className="ArtistList">
 
         {generos.map(element => (
-          <Link to={`/instrumentales/${element}`} key={element}>{element}</Link>
+          <p onClick={handleFilteredList} key={element}>{element}</p>
 
         ))}
 
       </div>
+    </div>
 
-    )
-  } else {
-    return (
-      <div className="ArtistList">
+    </>
 
-        {generos.map(element => (
-          <Link to={`/canciones/${element}`} key={element}>{element}</Link>
-
-        ))}
-
-      </div>
-
-    )
-  }
+  )
+  
 }

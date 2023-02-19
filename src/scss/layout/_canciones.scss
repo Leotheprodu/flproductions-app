@@ -1,0 +1,30 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.instrumentales{
+    margin-top: 9rem;
+    h2{
+        color: v.$secundario;
+        margin-bottom: 1rem;
+    }
+}
+
+
+.canciones__filtros{
+    display: grid ;
+    gap: 2rem;
+    @include m.tablet {
+        grid-template-columns: .5fr 1fr 1fr;
+        
+    }
+}
+
+.instrumentales__destacados{
+    background-color: v.$secundario;
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+    h2{
+        color: v.$blanco;
+        margin-bottom: 1rem;
+    }
+}

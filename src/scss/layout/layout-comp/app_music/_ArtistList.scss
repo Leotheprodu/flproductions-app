@@ -1,16 +1,70 @@
 @use 'base/mixins' as m;
 @use 'base/variables' as v;
-
+.ArtistList__Main{
+    display: flex;
+    flex-direction: column;
+    box-shadow: 1px 1px 40px #00000018;
+    height: 100%;
+    align-items: center;
+    h4{
+        color: v.$secundario;
+        margin: 0;
+    }
+}
 .ArtistList{
     display: flex;
     gap: .5rem;
     flex-flow: wrap;
-    justify-content: center;
+    justify-content:left;;
     align-items: center;
-    margin: 10rem 1rem;
+    margin: 2rem 2rem;
 
-    a{
-        background-color: rgba(0, 0, 0, 0.075);
-        padding: 1.5rem;
+    p{
+        background-color: v.$primario;
+        padding: .2rem;
+        margin: 0;
+        color: v.$blanco;
+        font-size: 1.4rem;
+        border-radius: 2px;
+        cursor: pointer;
+    }
+    option{
+        background-color: v.$primario;
+        padding: .4rem;
+        margin: 0;
+        color: v.$blanco;
+        font-size: 1.6rem;
+        border-radius: 2px;
+        cursor: pointer;
+    }
+}
+
+.ArtistList__reset{
+
+    display: grid;
+    
+    gap: .2rem;
+    justify-content:center;
+    align-items: center;
+    margin: 2rem 2rem;
+    @include m.tablet {
+        grid-column: 1/4;
+    }
+    p{
+        background-color: v.$secundario;
+        display: flex;
+        justify-content:center;
+        align-items: center;
+        padding: .2rem;
+        margin: 0;
+        color: v.$blanco;
+        width: 15rem;
+        height: 4rem;
+        font-size: 1.4rem;
+        border-radius: 2px;
+        cursor: pointer;
+        
+        text-transform: uppercase;
+        
     }
 }
