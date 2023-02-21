@@ -2,7 +2,7 @@
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider} from 'react-router-dom';
 import { HomePage, ContactPage, Canciones, AboutPage, Instrumentales, Root, ErrorPage } from './pages';
-import '../css/app.css';
+import '../../build_main/css/app.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { SongDetail, ArtistDetail, InstrumentalDetail, ProducerDetail, } from "./components";
 

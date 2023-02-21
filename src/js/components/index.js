@@ -1,7 +1,7 @@
 
 
 /* Structure pages */
-export * from './header';
+export * from './BannerSlider';
 export * from './header__nav';
 export * from './social-icons';
 export * from './info-card';
@@ -25,9 +25,6 @@ export * from './app_music/BotonesAppMusic';
 export * from './app_music/ArtistList';
 export * from './app_music/GenreList';
 export * from './app_music/StyleList';
-
-/* BeatPlayer */
-export * from './beat_player/BeatPlayer';
 
 /* Hooks personalizados */
 export * from './hooks/useHandleAppMusic';

@@ -1,10 +1,12 @@
 import PropTypes from 'prop-types'
 
-export function Header ({imgLink, pagina}) {
-
+export function BannerSlider ({datos}) {
+const {img_link, link, titulo, descripcion} = datos
   return (
 
-    <div className={"header"+" "+pagina+"-contenedor"}>
+    
+
+    <div className="BannerSlider">
 
       <div>
         
@@ -21,15 +23,15 @@ export function Header ({imgLink, pagina}) {
   )
 
 }
-Header.propTypes = {
+BannerSlider.propTypes = {
     
   pagina: PropTypes.string.isRequired,
   imgLink: PropTypes.string.isRequired,
   
 }
-Header.defaultProps = {
+BannerSlider.defaultProps = {
 
-  imgLink: "https://flproductionscr.com/build_main/img/header-main.png",
+  imgLink: "../../build_main/img/header-main.png",
   pagina: "default",
 
 }
