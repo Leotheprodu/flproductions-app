@@ -130,7 +130,9 @@
     position: absolute;
     right: -1rem;
     top: 1.3rem;
+    box-shadow: 2px 2px 2px #0000001f;
     a:hover{
         color: v.$primario;
     }
 }
+

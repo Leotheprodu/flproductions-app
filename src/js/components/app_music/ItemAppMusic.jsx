@@ -1,4 +1,5 @@
 
+import { IconPlayerPlayFilled } from '@tabler/icons-react';
 import ReactPlayer from 'react-player';
 import { BotonesAppMusic } from '..';
 
@@ -41,9 +42,11 @@ export const ItemAppMusic = ({ playing, infoProduccion, selectedSong, idComp, id
 
             {(song.id !== infoProduccion.id || (song.id === infoProduccion.id && idComp !== idCompActual) || (song.id === infoProduccion.id && idComp === idCompActual && ended)) && 
             <div className='ItemAppMusic__imagen'>
+                <div className='ItemAppMusic__playboton'>
+                    <IconPlayerPlayFilled size={60}/>
+                </div>
                 <img src={`https://img.youtube.com/vi/${song.youtube_id}/mqdefault.jpg`} alt={`imagen de ${song.nombre}`} />
             </div>}
-
             <div className="ItemAppMusic__texto">
 
                 <div className='ItemAppMusic__texto__titulo'>

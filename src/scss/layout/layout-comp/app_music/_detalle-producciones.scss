@@ -51,8 +51,10 @@
     padding: 2rem;
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     justify-content: center;
     gap: 2rem;
+    
     p{
         background-color: v.$secundario;
         color:v.$blanco;

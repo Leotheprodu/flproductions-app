@@ -43,6 +43,17 @@ export const fotosDelEstudio = [
         title: 'Setup del estudio, Bajo Yamaha'
     },
 
+]
+
+export const mainBannerSlider = [
+    {
+        
+        img_link: 'https://flproductionscr.com/build_main/img/banners/music/28.webp',
+        link:'/instrumentales/28',
+        title:'Nuevo Beat: "Bichote"',
+        description: '¡Nuevo instrumental de trap latino disponible ahora! Consigue "Bichote" y lleva tu música al siguiente nivel con su distintivo ritmo que combina lo tradicional y lo moderno. ¡Obtén este instrumento imprescindible para tu próxima canción hoy mismo!',
+    },
+
 
 
 ]

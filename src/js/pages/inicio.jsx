@@ -1,6 +1,7 @@
 import { IconVideo, IconMicrophone, IconZoomMoney } from '@tabler/icons';
 import { HelmetProvider } from 'react-helmet-async';
-import { PalabrasDelEquipo, SimpleText, InfoCard, FormulariodeContacto, NuestrasCaracteristicas, Testimonio, MetaInjector } from '../components';
+import { BannerSlider,PalabrasDelEquipo, SimpleText, InfoCard, FormulariodeContacto, NuestrasCaracteristicas, Testimonio, MetaInjector } from '../components';
+import { mainBannerSlider } from '../components/database/database';
 
 const InfoCardSize = 40
 const infoCardStroke = 2
@@ -21,7 +22,10 @@ export function HomePage() {
         keywords='musica, artistas, estudio de grabacion, produccion musical, beats, costa rica'
         robots='index, follow'
       />
-      
+      <BannerSlider 
+        datos={mainBannerSlider}
+      />
+
       <div className='contenedor'>
         <SimpleText 
           tipo={1} 

@@ -1048,6 +1048,7 @@ img {
   position: absolute;
   right: -1rem;
   top: 1.3rem;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1215686275);
 }
 .header__submenu-parent:hover .header__submenu a:hover,
 .header__submenu-parent[aria-expanded=true] .header__submenu a:hover {
@@ -1271,6 +1272,52 @@ img {
   transform: scale(1.05);
 }
 
+.BannerSlider {
+  display: flex;
+}
+
+.BannerSlider__div {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-attachment: fixed;
+}
+
+.BannerSlider__div-texto {
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.575);
+  max-width: 50%;
+  min-width: 30rem;
+  padding: 2rem;
+  border-radius: 2rem;
+}
+@media (min-width: 768px) {
+  .BannerSlider__div-texto {
+    margin-top: 20rem;
+  }
+}
+.BannerSlider__div-texto h2 {
+  color: #ebc246;
+  margin: 0;
+}
+.BannerSlider__div-texto p {
+  color: #FFFFFF;
+  font-size: 1.7rem;
+  padding: 0;
+}
+.BannerSlider__div-texto a {
+  font-size: 2rem;
+  background-color: #FFFFFF;
+  width: 19rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  text-align: center;
+  margin: 0 auto;
+}
+
 .artist-detail__title {
   margin-top: 6rem;
 }
@@ -1342,6 +1389,7 @@ img {
   padding: 2rem;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 2rem;
 }
@@ -1394,16 +1442,16 @@ img {
   height: 27rem;
   align-items: center;
   justify-content: start;
-  transition: transform 1s;
+  transition: box-shadow 1s;
   border-radius: 2rem;
 }
 .ItemAppMusic:hover {
-  transform: scale(1.01);
-  box-shadow: 4px 2px 5px rgba(0, 0, 0, 0.0352941176);
+  box-shadow: 1px 1px 1rem #ebc246;
 }
 .ItemAppMusic .ItemAppMusic__imagen {
   height: 18rem;
   width: 25rem;
+  position: relative;
 }
 .ItemAppMusic img {
   height: 100%;
@@ -1411,6 +1459,21 @@ img {
   object-fit: cover;
   border-top-left-radius: 2rem;
   border-top-right-radius: 2rem;
+}
+.ItemAppMusic .ItemAppMusic__playboton {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  justify-content: center;
+  flex-direction: column;
+  top: 7.5rem;
+  left: 10rem;
+  color: #ebc246;
+  transition: box-shadow 1s;
+  box-shadow: 1px 1px 0.7rem #ebc246;
+}
+.ItemAppMusic .ItemAppMusic__playboton:hover {
+  box-shadow: 1px 1px 3rem #1ab5e6;
 }
 
 .ItemAppMusic__texto {

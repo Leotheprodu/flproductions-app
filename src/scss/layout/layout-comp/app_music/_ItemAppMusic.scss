@@ -9,17 +9,18 @@
     height: 27rem;
     align-items: center;
     justify-content: start;
-    transition: transform 1s;
+    transition: box-shadow 1s;
     border-radius: 2rem;
     
 
     &:hover {
-        transform: scale(1.01);
-        box-shadow: 4px 2px 5px #00000009;
+        box-shadow: 1px 1px 1rem v.$secundario;
+    
     }
     .ItemAppMusic__imagen{
         height: 18rem;
         width: 25rem;
+        position: relative;
     }
 
     img {
@@ -30,8 +31,24 @@
         border-top-right-radius: 2rem;
 
     }
+    
 
     
+    .ItemAppMusic__playboton{
+        display: flex;
+        align-items: center;
+        position: absolute;
+        justify-content: center;
+        flex-direction: column;
+        top: 7.5rem;
+        left: 10rem;
+        color: v.$secundario;
+        transition: box-shadow 1s;
+        box-shadow: 1px 1px .7rem v.$secundario;
+        &:hover{
+            box-shadow: 1px 1px 3rem v.$primario;
+        }
+    }
 }
 .ItemAppMusic__texto {
     position: relative;
