@@ -35,7 +35,7 @@ export const Instrumentales = () => {
       />
       <div className='instrumentales'>
 
-        <div className='canciones__filtros contenedor-basic center'>
+        <div className='canciones__filtros contenedor-basic contenedor'>
           <StyleList listadoCanciones={produccionesArtistas} tipo_obra_general={tipo_obra_general} setProduccioneFiltradas={setProduccioneFiltradas} produccioneFiltradas={produccioneFiltradas} />
 
           <GenreList listadoCanciones={produccionesArtistas} tipo_obra_general={tipo_obra_general} setProduccioneFiltradas={setProduccioneFiltradas} produccioneFiltradas={produccioneFiltradas} />
@@ -46,7 +46,7 @@ export const Instrumentales = () => {
 
 
 
-        <div className='contenedor-basic'>
+        <div className='contenedor-basic contenedor'>
 
           <AppMusic
             songArray={produccioneFiltradas}

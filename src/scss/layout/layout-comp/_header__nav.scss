@@ -9,7 +9,10 @@
 }
 
 .header__nav {
-    /* position: fixed; */
+    position: fixed;
+    top: 0;
+    left: 0;
+
     flex-direction: column;
     width: 100%;
     display: flex;
@@ -17,6 +20,8 @@
     color: v.$blanco;
     justify-content: center;
     height: 6rem;
+    z-index: 3;
+    
 
     @include m.tablet {
         flex-direction: row;

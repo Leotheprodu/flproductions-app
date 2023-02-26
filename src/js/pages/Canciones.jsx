@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from 'react';
 import { HelmetProvider } from 'react-helmet-async';
-import { StyleList,GenreList, AppMusic, useHandleAppMusic, useProducciones_HTTP_Fetch, MetaInjector, ArtistList } from '../components';
+import { StyleList, GenreList, AppMusic, useHandleAppMusic, useProducciones_HTTP_Fetch, MetaInjector, ArtistList } from '../components';
 
 export function Canciones() {
     const tipo_obra_general = 0
@@ -16,14 +16,14 @@ export function Canciones() {
         if (producciones_HTTP_Fetch) {
             setProduccioneFiltradas(produccionesArtistas);
         }
-      }, [producciones_HTTP_Fetch]);
+    }, [producciones_HTTP_Fetch]);
 
     //ESTE HOOK MANEJA EL REPRODUCTOR DE AUDIO PARA QUE REPRODUZCA UNA CANCION A LA VEZ
     const [playing, setPlaying, pause, setPause, infoProduccion, idCompActual, ended, setEnded, progressDuration, setprogressDuration, progress, setProgress, clickInfoButton, setClickInfoButton, selectedSong] = useHandleAppMusic();
-    
+
     return (
-        
-        
+
+
         <HelmetProvider>
 
             <MetaInjector
@@ -36,46 +36,46 @@ export function Canciones() {
                 robots='index, follow'
             />
 
-            
 
-                <div className='instrumentales__destacados'>
 
-                <div>
+            <div className='instrumentales__destacados '>
+
+                <div className='contenedor'>
                     <h2>Destacados</h2>
                 </div>
 
-                <AppMusic 
+                <AppMusic
                     songArray={produccionesDestacadas}
-                    playing ={playing}
+                    playing={playing}
                     infoProduccion={infoProduccion}
-                    selectedSong = {selectedSong}
-                    idComp = {1}
-                    idCompActual = {idCompActual}
-                    pause ={pause}
-                    setPause ={setPause}
-                    ended = {ended}
-                    setEnded = {setEnded}
-                    setPlaying = {setPlaying}
-                    progressDuration = {progressDuration}
-                    setprogressDuration = {setprogressDuration}
-                    progress = {progress}
-                    setProgress = {setProgress}
-                    clickInfoButton ={clickInfoButton}
-                    setClickInfoButton ={setClickInfoButton}
-                    tipo_obra_general = {tipo_obra_general}
-                    
-                    
+                    selectedSong={selectedSong}
+                    idComp={1}
+                    idCompActual={idCompActual}
+                    pause={pause}
+                    setPause={setPause}
+                    ended={ended}
+                    setEnded={setEnded}
+                    setPlaying={setPlaying}
+                    progressDuration={progressDuration}
+                    setprogressDuration={setprogressDuration}
+                    progress={progress}
+                    setProgress={setProgress}
+                    clickInfoButton={clickInfoButton}
+                    setClickInfoButton={setClickInfoButton}
+                    tipo_obra_general={tipo_obra_general}
+
+
                 />
-                </div>
-            <div className='contenedor-basic instrumentales'>
+            </div>
+            <div className='contenedor-basic instrumentales contenedor'>
 
                 <div className='canciones__filtros contenedor-basic center'>
-                    <StyleList listadoCanciones={produccionesArtistas} tipo_obra_general={tipo_obra_general} setProduccioneFiltradas = {setProduccioneFiltradas} produccioneFiltradas={produccioneFiltradas}/>
+                    <StyleList listadoCanciones={produccionesArtistas} tipo_obra_general={tipo_obra_general} setProduccioneFiltradas={setProduccioneFiltradas} produccioneFiltradas={produccioneFiltradas} />
 
-                    <GenreList listadoCanciones={produccionesArtistas} tipo_obra_general={tipo_obra_general} setProduccioneFiltradas = {setProduccioneFiltradas} produccioneFiltradas={produccioneFiltradas}/>
+                    <GenreList listadoCanciones={produccionesArtistas} tipo_obra_general={tipo_obra_general} setProduccioneFiltradas={setProduccioneFiltradas} produccioneFiltradas={produccioneFiltradas} />
 
-                    <ArtistList listadoCanciones={produccionesArtistas} tipo_obra_general={tipo_obra_general} setProduccioneFiltradas = {setProduccioneFiltradas} produccioneFiltradas={produccioneFiltradas} />
-                    
+                    <ArtistList listadoCanciones={produccionesArtistas} tipo_obra_general={tipo_obra_general} setProduccioneFiltradas={setProduccioneFiltradas} produccioneFiltradas={produccioneFiltradas} />
+
                 </div>
                 <div>
 
@@ -83,32 +83,32 @@ export function Canciones() {
 
                 </div>
 
-                <AppMusic 
+                <AppMusic
                     songArray={produccioneFiltradas}
-                    playing ={playing}
+                    playing={playing}
                     infoProduccion={infoProduccion}
-                    selectedSong = {selectedSong}
-                    idComp = {2}
-                    idCompActual = {idCompActual}
-                    pause ={pause}
-                    setPause ={setPause}
-                    ended = {ended}
-                    setEnded = {setEnded}
-                    setPlaying = {setPlaying}
-                    progressDuration = {progressDuration}
-                    setprogressDuration = {setprogressDuration}
-                    progress = {progress}
-                    setProgress = {setProgress}
-                    clickInfoButton ={clickInfoButton}
-                    setClickInfoButton ={setClickInfoButton}
-                    tipo_obra_general = {tipo_obra_general}
+                    selectedSong={selectedSong}
+                    idComp={2}
+                    idCompActual={idCompActual}
+                    pause={pause}
+                    setPause={setPause}
+                    ended={ended}
+                    setEnded={setEnded}
+                    setPlaying={setPlaying}
+                    progressDuration={progressDuration}
+                    setprogressDuration={setprogressDuration}
+                    progress={progress}
+                    setProgress={setProgress}
+                    clickInfoButton={clickInfoButton}
+                    setClickInfoButton={setClickInfoButton}
+                    tipo_obra_general={tipo_obra_general}
                 />
             </div>
 
         </HelmetProvider>
 
 
-        
+
     )
 
 }

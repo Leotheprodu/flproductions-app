@@ -51,8 +51,11 @@ export const ItemAppMusic = ({ playing, infoProduccion, selectedSong, idComp, id
 
                 <div className='ItemAppMusic__texto__titulo'>
                     <p className="ItemAppMusic__texto-1">{song.nombre}</p>
-                    <p className="ItemAppMusic__texto-1">-</p>
+                    {
+                    tipo_obra_general === 0 &&
                     <p className="ItemAppMusic__texto-2">{`${song.nombre_artista}`}</p>
+                }
+                    
                 </div>
                 {
                     tipo_obra_general === 1 &&

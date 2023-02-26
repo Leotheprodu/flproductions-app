@@ -82,6 +82,8 @@ export function AboutPage () {
                   setProgress = {setProgress}
                   clickInfoButton ={clickInfoButton}
                   setClickInfoButton ={setClickInfoButton}
+                  tipo_obra_general = {tipo_obra_general}
+
                       
                       
               />

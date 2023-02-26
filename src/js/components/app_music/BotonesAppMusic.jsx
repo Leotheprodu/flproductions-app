@@ -69,13 +69,13 @@ export const BotonesAppMusic = ({ clickInfoButton, infoProduccion, handleInfoBut
 
                 <IconDotsVertical />
             </button>
-            <button
+            {/* <button
                 className="BotonesAppMusic__boton-stop-listadoproducciones"
                 onClick={handleStopButtonClick}
 
             >
                 <IconPlayerStop />
-            </button>
+            </button> */}
             <input
                 type="range"
                 min={0}
@@ -93,6 +93,9 @@ export const BotonesAppMusic = ({ clickInfoButton, infoProduccion, handleInfoBut
 
                 {!pause ? <IconPlayerPause /> : <IconPlayerPlay />}
             </button>
+            <div className="BotonesAppMusic__barra-de-progreso">
+                
+            </div>
             <p className="BotonesAppMusic__progressduration-listadoproducciones">{progressDuration}</p>
             <input
                 type="range"

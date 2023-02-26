@@ -6,7 +6,7 @@ const [duration, volume, setVolume, playerRef, handleStopButtonClick, handlePlay
 
     return (
         
-        <div className="AppMusic">
+        <div className="AppMusic contenedor">
 
             {
                 
