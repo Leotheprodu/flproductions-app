@@ -1058,6 +1058,21 @@ img {
   color: #1ab5e6;
 }
 
+.boton_usuarios {
+  position: relative;
+}
+.boton_usuarios .boton_usuarios_login {
+  display: none;
+  background-color: white;
+  position: absolute;
+  top: 3rem;
+  padding: 3rem;
+}
+
+.boton_usuarios:hover .boton_usuarios_login {
+  display: flex;
+}
+
 .simple-text_info {
   display: flex;
   flex-direction: column;
@@ -1516,9 +1531,10 @@ img {
 
 .ItemAppMusic.selected {
   z-index: 2;
-  background-color: #FFFFFF;
-  transform: scale(1.1);
-  box-shadow: 2px 2px 1rem rgba(0, 0, 0, 0.1764705882);
+  /* background-color: v.$blanco; */
+  transform: scale(1.5);
+  margin-bottom: 5rem;
+  box-shadow: 2px 2px 1rem rgba(0, 0, 0, 0.9843137255);
 }
 
 .ItemAppMusic__player-wrapper {
@@ -1633,12 +1649,12 @@ img {
   position: absolute;
   display: flex;
   align-items: flex-start;
-  right: -2rem;
-  top: -2.9rem;
+  right: -3rem;
+  top: -3.8rem;
   height: 9rem;
   width: 18rem;
   z-index: 5;
-  background-color: rgba(255, 255, 255, 0.884);
+  background-color: rgb(234, 234, 234);
   border-radius: 1rem;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1568627451);
 }
@@ -1677,7 +1693,7 @@ img {
   align-items: center;
   border: none;
   background: none;
-  color: #ebc246;
+  color: #1ab5e6;
 }
 .BotonesAppMusic__boton-info-reproductor:hover {
   cursor: pointer;

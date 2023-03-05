@@ -1,6 +1,7 @@
-import { IconPlayerPlay } from '@tabler/icons';
+import { IconLogin, IconPlayerPlay } from '@tabler/icons';
 import { NavLink, Link } from 'react-router-dom';
 import { SocialIcons } from './social-icons';
+import Login from './users/Login';
 
 
 
@@ -22,8 +23,15 @@ export function NavMenu() {
                 />
               </div>
 
+
             </div>
 
+              <div className='boton_usuarios'>
+                <IconLogin/>
+                <div className='boton_usuarios_login'>
+                  <Login/>
+                </div>
+              </div>
             <nav className='header__links'>
               <NavLink to='/' end className='header__links__link'>Inicio</NavLink>
               <NavLink to='/nosotros' className='header__links__link'>Nosotros</NavLink>

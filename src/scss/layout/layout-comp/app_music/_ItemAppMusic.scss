@@ -92,9 +92,10 @@
 }
 .ItemAppMusic.selected {
     z-index: 2;
-    background-color: v.$blanco;
-    transform: scale(1.1);
-    box-shadow: 2px 2px 1rem #0000002d;
+    /* background-color: v.$blanco; */
+    transform: scale(1.5);
+    margin-bottom: 5rem;
+    box-shadow: 2px 2px 1rem #000000fb;
 }
 .ItemAppMusic__player-wrapper {
     position: relative; 

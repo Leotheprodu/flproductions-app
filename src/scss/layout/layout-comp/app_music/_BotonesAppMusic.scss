@@ -109,12 +109,12 @@
     position: absolute;
     display: flex;
     align-items:flex-start;
-    right: -2rem;
-    top: -2.9rem;
+    right: -3rem;
+    top: -3.8rem;
     height: 9rem;
     width: 18rem;
     z-index: 5;
-    background-color: rgba(255, 255, 255, 0.884);
+    background-color: rgb(234, 234, 234);
     border-radius: 1rem;
     box-shadow: 2px 2px 6px #00000028;
     ul {
@@ -156,7 +156,7 @@
     align-items: center;
     border: none;
     background: none;
-    color: v.$secundario;
+    color: v.$primario;
     
     &:hover{
         cursor: pointer;

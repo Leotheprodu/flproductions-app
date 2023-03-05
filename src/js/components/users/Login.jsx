@@ -1,50 +1,93 @@
-import React, { useState } from "react";
+import { useState, useEffect } from "react";
 
 function Login() {
-    const [email, setUsername] = useState("");
+    const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-
-    function handleEmailChange(event) {
-        setUsername(event.target.value);
-    }
-
-    function handlePasswordChange(event) {
-        setPassword(event.target.value);
-    }
-
-    function handleSubmit(event) {
-        event.preventDefault();
-
-        // Enviamos la información de inicio de sesión al servidor
-        fetch("/api/login", {
-            method: "POST",
-            body: JSON.stringify({ email, password }),
-            headers: {
-                "Content-Type": "application/json"
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    
+    useEffect(() => {
+        checkLoggedIn();
+    }, []);
+    
+    const checkLoggedIn = () => {
+        fetch("http://localhost:5000/api/check-session")
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data)
+            if (data.isLoggedIn) {
+                setIsLoggedIn(true);
             }
-        }).then(response => {
-            // Manejamos la respuesta del servidor
-            if (response.ok) {
-                console.log("Inicio de sesión exitoso!");
-            } else {
-                console.error("Inicio de sesión fallido.");
-            }
+        })
+        .catch((error) => {
+            console.log(error);
         });
-    }
+    };
+    
+    const handleLogin = () => {
+        fetch("http://localhost:5000/api/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email, password }),
+        })
+        .then((res) => res.json())
+        .then((data) => {
+            setIsLoggedIn(true);
+            console.log(data);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+    };
+    
+    const handleLogout = () => {
+        fetch("http://localhost:5000/api/logout", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                setIsLoggedIn(false);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    };
 
-    return (
-        <form onSubmit={handleSubmit}>
-            <label>
-                Nombre de usuario:
-                <input type="text" value={email} onChange={handleEmailChange} />
-            </label>
-            <label>
-                Contraseña:
-                <input type="password" value={password} onChange={handlePasswordChange} />
-            </label>
-            <button type="submit">Iniciar sesión</button>
-        </form>
-    );
+    if (isLoggedIn) {
+        return (
+            <div>
+                <p>Bienvenido, has iniciado sesión exitosamente.</p>
+                <button onClick={handleLogout}>Cerrar sesión</button>
+            </div>
+        );
+    } else {
+        return (
+            <div>
+                <label>
+                    Correo electrónico:
+                    <input
+                        type="text"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                </label>
+                <label>
+                    Contraseña:
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                </label>
+                <button onClick={handleLogin}>Iniciar sesión</button>
+            </div>
+        );
+    }
 }
 
 export default Login;
