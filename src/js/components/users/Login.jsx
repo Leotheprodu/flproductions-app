@@ -28,7 +28,9 @@ function Login() {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
+                
             },
+            credentials: "include",
             body: JSON.stringify({ email, password }),
         })
         .then((res) => res.json())
@@ -45,8 +47,8 @@ function Login() {
         fetch("http://localhost:5000/api/logout", {
             method: "POST",
             headers: {
-                "Content-Type": "application/json",
-            },
+                "Content-Type": "application/json"
+            }
         })
             .then((res) => res.json())
             .then((data) => {
