@@ -10,7 +10,9 @@ function Login() {
     }, []);
     
     const checkLoggedIn = () => {
-        fetch("http://localhost:5000/api/check-session")
+        fetch("http://localhost:5000/api/check-session", { 
+            credentials: "include",
+        })
         .then((res) => res.json())
         .then((data) => {
             console.log(data)
@@ -26,11 +28,11 @@ function Login() {
     const handleLogin = () => {
         fetch("http://localhost:5000/api/login", {
             method: "POST",
+            credentials: "include",
             headers: {
                 "Content-Type": "application/json",
                 
             },
-            credentials: "include",
             body: JSON.stringify({ email, password }),
         })
         .then((res) => res.json())
@@ -46,6 +48,7 @@ function Login() {
     const handleLogout = () => {
         fetch("http://localhost:5000/api/logout", {
             method: "POST",
+            credentials: "include",
             headers: {
                 "Content-Type": "application/json"
             }
