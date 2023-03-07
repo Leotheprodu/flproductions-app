@@ -47,7 +47,7 @@ p {
 }
 
 .contenedor-main {
-    min-height: 100vh;
+    padding-top: 6rem;
     position: relative;
 }
 
@@ -119,4 +119,9 @@ img {
     margin: 0 auto;
     max-height: 50rem;
     overflow: hidden;
+}
+
+input{
+    border: 0;
+    margin: .5rem;
 }

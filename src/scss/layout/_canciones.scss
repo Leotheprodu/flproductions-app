@@ -11,6 +11,7 @@
 
 
 .canciones__filtros{
+    margin-bottom: 10rem;
     display: grid ;
     gap: 2rem;
     @include m.tablet {

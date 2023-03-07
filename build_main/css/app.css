@@ -349,7 +349,7 @@ p {
 }
 
 .contenedor-main {
-  min-height: 100vh;
+  padding-top: 6rem;
   position: relative;
 }
 
@@ -414,6 +414,11 @@ img {
   margin: 0 auto;
   max-height: 50rem;
   overflow: hidden;
+}
+
+input {
+  border: 0;
+  margin: 0.5rem;
 }
 
 .fxElement {
@@ -593,6 +598,7 @@ img {
 }
 
 .canciones__filtros {
+  margin-bottom: 10rem;
   display: grid;
   gap: 2rem;
 }
@@ -936,15 +942,11 @@ img {
   }
 }
 
-.active {
-  font-weight: bold;
-  text-decoration: underline;
-}
-
 .header__nav {
   position: fixed;
   top: 0;
   left: 0;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.341);
   flex-direction: column;
   width: 100%;
   display: flex;
@@ -955,22 +957,32 @@ img {
   z-index: 3;
   /* margin: 0 0 1rem 0; */
 }
+.header__nav button {
+  appearance: none;
+  border: none;
+  color: #1ab5e6;
+  border-radius: 3px;
+}
+.header__nav button:active {
+  transform: scale(0.9);
+}
 @media (min-width: 768px) {
   .header__nav {
     flex-direction: row;
   }
 }
 .header__nav .header__web-tittle {
-  display: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
   font-size: 2.8rem;
-  padding-left: 10rem;
   margin: 0;
-  color: #ebc246;
+  color: #FFFFFF;
 }
 @media (min-width: 768px) {
   .header__nav .header__web-tittle {
-    display: flex;
-    align-items: center;
+    padding-left: 10rem;
   }
 }
 @media (min-width: 768px) {
@@ -979,6 +991,24 @@ img {
     justify-content: space-between;
   }
 }
+.header__nav .header__links__movil {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  font-size: 1.4rem;
+  z-index: 5;
+  order: 0;
+  height: 20rem;
+  width: 100%;
+  background-color: #ebc246;
+  position: absolute;
+  top: 6rem;
+}
+.header__nav .header__links__movil a:hover {
+  color: #FFFFFF;
+}
 .header__nav .header__links {
   display: flex;
   align-items: center;
@@ -986,12 +1016,7 @@ img {
   gap: 2rem;
   font-size: 1.4rem;
   z-index: 1;
-  order: -1;
-}
-@media (min-width: 768px) {
-  .header__nav .header__links {
-    order: 0;
-  }
+  order: 0;
 }
 .header__nav .header__links .header__links__link {
   color: #FFFFFF;
@@ -1005,7 +1030,11 @@ img {
   transition-property: color;
   transition-duration: 1s;
   transition-timing-function: ease-out;
-  color: #ebc246;
+}
+@media (min-width: 768px) {
+  .header__nav .header__links .header__links__link:hover {
+    color: #ebc246;
+  }
 }
 .header__nav .header__links .header__links__link__musica {
   color: #FFFFFF;
@@ -1015,12 +1044,35 @@ img {
   transition-timing-function: ease-out;
   margin: 0;
 }
+.header__nav .header__links .header__links__link__musica span {
+  position: absolute;
+  left: -1.5rem;
+  top: 1px;
+  transform: rotate(0deg);
+  transition: transform 0.5s;
+}
 .header__nav .header__links .header__links__link__musica:hover {
   cursor: pointer;
   transition-property: color;
   transition-duration: 1s;
   transition-timing-function: ease-out;
   color: #ebc246;
+}
+.header__nav .header__links .header__links__link__musica:hover span {
+  transform: rotate(90deg);
+  left: -1.7rem;
+}
+
+.active {
+  padding: 0.5rem;
+  box-shadow: 1px 3px 5px rgba(0, 0, 0, 0.197);
+  color: #FFFFFF;
+  border-radius: 5px;
+}
+@media (min-width: 768px) {
+  .active {
+    color: #ebc246;
+  }
 }
 
 .header__submenu {
@@ -1058,19 +1110,66 @@ img {
   color: #1ab5e6;
 }
 
-.boton_usuarios {
-  position: relative;
+.header__nav_boton_usuarios {
+  /* position: relative; */
+  display: flex;
 }
-.boton_usuarios .boton_usuarios_login {
-  display: none;
-  background-color: white;
+.header__nav_boton_usuarios .header__nav_boton {
+  z-index: 5;
   position: absolute;
-  top: 3rem;
-  padding: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 1.2rem;
+  right: 90%;
+  cursor: pointer;
+  color: #ebc246;
+  background-color: #1ab5e6;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  box-shadow: 1px 1px 1rem rgba(0, 0, 0, 0);
+  transition: transform 0.1s;
+  transition: box-shadow 0.1s;
+}
+@media (min-width: 768px) {
+  .header__nav_boton_usuarios .header__nav_boton {
+    bottom: -0.5rem;
+    right: 46%;
+  }
+}
+.header__nav_boton_usuarios .header__nav_boton:hover {
+  box-shadow: 1px 1px 1rem rgba(0, 0, 0, 0.103);
+}
+.header__nav_boton_usuarios .header__nav_boton:active {
+  transform: scale(0.9);
+}
+.header__nav_boton_usuarios .header__nav_boton_usuarios_login {
+  display: flex;
+  background-color: white;
+  padding: 0.5rem;
+  z-index: 1;
+  width: 100%;
+  height: 7rem;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  background-color: #ebc246;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.125);
+}
+@media (min-width: 768px) {
+  .header__nav_boton_usuarios .header__nav_boton_usuarios_login {
+    left: 25%;
+    width: 50%;
+    height: 7rem;
+  }
 }
 
-.boton_usuarios:hover .boton_usuarios_login {
-  display: flex;
+.menu_celular {
+  position: absolute;
+  right: 1rem;
 }
 
 .simple-text_info {
@@ -1687,8 +1786,8 @@ img {
 
 .BotonesAppMusic__boton-info-reproductor {
   position: absolute;
-  bottom: 7rem;
-  right: -5rem;
+  bottom: 8rem;
+  right: -4.5rem;
   display: flex;
   align-items: center;
   border: none;
@@ -1767,4 +1866,81 @@ img {
   border-radius: 2px;
   cursor: pointer;
   text-transform: uppercase;
+}
+
+.login_container {
+  min-width: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: left;
+  text-align: left;
+}
+@media (min-width: 768px) {
+  .login_container {
+    flex-direction: row;
+  }
+}
+.login_container p {
+  position: absolute;
+  left: 0;
+  margin: 0;
+  text-align: center;
+  color: #FFFFFF;
+}
+.login_container label {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  height: 3rem;
+  width: 20rem;
+}
+.login_container input {
+  appearance: none;
+  border-radius: 5px;
+  min-width: 20rem;
+  font-size: 1.4rem;
+}
+@media (min-width: 768px) {
+  .login_container input {
+    min-width: 20rem;
+    max-width: 20rem;
+  }
+}
+.login_container button {
+  display: flex;
+  position: absolute;
+  right: 1rem;
+  top: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  height: 3rem;
+  width: 3rem;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1215686275);
+  color: #1ab5e6;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+  transition: transform 0.5s;
+  cursor: pointer;
+}
+.login_container button:active {
+  opacity: 0.5;
+  transform: scale(1.9);
+}
+.login_container button:hover {
+  opacity: 0.9;
+}
+
+.login_container_input {
+  display: flex;
+  flex-direction: row;
+  width: 5rem;
+}
+@media (min-width: 768px) {
+  .login_container_input {
+    width: 22rem;
+    flex-direction: column;
+  }
 }

@@ -14,7 +14,7 @@ export function Footer() {
 
             <div className="footer_content">
 
-                <p><span>© 2013 - {actualYear} FLProductions</span> - creado por LeotheProdu</p>
+                <p>© 2013 - {actualYear} <span>FLProductions</span> by LeotheProdu</p>
 
 
             </div>

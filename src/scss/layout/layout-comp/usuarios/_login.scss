@@ -1,0 +1,77 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.login_container{
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    position:relative;
+    justify-content: left;
+    text-align: left;
+    @include m.tablet {
+        flex-direction: row;
+    
+    }
+
+    p{
+        position: absolute;
+        left: 0;
+        margin: 0;
+        text-align: center;
+        color: v.$blanco;
+    }
+    label{
+        display: flex;
+        align-items: center;
+        justify-content: left;
+        height: 3rem;
+        width: 20rem;
+    }
+    input{
+        appearance: none;
+        border-radius: 5px;
+        min-width: 20rem;
+        font-size: 1.4rem;
+        @include m.tablet {
+            min-width: 20rem;
+            max-width: 20rem;
+
+            
+        }
+    }
+    button{
+        display: flex;
+        position: absolute;
+        right: 1rem;
+        top: 1.5rem;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        border-radius: 50%;
+        height: 3rem;
+        width: 3rem;
+        box-shadow: 2px 2px 2px #0000001f;
+        color: v.$primario;
+        opacity: 1;
+        transition: opacity 0.3s ease-in-out;
+        transition: transform .5s;
+        cursor: pointer;
+        &:active {
+            opacity: .5;
+            transform: scale(1.9);
+        }
+        &:hover {
+            opacity: .9;
+        }
+    }
+
+}
+.login_container_input{
+    display: flex;
+    flex-direction: row;
+    width: 5rem;
+    @include m.tablet {
+        width: 22rem;
+        flex-direction: column;
+    }
+}
