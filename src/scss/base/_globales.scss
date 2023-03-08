@@ -68,13 +68,13 @@ p {
 
 a {
     text-decoration: none;
-    color: v.$primario;
+    color: v.$negro;
     transition-property: color;
     transition-duration: .3s;
     transition-timing-function: ease-out;
 
     &:hover {
-        color: v.$secundario;
+        color: rgb(61, 61, 61);
         transition-property: color;
         transition-duration: .3s;
         transition-timing-function: ease-out;
