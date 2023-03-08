@@ -5,7 +5,7 @@ html {
     font-size: 62.5%;
     box-sizing: border-box;
     /* scroll-snap-type: y proximity; */
-
+    position: relative;
 }
 
 *,
@@ -33,7 +33,6 @@ p {
     color: v.$negro;
     line-height: 1.5;
 }
-
 .contenedor {
     width: 97%;
     max-width: 125rem;

@@ -66,6 +66,7 @@ export function Canciones() {
 
 
                 />
+                
             </div>
             <div className='contenedor-basic instrumentales contenedor'>
 

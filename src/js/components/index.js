@@ -30,6 +30,7 @@ export * from './app_music/StyleList';
 export * from './hooks/useHandleAppMusic';
 export * from './hooks/useHTTP_Fetch_MyWeb';
 export * from './hooks/useHandleItemAppMusic';
+export * from './hooks/useEnvLink';
 
 /* Helpers */
 export * from './simple-text';

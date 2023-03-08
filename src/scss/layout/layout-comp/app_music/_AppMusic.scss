@@ -8,8 +8,9 @@
     gap: 1rem;
     padding: 1rem;
     flex-wrap: wrap;
-    /* flex-flow: wrap; */
-    margin-bottom: 5rem;
+    flex-flow: wrap;
+    margin-bottom: 6rem;
+    padding-bottom: 10rem;
     position: relative;
     @include m.tablet {
         justify-content: left;

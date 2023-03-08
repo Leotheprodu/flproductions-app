@@ -312,6 +312,7 @@ html {
   font-size: 62.5%;
   box-sizing: border-box;
   /* scroll-snap-type: y proximity; */
+  position: relative;
 }
 
 *,
@@ -611,7 +612,6 @@ input {
 .instrumentales__destacados {
   background-color: #ebc246;
   padding-top: 5rem;
-  padding-bottom: 3rem;
 }
 .instrumentales__destacados h2 {
   color: #FFFFFF;
@@ -855,6 +855,8 @@ input {
   display: flex;
   align-items: center;
   flex-direction: column;
+  position: absolute;
+  bottom: 0;
 }
 @media (min-width: 768px) {
   .footer {
@@ -1369,7 +1371,7 @@ input {
 }
 
 .galeria-de-imagenes {
-  margin-bottom: 2rem;
+  margin-bottom: 5rem;
   padding: 3rem;
 }
 .galeria-de-imagenes h3 {
@@ -1541,8 +1543,9 @@ input {
   gap: 1rem;
   padding: 1rem;
   flex-wrap: wrap;
-  /* flex-flow: wrap; */
-  margin-bottom: 5rem;
+  flex-flow: wrap;
+  margin-bottom: 6rem;
+  padding-bottom: 10rem;
   position: relative;
 }
 @media (min-width: 768px) {

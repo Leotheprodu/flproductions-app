@@ -67,7 +67,7 @@ export const SongDetail = () => {
                             
                         />
                 </div>
-                <img src={`../../../../../build_main/img/banners/music/${id}.webp`} alt="" />
+                <img src={`https://flproductionscr.com/build_main/img/banners/music/${id}.webp`} alt="" />
                 <DetalleProducciones infoProduccion={produccionActual[0]}/>
                 
             </div>

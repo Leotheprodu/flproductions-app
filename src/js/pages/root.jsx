@@ -7,24 +7,24 @@ import TawkMessengerReact from '@tawk.to/tawk-messenger-react';
 
 export function Root() {
 
-  return(
-    
-<>
-      <NavMenu/>
-      
+  return (
+
+    <div className='root-container'>
+      <NavMenu />
+
 
       <main className='contenedor-main'>
-      
+
         <Outlet />
-      
+
       </main>
       <div>
         <TawkMessengerReact
           propertyId="5803024f304e8e75855baa7f"
-          widgetId="default"/>
+          widgetId="default" />
       </div>
       <Footer />
-      </>
+    </div>
   )
 
 }

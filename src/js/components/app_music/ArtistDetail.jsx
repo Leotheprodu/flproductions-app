@@ -8,9 +8,9 @@ export const ArtistDetail = () => {
     const tipo_obra_general = 0
     const {artist_name} = useParams();
     const [artistaActual, setArtistaActual] = useState(null);
-    const [producciones_HTTP_Fetch] = useProducciones_HTTP_Fetch('api/artistas/producciones');
+    const [fetchProducciones] = useProducciones_HTTP_Fetch('api/artistas/producciones');
     const [artistas] = useArtistasBD('api/artistas');
-    const produccionesArtista = producciones_HTTP_Fetch.filter(element => element.nombre_artista === artist_name)
+    const produccionesArtista = fetchProducciones.filter(element => element.nombre_artista === artist_name)
     
     const [playing, setPlaying, pause, setPause, infoProduccion, idCompActual, ended, setEnded, progressDuration, setprogressDuration, progress, setProgress, clickInfoButton, setClickInfoButton, selectedSong] = useHandleAppMusic();
     

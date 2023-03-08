@@ -1,5 +1,6 @@
 import { IconLogin, IconLogout } from "@tabler/icons";
 import { useState, useEffect } from "react";
+import { useEnvLink } from "../hooks/UseEnvLink";
 
 function Login() {
     const [email, setEmail] = useState("");
@@ -7,31 +8,32 @@ function Login() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [infoSession, setInfoSession] = useState({});
     const [userInfo, setUserInfo] = useState({});
-
+    const [envLink] = useEnvLink(process.env.NODE_ENV);
+    
     useEffect(() => {
         if (isLoggedIn) {
-            fetch(`http://localhost:5000/api/usuarios/${infoSession.userId}`, { 
+            fetch(`${envLink}api/usuarios/${infoSession.userId}`, { 
                 credentials: "include",
             })
             .then((res) => res.json())
             .then((data) => {
                 if (data) {
-                    setUserInfo(data);
+                    setUserInfo(data.user_data);
 
                 }
             })
             .catch((error) => {
-                console.log(error);
+               /*  console.log(error); */
             });
         }
     }, [isLoggedIn])
     
     useEffect(() => {
         checkLoggedIn();
-    }, []);
+    }, [envLink]);
     
     const checkLoggedIn = () => {
-        fetch("http://localhost:5000/api/check-session", { 
+        fetch(`${envLink}api/check-session`, { 
             credentials: "include",
         })
         .then((res) => res.json())
@@ -42,12 +44,12 @@ function Login() {
             }
         })
         .catch((error) => {
-            console.log(error);
+            /* console.log(error); */
         });
     };
     
     const handleLogin = () => {
-        fetch("http://localhost:5000/api/login", {
+        fetch(`${envLink}api/login`, {
             method: "POST",
             credentials: "include",
             headers: {
@@ -67,12 +69,12 @@ function Login() {
 
         })
         .catch((error) => {
-            console.log(error);
+            /* console.log(error); */
         });
     };
     
     const handleLogout = () => {
-        fetch("http://localhost:5000/api/logout", {
+        fetch(`${envLink}api/logout`, {
             method: "POST",
             credentials: "include",
             headers: {
@@ -80,11 +82,11 @@ function Login() {
             }
         })
             .then((res) => res.json())
-            .then((data) => {
+            .then(() => {
                 setIsLoggedIn(false);
             })
             .catch((error) => {
-                console.log(error);
+               /*  console.log(error); */
             });
     };
 

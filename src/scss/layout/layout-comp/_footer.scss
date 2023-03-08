@@ -8,6 +8,8 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    position:absolute;
+    bottom: 0;
     @include m.tablet {
         justify-content: space-between;
         flex-direction: row;

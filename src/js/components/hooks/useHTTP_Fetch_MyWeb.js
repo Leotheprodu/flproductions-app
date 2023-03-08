@@ -1,31 +1,28 @@
 
 import { useEffect, useState } from "react";
+import { useEnvLink } from "./UseEnvLink";
 
 
 export const useProducciones_HTTP_Fetch = (url) => {
+    const [envLink] = useEnvLink(process.env.NODE_ENV);
     
     const [producciones_HTTP_Fetch, setProducciones_HTTP_Fetch] = useState([]);
     
     
-
+    
+    useEffect(() => {
         
-        useEffect(() => {
-            if (process.env.NODE_ENV === 'development') {
-            fetch(`http://localhost:5000/${url}`)
-            .then((res) => res.json())
-            .then((data) => setProducciones_HTTP_Fetch(data));
-        } else {
-            fetch(`https://flproductionscr.com/${url}`)
-            .then((res) => res.json())
-            .then((data) => setProducciones_HTTP_Fetch(data));
-        }
-        }, []);
-        return [
-
-            producciones_HTTP_Fetch
-        ] 
-
-
+        fetch(`${envLink}${url}`)
+        .then((res) => res.json())
+        .then((data) => setProducciones_HTTP_Fetch(data.producciones));
+        
+    }, [envLink]);
+    return [
+        
+        producciones_HTTP_Fetch
+    ]
+    
+    
 }
 
 
@@ -33,23 +30,18 @@ export const useProducciones_HTTP_Fetch = (url) => {
 export const useArtistasBD = (url) => {
     
     const [artistas, setArtistas] = useState([]);
-    
-    
+    const [envLink] = useEnvLink(process.env.NODE_ENV);
+
+
 
     useEffect(() => {
-        if (process.env.NODE_ENV === 'development') {
-        fetch(`http://localhost:5000/${url}`)
-        .then((res) => res.json())
-        .then((data) => setArtistas(data));
-        } else {
-            fetch(`https://flproductionscr.com/${url}`)
+        fetch(`${envLink}${url}`)
             .then((res) => res.json())
-            .then((data) => setArtistas(data));
-        }
+            .then((data) => setArtistas(data.artistas));
 
-    }, []);
+    }, [envLink]);
 
-    return [ 
+    return [
         artistas
     ]
 
