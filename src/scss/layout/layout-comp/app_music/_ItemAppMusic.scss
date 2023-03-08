@@ -80,7 +80,7 @@
 .ItemAppMusic__texto-3 {
     margin: 0;
     font-size: 1.7rem;
-    color: v.$secundario;
+    color: v.$negro;
     
 }
 .ItemAppMusic__botones{
@@ -96,6 +96,7 @@
     transform: scale(1.5);
     margin-bottom: 5rem;
     box-shadow: 2px 2px 1rem #000000fb;
+    background-color: v.$secundario;
 }
 .ItemAppMusic__player-wrapper {
     position: relative; 

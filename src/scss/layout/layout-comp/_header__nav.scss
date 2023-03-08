@@ -102,7 +102,7 @@
 
                 @include m.tablet {
                     
-                    color: v.$secundario;
+                    color: v.$negro;
                 }
             }
             
@@ -126,7 +126,7 @@
                 transition-property: color;
                 transition-duration: 1s;
                 transition-timing-function: ease-out;
-                color: v.$secundario;
+                color: v.$negro;
                 
                 span{
                     transform: rotate(90deg);
@@ -225,7 +225,7 @@
 
         .header__nav_boton_usuarios_login{
             display: flex;
-            background-color: white;
+            color: v.$negro;
             padding: .5rem;
             z-index: 1;
             width: 100%;

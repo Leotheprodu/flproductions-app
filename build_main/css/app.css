@@ -367,13 +367,13 @@ p {
 } */
 a {
   text-decoration: none;
-  color: #1ab5e6;
+  color: #000000;
   transition-property: color;
   transition-duration: 0.3s;
   transition-timing-function: ease-out;
 }
 a:hover {
-  color: #ebc246;
+  color: rgb(61, 61, 61);
   transition-property: color;
   transition-duration: 0.3s;
   transition-timing-function: ease-out;
@@ -565,7 +565,7 @@ input {
   padding-top: 10rem;
   text-align: center;
   text-transform: uppercase;
-  color: #FFFFFF;
+  color: #000000;
 }
 
 .contacto-container {
@@ -753,7 +753,7 @@ input {
   transition-timing-function: ease-out;
 }
 .contacto_info-Icons a:hover {
-  color: rgb(235, 235, 235);
+  color: rgb(179, 179, 179);
   transition-property: color;
   transition-duration: 0.3s;
   transition-timing-function: ease-out;
@@ -765,6 +765,7 @@ input {
   height: 100%;
   width: 70%;
   order: 1;
+  border-radius: 5px;
   margin: 0 auto 3rem auto;
   justify-content: center;
 }
@@ -789,6 +790,7 @@ input {
   border: none;
   height: 3rem;
   border-color: #1ab5e6;
+  border-radius: 5px;
   color: rgb(27, 27, 27);
 }
 .formulario .form-control:focus {
@@ -803,6 +805,7 @@ input {
   border: none;
   height: 10rem;
   color: rgb(27, 27, 27);
+  border-radius: 5px;
 }
 .formulario .form-control2:focus {
   outline-color: #1ab5e6;
@@ -838,6 +841,7 @@ input {
 .recaptcha {
   display: flex;
   justify-content: center;
+  border-radius: 5px;
 }
 
 .contact-form__mensaje-status {
@@ -886,23 +890,6 @@ input {
   .footer_content2 {
     margin-right: 4rem;
   }
-}
-
-.header {
-  background-color: #1ab5e6;
-  display: block;
-}
-
-.header-img {
-  display: block;
-  height: 100%;
-  width: 100%;
-  outline: none;
-  padding: 15rem;
-  z-index: 1;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: contain;
 }
 
 .socialIcons {
@@ -1035,7 +1022,7 @@ input {
 }
 @media (min-width: 768px) {
   .header__nav .header__links .header__links__link:hover {
-    color: #ebc246;
+    color: #000000;
   }
 }
 .header__nav .header__links .header__links__link__musica {
@@ -1058,7 +1045,7 @@ input {
   transition-property: color;
   transition-duration: 1s;
   transition-timing-function: ease-out;
-  color: #ebc246;
+  color: #000000;
 }
 .header__nav .header__links .header__links__link__musica:hover span {
   transform: rotate(90deg);
@@ -1148,7 +1135,7 @@ input {
 }
 .header__nav_boton_usuarios .header__nav_boton_usuarios_login {
   display: flex;
-  background-color: white;
+  color: #000000;
   padding: 0.5rem;
   z-index: 1;
   width: 100%;
@@ -1620,7 +1607,7 @@ input {
 .ItemAppMusic__texto-3 {
   margin: 0;
   font-size: 1.7rem;
-  color: #ebc246;
+  color: #000000;
 }
 
 .ItemAppMusic__botones {
@@ -1637,6 +1624,7 @@ input {
   transform: scale(1.5);
   margin-bottom: 5rem;
   box-shadow: 2px 2px 1rem rgba(0, 0, 0, 0.9843137255);
+  background-color: #ebc246;
 }
 
 .ItemAppMusic__player-wrapper {
@@ -1688,14 +1676,15 @@ input {
   width: 3rem;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1215686275);
   color: #1ab5e6;
+  background-color: #FFFFFF;
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
-  transition: transform 0.5s;
+  transition: transform 0.2s;
   cursor: pointer;
 }
 .BotonesAppMusic .BotonesAppMusic__boton-playstop-listadoproducciones:active {
   opacity: 0.5;
-  transform: scale(1.9);
+  transform: scale(0.8);
 }
 .BotonesAppMusic .BotonesAppMusic__boton-playstop-listadoproducciones:hover {
   opacity: 0.9;
@@ -1703,11 +1692,11 @@ input {
 .BotonesAppMusic .BotonesAppMusic__duration-listadoproducciones {
   position: absolute;
   right: -2.2rem;
-  color: #1ab5e6;
+  color: #000000;
   font-size: 1rem;
 }
 .BotonesAppMusic .BotonesAppMusic__progressduration-listadoproducciones {
-  color: #1ab5e6;
+  color: #000000;
   font-size: 1rem;
 }
 .BotonesAppMusic .BotonesAppMusic__barra-de-progreso {
@@ -1716,7 +1705,7 @@ input {
 .BotonesAppMusic .BotonesAppMusic__barra-de-despazamiento-listadoproducciones, .BotonesAppMusic .BotonesAppMusic__control-volumen-listadoproducciones {
   -webkit-appearance: none;
   width: 100%;
-  background: #1ab5e6;
+  background: #FFFFFF;
   height: 0.2rem;
   border-radius: 1rem;
   outline: none;
@@ -1732,7 +1721,7 @@ input {
   -webkit-appearance: none;
   height: 1rem;
   width: 1rem;
-  background: #ebc246;
+  background: #1ab5e6;
   border-radius: 50%;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1215686275);
   cursor: pointer;
@@ -1795,13 +1784,13 @@ input {
   align-items: center;
   border: none;
   background: none;
-  color: #1ab5e6;
+  color: #FFFFFF;
 }
 .BotonesAppMusic__boton-info-reproductor:hover {
   cursor: pointer;
 }
 .BotonesAppMusic__boton-info-reproductor:active {
-  transform: scale(1.1);
+  transform: scale(0.8);
 }
 
 .ArtistList__Main {
@@ -1889,7 +1878,7 @@ input {
   left: 0;
   margin: 0;
   text-align: center;
-  color: #FFFFFF;
+  color: #000000;
 }
 .login_container label {
   display: flex;
