@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Spinner } from "../helpers/Spinner";
 
 export const ArtistList = ({ listadoCanciones, tipo_obra_general, produccioneFiltradas, setProduccioneFiltradas }) => {
   const [artistas, setArtistas] = useState(null);
@@ -33,7 +34,7 @@ export const ArtistList = ({ listadoCanciones, tipo_obra_general, produccioneFil
   }
 
   if (!artistas.length) {
-    return <div>Lo sentimos, No se encontraron datos</div>;
+    <Spinner/>
   }
   if (tipo_obra_general === 1) {
 

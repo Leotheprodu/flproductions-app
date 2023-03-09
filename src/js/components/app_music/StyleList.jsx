@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Spinner } from "../helpers/Spinner";
 
 
 export const StyleList = ({ listadoCanciones, tipo_obra_general, produccioneFiltradas, setProduccioneFiltradas }) => {
@@ -29,7 +30,7 @@ export const StyleList = ({ listadoCanciones, tipo_obra_general, produccioneFilt
   }
 
   if (!estilos.length) {
-    return <div>Lo sentimos, No se encontraron datos</div>;
+    <Spinner/>
   }
   if (tipo_obra_general === 1) {
 
