@@ -41,4 +41,5 @@ export * from './MetaInjector';
 
 
 export * from './usuarios/Login';
+export * from './usuarios/SignUp';
 

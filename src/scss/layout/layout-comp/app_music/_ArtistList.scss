@@ -1,6 +1,7 @@
 @use 'base/mixins' as m;
 @use 'base/variables' as v;
 .ArtistList__Main{
+    
     display: flex;
     flex-direction: column;
     box-shadow: 1px 1px 40px #00000018;

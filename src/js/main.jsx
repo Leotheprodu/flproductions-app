@@ -4,7 +4,7 @@ import { createBrowserRouter, RouterProvider} from 'react-router-dom';
 import { HomePage, ContactPage, Canciones, AboutPage, Instrumentales, Root, ErrorPage } from './pages';
 import '../../build_main/css/app.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { SongDetail, ArtistDetail, InstrumentalDetail, ProducerDetail, } from "./components";
+import { SongDetail, ArtistDetail, InstrumentalDetail, ProducerDetail, SignUp, } from "./components";
 
 
 export const router = createBrowserRouter([
@@ -51,6 +51,11 @@ export const router = createBrowserRouter([
       {
         path: "/productor-musical/:artist_name",
         element: <ProducerDetail />,
+
+      },
+      {
+        path: "/registro-usuario",
+        element: <SignUp />,
 
       }
     ],

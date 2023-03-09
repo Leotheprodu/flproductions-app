@@ -2,12 +2,13 @@
 @use 'base/variables' as v;
 
 .songDetail__appmusic{
+    min-height: 100vh;
     padding: 2rem;
     margin-top: 10rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    
     @include m.tablet {
         flex-direction: row;
     }

@@ -1,4 +1,5 @@
 import { IconMicrophone, IconBrandSpotify } from "@tabler/icons";
+import { formatLink } from "../helpers/formatLink";
 
 
 
@@ -37,13 +38,13 @@ const fecha = new Date(fecha_lanzamiento);
             }
             
             { tipo_obra_general !== 1 &&
-                <a href={`/artista/${nombre_artista}`}>
+                <a href={`/artista/${formatLink(nombre_artista)}`}>
                     <IconMicrophone stroke={1} size={30}/>
                     <p>{`mas de ${nombre_artista}`}</p>
                 </a>
             }
             { tipo_obra_general === 1 &&
-                <a href={`/productor-musical/${nombre_artista}`}>
+                <a href={`/productor-musical/${formatLink(nombre_artista)}`}>
                     <IconMicrophone stroke={1} size={30}/>
                     <p>{`mas de ${nombre_artista}`}</p>
                 </a>
