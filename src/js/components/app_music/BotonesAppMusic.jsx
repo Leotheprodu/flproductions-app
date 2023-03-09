@@ -1,9 +1,9 @@
 import { IconDotsVertical, IconFileDownload, IconMicrophone, IconPlayerPause, IconPlayerPlay, IconPlayerStop, IconPlaylist } from "@tabler/icons";
 import { Link } from "react-router-dom";
+import { formatLink } from "../helpers/formatLink";
 
 export const BotonesAppMusic = ({ clickInfoButton, infoProduccion, handleInfoButton, handleStopButtonClick, volume, setVolume, handlePlayButtonClick, pause, progressDuration, progress, handleonChangeRange, duration, tipo_obra_general }) => {
-
-
+    
     return (
         <div className="BotonesAppMusic">
             {
@@ -12,14 +12,14 @@ export const BotonesAppMusic = ({ clickInfoButton, infoProduccion, handleInfoBut
                     <ul>
                     <li>
                             
-                            <Link to={`/canciones/${infoProduccion.id}`}>
+                            <Link to={formatLink(`/cancion/${infoProduccion.id}`)}>
                                 <IconPlaylist color="#1ab5e6" size={20} />
                                 <p>info de la Cancion</p>
                             </Link>
                         </li>
                         <li>
                             
-                                <Link to={`/artistas/${infoProduccion.nombre_artista}`}>
+                                <Link to={formatLink(`/artista/${infoProduccion.nombre_artista}`)}>
                                     <IconMicrophone  color="#1ab5e6" size={20} />
                                     <p>info del Artista</p>
                                 </Link>
@@ -40,14 +40,14 @@ export const BotonesAppMusic = ({ clickInfoButton, infoProduccion, handleInfoBut
                     <ul>
                         <li>
                             
-                            <Link to={`/instrumentales/${infoProduccion.id}`}>
+                            <Link to={formatLink(`/instrumental/${infoProduccion.id}`)}>
                                 <IconPlaylist color="#1ab5e6" size={20}/>
                                 <p>info del Instrumental</p>
                             </Link>
                         </li>
                         <li>
                             
-                                <Link to={`/productores/${infoProduccion.nombre_artista}`}>
+                                <Link to={formatLink(`/productor-musical/${infoProduccion.nombre_artista}`)}>
                                     <IconMicrophone color="#1ab5e6" size={20} />
                                     <p>info del Productor</p>
                                 </Link>

@@ -31,7 +31,7 @@ export function NavMenu() {
   return (
 
     <div className='header__nav'>
-      <div>
+      <div className='header__nav__titulo-links'>
         <Link to="/" className='header__web-tittle'>FLProductions</Link>
         <div className='root-socialIcons'>
           <SocialIcons

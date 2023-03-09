@@ -37,13 +37,13 @@ const fecha = new Date(fecha_lanzamiento);
             }
             
             { tipo_obra_general !== 1 &&
-                <a href={`/artistas/${nombre_artista}`}>
+                <a href={`/artista/${nombre_artista}`}>
                     <IconMicrophone stroke={1} size={30}/>
                     <p>{`mas de ${nombre_artista}`}</p>
                 </a>
             }
             { tipo_obra_general === 1 &&
-                <a href={`/productores/${nombre_artista}`}>
+                <a href={`/productor-musical/${nombre_artista}`}>
                     <IconMicrophone stroke={1} size={30}/>
                     <p>{`mas de ${nombre_artista}`}</p>
                 </a>

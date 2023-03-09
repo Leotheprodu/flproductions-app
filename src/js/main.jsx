@@ -26,12 +26,12 @@ export const router = createBrowserRouter([
         element: <Canciones />,
       },
       {
-        path: "/canciones/:id",
+        path: "/cancion/:id",
         element: <SongDetail />,
 
       },
       {
-        path: "/artistas/:artist_name",
+        path: "/artista/:artist_name",
         element: <ArtistDetail />,
 
       },
@@ -44,12 +44,12 @@ export const router = createBrowserRouter([
         element: <Instrumentales />,
       },
       {
-        path: "/instrumentales/:id",
+        path: "/instrumental/:id",
         element: <InstrumentalDetail />,
 
       },
       {
-        path: "/productores/:artist_name",
+        path: "/productor-musical/:artist_name",
         element: <ProducerDetail />,
 
       }

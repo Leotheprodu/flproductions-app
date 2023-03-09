@@ -41,7 +41,7 @@ export const InstrumentalDetail = () => {
 
                 />
 
-            <div className="songDetail__appmusic">
+            <div className="contenedor songDetail__appmusic">
                 <div>
 
                     <AppMusic 

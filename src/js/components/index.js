@@ -34,7 +34,8 @@ export * from './hooks/useEnvLink';
 
 /* Helpers */
 export * from './simple-text';
-export * from './Spinner';
+export * from './helpers/Spinner';
+export * from './helpers/formatLink';
 export * from './MetaInjector';
 
 

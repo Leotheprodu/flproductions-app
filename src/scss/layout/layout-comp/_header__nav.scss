@@ -32,6 +32,13 @@
     }
     /* margin: 0 0 1rem 0; */
     
+    .header__nav__titulo-links{
+        display: flex;
+        flex-direction:column;
+        justify-content: center;
+        align-items: center;
+        padding-left: 10rem;
+    }
     
     .header__web-tittle{
         display:flex;
@@ -41,8 +48,7 @@
         font-size: 2.8rem;
         margin: 0;
         color: v.$blanco;
-        @include m.tablet {
-            padding-left: 10rem;
+        @include m.tablet { 
             
         }
         
