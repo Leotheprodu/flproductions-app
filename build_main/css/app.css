@@ -958,7 +958,11 @@ input {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-left: 10rem;
+}
+@media (min-width: 768px) {
+  .header__nav .header__nav__titulo-links {
+    padding-left: 10rem;
+  }
 }
 .header__nav .header__web-tittle {
   display: flex;
@@ -1134,7 +1138,9 @@ input {
   padding: 0.5rem;
   z-index: 1;
   width: 100%;
-  height: 7rem;
+  height: 11rem;
+  align-items: center;
+  justify-content: center;
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   background-color: #ebc246;
@@ -1856,22 +1862,19 @@ input {
 }
 
 .login_container {
-  min-width: 100%;
   display: flex;
+  padding: 1rem;
   flex-direction: column;
-  position: relative;
-  justify-content: left;
-  text-align: left;
 }
 @media (min-width: 768px) {
   .login_container {
     flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
   }
 }
 .login_container p {
-  position: absolute;
-  left: 0;
-  margin: 0;
+  text-align: left;
   text-align: center;
   color: #000000;
 }
@@ -1880,31 +1883,37 @@ input {
   align-items: center;
   justify-content: left;
   height: 3rem;
-  width: 20rem;
+  width: 15rem;
 }
 .login_container input {
   appearance: none;
   border-radius: 5px;
-  min-width: 20rem;
   font-size: 1.4rem;
+  width: 100%;
 }
 @media (min-width: 768px) {
   .login_container input {
-    min-width: 20rem;
-    max-width: 20rem;
+    width: 100%;
   }
 }
-.login_container button {
+.login_container .login_buttons {
   display: flex;
-  position: absolute;
-  right: 1rem;
-  top: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.login_container .login_buttons p {
+  color: #FFFFFF;
+}
+.login_container .login_buttons button {
+  display: flex;
   align-items: center;
   justify-content: center;
   border: none;
   border-radius: 50%;
   height: 3rem;
   width: 3rem;
+  padding: 0;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1215686275);
   color: #1ab5e6;
   opacity: 1;
@@ -1912,22 +1921,23 @@ input {
   transition: transform 0.5s;
   cursor: pointer;
 }
-.login_container button:active {
+.login_container .login_buttons button:active {
   opacity: 0.5;
-  transform: scale(1.9);
+  transform: scale(0.8);
 }
-.login_container button:hover {
+.login_container .login_buttons button:hover {
   opacity: 0.9;
+  transform: scale(1.2);
+}
+
+.login__form {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
 }
 
 .login_container_input {
   display: flex;
-  flex-direction: row;
-  width: 5rem;
-}
-@media (min-width: 768px) {
-  .login_container_input {
-    width: 22rem;
-    flex-direction: column;
-  }
+  flex-direction: column;
+  width: 100%;
 }

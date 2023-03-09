@@ -1,4 +1,4 @@
-import { IconUserCircle, IconPlayerPlay, IconMenu2 } from '@tabler/icons';
+import { IconUser, IconPlayerPlay, IconMenu2 } from '@tabler/icons';
 import { useState, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { SocialIcons } from './social-icons';
@@ -47,8 +47,8 @@ export function NavMenu() {
       </div>
 
       <div className='header__nav_boton_usuarios'>
-        <div title='Opciones de Usuario' onClick={handleClick} className='header__nav_boton'>
-          <IconUserCircle size={30} />
+        <div title='Opciones de Sesión' onClick={handleClick} className='header__nav_boton'>
+          <IconUser size={30} />
 
         </div>
         {UserButton &&
