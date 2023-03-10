@@ -1,8 +1,12 @@
 import { IconUserCheck, IconLogout, IconUserPlus } from "@tabler/icons";
 import { useState, useEffect } from "react";
 import { useEnvLink } from "../hooks/UseEnvLink";
+import { useDispatch } from 'react-redux';
+import { setRoles, setUser } from "../redux/userActions";
 
 function Login() {
+    const dispatch = useDispatch();
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -41,6 +45,8 @@ function Login() {
                 if (data.isLoggedIn) {
                     setIsLoggedIn(true);
                     setInfoSession(data);
+                    dispatch(setUser(data.userId));
+                    dispatch(setRoles(data.roles));
                 }
             })
             .catch((error) => {
@@ -63,6 +69,8 @@ function Login() {
                 if (data.isLoggedIn) {
                     setIsLoggedIn(true);
                     setInfoSession(data);
+                    dispatch(setUser(data.userId));
+                    dispatch(setRoles(data.roles));
                 } else {
                     alert("Lo sentimos, para poder Iniciar Sesión debes estar registrado(a)")
                 }

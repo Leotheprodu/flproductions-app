@@ -1,8 +1,15 @@
 import { HelmetProvider } from 'react-helmet-async';
 import {FormulariodeContacto, MetaInjector} from '../components';
+import { useSelector } from 'react-redux';
 
 export function ContactPage () {
   
+  const roles = useSelector(state => state.user.roles);
+
+  if (!roles.includes(5)) {
+    // Si el usuario no tiene el rol de administrador, no se muestra el componente
+    return <div style={{ height: '100vh' }}><p>No tienes permiso de ver este contenido</p></div>;
+  }
 
   return(
 

@@ -1134,7 +1134,7 @@ input {
   transform: scale(0.9);
 }
 .header__nav_boton_usuarios .header__nav_boton_usuarios_login {
-  display: flex;
+  display: none;
   color: #000000;
   padding: 0.5rem;
   z-index: 1;
@@ -1156,6 +1156,10 @@ input {
     width: 50%;
     height: 7rem;
   }
+}
+
+.header__nav_boton_usuarios_login.selected {
+  display: flex;
 }
 
 .menu_celular {

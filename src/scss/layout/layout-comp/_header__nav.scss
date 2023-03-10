@@ -233,7 +233,7 @@
     }
 
         .header__nav_boton_usuarios_login{
-            display: flex;
+            display: none;
             color: v.$negro;
             padding: .5rem;
             z-index: 1;
@@ -255,6 +255,9 @@
             }
             box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.125);
         }
+    }
+    .header__nav_boton_usuarios_login.selected{
+        display: flex;
     }
 
 

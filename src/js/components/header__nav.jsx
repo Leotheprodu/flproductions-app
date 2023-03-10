@@ -51,11 +51,11 @@ export function NavMenu() {
           <IconUser size={30} />
 
         </div>
-        {UserButton &&
-          <div className='header__nav_boton_usuarios_login'>
+        
+          <div className={`header__nav_boton_usuarios_login ${UserButton ? "selected" : ""}`}>
             <Login />
           </div>
-        }
+        
       </div>
       {
         !isMovilUser &&
