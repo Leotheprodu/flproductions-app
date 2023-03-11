@@ -1,8 +1,9 @@
-import { SET_USER, SET_ROLES } from './userTypes';
+import { SET_USER, SET_SESSION } from './userTypes';
 
 const initialState = {
     user: null,
-    roles: []
+    session: {}
+
 };
 
 const userReducer = (state = initialState, action) => {
@@ -12,11 +13,11 @@ const userReducer = (state = initialState, action) => {
                 ...state,
                 user: action.payload
             };
-        case SET_ROLES:
-            return {
-                ...state,
-                roles: action.payload
-            };
+            case SET_SESSION:
+                return {
+                    ...state,
+                    session: action.payload
+                };
         default:
             return state;
     }

@@ -141,12 +141,13 @@ a{
     display: flex;
     justify-content: center;
     border-radius: 5px;
+   
 
 }
 .contact-form__mensaje-status{
     text-align: center;
-    background-color: rgba(255, 0, 0, 0.397);
-    color: v.$blanco;
+    background-color: rgba(255, 0, 0, 0.778);
+    color: v.$negro;
     width: 20rem;
     margin: 1rem auto;
 }

@@ -847,8 +847,8 @@ input {
 
 .contact-form__mensaje-status {
   text-align: center;
-  background-color: rgba(255, 0, 0, 0.397);
-  color: #FFFFFF;
+  background-color: rgba(255, 0, 0, 0.778);
+  color: #000000;
   width: 20rem;
   margin: 1rem auto;
 }
@@ -1947,6 +1947,63 @@ input {
   width: 100%;
 }
 
-.SignUp {
+.signUp {
   min-height: 100vh;
+  margin-top: 9rem;
+  display: flex;
+  justify-content: center;
+}
+.signUp .signUp__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.078);
+  max-height: 40rem;
+  padding: 2rem;
+  border-radius: 8px;
+}
+.signUp .signUp__form label {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  height: 3rem;
+}
+.signUp .signUp__form input {
+  border-radius: 5px;
+  height: 3rem;
+  font-size: 1.7rem;
+  width: 100%;
+  color: #000000;
+  background-color: #ebc246;
+}
+.signUp .signUp__form input:focus {
+  outline-color: #1ab5e6;
+}
+@media (min-width: 768px) {
+  .signUp .signUp__form input {
+    width: 100%;
+  }
+}
+.signUp .signUp__form button {
+  width: 10rem;
+  font-size: 2rem;
+  background-color: #1ab5e6;
+  margin: 1rem;
+  padding: 0.5rem 2rem;
+  border: none;
+  border-radius: 2px;
+  color: #000000;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  transition-timing-function: ease-out;
+  transition: transform 0.2s;
+}
+.signUp .signUp__form button:hover {
+  transition-duration: 0.4s;
+  transition-timing-function: ease-out;
+  transform: scale(1.1);
+}
+.signUp .signUp__form button:focus {
+  outline-color: #ebc246;
 }

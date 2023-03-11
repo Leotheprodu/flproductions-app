@@ -3,6 +3,68 @@
 
 
 
-.SignUp{
+.signUp{
     min-height: 100vh;
+    margin-top: 9rem;
+    display: flex;
+    justify-content: center;
+
+    .signUp__form{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: rgba(0, 0, 0, 0.078);
+        max-height: 40rem;
+        padding: 2rem;
+        border-radius: 8px;
+        
+        label {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            height: 3rem;
+        }
+        
+        input {
+            
+            border-radius: 5px; 
+            height: 3rem;
+            font-size: 1.7rem;
+            width: 100%;
+            color: v.$negro;
+            background-color: v.$secundario;
+            &:focus{
+                outline-color: v.$primario;
+            }
+            @include m.tablet {
+                width: 100%;
+                
+                
+            }
+
+        }
+        button {
+            width: 10rem;
+            font-size: 2rem;
+            background-color: v.$primario;
+            margin: 1rem;
+            padding: .5rem 2rem;
+            border: none;
+            border-radius: 2px;
+            color: v.$negro;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            transition-timing-function: ease-out;
+            transition: transform .2s;
+            &:hover{
+                transition-duration: .4s;
+                transition-timing-function: ease-out;
+                transform: scale(1.1);
+            }
+            &:focus{
+                outline-color: v.$secundario;
+            }
+        }
+    }
 }

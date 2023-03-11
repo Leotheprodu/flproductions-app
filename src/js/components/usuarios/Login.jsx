@@ -2,7 +2,7 @@ import { IconUserCheck, IconLogout, IconUserPlus } from "@tabler/icons";
 import { useState, useEffect } from "react";
 import { useEnvLink } from "../hooks/UseEnvLink";
 import { useDispatch } from 'react-redux';
-import { setRoles, setUser } from "../redux/userActions";
+import { setUser, setSession } from "../redux/userActions";
 
 function Login() {
     const dispatch = useDispatch();
@@ -23,7 +23,7 @@ function Login() {
                 .then((data) => {
                     if (data) {
                         setUserInfo(data.user_data);
-
+                        dispatch(setUser(data.user_data));
                     }
                 })
                 .catch((error) => {
@@ -45,8 +45,7 @@ function Login() {
                 if (data.isLoggedIn) {
                     setIsLoggedIn(true);
                     setInfoSession(data);
-                    dispatch(setUser(data.userId));
-                    dispatch(setRoles(data.roles));
+                    dispatch(setSession(data));
                 }
             })
             .catch((error) => {
@@ -54,7 +53,8 @@ function Login() {
             });
     };
 
-    const handleLogin = () => {
+    const handleLogin = (e) => {
+        e.preventDefault();
         fetch(`${envLink}api/login`, {
             method: "POST",
             credentials: "include",
@@ -69,8 +69,7 @@ function Login() {
                 if (data.isLoggedIn) {
                     setIsLoggedIn(true);
                     setInfoSession(data);
-                    dispatch(setUser(data.userId));
-                    dispatch(setRoles(data.roles));
+                    dispatch(setSession(data));
                 } else {
                     alert("Lo sentimos, para poder Iniciar Sesión debes estar registrado(a)")
                 }
@@ -112,7 +111,7 @@ function Login() {
         );
     } else {
         return (
-            <div className="login_container">
+            <form className="login_container" onSubmit={handleLogin}>
                 <div className="login__form">
 
                     <div className="login_container_input">
@@ -142,13 +141,13 @@ function Login() {
                 </div>
                 <div className="login_buttons">
 
-                    <button title="Iniciar Sesión" onClick={handleLogin}>{<IconUserCheck />}</button>
-                    <a href="/registro-usuario">
-                        <button title="Registrarse">{<IconUserPlus />}</button>
-                    </a>
+                    <button type="submit" title="Iniciar Sesión">{<IconUserCheck />}</button>
 
+                    <a href="/registro-usuario">
+                        <button type="button" title="Registrarse">{<IconUserPlus />}</button>
+                    </a>
                 </div>
-            </div>
+            </form>
         );
     }
 }

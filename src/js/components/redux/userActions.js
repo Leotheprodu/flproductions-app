@@ -1,4 +1,4 @@
-import { SET_USER, SET_ROLES } from './userTypes';
+import { SET_USER, SET_SESSION } from './userTypes';
 
 
 export const setUser = (user) => {
@@ -8,9 +8,9 @@ export const setUser = (user) => {
     };
 };
 
-export const setRoles = (roles) => {
+export const setSession = (session) => {
     return {
-        type: SET_ROLES,
-        payload: roles
+        type: SET_SESSION,
+        payload: session
     };
 };
