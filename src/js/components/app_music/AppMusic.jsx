@@ -1,7 +1,7 @@
 import { useHandleItemAppMusic, ItemAppMusic } from "..";
 
 export const AppMusic = ({songArray, playing, infoProduccion, selectedSong, idComp, idCompActual, pause, setPause, ended, setEnded, setPlaying, progressDuration, setprogressDuration, progress, setProgress, clickInfoButton, setClickInfoButton, tipo_obra_general }) => {
-    
+
 const [duration, volume, setVolume, playerRef, handleStopButtonClick, handlePlayButtonClick, handlePlay, handleDuration, handleonChangeRange, handleProgress, handleInfoButton] = useHandleItemAppMusic(setPlaying, setEnded, setClickInfoButton, playing, setPause, setProgress, setprogressDuration, clickInfoButton)
 
     return (

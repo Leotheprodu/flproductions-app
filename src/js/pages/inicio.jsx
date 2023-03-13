@@ -7,7 +7,6 @@ const InfoCardSize = 40
 const infoCardStroke = 2
 
 export function HomePage() {
-
   return(
     
     

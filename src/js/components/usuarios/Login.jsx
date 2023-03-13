@@ -1,61 +1,40 @@
 import { IconUserCheck, IconLogout, IconUserPlus } from "@tabler/icons";
 import { useState, useEffect } from "react";
-import { useEnvLink } from "../hooks/UseEnvLink";
-import { useDispatch } from 'react-redux';
-import { setUser, setSession } from "../redux/userActions";
+import { useDispatch, useSelector } from 'react-redux';
+import { setSession } from "../redux/userActions";
 
 function Login() {
     const dispatch = useDispatch();
-
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [infoSession, setInfoSession] = useState({});
-    const [userInfo, setUserInfo] = useState({});
-    const [envLink] = useEnvLink(process.env.NODE_ENV);
-
-    useEffect(() => {
-        if (isLoggedIn) {
-            fetch(`${envLink}api/usuarios/${infoSession.userId}`, {
-                credentials: "include",
-            })
-                .then((res) => res.json())
-                .then((data) => {
-                    if (data) {
-                        setUserInfo(data.user_data);
-                        dispatch(setUser(data.user_data));
-                    }
-                })
-                .catch((error) => {
-                    /*  console.log(error); */
-                });
-        }
-    }, [isLoggedIn])
+    const isLoggedIn = useSelector(state => state.user.session.isLoggedIn);
+    const userInfo = useSelector(state => state.user.session.user);
 
     useEffect(() => {
         checkLoggedIn();
-    }, [envLink]);
+    }, []);
 
     const checkLoggedIn = () => {
-        fetch(`${envLink}api/check-session`, {
+        fetch(`${process.env.NODE_ENV==='production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/check-session`, {
             credentials: "include",
         })
             .then((res) => res.json())
             .then((data) => {
-                if (data.isLoggedIn) {
-                    setIsLoggedIn(true);
-                    setInfoSession(data);
+                if(data.isLoggedIn) {
                     dispatch(setSession(data));
+
                 }
+                
+            
             })
             .catch((error) => {
-                /* console.log(error); */
-            });
+                console.log(error);
+            })
     };
 
     const handleLogin = (e) => {
         e.preventDefault();
-        fetch(`${envLink}api/login`, {
+        fetch(`${process.env.NODE_ENV==='production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/login`, {
             method: "POST",
             credentials: "include",
             headers: {
@@ -67,8 +46,6 @@ function Login() {
             .then((res) => res.json())
             .then((data) => {
                 if (data.isLoggedIn) {
-                    setIsLoggedIn(true);
-                    setInfoSession(data);
                     dispatch(setSession(data));
                 } else {
                     alert("Lo sentimos, para poder Iniciar Sesión debes estar registrado(a)")
@@ -76,12 +53,13 @@ function Login() {
 
             })
             .catch((error) => {
-                /* console.log(error); */
+                console.log(error);
             });
     };
 
-    const handleLogout = () => {
-        fetch(`${envLink}api/logout`, {
+    const handleLogout = (e) => {
+        e.preventDefault();
+        fetch(`${process.env.NODE_ENV==='production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/logout`, {
             method: "POST",
             credentials: "include",
             headers: {
@@ -89,18 +67,18 @@ function Login() {
             }
         })
             .then((res) => res.json())
-            .then(() => {
-                setIsLoggedIn(false);
+            .then((data) => {
+                dispatch(setSession(data));
             })
             .catch((error) => {
-                /*  console.log(error); */
-            });
+                 console.log(error);
+            })
     };
 
     if (isLoggedIn) {
         return (
             <div className="login_container">
-                <p> Hola, {userInfo.username} que bueno tenerte de vuelta</p>
+                <p> {userInfo.username}, sesión iniciada</p>
                 <div className="login_buttons">
 
                     <button title="Cerrar Sesión" onClick={handleLogout}>{<IconLogout />}</button>
@@ -120,7 +98,7 @@ function Login() {
                         </label>
                         <input
                             type="email"
-                            id="email"
+                            
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
                         />
@@ -131,7 +109,7 @@ function Login() {
                             Contraseña:
                         </label>
                         <input
-                            id="password"
+                        
                             type="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}

@@ -1,23 +1,18 @@
-import { SET_USER, SET_SESSION } from './userTypes';
+import { SET_SESSION } from './userTypes';
 
 const initialState = {
-    user: null,
-    session: {}
+    session: { isLoggedIn: false, user: {}, roles: [] }
 
 };
 
 const userReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SET_USER:
+
+        case SET_SESSION:
             return {
                 ...state,
-                user: action.payload
+                session: action.payload
             };
-            case SET_SESSION:
-                return {
-                    ...state,
-                    session: action.payload
-                };
         default:
             return state;
     }

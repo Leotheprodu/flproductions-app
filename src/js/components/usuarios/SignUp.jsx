@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import { useEnvLink } from "../hooks/UseEnvLink";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useSelector } from 'react-redux';
 
@@ -7,8 +6,8 @@ import { useSelector } from 'react-redux';
 
 
 export const SignUp = () => {
-const caca= useSelector(state => state)
-console.log(caca);
+/* const caca= useSelector(state => state.user.user.username)
+console.log(caca); */
   /* const roles = useSelector(state => state.user.roles);
 
   if (!roles.includes(5)) {
@@ -24,7 +23,6 @@ console.log(caca);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const fecha_creacion = new Date().toISOString().slice(0, 10);
-  const [envLink] = useEnvLink(process.env.NODE_ENV);
   const captcha = useRef(null);
   const [formStatus, setFormStatus] = useState('')
   const [statusenviado, setStatusEnviado] = useState(false);
@@ -41,7 +39,7 @@ console.log(caca);
     setFormStatus('...registrando');
     if (captcha.current.getValue()) {
       // Aquí puedes enviar los datos del formulario a tu servidor
-      fetch(`${envLink}api/signup`, {
+      fetch(`${process.env.NODE_ENV==='production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/signup`, {
         method: "POST",
         credentials: "include",
         headers: {
@@ -84,7 +82,7 @@ console.log(caca);
             <label htmlFor="name">Nombre:</label>
             <input
               type="text"
-              id="username"
+              
               value={username}
               onChange={(e) => setUserName(e.target.value)}
               required
@@ -94,7 +92,6 @@ console.log(caca);
             <label htmlFor="email">Correo:</label>
             <input
               type="email"
-              id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
@@ -104,7 +101,6 @@ console.log(caca);
             <label htmlFor="password">Contraseña:</label>
             <input
               type="password"
-              id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required

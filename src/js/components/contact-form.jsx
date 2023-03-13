@@ -94,19 +94,19 @@ export function FormulariodeContacto() {
                 <label className="form-label" htmlFor="nombre">
                   Nombre
                 </label>
-                <input className="form-control" type="text" id="nombre" required />
+                <input className="form-control" type="text"  required />
               </div>
               <div className="mb-3">
                 <label className="form-label" htmlFor="email">
                   Email
                 </label>
-                <input className="form-control" type="email" id="email" required />
+                <input className="form-control" type="email"  required />
               </div>
               <div className="mb-3">
                 <label className="form-label" htmlFor="mensaje">
                   Mensaje
                 </label>
-                <textarea className="form-control2" id="mensaje" required />
+                <textarea className="form-control2"  required />
               </div>
               <div className="recaptcha">
                 <ReCAPTCHA 

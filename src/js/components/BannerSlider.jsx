@@ -13,6 +13,7 @@ export function BannerSlider ({datos}) {
         showStatus={false} 
         showIndicators={false} 
         emulateTouch
+        showThumbs={false}
       >
         { datos.map( ({img_link, link, title, description}) => (
             

@@ -14,6 +14,7 @@ export function Testimonio() {
             interval={6000} 
             showStatus={false} 
             showIndicators={false} 
+            showThumbs={false}
             emulateTouch
             >
                 { testimonios.map( ({texto, link, nombre, imagen}) => (

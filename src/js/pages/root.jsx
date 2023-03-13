@@ -21,11 +21,11 @@ export function Root() {
           <Outlet />
 
         </main>
-        <div>
+        {/* <div>
           <TawkMessengerReact
             propertyId="5803024f304e8e75855baa7f"
             widgetId="default" />
-        </div>
+        </div> */}
         <Footer />
       </div>
     </Provider>
