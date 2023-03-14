@@ -1,10 +1,10 @@
 
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { HomePage, ContactPage, Canciones, AboutPage, Instrumentales, Root, ErrorPage, ControlPanel } from './pages';
+import { HomePage, ContactPage, Canciones, AboutPage, Instrumentales, Root, ErrorPage, ControlPanel, InicioPaneldeControl } from './pages';
 import '../../build_main/css/app.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { SongDetail, ArtistDetail, InstrumentalDetail, ProducerDetail, SignUp, Login, UserPerfil } from "./components";
+import { SongDetail, ArtistDetail, InstrumentalDetail, ProducerDetail, SignUp, Login, UserBasicInfo } from "./components";
 
 
 
@@ -70,8 +70,12 @@ export const router = createBrowserRouter([
         element: <ControlPanel />,
         children: [
           {
-            path: "Perfil-de-usuario",
-            element: <UserPerfil />,
+            path: "/panel-de-control",
+            element: <InicioPaneldeControl />,
+          },
+          {
+            path: "Informacion-basica",
+            element: <UserBasicInfo />,
           }
         ]
       }

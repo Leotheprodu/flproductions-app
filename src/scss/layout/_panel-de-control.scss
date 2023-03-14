@@ -1,0 +1,68 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.panel-de-control{
+    
+    @include m.tablet {
+        display: grid;
+        position: relative;
+        grid-template-columns: 1fr 6fr;
+        
+    }
+
+}
+.panel-de-control__menu_celular{
+    border: none;
+    position: fixed;
+    button{
+        appearance: none;
+        border: none;
+        height: 5rem;
+        width: 5rem;
+        border-bottom-right-radius: 50%;
+        &:active{
+            transform: scale(1.1);
+            transition: all 0.2s ease-in-out;
+        }
+    }
+}
+.InicioPaneldeControl__div{
+    
+    
+}
+.InicioPaneldeControl{
+    
+    background-repeat: no-repeat;
+    background-position:bottom ;
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.523);
+    background-blend-mode:overlay;
+    display: flex;
+    flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+
+    h1{
+        
+        color: v.$blanco;
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 2rem;
+        margin: 0;
+        background-color: rgba(0, 0, 0, 0.649);
+        @include m.tablet {
+            font-size: 3rem;
+        }
+    }
+    h3{
+        color: v.$blanco;
+        text-transform: uppercase;
+        text-align: center;
+        font-size: 1.3rem;
+        background-color: rgba(0, 0, 0, 0.649);
+    }
+
+}
+
+

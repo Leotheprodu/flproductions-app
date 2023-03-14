@@ -2,9 +2,9 @@
 
 export const LinksPanel = () => {
   return (
-    <div>
-        <h4>Usuario</h4>
-        
+    <div className="links-panel">
+        <h4>Perfil de Usuario</h4>
+        <a href="/panel-de-control/informacion-basica">Informacion Basica</a>
     </div>
   )
 }

@@ -623,17 +623,95 @@ input {
   margin-bottom: 1rem;
 }
 
-.panel-de-control {
-  display: grid;
-  grid-template-columns: 1fr 6fr;
-}
-
 .panel-de-control__menu {
+  display: none;
   background-color: #ebc246;
+  width: 100%;
   margin: 0;
   padding: 1.5rem;
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.281);
+}
+
+.panel-de-control__menu.selected {
+  display: flex;
+  position: fixed;
+}
+
+.panel-de-control__menu.normal {
+  position: relative;
+  display: flex;
+}
+@media (min-width: 768px) {
+  .panel-de-control__menu.normal {
+    min-width: 18rem;
+  }
+}
+
+.links-panel {
+  margin-left: 5rem;
+}
+@media (min-width: 768px) {
+  .links-panel {
+    margin-left: 0;
+    position: fixed;
+  }
+}
+
+@media (min-width: 768px) {
+  .panel-de-control {
+    display: grid;
+    position: relative;
+    grid-template-columns: 1fr 6fr;
+  }
+}
+
+.panel-de-control__menu_celular {
+  border: none;
+  position: fixed;
+}
+.panel-de-control__menu_celular button {
+  appearance: none;
+  border: none;
+  height: 5rem;
+  width: 5rem;
+  border-bottom-right-radius: 50%;
+}
+.panel-de-control__menu_celular button:active {
+  transform: scale(1.1);
+  transition: all 0.2s ease-in-out;
+}
+
+.InicioPaneldeControl {
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.523);
+  background-blend-mode: overlay;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   height: 100vh;
+}
+.InicioPaneldeControl h1 {
+  color: #FFFFFF;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 2rem;
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.649);
+}
+@media (min-width: 768px) {
+  .InicioPaneldeControl h1 {
+    font-size: 3rem;
+  }
+}
+.InicioPaneldeControl h3 {
+  color: #FFFFFF;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 1.3rem;
+  background-color: rgba(0, 0, 0, 0.649);
 }
 
 .palabras-del-equipo {

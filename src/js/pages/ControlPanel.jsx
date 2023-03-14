@@ -2,9 +2,28 @@ import { HelmetProvider } from 'react-helmet-async';
 import { LinksPanel, MetaInjector } from '../components';
 import { useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { IconMenu2, IconSettingsFilled } from '@tabler/icons-react';
 
 export const ControlPanel = () => {
     const isLoggedIn = useSelector(state => state.user.session.isLoggedIn);
+    const [isMovilUser, setIsMovilUser] = useState(false);
+    const [onClickMovilUser, setOnClickMovilUser] = useState(false);
+
+
+    useEffect(() => {
+        if (window.innerWidth <= 768) {
+            setIsMovilUser(true);
+        } else {
+            setIsMovilUser(false);
+        }
+    }, [])
+
+    const handleClickMovilUser = () => {
+        setOnClickMovilUser(!onClickMovilUser)
+    
+    
+      }
 
     if (!isLoggedIn) {
         return (
@@ -36,11 +55,17 @@ export const ControlPanel = () => {
                     keywords='estudio de grabacion, produccion musical, panel de control, perfil, usuario'
                     robots='index, follow'
                 />
-                <div className='panel-de-control'>
-                    <div className='panel-de-control__menu'>
-                        <LinksPanel/>
+                <div className="panel-de-control">
+                    <div className={`panel-de-control__menu ${onClickMovilUser ? "selected" : ""} ${!isMovilUser ? "normal" : ""}`}>
+                        <LinksPanel />
                     </div>
-                    <div className='contenedor-main'>
+                    {
+                        isMovilUser &&
+                        <div className='panel-de-control__menu_celular'>
+                            <button onClick={handleClickMovilUser}><IconSettingsFilled /></button>
+                        </div>
+                    }
+                    <div className=''>
                         <Outlet />
                     </div>
                 </div>

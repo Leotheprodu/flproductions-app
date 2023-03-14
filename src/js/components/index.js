@@ -44,5 +44,5 @@ export * from './usuarios/SessionPanel';
 export * from './usuarios/SignUp';
 export * from './usuarios/Login';
 export * from './usuarios/LinksPanel';
-export * from './usuarios/UserPerfil';
+export * from './usuarios/UserBasicInfo';
 

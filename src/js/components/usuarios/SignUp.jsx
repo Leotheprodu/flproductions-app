@@ -1,9 +1,10 @@
 import { useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
-import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { MetaInjector } from "../MetaInjector";
+import { useDispatch, useSelector } from 'react-redux';
+import { setSession } from "../redux/userActions";
 
 export const SignUp = () => {
   /* const caca= useSelector(state => state.user.user.username)
@@ -17,7 +18,7 @@ export const SignUp = () => {
 
   const isLoggedIn = useSelector(state => state.user.session.isLoggedIn)
 
-
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [username, setUserName] = useState('');
   const [email, setEmail] = useState('');
@@ -32,7 +33,31 @@ export const SignUp = () => {
       setFormStatus('');
     }
   }
+  const loginNewUser = () => {
+    fetch(`${process.env.NODE_ENV === 'production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/login`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
 
+      },
+      body: JSON.stringify({ email, password }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.isLoggedIn) {
+          dispatch(setSession(data));
+          
+        } else {
+          alert("Datos inválidos, correo o contraseña incorrecta o regístrate")
+        }
+
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -55,7 +80,7 @@ export const SignUp = () => {
             setUserName('');
             setFormStatus('Usuario Registrado con exito');
             setStatusEnviado(true);
-
+            loginNewUser();
           } else if (response.status === 403) {
             setFormStatus('El correo ya existe en el sistema, usa un nuevo correo');
             return;

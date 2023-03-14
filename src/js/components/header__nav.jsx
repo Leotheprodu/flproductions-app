@@ -6,9 +6,9 @@ import SessionPanel from './usuarios/SessionPanel';
 import { useSelector } from 'react-redux';
 
 export function NavMenu() {
-  const [UserButton, setUserButton] = useState(false)
-  const [isMovilUser, setIsMovilUser] = useState(false)
-  const [onClickMovilUser, setOnClickMovilUser] = useState(false)
+  const [UserButton, setUserButton] = useState(false);
+  const [isMovilUser, setIsMovilUser] = useState(false);
+  const [onClickMovilUser, setOnClickMovilUser] = useState(false);
   const isLoggedIn = useSelector(state => state.user.session.isLoggedIn);
 
   const handleClick = () => {

@@ -1,15 +1,35 @@
 @use 'base/mixins' as m;
 @use 'base/variables' as v;
 
-.panel-de-control{
-    display: grid;
-    grid-template-columns: 1fr 6fr;
 
-}
+
 .panel-de-control__menu{
+    display: none;
     background-color: v.$secundario;
+    width: 100%;
     margin: 0;
     padding: 1.5rem;
     box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.281);
-    height: 100vh
+    
+}
+.panel-de-control__menu.selected{
+    display: flex;
+    position: fixed;
+}
+.panel-de-control__menu.normal{
+    position:relative;
+    display: flex;
+    @include m.tablet {
+        min-width: 18rem;
+        
+    }
+}
+.links-panel{
+    margin-left: 5rem;
+    
+    @include m.tablet {
+        margin-left: 0;
+        position: fixed;
+        
+    }
 }
