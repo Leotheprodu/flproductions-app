@@ -7,3 +7,4 @@ export * from './servicios';
 export * from './error-page';
 export * from './Canciones';
 export * from './Instrumentales';
+export * from './ControlPanel';

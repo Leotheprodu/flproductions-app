@@ -417,6 +417,10 @@ img {
   overflow: hidden;
 }
 
+.vh100 {
+  height: 100vh;
+}
+
 input {
   border: 0;
   margin: 0.5rem;
@@ -617,6 +621,19 @@ input {
 .instrumentales__destacados h2 {
   color: #FFFFFF;
   margin-bottom: 1rem;
+}
+
+.panel-de-control {
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+}
+
+.panel-de-control__menu {
+  background-color: #ebc246;
+  margin: 0;
+  padding: 1.5rem;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.281);
+  height: 100vh;
 }
 
 .palabras-del-equipo {
@@ -1109,26 +1126,25 @@ input {
   display: flex;
   align-items: center;
   justify-content: center;
-  bottom: 1.2rem;
-  right: 90%;
+  bottom: 1.3rem;
   cursor: pointer;
   color: #ebc246;
   background-color: #1ab5e6;
   width: 3.5rem;
   height: 3.5rem;
   border-radius: 50%;
-  box-shadow: 1px 1px 1rem rgba(0, 0, 0, 0);
+  box-shadow: 1px 1px 1rem rgba(0, 0, 0, 0.075);
   transition: transform 0.1s;
   transition: box-shadow 0.1s;
 }
 @media (min-width: 768px) {
   .header__nav_boton_usuarios .header__nav_boton {
-    bottom: -0.5rem;
-    right: 46%;
+    bottom: -0.9rem;
+    right: 48%;
   }
 }
 .header__nav_boton_usuarios .header__nav_boton:hover {
-  box-shadow: 1px 1px 1rem rgba(0, 0, 0, 0.103);
+  box-shadow: 1px 1px 1rem rgba(0, 0, 0, 0.203);
 }
 .header__nav_boton_usuarios .header__nav_boton:active {
   transform: scale(0.9);
@@ -1139,7 +1155,7 @@ input {
   padding: 0.5rem;
   z-index: 1;
   width: 100%;
-  height: 11rem;
+  height: 200%;
   align-items: center;
   justify-content: center;
   border-bottom-left-radius: 4px;
@@ -1152,8 +1168,8 @@ input {
 }
 @media (min-width: 768px) {
   .header__nav_boton_usuarios .header__nav_boton_usuarios_login {
-    left: 25%;
-    width: 50%;
+    left: 5%;
+    width: 90%;
     height: 7rem;
   }
 }
@@ -1907,8 +1923,24 @@ input {
   justify-content: center;
   gap: 2rem;
 }
+.login_container .login_buttons .login_buttons__button {
+  display: flex;
+  margin: 0;
+  margin-bottom: 2rem;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.036);
+  padding: 5px;
+  border-radius: 5px;
+  height: 70%;
+}
+@media (min-width: 768px) {
+  .login_container .login_buttons .login_buttons__button {
+    margin-bottom: 0;
+  }
+}
 .login_container .login_buttons p {
-  color: #FFFFFF;
+  color: #000000;
 }
 .login_container .login_buttons button {
   display: flex;
@@ -1951,16 +1983,21 @@ input {
   min-height: 100vh;
   margin-top: 9rem;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 .signUp .signUp__form {
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.078);
+  height: 100%;
   max-height: 40rem;
   padding: 2rem;
   border-radius: 8px;
+}
+.signUp .signUp__form .recaptcha {
+  margin-top: 2rem;
 }
 .signUp .signUp__form label {
   display: flex;
@@ -1968,30 +2005,14 @@ input {
   justify-content: left;
   height: 3rem;
 }
-.signUp .signUp__form input {
-  border-radius: 5px;
-  height: 3rem;
-  font-size: 1.7rem;
-  width: 100%;
-  color: #000000;
-  background-color: #ebc246;
-}
-.signUp .signUp__form input:focus {
-  outline-color: #1ab5e6;
-}
-@media (min-width: 768px) {
-  .signUp .signUp__form input {
-    width: 100%;
-  }
-}
 .signUp .signUp__form button {
-  width: 10rem;
+  width: 100%;
   font-size: 2rem;
   background-color: #1ab5e6;
   margin: 1rem;
   padding: 0.5rem 2rem;
   border: none;
-  border-radius: 2px;
+  border-radius: 5px;
   color: #000000;
   cursor: pointer;
   display: flex;
@@ -2006,4 +2027,59 @@ input {
 }
 .signUp .signUp__form button:focus {
   outline-color: #ebc246;
+}
+
+.signUp__form__input input {
+  border-radius: 5px;
+  height: 3rem;
+  font-size: 1.7rem;
+  width: 100%;
+  color: #000000;
+}
+.signUp__form__input input:focus {
+  outline-color: #1ab5e6;
+}
+@media (min-width: 768px) {
+  .signUp__form__input input {
+    width: 100%;
+  }
+}
+
+.login_buttons__button__registrar {
+  width: 100%;
+  font-size: 2rem;
+  background-color: #ebc246;
+  margin: 0;
+  margin-top: 1rem;
+  padding: 0.5rem 2rem;
+  border: none;
+  border-radius: 5px;
+  color: #000000;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  transition-timing-function: ease-out;
+  transition: transform 0.2s;
+}
+.login_buttons__button__registrar:hover {
+  transition-duration: 0.4s;
+  transition-timing-function: ease-out;
+  transform: scale(1.1);
+}
+.login_buttons__button__registrar:focus {
+  outline-color: #ebc246;
+}
+
+.login_buttons__button__status {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 3rem;
+  width: 30rem;
+}
+
+.contact-form__mensaje-status__signup {
+  font-size: 3rem;
+  text-align: center;
 }

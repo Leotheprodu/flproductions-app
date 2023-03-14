@@ -2,15 +2,16 @@ import { IconUser, IconPlayerPlay, IconMenu2 } from '@tabler/icons';
 import { useState, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { SocialIcons } from './social-icons';
-import Login from './usuarios/Login';
+import SessionPanel from './usuarios/SessionPanel';
+import { useSelector } from 'react-redux';
 
 export function NavMenu() {
   const [UserButton, setUserButton] = useState(false)
   const [isMovilUser, setIsMovilUser] = useState(false)
   const [onClickMovilUser, setOnClickMovilUser] = useState(false)
+  const isLoggedIn = useSelector(state => state.user.session.isLoggedIn);
 
   const handleClick = () => {
-
     setUserButton(!UserButton);
   };
   const handleClickMovilUser = () => {
@@ -51,10 +52,20 @@ export function NavMenu() {
           <IconUser size={30} />
 
         </div>
-        
+        {
+          isLoggedIn &&
           <div className={`header__nav_boton_usuarios_login ${UserButton ? "selected" : ""}`}>
-            <Login />
+            <SessionPanel />
+          
           </div>
+        }
+        {
+          !isLoggedIn &&
+          <div className={`header__nav_boton_usuarios_login ${UserButton ? "selected" : ""}`}>
+            <SessionPanel />
+          
+          </div>
+        }
         
       </div>
       {

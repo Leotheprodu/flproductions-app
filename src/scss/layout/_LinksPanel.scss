@@ -1,0 +1,15 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.panel-de-control{
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+
+}
+.panel-de-control__menu{
+    background-color: v.$secundario;
+    margin: 0;
+    padding: 1.5rem;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.281);
+    height: 100vh
+}

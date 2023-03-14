@@ -7,17 +7,23 @@
     min-height: 100vh;
     margin-top: 9rem;
     display: flex;
-    justify-content: center;
-
+    flex-direction: column;
+    align-items: center;
+    
     .signUp__form{
         display: flex;
         flex-direction: column;
         align-items: center;
         background-color: rgba(0, 0, 0, 0.078);
+        height: 100%;
         max-height: 40rem;
         padding: 2rem;
         border-radius: 8px;
         
+        .recaptcha{
+            margin-top: 2rem;
+
+        }
         label {
             display: flex;
             align-items: center;
@@ -25,32 +31,14 @@
             height: 3rem;
         }
         
-        input {
-            
-            border-radius: 5px; 
-            height: 3rem;
-            font-size: 1.7rem;
-            width: 100%;
-            color: v.$negro;
-            background-color: v.$secundario;
-            &:focus{
-                outline-color: v.$primario;
-            }
-            @include m.tablet {
-                width: 100%;
-                
-                
-            }
-
-        }
         button {
-            width: 10rem;
+            width: 100%;
             font-size: 2rem;
             background-color: v.$primario;
             margin: 1rem;
             padding: .5rem 2rem;
             border: none;
-            border-radius: 2px;
+            border-radius: 5px;
             color: v.$negro;
             cursor: pointer;
             display: flex;
@@ -67,4 +55,62 @@
             }
         }
     }
+}
+
+.signUp__form__input{
+
+
+    input {
+            
+        border-radius: 5px; 
+        height: 3rem;
+        font-size: 1.7rem;
+        width: 100%;
+        color: v.$negro;
+        &:focus{
+            outline-color: v.$primario;
+        }
+        @include m.tablet {
+            width: 100%;
+            
+            
+        }
+
+    }
+}
+.login_buttons__button__registrar{
+    width: 100%;
+            font-size: 2rem;
+            background-color: v.$secundario;
+            margin: 0;
+            margin-top: 1rem;
+            padding: .5rem 2rem;
+            border: none;
+            border-radius: 5px;
+            color: v.$negro;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            transition-timing-function: ease-out;
+            transition: transform .2s;
+            &:hover{
+                transition-duration: .4s;
+                transition-timing-function: ease-out;
+                transform: scale(1.1);
+            }
+            &:focus{
+                outline-color: v.$secundario;
+            }
+}
+.login_buttons__button__status{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    margin-top: 3rem;
+    width: 30rem;
+}
+.contact-form__mensaje-status__signup{
+    font-size: 3rem;
+    text-align: center;
 }

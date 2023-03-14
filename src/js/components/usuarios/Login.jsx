@@ -1,133 +1,108 @@
-import { IconUserCheck, IconLogout, IconUserPlus } from "@tabler/icons";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { setSession } from "../redux/userActions";
-
-function Login() {
-    const dispatch = useDispatch();
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const isLoggedIn = useSelector(state => state.user.session.isLoggedIn);
-    const userInfo = useSelector(state => state.user.session.user);
-
-    useEffect(() => {
-        checkLoggedIn();
-    }, []);
-
-    const checkLoggedIn = () => {
-        fetch(`${process.env.NODE_ENV==='production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/check-session`, {
-            credentials: "include",
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                if(data.isLoggedIn) {
-                    dispatch(setSession(data));
-
-                }
-                
-            
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-    };
-
-    const handleLogin = (e) => {
-        e.preventDefault();
-        fetch(`${process.env.NODE_ENV==='production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/login`, {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                "Content-Type": "application/json",
-
-            },
-            body: JSON.stringify({ email, password }),
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                if (data.isLoggedIn) {
-                    dispatch(setSession(data));
-                } else {
-                    alert("Lo sentimos, para poder Iniciar Sesión debes estar registrado(a)")
-                }
-
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    };
-
-    const handleLogout = (e) => {
-        e.preventDefault();
-        fetch(`${process.env.NODE_ENV==='production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/logout`, {
-            method: "POST",
-            credentials: "include",
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                dispatch(setSession(data));
-            })
-            .catch((error) => {
-                 console.log(error);
-            })
-    };
-
-    if (isLoggedIn) {
-        return (
-            <div className="login_container">
-                <p> {userInfo.username}, sesión iniciada</p>
-                <div className="login_buttons">
-
-                    <button title="Cerrar Sesión" onClick={handleLogout}>{<IconLogout />}</button>
+import { useNavigate  } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
+import { MetaInjector } from "../MetaInjector";
 
 
-                </div>
-            </div>
-        );
-    } else {
-        return (
-            <form className="login_container" onSubmit={handleLogin}>
-                <div className="login__form">
+export const Login = () => {
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector(state => state.user.session.isLoggedIn)
+  const navigate = useNavigate();
+  const formStatus = 'Ya has iniciado sesion, le vamos a dirigir a la pagina anterior.'
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-                    <div className="login_container_input">
-                        <label htmlFor="email">
-                            Correo electrónico:
-                        </label>
-                        <input
-                            type="email"
-                            
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
 
-                    </div>
-                    <div className="login_container_input">
-                        <label htmlFor="password">
-                            Contraseña:
-                        </label>
-                        <input
-                        
-                            type="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
+  const handleLogin = (e) => {
+    e.preventDefault();
+    fetch(`${process.env.NODE_ENV === 'production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/login`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
 
-                    </div>
-                </div>
-                <div className="login_buttons">
+      },
+      body: JSON.stringify({ email, password }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.isLoggedIn) {
+          dispatch(setSession(data));
+          
+        } else {
+          alert("Datos inválidos, correo o contraseña incorrecta o regístrate")
+        }
 
-                    <button type="submit" title="Iniciar Sesión">{<IconUserCheck />}</button>
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-                    <a href="/registro-usuario">
-                        <button type="button" title="Registrarse">{<IconUserPlus />}</button>
-                    </a>
-                </div>
+  if (isLoggedIn) {
+    setTimeout(() => {
+      navigate(-1, {replace: true});
+    }, 3000);
+
+  }
+
+  return (
+    <HelmetProvider>
+      <MetaInjector
+        title='Inicio de Session'
+        description='Incio de Session'
+        type='website'
+        url='https://flproductionscr.com/iniciar-sesion'
+        image='https://flproductionscr.com/build_main/img/header-main.png'
+        keywords='estudio de grabacion, produccion musical, sesion, login, usuario'
+        robots='index, follow'
+      />
+      <div className="contenedor signUp">
+        {isLoggedIn &&
+          <div className="contenedor">
+            <p className="contact-form__mensaje-status__signup">{formStatus}</p>
+
+          </div>
+        }
+        {!isLoggedIn &&
+          <>
+            <form className="signUp__form" onSubmit={handleLogin}>
+              <div className=" signUp__form__input">
+                <label className="mb-3" htmlFor="email">Correo:</label>
+                <input
+                  type="email"
+                  value={email}
+                  className="mb-3"
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+              </div>
+              <div className="signUp__form__input">
+                <label className="mb-3" htmlFor="password">Contraseña:</label>
+                <input
+                  type="password"
+                  className="mb-3"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                />
+              </div>
+              <button type="submit">Iniciar Sesión</button>
             </form>
-        );
-    }
-}
+            <p>o</p>
+            <div className="login_buttons__button">
+              <a href="/registro-de-usuario">
+                <button className="login_buttons__button__registrar" type="button" title="Registrarse">Registrarse</button>
+              </a>
 
-export default Login;
+            </div>
+          </>
+        }
+
+      </div>
+    </HelmetProvider>
+  );
+
+}
