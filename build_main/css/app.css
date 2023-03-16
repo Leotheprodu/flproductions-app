@@ -2161,3 +2161,31 @@ input {
   font-size: 3rem;
   text-align: center;
 }
+
+.InicioPaneldeControl__mensajes {
+  display: flex;
+  margin-top: 5rem;
+}
+
+.mensajes-del-sistema__bloque {
+  appearance: none;
+  background-color: #FFFFFF;
+  min-height: 10rem;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+.mensajes-del-sistema__bloque h3 {
+  background-color: #FFFFFF;
+  color: #ebc246;
+  margin: 0 0 2rem 0;
+  font-size: 1.5rem;
+}
+.mensajes-del-sistema__bloque ul {
+  padding: 0;
+}
+.mensajes-del-sistema__bloque li {
+  list-style: none;
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.051);
+  padding: 5px;
+}

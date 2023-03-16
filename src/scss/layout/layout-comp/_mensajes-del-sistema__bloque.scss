@@ -1,0 +1,34 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+
+.InicioPaneldeControl__mensajes{
+    display: flex;
+    margin-top: 5rem;
+}
+
+.mensajes-del-sistema__bloque{
+    appearance: none;
+    background-color: v.$blanco;
+    min-height: 10rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    
+    h3{
+        background-color: v.$blanco;
+        color: v.$secundario;
+        margin: 0 0 2rem 0;
+        font-size: 1.5rem;
+    }
+    
+    ul{
+        padding: 0;
+    }
+    li{
+        list-style: none;
+        margin: 0;
+        background-color: rgba(0, 0, 0, 0.051);
+        padding: 5px
+
+    };
+}

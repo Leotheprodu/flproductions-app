@@ -1,15 +1,24 @@
 import { HelmetProvider } from 'react-helmet-async';
 import { LinksPanel, MetaInjector } from '../components';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { IconMenu2, IconSettingsFilled } from '@tabler/icons-react';
+import { IconSettingsFilled } from '@tabler/icons-react';
+import { setSession } from '../components/redux/userActions';
 
 export const ControlPanel = () => {
+    const dispatch = useDispatch();
     const isLoggedIn = useSelector(state => state.user.session.isLoggedIn);
+    const user = useSelector(state => state.user.session.user);
     const [isMovilUser, setIsMovilUser] = useState(false);
     const [onClickMovilUser, setOnClickMovilUser] = useState(false);
 
+
+    useEffect(() => {
+        if (isLoggedIn) {
+            refreshUserSession();
+        }
+    }, [isLoggedIn])
 
     useEffect(() => {
         if (window.innerWidth <= 768) {
@@ -24,6 +33,24 @@ export const ControlPanel = () => {
     
     
       }
+
+      const refreshUserSession = () =>{
+        fetch(`${process.env.NODE_ENV === 'production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/usuarios/${user.id}`, {
+            credentials: "include",
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.isLoggedIn) {
+                    dispatch(setSession(data));
+
+                }
+
+
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+      } 
 
     if (!isLoggedIn) {
         return (

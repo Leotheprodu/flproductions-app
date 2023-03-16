@@ -7,14 +7,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setSession } from "../redux/userActions";
 
 export const SignUp = () => {
-  /* const caca= useSelector(state => state.user.user.username)
-  console.log(caca); */
-  /* const roles = useSelector(state => state.user.roles);
-
-  if (!roles.includes(5)) {
-    // Si el usuario no tiene el rol de administrador, no se muestra el componente
-    return <div style={{ height: '100vh' }}><p>No tienes permiso de ver este contenido</p></div>;
-  } */
 
   const isLoggedIn = useSelector(state => state.user.session.isLoggedIn)
 
