@@ -8,7 +8,7 @@ import { MetaInjector } from "../MetaInjector";
 
 export const Login = () => {
   const dispatch = useDispatch();
-  const isLoggedIn = useSelector(state => state.user.session.isLoggedIn)
+  const isLoggedIn = useSelector(state => state.user.session.isLoggedIn);
   const navigate = useNavigate();
   const formStatus = 'Ya has iniciado sesion, le vamos a dirigir a la pagina anterior.'
   const [email, setEmail] = useState('');
