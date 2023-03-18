@@ -34,15 +34,6 @@ export function NavMenu() {
     <div className='header__nav'>
       <div className='header__nav__titulo-links'>
         <Link to="/" className='header__web-tittle'>FLProductions</Link>
-        <div className='root-socialIcons'>
-          <SocialIcons
-            size={20}
-            facebook='https://www.facebook.com/FLProductionscr'
-            youtube='https://www.youtube.com/channel/UCAVKw7wP-yKPGSbCd1BJ7mw'
-            instagram='https://www.instagram.com/leotheprodu/'
-            twitch='https://www.twitch.tv/leotheprodu'
-          />
-        </div>
 
 
       </div>
@@ -76,7 +67,7 @@ export function NavMenu() {
             <NavLink to='/contacto' className='header__links__link'>Contacto</NavLink>
             <div className='header__submenu-parent'>
               
-              <p className='header__links__link__musica'><span>{<IconPlayerPlay size={15} />}</span>Musica</p>
+              <p className='header__links__link__musica'>Musica</p>
 
               <nav className='header__submenu'>
                 <NavLink to='/canciones' className='header__links__link'>Canciones</NavLink>

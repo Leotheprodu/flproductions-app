@@ -38,6 +38,13 @@ export function NuestrasCaracteristicas() {
         
         <div ref={ref} className="contenedor nuestras-caracteristicas fxElement">
 
+<div className="nuestras-caracteristicas__titulo">
+
+<h2>Nuestras Características</h2>
+
+
+</div>
+
             <div className="nuestras-caracteristicas__elemento">
                 <InfoCard 
                 icon={
@@ -67,27 +74,11 @@ export function NuestrasCaracteristicas() {
                     stroke={infoCardStroke}/>
                 }
                 titulo='EXCELENCIA'
-                texto='En FLProductions, la excelencia es un valor que guía todo lo que hacemos. Nos dedicamos a dar lo mejor de nosotros en cada proyecto que abordamos, porque amamos la música y estamos apasionados por nuestro trabajo. Trabajamos con dedicación y entrega total para crear experiencias musicales únicas y significativas para nuestros clientes. Cada proyecto es una oportunidad para explorar nuevas ideas y perfeccionar nuestras habilidades, y esa combinación de pasión y compromiso es lo que nos impulsa a seguir creando algo especial.'
+                texto='En FLProductions somos fanáticos de la música y nos apasiona nuestro trabajo. Trabajamos duro en cada proyecto para crear experiencias musicales únicas y significativas para nuestros clientes. Siempre estamos buscando mejorar y encontrar nuevas ideas para seguir creando cosas especiales.'
 
                 />
 
 
-
-            </div>
-
-
-
-            <div className="nuestras-caracteristicas__titulo">
-
-                <h2>Nuestras Características</h2>
-                <p>Esto es lo que nos hace diferentes.</p>
-
-
-            </div>
-
-
-
-            <div className="nuestras-caracteristicas__elemento">
             <InfoCard 
                 icon={
                     <IconPigMoney 

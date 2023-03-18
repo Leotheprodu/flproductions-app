@@ -18,10 +18,10 @@
     transition-timing-function: ease-in-out;
     position: relative;
     top: 0rem;
-    color: v.$blanco;
+    color: v.$oscurecer;
     
     &:hover{
-        top: -0.7rem;
+        top: -0.1rem;
         transition-property: top;
         transition-duration: .2s;
         transition-timing-function: ease-in-out;

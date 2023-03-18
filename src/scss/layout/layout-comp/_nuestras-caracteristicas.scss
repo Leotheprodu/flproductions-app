@@ -2,35 +2,27 @@
 @use 'base/variables' as v;
 
 .nuestras-caracteristicas{
-    width: 80%;
-    margin: 17rem auto;
-    display: grid;
-    align-items: center;
-
-    @include m.tablet {
-        
-    grid-template-columns: 30% 40% 30%;
     
-    }
+    margin: 17rem auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap:nowrap;
 }
 
 .nuestras-caracteristicas__titulo{
-    grid-row: 1/2;
-    text-align: center;
+    
+        color: v.$negro;
+        margin-bottom: 8rem;
+    
+   
+}
+.nuestras-caracteristicas__elemento{
+    width: 100%;
     display: flex;
-    flex-direction: column;
+    align-items:first baseline;
     justify-content: center;
-    @include m.tablet {
-        grid-row: 1/1;
-        grid-column: 2/3;
-    }
-    h2{
-        color: v.$primario;
-        margin-bottom: 2rem;
-    }
-    p{
-        color: v.$secundario;
-        font-size: 2rem;
-        font-weight: 700;
-    }
+    flex-wrap:wrap;
+    gap: 1rem;
 }

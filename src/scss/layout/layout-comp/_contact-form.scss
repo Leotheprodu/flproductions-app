@@ -14,7 +14,7 @@
 .contacto-grid {
     display: grid;
     grid-template-columns: 1fr;
-    color: v.$blanco;
+    color: v.$negro;
     align-items: center;
     justify-content: center;
     width: 85%;
@@ -44,16 +44,8 @@ gap: 1rem;
 }
 a{
     text-decoration: none;
-    color: v.$blanco;
-    transition-property: color;
-    transition-duration: .3s;
-    transition-timing-function: ease-out;
-    &:hover{
-        color: rgb(179, 179, 179);
-        transition-property: color;
-        transition-duration: .3s;
-        transition-timing-function: ease-out;
-    }
+    color: v.$secundario;
+
 }
 
 }
@@ -94,7 +86,6 @@ a{
     }
     .mb-3{
         margin-bottom: 2rem;
-        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     }
     .form-control2{
         width:100% ;
@@ -118,14 +109,13 @@ a{
         margin: 1rem;
         padding: .5rem 2rem;
         border: none;
+        border-radius: .5rem;
         color: v.$blanco;
         transition-property: color;
         transition-duration: 1s;
         transition-timing-function: ease-out;
         transition: transform 1s;
         &:hover{
-            color: v.$secundario;
-            transition-property: color;
             transition-duration: .8s;
             transition-timing-function: ease-out;
             transform: scale(1.1);

@@ -2,12 +2,13 @@
 @use 'base/variables' as v;
 
 .footer{
-    background-color: v.$primario;
+    background-color: v.$blanco;
     height: 6rem;
     width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
+    border-top: 2px solid v.$gris;
     @include m.tablet {
         justify-content: space-between;
         flex-direction: row;
@@ -21,7 +22,7 @@
 
     p{
         margin: 0;
-        color: v.$blanco;
+        color: v.$oscurecer;
         text-align: center;
         padding-left: 0rem;
 
@@ -32,7 +33,7 @@
         span{
             font-weight: 700;
             font-size: 1.8rem;
-            color: v.$secundario;
+            color: v.$oscurecer;
         }
     }
 }

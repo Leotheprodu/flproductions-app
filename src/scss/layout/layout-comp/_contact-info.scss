@@ -4,27 +4,28 @@
 .contact-info{
     transition: transform .2s;
     &:hover{
-        transform: scale(1.03);
+        transform: scale(.95);
     }
 }
 
 .contact-info__icon{
     display: flex;
-    background-color: v.$primario;
+    background-color: v.$blanco;
     border-radius: 50%;
     width: 9rem;
     height: 9rem;
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    box-shadow: 5px 6px 10px #0000002c;
+    box-shadow:2px 2px 2px #0000001a;
 }
 .contact-info__titulo{
     text-transform: uppercase;
+    color: v.$negro;
     margin-top: 2rem;
     margin-bottom: 1rem;
     font-size: 2.2rem;
 }
 .contact-info__parrafo{
-    color: v.$blanco;
+    color: v.$negro;
 }

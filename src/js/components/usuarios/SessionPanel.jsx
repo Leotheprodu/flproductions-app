@@ -81,15 +81,15 @@ function SessionPanel() {
                 <p> {userInfo.username}, sesión iniciada</p>
                 <div className="login_buttons">
                     <div className="login_buttons__button">
-                        <p>Panel de Control</p>
+                        <p></p>
                         <a href="/panel-de-control">
-                            <button type="button" title="Panel de Control">{<IconSettingsFilled />}</button>
+                            <button type="button" title="Panel de Control">{<IconSettingsFilled />}Panel de Control</button>
                         </a>
 
                     </div>
                     <div className="login_buttons__button">
-                        <p>Cerrar Sesión</p>
-                        <button title="Cerrar Sesión" onClick={handleLogout}>{<IconLogout />}</button>
+                        <p></p>
+                        <button title="Cerrar Sesión" onClick={handleLogout}>{<IconLogout />}Cerrar Sesión</button>
                     
                     </div>
 
@@ -129,15 +129,15 @@ function SessionPanel() {
                 </div>
                 <div className="login_buttons">
                     <div className="login_buttons__button">
-                        <p>Iniciar Sesión</p>
-                        <button type="submit" title="Iniciar Sesión">{<IconUserCheck />}</button>
+                        
+                        <button type="submit" title="Iniciar Sesión"><IconUserCheck/>Iniciar Sesión</button>
 
                     </div>
 
                     <div className="login_buttons__button">
-                        <p>Registrarse</p>
+                        
                         <a href="/registro-de-usuario">
-                            <button type="button" title="Registrarse">{<IconUserPlus />}</button>
+                            <button type="button" title="Registrarse"><IconUserPlus/>Registrarse</button>
                         </a>
 
                     </div>

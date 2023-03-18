@@ -3,11 +3,14 @@
 
 
 .inicio_info1_servicios-cards{
-    display: grid;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     padding: 1rem;
     scroll-snap-align: center;
     @include m.tablet {
-        grid-template-columns: repeat(3,1fr);
+        flex-direction: row;
+        align-items: flex-start;
         gap: 2.5rem;
     }
 }

@@ -18,15 +18,15 @@
     }
 }
 .palabras-del-equipo_foto{
-        max-width: 40rem;
         max-height: 50rem;
         margin: 0 auto;
         
-        
-    img{
-        border-radius: 30%;
-        
-        background-color: v.$secundario;
+        img{
+        object-fit:contain;
+        border-radius: 4px;
+        filter: grayscale(90%);
+        background-color: v.$primario;
+        box-shadow: 2px 1px 5px rgba(0, 0, 0, 0.295);
     }
 }
 .palabras-del-equipo_parrafo-principal {
@@ -34,7 +34,7 @@
     text-align: justify;
     line-height: 2;
     span{
-        color: v.$primario;
+        color: v.$oscurecer;
         font-size: 3rem;
     }
 }
