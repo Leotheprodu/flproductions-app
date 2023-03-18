@@ -5,6 +5,7 @@
 .inicio_info1_servicios-cards{
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
     padding: 1rem;
     scroll-snap-align: center;
@@ -16,30 +17,6 @@
 }
 .acerca-de-nosotros{
     scroll-snap-align: center;
-}
-.inicio__contact-form__title{
-    text-align: center;
-    margin-bottom: 1rem;
-    text-transform: uppercase;
-    color: v.$negro;
-    font-size: 4rem;
-    margin-top: 4rem;
-    
-}
-
-.inicio__contact-Form {
-    background-image: url("https://flproductionscr.com/build_main/img/teclado1.webp");
-    background-color: v.$blanco;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    background-attachment:fixed;
-    scroll-snap-align: center;
-    overflow: hidden;
-    svg{
-        transform: scale(1.2)
-    }
-    
 }
 .inicio__Caracteristicas{
     scroll-snap-align: center;

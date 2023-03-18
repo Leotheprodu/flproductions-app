@@ -13,21 +13,21 @@ export const BotonesAppMusic = ({ clickInfoButton, infoProduccion, handleInfoBut
                     <li>
                             
                             <Link to={formatLink(`/cancion/${infoProduccion.id}`)}>
-                                <IconPlaylist color="#1ab5e6" size={20} />
+                                <IconPlaylist size={15} />
                                 <p>info de la Cancion</p>
                             </Link>
                         </li>
                         <li>
                             
                                 <Link to={formatLink(`/artista/${infoProduccion.nombre_artista}`)}>
-                                    <IconMicrophone  color="#1ab5e6" size={20} />
+                                    <IconMicrophone size={15} />
                                     <p>info del Artista</p>
                                 </Link>
                         </li>
                         <li>
                             
                                 <a href={`https://www.y2mate.com/es/youtube-mp3/${infoProduccion.youtube_id}`} rel="noopener noreferrer" target={"_blank"} >
-                                    <IconFileDownload color="#1ab5e6" size={20} />
+                                    <IconFileDownload size={15} />
                                     <p>Descargar mp3</p>
                                 </a>
                         </li>
@@ -41,21 +41,21 @@ export const BotonesAppMusic = ({ clickInfoButton, infoProduccion, handleInfoBut
                         <li>
                             
                             <Link to={formatLink(`/instrumental/${infoProduccion.id}`)}>
-                                <IconPlaylist color="#1ab5e6" size={20}/>
+                                <IconPlaylist  size={15}/>
                                 <p>info del Instrumental</p>
                             </Link>
                         </li>
                         <li>
                             
                                 <Link to={formatLink(`/productor-musical/${infoProduccion.nombre_artista}`)}>
-                                    <IconMicrophone color="#1ab5e6" size={20} />
+                                    <IconMicrophone size={15} />
                                     <p>info del Productor</p>
                                 </Link>
                         </li>
                         <li>
                             
                                 <a href={`https://www.y2mate.com/es/youtube-mp3/${infoProduccion.youtube_id}`} rel="noopener noreferrer" target={"_blank"} >
-                                    <IconFileDownload color="#1ab5e6" size={20} />
+                                    <IconFileDownload size={15} />
                                     <p>Descargar mp3</p>
                                 </a>
                         </li>

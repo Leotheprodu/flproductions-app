@@ -341,7 +341,7 @@ p {
 
 .contenedor {
   width: 97%;
-  max-width: 100rem;
+  max-width: 120rem;
   margin: 0 auto;
 }
 
@@ -525,6 +525,7 @@ input {
 .inicio_info1_servicios-cards {
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
   padding: 1rem;
   scroll-snap-align: center;
@@ -539,29 +540,6 @@ input {
 
 .acerca-de-nosotros {
   scroll-snap-align: center;
-}
-
-.inicio__contact-form__title {
-  text-align: center;
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-  color: #000000;
-  font-size: 4rem;
-  margin-top: 4rem;
-}
-
-.inicio__contact-Form {
-  background-image: url("https://flproductionscr.com/build_main/img/teclado1.webp");
-  background-color: #FFFFFF;
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
-  background-attachment: fixed;
-  scroll-snap-align: center;
-  overflow: hidden;
-}
-.inicio__contact-Form svg {
-  transform: scale(1.2);
 }
 
 .inicio__Caracteristicas {
@@ -619,21 +597,22 @@ input {
 }
 
 .instrumentales__destacados {
-  background-color: #ebc246;
+  margin-top: 2rem;
+  background-color: rgb(238, 238, 238);
   padding-top: 5rem;
+  border-radius: 5rem;
 }
 .instrumentales__destacados h2 {
-  color: #FFFFFF;
+  color: #000000;
   margin-bottom: 1rem;
 }
 
 .panel-de-control__menu {
   display: none;
-  background-color: #ebc246;
+  background-color: #FFFFFF;
   width: 100%;
   margin: 0;
   padding: 1.5rem;
-  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.281);
 }
 
 .panel-de-control__menu.selected {
@@ -685,25 +664,32 @@ input {
   transition: all 0.2s ease-in-out;
 }
 
+.InicioPaneldeControl__div {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  height: 100vh;
+}
+
 .InicioPaneldeControl {
+  padding: 2rem 0;
   background-repeat: no-repeat;
   background-position: bottom;
   background-size: cover;
-  background-color: rgba(0, 0, 0, 0.523);
+  background-color: rgba(255, 255, 255, 0.692);
   background-blend-mode: overlay;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  height: 100vh;
+  align-items: center;
+  border-radius: 30rem;
 }
 .InicioPaneldeControl h1 {
-  color: #FFFFFF;
+  color: #000000;
   text-transform: uppercase;
   text-align: center;
   font-size: 2rem;
   margin: 0;
-  background-color: rgba(0, 0, 0, 0.649);
 }
 @media (min-width: 768px) {
   .InicioPaneldeControl h1 {
@@ -711,11 +697,10 @@ input {
   }
 }
 .InicioPaneldeControl h3 {
-  color: #FFFFFF;
-  text-transform: uppercase;
+  color: #000000;
   text-align: center;
   font-size: 1.3rem;
-  background-color: rgba(0, 0, 0, 0.649);
+  margin: 0;
 }
 
 .palabras-del-equipo {
@@ -1028,7 +1013,6 @@ input {
   position: fixed;
   top: 0;
   left: 0;
-  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.341);
   flex-direction: column;
   width: 100%;
   display: flex;
@@ -1615,18 +1599,13 @@ input {
 .AppMusic {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 1rem;
   padding: 1rem;
-  flex-wrap: wrap;
   flex-flow: wrap;
   margin-bottom: 6rem;
   padding-bottom: 10rem;
   position: relative;
-}
-@media (min-width: 768px) {
-  .AppMusic {
-    justify-content: left;
-  }
 }
 
 .ItemAppMusic {
@@ -1712,7 +1691,7 @@ input {
   transform: scale(1.5);
   margin-bottom: 5rem;
   box-shadow: 2px 2px 1rem rgba(0, 0, 0, 0.9843137255);
-  background-color: #ebc246;
+  background-color: #FFFFFF;
 }
 
 .ItemAppMusic__player-wrapper {
@@ -1738,7 +1717,7 @@ input {
   position: absolute;
   align-items: center;
   gap: 0.5rem;
-  top: 0.2rem;
+  top: -0.8rem;
   left: 1.2rem;
   /*   .BotonesAppMusic__boton-stop-listadoproducciones {
         position: absolute;
@@ -1763,7 +1742,7 @@ input {
   height: 3rem;
   width: 3rem;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1215686275);
-  color: #1ab5e6;
+  color: rgb(102, 102, 102);
   background-color: #FFFFFF;
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
@@ -1793,7 +1772,7 @@ input {
 .BotonesAppMusic .BotonesAppMusic__barra-de-despazamiento-listadoproducciones, .BotonesAppMusic .BotonesAppMusic__control-volumen-listadoproducciones {
   -webkit-appearance: none;
   width: 100%;
-  background: #FFFFFF;
+  background: rgb(238, 238, 238);
   height: 0.2rem;
   border-radius: 1rem;
   outline: none;
@@ -1809,7 +1788,7 @@ input {
   -webkit-appearance: none;
   height: 1rem;
   width: 1rem;
-  background: #1ab5e6;
+  background: rgb(102, 102, 102);
   border-radius: 50%;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1215686275);
   cursor: pointer;
@@ -1829,11 +1808,11 @@ input {
   display: flex;
   align-items: flex-start;
   right: -3rem;
-  top: -3.8rem;
+  top: -4.5rem;
   height: 9rem;
   width: 18rem;
   z-index: 5;
-  background-color: rgb(234, 234, 234);
+  background-color: rgb(238, 238, 238);
   border-radius: 1rem;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1568627451);
 }
@@ -1852,14 +1831,15 @@ input {
   margin: 0.5rem;
 }
 .BotonesAppMusic__elementos-info-reproductor li:hover {
-  background-color: #ebc246;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.368627451);
 }
 .BotonesAppMusic__elementos-info-reproductor a {
-  font-size: 1.2rem;
   display: flex;
   align-items: center;
+  gap: 1rem;
 }
 .BotonesAppMusic__elementos-info-reproductor a p {
+  font-size: 1.1rem;
   color: #000000;
   margin: 0;
 }
@@ -1872,7 +1852,7 @@ input {
   align-items: center;
   border: none;
   background: none;
-  color: #FFFFFF;
+  color: rgb(102, 102, 102);
 }
 .BotonesAppMusic__boton-info-reproductor:hover {
   cursor: pointer;
@@ -1889,7 +1869,7 @@ input {
   align-items: center;
 }
 .ArtistList__Main h4 {
-  color: #ebc246;
+  color: #000000;
   margin: 0;
 }
 
@@ -1902,10 +1882,10 @@ input {
   margin: 2rem 2rem;
 }
 .ArtistList p {
-  background-color: #1ab5e6;
+  background-color: rgb(238, 238, 238);
   padding: 0.2rem;
   margin: 0;
-  color: #FFFFFF;
+  color: #000000;
   font-size: 1.4rem;
   border-radius: 2px;
   cursor: pointer;
@@ -2148,21 +2128,21 @@ input {
 
 .InicioPaneldeControl__mensajes {
   display: flex;
-  margin-top: 5rem;
+  justify-content: center;
+  margin: 5rem 0;
 }
 
 .mensajes-del-sistema__bloque {
   appearance: none;
-  background-color: #FFFFFF;
+  background-color: rgb(238, 238, 238);
   min-height: 10rem;
   padding: 1rem;
   border-radius: 1rem;
 }
 .mensajes-del-sistema__bloque h3 {
-  background-color: #FFFFFF;
-  color: #ebc246;
+  color: #000000;
   margin: 0 0 2rem 0;
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 .mensajes-del-sistema__bloque ul {
   padding: 0;
@@ -2170,6 +2150,5 @@ input {
 .mensajes-del-sistema__bloque li {
   list-style: none;
   margin: 0;
-  background-color: rgba(0, 0, 0, 0.051);
   padding: 5px;
 }

@@ -5,11 +5,10 @@
 
 .panel-de-control__menu{
     display: none;
-    background-color: v.$secundario;
+    background-color: v.$blanco;
     width: 100%;
     margin: 0;
     padding: 1.5rem;
-    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.281);
     
 }
 .panel-de-control__menu.selected{

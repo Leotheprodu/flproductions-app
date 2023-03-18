@@ -32,7 +32,7 @@ export const MensajesDelSistema = () => {
                 <div className='mensajes-del-sistema__bloque'>
 
                     <ul>
-                    <h3>Mensajes del Sistema</h3>
+                    <h3>Mensajes del Sistema:</h3>
                         <li>
                             Debes verificar tu email, revisa la bandeja de entrada de su correo y busca el que le hemos enviado el dia {formatoFecha(user.fecha_creacion)}
                         </li>

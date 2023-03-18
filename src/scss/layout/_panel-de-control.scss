@@ -1,68 +1,76 @@
 @use 'base/mixins' as m;
 @use 'base/variables' as v;
 
-.panel-de-control{
-    
+.panel-de-control {
+
     @include m.tablet {
         display: grid;
         position: relative;
         grid-template-columns: 1fr 6fr;
-        
+
     }
 
 }
-.panel-de-control__menu_celular{
+
+.panel-de-control__menu_celular {
     border: none;
     position: fixed;
-    button{
+
+    button {
         appearance: none;
         border: none;
         height: 5rem;
         width: 5rem;
         border-bottom-right-radius: 50%;
-        &:active{
+
+        &:active {
             transform: scale(1.1);
             transition: all 0.2s ease-in-out;
         }
     }
 }
-.InicioPaneldeControl__div{
-    
-    
-}
-.InicioPaneldeControl{
-    
-    background-repeat: no-repeat;
-    background-position:bottom ;
-    background-size: cover;
-    background-color: rgba(0, 0, 0, 0.523);
-    background-blend-mode:overlay;
+
+.InicioPaneldeControl__div {
     display: flex;
     flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100vh;
+    margin-top: 2rem;
+    height: 100vh;
+}
 
-    h1{
-        
-        color: v.$blanco;
+.InicioPaneldeControl {
+    padding: 2rem 0;
+
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: cover;
+    background-color: rgba(255, 255, 255, 0.692);
+    background-blend-mode: overlay;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30rem;
+
+    h1 {
+
+        color: v.$negro;
         text-transform: uppercase;
         text-align: center;
+        
         font-size: 2rem;
         margin: 0;
-        background-color: rgba(0, 0, 0, 0.649);
+
         @include m.tablet {
             font-size: 3rem;
         }
     }
-    h3{
-        color: v.$blanco;
-        text-transform: uppercase;
+
+    h3 {
+        
+        color: v.$negro;
         text-align: center;
         font-size: 1.3rem;
-        background-color: rgba(0, 0, 0, 0.649);
+        margin: 0;
     }
 
 }
-
-

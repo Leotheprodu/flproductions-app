@@ -37,6 +37,7 @@ export function Canciones() {
             />
 
 
+            <div className='canciones contenedor'>
 
             <div className='instrumentales__destacados '>
 
@@ -104,6 +105,7 @@ export function Canciones() {
                     setClickInfoButton={setClickInfoButton}
                     tipo_obra_general={tipo_obra_general}
                 />
+            </div>
             </div>
 
         </HelmetProvider>

@@ -8,7 +8,7 @@
     height: 100%;
     align-items: center;
     h4{
-        color: v.$secundario;
+        color: v.$negro;
         margin: 0;
     }
 }
@@ -21,10 +21,10 @@
     margin: 2rem 2rem;
 
     p{
-        background-color: v.$primario;
+        background-color: v.$gris;
         padding: .2rem;
         margin: 0;
-        color: v.$blanco;
+        color: v.$negro;
         font-size: 1.4rem;
         border-radius: 2px;
         cursor: pointer;
