@@ -2,13 +2,13 @@ import { IconDotsVertical, IconFileDownload, IconMicrophone, IconPlayerPause, Ic
 import { Link } from "react-router-dom";
 import { formatLink } from "../helpers/formatLink";
 
-export const BotonesAppMusic = ({ clickInfoButton, infoProduccion, handleInfoButton, handleStopButtonClick, volume, setVolume, handlePlayButtonClick, pause, progressDuration, progress, handleonChangeRange, duration, tipo_obra_general }) => {
+export const BotonesAppMusic = ({ clickInfoButton, infoProduccion, handleInfoButton, handleStopButtonClick, volume, setVolume, handlePlayButtonClick, pause, progressDuration, progress, handleonChangeRange, duration, tipo_obra_general, playing, ended }) => {
     
     return (
         <div className="BotonesAppMusic">
             {
-                clickInfoButton && tipo_obra_general === 0 &&
-                <div className="BotonesAppMusic__elementos-info-reproductor" >
+                tipo_obra_general === 0 &&
+                <div className={`BotonesAppMusic__elementos-info-reproductor ${clickInfoButton ? 'selected' : ''}`} >
                     <ul>
                     <li>
                             
@@ -35,8 +35,8 @@ export const BotonesAppMusic = ({ clickInfoButton, infoProduccion, handleInfoBut
                 </div>
             }
             {
-                clickInfoButton && tipo_obra_general === 1 &&
-                <div className="BotonesAppMusic__elementos-info-reproductor" >
+                tipo_obra_general === 1 &&
+                <div className={`BotonesAppMusic__elementos-info-reproductor ${clickInfoButton ? 'selected' : ''}`} >
                     <ul>
                         <li>
                             
@@ -63,6 +63,7 @@ export const BotonesAppMusic = ({ clickInfoButton, infoProduccion, handleInfoBut
                 </div>
             }
             <button
+                type="button"
                 onClick={handleInfoButton}
                 className="BotonesAppMusic__boton-info-reproductor"
             >
@@ -86,12 +87,13 @@ export const BotonesAppMusic = ({ clickInfoButton, infoProduccion, handleInfoBut
                 className="BotonesAppMusic__control-volumen-listadoproducciones"
             />
             <button
+                type="play"
                 className="BotonesAppMusic__boton-playstop-listadoproducciones"
                 onClick={handlePlayButtonClick}
 
             >
 
-                {!pause ? <IconPlayerPause /> : <IconPlayerPlay />}
+                { !pause & playing & !ended  ? <IconPlayerPause /> : <IconPlayerPlay />}
             </button>
             <div className="BotonesAppMusic__barra-de-progreso">
                 

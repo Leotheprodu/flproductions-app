@@ -632,12 +632,40 @@ input {
 
 .links-panel {
   margin-left: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 18rem;
+}
+.links-panel a {
+  display: flex;
+  padding: 1rem 0;
+  border-radius: 1rem;
+  transition: transform 0.5s;
+}
+.links-panel a:hover {
+  background-color: rgba(0, 0, 0, 0.048);
+}
+.links-panel a svg {
+  margin-right: 2rem;
+}
+.links-panel a p {
+  margin: 0;
+}
+.links-panel a:active {
+  transform: scale(0.95);
+  border: 1px solid rgba(0, 0, 0, 0.13);
+  transition-duration: 0.5s;
+  transition: ease-in-out;
 }
 @media (min-width: 768px) {
   .links-panel {
     margin-left: 0;
     position: fixed;
   }
+}
+.links-panel .active {
+  background-color: rgba(0, 0, 0, 0.048);
 }
 
 @media (min-width: 768px) {
@@ -1133,26 +1161,13 @@ input {
   transition-duration: 1s;
   transition-timing-function: ease-out;
 }
-
-.active {
+.header__nav .active {
   padding: 0.5rem;
   box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.197);
   border-radius: 5px;
 }
 
 .header__submenu {
-  display: none;
-}
-
-.header__submenu-parent {
-  display: flex;
-  align-items: center;
-  align-content: center;
-  position: relative;
-}
-
-.header__submenu-parent:hover .header__submenu,
-.header__submenu-parent[aria-expanded=true] .header__submenu {
   display: flex;
   flex-direction: column;
   justify-content: baseline;
@@ -1169,6 +1184,22 @@ input {
   right: -1rem;
   top: 2.7rem;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1215686275);
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 1s ease-in-out, opacity 0.5s linear;
+}
+
+.header__submenu-parent {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  position: relative;
+}
+
+.header__submenu-parent:hover .header__submenu,
+.header__submenu-parent[aria-expanded=true] .header__submenu {
+  visibility: visible;
+  opacity: 1;
 }
 .header__submenu-parent:hover .header__submenu a:hover,
 .header__submenu-parent[aria-expanded=true] .header__submenu a:hover {
@@ -1187,7 +1218,7 @@ input {
   justify-content: center;
   bottom: 1.3rem;
   cursor: pointer;
-  color: #000000;
+  color: rgb(102, 102, 102);
   background-color: #FFFFFF;
   width: 3.5rem;
   height: 3.5rem;
@@ -1211,7 +1242,9 @@ input {
   transform: scale(1);
 }
 .header__nav_boton_usuarios .header__nav_boton_usuarios_login {
-  display: none;
+  visibility: hidden;
+  opacity: 0;
+  display: flex;
   color: #000000;
   padding: 0.5rem;
   z-index: 1;
@@ -1225,6 +1258,7 @@ input {
   position: absolute;
   top: 100%;
   left: 0;
+  transition: visibility 1s ease-in-out, opacity 0.4s linear;
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.125);
 }
 @media (min-width: 768px) {
@@ -1236,7 +1270,8 @@ input {
 }
 
 .header__nav_boton_usuarios_login.selected {
-  display: flex;
+  visibility: visible;
+  opacity: 1;
 }
 
 .menu_celular {
@@ -1615,8 +1650,9 @@ input {
   height: 23rem;
   align-items: center;
   justify-content: start;
-  transition: box-shadow 1s;
+  transition: box-shadow 0.5s linear, transform 1s ease-in-out;
   border-radius: 2rem;
+  transform: scale(1);
 }
 .ItemAppMusic:hover {
   box-shadow: 1px 1px 1rem #000000;
@@ -1646,6 +1682,14 @@ input {
 }
 .ItemAppMusic .ItemAppMusic__playboton:hover {
   opacity: 100%;
+}
+
+.ItemAppMusic.selected {
+  z-index: 2;
+  transform: scale(1.5);
+  margin-bottom: 5rem;
+  box-shadow: 2px 2px 1rem rgba(0, 0, 0, 0.9843137255);
+  background-color: #FFFFFF;
 }
 
 .ItemAppMusic__texto {
@@ -1683,15 +1727,6 @@ input {
   width: 19rem;
   margin: 0;
   padding: 0;
-}
-
-.ItemAppMusic.selected {
-  z-index: 2;
-  /* background-color: v.$blanco; */
-  transform: scale(1.5);
-  margin-bottom: 5rem;
-  box-shadow: 2px 2px 1rem rgba(0, 0, 0, 0.9843137255);
-  background-color: #FFFFFF;
 }
 
 .ItemAppMusic__player-wrapper {
@@ -1806,6 +1841,8 @@ input {
 .BotonesAppMusic__elementos-info-reproductor {
   position: absolute;
   display: flex;
+  visibility: hidden;
+  opacity: 0;
   align-items: flex-start;
   right: -3rem;
   top: -4.5rem;
@@ -1815,6 +1852,7 @@ input {
   background-color: rgb(238, 238, 238);
   border-radius: 1rem;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1568627451);
+  transition: visibility 1s ease-in-out, opacity 0.3s linear;
 }
 .BotonesAppMusic__elementos-info-reproductor ul {
   padding: 0;
@@ -1842,6 +1880,11 @@ input {
   font-size: 1.1rem;
   color: #000000;
   margin: 0;
+}
+
+.BotonesAppMusic__elementos-info-reproductor.selected {
+  visibility: visible;
+  opacity: 1;
 }
 
 .BotonesAppMusic__boton-info-reproductor {
@@ -2151,4 +2194,37 @@ input {
   list-style: none;
   margin: 0;
   padding: 5px;
+}
+
+.contenedor__UserBasicInfo {
+  width: 30%;
+  background-color: rgb(238, 238, 238);
+  border-radius: 2rem;
+  margin-bottom: 100vh;
+}
+
+.UserBasicInfo__Error {
+  border: 1px solid red;
+}
+
+.UserBasicInfo__form {
+  padding: 2rem;
+}
+
+.UserBasicInfo__form__input {
+  width: 40%;
+  border-radius: 5px;
+  margin-bottom: 1.5rem;
+}
+
+.UserBasicInfo__form__input__verified {
+  display: flex;
+  width: 40rem;
+}
+.UserBasicInfo__form__input__verified div {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  gap: 1rem;
+  color: rgb(102, 102, 102);
 }

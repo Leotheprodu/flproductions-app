@@ -9,8 +9,9 @@
     height: 23rem;
     align-items: center;
     justify-content: start;
-    transition: box-shadow 1s;
+    transition: box-shadow .5s linear, transform 1s ease-in-out;
     border-radius: 2rem;
+    transform: scale(1);
     
 
     &:hover {
@@ -49,6 +50,13 @@
             opacity: 100%;
         }
     }
+}
+.ItemAppMusic.selected {
+    z-index: 2;
+    transform: scale(1.5);
+    margin-bottom: 5rem;
+    box-shadow: 2px 2px 1rem #000000fb;
+    background-color: v.$blanco;
 }
 .ItemAppMusic__texto {
     position: relative;
@@ -90,14 +98,7 @@
     margin: 0;
     padding: 0;
 }
-.ItemAppMusic.selected {
-    z-index: 2;
-    /* background-color: v.$blanco; */
-    transform: scale(1.5);
-    margin-bottom: 5rem;
-    box-shadow: 2px 2px 1rem #000000fb;
-    background-color: v.$blanco;
-}
+
 .ItemAppMusic__player-wrapper {
     position: relative; 
     height: 12rem;

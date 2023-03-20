@@ -109,6 +109,8 @@
 .BotonesAppMusic__elementos-info-reproductor{
     position: absolute;
     display: flex;
+    visibility: hidden;
+    opacity: 0;
     align-items:flex-start;
     right: -3rem;
     top: -4.5rem;
@@ -118,6 +120,7 @@
     background-color: v.$gris;
     border-radius: 1rem;
     box-shadow: 2px 2px 6px #00000028;
+    transition: visibility 1s ease-in-out, opacity .3s linear;
     ul {
         padding: 0;
         width: 18rem;
@@ -148,6 +151,10 @@
             margin: 0;
         }
     }
+}
+.BotonesAppMusic__elementos-info-reproductor.selected{
+    visibility: visible;
+    opacity: 1;
 }
 
 .BotonesAppMusic__boton-info-reproductor{

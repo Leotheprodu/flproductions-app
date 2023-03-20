@@ -1,7 +1,6 @@
-import { IconUser, IconPlayerPlay, IconMenu2 } from '@tabler/icons';
+import { IconUser, IconMenu2 } from '@tabler/icons';
 import { useState, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
-import { SocialIcons } from './social-icons';
 import SessionPanel from './usuarios/SessionPanel';
 import { useSelector } from 'react-redux';
 
@@ -40,7 +39,7 @@ export function NavMenu() {
 
       <div className='header__nav_boton_usuarios'>
         <div title='Opciones de Sesión' onClick={handleClick} className='header__nav_boton'>
-          <IconUser size={30} />
+          <IconUser size={20} />
 
         </div>
         {

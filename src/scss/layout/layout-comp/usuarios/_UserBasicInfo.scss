@@ -1,0 +1,36 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.contenedor__UserBasicInfo{
+    width: 30%;
+    background-color: v.$gris;
+    border-radius: 2rem;
+    margin-bottom: 100vh;
+}
+
+
+.UserBasicInfo__Error{
+    border:1px solid red;
+}
+
+.UserBasicInfo__form{
+padding: 2rem;
+}
+
+.UserBasicInfo__form__input{
+    width: 40%;
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+}
+.UserBasicInfo__form__input__verified{
+    display: flex;
+    width: 40rem;
+    div{
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        gap: 1rem;
+        color: v.$oscurecer;
+
+    }
+}

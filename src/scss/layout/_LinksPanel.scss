@@ -25,10 +25,42 @@
 }
 .links-panel{
     margin-left: 5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    width: 18rem;
+    a{
+        display: flex;
+        padding: 1rem 0;
+        border-radius: 1rem;
+        transition: transform .5s;
+        &:hover{
+            background-color: rgba(0, 0, 0, 0.048);
+        }
+        svg{
+            margin-right: 2rem;
+
+        }
+        p{
+            margin: 0;
+        }
+        &:active {
+            transform: scale(.95);
+            border: 1px solid rgba(0, 0, 0, 0.13);
+            transition-duration: .5s;
+            transition: ease-in-out;
+        }
+
+    }
     
     @include m.tablet {
         margin-left: 0;
         position: fixed;
+        
+    }
+    .active{
+        background-color: rgba(0, 0, 0, 0.048);
+        
         
     }
 }

@@ -21,9 +21,11 @@ export const useHandleItemAppMusic = (setPlaying, setEnded, setClickInfoButton, 
     const handlePlay = () => {
         setPause(false)
         setEnded(false)
+        setPlaying(true);
 
     }
     const handleDuration = (seconds) => {
+
         const minutes = Math.floor(seconds / 60);
         const remainingSeconds = (seconds % 60) - 1;
         const formattedSeconds = remainingSeconds < 10 ? `0${remainingSeconds}` : `${remainingSeconds}`;
@@ -53,7 +55,8 @@ export const useHandleItemAppMusic = (setPlaying, setEnded, setClickInfoButton, 
         
 
     }
-    const handleInfoButton = () => {
+    const handleInfoButton = (e) => {
+        e.preventDefault();
         setClickInfoButton(!clickInfoButton)
 
     }

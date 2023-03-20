@@ -82,6 +82,8 @@ export const ItemAppMusic = ({ playing, infoProduccion, selectedSong, idComp, id
                         handleonChangeRange={handleonChangeRange}
                         duration={duration}
                         tipo_obra_general={tipo_obra_general}
+                        playing={playing}
+                        ended={ended}
                         />
                 </div>
                 
