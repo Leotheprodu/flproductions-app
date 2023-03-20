@@ -16,24 +16,18 @@ export const UserBasicInfo = () => {
   const [clasePass, setClasePass] = useState('');
   const [statusenviado, setStatusEnviado] = useState(false);
   const [disabled, setDisabled] = useState('disabled');
-
+  
   const handleSubmit = (e) => {
-    const datosActualizadosDeUsuario = {};
     e.preventDefault();
     setFormStatus('...Usuario Actualizado');
-    password === password1 && password !== '' ? datosActualizadosDeUsuario.push(password) : null;
-    username !== userInfo.username ? datosActualizadosDeUsuario.push(username) : null;
-    if(email !== userInfo.email) {
-      datosActualizadosDeUsuario.push(email);
-
-    };
+    const datosActualizadosDeUsuario = JSON.stringify([userInfo.id, password === password1 && password !== '' ? password : null, username !== userInfo.username ? username : null, email !== userInfo.email ? email : null ])
 
     // Aquí puedes enviar los datos del formulario a tu servidor
-
+    
+    console.log(datosActualizadosDeUsuario)
   };
-
-  const hanldeOnBlur = (e) => {
-    const thisInput = e.target;
+  
+  const hanldeOnBlur = () => {
     if (password !== password1) {
       setClasePass('UserBasicInfo__Error');
       setFormStatus('Las contraseñas deben coincidir');
@@ -41,7 +35,6 @@ export const UserBasicInfo = () => {
       setClasePass('');
       setFormStatus('');
     }
-    console.log(thisInput);
 
   }
   const handleVerificarEmail = () => {
