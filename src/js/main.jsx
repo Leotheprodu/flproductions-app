@@ -74,7 +74,7 @@ export const router = createBrowserRouter([
             element: <InicioPaneldeControl />,
           },
           {
-            path: "Informacion-basica",
+            path: "Informacion-de-usuario",
             element: <UserBasicInfo />,
           }
         ]

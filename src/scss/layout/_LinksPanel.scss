@@ -4,16 +4,26 @@
 
 
 .panel-de-control__menu{
-    display: none;
+    visibility: hidden;
+    position: fixed;
+    top: 6rem;
     background-color: v.$blanco;
     width: 100%;
     margin: 0;
     padding: 1.5rem;
-    
+    opacity: 0;
+    transition: visibility 1s ease-in-out, opacity .4s linear;
+    @include m.tablet {
+        visibility: visible;
+        opacity: 1;
+    }
 }
 .panel-de-control__menu.selected{
     display: flex;
-    position: fixed;
+    visibility: visible;
+    opacity: 1;
+    background-color: v.$gris;
+    box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.082);
 }
 .panel-de-control__menu.normal{
     position:relative;

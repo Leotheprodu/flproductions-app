@@ -608,16 +608,29 @@ input {
 }
 
 .panel-de-control__menu {
-  display: none;
+  visibility: hidden;
+  position: fixed;
+  top: 6rem;
   background-color: #FFFFFF;
   width: 100%;
   margin: 0;
   padding: 1.5rem;
+  opacity: 0;
+  transition: visibility 1s ease-in-out, opacity 0.4s linear;
+}
+@media (min-width: 768px) {
+  .panel-de-control__menu {
+    visibility: visible;
+    opacity: 1;
+  }
 }
 
 .panel-de-control__menu.selected {
   display: flex;
-  position: fixed;
+  visibility: visible;
+  opacity: 1;
+  background-color: rgb(238, 238, 238);
+  box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.082);
 }
 
 .panel-de-control__menu.normal {
@@ -668,10 +681,12 @@ input {
   background-color: rgba(0, 0, 0, 0.048);
 }
 
+.panel-de-control {
+  position: relative;
+}
 @media (min-width: 768px) {
   .panel-de-control {
     display: grid;
-    position: relative;
     grid-template-columns: 1fr 6fr;
   }
 }
@@ -679,16 +694,19 @@ input {
 .panel-de-control__menu_celular {
   border: none;
   position: fixed;
+  top: 6rem;
 }
 .panel-de-control__menu_celular button {
+  border-top-right-radius: 50%;
+  border-bottom-right-radius: 50%;
   appearance: none;
   border: none;
   height: 5rem;
   width: 5rem;
-  border-bottom-right-radius: 50%;
+  box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.082);
 }
 .panel-de-control__menu_celular button:active {
-  transform: scale(1.1);
+  transform: scale(0.9);
   transition: all 0.2s ease-in-out;
 }
 
@@ -2197,10 +2215,38 @@ input {
 }
 
 .contenedor__UserBasicInfo {
-  width: 50%;
   background-color: rgb(238, 238, 238);
   border-radius: 2rem;
-  margin-bottom: 100vh;
+  margin: 6rem 2rem 100vh 2rem;
+}
+@media (min-width: 768px) {
+  .contenedor__UserBasicInfo {
+    max-width: 40rem;
+  }
+}
+.contenedor__UserBasicInfo button {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 5px;
+  height: 3rem;
+  width: 100%;
+  padding: 1rem;
+  color: #000000;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+  transition: box-shadow 0.5s;
+  cursor: pointer;
+}
+.contenedor__UserBasicInfo button:active {
+  opacity: 0.5;
+  transform: scale(0.8);
+}
+.contenedor__UserBasicInfo button:hover {
+  opacity: 0.9;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1215686275);
 }
 
 .UserBasicInfo__Error {
@@ -2222,7 +2268,6 @@ input {
 .UserBasicInfo__form__input__verified {
   display: flex;
   flex-direction: column;
-  width: 40rem;
 }
 .UserBasicInfo__form__input__verified div {
   display: flex;

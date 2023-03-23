@@ -1,35 +1,67 @@
 @use 'base/mixins' as m;
 @use 'base/variables' as v;
 
-.contenedor__UserBasicInfo{
-    width: 50%;
+.contenedor__UserBasicInfo {
+
     background-color: v.$gris;
     border-radius: 2rem;
-    margin-bottom: 100vh;
+    margin: 6rem 2rem 100vh 2rem;
+
+    @include m.tablet {
+        max-width: 40rem;
+    }
+
+    button {
+        display: flex;
+        gap: .5rem;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        border-radius: 5px;
+        height: 3rem;
+        width: 100%;
+        padding: 1rem;
+        color: v.$negro;
+        opacity: 1;
+        transition: opacity 0.3s ease-in-out;
+        transition: box-shadow .5s;
+        cursor: pointer;
+
+        &:active {
+            opacity: .5;
+            transform: scale(.8);
+        }
+
+        &:hover {
+            opacity: .9;
+            box-shadow: 2px 2px 2px #0000001f;
+        }
+    }
 }
 
 
-.UserBasicInfo__Error{
-    border:1px solid red;
+.UserBasicInfo__Error {
+    border: 1px solid red;
 }
 
-.UserBasicInfo__form{
-padding: 2rem;
+.UserBasicInfo__form {
+    padding: 2rem;
 }
 
-.UserBasicInfo__form__input{
+.UserBasicInfo__form__input {
     width: 70%;
     border-radius: 5px;
     margin-bottom: 1.5rem;
     display: flex;
     flex-direction: column;
-    
+
 }
-.UserBasicInfo__form__input__verified{
+
+.UserBasicInfo__form__input__verified {
     display: flex;
     flex-direction: column;
-    width: 40rem;
-    div{
+
+    div {
         display: flex;
         gap: 1rem;
         color: v.$oscurecer;

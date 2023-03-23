@@ -2,10 +2,10 @@
 @use 'base/variables' as v;
 
 .panel-de-control {
+    position: relative;
 
     @include m.tablet {
         display: grid;
-        position: relative;
         grid-template-columns: 1fr 6fr;
 
     }
@@ -15,16 +15,19 @@
 .panel-de-control__menu_celular {
     border: none;
     position: fixed;
-
+    top: 6rem;
+    
     button {
+        border-top-right-radius: 50%;
+        border-bottom-right-radius: 50%;
         appearance: none;
         border: none;
         height: 5rem;
         width: 5rem;
-        border-bottom-right-radius: 50%;
+        box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.082);
 
         &:active {
-            transform: scale(1.1);
+            transform: scale(.9);
             transition: all 0.2s ease-in-out;
         }
     }

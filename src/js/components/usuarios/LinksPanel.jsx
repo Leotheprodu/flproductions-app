@@ -9,9 +9,9 @@ export const LinksPanel = () => {
         <IconSettingsFilled />
         <p>Panel</p>
       </NavLink>
-      <NavLink to="/panel-de-control/informacion-basica">
+      <NavLink to="/panel-de-control/informacion-de-usuario">
         <IconAddressBook />
-        <p>Información Básica</p>
+        <p>Información de usuario</p>
       </NavLink>
     </nav>
   )

@@ -96,13 +96,13 @@ export const UserBasicInfo = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        setFormStatus('Hemos reenviado el correo de verificacion, ve a revisarlo y verifica tu correo');
+        setStatusEnviado(!statusenviado);
         console.log(data);
       })
       .catch((error) => {
         console.log(error);
       })
-      setFormStatus('Hemos reenviado el correo de verificacion, ve a revisarlo y verifica tu correo');
-      setStatusEnviado(!statusenviado);
     } else {
       alert('Para volver a enviar el correo de verificacion, debe haber pasado 1 hora desde el ultimo cambio');
       return;
