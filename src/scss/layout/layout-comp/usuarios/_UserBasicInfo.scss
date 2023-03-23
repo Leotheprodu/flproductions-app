@@ -2,7 +2,7 @@
 @use 'base/variables' as v;
 
 .contenedor__UserBasicInfo{
-    width: 30%;
+    width: 50%;
     background-color: v.$gris;
     border-radius: 2rem;
     margin-bottom: 100vh;
@@ -18,16 +18,18 @@ padding: 2rem;
 }
 
 .UserBasicInfo__form__input{
-    width: 40%;
+    width: 70%;
     border-radius: 5px;
     margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    
 }
 .UserBasicInfo__form__input__verified{
     display: flex;
+    flex-direction: column;
     width: 40rem;
     div{
-        align-items: center;
-        justify-content: center;
         display: flex;
         gap: 1rem;
         color: v.$oscurecer;

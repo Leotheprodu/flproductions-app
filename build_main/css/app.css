@@ -2197,7 +2197,7 @@ input {
 }
 
 .contenedor__UserBasicInfo {
-  width: 30%;
+  width: 50%;
   background-color: rgb(238, 238, 238);
   border-radius: 2rem;
   margin-bottom: 100vh;
@@ -2212,18 +2212,19 @@ input {
 }
 
 .UserBasicInfo__form__input {
-  width: 40%;
+  width: 70%;
   border-radius: 5px;
   margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .UserBasicInfo__form__input__verified {
   display: flex;
+  flex-direction: column;
   width: 40rem;
 }
 .UserBasicInfo__form__input__verified div {
-  align-items: center;
-  justify-content: center;
   display: flex;
   gap: 1rem;
   color: rgb(102, 102, 102);

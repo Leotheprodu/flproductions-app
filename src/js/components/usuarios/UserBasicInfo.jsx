@@ -2,10 +2,11 @@
 import { IconCheckbox } from '@tabler/icons';
 import { IconBan, IconCircleCheck } from '@tabler/icons-react';
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { setSession } from '../redux/userActions';
 
 export const UserBasicInfo = () => {
+  const dispatch = useDispatch();
   const userInfo = useSelector(state => state.user.session.user);
   const userRoles = useSelector(state => state.user.session.roles);
   const [username, setUserName] = useState(userInfo.username);
@@ -16,17 +17,59 @@ export const UserBasicInfo = () => {
   const [clasePass, setClasePass] = useState('');
   const [statusenviado, setStatusEnviado] = useState(false);
   const [disabled, setDisabled] = useState('disabled');
-  
+
+  const refreshUserSession = () => {
+    fetch(`${process.env.NODE_ENV === 'production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/usuarios/${userInfo.id}`, {
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.isLoggedIn) {
+          dispatch(setSession(data));
+
+        }
+
+
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFormStatus('...Usuario Actualizado');
-    const datosActualizadosDeUsuario = JSON.stringify([userInfo.id, password === password1 && password !== '' ? password : null, username !== userInfo.username ? username : null, email !== userInfo.email ? email : null ])
+    if (password !== password1) {
+      setFormStatus('Las contraseñas deben coincidir');
+      return;
+    }
+    const password2 = password === password1 && password !== null ? password : null;
+    const datosActualizadosDeUsuario = { username: username, email: email, password: password2 !== null ? password2 : null };
 
     // Aquí puedes enviar los datos del formulario a tu servidor
-    
+    fetch(`${process.env.NODE_ENV === 'production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/actualizar-usuarios/${userInfo.id}`, {
+      method: "PUT",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+
+      },
+      body: JSON.stringify(datosActualizadosDeUsuario),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data) {
+          refreshUserSession();
+
+        } else {
+          alert("HUBO UN ERROR")
+        }
+
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     console.log(datosActualizadosDeUsuario)
   };
-  
+
   const hanldeOnBlur = () => {
     if (password !== password1) {
       setClasePass('UserBasicInfo__Error');
@@ -38,8 +81,33 @@ export const UserBasicInfo = () => {
 
   }
   const handleVerificarEmail = () => {
-    setFormStatus('Hemos reenviado el correo de verificacion, ve a revisarlo y verifica tu correo');
-    setStatusEnviado(!statusenviado);
+
+    const fechaultimaModificacion = new Date(userInfo.ultima_actualizacion);
+    const fechaActual = new Date();
+    // 2. Restar la fecha actual con la fecha de la tabla de SQL
+    const diferenciaEnMilisegundos = fechaActual - fechaultimaModificacion;
+
+    // 3. Convertir la diferencia en milisegundos a horas
+    const diferenciaEnHoras = diferenciaEnMilisegundos / 3600000;
+    // 4. Comparar la cantidad de horas con 1
+    if (diferenciaEnHoras >= 1) {
+      fetch(`${process.env.NODE_ENV === 'production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/verificar-email/${email}`, {
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+      setFormStatus('Hemos reenviado el correo de verificacion, ve a revisarlo y verifica tu correo');
+      setStatusEnviado(!statusenviado);
+    } else {
+      alert('Para volver a enviar el correo de verificacion, debe haber pasado 1 hora desde el ultimo cambio');
+      return;
+    }
+
   }
 
 
@@ -71,17 +139,17 @@ export const UserBasicInfo = () => {
               />
               {userRoles.includes(1) && <div><IconCircleCheck size={30} stroke={1} color='green' />Correo Verificado</div>}
 
-              {!userRoles.includes(1) && 
-              <div>
-                <IconBan stroke={1} color='red' />
-                Correo No Verificado 
-                {!statusenviado &&
-                <button onClick={handleVerificarEmail} type='button'>
-                  Verificar
-                </button>}
-                
+              {!userRoles.includes(1) &&
+                <div>
+                  <IconBan stroke={1} color='red' />
+                  Correo No Verificado
+                  {!statusenviado &&
+                    <button onClick={handleVerificarEmail} type='button'>
+                      enviar correo de verificacion
+                    </button>}
+
                 </div>
-                }
+              }
 
             </div>
           </div>
