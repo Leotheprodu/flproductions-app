@@ -60,7 +60,6 @@ function SessionPanel() {
     const handleLogout = (e) => {
         e.preventDefault();
         fetch(`${process.env.NODE_ENV === 'production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/logout`, {
-            method: "POST",
             credentials: "include",
             headers: {
                 "Content-Type": "application/json"

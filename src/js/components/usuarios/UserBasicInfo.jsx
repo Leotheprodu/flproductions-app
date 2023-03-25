@@ -57,6 +57,8 @@ export const UserBasicInfo = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data) {
+          setFormStatus('Se han actualizado los datos correctamente');
+          setStatusEnviado(true);
           refreshUserSession();
 
         } else {
@@ -67,7 +69,6 @@ export const UserBasicInfo = () => {
       .catch((error) => {
         console.log(error);
       });
-    console.log(datosActualizadosDeUsuario)
   };
 
   const hanldeOnBlur = () => {
@@ -92,17 +93,17 @@ export const UserBasicInfo = () => {
     // 4. Comparar la cantidad de horas con 1
     if (diferenciaEnHoras >= 1) {
       fetch(`${process.env.NODE_ENV === 'production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/verificar-email/${email}`, {
-      credentials: "include",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setFormStatus('Hemos reenviado el correo de verificacion, ve a revisarlo y verifica tu correo');
-        setStatusEnviado(!statusenviado);
-        console.log(data);
+        credentials: "include",
       })
-      .catch((error) => {
-        console.log(error);
-      })
+        .then((res) => res.json())
+        .then((data) => {
+          setFormStatus('Hemos reenviado el correo de verificacion, ve a revisarlo y verifica tu correo');
+          setStatusEnviado(true);
+          console.log(data);
+        })
+        .catch((error) => {
+          console.log(error);
+        })
     } else {
       alert('Para volver a enviar el correo de verificacion, debe haber pasado 1 hora desde el ultimo cambio');
       return;
@@ -177,7 +178,11 @@ export const UserBasicInfo = () => {
           <div>
             <p className="contact-form__mensaje-status">{formStatus}</p>
           </div>
-          <button type="submit">Guardar</button>
+          {!statusenviado &&
+
+            <button type="submit">Guardar</button>
+            
+          }
         </form>
       </div>
 
