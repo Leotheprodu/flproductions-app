@@ -12,6 +12,7 @@
     margin: 0;
     padding: 1.5rem;
     opacity: 0;
+    z-index: 1;
     transition: visibility 1s ease-in-out, opacity .4s linear;
     @include m.tablet {
         visibility: visible;
@@ -28,6 +29,7 @@
 .panel-de-control__menu.normal{
     position:relative;
     display: flex;
+    z-index: 1;
     @include m.tablet {
         min-width: 18rem;
         
@@ -39,6 +41,7 @@
     flex-direction: column;
     gap: 2rem;
     width: 18rem;
+    z-index: 10;
     a{
         display: flex;
         padding: 1rem 0;

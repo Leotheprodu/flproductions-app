@@ -616,6 +616,7 @@ input {
   margin: 0;
   padding: 1.5rem;
   opacity: 0;
+  z-index: 1;
   transition: visibility 1s ease-in-out, opacity 0.4s linear;
 }
 @media (min-width: 768px) {
@@ -636,6 +637,7 @@ input {
 .panel-de-control__menu.normal {
   position: relative;
   display: flex;
+  z-index: 1;
 }
 @media (min-width: 768px) {
   .panel-de-control__menu.normal {
@@ -649,6 +651,7 @@ input {
   flex-direction: column;
   gap: 2rem;
   width: 18rem;
+  z-index: 10;
 }
 .links-panel a {
   display: flex;
@@ -990,6 +993,7 @@ input {
   align-items: center;
   flex-direction: column;
   border-top: 2px solid rgb(238, 238, 238);
+  z-index: 10;
 }
 @media (min-width: 768px) {
   .footer {
@@ -998,6 +1002,9 @@ input {
   }
 }
 
+.footer_content {
+  z-index: 10;
+}
 .footer_content p {
   margin: 0;
   color: rgb(102, 102, 102);
@@ -1015,6 +1022,9 @@ input {
   color: rgb(102, 102, 102);
 }
 
+.footer_content2 {
+  z-index: 10;
+}
 @media (min-width: 768px) {
   .footer_content2 {
     margin-right: 4rem;
