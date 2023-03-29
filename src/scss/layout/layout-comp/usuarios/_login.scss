@@ -48,7 +48,12 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 2rem;
+        flex-direction: column;
+        
+        @include m.tablet {
+            gap: 2rem;
+            flex-direction: row;
+        }
         
         .login_buttons__button{
             display: flex;

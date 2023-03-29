@@ -1072,7 +1072,8 @@ input {
   flex-direction: column;
   width: 100%;
   display: flex;
-  background-color: #FFFFFF;
+  background-color: rgba(255, 255, 255, 0.815);
+  backdrop-filter: blur(14px);
   color: #FFFFFF;
   justify-content: center;
   height: 6rem;
@@ -1205,7 +1206,8 @@ input {
   height: 8rem;
   margin: 0.5rem;
   gap: 0.7rem;
-  background-color: #FFFFFF;
+  background-color: rgba(255, 255, 255, 0.795);
+  backdrop-filter: blur(14px);
   z-index: 1;
   border-radius: 5%;
   position: absolute;
@@ -1277,7 +1279,7 @@ input {
   padding: 0.5rem;
   z-index: 1;
   width: 100%;
-  height: 200%;
+  height: 35rem;
   align-items: center;
   justify-content: center;
   border-bottom-left-radius: 4px;
@@ -2038,7 +2040,13 @@ input {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  flex-direction: column;
+}
+@media (min-width: 768px) {
+  .login_container .login_buttons {
+    gap: 2rem;
+    flex-direction: row;
+  }
 }
 .login_container .login_buttons .login_buttons__button {
   display: flex;
@@ -2290,7 +2298,7 @@ input {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 100vh;
+  padding-bottom: 100vh;
 }
 
 .RecuperarPassword {
