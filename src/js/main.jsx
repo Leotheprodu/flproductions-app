@@ -1,7 +1,7 @@
 
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import { HomePage, ContactPage, Canciones, AboutPage, Instrumentales, Root, ErrorPage, ControlPanel, InicioPaneldeControl } from './pages';
+import { HomePage, ContactPage, Canciones, AboutPage, Instrumentales, Root, ErrorPage, ControlPanel, InicioPaneldeControl, RecuperarPassword } from './pages';
 import '../../build_main/css/app.css';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { SongDetail, ArtistDetail, InstrumentalDetail, ProducerDetail, SignUp, Login, UserBasicInfo } from "./components";
@@ -63,6 +63,11 @@ export const router = createBrowserRouter([
       {
         path: "iniciar-sesion",
         element: <Login />,
+
+      },
+      {
+        path: "recuperar-password",
+        element: <RecuperarPassword />,
 
       },
       {

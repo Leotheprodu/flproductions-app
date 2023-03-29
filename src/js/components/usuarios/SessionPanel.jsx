@@ -1,4 +1,4 @@
-import { IconUserCheck, IconLogout, IconUserPlus, IconSettingsFilled } from "@tabler/icons-react";
+import { IconUserCheck, IconLogout, IconUserPlus, IconSettingsFilled, IconCloudLockOpen } from "@tabler/icons-react";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { setSession } from "../redux/userActions";
@@ -9,6 +9,7 @@ function SessionPanel() {
     const [password, setPassword] = useState("");
     const isLoggedIn = useSelector(state => state.user.session.isLoggedIn);
     const userInfo = useSelector(state => state.user.session.user);
+    const [botonOlvideContra, setBotonOlvideContra] = useState(false);
 
     useEffect(() => {
         checkLoggedIn();
@@ -48,7 +49,8 @@ function SessionPanel() {
                 if (data.isLoggedIn) {
                     dispatch(setSession(data));
                 } else {
-                    alert("Datos inválidos, correo o contraseña incorrecta o regístrate")
+                    alert("Datos inválidos, correo o contraseña incorrecta o regístrate");
+                    setBotonOlvideContra(true);
                 }
 
             })
@@ -89,7 +91,7 @@ function SessionPanel() {
                     <div className="login_buttons__button">
                         <p></p>
                         <button title="Cerrar Sesión" onClick={handleLogout}>{<IconLogout />}Cerrar Sesión</button>
-                    
+
                     </div>
 
 
@@ -127,16 +129,24 @@ function SessionPanel() {
                     </div>
                 </div>
                 <div className="login_buttons">
+                    {botonOlvideContra &&
+                        <div className="login_buttons__button">
+                            <a href="/recuperar-password">
+                                <button type="button" title="He olvidado mi contraseña"><IconCloudLockOpen/>He olvidado mi contraseña</button>
+                            </a>
+
+                        </div>
+                    }
                     <div className="login_buttons__button">
-                        
-                        <button type="submit" title="Iniciar Sesión"><IconUserCheck/>Iniciar Sesión</button>
+
+                        <button type="submit" title="Iniciar Sesión"><IconUserCheck />Iniciar Sesión</button>
 
                     </div>
 
                     <div className="login_buttons__button">
-                        
+
                         <a href="/registro-de-usuario">
-                            <button type="button" title="Registrarse"><IconUserPlus/>Registrarse</button>
+                            <button type="button" title="Registrarse"><IconUserPlus />Registrarse</button>
                         </a>
 
                     </div>

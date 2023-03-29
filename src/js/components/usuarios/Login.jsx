@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { setSession } from "../redux/userActions";
-import { useNavigate  } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { MetaInjector } from "../MetaInjector";
 
@@ -13,6 +13,7 @@ export const Login = () => {
   const formStatus = 'Ya has iniciado sesion, le vamos a dirigir a la pagina anterior.'
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [botonOlvideContra, setBotonOlvideContra] = useState(false);
 
 
   const handleLogin = (e) => {
@@ -30,9 +31,10 @@ export const Login = () => {
       .then((data) => {
         if (data.isLoggedIn) {
           dispatch(setSession(data));
-          
+
         } else {
-          alert("Datos inválidos, correo o contraseña incorrecta o regístrate")
+          alert("Datos inválidos, correo o contraseña incorrecta o regístrate");
+          setBotonOlvideContra(true);
         }
 
       })
@@ -43,7 +45,7 @@ export const Login = () => {
 
   if (isLoggedIn) {
     setTimeout(() => {
-      navigate(-1, {replace: true});
+      navigate(-1, { replace: true });
     }, 3000);
 
   }
@@ -92,6 +94,14 @@ export const Login = () => {
               <button type="submit">Iniciar Sesión</button>
             </form>
             <p>o</p>
+              {botonOlvideContra &&
+                <div className="login_buttons__button">
+                  <a href="/recuperar-password">
+                    <button className="login_buttons__button__registrar" type="button" title="He olvidado mi contraseña">He olvidado mi contraseña</button>
+                  </a>
+
+                </div>
+              }
             <div className="login_buttons__button">
               <a href="/registro-de-usuario">
                 <button className="login_buttons__button__registrar" type="button" title="Registrarse">Registrarse</button>

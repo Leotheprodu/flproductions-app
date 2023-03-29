@@ -2284,3 +2284,62 @@ input {
   gap: 1rem;
   color: rgb(102, 102, 102);
 }
+
+.RecuperarPassword-contenedor {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 100vh;
+}
+
+.RecuperarPassword {
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5rem;
+  margin-top: 10rem;
+  background-color: rgb(238, 238, 238);
+  padding: 2rem;
+  width: 30rem;
+}
+.RecuperarPassword .login__form {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+.RecuperarPassword .login_container_input {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+}
+.RecuperarPassword .login_buttons__button {
+  display: flex;
+  justify-content: center;
+}
+.RecuperarPassword .login_buttons__button button {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 5px;
+  height: 3rem;
+  width: 100%;
+  padding: 1rem;
+  color: #000000;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+  transition: box-shadow 0.5s;
+  cursor: pointer;
+}
+.RecuperarPassword .login_buttons__button button:active {
+  opacity: 0.5;
+  transform: scale(0.8);
+}
+.RecuperarPassword .login_buttons__button button:hover {
+  opacity: 0.9;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1215686275);
+}

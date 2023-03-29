@@ -9,3 +9,4 @@ export * from './Canciones';
 export * from './Instrumentales';
 export * from './ControlPanel';
 export * from './InicioPaneldeControl';
+export * from '../components/usuarios/RecuperarPassword';
