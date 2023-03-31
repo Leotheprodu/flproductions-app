@@ -1,0 +1,9 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.CountdownTimer{
+    p{
+        color: v.$oscurecer;
+        text-align: center;
+    }
+}

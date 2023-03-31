@@ -482,10 +482,10 @@ input {
   width: 64px;
   height: 64px;
   margin: 8px;
-  border: 8px solid #fff;
+  border: 8px solid #ebc246;
   border-radius: 50%;
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: #fff transparent transparent transparent;
+  border-color: #ebc246 transparent transparent transparent;
 }
 
 .lds-ring div:nth-child(1) {
@@ -1561,6 +1561,11 @@ input {
   margin: 0 auto;
 }
 
+.CountdownTimer p {
+  color: rgb(102, 102, 102);
+  text-align: center;
+}
+
 .artist-detail__title {
   margin-top: 6rem;
 }
@@ -2300,6 +2305,11 @@ input {
   align-items: center;
   padding-bottom: 100vh;
 }
+.RecuperarPassword-contenedor h2 {
+  margin: 7rem 0 0 0;
+  font-size: 2rem;
+  color: #ebc246;
+}
 
 .RecuperarPassword {
   border-radius: 7px;
@@ -2307,7 +2317,7 @@ input {
   flex-direction: column;
   justify-content: center;
   gap: 5rem;
-  margin-top: 10rem;
+  margin-top: 5rem;
   background-color: rgb(238, 238, 238);
   padding: 2rem;
   width: 30rem;

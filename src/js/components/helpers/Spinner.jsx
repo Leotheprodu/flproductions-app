@@ -2,7 +2,7 @@ export const Spinner = () => {
 
     return (
         <>
-            <div className="lds-ring"><div></div><div></div><div></div><div></div></div>;
+            <div className="lds-ring"><div></div><div></div><div></div><div></div></div>
         </>
 
     )
