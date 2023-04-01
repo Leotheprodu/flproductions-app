@@ -55,6 +55,11 @@ export const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSpinner(true);
+    if (username.length > 15) {
+      setFormStatus('el nombre de usuario debe tener maximo 15 caracteres');
+      setSpinner(false);
+      return;
+    }
     if (captcha.current.getValue()) {
       // Aquí puedes enviar los datos del formulario a tu servidor
       fetch(`${process.env.NODE_ENV === 'production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/signup`, {
@@ -89,6 +94,16 @@ export const SignUp = () => {
     } else setFormStatus('Por favor acepta el captcha');
   };
 
+  const handleOnChangeNombreUsuario = (e) => {
+    setUserName((e.target.value).trim());
+    if ((e.target.value).length > 15) {
+      setFormStatus('No esta permitido tener mas de 15 caracteres en el nombre de usuario');
+    } else {
+      setFormStatus('');
+    }
+
+  }
+
   return (
     <HelmetProvider>
       <MetaInjector
@@ -111,7 +126,7 @@ export const SignUp = () => {
                   type="text"
                   className="mb-3"
                   value={username}
-                  onChange={(e) => setUserName(e.target.value)}
+                  onChange={handleOnChangeNombreUsuario}
                   required
                 />
               </div>

@@ -41,6 +41,12 @@ export const UserBasicInfo = () => {
       setFormStatus('Las contraseñas deben coincidir');
       return;
     }
+    if (username.length > 15) {
+      setFormStatus('el nombre de usuario debe tener maximo 15 caracteres');
+      return;
+    }
+
+
     const password2 = password === password1 && password !== null ? password : null;
     const datosActualizadosDeUsuario = { username: username, email: email, password: password2 !== null ? password2 : null };
 
@@ -71,12 +77,21 @@ export const UserBasicInfo = () => {
       });
   };
 
-  const hanldeOnBlur = () => {
+  const hanldeOnBlurPassword = () => {
     if (password !== password1) {
       setClasePass('UserBasicInfo__Error');
       setFormStatus('Las contraseñas deben coincidir');
     } else {
       setClasePass('');
+      setFormStatus('');
+    }
+
+  }
+  const handleOnChangeNombreUsuario = (e) => {
+    setUserName((e.target.value).trim());
+    if ((e.target.value).length > 15) {
+      setFormStatus('No esta permitido tener mas de 15 caracteres en el nombre de usuario');
+    } else {
       setFormStatus('');
     }
 
@@ -123,7 +138,7 @@ export const UserBasicInfo = () => {
               type="text"
               className="mb-3"
               value={username}
-              onChange={(e) => setUserName(e.target.value)}
+              onChange={handleOnChangeNombreUsuario}
               required
             />
           </div>
@@ -172,7 +187,7 @@ export const UserBasicInfo = () => {
               className={`mb-3 ${clasePass}`}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              onBlur={hanldeOnBlur}
+              onBlur={hanldeOnBlurPassword}
             />
           </div>
           <div>
@@ -181,7 +196,7 @@ export const UserBasicInfo = () => {
           {!statusenviado &&
 
             <button type="submit">Guardar</button>
-            
+
           }
         </form>
       </div>
