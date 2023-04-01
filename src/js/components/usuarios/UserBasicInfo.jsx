@@ -1,5 +1,5 @@
 
-import { IconCheckbox } from '@tabler/icons';
+
 import { IconBan, IconCircleCheck } from '@tabler/icons-react';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -128,7 +128,7 @@ export const UserBasicInfo = () => {
             />
           </div>
           <div className=" UserBasicInfo__form__input">
-            <label onClick={() => setDisabled('')} className="mb-3" htmlFor="email">Correo:</label>
+            <label onClick={() => setDisabled('')} className="mb-3" htmlFor="email">Correo Electronico:</label>
             <div className='UserBasicInfo__form__input__verified'>
               <input
                 type="email"
@@ -138,15 +138,15 @@ export const UserBasicInfo = () => {
                 onChange={(e) => setEmail(e.target.value)}
 
               />
-              {userRoles.includes(1) && <div><IconCircleCheck size={30} stroke={1} color='green' />Correo Verificado</div>}
+              {userRoles.includes(1) && <div><IconCircleCheck size={30} stroke={1} color='green' />Verificado</div>}
 
               {!userRoles.includes(1) &&
-                <div>
-                  <IconBan stroke={1} color='red' />
-                  Correo No Verificado
+                <div className='UserBasicInfo__Email-No-verificado'>
+                  <IconBan size={30} stroke={1} color='red' />
+                  No Verificado
                   {!statusenviado &&
                     <button onClick={handleVerificarEmail} type='button'>
-                      enviar correo de verificacion
+                      Verificar?
                     </button>}
 
                 </div>

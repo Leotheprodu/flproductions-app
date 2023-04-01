@@ -5,6 +5,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { MetaInjector } from "../MetaInjector";
 import { useDispatch, useSelector } from 'react-redux';
 import { setSession } from "../redux/userActions";
+import { Spinner } from "../helpers/Spinner";
 
 export const SignUp = () => {
 
@@ -17,9 +18,9 @@ export const SignUp = () => {
   const [password, setPassword] = useState('');
   const fecha_creacion = new Date().toISOString().slice(0, 10);
   const captcha = useRef(null);
-  const [formStatus, setFormStatus] = useState('')
+  const [formStatus, setFormStatus] = useState('');
   const [statusenviado, setStatusEnviado] = useState(false);
-
+  const [spinner, setSpinner] = useState(false);
   const onChange = () => {
     if (captcha.current.getValue()) {
       setFormStatus('');
@@ -39,7 +40,7 @@ export const SignUp = () => {
       .then((data) => {
         if (data.isLoggedIn) {
           dispatch(setSession(data));
-          
+
         } else {
           alert("Datos inválidos, correo o contraseña incorrecta o regístrate")
         }
@@ -49,11 +50,11 @@ export const SignUp = () => {
         console.log(error);
       });
   };
-  
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFormStatus('...registrando');
+    setSpinner(true);
     if (captcha.current.getValue()) {
       // Aquí puedes enviar los datos del formulario a tu servidor
       fetch(`${process.env.NODE_ENV === 'production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/signup`, {
@@ -70,11 +71,13 @@ export const SignUp = () => {
             setEmail('');
             setPassword('');
             setUserName('');
-            setFormStatus('Usuario Registrado con exito');
+            setSpinner(false);
+            setFormStatus('Listo!, te hemos enviado un correo de verificacion, porfavor verifica tu email');
             setStatusEnviado(true);
             loginNewUser();
           } else if (response.status === 403) {
             setFormStatus('El correo ya existe en el sistema, usa un nuevo correo');
+            setSpinner(false);
             return;
           }
 
@@ -85,10 +88,6 @@ export const SignUp = () => {
         });
     } else setFormStatus('Por favor acepta el captcha');
   };
-
-  if (isLoggedIn) {
-    navigate(-1);
-  }
 
   return (
     <HelmetProvider>
@@ -146,7 +145,11 @@ export const SignUp = () => {
               <div>
                 <p className="contact-form__mensaje-status">{formStatus}</p>
               </div>
-              <button type="submit">Registrar</button>
+              {!spinner ? <button type="submit">Registrar</button> : <Spinner />}
+
+
+
+
             </form>
             <p>o</p>
             <div className="login_buttons__button">
@@ -162,7 +165,7 @@ export const SignUp = () => {
           <div className="contenedor">
             <p className="contact-form__mensaje-status__signup">{formStatus}</p>
             <div className="login_buttons__button__status">
-              <button className="login_buttons__button__registrar" onClick={() => { navigate(-1) }} type="button" title="Volver atrás">Volver atrás</button>
+              <button className="login_buttons__button__registrar" onClick={() => { navigate(-1) }} type="button" title="Volver atrás">Volver</button>
               <a href="/panel-de-control">
                 <button className="login_buttons__button__registrar" type="button" title="ir a Panel de Control">Panel de Control</button>
               </a>

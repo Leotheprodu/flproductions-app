@@ -46,35 +46,35 @@ export function NavMenu() {
           isLoggedIn &&
           <div className={`header__nav_boton_usuarios_login ${UserButton ? "selected" : ""}`}>
             <SessionPanel />
-          
+
           </div>
         }
         {
           !isLoggedIn &&
           <div className={`header__nav_boton_usuarios_login ${UserButton ? "selected" : ""}`}>
             <SessionPanel />
-          
+
           </div>
         }
-        
+
       </div>
       {
         !isMovilUser &&
-          <nav className='header__links'>
-            <NavLink to='/' end className='header__links__link'>Inicio</NavLink>
-            <NavLink to='/nosotros' className='header__links__link'>Nosotros</NavLink>
-            <NavLink to='/contacto' className='header__links__link'>Contacto</NavLink>
-            <div className='header__submenu-parent'>
-              
-              <p className='header__links__link__musica'>Musica</p>
+        <nav className='header__links'>
+          <NavLink to='/' end className='header__links__link'>Inicio</NavLink>
+          <NavLink to='/nosotros' className='header__links__link'>Nosotros</NavLink>
+          <NavLink to='/contacto' className='header__links__link'>Contacto</NavLink>
+          <div className='header__submenu-parent'>
 
-              <nav className='header__submenu'>
-                <NavLink to='/canciones' className='header__links__link'>Canciones</NavLink>
-                <NavLink to='/instrumentales' className='header__links__link'>Instrumentales</NavLink>
-              </nav>
+            <p className='header__links__link__musica'>Musica</p>
 
-            </div>
-          </nav>
+            <nav className='header__submenu'>
+              <NavLink to='/canciones' className='header__links__link'>Canciones</NavLink>
+              <NavLink to='/instrumentales' className='header__links__link'>Instrumentales</NavLink>
+            </nav>
+
+          </div>
+        </nav>
 
 
       }
@@ -82,21 +82,21 @@ export function NavMenu() {
       {
         isMovilUser &&
         <div className='menu_celular'>
-          <button onClick={handleClickMovilUser}><IconMenu2/></button> 
+          <button onClick={handleClickMovilUser}><IconMenu2 /></button>
         </div>
       }
 
-      {
-        onClickMovilUser &&
-        <nav className='header__links__movil'>
-            <NavLink to='/' end className='header__links__link'>Inicio</NavLink>
-            <NavLink to='/nosotros' className='header__links__link'>Nosotros</NavLink>
-            <NavLink to='/contacto' className='header__links__link'>Contacto</NavLink>
-            <NavLink to='/canciones' className='header__links__link'>Canciones</NavLink>
-            <NavLink to='/instrumentales' className='header__links__link'>Instrumentales</NavLink>
-              
-          </nav>
-      }
+
+
+      <nav className={`header__links__movil ${onClickMovilUser ? 'selected' : ''}`}>
+        <NavLink to='/' end className='header__links__link'>Inicio</NavLink>
+        <NavLink to='/nosotros' className='header__links__link'>Nosotros</NavLink>
+        <NavLink to='/contacto' className='header__links__link'>Contacto</NavLink>
+        <NavLink to='/canciones' className='header__links__link'>Canciones</NavLink>
+        <NavLink to='/instrumentales' className='header__links__link'>Instrumentales</NavLink>
+
+      </nav>
+
 
 
     </div>

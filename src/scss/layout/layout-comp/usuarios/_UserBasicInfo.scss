@@ -2,10 +2,10 @@
 @use 'base/variables' as v;
 
 .contenedor__UserBasicInfo {
-
+    
     background-color: v.$gris;
     border-radius: 2rem;
-    margin: 6rem 2rem 100vh 2rem;
+    margin: 6rem 2rem;
 
     @include m.tablet {
         max-width: 40rem;
@@ -45,13 +45,14 @@
 }
 
 .UserBasicInfo__form {
-    padding: 2rem;
+    padding: 4rem;
+    
+    
 }
 
 .UserBasicInfo__form__input {
-    width: 70%;
     border-radius: 5px;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     display: flex;
     flex-direction: column;
 
@@ -59,12 +60,21 @@
 
 .UserBasicInfo__form__input__verified {
     display: flex;
-    flex-direction: column;
+    
 
     div {
         display: flex;
         gap: 1rem;
         color: v.$oscurecer;
+        align-items: center;
 
+    }
+}
+.UserBasicInfo__Email-No-verificado{
+    display: flex;
+    flex-direction: column;
+
+    button{
+        box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.596);
     }
 }

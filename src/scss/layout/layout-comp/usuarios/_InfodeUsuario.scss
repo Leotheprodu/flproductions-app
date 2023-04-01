@@ -1,0 +1,14 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.InfodeUsuario{
+    margin-bottom: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    @include m.tablet {
+        flex-direction: row;
+        justify-content:flex-start;
+    }
+}

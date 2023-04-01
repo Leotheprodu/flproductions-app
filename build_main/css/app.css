@@ -487,6 +487,11 @@ input {
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
   border-color: #ebc246 transparent transparent transparent;
 }
+.lds-ring div p {
+  font-size: 1rem;
+  text-align: center;
+  color: #1ab5e6;
+}
 
 .lds-ring div:nth-child(1) {
   animation-delay: -0.45s;
@@ -698,6 +703,7 @@ input {
   border: none;
   position: fixed;
   top: 6rem;
+  z-index: 10;
 }
 .panel-de-control__menu_celular button {
   border-top-right-radius: 50%;
@@ -1124,6 +1130,9 @@ input {
 }
 .header__nav .header__links__movil {
   display: flex;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 1s ease-in-out, opacity 0.5s linear;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -1136,9 +1145,15 @@ input {
   background-color: rgb(238, 238, 238);
   position: absolute;
   top: 6rem;
+  z-index: 12;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.308);
 }
 .header__nav .header__links__movil a:hover {
   color: #FFFFFF;
+}
+.header__nav .header__links__movil.selected {
+  visibility: visible;
+  opacity: 1;
 }
 .header__nav .header__links {
   display: flex;
@@ -2241,7 +2256,7 @@ input {
 .contenedor__UserBasicInfo {
   background-color: rgb(238, 238, 238);
   border-radius: 2rem;
-  margin: 6rem 2rem 100vh 2rem;
+  margin: 6rem 2rem;
 }
 @media (min-width: 768px) {
   .contenedor__UserBasicInfo {
@@ -2278,25 +2293,32 @@ input {
 }
 
 .UserBasicInfo__form {
-  padding: 2rem;
+  padding: 4rem;
 }
 
 .UserBasicInfo__form__input {
-  width: 70%;
   border-radius: 5px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   display: flex;
   flex-direction: column;
 }
 
 .UserBasicInfo__form__input__verified {
   display: flex;
-  flex-direction: column;
 }
 .UserBasicInfo__form__input__verified div {
   display: flex;
   gap: 1rem;
   color: rgb(102, 102, 102);
+  align-items: center;
+}
+
+.UserBasicInfo__Email-No-verificado {
+  display: flex;
+  flex-direction: column;
+}
+.UserBasicInfo__Email-No-verificado button {
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.596);
 }
 
 .RecuperarPassword-contenedor {
@@ -2361,4 +2383,29 @@ input {
 .RecuperarPassword .login_buttons__button button:hover {
   opacity: 0.9;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1215686275);
+}
+
+.VerificarCorreo {
+  margin-top: 10rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.VerificarCorreo h1 {
+  font-size: 2.3rem;
+  text-align: center;
+}
+
+.InfodeUsuario {
+  margin-bottom: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .InfodeUsuario {
+    flex-direction: row;
+    justify-content: flex-start;
+  }
 }

@@ -1,0 +1,15 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.VerificarCorreo{
+    margin-top: 10rem;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1{
+        font-size: 2.3rem;
+        text-align: center;
+    }
+}

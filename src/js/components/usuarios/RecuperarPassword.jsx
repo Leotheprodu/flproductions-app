@@ -38,7 +38,7 @@ export const RecuperarPassword = () => {
 
                         }, 600000);
 
-                    } else if (response.status === 500 || 403) {
+                    } else if (response.status === 500 || response.status === 403) {
                         setFormStatus('El correo no existe en el sistema, solo usuarios registrados pueden cambiar una contraseña');
                         setTimeout(function () {
                             setFormStatus('');
@@ -72,7 +72,7 @@ export const RecuperarPassword = () => {
                 body: JSON.stringify({ email, password, pin }),
             })
                 .then(response => {
-                    console.log(response);
+                    
                     if (response.status === 200) {
                         setProcesoTerminado(true);
                         setFormStatus('Contraseña actualizada exitosamente')

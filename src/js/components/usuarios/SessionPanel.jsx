@@ -2,7 +2,7 @@ import { IconUserCheck, IconLogout, IconUserPlus, IconSettingsFilled, IconCloudL
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { setSession } from "../redux/userActions";
-
+import { Spinner } from "../helpers/Spinner";
 function SessionPanel() {
     const dispatch = useDispatch();
     const [email, setEmail] = useState("");
@@ -10,6 +10,7 @@ function SessionPanel() {
     const isLoggedIn = useSelector(state => state.user.session.isLoggedIn);
     const userInfo = useSelector(state => state.user.session.user);
     const [botonOlvideContra, setBotonOlvideContra] = useState(false);
+    const [spinner, setSpinner] = useState(false);
 
     useEffect(() => {
         checkLoggedIn();
@@ -35,6 +36,7 @@ function SessionPanel() {
 
     const handleLogin = (e) => {
         e.preventDefault();
+        setSpinner(true);
         fetch(`${process.env.NODE_ENV === 'production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/login`, {
             method: "POST",
             credentials: "include",
@@ -48,9 +50,11 @@ function SessionPanel() {
             .then((data) => {
                 if (data.isLoggedIn) {
                     dispatch(setSession(data));
+                    setSpinner(false);
                 } else {
                     alert("Datos inválidos, correo o contraseña incorrecta o regístrate");
                     setBotonOlvideContra(true);
+                    setSpinner(false);
                 }
 
             })
@@ -61,6 +65,7 @@ function SessionPanel() {
 
     const handleLogout = (e) => {
         e.preventDefault();
+        setSpinner(true);
         fetch(`${process.env.NODE_ENV === 'production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/logout`, {
             credentials: "include",
             headers: {
@@ -70,9 +75,11 @@ function SessionPanel() {
             .then((res) => res.json())
             .then((data) => {
                 dispatch(setSession(data));
+                setSpinner(false);
             })
             .catch((error) => {
                 console.log(error);
+                setSpinner(false);
             })
     };
 
@@ -128,6 +135,9 @@ function SessionPanel() {
 
                     </div>
                 </div>
+
+                { !spinner &&
+
                 <div className="login_buttons">
                     {botonOlvideContra &&
                         <div className="login_buttons__button">
@@ -151,6 +161,14 @@ function SessionPanel() {
 
                     </div>
                 </div>
+
+
+                }
+                {spinner &&
+                    <div className="login_buttons">
+                        <Spinner />
+                    </div>
+                }
             </form>
         );
     }

@@ -34,7 +34,7 @@ export const MensajesDelSistema = () => {
                     <ul>
                     <h3>Mensajes del Sistema:</h3>
                         <li>
-                            Debes verificar tu email, revisa la bandeja de entrada de su correo y busca el que le hemos enviado el dia {formatoFecha(user.fecha_creacion)}
+                            Debes verificar tu email, revisa la bandeja de entrada de su correo y busca el que le hemos enviado el dia {formatoFecha(user.fecha_creacion)}, si ya verificaste el correo, vuelve a iniciar sesión para que los cambios sean aplicados.
                         </li>
 
                     </ul>

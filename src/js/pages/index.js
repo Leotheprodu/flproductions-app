@@ -10,3 +10,5 @@ export * from './Instrumentales';
 export * from './ControlPanel';
 export * from './InicioPaneldeControl';
 export * from '../components/usuarios/RecuperarPassword';
+export * from '../components/usuarios/VerificarCorreo';
+export * from '../components/usuarios/InfodeUsuario';
