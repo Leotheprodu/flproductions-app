@@ -117,12 +117,12 @@ export const RecuperarPassword = () => {
         return (
             <div className="RecuperarPassword-contenedor">
                 <div className="login_buttons__button__status">
-                    <button className="login_buttons__button__registrar" onClick={() => { navigate(-1) }} type="button" title="Volver atrás">Volver atrás</button>
+                    <button className="login_buttons__button__registrar" onClick={() => { navigate(-1) }} type="button" title="Volver atrás">Atras</button>
                     <a href="/panel-de-control">
                         <button className="login_buttons__button__registrar" type="button" title="ir a Panel de Control">Panel de Control</button>
                     </a>
-                    <a href="/login">
-                        <button className="login_buttons__button__registrar" type="button" title="ir a login">Login</button>
+                    <a href="/iniciar-sesion">
+                        <button className="login_buttons__button__registrar" type="button" title="ir a login">Iniciar Sesion</button>
                     </a>
                 </div>
             </div>

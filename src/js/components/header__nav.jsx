@@ -3,12 +3,13 @@ import { useState, useEffect } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import SessionPanel from './usuarios/SessionPanel';
 import { useSelector } from 'react-redux';
-
+import { AvatarUsers } from './usuarios/AvatarUsers';
 export function NavMenu() {
   const [UserButton, setUserButton] = useState(false);
   const [isMovilUser, setIsMovilUser] = useState(false);
   const [onClickMovilUser, setOnClickMovilUser] = useState(false);
   const isLoggedIn = useSelector(state => state.user.session.isLoggedIn);
+  const user = useSelector(state => state.user.session.user);
 
   const handleClick = () => {
     setUserButton(!UserButton);
@@ -37,9 +38,14 @@ export function NavMenu() {
 
       </div>
 
-      <div className='header__nav_boton_usuarios'>
+      <div className='header__nav_boton_usuarios' >
         <div title='Opciones de Sesión' onClick={handleClick} className='header__nav_boton'>
-          <IconUser size={20} />
+          <div style={{filter: 'grayscale(40%)', opacity: '.2'}}>
+
+          {isLoggedIn ? <AvatarUsers id={user.id} username={user.username} size={3.5}/> : <IconUser size={20} /> }
+          </div>
+          
+          
 
         </div>
         {

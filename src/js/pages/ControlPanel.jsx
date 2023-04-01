@@ -63,7 +63,7 @@ export const ControlPanel = () => {
                     <a href="/registro-de-usuario">
                         <button className="login_buttons__button__registrar" type="button" title="Registro de Usuario">Registrarse</button>
                     </a>
-                    <button className="login_buttons__button__registrar" onClick={() => { navigate(-1) }} type="button" title="Volver atrás">Volver Atrás</button>
+                    <button className="login_buttons__button__registrar" onClick={() => { navigate(-1) }} type="button" title="Volver atrás">Atrás</button>
                 </div>
 
             </div>

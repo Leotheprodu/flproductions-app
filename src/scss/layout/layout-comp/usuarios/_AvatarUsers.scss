@@ -1,0 +1,12 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.AvatarUsers{
+    
+    img{
+        border-radius: 50%;
+        box-shadow: 2px 3px 10px #00000031;
+        object-fit: cover;
+        
+    }
+}

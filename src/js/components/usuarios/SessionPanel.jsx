@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { setSession } from "../redux/userActions";
 import { Spinner } from "../helpers/Spinner";
+
+
 function SessionPanel() {
     const dispatch = useDispatch();
     const [email, setEmail] = useState("");
@@ -136,31 +138,31 @@ function SessionPanel() {
                     </div>
                 </div>
 
-                { !spinner &&
+                {!spinner &&
 
-                <div className="login_buttons">
-                    {botonOlvideContra &&
+                    <div className="login_buttons">
+                        {botonOlvideContra &&
+                            <div className="login_buttons__button">
+                                <a href="/recuperar-password">
+                                    <button type="button" title="He olvidado mi contraseña"><IconCloudLockOpen />He olvidado mi contraseña</button>
+                                </a>
+
+                            </div>
+                        }
                         <div className="login_buttons__button">
-                            <a href="/recuperar-password">
-                                <button type="button" title="He olvidado mi contraseña"><IconCloudLockOpen/>He olvidado mi contraseña</button>
+
+                            <button type="submit" title="Iniciar Sesión"><IconUserCheck />Iniciar Sesión</button>
+
+                        </div>
+
+                        <div className="login_buttons__button">
+
+                            <a href="/registro-de-usuario">
+                                <button type="button" title="Registrarse"><IconUserPlus />Registrarse</button>
                             </a>
 
                         </div>
-                    }
-                    <div className="login_buttons__button">
-
-                        <button type="submit" title="Iniciar Sesión"><IconUserCheck />Iniciar Sesión</button>
-
                     </div>
-
-                    <div className="login_buttons__button">
-
-                        <a href="/registro-de-usuario">
-                            <button type="button" title="Registrarse"><IconUserPlus />Registrarse</button>
-                        </a>
-
-                    </div>
-                </div>
 
 
                 }

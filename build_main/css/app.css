@@ -1265,7 +1265,7 @@ input {
   bottom: 1.3rem;
   cursor: pointer;
   color: rgb(102, 102, 102);
-  background-color: #FFFFFF;
+  background-color: rgba(255, 255, 255, 0.692);
   width: 3.5rem;
   height: 3.5rem;
   border-radius: 50%;
@@ -1285,7 +1285,7 @@ input {
   transition-timing-function: ease-out;
 }
 .header__nav_boton_usuarios .header__nav_boton:active {
-  transform: scale(1);
+  transform: scale(1.3);
 }
 .header__nav_boton_usuarios .header__nav_boton_usuarios_login {
   visibility: hidden;
@@ -2413,4 +2413,10 @@ input {
     flex-direction: row;
     justify-content: flex-start;
   }
+}
+
+.AvatarUsers img {
+  border-radius: 50%;
+  box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.1921568627);
+  object-fit: cover;
 }

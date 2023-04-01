@@ -222,7 +222,6 @@
 .header__nav_boton_usuarios {
     /* position: relative; */
     display: flex;
-
     
     .header__nav_boton {
         z-index: 5;
@@ -233,7 +232,7 @@
         bottom: 1.3rem;
         cursor: pointer;
         color: v.$oscurecer;
-        background-color: v.$blanco;
+        background-color: rgba(255, 255, 255, 0.692);
         width: 3.5rem;
         height: 3.5rem;
         border-radius: 50%;
@@ -256,7 +255,7 @@
         }
         
         &:active {
-            transform: scale(1);
+            transform: scale(1.3);
 
 
         }
