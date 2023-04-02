@@ -5,8 +5,7 @@
     
     background-color: v.$gris;
     border-radius: 2rem;
-    margin: 6rem 2rem;
-
+    margin: 6rem 1rem;
     @include m.tablet {
         max-width: 40rem;
     }
@@ -69,14 +68,16 @@
 
 .UserBasicInfo__form__input__verified {
     display: flex;
-    
-
+    flex-direction: column;
     div {
         display: flex;
         gap: 1rem;
         color: v.$oscurecer;
         align-items: center;
-
+       
+    }
+    @include m.tablet {
+        flex-direction: row;
     }
 }
 .UserBasicInfo__Email-No-verificado{

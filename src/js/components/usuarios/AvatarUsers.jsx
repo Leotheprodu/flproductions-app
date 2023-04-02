@@ -5,7 +5,7 @@ export const AvatarUsers = ({ id, username, size }) => {
     const styles = {
         width: `${size}rem`,
         height: `${size}rem`
-      };
+    };
     useEffect(() => {
         fetch(`${process.env.NODE_ENV === 'production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/avatar/${id}`, {
             credentials: "include",
