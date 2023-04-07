@@ -54,6 +54,14 @@ export const RecuperarPassword = () => {
                 });
 
 
+        }else{
+            setSpinner(false);
+            setFormStatus('el email no puede estar en blanco');
+                        setTimeout(function () {
+                            setFormStatus('');
+                            setSpinner(false);
+                        }, 5000);
+                        return;
         }
 
     }
@@ -143,7 +151,7 @@ export const RecuperarPassword = () => {
                                 <label htmlFor="email">
                                     Correo electrónico:
                                 </label>
-                                <input
+                                <input tabIndex={1}
                                     type="email"
 
                                     value={email}
@@ -167,7 +175,7 @@ export const RecuperarPassword = () => {
 
                                 <div className="login_buttons__button">
                                     {!spinner &&
-                                        <button type="submit" title="Iniciar Sesión"><IconMail />Enviar Correo</button>
+                                        <button tabIndex={2} type="submit" title="Iniciar Sesión"><IconMail />Enviar Correo</button>
                                     }
                                     {spinner &&
                                         <Spinner />
@@ -193,7 +201,7 @@ export const RecuperarPassword = () => {
                                         PIN:
                                     </label>
                                     <input
-
+                                        tabIndex={1}
                                         type="text"
                                         value={pin}
                                         onChange={(e) => setPin(e.target.value)}
@@ -207,7 +215,7 @@ export const RecuperarPassword = () => {
                                         Nueva Contraseña:
                                     </label>
                                     <input
-
+                                        tabIndex={2}
                                         type="password"
                                         value={password1}
                                         onChange={(e) => setPassword1(e.target.value)}
@@ -219,6 +227,7 @@ export const RecuperarPassword = () => {
                                         Nueva Contraseña:
                                     </label>
                                     <input
+                                        tabIndex={3}
                                         onBlur={hanldeOnBlur}
                                         type="password"
                                         value={password}
@@ -234,7 +243,7 @@ export const RecuperarPassword = () => {
 
                                     <div className="login_buttons__button">
 
-                                        <button type="submit" title="Iniciar Sesión"><IconLockSquareRoundedFilled />Enviar</button>
+                                        <button type="submit" tabIndex={4} title="Iniciar Sesión"><IconLockSquareRoundedFilled />Enviar</button>
 
                                     </div>
 

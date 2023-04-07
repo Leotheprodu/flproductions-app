@@ -79,11 +79,7 @@ export function Canciones() {
                         <ArtistList listadoCanciones={produccionesArtistas} tipo_obra_general={tipo_obra_general} setProduccioneFiltradas={setProduccioneFiltradas} produccioneFiltradas={produccioneFiltradas} />
 
                     </div>
-                    <div>
 
-                        <h2>Toda la Musica</h2>
-
-                    </div>
 
                     <AppMusic
                         songArray={produccioneFiltradas}

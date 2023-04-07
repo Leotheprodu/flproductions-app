@@ -5,14 +5,15 @@
 
 .panel-de-control__menu{
     visibility: hidden;
-    position: fixed;
     top: 6rem;
-    background-color: v.$blanco;
     width: 100%;
+    background-color: v.$blanco;
     margin: 0;
-    padding: 1.5rem;
+    padding: 1rem;
     opacity: 0;
-    z-index: 1;
+    z-index: 0;
+    display: flex;
+    justify-content:baseline;
     transition: visibility 1s ease-in-out, opacity .4s linear;
     @include m.tablet {
         visibility: visible;
@@ -22,46 +23,50 @@
 .panel-de-control__menu.selected{
     display: flex;
     visibility: visible;
+    position: fixed;
+    top: 11rem;
     opacity: 1;
+    z-index: 2;
     background-color: v.$gris;
     box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.082);
 }
 .panel-de-control__menu.normal{
     position:relative;
     display: flex;
-    z-index: 1;
+    z-index: 0;
     @include m.tablet {
-        min-width: 18rem;
+        border-right: 1px solid v.$gris;
+        top: 0;
         
     }
 }
 .links-panel{
-    margin-left: 5rem;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    width: 18rem;
     z-index: 10;
     a{
+        border-radius: 10px;
         display: flex;
-        padding: 1rem 0;
-        border-radius: 1rem;
-        transition: transform .5s;
+        align-items: center;
+        transition: background-color .2s ease-in-out;
+        padding: 1rem;
+        gap: 1rem;
         &:hover{
             background-color: rgba(0, 0, 0, 0.048);
         }
         svg{
-            margin-right: 2rem;
-
+            
+            
         }
         p{
             margin: 0;
+        
         }
         &:active {
-            transform: scale(.95);
-            border: 1px solid rgba(0, 0, 0, 0.13);
-            transition-duration: .5s;
+            background-color: rgba(0, 0, 0, 0.219);
+            transition-duration: .2s;
             transition: ease-in-out;
+        }
+        &:focus {
+            outline-color: v.$primario;
         }
 
     }
@@ -73,6 +78,9 @@
     }
     .active{
         background-color: rgba(0, 0, 0, 0.048);
+        &:hover{
+            background-color: rgba(0, 0, 0, 0.082);  
+        }
         
         
     }

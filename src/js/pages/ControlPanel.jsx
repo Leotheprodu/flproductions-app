@@ -13,7 +13,6 @@ export const ControlPanel = () => {
     const [isMovilUser, setIsMovilUser] = useState(false);
     const [onClickMovilUser, setOnClickMovilUser] = useState(false);
 
-
     useEffect(() => {
         if (isLoggedIn) {
             refreshUserSession();
@@ -30,11 +29,11 @@ export const ControlPanel = () => {
 
     const handleClickMovilUser = () => {
         setOnClickMovilUser(!onClickMovilUser)
-    
-    
-      }
 
-      const refreshUserSession = () =>{
+
+    }
+
+    const refreshUserSession = () => {
         fetch(`${process.env.NODE_ENV === 'production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/usuarios/${user.id}`, {
             credentials: "include",
         })
@@ -50,7 +49,7 @@ export const ControlPanel = () => {
             .catch((error) => {
                 console.log(error);
             })
-      } 
+    }
 
     if (!isLoggedIn) {
         return (
@@ -92,7 +91,7 @@ export const ControlPanel = () => {
                             <button onClick={handleClickMovilUser}><IconSettingsFilled /></button>
                         </div>
                     }
-                    <div className=''>
+                    <div className='panel-de-control__contenedor-Pages'>
                         <Outlet />
                     </div>
                 </div>

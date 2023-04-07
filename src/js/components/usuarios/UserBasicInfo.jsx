@@ -106,7 +106,7 @@ export const UserBasicInfo = () => {
     // 3. Convertir la diferencia en milisegundos a horas
     const diferenciaEnHoras = diferenciaEnMilisegundos / 3600000;
     // 4. Comparar la cantidad de horas con 1
-    if (diferenciaEnHoras >= 1) {
+    if (diferenciaEnHoras >= 0.25) {
       fetch(`${process.env.NODE_ENV === 'production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/verificar-email/${email}`, {
         credentials: "include",
       })
@@ -114,13 +114,12 @@ export const UserBasicInfo = () => {
         .then((data) => {
           setFormStatus('Hemos reenviado el correo de verificacion, ve a revisarlo y verifica tu correo');
           setStatusEnviado(true);
-          console.log(data);
         })
         .catch((error) => {
           console.log(error);
         })
     } else {
-      alert('Para volver a enviar el correo de verificacion, debe haber pasado 1 hora desde el ultimo cambio');
+      alert('Para volver a enviar el correo de verificacion, debe haber pasado 15 minutos desde el ultimo cambio');
       return;
     }
 
@@ -135,6 +134,7 @@ export const UserBasicInfo = () => {
           <div className="UserBasicInfo__form__input">
             <label className="mb-3" htmlFor="name">Nombre de Usuario:</label>
             <input
+              tabIndex={1}
               type="text"
               className="mb-3"
               value={username}
@@ -146,6 +146,7 @@ export const UserBasicInfo = () => {
             <label onClick={() => setDisabled('')} className="mb-3" htmlFor="email">Correo Electronico:</label>
             <div className='UserBasicInfo__form__input__verified'>
               <input
+                tabIndex={-1}
                 type="email"
                 value={email}
                 className="mb-3"
@@ -160,7 +161,7 @@ export const UserBasicInfo = () => {
                   <IconBan size={30} stroke={1} color='red' />
                   No Verificado
                   {!statusenviado &&
-                    <button onClick={handleVerificarEmail} type='button'>
+                    <button tabIndex={-1} onClick={handleVerificarEmail} type='button'>
                       Verificar?
                     </button>}
 
@@ -172,6 +173,7 @@ export const UserBasicInfo = () => {
           <div className="UserBasicInfo__form__input">
             <label className="mb-3" htmlFor="password">Nueva Contraseña:</label>
             <input
+            tabIndex={3}
               type="password"
               className={`mb-3 ${clasePass}`}
               value={password1}
@@ -185,6 +187,7 @@ export const UserBasicInfo = () => {
               type="password"
 
               className={`mb-3 ${clasePass}`}
+              tabIndex={4}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               onBlur={hanldeOnBlurPassword}
@@ -195,7 +198,7 @@ export const UserBasicInfo = () => {
           </div>
           {!statusenviado &&
 
-            <button type="submit">Guardar</button>
+            <button tabIndex={5} type="submit">Guardar</button>
 
           }
         </form>

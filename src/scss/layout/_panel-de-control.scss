@@ -15,12 +15,12 @@
 .panel-de-control__menu_celular {
     border: none;
     position: fixed;
-    top: 6rem;
-    z-index: 10;
+    top: 11rem;
+    right: 0;
+    z-index: 2;
     
     button {
-        border-top-right-radius: 50%;
-        border-bottom-right-radius: 50%;
+        border-radius: 0 0 50% 50%;
         appearance: none;
         border: none;
         height: 5rem;
@@ -37,30 +37,26 @@
 .InicioPaneldeControl__div {
     display: flex;
     flex-direction: column;
-    margin-top: 2rem;
     height: 100vh;
+    @include m.tablet {
+        padding: 0 35rem;
+        
+    }
+    
 }
 
 .InicioPaneldeControl {
     padding: 2rem 0;
-
-    background-repeat: no-repeat;
-    background-position: bottom;
-    background-size: cover;
-    background-color: rgba(255, 255, 255, 0.692);
-    background-blend-mode: overlay;
     display: flex;
-    flex-direction: column;
     justify-content: center;
+    gap: 3rem;
     align-items: center;
-    border-radius: 30rem;
+    
 
     h1 {
 
         color: v.$negro;
-        text-transform: uppercase;
         text-align: center;
-        
         font-size: 2rem;
         margin: 0;
 
@@ -68,13 +64,4 @@
             font-size: 3rem;
         }
     }
-
-    h3 {
-        
-        color: v.$negro;
-        text-align: center;
-        font-size: 1.3rem;
-        margin: 0;
-    }
-
 }

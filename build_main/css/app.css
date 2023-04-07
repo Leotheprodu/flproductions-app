@@ -351,7 +351,7 @@ p {
 }
 
 .contenedor-main {
-  padding-top: 6rem;
+  padding-top: 10rem;
   position: relative;
 }
 
@@ -614,14 +614,15 @@ input {
 
 .panel-de-control__menu {
   visibility: hidden;
-  position: fixed;
   top: 6rem;
-  background-color: #FFFFFF;
   width: 100%;
+  background-color: #FFFFFF;
   margin: 0;
-  padding: 1.5rem;
+  padding: 1rem;
   opacity: 0;
-  z-index: 1;
+  z-index: 0;
+  display: flex;
+  justify-content: baseline;
   transition: visibility 1s ease-in-out, opacity 0.4s linear;
 }
 @media (min-width: 768px) {
@@ -634,7 +635,10 @@ input {
 .panel-de-control__menu.selected {
   display: flex;
   visibility: visible;
+  position: fixed;
+  top: 11rem;
   opacity: 1;
+  z-index: 2;
   background-color: rgb(238, 238, 238);
   box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.082);
 }
@@ -642,42 +646,39 @@ input {
 .panel-de-control__menu.normal {
   position: relative;
   display: flex;
-  z-index: 1;
+  z-index: 0;
 }
 @media (min-width: 768px) {
   .panel-de-control__menu.normal {
-    min-width: 18rem;
+    border-right: 1px solid rgb(238, 238, 238);
+    top: 0;
   }
 }
 
 .links-panel {
-  margin-left: 5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  width: 18rem;
   z-index: 10;
 }
 .links-panel a {
+  border-radius: 10px;
   display: flex;
-  padding: 1rem 0;
-  border-radius: 1rem;
-  transition: transform 0.5s;
+  align-items: center;
+  transition: background-color 0.2s ease-in-out;
+  padding: 1rem;
+  gap: 1rem;
 }
 .links-panel a:hover {
   background-color: rgba(0, 0, 0, 0.048);
-}
-.links-panel a svg {
-  margin-right: 2rem;
 }
 .links-panel a p {
   margin: 0;
 }
 .links-panel a:active {
-  transform: scale(0.95);
-  border: 1px solid rgba(0, 0, 0, 0.13);
-  transition-duration: 0.5s;
+  background-color: rgba(0, 0, 0, 0.219);
+  transition-duration: 0.2s;
   transition: ease-in-out;
+}
+.links-panel a:focus {
+  outline-color: #1ab5e6;
 }
 @media (min-width: 768px) {
   .links-panel {
@@ -687,6 +688,9 @@ input {
 }
 .links-panel .active {
   background-color: rgba(0, 0, 0, 0.048);
+}
+.links-panel .active:hover {
+  background-color: rgba(0, 0, 0, 0.082);
 }
 
 .panel-de-control {
@@ -702,12 +706,12 @@ input {
 .panel-de-control__menu_celular {
   border: none;
   position: fixed;
-  top: 6rem;
-  z-index: 10;
+  top: 11rem;
+  right: 0;
+  z-index: 2;
 }
 .panel-de-control__menu_celular button {
-  border-top-right-radius: 50%;
-  border-bottom-right-radius: 50%;
+  border-radius: 0 0 50% 50%;
   appearance: none;
   border: none;
   height: 5rem;
@@ -722,26 +726,23 @@ input {
 .InicioPaneldeControl__div {
   display: flex;
   flex-direction: column;
-  margin-top: 2rem;
   height: 100vh;
+}
+@media (min-width: 768px) {
+  .InicioPaneldeControl__div {
+    padding: 0 35rem;
+  }
 }
 
 .InicioPaneldeControl {
   padding: 2rem 0;
-  background-repeat: no-repeat;
-  background-position: bottom;
-  background-size: cover;
-  background-color: rgba(255, 255, 255, 0.692);
-  background-blend-mode: overlay;
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  gap: 3rem;
   align-items: center;
-  border-radius: 30rem;
 }
 .InicioPaneldeControl h1 {
   color: #000000;
-  text-transform: uppercase;
   text-align: center;
   font-size: 2rem;
   margin: 0;
@@ -750,12 +751,6 @@ input {
   .InicioPaneldeControl h1 {
     font-size: 3rem;
   }
-}
-.InicioPaneldeControl h3 {
-  color: #000000;
-  text-align: center;
-  font-size: 1.3rem;
-  margin: 0;
 }
 
 .palabras-del-equipo {
@@ -1071,19 +1066,37 @@ input {
   }
 }
 
-.header__nav {
+.contenedor__header__nav {
+  display: flex;
+  flex-direction: column;
   position: fixed;
   top: 0;
   left: 0;
-  flex-direction: column;
+  z-index: 3;
   width: 100%;
+}
+
+.header__nav__top-main-message {
+  height: 3rem;
+  background: rgb(131, 58, 180);
+  background: linear-gradient(127deg, rgb(131, 58, 180) 0%, rgb(253, 29, 29) 50%, rgb(252, 176, 69) 100%);
+}
+.header__nav__top-main-message p {
+  z-index: 4;
+  color: #FFFFFF;
+  margin: 0;
+  text-align: center;
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #0ff;
+}
+
+.header__nav {
+  flex-direction: column;
   display: flex;
   background-color: rgba(255, 255, 255, 0.815);
   backdrop-filter: blur(14px);
   color: #FFFFFF;
   justify-content: center;
-  height: 6rem;
-  z-index: 3;
+  height: 8rem;
   border-bottom: 1px solid rgb(238, 238, 238);
   /* margin: 0 0 1rem 0; */
 }
@@ -1144,7 +1157,7 @@ input {
   width: 100%;
   background-color: rgb(238, 238, 238);
   position: absolute;
-  top: 6rem;
+  top: 8rem;
   z-index: 12;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.308);
 }
@@ -1170,7 +1183,7 @@ input {
   transition-property: color;
   transition-duration: 0.1s;
   transition-timing-function: ease-out;
-  background-color: rgb(238, 238, 238);
+  /*  background-color: v.$gris; */
   padding: 0.5rem;
   border-radius: 5px;
 }
@@ -1182,8 +1195,11 @@ input {
 }
 @media (min-width: 768px) {
   .header__nav .header__links .header__links__link:hover {
-    color: rgba(0, 0, 0, 0.548);
+    color: #1ab5e6;
   }
+}
+.header__nav .header__links .header__links__link:focus {
+  outline-color: #1ab5e6;
 }
 .header__nav .header__links .header__links__link__musica {
   color: #000000;
@@ -1195,16 +1211,20 @@ input {
   transition-duration: 1s;
   transition-timing-function: ease-out;
   margin: 0;
-  background-color: rgb(238, 238, 238);
+  /*  background-color: v.$gris; */
   padding: 0.5rem;
   border-radius: 5px;
   font-size: 1.4rem;
+}
+.header__nav .header__links .header__links__link__musica:focus {
+  outline-color: #1ab5e6;
 }
 .header__nav .header__links .header__links__link__musica:hover {
   cursor: pointer;
   transition-property: color;
   transition-duration: 1s;
   transition-timing-function: ease-out;
+  color: #1ab5e6;
 }
 .header__nav .active {
   padding: 0.5rem;
@@ -1222,7 +1242,7 @@ input {
   height: 8rem;
   margin: 0.5rem;
   gap: 0.7rem;
-  background-color: rgba(255, 255, 255, 0.795);
+  background-color: rgba(255, 255, 255, 0.548);
   backdrop-filter: blur(14px);
   z-index: 1;
   border-radius: 5%;
@@ -1249,7 +1269,7 @@ input {
 }
 .header__submenu-parent:hover .header__submenu a:hover,
 .header__submenu-parent[aria-expanded=true] .header__submenu a:hover {
-  color: rgb(102, 102, 102);
+  color: #1ab5e6;
 }
 
 .header__nav_boton_usuarios {
@@ -1262,30 +1282,31 @@ input {
   display: flex;
   align-items: center;
   justify-content: center;
-  bottom: 1.3rem;
+  bottom: 2rem;
   cursor: pointer;
   color: rgb(102, 102, 102);
-  background-color: rgba(255, 255, 255, 0.692);
+  background-color: rgb(255, 255, 255);
   width: 3.5rem;
   height: 3.5rem;
   border-radius: 50%;
-  box-shadow: 1px 1px 1rem rgba(0, 0, 0, 0.075);
-  transition: box-shadow 1s;
+  box-shadow: 1px 1px 1rem rgba(0, 0, 0, 0.192);
+  transition: transform 0.5s;
+  transition-timing-function: ease-in;
 }
 @media (min-width: 768px) {
   .header__nav_boton_usuarios .header__nav_boton {
-    bottom: -0.9rem;
+    bottom: 2rem;
     right: 48%;
   }
 }
 .header__nav_boton_usuarios .header__nav_boton:hover {
   box-shadow: 1px 1px 1rem rgba(0, 0, 0, 0.203);
-  transform: scale(1.01);
+  transform: scale(1.1);
   transition-duration: 1s;
-  transition-timing-function: ease-out;
 }
 .header__nav_boton_usuarios .header__nav_boton:active {
-  transform: scale(1.3);
+  transition-timing-function: ease-out;
+  transform: scale(0.8);
 }
 .header__nav_boton_usuarios .header__nav_boton_usuarios_login {
   visibility: hidden;
@@ -1295,7 +1316,7 @@ input {
   padding: 0.5rem;
   z-index: 1;
   width: 100%;
-  height: 35rem;
+  height: 20rem;
   align-items: center;
   justify-content: center;
   border-bottom-left-radius: 4px;
@@ -1536,12 +1557,11 @@ input {
 }
 
 .BannerSlider__div {
-  height: 100vh;
+  height: 70vh;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-attachment: fixed;
 }
 
 .BannerSlider__div-texto {
@@ -2057,6 +2077,12 @@ input {
     width: 100%;
   }
 }
+.login_container input:focus {
+  outline-color: #1ab5e6;
+}
+.login_container a:focus {
+  outline-color: #1ab5e6;
+}
 .login_container .login_buttons {
   display: flex;
   align-items: center;
@@ -2107,6 +2133,9 @@ input {
 .login_container .login_buttons button:hover {
   opacity: 0.9;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1215686275);
+}
+.login_container .login_buttons button:focus {
+  outline-color: #1ab5e6;
 }
 
 .login__form {
@@ -2273,6 +2302,7 @@ input {
   width: 100%;
   padding: 1rem;
   color: #000000;
+  background-color: #ebc246;
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
   transition: box-shadow 0.5s;
@@ -2367,6 +2397,9 @@ input {
   justify-content: center;
   gap: 2rem;
 }
+.RecuperarPassword .login_container_input input:focus {
+  outline-color: #1ab5e6;
+}
 .RecuperarPassword .login_buttons__button {
   display: flex;
   justify-content: center;
@@ -2382,6 +2415,7 @@ input {
   width: 100%;
   padding: 1rem;
   color: #000000;
+  background-color: #ebc246;
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
   transition: box-shadow 0.5s;
@@ -2394,6 +2428,9 @@ input {
 .RecuperarPassword .login_buttons__button button:hover {
   opacity: 0.9;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1215686275);
+}
+.RecuperarPassword .login_buttons__button button:focus {
+  outline-color: #1ab5e6;
 }
 
 .VerificarCorreo {
@@ -2412,12 +2449,20 @@ input {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 100vh;
+  padding: 0 4rem;
 }
 @media (min-width: 768px) {
   .InfodeUsuario {
     flex-direction: row;
     justify-content: flex-start;
+    align-items: normal;
+    flex-wrap: wrap;
   }
+}
+
+.InfodeUsuario__elemento {
+  gap: 2rem;
 }
 
 .AvatarUsers img {
@@ -2446,6 +2491,7 @@ input {
 
 .AvatarSelection__images {
   display: flex;
+  z-index: 1;
   gap: 1rem;
 }
 .AvatarSelection__images img {
@@ -2495,6 +2541,7 @@ input {
 
 .AvatarSelection__botones {
   margin-top: 3rem;
+  z-index: 1;
 }
 
 .AvatarSelection__boton0 {
@@ -2520,6 +2567,10 @@ input {
   background-color: rgba(255, 255, 255, 0);
   color: #1ab5e6;
   transition: transform ease-in 0.1s;
+}
+.AvatarSelection__boton0:focus,
+.AvatarSelection__boton2:focus {
+  outline-color: #1ab5e6;
 }
 
 .AvatarSelection__boton1 {

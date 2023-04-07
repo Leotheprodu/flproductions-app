@@ -9,7 +9,7 @@ export function SocialIcons({size, stroke, claseCSS, facebook, youtube, instagra
         <div className="socialIcons">
             {
                 facebook &&
-                    <a href={facebook} target="_blank">
+                    <a tabIndex={-1} href={facebook} target="_blank">
                         <IconBrandFacebook 
                             className={'social-icon'+' '+claseCSS}
                             size={size}
@@ -20,7 +20,7 @@ export function SocialIcons({size, stroke, claseCSS, facebook, youtube, instagra
 
             {
                 youtube &&
-                    <a href={youtube} target="_blank">
+                    <a tabIndex={-1} href={youtube} target="_blank">
                         <IconBrandYoutube
                             className={'social-icon'+' '+claseCSS}
                             size={size}
@@ -31,7 +31,7 @@ export function SocialIcons({size, stroke, claseCSS, facebook, youtube, instagra
             }
             {
                 instagram &&
-                    <a href={instagram} target="_blank">
+                    <a tabIndex={-1} href={instagram} target="_blank">
                         <IconBrandInstagram 
                             className={'social-icon'+' '+claseCSS}
                             size={size}
@@ -42,7 +42,7 @@ export function SocialIcons({size, stroke, claseCSS, facebook, youtube, instagra
 
             {
                 twitch &&
-                    <a href={twitch} target="_blank">
+                    <a tabIndex={-1} href={twitch} target="_blank">
                         <IconBrandTwitch 
                             className={'social-icon'+' '+claseCSS}
                             size={size} 
@@ -52,7 +52,7 @@ export function SocialIcons({size, stroke, claseCSS, facebook, youtube, instagra
             }
             {
                 spotify &&
-                    <a href={spotify} target="_blank">
+                    <a tabIndex={-1} href={spotify} target="_blank">
                         <IconBrandSpotify 
                             className={'social-icon'+' '+claseCSS}
                             size={size} 

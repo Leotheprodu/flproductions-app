@@ -75,14 +75,15 @@ export const AvatarSelection = () => {
             },
             body: JSON.stringify({ id: userInfo.id , avatar: avatar}),
         })
-            .then((res) => res.json())
-            .then((data) => {
-                if (data) {
-                    setDatoActualizado(true);
+        .then((response) => {
+            if (response.status === 200) {
+                setDatoActualizado(true);
 
-                }
-
-            })
+            }else{
+                alert("Solo usuarios con correo verificado pueden cambiar su avatar")
+                return
+            }
+        })
             .catch((error) => {
                 console.log(error);
             });
@@ -103,9 +104,9 @@ export const AvatarSelection = () => {
                 </div>
             </div>
             <div className='AvatarSelection__botones'>
-                <button className='AvatarSelection__boton0' onClick={handleClickIzq}><IconChevronLeft size={50} /></button>
-                {!datoActualizado ? <button className='AvatarSelection__boton1' onClick={handleClickSelect}>SELECCIONAR</button> : <p>Avatar Actualizado</p>}
-                <button className='AvatarSelection__boton2' onClick={handleClickDer}><IconChevronRight size={50} /></button>
+                <button tabIndex={5} className='AvatarSelection__boton0' onClick={handleClickIzq}><IconChevronLeft size={50} /></button>
+                {!datoActualizado ? <button tabIndex={7} className='AvatarSelection__boton1' onClick={handleClickSelect}>SELECCIONAR</button> : <p>Avatar Actualizado</p>}
+                <button tabIndex={6} className='AvatarSelection__boton2' onClick={handleClickDer}><IconChevronRight size={50} /></button>
             </div>
         </div>
     )

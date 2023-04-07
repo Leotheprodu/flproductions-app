@@ -66,9 +66,7 @@ export const ProducerDetail = () => {
                 </div>
 
                 <div className='artistdetail__music contenedor-basic'>
-                    <div>
-                        <h2>{`Musica de ${nombre_artista}`}</h2>
-                    </div>
+                
 
                     <AppMusic
                         songArray={produccionesArtista}

@@ -32,6 +32,11 @@ export const Login = () => {
         if (data.isLoggedIn) {
           dispatch(setSession(data));
 
+            setTimeout(() => {
+              navigate(-1, { replace: true });
+            }, 3000);
+        
+          
         } else {
           alert("Datos inválidos, correo o contraseña incorrecta o regístrate");
           setBotonOlvideContra(true);
@@ -42,13 +47,7 @@ export const Login = () => {
         console.log(error);
       });
   };
-
-  if (isLoggedIn) {
-    setTimeout(() => {
-      navigate(-1, { replace: true });
-    }, 3000);
-
-  }
+  
 
   return (
     <HelmetProvider>

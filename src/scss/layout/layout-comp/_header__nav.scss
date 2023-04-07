@@ -2,20 +2,40 @@
 @use 'base/variables' as v;
 @import url('https://fonts.googleapis.com/css2?family=Titan+One&display=swap');
 
-
-.header__nav {
+.contenedor__header__nav {
+    display: flex;
+    flex-direction: column;
     position: fixed;
     top: 0;
     left: 0;
-    flex-direction: column;
+    z-index: 3;
     width: 100%;
+}
+
+.header__nav__top-main-message {
+    height: 3rem;
+    background: rgb(131,58,180);
+background: linear-gradient(127deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+    p{
+        z-index: 4;
+        color: v.$blanco;
+        margin: 0;
+        text-align: center;
+        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #0ff;
+    }
+}
+
+.header__nav {
+
+    flex-direction: column;
+
     display: flex;
     background-color: rgba(255, 255, 255, 0.815);
     backdrop-filter: blur(14px);
     color: v.$blanco;
     justify-content: center;
-    height: 6rem;
-    z-index: 3;
+    height: 8rem;
+
     border-bottom: 1px solid v.$gris;
 
     button {
@@ -71,7 +91,7 @@
         display: flex;
         visibility: hidden;
         opacity: 0;
-        transition: visibility 1s ease-in-out,opacity .5s linear;
+        transition: visibility 1s ease-in-out, opacity .5s linear;
         flex-direction: column;
         align-items: center;
         justify-content: center;
@@ -83,24 +103,26 @@
         width: 100%;
         background-color: v.$gris;
         position: absolute;
-        top: 6rem;
+        top: 8rem;
         z-index: 12;
         box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.308);
+
         a {
             &:hover {
                 color: v.$blanco;
             }
         }
 
-        
+
 
     }
+
     .header__links__movil.selected {
         visibility: visible;
         opacity: 1;
-        
-        
-        
+
+
+
     }
 
     .header__links {
@@ -118,7 +140,7 @@
             transition-property: color;
             transition-duration: .1s;
             transition-timing-function: ease-out;
-            background-color: v.$gris;
+            /*  background-color: v.$gris; */
             padding: .5rem;
             border-radius: 5px;
 
@@ -131,10 +153,13 @@
 
                 @include m.tablet {
 
-                    color: rgba(0, 0, 0, 0.548);
+                    color: v.$primario;
                 }
             }
 
+            &:focus {
+                outline-color: v.$primario;
+            }
         }
 
         .header__links__link__musica {
@@ -147,18 +172,23 @@
             transition-duration: 1s;
             transition-timing-function: ease-out;
             margin: 0;
-            background-color: v.$gris;
+            /*  background-color: v.$gris; */
             padding: .5rem;
             border-radius: 5px;
             font-size: 1.4rem;
 
-            
+            &:focus {
+                outline-color: v.$primario;
+            }
+
+
 
             &:hover {
                 cursor: pointer;
                 transition-property: color;
                 transition-duration: 1s;
                 transition-timing-function: ease-out;
+                color: v.$primario;
 
             }
         }
@@ -171,7 +201,7 @@
         padding: .5rem;
         box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.197);
         border-radius: 5px;
-    
+
     }
 }
 
@@ -186,7 +216,7 @@
     height: 8rem;
     margin: .5rem;
     gap: .7rem;
-    background-color: rgba(255, 255, 255, 0.795);
+    background-color: rgba(255, 255, 255, 0.548);
     backdrop-filter: blur(14px);
     z-index: 1;
     border-radius: 5%;
@@ -196,7 +226,7 @@
     box-shadow: 2px 2px 2px #0000001f;
     visibility: hidden;
     opacity: 0;
-    transition: visibility 1s ease-in-out,opacity .5s linear;
+    transition: visibility 1s ease-in-out, opacity .5s linear;
 }
 
 .header__submenu-parent {
@@ -210,68 +240,70 @@
 .header__submenu-parent[aria-expanded="true"] .header__submenu {
     visibility: visible;
     opacity: 1;
-    
 
-    
+
+
 
     a:hover {
-        color: v.$oscurecer;
+        color: v.$primario;
     }
 }
 
 .header__nav_boton_usuarios {
     /* position: relative; */
     display: flex;
-    
+
+
     .header__nav_boton {
         z-index: 5;
         position: absolute;
         display: flex;
         align-items: center;
         justify-content: center;
-        bottom: 1.3rem;
+        bottom: 2rem;
         cursor: pointer;
         color: v.$oscurecer;
-        background-color: rgba(255, 255, 255, 0.692);
+        background-color: rgb(255, 255, 255);
         width: 3.5rem;
         height: 3.5rem;
         border-radius: 50%;
-        box-shadow: 1px 1px 1rem rgba(0, 0, 0, 0.075);
-        transition: box-shadow 1s;
-        
+        box-shadow: 1px 1px 1rem rgba(0, 0, 0, 0.192);
+        transition: transform .5s;
+        transition-timing-function: ease-in;
 
 
         @include m.tablet {
-            bottom: -.9rem;
+            bottom: 2rem;
             right: 48%;
-            
+
         }
-        
+
         &:hover {
             box-shadow: 1px 1px 1rem rgba(0, 0, 0, 0.203);
-            transform: scale(1.01);
+            transform: scale(1.1);
             transition-duration: 1s;
-            transition-timing-function: ease-out;
+
         }
-        
+
         &:active {
-            transform: scale(1.3);
+            transition-timing-function: ease-out;
+            transform: scale(.8);
 
 
         }
     }
 
     .header__nav_boton_usuarios_login {
-        
+
         visibility: hidden;
         opacity: 0;
         display: flex;
-        
+
         color: v.$negro;
         padding: .5rem;
         z-index: 1;
         width: 100%;
-        height: 35rem;
+        height: 20rem;
         align-items: center;
         justify-content: center;
         border-bottom-left-radius: 4px;
@@ -286,24 +318,25 @@
             left: 5%;
             width: 90%;
             height: 7rem;
-            
+
 
         }
 
         box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.125);
     }
-    
+
 }
 
 .header__nav_boton_usuarios_login.selected {
     visibility: visible;
     opacity: 1;
-    
-    
+
+
 }
 
 
 .menu_celular {
     position: absolute;
     right: 1rem;
+    
 }

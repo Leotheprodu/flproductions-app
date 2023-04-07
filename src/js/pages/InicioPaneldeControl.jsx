@@ -7,14 +7,19 @@ export const InicioPaneldeControl = () => {
     return (
         <>
             <div className='InicioPaneldeControl__div contenedor'>
-                <div style={{ backgroundImage: `url("https://flproductionscr.com/build_main/img/banners/pages/panel-de-control.webp")` }} className='InicioPaneldeControl'>
-                    <h1>Panel de Control</h1>
+                <div className='InicioPaneldeControl'>
+                
                     <AvatarUsers id={user.id} username={user.username} size={10}/>
-                    <h3>{user.username}</h3>
+
+                    <div className='InicioPaneldeControl_textos'>
+                    <h1>{user.username}</h1>
+                    
+
+                    </div>
                 </div>
                     <div className='InicioPaneldeControl__mensajes'>
                         <MensajesDelSistema />
-
+                        
                     </div>
 
             </div>

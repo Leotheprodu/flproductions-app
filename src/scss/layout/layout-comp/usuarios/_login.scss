@@ -41,8 +41,15 @@
             
             
         }
+        &:focus{
+            outline-color: v.$primario;
+        }
     }
-    
+    a{
+        &:focus{
+            outline-color: v.$primario;
+        }
+    }
     
     .login_buttons{
         display: flex;
@@ -93,6 +100,9 @@
             &:hover {
                 opacity: .9;
                 box-shadow: 2px 2px 2px #0000001f;
+            }
+            &:focus{
+                outline-color: v.$primario;
             }
         }
     }

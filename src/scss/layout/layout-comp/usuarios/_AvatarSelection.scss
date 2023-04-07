@@ -22,7 +22,7 @@
 
 .AvatarSelection__images {
     display: flex;
-
+    z-index: 1;
     gap: 1rem;
 
     img {
@@ -83,7 +83,7 @@
 
 .AvatarSelection__botones {
     margin-top: 3rem;
-
+    z-index: 1;
 
 
 }
@@ -113,6 +113,9 @@
     background-color: rgba(255, 255, 255, 0);
     color: v.$primario;
     transition: transform ease-in .1s;
+    &:focus {
+        outline-color: v.$primario;
+    }
     
 }
 
