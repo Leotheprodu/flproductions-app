@@ -110,14 +110,27 @@ export const UserBasicInfo = () => {
       fetch(`${process.env.NODE_ENV === 'production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/verificar-email/${email}`, {
         credentials: "include",
       })
-        .then((res) => res.json())
-        .then((data) => {
-          setFormStatus('Hemos reenviado el correo de verificacion, ve a revisarlo y verifica tu correo');
-          setStatusEnviado(true);
+
+
+        .then(response => {
+
+          if (response.status === 200) {
+            setFormStatus('Hemos reenviado el correo de verificacion, ve a revisarlo y verifica tu correo');
+            setStatusEnviado(true);
+
+          } else if (response.status === 429) {
+            setFormStatus('muchas solicitudes de email, espera un momento para volver a enviar');
+            return;
+          } else if (response.status === 401) {
+            setFormStatus('Ya has verificado tu email, vuelve a iniciar sesion');
+            return;
+          }
+
         })
-        .catch((error) => {
+        .catch(error => {
+          // Manejar el error aquí
           console.log(error);
-        })
+        });
     } else {
       alert('Para volver a enviar el correo de verificacion, debe haber pasado 15 minutos desde el ultimo cambio');
       return;
@@ -173,7 +186,7 @@ export const UserBasicInfo = () => {
           <div className="UserBasicInfo__form__input">
             <label className="mb-3" htmlFor="password">Nueva Contraseña:</label>
             <input
-            tabIndex={3}
+              tabIndex={3}
               type="password"
               className={`mb-3 ${clasePass}`}
               value={password1}

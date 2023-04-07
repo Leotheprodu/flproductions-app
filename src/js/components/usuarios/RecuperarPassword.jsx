@@ -38,12 +38,16 @@ export const RecuperarPassword = () => {
 
                         }, 600000);
 
-                    } else if (response.status === 500 || response.status === 403) {
+                    } else if (response.status === 500 || response.status === 404) {
                         setFormStatus('El correo no existe en el sistema, solo usuarios registrados pueden cambiar una contraseña');
                         setTimeout(function () {
                             setFormStatus('');
                             setSpinner(false);
                         }, 5000);
+                        return;
+                    } else if (response.status === 429) {
+                        setFormStatus('Has enviado muchas solicitudes de correo, ententalo de nuevo en un momento');
+                        setSpinner(false);
                         return;
                     }
 
@@ -89,7 +93,7 @@ export const RecuperarPassword = () => {
                     } else if (response.status === 500) {
                         setFormStatus('Ha habido un problema, vuelva a intentarlo mas tarde');
                         return;
-                    } else if (response.status === 403) {
+                    } else if (response.status === 404) {
                         setFormStatus('El PIN es incorrecto o ha caducado');
                         setTimeout(function () {
                             setFormStatus('');
