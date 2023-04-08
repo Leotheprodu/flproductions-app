@@ -4,8 +4,10 @@
 
 .InicioPaneldeControl__mensajes{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     margin: 5rem 0;
+    gap: 4rem;
 }
 
 .mensajes-del-sistema__bloque{

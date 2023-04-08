@@ -728,9 +728,9 @@ input {
   flex-direction: column;
   height: 100vh;
 }
-@media (min-width: 768px) {
+@media (min-width: 1200px) {
   .InicioPaneldeControl__div {
-    padding: 0 35rem;
+    padding: 0 30rem;
   }
 }
 
@@ -2256,8 +2256,10 @@ input {
 
 .InicioPaneldeControl__mensajes {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   margin: 5rem 0;
+  gap: 4rem;
 }
 
 .mensajes-del-sistema__bloque {

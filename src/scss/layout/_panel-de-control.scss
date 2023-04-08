@@ -38,8 +38,9 @@
     display: flex;
     flex-direction: column;
     height: 100vh;
-    @include m.tablet {
-        padding: 0 35rem;
+    @include m.desktopXL {
+        padding: 0 30rem;
+        
         
     }
     
