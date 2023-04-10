@@ -1,12 +1,23 @@
+
 import { Helmet } from 'react-helmet-async';
 
-export const MetaInjector = ({title, description, type, url, image, keywords, robots}) => {
+interface Props {
+    title: string
+    description: string
+    type: string
+    url: string
+    image: string
+    keywords: string
+    robots: string
+}
+
+export const MetaInjector = ({title, description, type, url, image, keywords, robots}: Props) => {
 
 
-const imgWidth = "400"
-const imgHeight = "300"
-const author = "Leonardo Serrano"
-const copyright = "FLProductions"
+const imgWidth :string = "400"
+const imgHeight :string = "300"
+const author :string = "Leonardo Serrano"
+const copyright :string = "FLProductions"
 
 
     return (

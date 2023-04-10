@@ -1,4 +1,3 @@
-
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { HomePage, ContactPage, Canciones, AboutPage, Instrumentales, Root, ErrorPage, ControlPanel, InicioPaneldeControl, RecuperarPassword, VerificarCorreo, InfodeUsuario } from './pages';

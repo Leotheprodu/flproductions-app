@@ -1,0 +1,25 @@
+// tsconfig.json
+{
+    "compilerOptions": {
+        "target": "es5",
+        "lib": [
+            "dom",
+            "dom.iterable",
+            "esnext"
+        ],
+        "allowJs": true,
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "strict": false,
+        "module": "esnext",
+        "moduleResolution": "node",
+        "resolveJsonModule": true,
+        "jsx": "react-jsx",
+        "noEmit": true,
+        "isolatedModules": true,
+        "noImplicitAny": false
+    },
+    "include": [
+        "src"
+    ]
+}

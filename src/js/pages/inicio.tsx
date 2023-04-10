@@ -1,6 +1,6 @@
 import { IconVideo, IconMicrophone, IconZoomMoney } from '@tabler/icons';
 import { HelmetProvider } from 'react-helmet-async';
-import { BannerSlider,PalabrasDelEquipo, SimpleText, InfoCard, FormulariodeContacto, NuestrasCaracteristicas, Testimonio, MetaInjector } from '../components';
+import { BannerSlider,PalabrasDelEquipo, SimpleText, InfoCard, NuestrasCaracteristicas, MetaInjector } from '../components';
 import { mainBannerSlider } from '../components/database/database';
 
 const InfoCardSize = 40
