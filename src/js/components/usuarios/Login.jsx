@@ -27,27 +27,38 @@ export const Login = () => {
       },
       body: JSON.stringify({ email, password }),
     })
-      .then((res) => res.json())
+      .then(response => {
+
+        if (response.status === 429) {
+          setSpinner(false);
+          alert("muchos intentos de inicio de sesion, espere 15 minutos para volver a intentar o puede probar cambiar la contraseña");
+          return; 
+        }
+
+        return response.json();
+
+      })
       .then((data) => {
         if (data.isLoggedIn) {
           dispatch(setSession(data));
 
-            setTimeout(() => {
-              navigate(-1, { replace: true });
-            }, 3000);
-        
-          
+          setTimeout(() => {
+            navigate(-1, { replace: true });
+          }, 3000);
+
+
         } else {
           alert("Datos inválidos, correo o contraseña incorrecta o regístrate");
           setBotonOlvideContra(true);
         }
 
       })
+
       .catch((error) => {
         console.log(error);
       });
   };
-  
+
 
   return (
     <HelmetProvider>
@@ -93,14 +104,14 @@ export const Login = () => {
               <button type="submit">Iniciar Sesión</button>
             </form>
             <p>o</p>
-              {botonOlvideContra &&
-                <div className="login_buttons__button">
-                  <a href="/recuperar-password">
-                    <button className="login_buttons__button__registrar" type="button" title="He olvidado mi contraseña">He olvidado mi contraseña</button>
-                  </a>
+            {botonOlvideContra &&
+              <div className="login_buttons__button">
+                <a href="/recuperar-password">
+                  <button className="login_buttons__button__registrar" type="button" title="He olvidado mi contraseña">He olvidado mi contraseña</button>
+                </a>
 
-                </div>
-              }
+              </div>
+            }
             <div className="login_buttons__button">
               <a href="/registro-de-usuario">
                 <button className="login_buttons__button__registrar" type="button" title="Registrarse">Registrarse</button>

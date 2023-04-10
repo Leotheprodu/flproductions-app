@@ -48,7 +48,17 @@ function SessionPanel() {
             },
             body: JSON.stringify({ email, password }),
         })
-            .then((res) => res.json())
+            .then(response => {
+
+                if (response.status === 429) {
+                    setSpinner(false);
+                    alert("muchos intentos de inicio de sesion, espere 15 minutos para volver a intentar o puede probar cambiar la contraseña");
+                    return;
+                }
+                
+                return response.json();
+
+            })
             .then((data) => {
                 if (data.isLoggedIn) {
                     dispatch(setSession(data));
@@ -61,6 +71,7 @@ function SessionPanel() {
 
             })
             .catch((error) => {
+                setSpinner(false);
                 console.log(error);
             });
     };

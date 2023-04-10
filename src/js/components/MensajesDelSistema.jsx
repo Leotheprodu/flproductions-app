@@ -1,7 +1,8 @@
 
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react'
-import { AvatarUsers } from './usuarios/AvatarUsers';
+
+
 export const MensajesDelSistema = () => {
 
     const roles = useSelector(state => state.user.session.roles);
