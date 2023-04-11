@@ -3,8 +3,8 @@ import { HelmetProvider } from 'react-helmet-async';
 import { BannerSlider,PalabrasDelEquipo, SimpleText, InfoCard, NuestrasCaracteristicas, MetaInjector } from '../components';
 import { mainBannerSlider } from '../components/database/database';
 
-const InfoCardSize = 40
-const infoCardStroke = 2
+const InfoCardSize: number = 40
+const infoCardStroke: number = 2
 
 export function HomePage() {
   return(
@@ -69,6 +69,7 @@ export function HomePage() {
 
       <div className='contenedor acerca-de-nosotros'>
         <SimpleText 
+          tipo={2} 
           titulo='Acerca de Nosotros - Más que un estudio de grabación' 
           texto={<p>Somos un equipo apasionado por la música y la producción de audio. En FLProductions, nos dedicamos a hacer más que sólo grabaciones en Costa Rica. Para nosotros, cada proyecto es una oportunidad para dejar nuestra huella en la música y dar lo mejor de nosotros. Queremos que cada canción lleve nuestro ADN y transmita nuestro compromiso con la calidad y la excelencia. Es nuestra misión de vida, y es con este espíritu que trabajamos para brindar a nuestros clientes la confianza de saber que están en buenas manos.</p>} 
         />

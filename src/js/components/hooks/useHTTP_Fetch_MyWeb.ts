@@ -1,0 +1,46 @@
+
+import { useEffect, useState } from "react";
+
+export const useProducciones_HTTP_Fetch = (url: string) => {
+    
+    const [producciones_HTTP_Fetch, setProducciones_HTTP_Fetch] = useState([]);
+    
+    
+    
+    useEffect(() => {
+        
+        fetch(`${process.env.NODE_ENV==='production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}${url}`)
+        .then((res) => res.json())
+        .then((data) => setProducciones_HTTP_Fetch(data.producciones));
+        
+    }, []);
+    return [
+        
+        producciones_HTTP_Fetch
+    ]
+    
+    
+}
+
+
+
+export const useArtistasBD = (url: string) => {
+    
+    const [artistas, setArtistas] = useState([]);
+    
+
+
+
+    useEffect(() => {
+        fetch(`${process.env.NODE_ENV==='production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}${url}`)
+            .then((res) => res.json())
+            .then((data) => setArtistas(data.artistas));
+
+    }, []);
+
+    return [
+        artistas
+    ]
+
+}
+
