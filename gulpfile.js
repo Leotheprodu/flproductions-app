@@ -14,7 +14,7 @@ function css(done) {
     src('src/scss/**/*.scss') //ideantificar archivo de sass
         .pipe(plumber()) //para que siga ejecutando aunque hayan errores
         .pipe(sass()) //compilarlo
-        .pipe(dest('build_main/css')) //almacenar en hd
+        .pipe(dest('styles')) //almacenar en hd
 
     done();
 }

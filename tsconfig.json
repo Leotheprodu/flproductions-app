@@ -1,25 +1,32 @@
 // tsconfig.json
 {
-    "compilerOptions": {
-        "target": "es5",
-        "lib": [
-            "dom",
-            "dom.iterable",
-            "esnext"
-        ],
-        "allowJs": true,
-        "skipLibCheck": true,
-        "esModuleInterop": true,
-        "strict": false,
-        "module": "esnext",
-        "moduleResolution": "node",
-        "resolveJsonModule": true,
-        "jsx": "react-jsx",
-        "noEmit": true,
-        "isolatedModules": true,
-        "noImplicitAny": false
-    },
-    "include": [
-        "src"
-    ]
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "strict": false,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "jsx": "preserve",
+    "noEmit": true,
+    "isolatedModules": true,
+    "noImplicitAny": false,
+    "forceConsistentCasingInFileNames": true,
+    "incremental": true
+  },
+  "include": [
+    "src",
+    "components/layout/Footer.tsx",
+    "components/layout/Header.tsx"
+, "components/redux/store.ts", "components/redux/userActions.ts", "components/redux/userReducer.ts", "components/redux/userTypes.ts", "src/js/pages/inicio.tsx", "pages/artista/[artist_name].tsx", "components/app_music/AppMusic.tsx", "components/app_music/BotonesAppMusic.tsx", "pages/instrumental/[id].tsx", "components/app_music/ArtistList.tsx", "pages/productor-musical/[artist_name].tsx", "pages/cancion/[id].tsx", "components/app_music/DetalleProducciones.tsx", "components/app_music/GenreList.tsx", "components/app_music/ItemAppMusic.tsx", "components/app_music/StyleList.tsx", "components/users/LinksPanel.tsx", "pages/iniciar-sesion.tsx", "pages/registro-de-usuario.tsx", "components/users/AvatarSelection.tsx", "components/users/AvatarUsers.tsx", "pages/panel-de-control/informacion-de-usuario.tsx", "pages/recuperar-password.tsx", "components/users/SessionPanel.tsx", "components/users/UserBasicInfo.tsx", "pages/verificar-email/[token].tsx", "components/forms/contact-form.tsx", "components/helpers/MensajesDelSistema.tsx", "components/layout/BannerSlider.tsx", "components/layout/contact-info.tsx", "components/layout/galeria-de-imagenes.tsx", "components/layout/info-card.tsx", "components/layout/nuestras-caracteristicas.tsx", "components/layout/palabras-del-equipo.tsx", "components/layout/SimpleText.tsx", "components/layout/social-icons.tsx", "components/layout/testimonio.tsx", "components/index.ts", "pages/nosotros.tsx", "pages/contacto.tsx", "pages/canciones.tsx", "components/layout/panel-de-control.tsx", "pages/panel-de-control/index.tsx", "pages/instrumentales.tsx", "components/hooks/useEnvLink.ts", "components/hooks/useHandleAppMusic.ts", "components/hooks/useHandleItemAppMusic.ts", "components/hooks/useHTTP_Fetch_MyWeb.ts", "components/database_temp/database.ts", "components/helpers/CountdownTimer.tsx", "components/helpers/formatLink.ts", "components/helpers/Spinner.tsx"  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
