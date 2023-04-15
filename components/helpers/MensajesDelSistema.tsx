@@ -44,6 +44,8 @@ export const MensajesDelSistema = () => {
 
                     setMainMensaje(Mensaje_General_Todos[0].mensaje);
 
+                }else{
+                    setMainMensaje("");
                 }
 
 

@@ -39,16 +39,19 @@ export function Header() {
             .then((res) => res.json())
             .then((data) => {
                 if (data) {
-                  const Mensaje_General_Todos = data.filter((item) => item.tipo_de_mensaje === "mainTop" && item.id_role === 8 );
+            
+                  const mensaje_General_Todos = data.filter((item) => item.tipo_de_mensaje === "mainTop" && item.id_role === 8 ) ;
 
-                  setMainMensaje(Mensaje_General_Todos[0].mensaje);
+                  setMainMensaje(mensaje_General_Todos[0].mensaje);
                   
                   if(isLoggedIn) {
                     setMainMensaje('');
 
                   }
 
-                }
+                }else{
+                  setMainMensaje('');
+              }
 
 
             })
