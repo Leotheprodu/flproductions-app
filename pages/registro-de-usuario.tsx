@@ -25,7 +25,7 @@ function SignUp() {
     }
   }
   const loginNewUser = () => {
-    fetch(`${process.env.NODE_ENV === 'production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/login`, {
+    fetch(`${process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_PROD_AUTH_LOGIN : process.env.NEXT_PUBLIC_DEV_AUTH_LOGIN}`, {
       method: "POST",
       credentials: "include",
       headers: {
@@ -60,7 +60,7 @@ function SignUp() {
     }
     if (captcha.current.getValue()) {
       // Aquí puedes enviar los datos del formulario a tu servidor
-      fetch(`${process.env.NODE_ENV === 'production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/signup`, {
+      fetch(`${process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_PROD_USER_SIGNUP : process.env.NEXT_PUBLIC_DEV_USER_SIGNUP}`, {
         method: "POST",
         credentials: "include",
         headers: {

@@ -11,7 +11,7 @@ function VerificarCorreo() {
 
     useEffect(() => {
         setSpinner(true);
-        fetch(`${process.env.NODE_ENV === 'production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/verificar-correo/${token}`, {
+        fetch(`${process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_PROD_USER_EMAIL_VERIFICATION_TOKEN : process.env.NEXT_PUBLIC_DEV_USER_EMAIL_VERIFICATION_TOKEN}${token}`, {
             credentials: "include",
         })
             .then(response => {

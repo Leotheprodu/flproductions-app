@@ -42,7 +42,7 @@ export const ControlPanel = ({ children }: Props) => {
     }
 
     const refreshUserSession = () => {
-        fetch(`${process.env.NODE_ENV === 'production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/usuarios/${user.id}`, {
+        fetch(`${process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_PROD_USER_RECUPERAR_USER_ID : process.env.NEXT_PUBLIC_DEV_USER_RECUPERAR_USER_ID}${user.id}`, {
             credentials: "include",
         })
             .then((res) => res.json())

@@ -20,7 +20,7 @@ function SessionPanel() {
     }, []);
 
     const checkLoggedIn = () => {
-        fetch(`${process.env.NODE_ENV === 'production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/check-session`, {
+        fetch(`${process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_PROD_AUTH_CHECK_SESSION : process.env.NEXT_PUBLIC_DEV_AUTH_CHECK_SESSION}`, {
             credentials: "include",
         })
             .then((res) => res.json())
@@ -40,7 +40,7 @@ function SessionPanel() {
     const handleLogin = (e) => {
         e.preventDefault();
         setSpinner(true);
-        fetch(`${process.env.NODE_ENV === 'production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/login`, {
+        fetch(`${process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_PROD_AUTH_LOGIN : process.env.NEXT_PUBLIC_DEV_AUTH_LOGIN}`, {
             method: "POST",
             credentials: "include",
             headers: {
@@ -80,7 +80,7 @@ function SessionPanel() {
     const handleLogout = (e) => {
         e.preventDefault();
         setSpinner(true);
-        fetch(`${process.env.NODE_ENV === 'production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/logout`, {
+        fetch(`${process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_PROD_AUTH_LOGOUT : process.env.NEXT_PUBLIC_DEV_AUTH_LOGOUT}`, {
             credentials: "include",
             headers: {
                 "Content-Type": "application/json"

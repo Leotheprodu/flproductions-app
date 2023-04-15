@@ -12,7 +12,7 @@ export const AvatarSelection = () => {
 
     useEffect(() => {
 
-        fetch(`${process.env.NODE_ENV === 'production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/avatar/${userInfo.id}`, {
+        fetch(`${process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_PROD_USER_AVATAR_ID : process.env.NEXT_PUBLIC_DEV_USER_AVATAR_ID}${userInfo.id}`, {
             credentials: "include",
         })
             .then((res) => res.json())
@@ -67,7 +67,7 @@ export const AvatarSelection = () => {
 
     }
     const handleClickSelect = () => {
-        fetch(`${process.env.NODE_ENV === 'production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/avatar-update`, {
+        fetch(`${process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_PROD_USER_AVATAR_UPDATE : process.env.NEXT_PUBLIC_DEV_USER_AVATAR_UPDATE}`, {
             method: "POST",
             credentials: "include",
             headers: {

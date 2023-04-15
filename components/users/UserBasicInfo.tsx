@@ -19,7 +19,7 @@ export const UserBasicInfo = () => {
   const [disabled, setDisabled] = useState('disabled');
 
   const refreshUserSession = () => {
-    fetch(`${process.env.NODE_ENV === 'production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/usuarios/${userInfo.id}`, {
+    fetch(`${process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_PROD_USER_ID : process.env.NEXT_PUBLIC_DEV_USER_ID}${userInfo.id}`, {
       credentials: "include",
     })
       .then((res) => res.json())
@@ -51,7 +51,7 @@ export const UserBasicInfo = () => {
     const datosActualizadosDeUsuario = { username: username, email: email, password: password2 !== null ? password2 : null };
 
     // Aquí puedes enviar los datos del formulario a tu servidor
-    fetch(`${process.env.NODE_ENV === 'production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/actualizar-usuarios/${userInfo.id}`, {
+    fetch(`${process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_PROD_USER_UPDATE_USERS_ID : process.env.NEXT_PUBLIC_DEV_USER_UPDATE_USERS_ID}${userInfo.id}`, {
       method: "PUT",
       credentials: "include",
       headers: {
@@ -107,7 +107,7 @@ export const UserBasicInfo = () => {
     const diferenciaEnHoras = diferenciaEnMilisegundos / 3600000;
     // 4. Comparar la cantidad de horas con 1
     if (diferenciaEnHoras >= 0.25) {
-      fetch(`${process.env.NODE_ENV === 'production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/verificar-email/${email}`, {
+      fetch(`${process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_PROD_USER_VERIFY_EMAIL_EMAIL : process.env.NEXT_PUBLIC_DEV_USER_VERIFY_EMAIL_EMAIL}${email}`, {
         credentials: "include",
       })
 

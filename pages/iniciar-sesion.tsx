@@ -19,7 +19,7 @@ function Login() {
   const handleLogin = (e) => {
     e.preventDefault();
     setSpinner(true);
-    fetch(`${process.env.NODE_ENV === 'production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/login`, {
+    fetch(`${process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_PROD_AUTH_LOGIN : process.env.NEXT_PUBLIC_DEV_AUTH_LOGIN}`, {
       method: "POST",
       credentials: "include",
       headers: {

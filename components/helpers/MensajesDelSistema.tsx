@@ -34,7 +34,7 @@ export const MensajesDelSistema = () => {
 
     }
     useEffect(() => {
-        fetch(`${process.env.NODE_ENV === 'production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/mensajes-generales`, {
+        fetch(`${process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_PROD_USER_GENERAL_MESSAGES : process.env.NEXT_PUBLIC_DEV_USER_GENERAL_MESSAGES}`, {
             credentials: "include",
         })
             .then((res) => res.json())

@@ -15,7 +15,7 @@ export const AvatarUsers = ({ id, username, size }: Props) => {
         height: `${size}rem`
     };
     useEffect(() => {
-        fetch(`${process.env.NODE_ENV === 'production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/avatar/${id}`, {
+        fetch(`${process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_PROD_USER_AVATAR_ID : process.env.NEXT_PUBLIC_DEV_USER_AVATAR_ID}${id}`, {
             credentials: "include",
         })
             .then((res) => res.json())

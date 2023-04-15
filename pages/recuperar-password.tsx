@@ -22,7 +22,7 @@ function RecuperarPassword () {
         e.preventDefault();
         setSpinner(true);
         if (email !== '') {
-            fetch(`${process.env.NODE_ENV === 'production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/recuperar-password`, {
+            fetch(`${process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_PROD_USER_RECUPERAR_PASSWORD : process.env.NEXT_PUBLIC_DEV_USER_RECUPERAR_PASSWORD}`, {
                 method: "POST",
                 credentials: "include",
                 headers: {
@@ -77,7 +77,7 @@ function RecuperarPassword () {
         e.preventDefault();
         setSpinner(true);
         if (pin !== '' && password === password1) {
-            fetch(`${process.env.NODE_ENV === 'production' ? 'https://flproductionscr.com/' : 'http://localhost:5000/'}api/recuperar-password-paso2`, {
+            fetch(`${process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_PROD_USER_RECUPERAR_PASSWORD_PASO2 : process.env.NEXT_PUBLIC_DEV_USER_RECUPERAR_PASSWORD_PASO2}`, {
                 method: "POST",
                 credentials: "include",
                 headers: {

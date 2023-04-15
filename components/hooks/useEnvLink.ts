@@ -7,10 +7,10 @@ export const useEnvLink = (nodeEnv: string) => {
 
     useEffect(() => {
         if (nodeEnv === 'development') {
-            setEnvlink('http://localhost:5000/');
+            setEnvlink(`${process.env.DEV_LINK}/`);
 
         } else {
-            setEnvlink('https://flproductionscr.com/');
+            setEnvlink(`${process.env.PROD_LINK}/`);
         }
 
     }, [envlink]);
