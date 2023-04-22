@@ -3,6 +3,7 @@ import { useRouter } from 'next/router'
 import { Spinner } from "../../components/helpers/Spinner";
 
 function VerificarCorreo() {
+    const [loading, setLoading] = useState(true);
     const router = useRouter();
     const { token } = router.query;
     const [verificado, setVerificado] = useState<boolean>(false)
@@ -10,34 +11,39 @@ function VerificarCorreo() {
 
 
     useEffect(() => {
-        setSpinner(true);
-        fetch(`${process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_PROD_USER_EMAIL_VERIFICATION_TOKEN : process.env.NEXT_PUBLIC_DEV_USER_EMAIL_VERIFICATION_TOKEN}${token}`, {
-            credentials: "include",
-        })
-            .then(response => {
-
-                if (response.status === 200) {
-                    setVerificado(true);
-                    setSpinner(false);
-
-                } else if (response.status === 403) {
-                    setVerificado(false);
-                    setSpinner(false);
-                }else {
-                    setVerificado(false);
-                    setSpinner(false);
-                }
-
-
+        if(token){
+            fetch(`${process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_PROD_USER_EMAIL_VERIFICATION_TOKEN : process.env.NEXT_PUBLIC_DEV_USER_EMAIL_VERIFICATION_TOKEN}${token}`, {
+                credentials: "include",
             })
-            .catch(error => {
-                // Manejar el error aquí
-                console.log(error);
-            });
+                .then(response => {
+    
+                    if (response.status === 200) {
+                        setVerificado(true);
+                        setSpinner(false);
+                        setLoading(false);
+    
+                    } else if (response.status === 403) {
+                        setVerificado(false);
+                        setSpinner(false);
+                        setLoading(false);
+                    }else {
+                        setVerificado(false);
+                        setSpinner(false);
+                        setLoading(false);
+                    }
+    
+    
+                })
+                .catch(error => {
+                    // Manejar el error aquí
+                    console.log(error);
+                });
 
-    }, [])
+        }
 
-    if (spinner && !verificado) {
+    }, [token])
+
+    if (loading) {
 
         return <div className="VerificarCorreo"><Spinner /></div>
 
