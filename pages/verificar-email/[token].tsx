@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { useRouter } from 'next/router'
 import { Spinner } from "../../components/helpers/Spinner";
+import Link from "next/link";
 
 function VerificarCorreo() {
     const [loading, setLoading] = useState(true);
@@ -53,9 +54,9 @@ function VerificarCorreo() {
                 <h1>Su correo electrónico ha sido verificado</h1>
 
                 <div className="login_buttons__button__status">
-                    <a href="/panel-de-control">
+                    <Link href="/panel-de-control">
                         <button className="login_buttons__button__registrar" type="button" title="ir a Panel de Control">Panel de Control</button>
-                    </a>
+                    </Link>
                 </div>
             </div>
         )

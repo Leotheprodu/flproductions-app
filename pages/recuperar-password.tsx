@@ -2,7 +2,7 @@ import { IconLockSquareRoundedFilled, IconMail } from "@tabler/icons-react";
 import { useState } from "react";
 import { CountdownTimer, Spinner } from "../components";
 import { useRouter } from 'next/router'
-
+import Link from "next/link";
 
 
 function RecuperarPassword () {
@@ -134,12 +134,12 @@ function RecuperarPassword () {
             <div className="RecuperarPassword-contenedor">
                 <div className="login_buttons__button__status">
                     <button className="login_buttons__button__registrar" onClick={() => { router.back() }} type="button" title="Volver atrás">Atras</button>
-                    <a href="/panel-de-control">
+                    <Link href="/panel-de-control">
                         <button className="login_buttons__button__registrar" type="button" title="ir a Panel de Control">Panel de Control</button>
-                    </a>
-                    <a href="/iniciar-sesion">
+                    </Link>
+                    <Link href="/iniciar-sesion">
                         <button className="login_buttons__button__registrar" type="button" title="ir a login">Iniciar Sesion</button>
-                    </a>
+                    </Link>
                 </div>
             </div>
         )

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-
+import Image from 'next/image';
 
 interface Props  {
     
@@ -46,15 +46,15 @@ export function PalabrasDelEquipo({titulo, texto, nombre, puesto, foto, firma}: 
       <div ref={ref} className='palabras-del-equipo fxElement'>
         <div className='palabras-del-equipo_foto'>
 
-          <img src={foto} alt={nombre} />
+          <Image src={foto} alt={nombre} />
 
         </div>
         <div className='contenedor'>
           <h4>{titulo}</h4>
-          <p className='palabras-del-equipo_parrafo-principal'><span>" </span>{texto}<span> "</span></p>
+          <p className='palabras-del-equipo_parrafo-principal'><span>&quot; </span>{texto}<span> &quot;</span></p>
 
           <div className='palabras-del-equipo_firma'>
-            <img className='palabras-del-equipo_firma-firma' src={firma} alt={nombre+" firma"} />
+            <Image className='palabras-del-equipo_firma-firma' src={firma} alt={nombre+" firma"} />
             <div>
               <p>{nombre}</p>
 

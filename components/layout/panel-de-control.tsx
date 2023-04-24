@@ -6,7 +6,7 @@ import { setSession } from '../redux/userActions';
 import { RootState } from '../redux/store';
 import { HeadMetaInfo } from '../helpers/HeadMetaInfo';
 import { useRouter } from 'next/router'
-
+import Link from "next/link";
 
 interface Props {
     children: React.ReactNode;
@@ -20,12 +20,32 @@ export const ControlPanel = ({ children }: Props) => {
     const user = useSelector((state: RootState) => state.user.session.user);
     const [isMovilUser, setIsMovilUser] = useState<boolean>(false);
     const [onClickMovilUser, setOnClickMovilUser] = useState<boolean>(false);
+    const handleClickMovilUser = () => setOnClickMovilUser(!onClickMovilUser);
+    
 
     useEffect(() => {
         if (isLoggedIn) {
+            const refreshUserSession = () => {
+                fetch(`${process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_PROD_USER_ID : process.env.NEXT_PUBLIC_DEV_USER_ID}${user.id}`, {
+                    credentials: "include",
+                })
+                    .then((res) => res.json())
+                    .then((data) => {
+                        if (data.isLoggedIn) {
+                            dispatch(setSession(data));
+        
+                        }
+        
+        
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    })
+            };
+
             refreshUserSession();
         }
-    }, [isLoggedIn])
+    }, [isLoggedIn,user,dispatch]);
 
     useEffect(() => {
         if (window.innerWidth <= 768) {
@@ -35,41 +55,18 @@ export const ControlPanel = ({ children }: Props) => {
         }
     }, [])
 
-    const handleClickMovilUser = () => {
-        setOnClickMovilUser(!onClickMovilUser)
-
-
-    }
-
-    const refreshUserSession = () => {
-        fetch(`${process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_PROD_USER_ID : process.env.NEXT_PUBLIC_DEV_USER_ID}${user.id}`, {
-            credentials: "include",
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                if (data.isLoggedIn) {
-                    dispatch(setSession(data));
-
-                }
-
-
-            })
-            .catch((error) => {
-                console.log(error);
-            })
-    }
 
     if (!isLoggedIn) {
         return (
             <div className="vh100 contenedor">
                 <p className="contact-form__mensaje-status__signup">Debes iniciar sesión para entrar al panel de control</p>
                 <div className="login_buttons__button__status">
-                    <a href="/iniciar-sesion">
+                    <Link href="/iniciar-sesion">
                         <button className="login_buttons__button__registrar" type="button" title="Iniciar Sesión">Iniciar Sesión</button>
-                    </a>
-                    <a href="/registro-de-usuario">
+                    </Link>
+                    <Link href="/registro-de-usuario">
                         <button className="login_buttons__button__registrar" type="button" title="Registro de Usuario">Registrarse</button>
-                    </a>
+                    </Link>
                     <button className="login_buttons__button__registrar" onClick={() => { router.back; }} type="button" title="Volver atrás">Atrás</button>
                 </div>
 

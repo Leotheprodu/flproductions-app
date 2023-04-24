@@ -1,5 +1,7 @@
 import { Carousel } from 'react-responsive-carousel';
 import { testimonios } from '../database_temp/database';
+import Image from 'next/image';
+import Link from "next/link";
 
 export function Testimonio() {
 
@@ -20,17 +22,17 @@ export function Testimonio() {
                 { testimonios.map( ({texto, link, nombre, imagen}) => (
                 <div key={nombre}>
                     <div>
-                        <p>" {texto} "</p>
+                        <p>&quot; {texto} &quot;</p>
                     </div>
 
                     <div className='testimonio__imagen'>
-                        <a target="_blank" href={link}>
-                            <img src={imagen} alt={nombre+"-testimonio-imagen"} />
-                        </a>
+                        <Link target="_blank" href={link}>
+                            <Image src={imagen} alt={nombre+"-testimonio-imagen"} />
+                        </Link>
                     </div>
-                        <a target="_blank" href={link}>
+                        <Link target="_blank" href={link}>
                             <h4>{nombre}</h4>
-                        </a>
+                        </Link>
                 
                 </div>
                 

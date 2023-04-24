@@ -12,7 +12,7 @@ export const useProducciones_HTTP_Fetch = (ENV_PROD: string, ENV_DEV: string) =>
         .then((data) => setProducciones_HTTP_Fetch(data.producciones));
         
         
-    }, []);
+    }, [ ENV_PROD, ENV_DEV ]);
     return [
         
         producciones_HTTP_Fetch
@@ -35,7 +35,7 @@ export const useArtistasBD = (ENV_PROD: string, ENV_DEV: string) => {
             .then((res) => res.json())
             .then((data) => setArtistas(data.artistas));
 
-    }, []);
+    }, [ ENV_PROD, ENV_DEV ]);
 
     return [
         artistas

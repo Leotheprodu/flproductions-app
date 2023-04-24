@@ -2,7 +2,7 @@
 import { IconPlayerPlayFilled } from '@tabler/icons-react';
 import ReactPlayer from 'react-player';
 import { BotonesAppMusic } from '..';
-
+import Image from 'next/image'
 
 interface Props {
     playing: boolean
@@ -74,7 +74,7 @@ export const ItemAppMusic = ({ playing, infoProduccion, selectedSong, idComp, id
                 <div className='ItemAppMusic__playboton'>
                     <IconPlayerPlayFilled size={60}/>
                 </div>
-                <img src={`https://img.youtube.com/vi/${song.youtube_id}/mqdefault.jpg`} alt={`imagen de ${song.nombre}`} />
+                <Image src={`https://img.youtube.com/vi/${song.youtube_id}/mqdefault.jpg`} alt={`imagen de ${song.nombre}`} />
             </div>}
             <div className="ItemAppMusic__texto">
 

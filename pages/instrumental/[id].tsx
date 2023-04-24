@@ -19,7 +19,7 @@ function InstrumentalDetail() {
         if (produccionesArtistas) {
             setproduccionActual(produccionesArtistas.filter(element => element.id === parseInt(idString)));
         }
-    }, [producciones_HTTP_Fetch, id]);
+    }, [produccionesArtistas, idString]);
     
     if (!produccionActual) {
         return <div className="lds-ring"><div></div><div></div><div></div><div></div></div>;

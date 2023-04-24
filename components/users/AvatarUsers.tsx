@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-
+import Image from 'next/image';
 
 interface Props {
     id: number
@@ -35,11 +35,11 @@ export const AvatarUsers = ({ id, username, size }: Props) => {
             })
 
 
-    }, [])
+    }, [id])
 
     return (
         <div className='AvatarUsers' >
-            <img style={styles} src={avatar} alt={`Avatar de ${username}`} />
+            <Image style={styles} src={avatar} alt={`Avatar de ${username}`} />
         </div>
     )
 }

@@ -2,6 +2,8 @@ import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
 import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store';
+import Image from 'next/image';
+
 export const AvatarSelection = () => {
     const maxAvatarLength: number = 9
     const [avatarIzq, setAvatarIzq] = useState<number>(0);
@@ -39,7 +41,7 @@ export const AvatarSelection = () => {
             })
 
 
-    }, [])
+    }, [userInfo, avatar])
 
 
     const handleClickIzq = () => {
@@ -95,13 +97,13 @@ export const AvatarSelection = () => {
         <div className='contenedor__AvatarSelection'>
             <div className='AvatarSelection__images'>
                 <div className='AvatarSelection__item0' >
-                    <img src={`https://flproductionscr.com/build_main/img/perfil/avatar/${avatarIzq}.webp`} alt={`Avatar # ${avatarIzq}`} />
+                    <Image src={`https://flproductionscr.com/build_main/img/perfil/avatar/${avatarIzq}.webp`} alt={`Avatar # ${avatarIzq}`} />
                 </div>
                 <div className='AvatarSelection__item1' >
-                    <img src={`https://flproductionscr.com/build_main/img/perfil/avatar/${avatar}.webp`} alt={`Avatar # ${avatar}`} />
+                    <Image src={`https://flproductionscr.com/build_main/img/perfil/avatar/${avatar}.webp`} alt={`Avatar # ${avatar}`} />
                 </div>
                 <div className='AvatarSelection__item2' >
-                    <img src={`https://flproductionscr.com/build_main/img/perfil/avatar/${avatarDer}.webp`} alt={`Avatar # ${avatarDer}`} />
+                    <Image src={`https://flproductionscr.com/build_main/img/perfil/avatar/${avatarDer}.webp`} alt={`Avatar # ${avatarDer}`} />
                 </div>
             </div>
             <div className='AvatarSelection__botones'>

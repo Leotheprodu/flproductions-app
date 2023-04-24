@@ -2,6 +2,7 @@
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react'
 import { RootState } from '../redux/store';
+import Image from 'next/image';
 
 
 export const MensajesDelSistema = () => {
@@ -77,7 +78,7 @@ export const MensajesDelSistema = () => {
 
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }} className='AvatarUsers'>
 
-                    <img style={styles} src="https://flproductionscr.com/build_main/img/perfil/avatar/2.webp" alt="Avatar de LeotheProdu" />
+                    <Image style={styles} src="https://flproductionscr.com/build_main/img/perfil/avatar/2.webp" alt="Avatar de LeotheProdu" />
                     <h3 style={{ margin: '0' }}>LeotheProdu:</h3>
                 </div>
 

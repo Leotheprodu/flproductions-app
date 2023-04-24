@@ -5,7 +5,7 @@ import { HeadMetaInfo } from '../components/helpers/HeadMetaInfo';
 import { useDispatch } from 'react-redux';
 import { setSession } from "../components/redux/userActions";
 import { Spinner } from "../components/helpers/Spinner";
-
+import Link from "next/link";
 
 function SignUp() {
 
@@ -166,9 +166,9 @@ function SignUp() {
             </form>
             <p>o</p>
             <div className="login_buttons__button">
-              <a href="/iniciar-sesion">
+              <Link href="/iniciar-sesion">
                 <button className="login_buttons__button__registrar" type="button" title="Registrarse">Iniciar Sesión</button>
-              </a>
+              </Link>
 
             </div>
           </>
@@ -179,9 +179,9 @@ function SignUp() {
             <p className="contact-form__mensaje-status__signup">{formStatus}</p>
             <div className="login_buttons__button__status">
               <button className="login_buttons__button__registrar" onClick={() => { router.back() }} type="button" title="Volver atrás">Volver</button>
-              <a href="/panel-de-control">
+              <Link href="/panel-de-control">
                 <button className="login_buttons__button__registrar" type="button" title="ir a Panel de Control">Panel de Control</button>
-              </a>
+              </Link>
             </div>
 
           </div>

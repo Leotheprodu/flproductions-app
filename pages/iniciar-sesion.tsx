@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import { HeadMetaInfo } from '../components/helpers/HeadMetaInfo';
 import { RootState } from "../components/redux/store";
 import { Spinner } from "../components";
+import Link from "next/link";
 
 function Login() {
   const dispatch = useDispatch();
@@ -114,16 +115,16 @@ function Login() {
             <p>o</p>
             {botonOlvideContra &&
               <div className="login_buttons__button">
-                <a href="/recuperar-password">
+                <Link href="/recuperar-password">
                   <button className="login_buttons__button__registrar" type="button" title="He olvidado mi contraseña">He olvidado mi contraseña</button>
-                </a>
+                </Link>
 
               </div>
             }
             <div className="login_buttons__button">
-              <a href="/registro-de-usuario">
+              <Link href="/registro-de-usuario">
                 <button className="login_buttons__button__registrar" type="button" title="Registrarse">Registrarse</button>
-              </a>
+              </Link>
 
             </div>
           </>

@@ -15,7 +15,7 @@ function Instrumentales() {
     if (producciones_HTTP_Fetch) {
       setProduccioneFiltradas(produccionesArtistas);
     }
-  }, [producciones_HTTP_Fetch]);
+  }, [producciones_HTTP_Fetch, produccionesArtistas]);
 
 
   const [playing, setPlaying, pause, setPause, infoProduccion, idCompActual, ended, setEnded, progressDuration, setprogressDuration, progress, setProgress, clickInfoButton, setClickInfoButton, selectedSong] = useHandleAppMusic();

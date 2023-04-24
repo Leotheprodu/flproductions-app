@@ -1,5 +1,6 @@
 import React from 'react';
 import { HeadMetaInfo } from '../components/helpers/HeadMetaInfo';
+import Link from 'next/link';
 
 
 function ErrorPage() {
@@ -34,11 +35,11 @@ function ErrorPage() {
                 <div className='error-page__redirigir'>
 
                     <p className='error-page__redirigir__text'>Te recomendamos ir a la página principal</p>
-                    <a href="/">
+                    <Link href="/">
                         <div className='error-page__redirigir__button'>
                             Ir
                         </div>
-                    </a>
+                    </Link>
                 </div>
 
             </>

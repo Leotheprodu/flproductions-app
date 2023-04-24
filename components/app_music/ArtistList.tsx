@@ -22,7 +22,7 @@ export const ArtistList = ({ listadoCanciones, tipo_obra_general, produccioneFil
     if (produccioneFiltradas) {
       setArtistas(produccionesArtistas.map(element => element.artista.nombre_artista).sort());
     }
-  }, [produccioneFiltradas]);
+  }, [produccioneFiltradas, produccionesArtistas]);
 
   const handleFilteredList = (e) => {
     const filtro = e.target.innerText;

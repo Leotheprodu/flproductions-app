@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setSession } from "../redux/userActions";
 import { Spinner } from "../helpers/Spinner";
 import { RootState } from "../redux/store";
+import Link from "next/link";
 
 
 function SessionPanel() {
@@ -14,11 +15,6 @@ function SessionPanel() {
     const userInfo = useSelector((state: RootState) => state.user.session.user);
     const [botonOlvideContra, setBotonOlvideContra] = useState<boolean>(false);
     const [spinner, setSpinner] = useState<boolean>(false);
-
-    useEffect(() => {
-        checkLoggedIn();
-    }, []);
-
     const checkLoggedIn = () => {
         fetch(`${process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_PROD_AUTH_CHECK_SESSION : process.env.NEXT_PUBLIC_DEV_AUTH_CHECK_SESSION}`, {
             credentials: "include",
@@ -36,6 +32,11 @@ function SessionPanel() {
                 console.log(error);
             })
     };
+
+    useEffect(() => {
+        checkLoggedIn();
+    });
+
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -104,9 +105,9 @@ function SessionPanel() {
                 <div className="login_buttons">
                     <div className="login_buttons__button">
                         <p></p>
-                        <a href="/panel-de-control">
+                        <Link href="/panel-de-control">
                             <button type="button" title="Panel de Control">{<IconSettingsFilled />}Panel de Control</button>
-                        </a>
+                        </Link>
 
                     </div>
                     <div className="login_buttons__button">
@@ -155,9 +156,9 @@ function SessionPanel() {
                     <div className="login_buttons">
                         {botonOlvideContra &&
                             <div className="login_buttons__button">
-                                <a href="/recuperar-password">
+                                <Link href="/recuperar-password">
                                     <button type="button" title="He olvidado mi contraseña"><IconCloudLockOpen />He olvidado mi contraseña</button>
-                                </a>
+                                </Link>
 
                             </div>
                         }
@@ -169,9 +170,9 @@ function SessionPanel() {
 
                         <div className="login_buttons__button">
 
-                            <a href="/registro-de-usuario">
+                            <Link href="/registro-de-usuario">
                                 <button type="button" title="Registrarse"><IconUserPlus />Registrarse</button>
-                            </a>
+                            </Link>
 
                         </div>
                     </div>
