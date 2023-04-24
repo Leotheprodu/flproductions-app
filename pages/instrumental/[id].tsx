@@ -10,7 +10,7 @@ function InstrumentalDetail() {
     const {id} = router.query;
     const idString: string = Array.isArray(id) ? id.join(",") : id;
     const [produccionActual, setproduccionActual] = useState(null);
-    const [producciones_HTTP_Fetch] = useProducciones_HTTP_Fetch('api/artistas/producciones');
+    const [producciones_HTTP_Fetch] = useProducciones_HTTP_Fetch(process.env.NEXT_PUBLIC_PROD_PRODUCCIONES, process.env.NEXT_PUBLIC_DEV_PRODUCCIONES);
     const produccionesArtistas = producciones_HTTP_Fetch.filter(element => element.tipo_obra === tipo_obra_general);
     const [playing, setPlaying, pause, setPause, infoProduccion, idCompActual, ended, setEnded, progressDuration, setprogressDuration, progress, setProgress, clickInfoButton, setClickInfoButton, selectedSong] = useHandleAppMusic();
 
@@ -33,12 +33,12 @@ function InstrumentalDetail() {
         <>
             <HeadMetaInfo
 
-                title={`${produccionActual[0].nombre_artista} - ${produccionActual[0].nombre}`}
+                title={`${produccionActual[0].artista.nombre_artista} - ${produccionActual[0].nombre}`}
                 description={produccionActual[0].descripcion}
                 type='website'
                 url={`https://flproductionscr.com/musica/artistas/${id}`}
                 image='https://flproductionscr.com/build_main/img/header-main.png'
-                keywords={`${produccionActual[0].nombre_artista}, ${produccionActual[0].nombre}, musica, Costa Rica`}
+                keywords={`${produccionActual[0].artista.nombre_artista}, ${produccionActual[0].nombre}, musica, Costa Rica`}
                 robots='index, follow'
 
                 />

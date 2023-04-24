@@ -9,9 +9,9 @@ function ProducerDetail() {
     const router = useRouter()
     const { artist_name } = router.query;
     const [artistaActual, setArtistaActual] = useState(null);
-    const [producciones_HTTP_Fetch] = useProducciones_HTTP_Fetch('api/artistas/producciones');
-    const [artistas] = useArtistasBD('api/artistas');
-    const produccionesArtista = producciones_HTTP_Fetch.filter(element => formatLink(element.nombre_artista) === artist_name)
+    const [producciones_HTTP_Fetch] = useProducciones_HTTP_Fetch(process.env.NEXT_PUBLIC_PROD_PRODUCCIONES, process.env.NEXT_PUBLIC_DEV_PRODUCCIONES);
+    const [artistas] = useArtistasBD(process.env.NEXT_PUBLIC_PROD_ARTISTAS, process.env.NEXT_PUBLIC_DEV_ARTISTAS);
+    const produccionesArtista = producciones_HTTP_Fetch.filter(element => formatLink(element.artista.nombre_artista) === artist_name)
 
     const [playing, setPlaying, pause, setPause, infoProduccion, idCompActual, ended, setEnded, progressDuration, setprogressDuration, progress, setProgress, clickInfoButton, setClickInfoButton, selectedSong] = useHandleAppMusic();
 

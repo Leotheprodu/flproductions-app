@@ -7,7 +7,7 @@ function Canciones() {
     const tipo_obra_general: number = 0
     // IMPORTAMOS LAS PRODUCCIONES DE LA BASE DE DATOS
 
-    const [producciones_HTTP_Fetch] = useProducciones_HTTP_Fetch('api/artistas/producciones');
+    const [producciones_HTTP_Fetch] = useProducciones_HTTP_Fetch(process.env.NEXT_PUBLIC_PROD_PRODUCCIONES, process.env.NEXT_PUBLIC_DEV_PRODUCCIONES );
     const produccionesArtistas = producciones_HTTP_Fetch.filter(element => element.tipo_obra === tipo_obra_general);
     const produccionesDestacadas = produccionesArtistas.filter(element => element.destacado === 1);
     const [produccioneFiltradas, setProduccioneFiltradas] = useState(produccionesArtistas);
@@ -17,7 +17,6 @@ function Canciones() {
             setProduccioneFiltradas(produccionesArtistas);
         }
     }, [producciones_HTTP_Fetch]);
-
     //ESTE HOOK MANEJA EL REPRODUCTOR DE AUDIO PARA QUE REPRODUZCA UNA CANCION A LA VEZ
     const [playing, setPlaying, pause, setPause, infoProduccion, idCompActual, ended, setEnded, progressDuration, setprogressDuration, progress, setProgress, clickInfoButton, setClickInfoButton, selectedSong] = useHandleAppMusic();
 

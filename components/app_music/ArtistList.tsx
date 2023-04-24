@@ -15,18 +15,18 @@ export const ArtistList = ({ listadoCanciones, tipo_obra_general, produccioneFil
   const [artistas, setArtistas] = useState(null);
 
   const produccionesArtistas = produccioneFiltradas.filter((persona, index, array) => {
-    return !array.slice(0, index).some(p => p.nombre_artista === persona.nombre_artista);
+    return !array.slice(0, index).some(p => p.artista.nombre_artista === persona.artista.nombre_artista);
   });
 
   useEffect(() => {
     if (produccioneFiltradas) {
-      setArtistas(produccionesArtistas.map(element => element.nombre_artista).sort());
+      setArtistas(produccionesArtistas.map(element => element.artista.nombre_artista).sort());
     }
   }, [produccioneFiltradas]);
 
   const handleFilteredList = (e) => {
     const filtro = e.target.innerText;
-    setProduccioneFiltradas(produccioneFiltradas.filter(element => element.nombre_artista.includes(filtro)));
+    setProduccioneFiltradas(produccioneFiltradas.filter(element => element.artista.nombre_artista.includes(filtro)));
     if (artistas.length === 1) {
       setProduccioneFiltradas(listadoCanciones);
     }

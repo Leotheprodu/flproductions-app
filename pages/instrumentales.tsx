@@ -6,7 +6,7 @@ import { AppMusic, StyleList, ArtistList, useHandleAppMusic, useProducciones_HTT
 
 function Instrumentales() {
   const tipo_obra_general: number = 1
-  const [producciones_HTTP_Fetch] = useProducciones_HTTP_Fetch('api/artistas/producciones');
+  const [producciones_HTTP_Fetch] = useProducciones_HTTP_Fetch(process.env.NEXT_PUBLIC_PROD_PRODUCCIONES, process.env.NEXT_PUBLIC_DEV_PRODUCCIONES);
   const produccionesArtistas = producciones_HTTP_Fetch.filter(element => element.tipo_obra === tipo_obra_general);
   const [produccioneFiltradas, setProduccioneFiltradas] = useState(produccionesArtistas);
 

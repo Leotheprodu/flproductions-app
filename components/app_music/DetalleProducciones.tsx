@@ -9,7 +9,8 @@ interface Props {
 }
 
 export const DetalleProducciones = ({ infoProduccion, tipo_obra_general }: Props) => {
-    const { descripcion, nombre_artista, spotify_link, estilo, genero, fecha_lanzamiento, bpm, key } = infoProduccion
+    const { descripcion, artista, estilo, genero, fecha_lanzamiento, bpm, key } = infoProduccion
+    const {nombre_artista, spotify_link} = artista
     const fecha = new Date(fecha_lanzamiento);
     const dia = fecha.getDate().toString().padStart(2, '0');
     const mes = (fecha.getMonth() + 1).toString().padStart(2, '0');
