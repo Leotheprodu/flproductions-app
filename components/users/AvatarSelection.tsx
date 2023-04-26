@@ -41,7 +41,7 @@ export const AvatarSelection = () => {
             })
 
 
-    }, [userInfo, avatar])
+    }, [userInfo])
 
 
     const handleClickIzq = () => {
@@ -97,13 +97,13 @@ export const AvatarSelection = () => {
         <div className='contenedor__AvatarSelection'>
             <div className='AvatarSelection__images'>
                 <div className='AvatarSelection__item0' >
-                    <Image src={`https://flproductionscr.com/build_main/img/perfil/avatar/${avatarIzq}.webp`} alt={`Avatar # ${avatarIzq}`} />
+                    <img src={`https://flproductionscr.com/build_main/img/perfil/avatar/${avatarIzq}.webp`} alt={`Avatar # ${avatarIzq}`} />
                 </div>
                 <div className='AvatarSelection__item1' >
-                    <Image src={`https://flproductionscr.com/build_main/img/perfil/avatar/${avatar}.webp`} alt={`Avatar # ${avatar}`} />
+                    <img src={`https://flproductionscr.com/build_main/img/perfil/avatar/${avatar}.webp`} alt={`Avatar # ${avatar}`} />
                 </div>
                 <div className='AvatarSelection__item2' >
-                    <Image src={`https://flproductionscr.com/build_main/img/perfil/avatar/${avatarDer}.webp`} alt={`Avatar # ${avatarDer}`} />
+                    <img src={`https://flproductionscr.com/build_main/img/perfil/avatar/${avatarDer}.webp`} alt={`Avatar # ${avatarDer}`} />
                 </div>
             </div>
             <div className='AvatarSelection__botones'>

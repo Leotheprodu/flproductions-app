@@ -27,7 +27,7 @@ export function Testimonio() {
 
                     <div className='testimonio__imagen'>
                         <Link target="_blank" href={link}>
-                            <Image src={imagen} alt={nombre+"-testimonio-imagen"} />
+                            <img src={imagen} alt={nombre+"-testimonio-imagen"} />
                         </Link>
                     </div>
                         <Link target="_blank" href={link}>

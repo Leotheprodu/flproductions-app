@@ -20,7 +20,7 @@ function ArtistDetail() {
         if (artistas) {
             setArtistaActual(artistas.filter(element => formatLink(element.nombre_artista) === artist_name && element.tipo_obra !== tipo_obra_general));
         }
-    }, [artistas, artist_name]);
+    }, [artistas]);
 
     if (!artistaActual) {
         return <div className="lds-ring"><div></div><div></div><div></div><div></div></div>;

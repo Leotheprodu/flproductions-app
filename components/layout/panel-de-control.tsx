@@ -45,7 +45,7 @@ export const ControlPanel = ({ children }: Props) => {
 
             refreshUserSession();
         }
-    }, [isLoggedIn,user,dispatch]);
+    }, [isLoggedIn]);
 
     useEffect(() => {
         if (window.innerWidth <= 768) {

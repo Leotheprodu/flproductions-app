@@ -46,7 +46,7 @@ export function PalabrasDelEquipo({titulo, texto, nombre, puesto, foto, firma}: 
       <div ref={ref} className='palabras-del-equipo fxElement'>
         <div className='palabras-del-equipo_foto'>
 
-          <Image src={foto} alt={nombre} />
+          <img src={foto} alt={nombre} width={500} height={800} />
 
         </div>
         <div className='contenedor'>
@@ -54,7 +54,7 @@ export function PalabrasDelEquipo({titulo, texto, nombre, puesto, foto, firma}: 
           <p className='palabras-del-equipo_parrafo-principal'><span>&quot; </span>{texto}<span> &quot;</span></p>
 
           <div className='palabras-del-equipo_firma'>
-            <Image className='palabras-del-equipo_firma-firma' src={firma} alt={nombre+" firma"} />
+            <img className='palabras-del-equipo_firma-firma' src={firma} alt={nombre+" firma"} />
             <div>
               <p>{nombre}</p>
 

@@ -18,7 +18,7 @@ export const GenreList = ({ listadoCanciones, produccioneFiltradas, setProduccio
     if (produccioneFiltradas) {
       setGeneros(produccionesArtistas.map(element => element.genero).sort());
     }
-  }, [produccioneFiltradas, produccionesArtistas]);
+  }, [produccioneFiltradas]);
 
   const handleFilteredList = (e) => {
     const filtro = e.target.innerText;

@@ -35,7 +35,7 @@ function SessionPanel() {
 
     useEffect(() => {
         checkLoggedIn();
-    });
+    },[]);
 
 
     const handleLogin = (e) => {

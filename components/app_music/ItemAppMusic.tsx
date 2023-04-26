@@ -74,7 +74,7 @@ export const ItemAppMusic = ({ playing, infoProduccion, selectedSong, idComp, id
                 <div className='ItemAppMusic__playboton'>
                     <IconPlayerPlayFilled size={60}/>
                 </div>
-                <Image src={`https://img.youtube.com/vi/${song.youtube_id}/mqdefault.jpg`} alt={`imagen de ${song.nombre}`} />
+                <img src={`https://img.youtube.com/vi/${song.youtube_id}/mqdefault.jpg`} alt={`imagen de ${song.nombre}`} />
             </div>}
             <div className="ItemAppMusic__texto">
 

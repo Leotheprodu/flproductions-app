@@ -18,7 +18,7 @@ function SongDetail() {
         if (produccionesArtistas) {
             setproduccionActual(produccionesArtistas.filter(element => element.id === parseInt(idString)));
         }
-    }, [produccionesArtistas,idString]);
+    }, [produccionesArtistas]);
 
     if (!produccionActual) {
         return <div className="lds-ring"><div></div><div></div><div></div><div></div></div>;

@@ -39,7 +39,7 @@ export const AvatarUsers = ({ id, username, size }: Props) => {
 
     return (
         <div className='AvatarUsers' >
-            <Image style={styles} src={avatar} alt={`Avatar de ${username}`} />
+            <img style={styles} src={avatar} alt={`Avatar de ${username}`} />
         </div>
     )
 }

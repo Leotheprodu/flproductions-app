@@ -13,7 +13,7 @@ export const useEnvLink = (nodeEnv: string) => {
             setEnvlink(`${process.env.PROD_LINK}/`);
         }
 
-    }, [envlink, nodeEnv]);
+    }, [envlink]);
 
 
 

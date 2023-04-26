@@ -20,7 +20,7 @@ export const StyleList = ({ listadoCanciones, tipo_obra_general, produccioneFilt
     if (produccioneFiltradas) {
       setEstilos(produccionesEstilos.map(element => element.estilo).sort());
     }
-  }, [produccioneFiltradas, produccionesEstilos]);
+  }, [produccioneFiltradas]);
 
   const handleFilteredList = (e) => {
     const filtro = e.target.innerText;
