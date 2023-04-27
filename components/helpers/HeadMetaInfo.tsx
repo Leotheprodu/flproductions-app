@@ -1,17 +1,21 @@
 import React from 'react';
 import Head from 'next/head';
 
-interface Props {
-    title: string
-    description: string
-    type: string
-    url: string
-    image: string
-    keywords: string
-    robots: string
+export interface PropsHead {
+    imgWidth:string;
+    imgHeight:string;
+    author:string;
+    copyright:string;
+    title: string;
+    description: string;
+    type: string;
+    url: string;
+    image: string;
+    keywords: string;
+    robots: string;
 }
 
-export const HeadMetaInfo = ({title, description, type, url, image, keywords, robots}: Props) => {
+export const HeadMetaInfo = ({title, description, type, url, image, keywords, robots}: PropsHead) => {
 
 
 const imgWidth :string = "400"

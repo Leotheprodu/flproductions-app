@@ -3,10 +3,12 @@ import { useState } from "react";
 import { CountdownTimer, Spinner } from "../components";
 import { useRouter } from 'next/router'
 import Link from "next/link";
+import { PropsHead } from '../components/helpers/HeadMetaInfo';
+import Head from 'next/head';
 
 
-function RecuperarPassword () {
-
+function RecuperarPassword({ headInfo }) {
+    const { imgWidth, imgHeight, author, copyright, title, description, type, url, image, keywords, robots }: PropsHead = headInfo;
     const router = useRouter();
     const [switchButton, setSwitchButton] = useState<boolean>(false);
     const [email, setEmail] = useState<string>('');
@@ -61,14 +63,14 @@ function RecuperarPassword () {
                 });
 
 
-        }else{
+        } else {
             setSpinner(false);
             setFormStatus('el email no puede estar en blanco');
-                        setTimeout(function () {
-                            setFormStatus('');
-                            setSpinner(false);
-                        }, 5000);
-                        return;
+            setTimeout(function () {
+                setFormStatus('');
+                setSpinner(false);
+            }, 5000);
+            return;
         }
 
     }
@@ -87,7 +89,7 @@ function RecuperarPassword () {
                 body: JSON.stringify({ email, password, pin }),
             })
                 .then(response => {
-                    
+
                     if (response.status === 200) {
                         setProcesoTerminado(true);
                         setFormStatus('Contraseña actualizada exitosamente')
@@ -130,7 +132,7 @@ function RecuperarPassword () {
     if (procesoTerminado) {
 
         return (
-            
+
             <div className="RecuperarPassword-contenedor">
                 <div className="login_buttons__button__status">
                     <button className="login_buttons__button__registrar" onClick={() => { router.back() }} type="button" title="Volver atrás">Atras</button>
@@ -146,132 +148,176 @@ function RecuperarPassword () {
     } else {
 
         return (
-            <div className="RecuperarPassword-contenedor">
-                {!switchButton &&
+            <>
+                <Head>
+                    <title>{`${title} | FLProductions`}</title>
+                    <meta name="description" content={description} />
+                    <meta name="keywords" content={keywords} />
+                    <meta name="robots" content={robots} />
+                    <meta name="author" content={author} />
+                    <meta name="copyright" content={copyright} />
+                    <meta property="og:description" content={description} />
+                    <meta property="og:title" content={`${title} | FLProductions`} />
+                    <meta property="og:type" content={type} />
+                    <meta property="og:url" content={url} />
+                    <meta property="og:image" content={image} />
+                    <meta property="og:image:width" content={imgWidth} />
+                    <meta property="og:image:height" content={imgHeight} />
+                </Head>
+                <div className="RecuperarPassword-contenedor">
+                    {!switchButton &&
 
 
-                    <form className="RecuperarPassword" onSubmit={handleEmail}>
+                        <form className="RecuperarPassword" onSubmit={handleEmail}>
 
 
-                        <div className="login__form">
-
-                            <div className="login_container_input">
-                                <label htmlFor="email">
-                                    Correo electrónico:
-                                </label>
-                                <input tabIndex={1}
-                                    type="email"
-
-                                    value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
-                                />
-
-                            </div>
-
-
-                        </div>
-                        {formStatus &&
-                            <div>
-                                <p className="contact-form__mensaje-status">{formStatus}</p>
-                            </div>
-
-                        }
-
-                        {!formStatus &&
-
-                            <div className="login_buttons">
-
-                                <div className="login_buttons__button">
-                                    {!spinner &&
-                                        <button tabIndex={2} type="submit" title="Iniciar Sesión"><IconMail />Enviar Correo</button>
-                                    }
-                                    {spinner &&
-                                        <Spinner />
-                                    }
-
-                                </div>
-
-                            </div>
-                        }
-
-
-                    </form>
-                }
-                {switchButton &&
-
-                    <>
-                        <h2>Revisa tu bandeja de correo electrónico y copia el PIN</h2>
-                        <form className="RecuperarPassword" onSubmit={handleNewPassword}>
                             <div className="login__form">
 
                                 <div className="login_container_input">
-                                    <label htmlFor="text">
-                                        PIN:
+                                    <label htmlFor="email">
+                                        Correo electrónico:
                                     </label>
-                                    <input
-                                        tabIndex={1}
-                                        type="text"
-                                        value={pin}
-                                        onChange={(e) => setPin(e.target.value)}
+                                    <input tabIndex={1}
+                                        type="email"
+
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
                                     />
 
                                 </div>
 
 
-                                <div className="login_container_input">
-                                    <label htmlFor="password">
-                                        Nueva Contraseña:
-                                    </label>
-                                    <input
-                                        tabIndex={2}
-                                        type="password"
-                                        value={password1}
-                                        onChange={(e) => setPassword1(e.target.value)}
-                                    />
-
-                                </div>
-                                <div className="login_container_input">
-                                    <label htmlFor="password">
-                                        Nueva Contraseña:
-                                    </label>
-                                    <input
-                                        tabIndex={3}
-                                        onBlur={hanldeOnBlur}
-                                        type="password"
-                                        value={password}
-                                        onChange={(e) => setPassword(e.target.value)}
-                                    />
-
-                                </div>
                             </div>
-                            <CountdownTimer segundos={600} />
+                            {formStatus &&
+                                <div>
+                                    <p className="contact-form__mensaje-status">{formStatus}</p>
+                                </div>
+
+                            }
+
                             {!formStatus &&
 
                                 <div className="login_buttons">
 
                                     <div className="login_buttons__button">
-
-                                        <button type="submit" tabIndex={4} title="Iniciar Sesión"><IconLockSquareRoundedFilled />Enviar</button>
+                                        {!spinner &&
+                                            <button tabIndex={2} type="submit" title="Iniciar Sesión"><IconMail />Enviar Correo</button>
+                                        }
+                                        {spinner &&
+                                            <Spinner />
+                                        }
 
                                     </div>
 
                                 </div>
                             }
+
+
                         </form>
+                    }
+                    {switchButton &&
 
-                        {formStatus &&
-                            <div>
-                                <p className="contact-form__mensaje-status">{formStatus}</p>
-                            </div>
+                        <>
+                            <h2>Revisa tu bandeja de correo electrónico y copia el PIN</h2>
+                            <form className="RecuperarPassword" onSubmit={handleNewPassword}>
+                                <div className="login__form">
 
-                        }
-                    </>
-                }
+                                    <div className="login_container_input">
+                                        <label htmlFor="text">
+                                            PIN:
+                                        </label>
+                                        <input
+                                            tabIndex={1}
+                                            type="text"
+                                            value={pin}
+                                            onChange={(e) => setPin(e.target.value)}
+                                        />
 
-            </div>
+                                    </div>
+
+
+                                    <div className="login_container_input">
+                                        <label htmlFor="password">
+                                            Nueva Contraseña:
+                                        </label>
+                                        <input
+                                            tabIndex={2}
+                                            type="password"
+                                            value={password1}
+                                            onChange={(e) => setPassword1(e.target.value)}
+                                        />
+
+                                    </div>
+                                    <div className="login_container_input">
+                                        <label htmlFor="password">
+                                            Nueva Contraseña:
+                                        </label>
+                                        <input
+                                            tabIndex={3}
+                                            onBlur={hanldeOnBlur}
+                                            type="password"
+                                            value={password}
+                                            onChange={(e) => setPassword(e.target.value)}
+                                        />
+
+                                    </div>
+                                </div>
+                                <CountdownTimer segundos={600} />
+                                {!formStatus &&
+
+                                    <div className="login_buttons">
+
+                                        <div className="login_buttons__button">
+
+                                            <button type="submit" tabIndex={4} title="Iniciar Sesión"><IconLockSquareRoundedFilled />Enviar</button>
+
+                                        </div>
+
+                                    </div>
+                                }
+                            </form>
+
+                            {formStatus &&
+                                <div>
+                                    <p className="contact-form__mensaje-status">{formStatus}</p>
+                                </div>
+
+                            }
+                        </>
+                    }
+
+                </div>
+            </>
         )
     }
 
 }
 
 export default RecuperarPassword;
+
+export const getServerSideProps = async () => {
+
+    const headInfo = {
+
+        imgWidth: '400',
+        imgHeight: '300',
+        author: 'Leonardo Serrano',
+        copyright: 'FLProductions',
+        title: 'Recuperar Password',
+        description: 'Recupera tu password para acceder a FLProductions',
+        type: 'website',
+        url: 'https://flproductionscr.com/recuperar-password',
+        image: 'https://flproductionscr.com/build_main/img/header-main.png',
+        keywords: 'musica, artistas, auth, recuperar password',
+        robots: 'index, follow',
+    };
+
+    return {
+
+        props: {
+
+            headInfo,
+        }
+    };
+
+};

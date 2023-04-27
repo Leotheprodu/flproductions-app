@@ -1,14 +1,15 @@
 import { useRef, useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useRouter } from 'next/router'
-import { HeadMetaInfo } from '../components/helpers/HeadMetaInfo';
 import { useDispatch } from 'react-redux';
 import { setSession } from "../components/redux/userActions";
 import { Spinner } from "../components/helpers/Spinner";
 import Link from "next/link";
+import { PropsHead } from '../components/helpers/HeadMetaInfo';
+import Head from 'next/head';
 
-function SignUp() {
-
+function SignUp({ headInfo }) {
+  const { imgWidth, imgHeight, author, copyright, title, description, type, url, image, keywords, robots }: PropsHead = headInfo;
   const dispatch = useDispatch();
   const router = useRouter();
   const [username, setUserName] = useState<string>('');
@@ -104,15 +105,22 @@ function SignUp() {
 
   return (
     <>
-      <HeadMetaInfo
-        title='Registro de Usuario'
-        description='Pagina de Registro de Usuario de FLProductions'
-        type='website'
-        url='https://flproductionscr.com/registro-de-usuario'
-        image='https://flproductionscr.com/build_main/img/header-main.png'
-        keywords='estudio de grabacion, produccion musical, registro, signup, usuario'
-        robots='index, follow'
-      />
+      <Head>
+        <title>{`${title} | FLProductions`}</title>
+        <meta name="description" content={description} />
+        <meta name="keywords" content={keywords} />
+        <meta name="robots" content={robots} />
+        <meta name="author" content={author} />
+        <meta name="copyright" content={copyright} />
+        <meta property="og:description" content={description} />
+        <meta property="og:title" content={`${title} | FLProductions`} />
+        <meta property="og:type" content={type} />
+        <meta property="og:url" content={url} />
+        <meta property="og:image" content={image} />
+        <meta property="og:image:width" content={imgWidth} />
+        <meta property="og:image:height" content={imgHeight} />
+      </Head>
+
       <div className="contenedor signUp">
 
         {!statusenviado &&
@@ -194,3 +202,30 @@ function SignUp() {
 
 
 export default SignUp;
+
+export const getServerSideProps = async () => {
+
+  const headInfo = {
+
+    imgWidth: '400',
+    imgHeight: '300',
+    author: 'Leonardo Serrano',
+    copyright: 'FLProductions',
+    title: 'Registro de Usuario',
+    description: 'Pagina de Registro de Usuario de FLProductions',
+    type: 'website',
+    url: 'https://flproductionscr.com/registro-de-usuario',
+    image: 'https://flproductionscr.com/build_main/img/header-main.png',
+    keywords: 'estudio de grabacion, produccion musical, registro, signup, usuario',
+    robots: 'index, follow',
+  };
+
+  return {
+
+    props: {
+
+      headInfo,
+    }
+  };
+
+};

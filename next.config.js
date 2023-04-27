@@ -14,8 +14,6 @@ module.exports = {
           pathname: '*',
         },
       ],
-    },
-    // Ruta al archivo del servidor personalizado
-    serverPath: '../server/app.js',
+    }
   }
 }

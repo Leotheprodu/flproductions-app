@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
-import { HeadMetaInfo } from '../components/helpers/HeadMetaInfo';
 import { AppMusic, StyleList, ArtistList, useHandleAppMusic, useProducciones_HTTP_Fetch, GenreList } from '../components';
+import { PropsHead } from '../components/helpers/HeadMetaInfo';
+import Head from 'next/head';
 
 
+function Instrumentales({ headInfo }) {
+  const { imgWidth, imgHeight, author, copyright, title, description, type, url, image, keywords, robots }: PropsHead = headInfo;
 
-function Instrumentales() {
   const tipo_obra_general: number = 1
   const [producciones_HTTP_Fetch] = useProducciones_HTTP_Fetch(process.env.NEXT_PUBLIC_PROD_PRODUCCIONES, process.env.NEXT_PUBLIC_DEV_PRODUCCIONES);
   const produccionesArtistas = producciones_HTTP_Fetch.filter(element => element.tipo_obra === tipo_obra_general);
@@ -24,15 +26,22 @@ function Instrumentales() {
 
 
     <>
-      <HeadMetaInfo
-        title='Canciones'
-        description='Musica de clientes del estudio FLProductions'
-        type='website'
-        url='https://flproductionscr.com/musica'
-        image='https://flproductionscr.com/build_main/img/header-main.png'
-        keywords='musica, artistas, destacados, producciones, music'
-        robots='index, follow'
-      />
+      <Head>
+        <title>{`${title} | FLProductions`}</title>
+        <meta name="description" content={description} />
+        <meta name="keywords" content={keywords} />
+        <meta name="robots" content={robots} />
+        <meta name="author" content={author} />
+        <meta name="copyright" content={copyright} />
+        <meta property="og:description" content={description} />
+        <meta property="og:title" content={`${title} | FLProductions`} />
+        <meta property="og:type" content={type} />
+        <meta property="og:url" content={url} />
+        <meta property="og:image" content={image} />
+        <meta property="og:image:width" content={imgWidth} />
+        <meta property="og:image:height" content={imgHeight} />
+      </Head>
+
       <div className='instrumentales'>
 
         <div className='canciones__filtros contenedor-basic contenedor'>
@@ -77,5 +86,33 @@ function Instrumentales() {
 
 
   )
-}
+};
+
 export default Instrumentales;
+
+export const getServerSideProps = async () => {
+
+  const headInfo = {
+
+    imgWidth: '400',
+    imgHeight: '300',
+    author: 'Leonardo Serrano',
+    copyright: 'FLProductions',
+    title: 'Instrumentales',
+    description: 'Musica de clientes del estudio FLProductions',
+    type: 'website',
+    url: 'https://flproductionscr.com/instrumentales',
+    image: 'https://flproductionscr.com/build_main/img/header-main.png',
+    keywords: 'musica, artistas, destacados, producciones, music',
+    robots: 'index, follow',
+  };
+
+  return {
+
+    props: {
+
+      headInfo,
+    }
+  };
+
+};

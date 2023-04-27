@@ -2,12 +2,15 @@ import { useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { setSession } from "../components/redux/userActions";
 import { useRouter } from 'next/router'
-import { HeadMetaInfo } from '../components/helpers/HeadMetaInfo';
 import { RootState } from "../components/redux/store";
 import { Spinner } from "../components";
 import Link from "next/link";
+import { PropsHead } from '../components/helpers/HeadMetaInfo';
+import Head from 'next/head';
 
-function Login() {
+
+function Login({ headInfo }) {
+  const { imgWidth, imgHeight, author, copyright, title, description, type, url, image, keywords, robots }: PropsHead = headInfo;
   const dispatch = useDispatch();
   const isLoggedIn = useSelector((state: RootState) => state.user.session.isLoggedIn);
   const router = useRouter();
@@ -67,15 +70,22 @@ function Login() {
 
   return (
     <>
-      <HeadMetaInfo
-        title='Inicio de Session'
-        description='Incio de Session'
-        type='website'
-        url='https://flproductionscr.com/iniciar-sesion'
-        image='https://flproductionscr.com/build_main/img/header-main.png'
-        keywords='estudio de grabacion, produccion musical, sesion, login, usuario'
-        robots='index, follow'
-      />
+      
+      <Head>
+                <title>{`${title} | FLProductions`}</title>
+                <meta name="description" content={description} />
+                <meta name="keywords" content={keywords} />
+                <meta name="robots" content={robots} />
+                <meta name="author" content={author} />
+                <meta name="copyright" content={copyright} />
+                <meta property="og:description" content={description} />
+                <meta property="og:title" content={`${title} | FLProductions`} />
+                <meta property="og:type" content={type} />
+                <meta property="og:url" content={url} />
+                <meta property="og:image" content={image} />
+                <meta property="og:image:width" content={imgWidth} />
+                <meta property="og:image:height" content={imgHeight} />
+            </Head>
       <div className="contenedor signUp">
         {isLoggedIn &&
           <div className="contenedor">
@@ -138,3 +148,30 @@ function Login() {
 
 
 export default Login;
+
+      export const getServerSideProps = async () => {
+
+        const headInfo = {
+    
+            imgWidth: '400',
+            imgHeight: '300',
+            author: 'Leonardo Serrano',
+            copyright: 'FLProductions',
+            title: 'Inicio de Session',
+            description: 'Incio de Session',
+            type: 'website',
+            url: 'https://flproductionscr.com/iniciar-sesion',
+            image: 'https://flproductionscr.com/build_main/img/header-main.png',
+            keywords: 'estudio de grabacion, produccion musical, sesion, login, usuario',
+            robots: 'index, follow',
+        }
+    
+        return {
+    
+            props: {
+    
+                headInfo,
+            }
+        }
+    
+    };
