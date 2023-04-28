@@ -5,7 +5,7 @@ export const CountdownTimer = ({ segundos }) => {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setTimeLeft(prevTime => prevTime > 0 ? prevTime - 1 : 0);
+            setTimeLeft((prevTime) => (prevTime > 0 ? prevTime - 1 : 0));
         }, 1000);
         return () => clearInterval(interval);
     }, []);
@@ -14,8 +14,11 @@ export const CountdownTimer = ({ segundos }) => {
     const seconds: number = timeLeft % 60;
 
     return (
-        <div className='CountdownTimer'>
-            <p>tiempo restante: {minutes.toString().padStart(2, '0')}:{seconds.toString().padStart(2, '0')}</p>
+        <div className="CountdownTimer">
+            <p>
+                tiempo restante: {minutes.toString().padStart(2, '0')}:
+                {seconds.toString().padStart(2, '0')}
+            </p>
         </div>
     );
 };

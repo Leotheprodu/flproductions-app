@@ -1,77 +1,94 @@
-import { useState } from "react";
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSession } from "../components/redux/userActions";
-import { useRouter } from 'next/router'
-import { RootState } from "../components/redux/store";
-import { Spinner } from "../components";
-import Link from "next/link";
+import { setSession } from '../components/redux/userActions';
+import { useRouter } from 'next/router';
+import { RootState } from '../components/redux/store';
+import { Spinner } from '../components';
+import Link from 'next/link';
 import { PropsHead } from '../components/helpers/HeadMetaInfo';
 import Head from 'next/head';
 
-
 function Login({ headInfo }) {
-  const { imgWidth, imgHeight, author, copyright, title, description, type, url, image, keywords, robots }: PropsHead = headInfo;
-  const dispatch = useDispatch();
-  const isLoggedIn = useSelector((state: RootState) => state.user.session.isLoggedIn);
-  const router = useRouter();
-  const formStatus: string = 'Ya has iniciado sesion, le vamos a dirigir a la pagina anterior.'
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  const [botonOlvideContra, setBotonOlvideContra] = useState<boolean>(false);
-  const [spinner, setSpinner] = useState<boolean>(false);
+    const {
+        imgWidth,
+        imgHeight,
+        author,
+        copyright,
+        title,
+        description,
+        type,
+        url,
+        image,
+        keywords,
+        robots,
+    }: PropsHead = headInfo;
+    const dispatch = useDispatch();
+    const isLoggedIn = useSelector(
+        (state: RootState) => state.user.session.isLoggedIn
+    );
+    const router = useRouter();
+    const formStatus: string =
+        'Ya has iniciado sesion, le vamos a dirigir a la pagina anterior.';
+    const [email, setEmail] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+    const [botonOlvideContra, setBotonOlvideContra] = useState<boolean>(false);
+    const [spinner, setSpinner] = useState<boolean>(false);
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    setSpinner(true);
-    fetch(`${process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_PROD_AUTH_LOGIN : process.env.NEXT_PUBLIC_DEV_AUTH_LOGIN}`, {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/json",
+    const handleLogin = (e) => {
+        e.preventDefault();
+        setSpinner(true);
+        fetch(
+            `${
+                process.env.NODE_ENV === 'production'
+                    ? process.env.NEXT_PUBLIC_PROD_AUTH_LOGIN
+                    : process.env.NEXT_PUBLIC_DEV_AUTH_LOGIN
+            }`,
+            {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password }),
+            }
+        )
+            .then((response) => {
+                if (response.status === 429) {
+                    setSpinner(false);
+                    alert(
+                        'muchos intentos de inicio de sesion, espere 15 minutos para volver a intentar o puede probar cambiar la contraseña'
+                    );
+                    return;
+                }
 
-      },
-      body: JSON.stringify({ email, password }),
-    })
-      .then(response => {
+                return response.json();
+            })
+            .then((data) => {
+                if (data.isLoggedIn) {
+                    dispatch(setSession(data));
+                    setSpinner(false);
 
-        if (response.status === 429) {
-          setSpinner(false);
-          alert("muchos intentos de inicio de sesion, espere 15 minutos para volver a intentar o puede probar cambiar la contraseña");
-          return;
-        }
+                    setTimeout(() => {
+                        router.back();
+                    }, 3000);
+                } else {
+                    alert(
+                        'Datos inválidos, correo o contraseña incorrecta o regístrate'
+                    );
+                    setBotonOlvideContra(true);
+                    setSpinner(false);
+                }
+            })
 
-        return response.json();
+            .catch((error) => {
+                console.log(error);
+                setSpinner(false);
+            });
+    };
 
-      })
-      .then((data) => {
-        if (data.isLoggedIn) {
-          dispatch(setSession(data));
-          setSpinner(false);
-
-          setTimeout(() => {
-            router.back();
-          }, 3000);
-
-
-        } else {
-          alert("Datos inválidos, correo o contraseña incorrecta o regístrate");
-          setBotonOlvideContra(true);
-          setSpinner(false);
-        }
-
-      })
-
-      .catch((error) => {
-        console.log(error);
-        setSpinner(false);
-      });
-  };
-
-
-  return (
-    <>
-      
-      <Head>
+    return (
+        <>
+            <Head>
                 <title>{`${title} | FLProductions`}</title>
                 <meta name="description" content={description} />
                 <meta name="keywords" content={keywords} />
@@ -79,99 +96,111 @@ function Login({ headInfo }) {
                 <meta name="author" content={author} />
                 <meta name="copyright" content={copyright} />
                 <meta property="og:description" content={description} />
-                <meta property="og:title" content={`${title} | FLProductions`} />
+                <meta
+                    property="og:title"
+                    content={`${title} | FLProductions`}
+                />
                 <meta property="og:type" content={type} />
                 <meta property="og:url" content={url} />
                 <meta property="og:image" content={image} />
                 <meta property="og:image:width" content={imgWidth} />
                 <meta property="og:image:height" content={imgHeight} />
             </Head>
-      <div className="contenedor signUp">
-        {isLoggedIn &&
-          <div className="contenedor">
-            <p className="contact-form__mensaje-status__signup">{formStatus}</p>
-
-          </div>
-        }
-        {!isLoggedIn &&
-          <>
-            <form className="signUp__form" onSubmit={handleLogin}>
-              <div className=" signUp__form__input">
-                <label className="mb-3" htmlFor="email">Correo:</label>
-                <input
-                  type="email"
-                  value={email}
-                  className="mb-3"
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-              </div>
-              <div className="signUp__form__input">
-                <label className="mb-3" htmlFor="password">Contraseña:</label>
-                <input
-                  type="password"
-                  className="mb-3"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  required
-                />
-              </div>
-              {!spinner && <button type="submit">Iniciar Sesión</button>}
-              {spinner &&
-                <Spinner />
-              }
-
-            </form>
-            <p>o</p>
-            {botonOlvideContra &&
-              <div className="login_buttons__button">
-                <Link href="/recuperar-password">
-                  <button className="login_buttons__button__registrar" type="button" title="He olvidado mi contraseña">He olvidado mi contraseña</button>
-                </Link>
-
-              </div>
-            }
-            <div className="login_buttons__button">
-              <Link href="/registro-de-usuario">
-                <button className="login_buttons__button__registrar" type="button" title="Registrarse">Registrarse</button>
-              </Link>
-
+            <div className="contenedor signUp">
+                {isLoggedIn && (
+                    <div className="contenedor">
+                        <p className="contact-form__mensaje-status__signup">
+                            {formStatus}
+                        </p>
+                    </div>
+                )}
+                {!isLoggedIn && (
+                    <>
+                        <form className="signUp__form" onSubmit={handleLogin}>
+                            <div className=" signUp__form__input">
+                                <label className="mb-3" htmlFor="email">
+                                    Correo:
+                                </label>
+                                <input
+                                    type="email"
+                                    value={email}
+                                    className="mb-3"
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    required
+                                />
+                            </div>
+                            <div className="signUp__form__input">
+                                <label className="mb-3" htmlFor="password">
+                                    Contraseña:
+                                </label>
+                                <input
+                                    type="password"
+                                    className="mb-3"
+                                    value={password}
+                                    onChange={(e) =>
+                                        setPassword(e.target.value)
+                                    }
+                                    required
+                                />
+                            </div>
+                            {!spinner && (
+                                <button type="submit">Iniciar Sesión</button>
+                            )}
+                            {spinner && <Spinner />}
+                        </form>
+                        <p>o</p>
+                        {botonOlvideContra && (
+                            <div className="login_buttons__button">
+                                <Link href="/recuperar-password">
+                                    <button
+                                        className="login_buttons__button__registrar"
+                                        type="button"
+                                        title="He olvidado mi contraseña"
+                                    >
+                                        He olvidado mi contraseña
+                                    </button>
+                                </Link>
+                            </div>
+                        )}
+                        <div className="login_buttons__button">
+                            <Link href="/registro-de-usuario">
+                                <button
+                                    className="login_buttons__button__registrar"
+                                    type="button"
+                                    title="Registrarse"
+                                >
+                                    Registrarse
+                                </button>
+                            </Link>
+                        </div>
+                    </>
+                )}
             </div>
-          </>
-        }
-
-      </div>
-    </>
-  );
-
+        </>
+    );
 }
-
 
 export default Login;
 
-      export const getServerSideProps = async () => {
-
-        const headInfo = {
-    
-            imgWidth: '400',
-            imgHeight: '300',
-            author: 'Leonardo Serrano',
-            copyright: 'FLProductions',
-            title: 'Inicio de Session',
-            description: 'Incio de Session',
-            type: 'website',
-            url: 'https://flproductionscr.com/iniciar-sesion',
-            image: 'https://flproductionscr.com/build_main/img/header-main.png',
-            keywords: 'estudio de grabacion, produccion musical, sesion, login, usuario',
-            robots: 'index, follow',
-        }
-    
-        return {
-    
-            props: {
-    
-                headInfo,
-            }
-        }
-    
+export const getServerSideProps = async () => {
+    const headInfo = {
+        imgWidth: '400',
+        imgHeight: '300',
+        author: 'Leonardo Serrano',
+        copyright: 'FLProductions',
+        title: 'Inicio de Session',
+        description: 'Incio de Session',
+        type: 'website',
+        url: 'https://flproductionscr.com/iniciar-sesion',
+        image: 'https://flproductionscr.com/build_main/img/header-main.png',
+        keywords:
+            'estudio de grabacion, produccion musical, sesion, login, usuario',
+        robots: 'index, follow',
     };
+
+    return {
+        props: {
+            headInfo,
+        },
+    };
+};

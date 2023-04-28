@@ -1,14 +1,41 @@
-import { useState, useEffect } from "react";
-import { useHandleAppMusic, SocialIcons, AppMusic } from "../../components";
+import { useState, useEffect } from 'react';
+import { useHandleAppMusic, SocialIcons, AppMusic } from '../../components';
 import { PropsHead } from '../../components/helpers/HeadMetaInfo';
 import Head from 'next/head';
 
 function ArtistDetail({ artistafiltrado, headInfo, producciones }) {
-    const { imgWidth, imgHeight, author, copyright, title, description, type, url, image, keywords, robots }: PropsHead = headInfo;
+    const {
+        imgWidth,
+        imgHeight,
+        author,
+        copyright,
+        title,
+        description,
+        type,
+        url,
+        image,
+        keywords,
+        robots,
+    }: PropsHead = headInfo;
     const [artistaActual, setArtistaActual] = useState(null);
     const produccionesArtista = producciones;
-    const [playing, setPlaying, pause, setPause, infoProduccion, idCompActual, ended, setEnded, progressDuration, setprogressDuration, progress, setProgress, clickInfoButton, setClickInfoButton, selectedSong] = useHandleAppMusic();
-
+    const [
+        playing,
+        setPlaying,
+        pause,
+        setPause,
+        infoProduccion,
+        idCompActual,
+        ended,
+        setEnded,
+        progressDuration,
+        setprogressDuration,
+        progress,
+        setProgress,
+        clickInfoButton,
+        setClickInfoButton,
+        selectedSong,
+    ] = useHandleAppMusic();
 
     useEffect(() => {
         if (artistafiltrado) {
@@ -17,7 +44,14 @@ function ArtistDetail({ artistafiltrado, headInfo, producciones }) {
     }, [artistafiltrado]);
 
     if (!artistaActual) {
-        return <div className="lds-ring"><div></div><div></div><div></div><div></div></div>;
+        return (
+            <div className="lds-ring">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        );
     }
 
     if (!artistaActual.length) {
@@ -26,10 +60,8 @@ function ArtistDetail({ artistafiltrado, headInfo, producciones }) {
 
     const { nombre_artista, instagram, spotify, info } = artistaActual[0];
 
-
     return (
         <>
-
             <Head>
                 <title>{`${title} | FLProductions`}</title>
                 <meta name="description" content={description} />
@@ -38,7 +70,10 @@ function ArtistDetail({ artistafiltrado, headInfo, producciones }) {
                 <meta name="author" content={author} />
                 <meta name="copyright" content={copyright} />
                 <meta property="og:description" content={description} />
-                <meta property="og:title" content={`${title} | FLProductions`} />
+                <meta
+                    property="og:title"
+                    content={`${title} | FLProductions`}
+                />
                 <meta property="og:type" content={type} />
                 <meta property="og:url" content={url} />
                 <meta property="og:image" content={image} />
@@ -46,30 +81,25 @@ function ArtistDetail({ artistafiltrado, headInfo, producciones }) {
                 <meta property="og:image:height" content={imgHeight} />
             </Head>
             <div className="contenedor">
-
                 <div className="artist-detail__title">
                     <h1>{nombre_artista}</h1>
 
                     <SocialIcons
                         instagram={instagram}
-                        claseCSS='artistdetail__socialicons'
+                        claseCSS="artistdetail__socialicons"
                         size={35}
                         spotify={spotify}
                         facebook=""
                         youtube=""
                         twitch=""
-
                     />
-
                 </div>
 
                 <div className="artistdetail__info">
                     <p>{info}</p>
                 </div>
 
-                <div className='artistdetail__music contenedor-basic'>
-
-
+                <div className="artistdetail__music contenedor-basic">
                     <AppMusic
                         songArray={produccionesArtista}
                         playing={playing}
@@ -89,15 +119,9 @@ function ArtistDetail({ artistafiltrado, headInfo, producciones }) {
                         clickInfoButton={clickInfoButton}
                         setClickInfoButton={setClickInfoButton}
                         tipo_obra_general={0}
-
-
                     />
-
-
                 </div>
             </div>
-
-
         </>
     );
 }
@@ -106,17 +130,36 @@ export default ArtistDetail;
 
 export const getServerSideProps = async ({ query }) => {
     const { artist_name } = query;
-    const res = await fetch(`${process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_PROD_ARTISTAS : process.env.NEXT_PUBLIC_DEV_ARTISTAS}`);
+    const res = await fetch(
+        `${
+            process.env.NODE_ENV === 'production'
+                ? process.env.NEXT_PUBLIC_PROD_ARTISTAS
+                : process.env.NEXT_PUBLIC_DEV_ARTISTAS
+        }`
+    );
     const data = await res.json();
-    const artistafiltrado = data.artistas.filter(element => element.nombre_artista.toLowerCase().replace(/\s+/g, '-') === artist_name);
+    const artistafiltrado = data.artistas.filter(
+        (element) =>
+            element.nombre_artista.toLowerCase().replace(/\s+/g, '-') ===
+            artist_name
+    );
     const artista = artistafiltrado[0];
     const tipo_obra_general: number = 0;
-    const res2 = await fetch(`${process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_PROD_PRODUCCIONES : process.env.NEXT_PUBLIC_DEV_PRODUCCIONES}`);
+    const res2 = await fetch(
+        `${
+            process.env.NODE_ENV === 'production'
+                ? process.env.NEXT_PUBLIC_PROD_PRODUCCIONES
+                : process.env.NEXT_PUBLIC_DEV_PRODUCCIONES
+        }`
+    );
     const data2 = await res2.json();
-    const producciones = data2.producciones.filter(element => element.tipo_obra === tipo_obra_general && element.artista.id === artista.id);
+    const producciones = data2.producciones.filter(
+        (element) =>
+            element.tipo_obra === tipo_obra_general &&
+            element.artista.id === artista.id
+    );
 
     const headInfo = {
-
         imgWidth: '400',
         imgHeight: '300',
         author: 'Leonardo Serrano',
@@ -125,19 +168,18 @@ export const getServerSideProps = async ({ query }) => {
         url: `https://flproductionscr.com/artista/${artist_name}`,
         title: artista.nombre_artista,
         description: artista.info,
-        image: artista.imagen || 'https://flproductionscr.com/build_main/img/header-main.png',
+        image:
+            artista.imagen ||
+            'https://flproductionscr.com/build_main/img/header-main.png',
         keywords: `musica, artistas,artista, cantante, Costa Rica, music, ${artista.nombre_artista}`,
         robots: 'index, follow',
     };
 
     return {
-
         props: {
-
             artistafiltrado,
             headInfo,
             producciones,
-        }
+        },
     };
-
 };

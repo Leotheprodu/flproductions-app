@@ -34,3 +34,4 @@ dist.zip
 !.yarn/sdks
 !.yarn/versions
 .next/
+app.zip

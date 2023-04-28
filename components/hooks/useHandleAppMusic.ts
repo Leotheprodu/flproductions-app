@@ -1,21 +1,30 @@
-import { useState } from "react";
-
-
+import { useState } from 'react';
 
 export const useHandleAppMusic = () => {
-
     const [playing, setPlaying] = useState<boolean>(false);
     const [pause, setPause] = useState<boolean>(false);
-    const [infoProduccion, setInfoProduccion ] = useState<any>({});
-    const [idCompActual, setidCompActual ] = useState<number>(null);
+    const [infoProduccion, setInfoProduccion] = useState<any>({});
+    const [idCompActual, setidCompActual] = useState<number>(null);
     const [ended, setEnded] = useState<boolean>(false);
     const [progressDuration, setprogressDuration] = useState<string>('0:00');
     const [progress, setProgress] = useState<number>(0);
     const [clickInfoButton, setClickInfoButton] = useState<boolean>(false);
 
     const selectedSong = (song: any, idComp: number) => {
-        const {id, nombre, descripcion, artista , youtube_id, id_artista, estilo, genero, fecha_lanzamiento, key, bpm} = song
-        const {nombre_artista, instagram, spotify_link} = artista
+        const {
+            id,
+            nombre,
+            descripcion,
+            artista,
+            youtube_id,
+            id_artista,
+            estilo,
+            genero,
+            fecha_lanzamiento,
+            key,
+            bpm,
+        } = song;
+        const { nombre_artista, instagram, spotify_link } = artista;
         /* playing && setPlaying(false) */
         setInfoProduccion({
             nombre,
@@ -30,24 +39,27 @@ export const useHandleAppMusic = () => {
             genero,
             fecha_lanzamiento,
             key,
-            bpm
+            bpm,
         });
         setidCompActual(idComp);
         /* playing && setEnded(false); */
         clickInfoButton && setClickInfoButton(!clickInfoButton);
-
-        
-        
     };
     return [
-        playing, setPlaying, 
-        pause, setPause,
+        playing,
+        setPlaying,
+        pause,
+        setPause,
         infoProduccion,
         idCompActual,
-        ended, setEnded,
-        progressDuration, setprogressDuration,
-        progress, setProgress,
-        clickInfoButton, setClickInfoButton,
-        selectedSong
-    ]
-}
+        ended,
+        setEnded,
+        progressDuration,
+        setprogressDuration,
+        progress,
+        setProgress,
+        clickInfoButton,
+        setClickInfoButton,
+        selectedSong,
+    ];
+};
