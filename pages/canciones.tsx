@@ -173,7 +173,7 @@ export const getServerSideProps = async () => {
         title: 'Canciones',
         description: 'Musica de clientes del estudio FLProductions',
         type: 'website',
-        url: 'https://flproductionscr.com/musica',
+        url: 'https://flproductionscr.com/canciones',
         image: 'https://flproductionscr.com/build_main/img/header-main.png',
         keywords: 'musica, artistas, destacados, producciones, music',
         robots: 'index, follow',

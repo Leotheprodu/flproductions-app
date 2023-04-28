@@ -267,7 +267,7 @@ function SignUp({ headInfo }) {
 
 export default SignUp;
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
     const headInfo = {
         imgWidth: '400',
         imgHeight: '300',

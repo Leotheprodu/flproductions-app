@@ -133,8 +133,8 @@ export const getServerSideProps = async ({ query }) => {
             element.tipo_obra === tipo_obra_general &&
             element.id === parseInt(id)
     );
-    const produccion = producciones[0];
-    const headInfo = {
+    const produccion = await producciones[0];
+    const headInfo = await {
         imgWidth: '400',
         imgHeight: '300',
         author: 'Leonardo Serrano',

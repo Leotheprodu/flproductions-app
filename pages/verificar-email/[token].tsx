@@ -140,7 +140,7 @@ export const getServerSideProps = async () => {
         description:
             'Pagina de verificacion de email de FLProductions Costa Rica',
         type: 'website',
-        url: 'https://flproductionscr.com/',
+        url: 'https://flproductionscr.com/verificar-email',
         image: 'https://flproductionscr.com/build_main/img/header-main.png',
         keywords:
             'panel de control, artistas, usuarios, flproductions, music, Costa Rica',
