@@ -1,19 +1,17 @@
 @use 'base/mixins' as m;
 @use 'base/variables' as v;
 
-.BannerSlider{
+.BannerSlider {
     display: flex;
-    
 }
-.BannerSlider__div{
-height: 70vh;
-width: 100%;
-display: flex;
-align-items: center;
-justify-content: center;
-
+.BannerSlider__div {
+    height: 70vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.BannerSlider__div-texto{
+.BannerSlider__div-texto {
     display: flex;
     flex-direction: column;
     background-color: rgba(0, 0, 0, 0.575);
@@ -21,21 +19,21 @@ justify-content: center;
     min-width: 30rem;
     padding: 2rem;
     border-radius: 2rem;
+
     @include m.tablet {
         margin-top: 20rem;
-        
     }
-    h2{
+    h2 {
         color: v.$secundario;
         margin: 0;
     }
-    p{
+    p {
         color: v.$blanco;
         font-size: 1.7rem;
         padding: 0;
-        
+        text-align: justify;
     }
-    a{
+    a {
         font-size: 2rem;
         background-color: v.$blanco;
         width: 19rem;

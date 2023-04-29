@@ -4,7 +4,7 @@
     "private": true,
     "version": "2.0.0",
     "scripts": {
-        "dev": "node server.js",
+        "dev": "node server.js & gulp dev",
         "build": "next build",
         "test": "jest --watchAll",
         "start": "NODE_ENV=production node server.js",
