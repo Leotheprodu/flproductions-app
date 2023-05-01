@@ -17,4 +17,7 @@ module.exports = {
         },
     },
     trailingSlash: true,
+    experimental: {
+        forceSwcTransforms: true,
+    },
 };
