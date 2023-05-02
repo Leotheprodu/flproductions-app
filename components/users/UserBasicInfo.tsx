@@ -194,7 +194,6 @@ export const UserBasicInfo = () => {
                                 type="email"
                                 value={email}
                                 className="mb-3"
-                                disabled={true}
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                             {userRoles.includes(1) && (
