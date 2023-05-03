@@ -10,7 +10,9 @@ export const AvatarSelection = () => {
     const [avatarDer, setAvatarDer] = useState<number>(2);
     const [datoActualizado, setDatoActualizado] = useState<boolean>(false);
     const userInfo = useSelector((state: RootState) => state.user.session.user);
-
+    const userRoles: [number] = useSelector(
+        (state: RootState) => state.user.session.roles
+    );
     useEffect(() => {
         fetch(
             `${
@@ -95,56 +97,57 @@ export const AvatarSelection = () => {
                 console.log(error);
             });
     };
-
-    return (
-        <div className="contenedor__AvatarSelection">
-            <div className="AvatarSelection__images">
-                <div className="AvatarSelection__item0">
-                    <img
-                        src={`https://flproductionscr.com/build_main/img/perfil/avatar/${avatarIzq}.webp`}
-                        alt={`Avatar # ${avatarIzq}`}
-                    />
+    if (userRoles.includes(1)) {
+        return (
+            <div className="contenedor__AvatarSelection">
+                <div className="AvatarSelection__images">
+                    <div className="AvatarSelection__item0">
+                        <img
+                            src={`https://flproductionscr.com/build_main/img/perfil/avatar/${avatarIzq}.webp`}
+                            alt={`Avatar # ${avatarIzq}`}
+                        />
+                    </div>
+                    <div className="AvatarSelection__item1">
+                        <img
+                            src={`https://flproductionscr.com/build_main/img/perfil/avatar/${avatar}.webp`}
+                            alt={`Avatar # ${avatar}`}
+                        />
+                    </div>
+                    <div className="AvatarSelection__item2">
+                        <img
+                            src={`https://flproductionscr.com/build_main/img/perfil/avatar/${avatarDer}.webp`}
+                            alt={`Avatar # ${avatarDer}`}
+                        />
+                    </div>
                 </div>
-                <div className="AvatarSelection__item1">
-                    <img
-                        src={`https://flproductionscr.com/build_main/img/perfil/avatar/${avatar}.webp`}
-                        alt={`Avatar # ${avatar}`}
-                    />
-                </div>
-                <div className="AvatarSelection__item2">
-                    <img
-                        src={`https://flproductionscr.com/build_main/img/perfil/avatar/${avatarDer}.webp`}
-                        alt={`Avatar # ${avatarDer}`}
-                    />
-                </div>
-            </div>
-            <div className="AvatarSelection__botones">
-                <button
-                    tabIndex={5}
-                    className="AvatarSelection__boton0"
-                    onClick={handleClickIzq}
-                >
-                    <IconChevronLeft size={50} />
-                </button>
-                {!datoActualizado ? (
+                <div className="AvatarSelection__botones">
                     <button
-                        tabIndex={7}
-                        className="AvatarSelection__boton1"
-                        onClick={handleClickSelect}
+                        tabIndex={5}
+                        className="AvatarSelection__boton0"
+                        onClick={handleClickIzq}
                     >
-                        SELECCIONAR
+                        <IconChevronLeft size={50} />
                     </button>
-                ) : (
-                    <p>Avatar Actualizado</p>
-                )}
-                <button
-                    tabIndex={6}
-                    className="AvatarSelection__boton2"
-                    onClick={handleClickDer}
-                >
-                    <IconChevronRight size={50} />
-                </button>
+                    {!datoActualizado ? (
+                        <button
+                            tabIndex={7}
+                            className="AvatarSelection__boton1"
+                            onClick={handleClickSelect}
+                        >
+                            SELECCIONAR
+                        </button>
+                    ) : (
+                        <p>Avatar Actualizado</p>
+                    )}
+                    <button
+                        tabIndex={6}
+                        className="AvatarSelection__boton2"
+                        onClick={handleClickDer}
+                    >
+                        <IconChevronRight size={50} />
+                    </button>
+                </div>
             </div>
-        </div>
-    );
+        );
+    }
 };

@@ -6,7 +6,7 @@
         "allowJs": true,
         "skipLibCheck": true,
         "esModuleInterop": true,
-        "strict": true,
+        "strict": false,
         "module": "esnext",
         "moduleResolution": "node",
         "resolveJsonModule": true,

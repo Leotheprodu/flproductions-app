@@ -1,8 +1,11 @@
-import { AvatarSelection } from '../../components/users/AvatarSelection';
-import { UserBasicInfo } from '../../components/users/UserBasicInfo';
-import { ControlPanel } from '../../components/layout/panel-de-control';
-import { PropsHead } from '../../components/helpers/HeadMetaInfo';
 import Head from 'next/head';
+import {
+    TypeofUser,
+    AvatarSelection,
+    UserBasicInfo,
+    ControlPanel,
+    PropsHead,
+} from '../../components';
 
 function InfodeUsuario({ headInfo }) {
     const {
@@ -46,6 +49,9 @@ function InfodeUsuario({ headInfo }) {
 
                 <div className="InfodeUsuario__elemento">
                     <AvatarSelection />
+                </div>
+                <div className="InfodeUsuario__elemento">
+                    <TypeofUser />
                 </div>
             </div>
         </ControlPanel>
