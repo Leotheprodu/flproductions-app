@@ -17,7 +17,6 @@ export const UserBasicInfo = () => {
     const [formStatus, setFormStatus] = useState('');
     const [clasePass, setClasePass] = useState('');
     const [statusenviado, setStatusEnviado] = useState(false);
-    const [disabled, setDisabled] = useState('disabled');
 
     const refreshUserSession = () => {
         fetch(
@@ -181,11 +180,7 @@ export const UserBasicInfo = () => {
                         />
                     </div>
                     <div className=" UserBasicInfo__form__input">
-                        <label
-                            onClick={() => setDisabled('')}
-                            className="mb-3"
-                            htmlFor="email"
-                        >
+                        <label className="mb-3" htmlFor="email">
                             Correo Electronico:
                         </label>
                         <div className="UserBasicInfo__form__input__verified">

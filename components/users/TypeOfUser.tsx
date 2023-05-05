@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { IconBan, IconCircleCheck } from '@tabler/icons-react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setSession } from '../redux/userActions';
+import { setSessionRoles } from '../redux/userActions';
 import { RootState } from '../redux/store';
 
 export const TypeofUser = () => {
@@ -10,7 +9,7 @@ export const TypeofUser = () => {
     const userRoles: [number] = useSelector(
         (state: RootState) => state.user.session.roles
     );
-    const [selectedOptions, setSelectedOptions] = useState([]);
+    const [selectedOptions, setSelectedOptions] = useState([1, 2]);
     useEffect(() => {
         if (userRoles.includes(2) && !selectedOptions.includes(2)) {
             setSelectedOptions([...selectedOptions, 2]);
@@ -33,25 +32,31 @@ export const TypeofUser = () => {
             setSelectedOptions([...selectedOptions, value]);
         }
     };
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log(selectedOptions);
+        const idRoles = { id: userInfo.id, roles: selectedOptions };
+        await enviarBD(idRoles);
     };
-    const enviarBD = () => {
+    const enviarBD = async (idRoles) => {
         fetch(
             `${
                 process.env.NODE_ENV === 'production'
-                    ? process.env.NEXT_PUBLIC_PROD_USER_ID
-                    : process.env.NEXT_PUBLIC_DEV_USER_ID
-            }${userInfo.id}`,
+                    ? process.env.NEXT_PUBLIC_PROD_TYPEOFUSER
+                    : process.env.NEXT_PUBLIC_DEV_TYPEOFUSER
+            }`,
             {
+                method: 'POST',
                 credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(idRoles),
             }
         )
             .then((res) => res.json())
             .then((data) => {
-                if (data.isLoggedIn) {
-                    dispatch(setSession(data));
+                if (data) {
+                    dispatch(setSessionRoles(data.roles));
                 }
             })
             .catch((error) => {
