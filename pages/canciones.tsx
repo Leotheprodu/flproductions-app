@@ -1,4 +1,7 @@
 import React from 'react';
+import { Suspense } from 'react';
+import { lazy } from 'react';
+const AppMusic = lazy(() => import('../components/app_music/AppMusic'));
 import { useEffect, useState } from 'react';
 import {
     StyleList,
@@ -6,7 +9,6 @@ import {
     useHandleAppMusic,
     useProducciones_HTTP_Fetch,
     ArtistList,
-    AppMusic,
 } from '../components';
 import { PropsHead } from '../components/helpers/HeadMetaInfo';
 import Head from 'next/head';
@@ -92,27 +94,28 @@ function Canciones({ headInfo }) {
                     <div className="contenedor">
                         <h2>Destacados</h2>
                     </div>
-
-                    <AppMusic
-                        songArray={produccionesDestacadas}
-                        playing={playing}
-                        infoProduccion={infoProduccion}
-                        selectedSong={selectedSong}
-                        idComp={1}
-                        idCompActual={idCompActual}
-                        pause={pause}
-                        setPause={setPause}
-                        ended={ended}
-                        setEnded={setEnded}
-                        setPlaying={setPlaying}
-                        progressDuration={progressDuration}
-                        setprogressDuration={setprogressDuration}
-                        progress={progress}
-                        setProgress={setProgress}
-                        clickInfoButton={clickInfoButton}
-                        setClickInfoButton={setClickInfoButton}
-                        tipo_obra_general={tipo_obra_general}
-                    />
+                    <Suspense fallback={<Loading />}>
+                        <AppMusic
+                            songArray={produccionesDestacadas}
+                            playing={playing}
+                            infoProduccion={infoProduccion}
+                            selectedSong={selectedSong}
+                            idComp={1}
+                            idCompActual={idCompActual}
+                            pause={pause}
+                            setPause={setPause}
+                            ended={ended}
+                            setEnded={setEnded}
+                            setPlaying={setPlaying}
+                            progressDuration={progressDuration}
+                            setprogressDuration={setprogressDuration}
+                            progress={progress}
+                            setProgress={setProgress}
+                            clickInfoButton={clickInfoButton}
+                            setClickInfoButton={setClickInfoButton}
+                            tipo_obra_general={tipo_obra_general}
+                        />
+                    </Suspense>
                 </div>
                 <div className="contenedor-basic instrumentales contenedor">
                     <div className="canciones__filtros contenedor-basic center">
@@ -186,3 +189,7 @@ export const getServerSideProps = async () => {
         },
     };
 };
+
+function Loading() {
+    return <h2>🌀 Loading...</h2>;
+}

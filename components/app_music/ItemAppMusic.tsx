@@ -29,7 +29,7 @@ interface Props {
     tipo_obra_general: number;
 }
 
-export const ItemAppMusic = ({
+const ItemAppMusic = ({
     playing,
     infoProduccion,
     selectedSong,
@@ -144,3 +144,5 @@ export const ItemAppMusic = ({
         </div>
     );
 };
+
+export default ItemAppMusic;

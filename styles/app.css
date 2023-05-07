@@ -1867,6 +1867,11 @@ input {
     max-width: 40rem;
   }
 }
+.contenedor__AvatarSelection h3 {
+  text-transform: uppercase;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
 
 .AvatarSelection__images {
   display: flex;
@@ -1985,26 +1990,6 @@ input {
   border-radius: 50%;
   box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.1921568627);
   object-fit: cover;
-}
-
-.InfodeUsuario {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 100vh;
-  padding: 0 4rem;
-}
-@media (min-width: 768px) {
-  .InfodeUsuario {
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: normal;
-    flex-wrap: wrap;
-  }
-}
-
-.InfodeUsuario__elemento {
-  gap: 2rem;
 }
 
 .login_container {
@@ -2294,11 +2279,22 @@ input {
   background-color: rgb(238, 238, 238);
   border-radius: 2rem;
   margin: 6rem 1rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 @media (min-width: 768px) {
   .contenedor__UserBasicInfo {
     max-width: 40rem;
   }
+}
+.contenedor__UserBasicInfo h3 {
+  text-transform: uppercase;
+  font-size: 2rem;
+  margin-bottom: 2rem;
 }
 .contenedor__UserBasicInfo button {
   display: flex;
@@ -2308,7 +2304,6 @@ input {
   border: none;
   border-radius: 5px;
   height: 3rem;
-  width: 100%;
   padding: 1rem;
   color: #000000;
   background-color: #ebc246;
@@ -2316,6 +2311,7 @@ input {
   transition: opacity 0.3s ease-in-out;
   transition: box-shadow 0.5s;
   cursor: pointer;
+  text-transform: uppercase;
 }
 .contenedor__UserBasicInfo button:active {
   opacity: 0.5;
@@ -2331,10 +2327,6 @@ input {
 
 .UserBasicInfo__Error {
   border: 1px solid red;
-}
-
-.UserBasicInfo__form {
-  padding: 4rem;
 }
 
 .UserBasicInfo__form__input {
@@ -2383,11 +2375,145 @@ input {
   text-align: center;
 }
 
+.TypeOfUser__container {
+  background-color: rgb(238, 238, 238);
+  border-radius: 2rem;
+  margin: 6rem 1rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 25rem;
+  position: relative;
+}
+@media (min-width: 768px) {
+  .TypeOfUser__container {
+    max-width: 40rem;
+  }
+}
+.TypeOfUser__container h3 {
+  text-transform: uppercase;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.TypeOfUser__input:checked {
+  background-color: #1ab5e6;
+}
+
+.TypeOfUser__buttons {
+  margin-top: 3rem;
+  z-index: 1;
+}
+
+.TypeOfUser__button {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 5px;
+  height: 3rem;
+  width: 100%;
+  padding: 1rem;
+  color: #000000;
+  background-color: #ebc246;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+  transition: box-shadow 0.5s;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.TypeOfUser__button:active {
+  opacity: 0.5;
+  transform: scale(0.8);
+}
+.TypeOfUser__button:hover {
+  opacity: 0.9;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1215686275);
+}
+.TypeOfUser__button:focus {
+  outline-color: #1ab5e6;
+}
+
+.CrearArtista {
+  margin: 6rem 1rem;
+}
+
+.CrearArtistaForm {
+  background-color: rgb(238, 238, 238);
+  border-radius: 2rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+@media (min-width: 768px) {
+  .CrearArtistaForm {
+    max-width: 40rem;
+  }
+}
+.CrearArtistaForm h3 {
+  text-transform: uppercase;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+.CrearArtistaForm button {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 5px;
+  height: 3rem;
+  padding: 1rem;
+  color: #000000;
+  background-color: #ebc246;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+  transition: box-shadow 0.5s;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.CrearArtistaForm button:active {
+  opacity: 0.5;
+  transform: scale(0.8);
+}
+.CrearArtistaForm button:hover {
+  opacity: 0.9;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1215686275);
+}
+.CrearArtistaForm button:focus {
+  outline-color: #1ab5e6;
+}
+
+.CrearArtistaForm__form__input {
+  border-radius: 5px;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+.CrearArtistaForm__form__input input:focus {
+  outline-color: #1ab5e6;
+}
+.CrearArtistaForm__form__input textarea {
+  height: 15rem;
+  width: 30rem;
+  border: none;
+}
+.CrearArtistaForm__form__input textarea:focus {
+  outline-color: #1ab5e6;
+}
+
 /* app_music */
 /* forms */
 /* helpers */
 /* layout */
 /* users */
+/* artistas */
 .instrumentales {
   min-height: 100vh;
   margin-top: 9rem;
@@ -2608,4 +2734,44 @@ input {
   .InicioPaneldeControl h1 {
     font-size: 3rem;
   }
+}
+
+.InfodeUsuario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 100vh;
+  padding: 0 4rem;
+}
+@media (min-width: 768px) {
+  .InfodeUsuario {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: normal;
+    flex-wrap: wrap;
+  }
+}
+
+.InfodeUsuario__elemento {
+  gap: 2rem;
+}
+
+.Panel-de-control__Artista {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 100vh;
+  padding: 0 4rem;
+}
+@media (min-width: 768px) {
+  .Panel-de-control__Artista {
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: normal;
+    flex-wrap: wrap;
+  }
+}
+
+.Panel-de-control__Artista__elemento {
+  gap: 2rem;
 }

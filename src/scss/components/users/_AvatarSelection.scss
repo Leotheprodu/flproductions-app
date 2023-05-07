@@ -13,12 +13,15 @@
     height: 25rem;
     position: relative;
 
-
     @include m.tablet {
         max-width: 40rem;
     }
+    h3 {
+        text-transform: uppercase;
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
 }
-
 
 .AvatarSelection__images {
     display: flex;
@@ -39,24 +42,23 @@
 
         @keyframes borrachera {
             0% {
-                transform:translateX(0);
+                transform: translateX(0);
             }
 
             25% {
-                transform: translateX(-.1rem)
+                transform: translateX(-0.1rem);
             }
             50% {
-                transform: translateX(0)
+                transform: translateX(0);
             }
 
             75% {
-                transform: translateX(.1rem);
+                transform: translateX(0.1rem);
             }
         }
     }
 
     .AvatarSelection__item1 {
-
         z-index: 2;
         position: relative;
         animation-name: respiracion;
@@ -77,19 +79,15 @@
                 transform: scale(1.27);
             }
         }
-
     }
 }
 
 .AvatarSelection__botones {
     margin-top: 3rem;
     z-index: 1;
-
-
 }
 
 .AvatarSelection__boton0 {
-
     left: 1rem;
     &:active {
         transform: scale(2) translateX(-1rem);
@@ -97,10 +95,9 @@
 }
 
 .AvatarSelection__boton2 {
-
     right: 1rem;
     &:active {
-        transform: scale(2)  translateX(1rem);
+        transform: scale(2) translateX(1rem);
     }
 }
 
@@ -112,16 +109,15 @@
     border: none;
     background-color: rgba(255, 255, 255, 0);
     color: v.$primario;
-    transition: transform ease-in .1s;
+    transition: transform ease-in 0.1s;
     &:focus {
         outline-color: v.$primario;
     }
-    
 }
 
 .AvatarSelection__boton1 {
     display: flex;
-    gap: .5rem;
+    gap: 0.5rem;
     align-items: center;
     justify-content: center;
     border: none;
@@ -133,16 +129,16 @@
     background-color: v.$secundario;
     opacity: 1;
     transition: opacity 0.3s ease-in-out;
-    transition: box-shadow .5s;
+    transition: box-shadow 0.5s;
     cursor: pointer;
 
     &:active {
-        opacity: .5;
-        transform: scale(.8);
+        opacity: 0.5;
+        transform: scale(0.8);
     }
 
     &:hover {
-        opacity: .9;
+        opacity: 0.9;
         box-shadow: 2px 2px 2px #0000001f;
     }
 

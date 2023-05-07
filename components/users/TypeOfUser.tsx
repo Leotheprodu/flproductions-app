@@ -2,14 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setSessionRoles } from '../redux/userActions';
 import { RootState } from '../redux/store';
+import { Spinner } from '../helpers/Spinner';
 
-export const TypeofUser = () => {
+export const TypeofUser = (): JSX.Element | null => {
     const dispatch = useDispatch();
     const userInfo = useSelector((state: RootState) => state.user.session.user);
     const userRoles: [number] = useSelector(
         (state: RootState) => state.user.session.roles
     );
     const [selectedOptions, setSelectedOptions] = useState([1, 2]);
+    const [spinner, setSpinner] = useState<boolean>(false);
+    const [formStatus, setFormStatus] = useState('');
+    const [statusenviado, setStatusEnviado] = useState(false);
     useEffect(() => {
         if (userRoles.includes(2) && !selectedOptions.includes(2)) {
             setSelectedOptions([...selectedOptions, 2]);
@@ -33,6 +37,7 @@ export const TypeofUser = () => {
         }
     };
     const handleSubmit = async (event) => {
+        setSpinner(true);
         event.preventDefault();
         const idRoles = { id: userInfo.id, roles: selectedOptions };
         await enviarBD(idRoles);
@@ -57,6 +62,8 @@ export const TypeofUser = () => {
             .then((data) => {
                 if (data) {
                     dispatch(setSessionRoles(data.roles));
+                    setSpinner(false);
+                    setStatusEnviado(true);
                 }
             })
             .catch((error) => {
@@ -67,10 +74,14 @@ export const TypeofUser = () => {
         return (
             <>
                 <div className="TypeOfUser__container">
+                    <div>
+                        <h3>Tipo de usuario</h3>
+                    </div>
                     <form onSubmit={handleSubmit}>
                         <div>
                             <input
                                 type="checkbox"
+                                className="TypeOfUser__input"
                                 id="option1"
                                 name="option"
                                 value="2"
@@ -82,6 +93,7 @@ export const TypeofUser = () => {
                         <div>
                             <input
                                 type="checkbox"
+                                className="TypeOfUser__input"
                                 id="option2"
                                 name="option"
                                 value="3"
@@ -93,6 +105,7 @@ export const TypeofUser = () => {
                         <div>
                             <input
                                 type="checkbox"
+                                className="TypeOfUser__input"
                                 id="option3"
                                 name="option"
                                 value="4"
@@ -101,7 +114,21 @@ export const TypeofUser = () => {
                             />
                             <label htmlFor="option3">Productor</label>
                         </div>
-                        <button type="submit">Enviar</button>
+                        {!spinner && !statusenviado && (
+                            <div className="TypeOfUser__buttons">
+                                <button
+                                    className="TypeOfUser__button"
+                                    type="submit"
+                                >
+                                    Enviar
+                                </button>
+                            </div>
+                        )}
+                        {spinner && (
+                            <div className="login_buttons">
+                                <Spinner />
+                            </div>
+                        )}
                     </form>
                 </div>
             </>

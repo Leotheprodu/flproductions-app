@@ -1,10 +1,12 @@
 @use 'base/mixins' as m;
 @use 'base/variables' as v;
 
-.contenedor__UserBasicInfo {
+.CrearArtista {
+    margin: 6rem 1rem;
+}
+.CrearArtistaForm {
     background-color: v.$gris;
     border-radius: 2rem;
-    margin: 6rem 1rem;
     padding: 2rem;
     display: flex;
     flex-direction: column;
@@ -20,7 +22,6 @@
         font-size: 2rem;
         margin-bottom: 2rem;
     }
-
     button {
         display: flex;
         gap: 0.5rem;
@@ -53,11 +54,7 @@
     }
 }
 
-.UserBasicInfo__Error {
-    border: 1px solid red;
-}
-
-.UserBasicInfo__form__input {
+.CrearArtistaForm__form__input {
     border-radius: 5px;
     margin-bottom: 2rem;
     display: flex;
@@ -67,26 +64,13 @@
             outline-color: v.$primario;
         }
     }
-}
 
-.UserBasicInfo__form__input__verified {
-    display: flex;
-    flex-direction: column;
-    div {
-        display: flex;
-        gap: 1rem;
-        color: v.$oscurecer;
-        align-items: center;
-    }
-    @include m.tablet {
-        flex-direction: row;
-    }
-}
-.UserBasicInfo__Email-No-verificado {
-    display: flex;
-    flex-direction: column;
-
-    button {
-        box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.596);
+    textarea {
+        height: 15rem;
+        width: 30rem;
+        border: none;
+        &:focus {
+            outline-color: v.$primario;
+        }
     }
 }

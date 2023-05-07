@@ -15,8 +15,8 @@ export const UserBasicInfo = () => {
     const [password, setPassword] = useState('');
     const [password1, setPassword1] = useState('');
     const [formStatus, setFormStatus] = useState('');
-    const [clasePass, setClasePass] = useState('');
     const [statusenviado, setStatusEnviado] = useState(false);
+    const [clasePass, setClasePass] = useState('');
 
     const refreshUserSession = () => {
         fetch(
@@ -165,6 +165,9 @@ export const UserBasicInfo = () => {
     return (
         <>
             <div className="contenedor__UserBasicInfo">
+                <div>
+                    <h3>Configuracion Basica</h3>
+                </div>
                 <form className="UserBasicInfo__form" onSubmit={handleSubmit}>
                     <div className="UserBasicInfo__form__input">
                         <label className="mb-3" htmlFor="name">
@@ -244,17 +247,15 @@ export const UserBasicInfo = () => {
                             onBlur={hanldeOnBlurPassword}
                         />
                     </div>
-                    <div>
-                        <p className="contact-form__mensaje-status">
-                            {formStatus}
-                        </p>
-                    </div>
-                    {!statusenviado && (
-                        <button tabIndex={5} type="submit">
-                            Guardar
-                        </button>
-                    )}
                 </form>
+                <div>
+                    <p className="contact-form__mensaje-status">{formStatus}</p>
+                </div>
+                {!statusenviado && (
+                    <button tabIndex={5} type="submit">
+                        Guardar
+                    </button>
+                )}
             </div>
         </>
     );

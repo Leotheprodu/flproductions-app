@@ -27,9 +27,11 @@
 /* users */
 @forward './users/AvatarSelection';
 @forward './users/AvatarUsers';
-@forward './users/InfodeUsuario';
 @forward './users/login';
 @forward './users/RecuperarPassword';
 @forward './users/SignUp';
 @forward './users/UserBasicInfo';
 @forward './users/VerificarCorreo';
+@forward './users/TypeOfUser';
+/* artistas */
+@forward './artistas/CrearArtista';

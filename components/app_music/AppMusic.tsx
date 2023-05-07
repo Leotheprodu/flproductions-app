@@ -1,5 +1,7 @@
-import { useHandleItemAppMusic, ItemAppMusic } from '..';
-
+import { useHandleItemAppMusic } from '..';
+import { Suspense } from 'react';
+import { lazy } from 'react';
+const ItemAppMusic = lazy(() => import('./ItemAppMusic'));
 interface Props {
     songArray: any;
     playing: boolean;
@@ -34,7 +36,7 @@ interface HookItem {
     handleInfoButton: any;
 }
 
-export const AppMusic = ({
+const AppMusic = ({
     songArray,
     playing,
     infoProduccion,
@@ -78,35 +80,42 @@ export const AppMusic = ({
     return (
         <div className="AppMusic contenedor">
             {songArray.map((song) => (
-                <ItemAppMusic
-                    infoProduccion={infoProduccion}
-                    /* cosas para el video */
-                    playing={playing}
-                    handlePlay={handlePlay}
-                    handleDuration={handleDuration}
-                    playerRef={playerRef}
-                    handleProgress={handleProgress}
-                    volume={volume}
-                    setPause={setPause}
-                    tipo_obra_general={tipo_obra_general}
-                    selectedSong={selectedSong}
-                    idComp={idComp}
-                    idCompActual={idCompActual}
-                    pause={pause}
-                    ended={ended}
-                    setEnded={setEnded}
-                    progressDuration={progressDuration}
-                    progress={progress}
-                    clickInfoButton={clickInfoButton}
-                    song={song}
-                    handleInfoButton={handleInfoButton}
-                    setVolume={setVolume}
-                    handlePlayButtonClick={handlePlayButtonClick}
-                    handleonChangeRange={handleonChangeRange}
-                    duration={duration}
-                    key={song.id}
-                />
+                <Suspense key={song.id} fallback={<Loading />}>
+                    <ItemAppMusic
+                        infoProduccion={infoProduccion}
+                        /* cosas para el video */
+                        playing={playing}
+                        handlePlay={handlePlay}
+                        handleDuration={handleDuration}
+                        playerRef={playerRef}
+                        handleProgress={handleProgress}
+                        volume={volume}
+                        setPause={setPause}
+                        tipo_obra_general={tipo_obra_general}
+                        selectedSong={selectedSong}
+                        idComp={idComp}
+                        idCompActual={idCompActual}
+                        pause={pause}
+                        ended={ended}
+                        setEnded={setEnded}
+                        progressDuration={progressDuration}
+                        progress={progress}
+                        clickInfoButton={clickInfoButton}
+                        song={song}
+                        handleInfoButton={handleInfoButton}
+                        setVolume={setVolume}
+                        handlePlayButtonClick={handlePlayButtonClick}
+                        handleonChangeRange={handleonChangeRange}
+                        duration={duration}
+                    />
+                </Suspense>
             ))}
         </div>
     );
 };
+
+export default AppMusic;
+
+function Loading() {
+    return <h2>🌀 Loading...</h2>;
+}

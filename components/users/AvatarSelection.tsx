@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store';
 
-export const AvatarSelection = () => {
+export const AvatarSelection = (): JSX.Element | null => {
     const maxAvatarLength: number = 9;
     const [avatarIzq, setAvatarIzq] = useState<number>(0);
     const [avatar, setAvatar] = useState<number>(1);
@@ -100,6 +100,9 @@ export const AvatarSelection = () => {
     if (userRoles.includes(1)) {
         return (
             <div className="contenedor__AvatarSelection">
+                <div>
+                    <h3>Avatar</h3>
+                </div>
                 <div className="AvatarSelection__images">
                     <div className="AvatarSelection__item0">
                         <img

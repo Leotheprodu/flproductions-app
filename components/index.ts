@@ -10,6 +10,7 @@ export * from './app_music/StyleList';
 export * from './database_temp/database';
 /* forms */
 export * from './forms/contact-form';
+export * from './forms/CrearArtistaForm';
 /* Helpers */
 export * from './helpers/CountdownTimer';
 export * from './helpers/formatLink';
@@ -48,3 +49,5 @@ export * from './users/LinksPanel';
 export * from './users/SessionPanel';
 export * from './users/TypeOfUser';
 export * from './users/UserBasicInfo';
+/* Artistas */
+export * from './artistas/CrearArtista';
