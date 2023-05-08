@@ -9,53 +9,42 @@ export const CrearArtistaForm = () => {
         instagram: '',
         info: '',
         imagen: undefined,
-        tipo_artista: '1',
+        tipo: '1',
     });
-    const crearArtista = () => {
-        const formData = new FormData();
 
-        // Agregar los campos de texto al formData
-        formData.append('nombre_artista', formulario.nombre_artista);
-        formData.append('spotify', formulario.spotify);
-        formData.append('instagram', formulario.instagram);
-        formData.append('info', formulario.info);
-        formData.append('tipo_artista', formulario.tipo_artista);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.currentTarget);
+        formData.set('tipo', formulario.tipo);
+        const data = Object.fromEntries(formData);
 
-        // Agregar la imagen al formData
-        formData.append('imagen', formulario.imagen);
         // Aquí puedes enviar los datos del formulario a tu servidor
         fetch(
             `${
                 process.env.NODE_ENV === 'production'
-                    ? process.env.NEXT_PUBLIC_PROD_USER_NEW_ARTIST
-                    : process.env.NEXT_PUBLIC_DEV_USER_NEW_ARTIST
+                    ? process.env.NEXT_PUBLIC_PROD_ARTISTAS_NEW_ARTIST
+                    : process.env.NEXT_PUBLIC_DEV_ARTISTAS_NEW_ARTIST
             }`,
             {
                 method: 'POST',
                 credentials: 'include',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
                 body: formData,
             }
         )
             .then((res) => res.json())
             .then((data) => {
                 if (data) {
+                    console.log(data);
                     setFormStatus('Se han actualizado los datos correctamente');
                     setStatusEnviado(true);
                 } else {
                     alert('HUBO UN ERROR');
                 }
             })
+
             .catch((error) => {
                 console.log(error);
             });
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(formulario);
     };
     const handleOnChange = (e) => {
         const { name, value } = e.target;
@@ -74,6 +63,8 @@ export const CrearArtistaForm = () => {
         const selectedFile = event.target.files?.[0];
         if (selectedFile) {
             setFormulario((prev) => ({ ...prev, imagen: selectedFile }));
+        } else {
+            setFormulario((prev) => ({ ...prev, imagen: undefined }));
         }
     };
     return (
@@ -128,9 +119,8 @@ export const CrearArtistaForm = () => {
                         tabIndex={4}
                         type="file"
                         className="mb-3"
-                        name="spotify"
-                        value={formulario.imagen}
-                        onChange={handleOnChange}
+                        name="imagen"
+                        onChange={handleOnChangeImagen}
                     />
                 </div>
                 <div className="CrearArtistaForm__form__input">
@@ -146,15 +136,15 @@ export const CrearArtistaForm = () => {
                         required
                     />
                 </div>
+                {!statusenviado && (
+                    <button tabIndex={6} type="submit">
+                        Crear
+                    </button>
+                )}
             </form>
             <div>
                 <p className="contact-form__mensaje-status">{formStatus}</p>
             </div>
-            {!statusenviado && (
-                <button tabIndex={6} type="submit">
-                    Crear
-                </button>
-            )}
         </div>
     );
 };

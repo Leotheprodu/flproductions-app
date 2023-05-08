@@ -247,15 +247,15 @@ export const UserBasicInfo = () => {
                             onBlur={hanldeOnBlurPassword}
                         />
                     </div>
+                    {!statusenviado && (
+                        <button tabIndex={5} type="submit">
+                            Guardar
+                        </button>
+                    )}
                 </form>
                 <div>
                     <p className="contact-form__mensaje-status">{formStatus}</p>
                 </div>
-                {!statusenviado && (
-                    <button tabIndex={5} type="submit">
-                        Guardar
-                    </button>
-                )}
             </div>
         </>
     );
