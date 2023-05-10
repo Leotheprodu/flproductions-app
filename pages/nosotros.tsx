@@ -4,12 +4,14 @@ import {
     SimpleText,
     Testimonio,
     DetalleProducciones,
-    AppMusic,
     useHandleAppMusic,
     useProducciones_HTTP_Fetch,
 } from '../components';
 import { PropsHead } from '../components/helpers/HeadMetaInfo';
 import Head from 'next/head';
+import { Suspense } from 'react';
+import { lazy } from 'react';
+const AppMusic = lazy(() => import('../components/app_music/AppMusic'));
 
 function AboutPage({ headInfo }) {
     const {
@@ -138,27 +140,28 @@ function AboutPage({ headInfo }) {
             <div className="contenedor">
                 <div className="algunas-producciones">
                     <h2>Algunas producciones hechas por nosotros</h2>
-
-                    <AppMusic
-                        songArray={produccionesDestacadas}
-                        playing={playing}
-                        infoProduccion={infoProduccion}
-                        selectedSong={selectedSong}
-                        idComp={1}
-                        idCompActual={idCompActual}
-                        pause={pause}
-                        setPause={setPause}
-                        ended={ended}
-                        setEnded={setEnded}
-                        setPlaying={setPlaying}
-                        progressDuration={progressDuration}
-                        setprogressDuration={setprogressDuration}
-                        progress={progress}
-                        setProgress={setProgress}
-                        clickInfoButton={clickInfoButton}
-                        setClickInfoButton={setClickInfoButton}
-                        tipo_obra_general={tipo_obra_general}
-                    />
+                    <Suspense fallback={<Loading />}>
+                        <AppMusic
+                            songArray={produccionesDestacadas}
+                            playing={playing}
+                            infoProduccion={infoProduccion}
+                            selectedSong={selectedSong}
+                            idComp={1}
+                            idCompActual={idCompActual}
+                            pause={pause}
+                            setPause={setPause}
+                            ended={ended}
+                            setEnded={setEnded}
+                            setPlaying={setPlaying}
+                            progressDuration={progressDuration}
+                            setprogressDuration={setprogressDuration}
+                            progress={progress}
+                            setProgress={setProgress}
+                            clickInfoButton={clickInfoButton}
+                            setClickInfoButton={setClickInfoButton}
+                            tipo_obra_general={tipo_obra_general}
+                        />
+                    </Suspense>
 
                     {!ended && playing && (
                         <DetalleProducciones
@@ -200,3 +203,6 @@ export const getServerSideProps = async () => {
         },
     };
 };
+function Loading() {
+    return <h2>🌀 Loading...</h2>;
+}

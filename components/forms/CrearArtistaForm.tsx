@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
-
+import { useState, Suspense } from 'react';
+import { HttpComponent } from '../helpers/HttpComponent';
+import { Spinner } from '../helpers/Spinner';
 export const CrearArtistaForm = () => {
-    const [statusenviado, setStatusEnviado] = useState(false);
-    const [formStatus, setFormStatus] = useState('');
     const [formulario, setFormulario] = useState({
         nombre_artista: '',
         spotify: '',
@@ -11,51 +10,28 @@ export const CrearArtistaForm = () => {
         imagen: undefined,
         tipo: '1',
     });
-
-    const handleSubmit = (e) => {
+    const [errorFetch, setErrorFetch] = useState(null);
+    const [dataFetch, setDataFetch] = useState(null);
+    const apiUrl =
+        process.env.NODE_ENV === 'production'
+            ? process.env.NEXT_PUBLIC_PROD_ARTISTAS_NEW_ARTIST
+            : process.env.NEXT_PUBLIC_DEV_ARTISTAS_NEW_ARTIST;
+    const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         formData.set('tipo', formulario.tipo);
-        const data = Object.fromEntries(formData);
-
-        // Aquí puedes enviar los datos del formulario a tu servidor
-        fetch(
-            `${
-                process.env.NODE_ENV === 'production'
-                    ? process.env.NEXT_PUBLIC_PROD_ARTISTAS_NEW_ARTIST
-                    : process.env.NEXT_PUBLIC_DEV_ARTISTAS_NEW_ARTIST
-            }`,
-            {
-                method: 'POST',
-                credentials: 'include',
-                body: formData,
-            }
-        )
-            .then((res) => res.json())
-            .then((data) => {
-                if (data) {
-                    console.log(data);
-                    setFormStatus('Se han actualizado los datos correctamente');
-                    setStatusEnviado(true);
-                } else {
-                    alert('HUBO UN ERROR');
-                }
-            })
-
-            .catch((error) => {
-                console.log(error);
-            });
+        const { data, error } = await HttpComponent({
+            method: 'POST',
+            url: apiUrl,
+            body: formData,
+            isFormData: true,
+        });
+        setDataFetch(data);
+        setErrorFetch(error);
     };
     const handleOnChange = (e) => {
         const { name, value } = e.target;
         setFormulario((prev) => ({ ...prev, [name]: value }));
-        if (name === 'nombre_artista' && value.length > 15) {
-            setFormStatus(
-                'No esta permitido tener mas de 15 caracteres en el nombre de Artista'
-            );
-        } else {
-            setFormStatus('');
-        }
     };
     const handleOnChangeImagen = (
         event: React.ChangeEvent<HTMLInputElement>
@@ -67,6 +43,17 @@ export const CrearArtistaForm = () => {
             setFormulario((prev) => ({ ...prev, imagen: undefined }));
         }
     };
+    {
+        if (errorFetch)
+            return (
+                <div>
+                    <p>Error: {errorFetch}</p>
+                    <button onClick={() => setErrorFetch(null)}>
+                        Volver a intentar
+                    </button>
+                </div>
+            );
+    }
     return (
         <div className="CrearArtistaForm">
             <h3>Crear Artista</h3>
@@ -136,15 +123,23 @@ export const CrearArtistaForm = () => {
                         required
                     />
                 </div>
-                {!statusenviado && (
-                    <button tabIndex={6} type="submit">
-                        Crear
-                    </button>
-                )}
+
+                <Suspense fallback={<Spinner />}>
+                    {!dataFetch && (
+                        <button tabIndex={6} type="submit">
+                            Crear
+                        </button>
+                    )}
+                    {dataFetch && (
+                        <div>
+                            <p className="contact-form__mensaje-status">
+                                {dataFetch.artist.nombre_artista} creado con
+                                exito
+                            </p>
+                        </div>
+                    )}
+                </Suspense>
             </form>
-            <div>
-                <p className="contact-form__mensaje-status">{formStatus}</p>
-            </div>
         </div>
     );
 };

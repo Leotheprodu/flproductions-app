@@ -3,7 +3,8 @@
         "next/babel",
         "next/core-web-vitals",
         "airbnb-typescript/base",
-        "plugin:prettier/recommended"
+        "plugin:prettier/recommended",
+        "plugin:react-hooks/recommended"
     ],
     "parser": "@typescript-eslint/parser",
     "plugins": ["react", "@typescript-eslint", "prettier"],
@@ -15,6 +16,8 @@
     "rules": {
         "max-len": ["error", 140],
         "quotes": [2, "double", { "avoidEscape": true }],
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
         "prettier/prettier": [
             "error",
             {
