@@ -1,6 +1,9 @@
 import { useState, Suspense } from 'react';
 import { HttpComponent } from '../helpers/HttpComponent';
 import { Spinner } from '../helpers/Spinner';
+import { useDispatch } from 'react-redux';
+import { setSessionArtista } from '../../components';
+
 export const CrearArtistaForm = () => {
     const [formulario, setFormulario] = useState({
         nombre_artista: '',
@@ -12,6 +15,7 @@ export const CrearArtistaForm = () => {
     });
     const [errorFetch, setErrorFetch] = useState(null);
     const [dataFetch, setDataFetch] = useState(null);
+    const dispatch = useDispatch();
     const apiUrl =
         process.env.NODE_ENV === 'production'
             ? process.env.NEXT_PUBLIC_PROD_ARTISTAS_NEW_ARTIST
@@ -28,6 +32,7 @@ export const CrearArtistaForm = () => {
         });
         setDataFetch(data);
         setErrorFetch(error);
+        dispatch(setSessionArtista(data));
     };
     const handleOnChange = (e) => {
         const { name, value } = e.target;

@@ -1,8 +1,14 @@
 import React from 'react';
 import Head from 'next/head';
 import { ControlPanel, PropsHead, CrearArtista } from '../../components';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../components';
 
 function Artista({ headInfo }) {
+    const artista = useSelector(
+        (state: RootState) => state.user.session.artista
+    );
+
     const {
         imgWidth,
         imgHeight,
@@ -37,11 +43,13 @@ function Artista({ headInfo }) {
                 <meta property="og:image:width" content={imgWidth} />
                 <meta property="og:image:height" content={imgHeight} />
             </Head>
-            <div className="Panel-de-control__Artista">
-                <div className="Panel-de-control__Artista__elemento">
-                    <CrearArtista />
+            {artista === null && (
+                <div className="Panel-de-control__Artista">
+                    <div className="Panel-de-control__Artista__elemento">
+                        <CrearArtista />
+                    </div>
                 </div>
-            </div>
+            )}
         </ControlPanel>
     );
 }

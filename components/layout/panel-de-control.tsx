@@ -28,9 +28,9 @@ export const ControlPanel = ({ children }: Props) => {
                 fetch(
                     `${
                         process.env.NODE_ENV === 'production'
-                            ? process.env.NEXT_PUBLIC_PROD_USER_ID
-                            : process.env.NEXT_PUBLIC_DEV_USER_ID
-                    }${user.id}`,
+                            ? process.env.NEXT_PUBLIC_PROD_AUTH_CHECK_SESSION
+                            : process.env.NEXT_PUBLIC_DEV_AUTH_CHECK_SESSION
+                    }`,
                     {
                         credentials: 'include',
                     }

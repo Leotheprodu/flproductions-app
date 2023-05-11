@@ -1,4 +1,8 @@
-import { SET_SESSION, SET_SESSION_ROLES } from './userTypes';
+import {
+    SET_SESSION,
+    SET_SESSION_ROLES,
+    SET_SESSION_ARTISTA,
+} from './userTypes';
 
 interface Session {
     session: object;
@@ -21,6 +25,14 @@ const userReducer = (state: Session = initialState, action) => {
                 session: {
                     ...state.session,
                     roles: action.payload,
+                },
+            };
+        case SET_SESSION_ARTISTA:
+            return {
+                ...state,
+                session: {
+                    ...state.session,
+                    artista: action.payload,
                 },
             };
         default:
