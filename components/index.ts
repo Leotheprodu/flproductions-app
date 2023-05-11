@@ -1,5 +1,4 @@
 /* AppMusic */
-export * from './app_music/AppMusic';
 export * from './app_music/ArtistList';
 export * from './app_music/BotonesAppMusic';
 export * from './app_music/DetalleProducciones';

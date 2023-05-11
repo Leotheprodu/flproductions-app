@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
-import { useHandleAppMusic, SocialIcons, AppMusic } from '../../components';
+import { useHandleAppMusic, SocialIcons } from '../../components';
 import { PropsHead } from '../../components/helpers/HeadMetaInfo';
 import Head from 'next/head';
+import AppMusic from '../../components/app_music/AppMusic';
 
 function ArtistDetail({ artistafiltrado, headInfo, producciones }) {
     const {

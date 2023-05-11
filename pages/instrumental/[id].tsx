@@ -1,11 +1,8 @@
 import { useState, useEffect } from 'react';
-import {
-    DetalleProducciones,
-    useHandleAppMusic,
-    AppMusic,
-} from '../../components';
+import { DetalleProducciones, useHandleAppMusic } from '../../components';
 import { PropsHead } from '../../components/helpers/HeadMetaInfo';
 import Head from 'next/head';
+import AppMusic from '../../components/app_music/AppMusic';
 
 function InstrumentalDetail({ headInfo, producciones }) {
     const {
