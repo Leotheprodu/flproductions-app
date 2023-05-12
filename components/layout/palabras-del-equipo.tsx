@@ -1,5 +1,5 @@
-import { useEffect, useRef } from 'react';
-import Image from 'next/image';
+import { useRef } from 'react';
+import { useFxElement } from '../hooks/useFxElement';
 
 interface Props {
     titulo: string;
@@ -19,30 +19,9 @@ export function PalabrasDelEquipo({
     firma,
 }: Props) {
     const ref = useRef(null);
-
-    useEffect(() => {
-        const ElementWithFX = ref.current;
-
-        function mostrarScroll() {
-            const scrollTop = document.documentElement.scrollTop;
-            const alturaElemento = ElementWithFX.offsetTop;
-
-            if (alturaElemento - 200 < scrollTop) {
-                ElementWithFX.style.opacity = 1;
-                ElementWithFX.classList.add('fxMostrarArriba');
-            }
-        }
-        if (ElementWithFX !== null) {
-            document.addEventListener('scroll', mostrarScroll);
-        }
-
-        return () => {
-            document.removeEventListener('scroll', mostrarScroll);
-        };
-    }, []);
-
+    useFxElement(ref, 'fxMostrarArriba');
     return (
-        <div ref={ref} className="palabras-del-equipo fxElement">
+        <div ref={ref} className="palabras-del-equipo">
             <div className="palabras-del-equipo_foto">
                 <img src={foto} alt={nombre} width={500} height={800} />
             </div>

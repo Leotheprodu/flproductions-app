@@ -1,10 +1,11 @@
 import { IconUser, IconMenu2 } from '@tabler/icons';
 import { useState, useEffect } from 'react';
-import SessionPanel from '../users/SessionPanel';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store';
 import NavLink from '../helpers/NavLink';
 import Link from 'next/link';
+import SessionPanel from '../users/SessionPanel';
+import { MainNavLinks, MovilNavLinks, fetchAPI } from '../';
 
 export function Header() {
     const [UserButton, setUserButton] = useState<boolean>(false);
@@ -15,53 +16,35 @@ export function Header() {
     );
     const user = useSelector((state: RootState) => state.user.session.user);
     const [mainMensaje, setMainMensaje] = useState<string>('');
+    const apiUrl =
+        process.env.NODE_ENV === 'production'
+            ? process.env.NEXT_PUBLIC_PROD_USER_GENERAL_MESSAGES
+            : process.env.NEXT_PUBLIC_DEV_USER_GENERAL_MESSAGES;
 
-    const handleClick = () => {
-        setUserButton(!UserButton);
-    };
-    const handleClickMovilUser = () => {
-        setOnClickMovilUser(!onClickMovilUser);
-    };
     useEffect(() => {
-        if (window.innerWidth <= 768) {
-            setIsMovilUser(true);
-        } else {
-            setIsMovilUser(false);
-        }
+        window.innerWidth <= 768 ? setIsMovilUser(true) : setIsMovilUser(false);
     }, []);
 
     useEffect(() => {
-        fetch(
-            `${
-                process.env.NODE_ENV === 'production'
-                    ? process.env.NEXT_PUBLIC_PROD_USER_GENERAL_MESSAGES
-                    : process.env.NEXT_PUBLIC_DEV_USER_GENERAL_MESSAGES
-            }`,
-            {
-                credentials: 'include',
-            }
-        )
-            .then((res) => res.json())
-            .then((data) => {
-                if (data) {
-                    const mensaje_General_Todos = data.filter(
-                        (item) =>
-                            item.tipo_de_mensaje === 'mainTop' &&
-                            item.id_role === 8
+        const fetchData = async () => {
+            const { data } = await fetchAPI({ url: apiUrl });
+            if (data) {
+                const mensaje_General_Todos = data.filter(
+                    (item) => item.tipo_de_mensaje === 'mainTop'
+                );
+
+                setMainMensaje(mensaje_General_Todos[0].mensaje);
+
+                if (isLoggedIn) {
+                    setMainMensaje(
+                        `Hey ${user.username}, ${mensaje_General_Todos[0].mensaje}`
                     );
-
-                    setMainMensaje(mensaje_General_Todos[0].mensaje);
-
-                    if (isLoggedIn) {
-                        setMainMensaje('');
-                    }
-                } else {
-                    setMainMensaje('');
                 }
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+            } else {
+                setMainMensaje('Bienvenid(a) a FLProductions');
+            }
+        };
+        fetchData();
     }, [isLoggedIn]);
 
     return (
@@ -79,7 +62,9 @@ export function Header() {
                 <div className="header__nav_boton_usuarios">
                     <div
                         title="Opciones de Sesión"
-                        onClick={handleClick}
+                        onClick={() => {
+                            setUserButton(!UserButton);
+                        }}
                         className="header__nav_boton"
                     >
                         <div style={{ opacity: '1' }}>
@@ -95,78 +80,20 @@ export function Header() {
                         <SessionPanel />
                     </div>
                 </div>
-                {!isMovilUser && (
-                    <nav className="header__links">
-                        <NavLink href="/" className="header__links__link">
-                            Inicio
-                        </NavLink>
-                        <NavLink
-                            href="/nosotros"
-                            className="header__links__link"
-                        >
-                            Nosotros
-                        </NavLink>
-                        <NavLink
-                            href="/contacto"
-                            className="header__links__link"
-                        >
-                            Contacto
-                        </NavLink>
-                        <div className="header__submenu-parent">
-                            <p className="header__links__link__musica">
-                                Musica
-                            </p>
-
-                            <nav className="header__submenu">
-                                <NavLink
-                                    href="/canciones"
-                                    className="header__links__link"
-                                >
-                                    Canciones
-                                </NavLink>
-                                <NavLink
-                                    href="/instrumentales"
-                                    className="header__links__link"
-                                >
-                                    Instrumentales
-                                </NavLink>
-                            </nav>
-                        </div>
-                    </nav>
-                )}
+                {!isMovilUser && <MainNavLinks />}
 
                 {isMovilUser && (
                     <div className="menu_celular">
-                        <button onClick={handleClickMovilUser}>
+                        <button
+                            onClick={() => {
+                                setOnClickMovilUser(!onClickMovilUser);
+                            }}
+                        >
                             <IconMenu2 />
                         </button>
                     </div>
                 )}
-
-                <nav
-                    className={`header__links__movil ${
-                        onClickMovilUser ? 'selected' : ''
-                    }`}
-                >
-                    <NavLink href="/" className="header__links__link">
-                        Inicio
-                    </NavLink>
-                    <NavLink href="/nosotros" className="header__links__link">
-                        Nosotros
-                    </NavLink>
-                    <NavLink href="/contacto" className="header__links__link">
-                        Contacto
-                    </NavLink>
-                    <NavLink href="/canciones" className="header__links__link">
-                        Canciones
-                    </NavLink>
-                    <NavLink
-                        href="/instrumentales"
-                        className="header__links__link"
-                    >
-                        Instrumentales
-                    </NavLink>
-                </nav>
+                <MovilNavLinks onClickMovilUser={onClickMovilUser} />
             </div>
         </div>
     );

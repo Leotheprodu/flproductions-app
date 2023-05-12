@@ -1,8 +1,11 @@
-import { useState, Suspense } from 'react';
-import { HttpComponent } from '../helpers/HttpComponent';
-import { Spinner } from '../helpers/Spinner';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { setSessionArtista } from '../../components';
+import {
+    setSessionArtista,
+    useFetchAPI,
+    fetchAPI,
+    Spinner,
+} from '../../components';
 
 export const CrearArtistaForm = () => {
     const [formulario, setFormulario] = useState({
@@ -13,18 +16,27 @@ export const CrearArtistaForm = () => {
         imagen: undefined,
         tipo: '1',
     });
-    const [errorFetch, setErrorFetch] = useState(null);
-    const [dataFetch, setDataFetch] = useState(null);
+    const [
+        errorFetch,
+        setErrorFetch,
+        dataFetch,
+        setDataFetch,
+        isRequested,
+        setIsRequested,
+    ] = useFetchAPI();
     const dispatch = useDispatch();
     const apiUrl =
         process.env.NODE_ENV === 'production'
             ? process.env.NEXT_PUBLIC_PROD_ARTISTAS_NEW_ARTIST
             : process.env.NEXT_PUBLIC_DEV_ARTISTAS_NEW_ARTIST;
     const handleSubmit = async (e) => {
-        e.preventDefault();
-        const formData = new FormData(e.currentTarget);
+        const form = e;
+        form.preventDefault();
+        setIsRequested(true);
+        const formData = new FormData(form.currentTarget);
         formData.set('tipo', formulario.tipo);
-        const { data, error } = await HttpComponent({
+
+        const { data, error } = await fetchAPI({
             method: 'POST',
             url: apiUrl,
             body: formData,
@@ -48,17 +60,17 @@ export const CrearArtistaForm = () => {
             setFormulario((prev) => ({ ...prev, imagen: undefined }));
         }
     };
-    {
-        if (errorFetch)
-            return (
-                <div>
-                    <p>Error: {errorFetch}</p>
-                    <button onClick={() => setErrorFetch(null)}>
-                        Volver a intentar
-                    </button>
-                </div>
-            );
-    }
+
+    if (errorFetch)
+        return (
+            <div>
+                <p>Error: {errorFetch}</p>
+                <button onClick={() => setErrorFetch(null)}>
+                    Volver a intentar
+                </button>
+            </div>
+        );
+
     return (
         <div className="CrearArtistaForm">
             <h3>Crear Artista</h3>
@@ -129,21 +141,12 @@ export const CrearArtistaForm = () => {
                     />
                 </div>
 
-                <Suspense fallback={<Spinner />}>
-                    {!dataFetch && (
-                        <button tabIndex={6} type="submit">
-                            Crear
-                        </button>
-                    )}
-                    {dataFetch && (
-                        <div>
-                            <p className="contact-form__mensaje-status">
-                                {dataFetch.artist.nombre_artista} creado con
-                                exito
-                            </p>
-                        </div>
-                    )}
-                </Suspense>
+                {!dataFetch && !isRequested && (
+                    <button tabIndex={6} type="submit">
+                        Crear
+                    </button>
+                )}
+                {!dataFetch && isRequested && <Spinner />}
             </form>
         </div>
     );

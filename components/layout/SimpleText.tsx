@@ -1,4 +1,5 @@
-import { useRef, useEffect } from 'react';
+import { useRef } from 'react';
+import { useFxElement } from '../hooks/useFxElement';
 
 interface Props {
     titulo: string;
@@ -6,29 +7,9 @@ interface Props {
     tipo: number;
 }
 
-export function SimpleText({ titulo, texto, tipo }: Props) {
+export function SimpleText({ titulo, texto, tipo = 2 }: Props) {
     const ref = useRef(null);
-
-    useEffect(() => {
-        const ElementWithFX = ref.current;
-
-        function mostrarScroll() {
-            const scrollTop = document.documentElement.scrollTop;
-            const alturaElemento = ElementWithFX.offsetTop;
-
-            if (alturaElemento - 200 < scrollTop) {
-                ElementWithFX.style.opacity = 1;
-                ElementWithFX.classList.add('fxMostrarIzquierda');
-            }
-        }
-        if (ElementWithFX !== null) {
-            document.addEventListener('scroll', mostrarScroll);
-        }
-
-        return () => {
-            document.removeEventListener('scroll', mostrarScroll);
-        };
-    }, []);
+    tipo === 2 && useFxElement(ref, 'fxMostrarIzquierda');
 
     if (tipo === 1) {
         return (
@@ -40,7 +21,7 @@ export function SimpleText({ titulo, texto, tipo }: Props) {
         );
     } else if (tipo === 2) {
         return (
-            <div ref={ref} className={'simple-text_info fxElement'}>
+            <div ref={ref} className={'simple-text_info'}>
                 <h3>{titulo}</h3>
 
                 {texto}

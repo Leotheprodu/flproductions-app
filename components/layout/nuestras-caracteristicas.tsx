@@ -6,40 +6,17 @@ import {
     IconGuitarPick,
     IconHeart,
 } from '@tabler/icons';
-import { useEffect, useRef } from 'react';
-import { InfoCard } from '..';
+import { useRef } from 'react';
+import { InfoCard, useFxElement } from '..';
 
 const InfoCardSize: number = 40;
 const infoCardStroke: number = 2;
 
 export function NuestrasCaracteristicas() {
     const ref = useRef(null);
-
-    useEffect(() => {
-        const ElementWithFX = ref.current;
-
-        function mostrarScroll() {
-            const scrollTop = document.documentElement.scrollTop;
-            const alturaElemento = ElementWithFX.offsetTop;
-
-            if (alturaElemento - 200 < scrollTop) {
-                ElementWithFX.style.opacity = 1;
-            }
-        }
-        if (ElementWithFX !== null) {
-            document.addEventListener('scroll', mostrarScroll);
-        }
-
-        return () => {
-            document.removeEventListener('scroll', mostrarScroll);
-        };
-    }, []);
-
+    useFxElement(ref);
     return (
-        <div
-            ref={ref}
-            className="contenedor nuestras-caracteristicas fxElement"
-        >
+        <div ref={ref} className="contenedor nuestras-caracteristicas">
             <div className="nuestras-caracteristicas__titulo">
                 <h2>Nuestras Características</h2>
             </div>

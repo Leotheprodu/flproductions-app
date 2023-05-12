@@ -17,11 +17,14 @@ export * from './helpers/HeadMetaInfo';
 export * from './helpers/MensajesDelSistema';
 export * from './helpers/NavLink';
 export * from './helpers/Spinner';
+export * from './helpers/fetchAPI';
 /* Hooks personalizados */
 export * from './hooks/useEnvLink';
 export * from './hooks/useHandleAppMusic';
 export * from './hooks/useHandleItemAppMusic';
 export * from './hooks/useHTTP_Fetch_MyWeb';
+export * from './hooks/useFetchAPI';
+export * from './hooks/useFxElement';
 /* Layout pages */
 export * from './layout/BannerSlider';
 export * from './layout/contact-info';
@@ -36,6 +39,7 @@ export * from './layout/RootLayout';
 export * from './layout/SimpleText';
 export * from './layout/social-icons';
 export * from './layout/testimonio';
+export * from './layout/NavLinks';
 /* Redux */
 export * from './redux/store';
 export * from './redux/userActions';

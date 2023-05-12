@@ -1,4 +1,9 @@
-export async function HttpComponent<T>({
+/**
+ * Necesita 3 Hooks para funcionar, hice un useHttpComp personalizado para usarlo.
+ * @param param0
+ * @returns
+ */
+export async function fetchAPI<T>({
     url,
     method = 'GET',
     body = null,
@@ -6,15 +11,18 @@ export async function HttpComponent<T>({
 }: {
     url: string;
     method?: 'GET' | 'POST' | 'PUT' | 'DELETE';
-    headers?: HeadersInit;
     body?: T | FormData | null;
     isFormData?: boolean;
-    credentials?: RequestCredentials;
 }) {
     const config: RequestInit = {
         method,
         credentials: 'include',
-        body: isFormData ? (body as FormData) : JSON.stringify(body),
+        body:
+            method === 'GET'
+                ? undefined
+                : isFormData
+                ? (body as FormData)
+                : JSON.stringify(body),
         headers: isFormData
             ? undefined
             : { 'Content-Type': 'application/json' },
