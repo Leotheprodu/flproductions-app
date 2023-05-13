@@ -2363,6 +2363,11 @@ input {
   box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.596);
 }
 
+.UserBasicInfo__form__submit {
+  display: flex;
+  justify-content: center;
+}
+
 .VerificarCorreo {
   margin-top: 10rem;
   height: 100vh;

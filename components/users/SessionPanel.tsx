@@ -11,6 +11,7 @@ import { setSession } from '../redux/userActions';
 import { Spinner } from '../helpers/Spinner';
 import { RootState } from '../redux/store';
 import Link from 'next/link';
+import { fetchAPI } from '../helpers/fetchAPI';
 
 function SessionPanel() {
     const dispatch = useDispatch();
@@ -22,106 +23,64 @@ function SessionPanel() {
     const userInfo = useSelector((state: RootState) => state.user.session.user);
     const [botonOlvideContra, setBotonOlvideContra] = useState<boolean>(false);
     const [spinner, setSpinner] = useState<boolean>(false);
-    const checkLoggedIn = () => {
-        fetch(
-            `${
-                process.env.NODE_ENV === 'production'
-                    ? process.env.NEXT_PUBLIC_PROD_AUTH_CHECK_SESSION
-                    : process.env.NEXT_PUBLIC_DEV_AUTH_CHECK_SESSION
-            }`,
-            {
-                credentials: 'include',
-            }
-        )
-            .then((res) => res.json())
-            .then((data) => {
-                if (data.isLoggedIn) {
-                    dispatch(setSession(data));
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+    const apiUrlCheckSession =
+        process.env.NODE_ENV === 'production'
+            ? process.env.NEXT_PUBLIC_PROD_AUTH_CHECK_SESSION
+            : process.env.NEXT_PUBLIC_DEV_AUTH_CHECK_SESSION;
+    const apiUrlLogin =
+        process.env.NODE_ENV === 'production'
+            ? process.env.NEXT_PUBLIC_PROD_AUTH_LOGIN
+            : process.env.NEXT_PUBLIC_DEV_AUTH_LOGIN;
+
+    const apiUrlLogout =
+        process.env.NODE_ENV === 'production'
+            ? process.env.NEXT_PUBLIC_PROD_AUTH_LOGOUT
+            : process.env.NEXT_PUBLIC_DEV_AUTH_LOGOUT;
+    const checkLoggedIn = async () => {
+        const { data } = await fetchAPI({ url: apiUrlCheckSession });
+        data.isLoggedIn && dispatch(setSession(data));
     };
 
     useEffect(() => {
         checkLoggedIn();
     }, []);
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
         setSpinner(true);
-        fetch(
-            `${
-                process.env.NODE_ENV === 'production'
-                    ? process.env.NEXT_PUBLIC_PROD_AUTH_LOGIN
-                    : process.env.NEXT_PUBLIC_DEV_AUTH_LOGIN
-            }`,
-            {
-                method: 'POST',
-                credentials: 'include',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email, password }),
-            }
-        )
-            .then((response) => {
-                if (response.status === 429) {
-                    setSpinner(false);
-                    alert(
-                        'muchos intentos de inicio de sesion, espere 15 minutos para volver a intentar o puede probar cambiar la contraseña'
-                    );
-                    return;
-                }
-
-                return response.json();
-            })
-            .then((data) => {
-                if (data.isLoggedIn) {
-                    dispatch(setSession(data));
-                    setSpinner(false);
-                } else {
-                    alert(
-                        'Datos inválidos, correo o contraseña incorrecta o regístrate'
-                    );
-                    setBotonOlvideContra(true);
-                    setSpinner(false);
-                }
-            })
-            .catch((error) => {
-                setSpinner(false);
-                console.log(error);
-            });
+        const { data, status } = await fetchAPI({
+            url: apiUrlLogin,
+            method: 'POST',
+            body: { email, password },
+        });
+        if (status === 429) {
+            setSpinner(false);
+            alert(
+                'muchos intentos de inicio de sesion, espere 15 minutos para volver a intentar o puede probar cambiar la contraseña'
+            );
+            return;
+        }
+        if (data.isLoggedIn) {
+            dispatch(setSession(data));
+            setSpinner(false);
+        } else {
+            alert(
+                'Datos inválidos, correo o contraseña incorrecta o regístrate'
+            );
+            setBotonOlvideContra(true);
+            setSpinner(false);
+        }
     };
 
-    const handleLogout = (e) => {
+    const handleLogout = async (e) => {
         e.preventDefault();
         setSpinner(true);
-        fetch(
-            `${
-                process.env.NODE_ENV === 'production'
-                    ? process.env.NEXT_PUBLIC_PROD_AUTH_LOGOUT
-                    : process.env.NEXT_PUBLIC_DEV_AUTH_LOGOUT
-            }`,
-            {
-                credentials: 'include',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            }
-        )
-            .then((res) => res.json())
-            .then((data) => {
-                dispatch(setSession(data));
-                setSpinner(false);
-            })
-            .catch((error) => {
-                console.log(error);
-                setSpinner(false);
-            });
+        const { data } = await fetchAPI({ url: apiUrlLogout });
+        if (data) {
+            dispatch(setSession(data));
+            setSpinner(false);
+        }
     };
-
     if (isLoggedIn) {
         return (
             <div className="login_container">

@@ -1,9 +1,13 @@
-import { LinksPanel } from '..';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useState, useEffect } from 'react';
+import {
+    LinksPanel,
+    fetchAPI,
+    useUserMovilDeviceChecker,
+    setSession,
+    RootState,
+} from '..';
 import { IconSettingsFilled } from '@tabler/icons-react';
-import { setSession } from '../redux/userActions';
-import { RootState } from '../redux/store';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
@@ -17,46 +21,26 @@ export const ControlPanel = ({ children }: Props) => {
     const isLoggedIn = useSelector(
         (state: RootState) => state.user.session.isLoggedIn
     );
-    const user = useSelector((state: RootState) => state.user.session.user);
-    const [isMovilUser, setIsMovilUser] = useState<boolean>(false);
-    const [onClickMovilUser, setOnClickMovilUser] = useState<boolean>(false);
-    const handleClickMovilUser = () => setOnClickMovilUser(!onClickMovilUser);
-
+    const [isMovilUser, onClickMovilUser, setOnClickMovilUser] =
+        useUserMovilDeviceChecker();
+    const apiUrl =
+        process.env.NODE_ENV === 'production'
+            ? process.env.NEXT_PUBLIC_PROD_AUTH_CHECK_SESSION
+            : process.env.NEXT_PUBLIC_DEV_AUTH_CHECK_SESSION;
     useEffect(() => {
-        if (isLoggedIn) {
-            const refreshUserSession = () => {
-                fetch(
-                    `${
-                        process.env.NODE_ENV === 'production'
-                            ? process.env.NEXT_PUBLIC_PROD_AUTH_CHECK_SESSION
-                            : process.env.NEXT_PUBLIC_DEV_AUTH_CHECK_SESSION
-                    }`,
-                    {
-                        credentials: 'include',
-                    }
-                )
-                    .then((res) => res.json())
-                    .then((data) => {
-                        if (data.isLoggedIn) {
-                            dispatch(setSession(data));
-                        }
-                    })
-                    .catch((error) => {
-                        console.log(error);
-                    });
-            };
-
-            refreshUserSession();
-        }
+        const fetchData = async () => {
+            const { data } = await fetchAPI({ url: apiUrl });
+            if (data) {
+                dispatch(setSession(data));
+            }
+        };
+        fetchData();
     }, [isLoggedIn]);
-
-    useEffect(() => {
-        if (window.innerWidth <= 768) {
-            setIsMovilUser(true);
-        } else {
-            setIsMovilUser(false);
+    const handleClickMovilUser = () => {
+        if (typeof setOnClickMovilUser === 'function') {
+            setOnClickMovilUser(!onClickMovilUser);
         }
-    }, []);
+    };
 
     if (!isLoggedIn) {
         return (

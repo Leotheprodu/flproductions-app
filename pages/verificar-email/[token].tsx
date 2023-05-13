@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { Spinner } from '../../components/helpers/Spinner';
 import Link from 'next/link';
-import { PropsHead } from '../../components/helpers/HeadMetaInfo';
 import Head from 'next/head';
+import { fetchAPI, Spinner, PropsHead, useFetchAPI } from '../../components';
 
 function VerificarCorreo({ headInfo }) {
     const {
@@ -20,94 +19,58 @@ function VerificarCorreo({ headInfo }) {
         robots,
     }: PropsHead = headInfo;
     const [loading, setLoading] = useState(true);
+    const [errorFetch, setErrorFetch] = useFetchAPI();
     const router = useRouter();
     const { token } = router.query;
-    const [verificado, setVerificado] = useState<boolean>(false);
-    const [spinner, setSpinner] = useState<boolean>(false);
 
     useEffect(() => {
+        console.log(token);
         if (token) {
-            fetch(
-                `${
-                    process.env.NODE_ENV === 'production'
-                        ? process.env
-                              .NEXT_PUBLIC_PROD_USER_EMAIL_VERIFICATION_TOKEN
-                        : process.env
-                              .NEXT_PUBLIC_DEV_USER_EMAIL_VERIFICATION_TOKEN
-                }${token}`,
-                {
-                    credentials: 'include',
+            const apiUrl = `${
+                process.env.NODE_ENV === 'production'
+                    ? process.env.NEXT_PUBLIC_PROD_USER_EMAIL_VERIFICATION_TOKEN
+                    : process.env.NEXT_PUBLIC_DEV_USER_EMAIL_VERIFICATION_TOKEN
+            }${token}`;
+            const fetchData = async () => {
+                const { status, error } = await fetchAPI({ url: apiUrl });
+                if (status === 200) {
+                    setLoading(false);
+                } else {
+                    setErrorFetch(error);
+                    setLoading(false);
                 }
-            )
-                .then((response) => {
-                    if (response.status === 200) {
-                        setVerificado(true);
-                        setSpinner(false);
-                        setLoading(false);
-                    } else if (response.status === 403) {
-                        setVerificado(false);
-                        setSpinner(false);
-                        setLoading(false);
-                    } else {
-                        setVerificado(false);
-                        setSpinner(false);
-                        setLoading(false);
-                    }
-                })
-                .catch((error) => {
-                    // Manejar el error aquí
-                    console.log(error);
-                });
+            };
+            fetchData();
         }
     }, [token]);
 
-    if (loading) {
-        return (
-            <>
-                <Head>
-                    <title>{`${title} | FLProductions`}</title>
-                    <meta name="description" content={description} />
-                    <meta name="keywords" content={keywords} />
-                    <meta name="robots" content={robots} />
-                    <meta name="author" content={author} />
-                    <meta name="copyright" content={copyright} />
-                    <meta property="og:description" content={description} />
-                    <meta
-                        property="og:title"
-                        content={`${title} | FLProductions`}
-                    />
-                    <meta property="og:type" content={type} />
-                    <meta property="og:url" content={url} />
-                    <meta property="og:image" content={image} />
-                    <meta property="og:image:width" content={imgWidth} />
-                    <meta property="og:image:height" content={imgHeight} />
-                </Head>
+    return (
+        <>
+            <Head>
+                <title>{`${title} | FLProductions`}</title>
+                <meta name="description" content={description} />
+                <meta name="keywords" content={keywords} />
+                <meta name="robots" content={robots} />
+                <meta name="author" content={author} />
+                <meta name="copyright" content={copyright} />
+                <meta property="og:description" content={description} />
+                <meta
+                    property="og:title"
+                    content={`${title} | FLProductions`}
+                />
+                <meta property="og:type" content={type} />
+                <meta property="og:url" content={url} />
+                <meta property="og:image" content={image} />
+                <meta property="og:image:width" content={imgWidth} />
+                <meta property="og:image:height" content={imgHeight} />
+            </Head>
+
+            {loading && (
                 <div className="VerificarCorreo">
                     <Spinner />
                 </div>
-            </>
-        );
-    } else {
-        return (
-            <>
-                <Head>
-                    <title>{`${title} | FLProductions`}</title>
-                    <meta name="description" content={description} />
-                    <meta name="keywords" content={keywords} />
-                    <meta name="robots" content={robots} />
-                    <meta name="author" content={author} />
-                    <meta name="copyright" content={copyright} />
-                    <meta property="og:description" content={description} />
-                    <meta
-                        property="og:title"
-                        content={`${title} | FLProductions`}
-                    />
-                    <meta property="og:type" content={type} />
-                    <meta property="og:url" content={url} />
-                    <meta property="og:image" content={image} />
-                    <meta property="og:image:width" content={imgWidth} />
-                    <meta property="og:image:height" content={imgHeight} />
-                </Head>
+            )}
+            {!loading && !errorFetch && (
                 <div className="VerificarCorreo">
                     <h1>Su correo electrónico ha sido verificado</h1>
 
@@ -123,9 +86,14 @@ function VerificarCorreo({ headInfo }) {
                         </Link>
                     </div>
                 </div>
-            </>
-        );
-    }
+            )}
+            {errorFetch && (
+                <div className="VerificarCorreo">
+                    <h1>{errorFetch}</h1>
+                </div>
+            )}
+        </>
+    );
 }
 
 export default VerificarCorreo;

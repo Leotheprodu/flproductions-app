@@ -2,7 +2,6 @@ import { IconUser, IconMenu2 } from '@tabler/icons';
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store';
-import NavLink from '../helpers/NavLink';
 import Link from 'next/link';
 import SessionPanel from '../users/SessionPanel';
 import { MainNavLinks, MovilNavLinks, fetchAPI } from '../';

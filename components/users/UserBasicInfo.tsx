@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setSession } from '../redux/userActions';
 import { RootState } from '../redux/store';
+import { fetchAPI } from '../helpers/fetchAPI';
 
 export const UserBasicInfo = () => {
     const dispatch = useDispatch();
@@ -17,30 +18,27 @@ export const UserBasicInfo = () => {
     const [formStatus, setFormStatus] = useState('');
     const [statusenviado, setStatusEnviado] = useState(false);
     const [clasePass, setClasePass] = useState('');
-
-    const refreshUserSession = () => {
-        fetch(
-            `${
-                process.env.NODE_ENV === 'production'
-                    ? process.env.NEXT_PUBLIC_PROD_AUTH_CHECK_SESSION
-                    : process.env.NEXT_PUBLIC_DEV_AUTH_CHECK_SESSION
-            }`,
-            {
-                credentials: 'include',
-            }
-        )
-            .then((res) => res.json())
-            .then((data) => {
-                if (data.isLoggedIn) {
-                    dispatch(setSession(data));
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+    const apiUrlCheckSession =
+        process.env.NODE_ENV === 'production'
+            ? process.env.NEXT_PUBLIC_PROD_AUTH_CHECK_SESSION
+            : process.env.NEXT_PUBLIC_DEV_AUTH_CHECK_SESSION;
+    const apiUrlUpdateUser = `${
+        process.env.NODE_ENV === 'production'
+            ? process.env.NEXT_PUBLIC_PROD_USER_UPDATE_USERS_ID
+            : process.env.NEXT_PUBLIC_DEV_USER_UPDATE_USERS_ID
+    }${userInfo.id}`;
+    const apiUrlVerifyEmail = `${
+        process.env.NODE_ENV === 'production'
+            ? process.env.NEXT_PUBLIC_PROD_USER_VERIFY_EMAIL_EMAIL
+            : process.env.NEXT_PUBLIC_DEV_USER_VERIFY_EMAIL_EMAIL
+    }${email}`;
+    const refreshUserSession = async () => {
+        const { data } = await fetchAPI({ url: apiUrlCheckSession });
+        data.isLoggedIn && dispatch(setSession(data));
     };
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        //Validaciones
         if (password !== password1) {
             setFormStatus('Las contraseñas deben coincidir');
             return;
@@ -51,7 +49,6 @@ export const UserBasicInfo = () => {
             );
             return;
         }
-
         const password2 =
             password === password1 && password !== null ? password : null;
         const datosActualizadosDeUsuario = {
@@ -59,36 +56,19 @@ export const UserBasicInfo = () => {
             email: email,
             password: password2 !== null ? password2 : null,
         };
-
-        // Aquí puedes enviar los datos del formulario a tu servidor
-        fetch(
-            `${
-                process.env.NODE_ENV === 'production'
-                    ? process.env.NEXT_PUBLIC_PROD_USER_UPDATE_USERS_ID
-                    : process.env.NEXT_PUBLIC_DEV_USER_UPDATE_USERS_ID
-            }${userInfo.id}`,
-            {
-                method: 'PUT',
-                credentials: 'include',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(datosActualizadosDeUsuario),
-            }
-        )
-            .then((res) => res.json())
-            .then((data) => {
-                if (data) {
-                    setFormStatus('Se han actualizado los datos correctamente');
-                    setStatusEnviado(true);
-                    refreshUserSession();
-                } else {
-                    alert('HUBO UN ERROR');
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        //Fetch de Datos
+        const { data, error } = await fetchAPI({
+            url: apiUrlUpdateUser,
+            method: 'PUT',
+            body: datosActualizadosDeUsuario,
+        });
+        if (data) {
+            setFormStatus('Se han actualizado los datos correctamente');
+            setStatusEnviado(true);
+            refreshUserSession();
+        } else {
+            setFormStatus(error);
+        }
     };
 
     const hanldeOnBlurPassword = () => {
@@ -110,7 +90,7 @@ export const UserBasicInfo = () => {
             setFormStatus('');
         }
     };
-    const handleVerificarEmail = () => {
+    const handleVerificarEmail = async () => {
         const fechaultimaModificacion: any = new Date(
             userInfo.ultima_actualizacion
         );
@@ -122,42 +102,25 @@ export const UserBasicInfo = () => {
         const diferenciaEnHoras = diferenciaEnMilisegundos / 3600000;
         // 4. Comparar la cantidad de horas con 1
         if (diferenciaEnHoras >= 0.25) {
-            fetch(
-                `${
-                    process.env.NODE_ENV === 'production'
-                        ? process.env.NEXT_PUBLIC_PROD_USER_VERIFY_EMAIL_EMAIL
-                        : process.env.NEXT_PUBLIC_DEV_USER_VERIFY_EMAIL_EMAIL
-                }${email}`,
-                {
-                    credentials: 'include',
-                }
-            )
-                .then((response) => {
-                    if (response.status === 200) {
-                        setFormStatus(
-                            'Hemos reenviado el correo de verificacion, ve a revisarlo y verifica tu correo'
-                        );
-                        setStatusEnviado(true);
-                    } else if (response.status === 429) {
-                        setFormStatus(
-                            'muchas solicitudes de email, espera un momento para volver a enviar'
-                        );
-                        return;
-                    } else if (response.status === 401) {
-                        setFormStatus(
-                            'Ya has verificado tu email, vuelve a iniciar sesion'
-                        );
-                        return;
-                    }
-                })
-                .catch((error) => {
-                    // Manejar el error aquí
-                    console.log(error);
-                });
+            apiUrlVerifyEmail;
+            const { error, status } = await fetchAPI({
+                url: apiUrlVerifyEmail,
+            });
+            if (status === 200) {
+                setFormStatus(
+                    'Hemos reenviado el correo de verificacion, ve a revisarlo y verifica tu correo'
+                );
+                setStatusEnviado(true);
+            } else if (error) {
+                setFormStatus(error);
+                setStatusEnviado(true);
+                return;
+            }
         } else {
-            alert(
+            setFormStatus(
                 'Para volver a enviar el correo de verificacion, debe haber pasado 15 minutos desde el ultimo cambio'
             );
+            setStatusEnviado(true);
             return;
         }
     };
@@ -247,11 +210,13 @@ export const UserBasicInfo = () => {
                             onBlur={hanldeOnBlurPassword}
                         />
                     </div>
-                    {!statusenviado && (
-                        <button tabIndex={5} type="submit">
-                            Guardar
-                        </button>
-                    )}
+                    <div className="UserBasicInfo__form__submit">
+                        {!statusenviado && (
+                            <button tabIndex={5} type="submit">
+                                Guardar
+                            </button>
+                        )}
+                    </div>
                 </form>
                 <div>
                     <p className="contact-form__mensaje-status">{formStatus}</p>

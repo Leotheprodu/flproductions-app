@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setSessionRoles } from '../redux/userActions';
 import { RootState } from '../redux/store';
 import { Spinner } from '../helpers/Spinner';
+import { fetchAPI } from '../helpers/fetchAPI';
 
 export const TypeofUser = (): JSX.Element | null => {
     const dispatch = useDispatch();
@@ -12,8 +13,11 @@ export const TypeofUser = (): JSX.Element | null => {
     );
     const [selectedOptions, setSelectedOptions] = useState([1, 2]);
     const [spinner, setSpinner] = useState<boolean>(false);
-    const [formStatus, setFormStatus] = useState('');
     const [statusenviado, setStatusEnviado] = useState(false);
+    const ApiUrl =
+        process.env.NODE_ENV === 'production'
+            ? process.env.NEXT_PUBLIC_PROD_TYPEOFUSER
+            : process.env.NEXT_PUBLIC_DEV_TYPEOFUSER;
     useEffect(() => {
         if (userRoles.includes(2) && !selectedOptions.includes(2)) {
             setSelectedOptions([...selectedOptions, 2]);
@@ -43,32 +47,16 @@ export const TypeofUser = (): JSX.Element | null => {
         await enviarBD(idRoles);
     };
     const enviarBD = async (idRoles) => {
-        fetch(
-            `${
-                process.env.NODE_ENV === 'production'
-                    ? process.env.NEXT_PUBLIC_PROD_TYPEOFUSER
-                    : process.env.NEXT_PUBLIC_DEV_TYPEOFUSER
-            }`,
-            {
-                method: 'POST',
-                credentials: 'include',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(idRoles),
-            }
-        )
-            .then((res) => res.json())
-            .then((data) => {
-                if (data) {
-                    dispatch(setSessionRoles(data.roles));
-                    setSpinner(false);
-                    setStatusEnviado(true);
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        const { data } = await fetchAPI({
+            url: ApiUrl,
+            method: 'POST',
+            body: idRoles,
+        });
+        if (data) {
+            dispatch(setSessionRoles(data.roles));
+            setSpinner(false);
+            setStatusEnviado(true);
+        }
     };
     if (userRoles.includes(1)) {
         return (

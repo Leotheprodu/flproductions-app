@@ -25,6 +25,7 @@ export * from './hooks/useHandleItemAppMusic';
 export * from './hooks/useHTTP_Fetch_MyWeb';
 export * from './hooks/useFetchAPI';
 export * from './hooks/useFxElement';
+export * from './hooks/useUserMovilDeviceChecker';
 /* Layout pages */
 export * from './layout/BannerSlider';
 export * from './layout/contact-info';

@@ -2,6 +2,7 @@ import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store';
+import { fetchAPI } from '../';
 
 export const AvatarSelection = (): JSX.Element | null => {
     const maxAvatarLength: number = 9;
@@ -13,19 +14,19 @@ export const AvatarSelection = (): JSX.Element | null => {
     const userRoles: [number] = useSelector(
         (state: RootState) => state.user.session.roles
     );
+    const urlApiAvatarId = `${
+        process.env.NODE_ENV === 'production'
+            ? process.env.NEXT_PUBLIC_PROD_USER_AVATAR_ID
+            : process.env.NEXT_PUBLIC_DEV_USER_AVATAR_ID
+    }${userInfo.id}`;
+    const urlApiAvatarUpdate =
+        process.env.NODE_ENV === 'production'
+            ? process.env.NEXT_PUBLIC_PROD_USER_AVATAR_UPDATE
+            : process.env.NEXT_PUBLIC_DEV_USER_AVATAR_UPDATE;
     useEffect(() => {
-        fetch(
-            `${
-                process.env.NODE_ENV === 'production'
-                    ? process.env.NEXT_PUBLIC_PROD_USER_AVATAR_ID
-                    : process.env.NEXT_PUBLIC_DEV_USER_AVATAR_ID
-            }${userInfo.id}`,
-            {
-                credentials: 'include',
-            }
-        )
-            .then((res) => res.json())
-            .then((data) => {
+        const fetchData = async () => {
+            const { data } = await fetchAPI({ url: urlApiAvatarId });
+            if (data) {
                 if (data.avatar <= 1) {
                     setAvatar(1);
                     setAvatarIzq(0);
@@ -39,10 +40,9 @@ export const AvatarSelection = (): JSX.Element | null => {
                     setAvatarIzq(data.avatar - 1);
                     setAvatarDer(data.avatar + 1);
                 }
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+            }
+        };
+        fetchData();
     }, [userInfo]);
 
     const handleClickIzq = () => {
@@ -67,35 +67,21 @@ export const AvatarSelection = (): JSX.Element | null => {
             setAvatarDer(avatarDer + 1);
         }
     };
-    const handleClickSelect = () => {
-        fetch(
-            `${
-                process.env.NODE_ENV === 'production'
-                    ? process.env.NEXT_PUBLIC_PROD_USER_AVATAR_UPDATE
-                    : process.env.NEXT_PUBLIC_DEV_USER_AVATAR_UPDATE
-            }`,
-            {
-                method: 'POST',
-                credentials: 'include',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ id: userInfo.id, avatar: avatar }),
-            }
-        )
-            .then((response) => {
-                if (response.status === 200) {
-                    setDatoActualizado(true);
-                } else {
-                    alert(
-                        'Solo usuarios con correo verificado pueden cambiar su avatar'
-                    );
-                    return;
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+    const handleClickSelect = async () => {
+        const avatarSelected = { id: userInfo.id, avatar };
+        const { status } = await fetchAPI({
+            url: urlApiAvatarUpdate,
+            method: 'POST',
+            body: avatarSelected,
+        });
+        if (status === 200) {
+            setDatoActualizado(true);
+        } else {
+            alert(
+                'Solo usuarios con correo verificado pueden cambiar su avatar'
+            );
+            return;
+        }
     };
     if (userRoles.includes(1)) {
         return (
