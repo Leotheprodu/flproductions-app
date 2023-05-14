@@ -1,9 +1,5 @@
 @use 'base/mixins' as m;
 @use 'base/variables' as v;
-
-.CrearArtista {
-    margin: 6rem 1rem;
-}
 .CrearArtistaForm {
     background-color: v.$gris;
     border-radius: 2rem;

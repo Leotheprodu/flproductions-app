@@ -45,7 +45,7 @@
         "pages/panel-de-control/informacion-de-usuario.tsx",
         "pages/recuperar-password.tsx",
         "components/users/SessionPanel.tsx",
-        "components/users/UserBasicInfo.tsx",
+        "components/forms/UserBasicInfo.tsx",
         "pages/verificar-email/[token].tsx",
         "components/forms/contact-form.tsx",
         "components/helpers/MensajesDelSistema.tsx",

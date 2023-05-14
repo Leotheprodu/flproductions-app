@@ -5,16 +5,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     margin-bottom: 100vh;
     padding: 0 4rem;
     @include m.tablet {
         flex-direction: row;
-        justify-content: flex-start;
         align-items: normal;
         flex-wrap: wrap;
     }
 }
 
 .Panel-de-control__Artista__elemento {
+    margin: 6rem 1rem;
     gap: 2rem;
 }

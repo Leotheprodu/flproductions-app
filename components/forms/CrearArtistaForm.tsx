@@ -72,9 +72,9 @@ export const CrearArtistaForm = () => {
         );
 
     return (
-        <div className="CrearArtistaForm">
-            <h3>Crear Artista</h3>
+        <>
             <form className="CrearArtistaForm" onSubmit={handleSubmit}>
+                <h3>Crear Artista</h3>
                 <div className="CrearArtistaForm__form__input">
                     <label className="mb-3" htmlFor="name">
                         Nombre de Artista:
@@ -122,6 +122,7 @@ export const CrearArtistaForm = () => {
                     <input
                         tabIndex={4}
                         type="file"
+                        accept="image/*"
                         className="mb-3"
                         name="imagen"
                         onChange={handleOnChangeImagen}
@@ -148,6 +149,6 @@ export const CrearArtistaForm = () => {
                 )}
                 {!dataFetch && isRequested && <Spinner />}
             </form>
-        </div>
+        </>
     );
 };

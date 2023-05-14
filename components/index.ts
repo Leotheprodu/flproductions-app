@@ -5,10 +5,13 @@ export * from './app_music/DetalleProducciones';
 export * from './app_music/GenreList';
 export * from './app_music/ItemAppMusic';
 export * from './app_music/StyleList';
+/* artista */
+export * from './artista/EditarArtista';
 /* database_temp */
 export * from './database_temp/database';
 /* forms */
 export * from './forms/contact-form';
+export * from './forms/UserBasicInfo';
 export * from './forms/CrearArtistaForm';
 /* Helpers */
 export * from './helpers/CountdownTimer';
@@ -52,6 +55,3 @@ export * from './users/AvatarUsers';
 export * from './users/LinksPanel';
 export * from './users/SessionPanel';
 export * from './users/TypeOfUser';
-export * from './users/UserBasicInfo';
-/* Artistas */
-export * from './artistas/CrearArtista';

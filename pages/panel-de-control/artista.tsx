@@ -1,8 +1,13 @@
 import React from 'react';
 import Head from 'next/head';
-import { ControlPanel, PropsHead, CrearArtista } from '../../components';
+import {
+    ControlPanel,
+    PropsHead,
+    CrearArtistaForm,
+    RootState,
+    EditarArtista,
+} from '../../components';
 import { useSelector } from 'react-redux';
-import { RootState } from '../../components';
 
 function Artista({ headInfo }) {
     const artista = useSelector(
@@ -43,13 +48,18 @@ function Artista({ headInfo }) {
                 <meta property="og:image:width" content={imgWidth} />
                 <meta property="og:image:height" content={imgHeight} />
             </Head>
-            {artista === null && (
-                <div className="Panel-de-control__Artista">
+            <div className="Panel-de-control__Artista">
+                {artista === null && (
                     <div className="Panel-de-control__Artista__elemento">
-                        <CrearArtista />
+                        <CrearArtistaForm />
                     </div>
-                </div>
-            )}
+                )}
+                {artista && (
+                    <div className="Panel-de-control__Artista__elemento">
+                        <EditarArtista />
+                    </div>
+                )}
+            </div>
         </ControlPanel>
     );
 }

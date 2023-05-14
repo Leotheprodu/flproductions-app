@@ -6,8 +6,12 @@
 @forward './app_music/detalle-producciones';
 @forward './app_music/ItemAppMusic';
 @forward './app_music/songDetail';
+/* artista */
+@forward './artista/EditarArtista';
 /* forms */
 @forward './forms/contact-form';
+@forward './forms/UserBasicInfo';
+@forward './forms/CrearArtistaForm';
 /* helpers */
 @forward './helpers/CountdownTimer';
 @forward './helpers/mensajes-del-sistema__bloque';
@@ -30,8 +34,5 @@
 @forward './users/login';
 @forward './users/RecuperarPassword';
 @forward './users/SignUp';
-@forward './users/UserBasicInfo';
 @forward './users/VerificarCorreo';
 @forward './users/TypeOfUser';
-/* artistas */
-@forward './artistas/CrearArtista';

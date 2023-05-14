@@ -953,6 +953,112 @@ input {
   }
 }
 
+.EditarArtista {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+@media (min-width: 768px) {
+  .EditarArtista {
+    flex-direction: row;
+  }
+}
+.EditarArtista img {
+  width: 40rem;
+  height: 40rem;
+  border-radius: 20%;
+  box-shadow: 2px 3px 3px rgba(0, 0, 0, 0.1921568627);
+  object-fit: cover;
+}
+.EditarArtista h4 {
+  text-transform: uppercase;
+  font-size: 3rem;
+  margin: 0;
+}
+.EditarArtista p {
+  font-size: 2rem;
+  margin: 0;
+  text-align: justify;
+}
+
+.EditarArtista_BloqueInformacion {
+  display: flex;
+  flex-direction: column;
+}
+
+.EditarArtista_input_nombre_artista {
+  text-transform: uppercase;
+  font-size: 4rem;
+}
+.EditarArtista_input_nombre_artista:focus {
+  outline-color: #1ab5e6;
+}
+
+.EditarArtista_input_info {
+  font-size: 2rem;
+  height: 15rem;
+  width: 30rem;
+  border: none;
+}
+.EditarArtista_input_info:focus {
+  outline-color: #1ab5e6;
+}
+
+.EditarArtista_input_generic {
+  font-size: 2rem;
+  border: none;
+}
+.EditarArtista_input_generic:focus {
+  outline-color: #1ab5e6;
+}
+
+.EditarArtista_texto_Text {
+  display: flex;
+  flex-direction: row;
+  max-width: 30rem;
+  overflow: hidden;
+}
+
+.EditarArtista_texto_iconEdit:hover,
+.EditarArtista_imagen_iconEdit:hover {
+  cursor: pointer;
+}
+
+.EditarArtista_texto_iconEdit {
+  color: #1ab5e6;
+  opacity: 50%;
+}
+
+.EditarArtista_imagen_iconEdit {
+  color: #1ab5e6;
+  opacity: 50%;
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+}
+
+.EditarArtista_imagen_container {
+  position: relative;
+  cursor: pointer;
+}
+
+.EditarArtista_imagen_container,
+.EditarArtista_texto_Text {
+  transition: transform 0.5s ease-in-out;
+}
+.EditarArtista_imagen_container:hover,
+.EditarArtista_texto_Text:hover {
+  transform: scale(1.01);
+}
+
+.EditarArtista_link {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 .pagelayer-shape-fill {
   fill: #FFFFFF;
   height: 100%;
@@ -1089,6 +1195,166 @@ input {
   color: #000000;
   width: 20rem;
   margin: 1rem auto;
+}
+
+.contenedor__UserBasicInfo {
+  background-color: rgb(238, 238, 238);
+  border-radius: 2rem;
+  margin: 6rem 1rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+@media (min-width: 768px) {
+  .contenedor__UserBasicInfo {
+    max-width: 40rem;
+  }
+}
+.contenedor__UserBasicInfo h3 {
+  text-transform: uppercase;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+.contenedor__UserBasicInfo button {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 5px;
+  height: 3rem;
+  padding: 1rem;
+  color: #000000;
+  background-color: #ebc246;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+  transition: box-shadow 0.5s;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.contenedor__UserBasicInfo button:active {
+  opacity: 0.5;
+  transform: scale(0.8);
+}
+.contenedor__UserBasicInfo button:hover {
+  opacity: 0.9;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1215686275);
+}
+.contenedor__UserBasicInfo button:focus {
+  outline-color: #1ab5e6;
+}
+
+.UserBasicInfo__Error {
+  border: 1px solid red;
+}
+
+.UserBasicInfo__form__input {
+  border-radius: 5px;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+.UserBasicInfo__form__input input:focus {
+  outline-color: #1ab5e6;
+}
+
+.UserBasicInfo__form__input__verified {
+  display: flex;
+  flex-direction: column;
+}
+.UserBasicInfo__form__input__verified div {
+  display: flex;
+  gap: 1rem;
+  color: rgb(102, 102, 102);
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .UserBasicInfo__form__input__verified {
+    flex-direction: row;
+  }
+}
+
+.UserBasicInfo__Email-No-verificado {
+  display: flex;
+  flex-direction: column;
+}
+.UserBasicInfo__Email-No-verificado button {
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.596);
+}
+
+.UserBasicInfo__form__submit {
+  display: flex;
+  justify-content: center;
+}
+
+.CrearArtistaForm {
+  background-color: rgb(238, 238, 238);
+  border-radius: 2rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+@media (min-width: 768px) {
+  .CrearArtistaForm {
+    max-width: 40rem;
+  }
+}
+.CrearArtistaForm h3 {
+  text-transform: uppercase;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+.CrearArtistaForm button {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 5px;
+  height: 3rem;
+  padding: 1rem;
+  color: #000000;
+  background-color: #ebc246;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+  transition: box-shadow 0.5s;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.CrearArtistaForm button:active {
+  opacity: 0.5;
+  transform: scale(0.8);
+}
+.CrearArtistaForm button:hover {
+  opacity: 0.9;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1215686275);
+}
+.CrearArtistaForm button:focus {
+  outline-color: #1ab5e6;
+}
+
+.CrearArtistaForm__form__input {
+  border-radius: 5px;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+.CrearArtistaForm__form__input input:focus {
+  outline-color: #1ab5e6;
+}
+.CrearArtistaForm__form__input textarea {
+  height: 15rem;
+  width: 30rem;
+  border: none;
+}
+.CrearArtistaForm__form__input textarea:focus {
+  outline-color: #1ab5e6;
 }
 
 .CountdownTimer p {
@@ -2275,99 +2541,6 @@ input {
   text-align: center;
 }
 
-.contenedor__UserBasicInfo {
-  background-color: rgb(238, 238, 238);
-  border-radius: 2rem;
-  margin: 6rem 1rem;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-@media (min-width: 768px) {
-  .contenedor__UserBasicInfo {
-    max-width: 40rem;
-  }
-}
-.contenedor__UserBasicInfo h3 {
-  text-transform: uppercase;
-  font-size: 2rem;
-  margin-bottom: 2rem;
-}
-.contenedor__UserBasicInfo button {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  border-radius: 5px;
-  height: 3rem;
-  padding: 1rem;
-  color: #000000;
-  background-color: #ebc246;
-  opacity: 1;
-  transition: opacity 0.3s ease-in-out;
-  transition: box-shadow 0.5s;
-  cursor: pointer;
-  text-transform: uppercase;
-}
-.contenedor__UserBasicInfo button:active {
-  opacity: 0.5;
-  transform: scale(0.8);
-}
-.contenedor__UserBasicInfo button:hover {
-  opacity: 0.9;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1215686275);
-}
-.contenedor__UserBasicInfo button:focus {
-  outline-color: #1ab5e6;
-}
-
-.UserBasicInfo__Error {
-  border: 1px solid red;
-}
-
-.UserBasicInfo__form__input {
-  border-radius: 5px;
-  margin-bottom: 2rem;
-  display: flex;
-  flex-direction: column;
-}
-.UserBasicInfo__form__input input:focus {
-  outline-color: #1ab5e6;
-}
-
-.UserBasicInfo__form__input__verified {
-  display: flex;
-  flex-direction: column;
-}
-.UserBasicInfo__form__input__verified div {
-  display: flex;
-  gap: 1rem;
-  color: rgb(102, 102, 102);
-  align-items: center;
-}
-@media (min-width: 768px) {
-  .UserBasicInfo__form__input__verified {
-    flex-direction: row;
-  }
-}
-
-.UserBasicInfo__Email-No-verificado {
-  display: flex;
-  flex-direction: column;
-}
-.UserBasicInfo__Email-No-verificado button {
-  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.596);
-}
-
-.UserBasicInfo__form__submit {
-  display: flex;
-  justify-content: center;
-}
-
 .VerificarCorreo {
   margin-top: 10rem;
   height: 100vh;
@@ -2442,83 +2615,12 @@ input {
   outline-color: #1ab5e6;
 }
 
-.CrearArtista {
-  margin: 6rem 1rem;
-}
-
-.CrearArtistaForm {
-  background-color: rgb(238, 238, 238);
-  border-radius: 2rem;
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-@media (min-width: 768px) {
-  .CrearArtistaForm {
-    max-width: 40rem;
-  }
-}
-.CrearArtistaForm h3 {
-  text-transform: uppercase;
-  font-size: 2rem;
-  margin-bottom: 2rem;
-}
-.CrearArtistaForm button {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  border-radius: 5px;
-  height: 3rem;
-  padding: 1rem;
-  color: #000000;
-  background-color: #ebc246;
-  opacity: 1;
-  transition: opacity 0.3s ease-in-out;
-  transition: box-shadow 0.5s;
-  cursor: pointer;
-  text-transform: uppercase;
-}
-.CrearArtistaForm button:active {
-  opacity: 0.5;
-  transform: scale(0.8);
-}
-.CrearArtistaForm button:hover {
-  opacity: 0.9;
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1215686275);
-}
-.CrearArtistaForm button:focus {
-  outline-color: #1ab5e6;
-}
-
-.CrearArtistaForm__form__input {
-  border-radius: 5px;
-  margin-bottom: 2rem;
-  display: flex;
-  flex-direction: column;
-}
-.CrearArtistaForm__form__input input:focus {
-  outline-color: #1ab5e6;
-}
-.CrearArtistaForm__form__input textarea {
-  height: 15rem;
-  width: 30rem;
-  border: none;
-}
-.CrearArtistaForm__form__input textarea:focus {
-  outline-color: #1ab5e6;
-}
-
 /* app_music */
+/* artista */
 /* forms */
 /* helpers */
 /* layout */
 /* users */
-/* artistas */
 .instrumentales {
   min-height: 100vh;
   margin-top: 9rem;
@@ -2765,18 +2867,19 @@ input {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   margin-bottom: 100vh;
   padding: 0 4rem;
 }
 @media (min-width: 768px) {
   .Panel-de-control__Artista {
     flex-direction: row;
-    justify-content: flex-start;
     align-items: normal;
     flex-wrap: wrap;
   }
 }
 
 .Panel-de-control__Artista__elemento {
+  margin: 6rem 1rem;
   gap: 2rem;
 }
