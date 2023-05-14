@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import {
-    AppMusic,
     StyleList,
     ArtistList,
     useHandleAppMusic,
@@ -9,6 +8,7 @@ import {
 } from '../components';
 import { PropsHead } from '../components/helpers/HeadMetaInfo';
 import Head from 'next/head';
+import AppMusic from '../components/app_music/AppMusic';
 
 function Instrumentales({ headInfo }) {
     const {
@@ -40,7 +40,6 @@ function Instrumentales({ headInfo }) {
         if (producciones_HTTP_Fetch) {
             setProduccioneFiltradas(produccionesArtistas);
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [producciones_HTTP_Fetch]);
 
     const [

@@ -24,7 +24,6 @@ function VerificarCorreo({ headInfo }) {
     const { token } = router.query;
 
     useEffect(() => {
-        console.log(token);
         if (token) {
             const apiUrl = `${
                 process.env.NODE_ENV === 'production'

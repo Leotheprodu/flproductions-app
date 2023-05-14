@@ -20,7 +20,9 @@ function InicioPaneldeControl({ headInfo }) {
         robots,
     }: PropsHead = headInfo;
     const user = useSelector((state: RootState) => state.user.session.user);
-
+    const isLoggedIn = useSelector(
+        (state: RootState) => state.user.session.isLoggedIn
+    );
     return (
         <ControlPanel>
             <Head>
@@ -41,23 +43,24 @@ function InicioPaneldeControl({ headInfo }) {
                 <meta property="og:image:width" content={imgWidth} />
                 <meta property="og:image:height" content={imgHeight} />
             </Head>
+            {isLoggedIn && (
+                <div className="InicioPaneldeControl__div contenedor">
+                    <div className="InicioPaneldeControl">
+                        <AvatarUsers
+                            id={user.id}
+                            username={user.username}
+                            size={10}
+                        />
 
-            <div className="InicioPaneldeControl__div contenedor">
-                <div className="InicioPaneldeControl">
-                    <AvatarUsers
-                        id={user.id}
-                        username={user.username}
-                        size={10}
-                    />
-
-                    <div className="InicioPaneldeControl_textos">
-                        <h1>{user.username}</h1>
+                        <div className="InicioPaneldeControl_textos">
+                            <h1>{user.username}</h1>
+                        </div>
+                    </div>
+                    <div className="InicioPaneldeControl__mensajes">
+                        <MensajesDelSistema />
                     </div>
                 </div>
-                <div className="InicioPaneldeControl__mensajes">
-                    <MensajesDelSistema />
-                </div>
-            </div>
+            )}
 
             <div className="contenedor"></div>
         </ControlPanel>

@@ -7,6 +7,7 @@ import { Spinner } from '../components/helpers/Spinner';
 import Link from 'next/link';
 import { PropsHead } from '../components/helpers/HeadMetaInfo';
 import Head from 'next/head';
+import { fetchAPI } from '../components';
 
 function SignUp({ headInfo }) {
     const {
@@ -32,43 +33,33 @@ function SignUp({ headInfo }) {
     const [formStatus, setFormStatus] = useState<string>('');
     const [statusenviado, setStatusEnviado] = useState<boolean>(false);
     const [spinner, setSpinner] = useState<boolean>(false);
+    const urlApiLogin =
+        process.env.NODE_ENV === 'production'
+            ? process.env.NEXT_PUBLIC_PROD_AUTH_LOGIN
+            : process.env.NEXT_PUBLIC_DEV_AUTH_LOGIN;
+    const urlApiSignUp =
+        process.env.NODE_ENV === 'production'
+            ? process.env.NEXT_PUBLIC_PROD_USER_SIGNUP
+            : process.env.NEXT_PUBLIC_DEV_USER_SIGNUP;
     const onChange = () => {
         if (captcha.current.getValue()) {
             setFormStatus('');
         }
     };
-    const loginNewUser = () => {
-        fetch(
-            `${
-                process.env.NODE_ENV === 'production'
-                    ? process.env.NEXT_PUBLIC_PROD_AUTH_LOGIN
-                    : process.env.NEXT_PUBLIC_DEV_AUTH_LOGIN
-            }`,
-            {
-                method: 'POST',
-                credentials: 'include',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email, password }),
-            }
-        )
-            .then((res) => res.json())
-            .then((data) => {
-                if (data.isLoggedIn) {
-                    dispatch(setSession(data));
-                } else {
-                    alert(
-                        'Datos inválidos, correo o contraseña incorrecta o regístrate'
-                    );
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+    const loginNewUser = async () => {
+        const { error, data } = await fetchAPI({
+            url: urlApiLogin,
+            method: 'POST',
+            body: { email, password },
+        });
+        if (data) {
+            dispatch(setSession(data));
+        } else {
+            alert(error);
+        }
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setSpinner(true);
         if (username.length > 15) {
@@ -78,51 +69,33 @@ function SignUp({ headInfo }) {
             setSpinner(false);
             return;
         }
+
         if (captcha.current.getValue()) {
-            // Aquí puedes enviar los datos del formulario a tu servidor
-            fetch(
-                `${
-                    process.env.NODE_ENV === 'production'
-                        ? process.env.NEXT_PUBLIC_PROD_USER_SIGNUP
-                        : process.env.NEXT_PUBLIC_DEV_USER_SIGNUP
-                }`,
-                {
-                    method: 'POST',
-                    credentials: 'include',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        email,
-                        password,
-                        username,
-                        fecha_creacion,
-                    }),
-                }
-            )
-                .then((response) => {
-                    if (response.status === 200) {
-                        setEmail('');
-                        setPassword('');
-                        setUserName('');
-                        setSpinner(false);
-                        setFormStatus(
-                            'Listo!, te hemos enviado un correo de verificacion, porfavor verifica tu email'
-                        );
-                        setStatusEnviado(true);
-                        loginNewUser();
-                    } else if (response.status === 403) {
-                        setFormStatus(
-                            'El correo ya existe en el sistema, usa un nuevo correo'
-                        );
-                        setSpinner(false);
-                        return;
-                    }
-                })
-                .catch((error) => {
-                    // Manejar el error aquí
-                    console.log(error);
-                });
+            const { error, status } = await fetchAPI({
+                url: urlApiSignUp,
+                method: 'POST',
+                body: {
+                    email,
+                    password,
+                    username,
+                    fecha_creacion,
+                },
+            });
+            if (status === 200) {
+                setEmail('');
+                setPassword('');
+                setUserName('');
+                setSpinner(false);
+                setFormStatus(
+                    'Listo!, te hemos enviado un correo de verificacion, porfavor verifica tu email'
+                );
+                setStatusEnviado(true);
+                loginNewUser();
+            } else if (error) {
+                setFormStatus(error);
+                setSpinner(false);
+                return;
+            }
         } else setFormStatus('Por favor acepta el captcha');
     };
 
