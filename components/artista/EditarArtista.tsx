@@ -1,13 +1,18 @@
 import { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { RootState } from '../';
+import { RootState, fetchAPI, setSessionArtista } from '../';
 import { IconEdit } from '@tabler/icons-react';
-
+import { useDispatch } from 'react-redux';
 export const EditarArtista = () => {
+    const dispatch = useDispatch();
     const fileInputRef = useRef(null);
     const artista = useSelector(
         (state: RootState) => state.user.session.artista
     );
+    const apiUrlUpdateImage =
+        process.env.NODE_ENV === 'production'
+            ? process.env.NEXT_PUBLIC_PROD_UDPATE_ARTIST_IMAGE
+            : process.env.NEXT_PUBLIC_DEV_UDPATE_ARTIST_IMAGE;
     const [imageUrl, setImageUrl] = useState(
         'https://flproductionscr.com/build_main/img/perfil/avatar/10.webp'
     );
@@ -35,10 +40,27 @@ export const EditarArtista = () => {
             [name]: false,
         }));
     };
-    const handleFileChange = (e) => {
+    const handleFileChange = async (e) => {
         const file = e.target.files[0];
         const formData = new FormData();
         formData.append('imagen', file);
+        const { data, error, status } = await fetchAPI({
+            method: 'PUT',
+            url: apiUrlUpdateImage,
+            body: formData,
+            isFormData: true,
+        });
+        if (data) {
+            const artistaActualizado = { ...artista, imagen: data.imagen };
+            dispatch(setSessionArtista(artistaActualizado));
+            setImageUrl(data.imagen);
+        }
+        if (error) {
+            console.log(error);
+            if (status === 500) {
+                console.log('el archivo es muy grande, mas de 1mb');
+            }
+        }
         // Aquí puedes procesar el archivo seleccionado, por ejemplo, cargarlo al servidor
     };
     return (
@@ -49,6 +71,7 @@ export const EditarArtista = () => {
                     type="file"
                     style={{ display: 'none' }}
                     onChange={handleFileChange}
+                    accept="image/jpeg, image/png"
                 />
                 <div
                     className="EditarArtista_imagen_container"
