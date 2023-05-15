@@ -13,6 +13,10 @@ export const EditarArtista = () => {
         process.env.NODE_ENV === 'production'
             ? process.env.NEXT_PUBLIC_PROD_UDPATE_ARTIST_IMAGE
             : process.env.NEXT_PUBLIC_DEV_UDPATE_ARTIST_IMAGE;
+    const apiUrlUpdateText =
+        process.env.NODE_ENV === 'production'
+            ? process.env.NEXT_PUBLIC_PROD_UDPATE_ARTIST_TEXT
+            : process.env.NEXT_PUBLIC_DEV_UDPATE_ARTIST_TEXT;
     const [imageUrl, setImageUrl] = useState(
         'https://flproductionscr.com/build_main/img/perfil/avatar/10.webp'
     );
@@ -33,12 +37,26 @@ export const EditarArtista = () => {
         artista.imagen && setImageUrl(artista.imagen);
     }, []);
 
-    const handleInputBlur = (e) => {
+    const handleInputBlur = async (e) => {
         const { name } = e.target;
         setIsEditing((prevData) => ({
             ...prevData,
             [name]: false,
         }));
+        if (newData[name] !== artista[name]) {
+            const { data, error } = await fetchAPI({
+                method: 'PUT',
+                url: apiUrlUpdateText,
+                body: { [name]: newData[name] },
+            });
+            if (data) {
+                const artistaActualizado = { ...artista, [name]: data[name] };
+                dispatch(setSessionArtista(artistaActualizado));
+            }
+            if (error) {
+                console.log(error);
+            }
+        }
     };
     const handleFileChange = async (e) => {
         const file = e.target.files[0];
@@ -148,14 +166,6 @@ export const EditarArtista = () => {
                             className="EditarArtista_texto_element"
                         >
                             <div className="EditarArtista_texto_Text">
-                                <p
-                                    style={{
-                                        marginRight: '1rem',
-                                        fontWeight: '700',
-                                    }}
-                                >
-                                    Descripcion:
-                                </p>
                                 <p>{newData.info}</p>
                                 <div className="EditarArtista_texto_iconEdit">
                                     <IconEdit />

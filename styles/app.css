@@ -989,7 +989,6 @@ input {
 }
 
 .EditarArtista_input_nombre_artista {
-  text-transform: uppercase;
   font-size: 4rem;
 }
 .EditarArtista_input_nombre_artista:focus {
@@ -1028,12 +1027,10 @@ input {
 
 .EditarArtista_texto_iconEdit {
   color: #1ab5e6;
-  opacity: 50%;
 }
 
 .EditarArtista_imagen_iconEdit {
   color: #1ab5e6;
-  opacity: 50%;
   position: absolute;
   right: 2rem;
   top: 2rem;
@@ -1044,12 +1041,10 @@ input {
   cursor: pointer;
 }
 
-.EditarArtista_imagen_container,
-.EditarArtista_texto_Text {
+.EditarArtista_imagen_container {
   transition: transform 0.5s ease-in-out;
 }
-.EditarArtista_imagen_container:hover,
-.EditarArtista_texto_Text:hover {
+.EditarArtista_imagen_container:hover {
   transform: scale(1.01);
 }
 
