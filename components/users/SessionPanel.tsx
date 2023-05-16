@@ -7,11 +7,11 @@ import {
 } from '@tabler/icons-react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSession } from '../redux/userActions';
+import { setSession, setUserMessage } from '../redux/userActions';
 import { Spinner } from '../helpers/Spinner';
 import { RootState } from '../redux/store';
 import Link from 'next/link';
-import { fetchAPI } from '../helpers/fetchAPI';
+import { fetchAPI } from '../';
 
 function SessionPanel() {
     const dispatch = useDispatch();
@@ -20,6 +20,7 @@ function SessionPanel() {
     const isLoggedIn = useSelector(
         (state: RootState) => state.user.session.isLoggedIn
     );
+
     const userInfo = useSelector((state: RootState) => state.user.session.user);
     const [botonOlvideContra, setBotonOlvideContra] = useState<boolean>(false);
     const [spinner, setSpinner] = useState<boolean>(false);
@@ -38,7 +39,15 @@ function SessionPanel() {
             : process.env.NEXT_PUBLIC_DEV_AUTH_LOGOUT;
     const checkLoggedIn = async () => {
         const { data } = await fetchAPI({ url: apiUrlCheckSession });
-        data.isLoggedIn && dispatch(setSession(data));
+        if (data.isLoggedIn) {
+            dispatch(setSession({ ...data }));
+            dispatch(
+                setUserMessage({
+                    message: 'Has Iniciado Session',
+                    messageType: 'notification',
+                })
+            );
+        }
     };
 
     useEffect(() => {
@@ -55,17 +64,31 @@ function SessionPanel() {
         });
         if (status === 429) {
             setSpinner(false);
-            alert(
-                'muchos intentos de inicio de sesion, espere 15 minutos para volver a intentar o puede probar cambiar la contraseña'
+            dispatch(
+                setUserMessage({
+                    message:
+                        'muchos intentos de inicio de sesion, espere 15 minutos',
+                    messageType: 'notification',
+                })
             );
             return;
         }
         if (data.isLoggedIn) {
-            dispatch(setSession(data));
+            dispatch(setSession({ ...data }));
+            dispatch(
+                setUserMessage({
+                    message: 'Has Iniciado Session',
+                    messageType: 'notification',
+                })
+            );
             setSpinner(false);
         } else {
-            alert(
-                'Datos inválidos, correo o contraseña incorrecta o regístrate'
+            dispatch(
+                setUserMessage({
+                    message:
+                        'Datos inválidos, correo o contraseña incorrecta o regístrate',
+                    messageType: 'notification',
+                })
             );
             setBotonOlvideContra(true);
             setSpinner(false);
@@ -77,8 +100,14 @@ function SessionPanel() {
         setSpinner(true);
         const { data } = await fetchAPI({ url: apiUrlLogout });
         if (data) {
-            dispatch(setSession(data));
+            dispatch(setSession({ ...data }));
             setSpinner(false);
+            dispatch(
+                setUserMessage({
+                    message: 'Has Cerrado Session',
+                    messageType: 'notification',
+                })
+            );
         }
     };
     if (isLoggedIn) {

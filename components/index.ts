@@ -21,6 +21,7 @@ export * from './helpers/MensajesDelSistema';
 export * from './helpers/NavLink';
 export * from './helpers/Spinner';
 export * from './helpers/fetchAPI';
+export * from './helpers/Draggable';
 /* Hooks personalizados */
 export * from './hooks/useEnvLink';
 export * from './hooks/useHandleAppMusic';
@@ -44,6 +45,7 @@ export * from './layout/SimpleText';
 export * from './layout/social-icons';
 export * from './layout/testimonio';
 export * from './layout/NavLinks';
+export * from './layout/MessageComponent';
 /* Redux */
 export * from './redux/store';
 export * from './redux/userActions';

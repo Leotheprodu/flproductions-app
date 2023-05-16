@@ -15,6 +15,7 @@
 /* helpers */
 @forward './helpers/CountdownTimer';
 @forward './helpers/mensajes-del-sistema__bloque';
+@forward './helpers/Draggable';
 /* layout */
 @forward './layout/BannerSlider';
 @forward './layout/contact-info';
@@ -28,6 +29,7 @@
 @forward './layout/simple-text';
 @forward './layout/social-icons';
 @forward './layout/testimonio';
+@forward './layout/MessageComponent';
 /* users */
 @forward './users/AvatarSelection';
 @forward './users/AvatarUsers';

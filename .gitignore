@@ -35,3 +35,4 @@ dist.zip
 !.yarn/versions
 .next/
 app.zip
+*.mp3

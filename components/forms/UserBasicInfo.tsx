@@ -1,7 +1,7 @@
 import { IconBan, IconCircleCheck } from '@tabler/icons-react';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setSession } from '../redux/userActions';
+import { setUserMessage, setSession } from '../redux/userActions';
 import { RootState } from '../redux/store';
 import { fetchAPI } from '../helpers/fetchAPI';
 
@@ -15,13 +15,8 @@ export const UserBasicInfo = () => {
     const [email, setEmail] = useState(userInfo.email);
     const [password, setPassword] = useState('');
     const [password1, setPassword1] = useState('');
-    const [formStatus, setFormStatus] = useState('');
     const [statusenviado, setStatusEnviado] = useState(false);
     const [clasePass, setClasePass] = useState('');
-    const apiUrlCheckSession =
-        process.env.NODE_ENV === 'production'
-            ? process.env.NEXT_PUBLIC_PROD_AUTH_CHECK_SESSION
-            : process.env.NEXT_PUBLIC_DEV_AUTH_CHECK_SESSION;
     const apiUrlUpdateUser = `${
         process.env.NODE_ENV === 'production'
             ? process.env.NEXT_PUBLIC_PROD_USER_UPDATE_USERS_ID
@@ -32,20 +27,25 @@ export const UserBasicInfo = () => {
             ? process.env.NEXT_PUBLIC_PROD_USER_VERIFY_EMAIL_EMAIL
             : process.env.NEXT_PUBLIC_DEV_USER_VERIFY_EMAIL_EMAIL
     }${email}`;
-    const refreshUserSession = async () => {
-        const { data } = await fetchAPI({ url: apiUrlCheckSession });
-        data.isLoggedIn && dispatch(setSession(data));
-    };
     const handleSubmit = async (e) => {
         e.preventDefault();
         //Validaciones
         if (password !== password1) {
-            setFormStatus('Las contraseñas deben coincidir');
+            dispatch(
+                setUserMessage({
+                    message: 'Las contraseñas deben coincidir',
+                    messageType: 'error',
+                })
+            );
             return;
         }
         if (username.length > 15) {
-            setFormStatus(
-                'el nombre de usuario debe tener maximo 15 caracteres'
+            dispatch(
+                setUserMessage({
+                    message:
+                        'el nombre de usuario debe tener maximo 15 caracteres',
+                    messageType: 'error',
+                })
             );
             return;
         }
@@ -63,31 +63,47 @@ export const UserBasicInfo = () => {
             body: datosActualizadosDeUsuario,
         });
         if (data) {
-            setFormStatus('Se han actualizado los datos correctamente');
+            dispatch(
+                setUserMessage({
+                    message: 'Se han actualizado los datos correctamente',
+                    messageType: 'notification',
+                })
+            );
+
             setStatusEnviado(true);
-            refreshUserSession();
         } else {
-            setFormStatus(error);
+            dispatch(
+                setUserMessage({
+                    message: error,
+                    messageType: 'error',
+                })
+            );
         }
     };
 
     const hanldeOnBlurPassword = () => {
         if (password !== password1) {
             setClasePass('UserBasicInfo__Error');
-            setFormStatus('Las contraseñas deben coincidir');
+            dispatch(
+                setUserMessage({
+                    message: 'Las contraseñas deben coincidir',
+                    messageType: 'error',
+                })
+            );
         } else {
             setClasePass('');
-            setFormStatus('');
         }
     };
     const handleOnChangeNombreUsuario = (e) => {
         setUserName(e.target.value.trim());
         if (e.target.value.length > 15) {
-            setFormStatus(
-                'No esta permitido tener mas de 15 caracteres en el nombre de usuario'
+            dispatch(
+                setUserMessage({
+                    message:
+                        'No esta permitido tener mas de 15 caracteres en el nombre de usuario',
+                    messageType: 'error',
+                })
             );
-        } else {
-            setFormStatus('');
         }
     };
     const handleVerificarEmail = async () => {
@@ -107,18 +123,31 @@ export const UserBasicInfo = () => {
                 url: apiUrlVerifyEmail,
             });
             if (status === 200) {
-                setFormStatus(
-                    'Hemos reenviado el correo de verificacion, ve a revisarlo y verifica tu correo'
+                dispatch(
+                    setUserMessage({
+                        message:
+                            'Hemos reenviado el correo de verificacion, ve a revisarlo y verifica tu correo',
+                        messageType: 'warning',
+                    })
                 );
                 setStatusEnviado(true);
             } else if (error) {
-                setFormStatus(error);
+                dispatch(
+                    setUserMessage({
+                        message: error,
+                        messageType: 'error',
+                    })
+                );
                 setStatusEnviado(true);
                 return;
             }
         } else {
-            setFormStatus(
-                'Para volver a enviar el correo de verificacion, debe haber pasado 15 minutos desde el ultimo cambio'
+            dispatch(
+                setUserMessage({
+                    message:
+                        'Para volver a enviar el correo de verificacion, debe haber pasado 15 minutos desde el ultimo cambio',
+                    messageType: 'error',
+                })
             );
             setStatusEnviado(true);
             return;
@@ -218,9 +247,6 @@ export const UserBasicInfo = () => {
                         )}
                     </div>
                 </form>
-                <div>
-                    <p className="contact-form__mensaje-status">{formStatus}</p>
-                </div>
             </div>
         </>
     );

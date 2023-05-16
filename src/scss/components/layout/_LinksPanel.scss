@@ -1,9 +1,7 @@
 @use 'base/mixins' as m;
 @use 'base/variables' as v;
 
-
-
-.panel-de-control__menu{
+.panel-de-control__menu {
     visibility: hidden;
     top: 6rem;
     width: 100%;
@@ -13,14 +11,14 @@
     opacity: 0;
     z-index: 0;
     display: flex;
-    justify-content:baseline;
-    transition: visibility 1s ease-in-out, opacity .4s linear;
+    justify-content: baseline;
+    transition: visibility 1s ease-in-out, opacity 0.4s linear;
     @include m.tablet {
         visibility: visible;
         opacity: 1;
     }
 }
-.panel-de-control__menu.selected{
+.panel-de-control__menu.selected {
     display: flex;
     visibility: visible;
     position: fixed;
@@ -30,58 +28,48 @@
     background-color: v.$gris;
     box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.082);
 }
-.panel-de-control__menu.normal{
-    position:relative;
+.panel-de-control__menu.normal {
+    position: relative;
     display: flex;
     z-index: 0;
     @include m.tablet {
         border-right: 1px solid v.$gris;
         top: 0;
-        
     }
 }
-.links-panel{
+.links-panel {
     z-index: 10;
-    a{
+    a {
         border-radius: 10px;
         display: flex;
         align-items: center;
-        transition: background-color .2s ease-in-out;
+        transition: background-color 0.2s ease-in-out;
         padding: 1rem;
         gap: 1rem;
-        &:hover{
+        &:hover {
             background-color: rgba(0, 0, 0, 0.048);
         }
-        svg{
-            
-            
-        }
-        p{
+        p {
             margin: 0;
-        
         }
         &:active {
             background-color: rgba(0, 0, 0, 0.219);
-            transition-duration: .2s;
+            transition-duration: 0.2s;
             transition: ease-in-out;
         }
         &:focus {
             outline-color: v.$primario;
         }
-
     }
-    
+
     @include m.tablet {
         margin-left: 0;
         position: fixed;
-        
     }
-    .active{
+    .active {
         background-color: rgba(0, 0, 0, 0.048);
-        &:hover{
-            background-color: rgba(0, 0, 0, 0.082);  
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.082);
         }
-        
-        
     }
 }

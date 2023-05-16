@@ -1,12 +1,5 @@
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import {
-    LinksPanel,
-    fetchAPI,
-    useUserMovilDeviceChecker,
-    setSession,
-    RootState,
-} from '..';
+import { useSelector } from 'react-redux';
+import { LinksPanel, useUserMovilDeviceChecker, RootState } from '..';
 import { IconSettingsFilled } from '@tabler/icons-react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
@@ -17,25 +10,11 @@ interface Props {
 
 export const ControlPanel = ({ children }: Props) => {
     const router = useRouter();
-    const dispatch = useDispatch();
     const isLoggedIn = useSelector(
         (state: RootState) => state.user.session.isLoggedIn
     );
     const [isMovilUser, onClickMovilUser, setOnClickMovilUser] =
         useUserMovilDeviceChecker();
-    const apiUrl =
-        process.env.NODE_ENV === 'production'
-            ? process.env.NEXT_PUBLIC_PROD_AUTH_CHECK_SESSION
-            : process.env.NEXT_PUBLIC_DEV_AUTH_CHECK_SESSION;
-    useEffect(() => {
-        const fetchData = async () => {
-            const { data } = await fetchAPI({ url: apiUrl });
-            if (data) {
-                dispatch(setSession(data));
-            }
-        };
-        fetchData();
-    }, [isLoggedIn]);
     const handleClickMovilUser = () => {
         if (typeof setOnClickMovilUser === 'function') {
             setOnClickMovilUser(!onClickMovilUser);

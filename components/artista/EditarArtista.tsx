@@ -1,8 +1,16 @@
 import { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { RootState, fetchAPI, setSessionArtista } from '../';
+import { RootState, fetchAPI, setSessionArtista, setUserMessage } from '../';
 import { IconEdit } from '@tabler/icons-react';
 import { useDispatch } from 'react-redux';
+
+interface NewDataState {
+    nombre_artista: string;
+    info: string;
+    instagram: string;
+    spotify: string;
+}
+
 export const EditarArtista = () => {
     const dispatch = useDispatch();
     const fileInputRef = useRef(null);
@@ -17,9 +25,10 @@ export const EditarArtista = () => {
         process.env.NODE_ENV === 'production'
             ? process.env.NEXT_PUBLIC_PROD_UDPATE_ARTIST_TEXT
             : process.env.NEXT_PUBLIC_DEV_UDPATE_ARTIST_TEXT;
-    const [imageUrl, setImageUrl] = useState(
+    const [imageUrl, setImageUrl] = useState<string>(
         'https://flproductionscr.com/build_main/img/perfil/avatar/10.webp'
     );
+
     const [isEditing, setIsEditing] = useState({
         imagen: false,
         nombre_artista: false,
@@ -27,7 +36,7 @@ export const EditarArtista = () => {
         instagram: false,
         spotify: false,
     });
-    const [newData, setNewData] = useState({
+    const [newData, setNewData] = useState<NewDataState>({
         nombre_artista: artista.nombre_artista,
         info: artista.info,
         instagram: artista.instagram,
@@ -47,14 +56,26 @@ export const EditarArtista = () => {
             const { data, error } = await fetchAPI({
                 method: 'PUT',
                 url: apiUrlUpdateText,
-                body: { [name]: newData[name] },
+                body: { [name]: newData[name], tipo: 1 },
             });
             if (data) {
                 const artistaActualizado = { ...artista, [name]: data[name] };
                 dispatch(setSessionArtista(artistaActualizado));
+                dispatch(
+                    setUserMessage({
+                        message: 'actualizado con exito',
+                        messageType: 'warning',
+                    })
+                );
             }
             if (error) {
                 console.log(error);
+                dispatch(
+                    setUserMessage({
+                        message: error,
+                        messageType: 'error',
+                    })
+                );
             }
         }
     };
@@ -62,6 +83,7 @@ export const EditarArtista = () => {
         const file = e.target.files[0];
         const formData = new FormData();
         formData.append('imagen', file);
+        formData.append('tipo', '1');
         const { data, error, status } = await fetchAPI({
             method: 'PUT',
             url: apiUrlUpdateImage,
@@ -72,12 +94,31 @@ export const EditarArtista = () => {
             const artistaActualizado = { ...artista, imagen: data.imagen };
             dispatch(setSessionArtista(artistaActualizado));
             setImageUrl(data.imagen);
+            dispatch(
+                setUserMessage({
+                    message: 'actualizado con exito',
+                    messageType: 'warning',
+                })
+            );
         }
         if (error) {
-            console.log(error);
             if (status === 500) {
-                console.log('el archivo es muy grande, mas de 1mb');
+                dispatch(
+                    setUserMessage({
+                        message: 'el archivo es muy grande, mas de 1mb',
+                        messageType: 'error',
+                    })
+                );
+
+                return;
             }
+            console.log(error);
+            dispatch(
+                setUserMessage({
+                    message: error,
+                    messageType: 'error',
+                })
+            );
         }
         // Aquí puedes procesar el archivo seleccionado, por ejemplo, cargarlo al servidor
     };
