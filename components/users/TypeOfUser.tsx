@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setSessionRoles } from '../redux/userActions';
-import { RootState } from '../redux/store';
-import { Spinner } from '../helpers/Spinner';
-import { fetchAPI } from '../helpers/fetchAPI';
+import {
+    fetchAPI,
+    setUserMessage,
+    setSessionRoles,
+    RootState,
+    Spinner,
+} from '../';
 
 export const TypeofUser = (): JSX.Element | null => {
     const dispatch = useDispatch();
     const userInfo = useSelector((state: RootState) => state.user.session.user);
     const userRoles: [number] = useSelector(
-        (state: RootState) => state.user.session.roles
+        (state: RootState) => state.user.session.roles || []
     );
     const [selectedOptions, setSelectedOptions] = useState([1, 2]);
     const [spinner, setSpinner] = useState<boolean>(false);
@@ -47,7 +50,7 @@ export const TypeofUser = (): JSX.Element | null => {
         await enviarBD(idRoles);
     };
     const enviarBD = async (idRoles) => {
-        const { data } = await fetchAPI({
+        const { data, error } = await fetchAPI({
             url: ApiUrl,
             method: 'POST',
             body: idRoles,
@@ -56,6 +59,19 @@ export const TypeofUser = (): JSX.Element | null => {
             dispatch(setSessionRoles(data.roles));
             setSpinner(false);
             setStatusEnviado(true);
+            dispatch(
+                setUserMessage({
+                    message: `Roles Actualizados`,
+                    messageType: 'warning',
+                })
+            );
+        } else {
+            dispatch(
+                setUserMessage({
+                    message: error,
+                    messageType: 'error',
+                })
+            );
         }
     };
     if (userRoles.includes(1)) {

@@ -45,7 +45,14 @@ export const EditarArtista = () => {
     useEffect(() => {
         artista.imagen && setImageUrl(artista.imagen);
     }, []);
-
+    useEffect(() => {
+        dispatch(
+            setUserMessage({
+                message: `Edita aqui tu informacion de artista!, como la imagen, el Nombre, el link de tu instagram, etc...`,
+                messageType: 'warning',
+            })
+        );
+    }, []);
     const handleInputBlur = async (e) => {
         const { name } = e.target;
         setIsEditing((prevData) => ({
@@ -63,7 +70,7 @@ export const EditarArtista = () => {
                 dispatch(setSessionArtista(artistaActualizado));
                 dispatch(
                     setUserMessage({
-                        message: 'actualizado con exito',
+                        message: `el campo ${name} actualizado con exito`,
                         messageType: 'warning',
                     })
                 );
@@ -96,7 +103,7 @@ export const EditarArtista = () => {
             setImageUrl(data.imagen);
             dispatch(
                 setUserMessage({
-                    message: 'actualizado con exito',
+                    message: 'Imagen Actualizada con exito',
                     messageType: 'warning',
                 })
             );

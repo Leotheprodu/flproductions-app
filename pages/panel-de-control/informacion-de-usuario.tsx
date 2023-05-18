@@ -1,3 +1,5 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import Head from 'next/head';
 import {
     TypeofUser,
@@ -5,6 +7,7 @@ import {
     UserBasicInfo,
     ControlPanel,
     PropsHead,
+    setUserMessage,
 } from '../../components';
 
 function InfodeUsuario({ headInfo }) {
@@ -21,7 +24,15 @@ function InfodeUsuario({ headInfo }) {
         keywords,
         robots,
     }: PropsHead = headInfo;
-
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(
+            setUserMessage({
+                message: `Actualiza la informacion basica de tu cuenta, cambia tu avatar, selecciona si eres un Cantante o Productor Musical.`,
+                messageType: 'warning',
+            })
+        );
+    }, []);
     return (
         <ControlPanel>
             <Head>

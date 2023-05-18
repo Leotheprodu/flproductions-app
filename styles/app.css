@@ -2139,15 +2139,11 @@ input {
   position: relative;
 }
 
-.MessageComponent-text {
-  text-transform: uppercase;
-}
-
 .MessageComponent-close {
   border: none;
   background: none;
   position: absolute;
-  color: #000000;
+  color: #FFFFFF;
   right: 0;
   top: 0.2rem;
   cursor: pointer;

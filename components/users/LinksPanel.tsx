@@ -8,9 +8,8 @@ import { RootState } from '../redux/store';
 import { useSelector } from 'react-redux';
 
 export const LinksPanel = () => {
-    const userRoles: [number] = useSelector(
-        (state: RootState) => state.user.session.roles
-    );
+    const userRoles: [number] =
+        useSelector((state: RootState) => state.user.session.roles) || [];
     return (
         <nav className="links-panel">
             <div className="links-panel__element">

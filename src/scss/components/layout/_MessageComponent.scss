@@ -20,15 +20,11 @@
     position: relative;
 }
 
-.MessageComponent-text {
-    text-transform: uppercase;
-}
-
 .MessageComponent-close {
     border: none;
     background: none;
     position: absolute;
-    color: v.$negro;
+    color: v.$blanco;
     right: 0;
     top: 0.2rem;
     cursor: pointer;

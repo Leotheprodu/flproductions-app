@@ -10,9 +10,9 @@ interface Props {
 
 export const ControlPanel = ({ children }: Props) => {
     const router = useRouter();
-    const isLoggedIn = useSelector(
-        (state: RootState) => state.user.session.isLoggedIn
-    );
+    const isLoggedIn =
+        useSelector((state: RootState) => state.user.session.isLoggedIn) ||
+        false;
     const [isMovilUser, onClickMovilUser, setOnClickMovilUser] =
         useUserMovilDeviceChecker();
     const handleClickMovilUser = () => {

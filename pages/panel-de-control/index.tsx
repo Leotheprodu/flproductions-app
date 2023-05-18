@@ -1,10 +1,14 @@
-import { useSelector } from 'react-redux';
-import { AvatarUsers, MensajesDelSistema } from '../../components';
-import { RootState } from '../../components/redux/store';
-import { ControlPanel } from '../../components/layout/panel-de-control';
-import { PropsHead } from '../../components/helpers/HeadMetaInfo';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+    AvatarUsers,
+    MensajesDelSistema,
+    setUserMessage,
+    ControlPanel,
+    RootState,
+    PropsHead,
+} from '../../components';
 import Head from 'next/head';
-
 function InicioPaneldeControl({ headInfo }) {
     const {
         imgWidth,
@@ -19,10 +23,20 @@ function InicioPaneldeControl({ headInfo }) {
         keywords,
         robots,
     }: PropsHead = headInfo;
+    const dispatch = useDispatch();
     const user = useSelector((state: RootState) => state.user.session.user);
     const isLoggedIn = useSelector(
-        (state: RootState) => state.user.session.isLoggedIn
+        (state: RootState) => state.user.session.isLoggedIn || false
     );
+    useEffect(() => {
+        dispatch(
+            setUserMessage({
+                message: `En el panel de control, puedes configurar tu cuenta`,
+                messageType: 'warning',
+            })
+        );
+    }, []);
+
     return (
         <ControlPanel>
             <Head>

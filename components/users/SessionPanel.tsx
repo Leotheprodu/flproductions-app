@@ -43,7 +43,7 @@ function SessionPanel() {
             dispatch(setSession({ ...data }));
             dispatch(
                 setUserMessage({
-                    message: 'Has Iniciado Session',
+                    message: `Volviste! ${data.user.username}, espero que la pases Pura Vida!`,
                     messageType: 'notification',
                 })
             );
@@ -68,7 +68,7 @@ function SessionPanel() {
                 setUserMessage({
                     message:
                         'muchos intentos de inicio de sesion, espere 15 minutos',
-                    messageType: 'notification',
+                    messageType: 'error',
                 })
             );
             return;
@@ -77,7 +77,7 @@ function SessionPanel() {
             dispatch(setSession({ ...data }));
             dispatch(
                 setUserMessage({
-                    message: 'Has Iniciado Session',
+                    message: `Hey! ${data.user.username}, espero que la pases tuannis!`,
                     messageType: 'notification',
                 })
             );
@@ -87,7 +87,7 @@ function SessionPanel() {
                 setUserMessage({
                     message:
                         'Datos inválidos, correo o contraseña incorrecta o regístrate',
-                    messageType: 'notification',
+                    messageType: 'error',
                 })
             );
             setBotonOlvideContra(true);
@@ -104,7 +104,7 @@ function SessionPanel() {
             setSpinner(false);
             dispatch(
                 setUserMessage({
-                    message: 'Has Cerrado Session',
+                    message: `Listo! ${userInfo.username}, espero que vuelvas pronto!`,
                     messageType: 'notification',
                 })
             );

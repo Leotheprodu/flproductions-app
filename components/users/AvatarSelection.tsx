@@ -1,8 +1,8 @@
 import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/store';
-import { fetchAPI } from '../';
+import { fetchAPI, setUserMessage } from '../';
 
 export const AvatarSelection = (): JSX.Element | null => {
     const maxAvatarLength: number = 9;
@@ -10,15 +10,16 @@ export const AvatarSelection = (): JSX.Element | null => {
     const [avatar, setAvatar] = useState<number>(1);
     const [avatarDer, setAvatarDer] = useState<number>(2);
     const [datoActualizado, setDatoActualizado] = useState<boolean>(false);
-    const userInfo = useSelector((state: RootState) => state.user.session.user);
+    const userSession = useSelector((state: RootState) => state.user.session);
     const userRoles: [number] = useSelector(
         (state: RootState) => state.user.session.roles
     );
+    const dispatch = useDispatch();
     const urlApiAvatarId = `${
         process.env.NODE_ENV === 'production'
             ? process.env.NEXT_PUBLIC_PROD_USER_AVATAR_ID
             : process.env.NEXT_PUBLIC_DEV_USER_AVATAR_ID
-    }${userInfo.id}`;
+    }${userSession.user.id}`;
     const urlApiAvatarUpdate =
         process.env.NODE_ENV === 'production'
             ? process.env.NEXT_PUBLIC_PROD_USER_AVATAR_UPDATE
@@ -43,7 +44,7 @@ export const AvatarSelection = (): JSX.Element | null => {
             }
         };
         fetchData();
-    }, [userInfo]);
+    }, [userSession]);
 
     const handleClickIzq = () => {
         if (avatar <= 1) {
@@ -68,7 +69,7 @@ export const AvatarSelection = (): JSX.Element | null => {
         }
     };
     const handleClickSelect = async () => {
-        const avatarSelected = { id: userInfo.id, avatar };
+        const avatarSelected = { id: userSession.user.id, avatar };
         const { status } = await fetchAPI({
             url: urlApiAvatarUpdate,
             method: 'POST',
@@ -76,9 +77,18 @@ export const AvatarSelection = (): JSX.Element | null => {
         });
         if (status === 200) {
             setDatoActualizado(true);
+            dispatch(
+                setUserMessage({
+                    message: `Avatar Actualizado!`,
+                    messageType: 'warning',
+                })
+            );
         } else {
-            alert(
-                'Solo usuarios con correo verificado pueden cambiar su avatar'
+            dispatch(
+                setUserMessage({
+                    message: `Lo Siento, solo usuarios verificados pueden cambiar su Avatar.`,
+                    messageType: 'error',
+                })
             );
             return;
         }
@@ -117,7 +127,7 @@ export const AvatarSelection = (): JSX.Element | null => {
                     >
                         <IconChevronLeft size={50} />
                     </button>
-                    {!datoActualizado ? (
+                    {!datoActualizado && (
                         <button
                             tabIndex={7}
                             className="AvatarSelection__boton1"
@@ -125,8 +135,6 @@ export const AvatarSelection = (): JSX.Element | null => {
                         >
                             SELECCIONAR
                         </button>
-                    ) : (
-                        <p>Avatar Actualizado</p>
                     )}
                     <button
                         tabIndex={6}

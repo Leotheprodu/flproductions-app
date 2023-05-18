@@ -10,14 +10,13 @@ interface Session {
 }
 interface UserMessage {
     message: string;
-    messageType: 'error' | 'warning' | 'notification';
+    messageType?: 'error' | 'warning' | 'notification';
 }
 export interface SessionState {
     isLoggedIn: boolean;
     user: any;
     roles: number[];
     artista: any;
-    message: string;
     userMessage: UserMessage;
 }
 const initialState: {
@@ -28,7 +27,6 @@ const initialState: {
         user: {},
         roles: [],
         artista: null,
-        message: '',
         userMessage: {
             message:
                 'Hola, estaré apareciendo por aquí cuando necesite informarte algo',
