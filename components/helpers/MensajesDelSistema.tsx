@@ -1,8 +1,10 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { RootState } from '../redux/store';
+import { UserAvatar, fetchAPI, setSessionUserMessage } from '../';
 
 export const MensajesDelSistema = () => {
+    const dispatch = useDispatch();
     const roles = useSelector((state: RootState) => state.user.session.roles);
     const user = useSelector((state: RootState) => state.user.session.user);
     const [mainMensaje, setMainMensaje] = useState<string>('');
@@ -11,6 +13,10 @@ export const MensajesDelSistema = () => {
         width: `${size}rem`,
         height: `${size}rem`,
     };
+    const urlApiGeneralMessages =
+        process.env.NODE_ENV === 'production'
+            ? process.env.NEXT_PUBLIC_PROD_USER_GENERAL_MESSAGES
+            : process.env.NEXT_PUBLIC_DEV_USER_GENERAL_MESSAGES;
     const formatoFecha = (date) => {
         // Crear un objeto Date con la fecha
         const fecha = new Date(date);
@@ -43,35 +49,30 @@ export const MensajesDelSistema = () => {
         return fechaFormateada;
     };
     useEffect(() => {
-        fetch(
-            `${
-                process.env.NODE_ENV === 'production'
-                    ? process.env.NEXT_PUBLIC_PROD_USER_GENERAL_MESSAGES
-                    : process.env.NEXT_PUBLIC_DEV_USER_GENERAL_MESSAGES
-            }`,
-            {
-                credentials: 'include',
-            }
-        )
-            .then((res) => res.json())
-            .then((data) => {
-                if (data) {
-                    const Mensaje_General_Todos = data.filter(
-                        (item) =>
-                            item.tipo_de_mensaje === 'mensajePanel' &&
-                            item.id_role === 8
-                    );
-
-                    setMainMensaje(Mensaje_General_Todos[0].mensaje);
-                } else {
-                    setMainMensaje('');
-                }
-            })
-            .catch((error) => {
-                console.log(error);
+        const fetchData = async () => {
+            const { data, error } = await fetchAPI({
+                url: urlApiGeneralMessages,
             });
-    }, []);
+            if (data) {
+                const Mensaje_General_Todos = data.filter(
+                    (item) =>
+                        item.tipo_de_mensaje === 'mensajePanel' &&
+                        item.id_role === 8
+                );
 
+                setMainMensaje(Mensaje_General_Todos[0].mensaje);
+            } else {
+                setMainMensaje('');
+                dispatch(
+                    setSessionUserMessage({
+                        message: error,
+                        messageType: 'error',
+                    })
+                );
+            }
+        };
+        fetchData();
+    }, []);
     return (
         <>
             {!roles.includes(1) && (
@@ -98,11 +99,7 @@ export const MensajesDelSistema = () => {
                     }}
                     className="AvatarUsers"
                 >
-                    <img
-                        style={styles}
-                        src="https://flproductionscr.com/build_main/img/perfil/avatar/2.webp"
-                        alt="Avatar de LeotheProdu"
-                    />
+                    <UserAvatar user_id={44} />
                     <h3 style={{ margin: '0' }}>LeotheProdu:</h3>
                 </div>
 

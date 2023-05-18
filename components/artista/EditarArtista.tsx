@@ -1,6 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
-import { RootState, fetchAPI, setSessionArtista, setUserMessage } from '../';
+import {
+    RootState,
+    fetchAPI,
+    setSessionArtista,
+    setSessionUserMessage,
+} from '../';
 import { IconEdit } from '@tabler/icons-react';
 import { useDispatch } from 'react-redux';
 
@@ -47,7 +52,7 @@ export const EditarArtista = () => {
     }, []);
     useEffect(() => {
         dispatch(
-            setUserMessage({
+            setSessionUserMessage({
                 message: `Edita aqui tu informacion de artista!, como la imagen, el Nombre, el link de tu instagram, etc...`,
                 messageType: 'warning',
             })
@@ -69,7 +74,7 @@ export const EditarArtista = () => {
                 const artistaActualizado = { ...artista, [name]: data[name] };
                 dispatch(setSessionArtista(artistaActualizado));
                 dispatch(
-                    setUserMessage({
+                    setSessionUserMessage({
                         message: `el campo ${name} actualizado con exito`,
                         messageType: 'warning',
                     })
@@ -78,7 +83,7 @@ export const EditarArtista = () => {
             if (error) {
                 console.log(error);
                 dispatch(
-                    setUserMessage({
+                    setSessionUserMessage({
                         message: error,
                         messageType: 'error',
                     })
@@ -102,7 +107,7 @@ export const EditarArtista = () => {
             dispatch(setSessionArtista(artistaActualizado));
             setImageUrl(data.imagen);
             dispatch(
-                setUserMessage({
+                setSessionUserMessage({
                     message: 'Imagen Actualizada con exito',
                     messageType: 'warning',
                 })
@@ -111,7 +116,7 @@ export const EditarArtista = () => {
         if (error) {
             if (status === 500) {
                 dispatch(
-                    setUserMessage({
+                    setSessionUserMessage({
                         message: 'el archivo es muy grande, mas de 1mb',
                         messageType: 'error',
                     })
@@ -121,7 +126,7 @@ export const EditarArtista = () => {
             }
             console.log(error);
             dispatch(
-                setUserMessage({
+                setSessionUserMessage({
                     message: error,
                     messageType: 'error',
                 })

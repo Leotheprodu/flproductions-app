@@ -3,10 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import {
     AvatarUsers,
     MensajesDelSistema,
-    setUserMessage,
+    setSessionUserMessage,
     ControlPanel,
     RootState,
     PropsHead,
+    UserAvatar,
 } from '../../components';
 import Head from 'next/head';
 function InicioPaneldeControl({ headInfo }) {
@@ -30,7 +31,7 @@ function InicioPaneldeControl({ headInfo }) {
     );
     useEffect(() => {
         dispatch(
-            setUserMessage({
+            setSessionUserMessage({
                 message: `En el panel de control, puedes configurar tu cuenta`,
                 messageType: 'warning',
             })
@@ -60,11 +61,7 @@ function InicioPaneldeControl({ headInfo }) {
             {isLoggedIn && (
                 <div className="InicioPaneldeControl__div contenedor">
                     <div className="InicioPaneldeControl">
-                        <AvatarUsers
-                            id={user.id}
-                            username={user.username}
-                            size={10}
-                        />
+                        <UserAvatar user_id={user.id} size={10} />
 
                         <div className="InicioPaneldeControl_textos">
                             <h1>{user.username}</h1>

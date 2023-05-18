@@ -1,7 +1,7 @@
 import { IconBan, IconCircleCheck } from '@tabler/icons-react';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setUserMessage, setSession } from '../redux/userActions';
+import { setSessionUserMessage, setSessionUser } from '../redux/userActions';
 import { RootState } from '../redux/store';
 import { fetchAPI } from '../helpers/fetchAPI';
 
@@ -32,16 +32,17 @@ export const UserBasicInfo = () => {
         //Validaciones
         if (password !== password1) {
             dispatch(
-                setUserMessage({
+                setSessionUserMessage({
                     message: 'Las contraseñas deben coincidir',
                     messageType: 'error',
                 })
             );
+
             return;
         }
         if (username.length > 15) {
             dispatch(
-                setUserMessage({
+                setSessionUserMessage({
                     message:
                         'el nombre de usuario debe tener maximo 15 caracteres',
                     messageType: 'error',
@@ -57,23 +58,33 @@ export const UserBasicInfo = () => {
             password: password2 !== null ? password2 : null,
         };
         //Fetch de Datos
-        const { data, error } = await fetchAPI({
+        const { data, error, status } = await fetchAPI({
             url: apiUrlUpdateUser,
             method: 'PUT',
             body: datosActualizadosDeUsuario,
         });
+        if (status === 429) {
+            dispatch(
+                setSessionUserMessage({
+                    message: 'Muchos intentos, intentelo de nuevo en mas tarde',
+                    messageType: 'error',
+                })
+            );
+            return;
+        }
         if (data) {
             dispatch(
-                setUserMessage({
+                setSessionUserMessage({
                     message: 'Se han actualizado los datos correctamente',
                     messageType: 'notification',
                 })
             );
+            dispatch(setSessionUser(data.user));
 
             setStatusEnviado(true);
         } else {
             dispatch(
-                setUserMessage({
+                setSessionUserMessage({
                     message: error,
                     messageType: 'error',
                 })
@@ -85,7 +96,7 @@ export const UserBasicInfo = () => {
         if (password !== password1) {
             setClasePass('UserBasicInfo__Error');
             dispatch(
-                setUserMessage({
+                setSessionUserMessage({
                     message: 'Las contraseñas deben coincidir',
                     messageType: 'error',
                 })
@@ -98,7 +109,7 @@ export const UserBasicInfo = () => {
         setUserName(e.target.value.trim());
         if (e.target.value.length > 15) {
             dispatch(
-                setUserMessage({
+                setSessionUserMessage({
                     message:
                         'No esta permitido tener mas de 15 caracteres en el nombre de usuario',
                     messageType: 'error',
@@ -124,7 +135,7 @@ export const UserBasicInfo = () => {
             });
             if (status === 200) {
                 dispatch(
-                    setUserMessage({
+                    setSessionUserMessage({
                         message:
                             'Hemos reenviado el correo de verificacion, ve a revisarlo y verifica tu correo',
                         messageType: 'warning',
@@ -133,7 +144,7 @@ export const UserBasicInfo = () => {
                 setStatusEnviado(true);
             } else if (error) {
                 dispatch(
-                    setUserMessage({
+                    setSessionUserMessage({
                         message: error,
                         messageType: 'error',
                     })
@@ -143,7 +154,7 @@ export const UserBasicInfo = () => {
             }
         } else {
             dispatch(
-                setUserMessage({
+                setSessionUserMessage({
                     message:
                         'Para volver a enviar el correo de verificacion, debe haber pasado 15 minutos desde el ultimo cambio',
                     messageType: 'error',

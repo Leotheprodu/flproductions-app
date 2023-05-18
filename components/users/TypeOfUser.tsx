@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
     fetchAPI,
-    setUserMessage,
+    setSessionUserMessage,
     setSessionRoles,
     RootState,
     Spinner,
@@ -59,15 +59,17 @@ export const TypeofUser = (): JSX.Element | null => {
             dispatch(setSessionRoles(data.roles));
             setSpinner(false);
             setStatusEnviado(true);
+            dispatch(setSessionRoles(data.roles));
             dispatch(
-                setUserMessage({
+                setSessionUserMessage({
                     message: `Roles Actualizados`,
                     messageType: 'warning',
                 })
             );
+            setSessionRoles;
         } else {
             dispatch(
-                setUserMessage({
+                setSessionUserMessage({
                     message: error,
                     messageType: 'error',
                 })

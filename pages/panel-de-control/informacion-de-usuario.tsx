@@ -7,7 +7,7 @@ import {
     UserBasicInfo,
     ControlPanel,
     PropsHead,
-    setUserMessage,
+    setSessionUserMessage,
 } from '../../components';
 
 function InfodeUsuario({ headInfo }) {
@@ -27,7 +27,7 @@ function InfodeUsuario({ headInfo }) {
     const dispatch = useDispatch();
     useEffect(() => {
         dispatch(
-            setUserMessage({
+            setSessionUserMessage({
                 message: `Actualiza la informacion basica de tu cuenta, cambia tu avatar, selecciona si eres un Cantante o Productor Musical.`,
                 messageType: 'warning',
             })

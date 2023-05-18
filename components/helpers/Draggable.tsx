@@ -41,7 +41,7 @@ export const Draggable: React.FC<DraggableProps> = ({ children }) => {
         if (!hasMoved) {
             const rect = document.documentElement.getBoundingClientRect();
             const centerX = rect.width / 1.7;
-            const centerY = rect.height / 9;
+            const centerY = rect.height / 6;
             setPosition({ x: centerX, y: centerY });
             setHasMoved(true);
         }

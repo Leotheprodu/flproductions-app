@@ -7,7 +7,7 @@ import {
 } from '@tabler/icons-react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSession, setUserMessage } from '../redux/userActions';
+import { setSession, setSessionUserMessage } from '../redux/userActions';
 import { Spinner } from '../helpers/Spinner';
 import { RootState } from '../redux/store';
 import Link from 'next/link';
@@ -17,9 +17,9 @@ function SessionPanel() {
     const dispatch = useDispatch();
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
-    const isLoggedIn = useSelector(
-        (state: RootState) => state.user.session.isLoggedIn
-    );
+    const isLoggedIn =
+        useSelector((state: RootState) => state.user.session.isLoggedIn) ||
+        false;
 
     const userInfo = useSelector((state: RootState) => state.user.session.user);
     const [botonOlvideContra, setBotonOlvideContra] = useState<boolean>(false);
@@ -42,7 +42,7 @@ function SessionPanel() {
         if (data.isLoggedIn) {
             dispatch(setSession({ ...data }));
             dispatch(
-                setUserMessage({
+                setSessionUserMessage({
                     message: `Volviste! ${data.user.username}, espero que la pases Pura Vida!`,
                     messageType: 'notification',
                 })
@@ -65,7 +65,7 @@ function SessionPanel() {
         if (status === 429) {
             setSpinner(false);
             dispatch(
-                setUserMessage({
+                setSessionUserMessage({
                     message:
                         'muchos intentos de inicio de sesion, espere 15 minutos',
                     messageType: 'error',
@@ -73,10 +73,10 @@ function SessionPanel() {
             );
             return;
         }
-        if (data.isLoggedIn) {
+        if (data) {
             dispatch(setSession({ ...data }));
             dispatch(
-                setUserMessage({
+                setSessionUserMessage({
                     message: `Hey! ${data.user.username}, espero que la pases tuannis!`,
                     messageType: 'notification',
                 })
@@ -84,7 +84,7 @@ function SessionPanel() {
             setSpinner(false);
         } else {
             dispatch(
-                setUserMessage({
+                setSessionUserMessage({
                     message:
                         'Datos inválidos, correo o contraseña incorrecta o regístrate',
                     messageType: 'error',
@@ -103,7 +103,7 @@ function SessionPanel() {
             dispatch(setSession({ ...data }));
             setSpinner(false);
             dispatch(
-                setUserMessage({
+                setSessionUserMessage({
                     message: `Listo! ${userInfo.username}, espero que vuelvas pronto!`,
                     messageType: 'notification',
                 })

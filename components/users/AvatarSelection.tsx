@@ -2,7 +2,7 @@ import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/store';
-import { fetchAPI, setUserMessage } from '../';
+import { fetchAPI, setSessionUserMessage } from '../';
 
 export const AvatarSelection = (): JSX.Element | null => {
     const maxAvatarLength: number = 9;
@@ -10,7 +10,7 @@ export const AvatarSelection = (): JSX.Element | null => {
     const [avatar, setAvatar] = useState<number>(1);
     const [avatarDer, setAvatarDer] = useState<number>(2);
     const [datoActualizado, setDatoActualizado] = useState<boolean>(false);
-    const userSession = useSelector((state: RootState) => state.user.session);
+    const userInfo = useSelector((state: RootState) => state.user.session.user);
     const userRoles: [number] = useSelector(
         (state: RootState) => state.user.session.roles
     );
@@ -19,7 +19,7 @@ export const AvatarSelection = (): JSX.Element | null => {
         process.env.NODE_ENV === 'production'
             ? process.env.NEXT_PUBLIC_PROD_USER_AVATAR_ID
             : process.env.NEXT_PUBLIC_DEV_USER_AVATAR_ID
-    }${userSession.user.id}`;
+    }${userInfo.id}`;
     const urlApiAvatarUpdate =
         process.env.NODE_ENV === 'production'
             ? process.env.NEXT_PUBLIC_PROD_USER_AVATAR_UPDATE
@@ -44,7 +44,7 @@ export const AvatarSelection = (): JSX.Element | null => {
             }
         };
         fetchData();
-    }, [userSession]);
+    }, [userInfo]);
 
     const handleClickIzq = () => {
         if (avatar <= 1) {
@@ -69,8 +69,8 @@ export const AvatarSelection = (): JSX.Element | null => {
         }
     };
     const handleClickSelect = async () => {
-        const avatarSelected = { id: userSession.user.id, avatar };
-        const { status } = await fetchAPI({
+        const avatarSelected = { id: userInfo.id, avatar };
+        const { data, status } = await fetchAPI({
             url: urlApiAvatarUpdate,
             method: 'POST',
             body: avatarSelected,
@@ -78,14 +78,14 @@ export const AvatarSelection = (): JSX.Element | null => {
         if (status === 200) {
             setDatoActualizado(true);
             dispatch(
-                setUserMessage({
+                setSessionUserMessage({
                     message: `Avatar Actualizado!`,
                     messageType: 'warning',
                 })
             );
         } else {
             dispatch(
-                setUserMessage({
+                setSessionUserMessage({
                     message: `Lo Siento, solo usuarios verificados pueden cambiar su Avatar.`,
                     messageType: 'error',
                 })

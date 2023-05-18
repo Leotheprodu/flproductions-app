@@ -4,6 +4,7 @@ import {
     SET_SESSION_ROLES,
     SET_SESSION_ARTISTA,
     SET_SESSION_USER_MESSAGE,
+    SET_SESSION_USER,
 } from './userTypes';
 
 export const setSession = (session: SessionState) => {
@@ -26,9 +27,15 @@ export const setSessionArtista = (artista) => {
     };
 };
 
-export const setUserMessage = (userMessage) => {
+export const setSessionUserMessage = (userMessage) => {
     return {
         type: SET_SESSION_USER_MESSAGE,
         payload: userMessage,
+    };
+};
+export const setSessionUser = (user) => {
+    return {
+        type: SET_SESSION_USER,
+        payload: user,
     };
 };

@@ -3,6 +3,7 @@ import {
     SET_SESSION_ROLES,
     SET_SESSION_ARTISTA,
     SET_SESSION_USER_MESSAGE,
+    SET_SESSION_USER,
 } from './userTypes';
 
 interface Session {
@@ -14,17 +15,28 @@ interface UserMessage {
 }
 export interface SessionState {
     isLoggedIn: boolean;
-    user: any;
+    user: Users;
     roles: number[];
     artista: any;
     userMessage: UserMessage;
+}
+export interface Users {
+    username: string;
+    email: string;
+    fecha_creacion: Date;
+    activo: number;
 }
 const initialState: {
     session: SessionState;
 } = {
     session: {
         isLoggedIn: false,
-        user: {},
+        user: {
+            username: '',
+            email: '',
+            fecha_creacion: null,
+            activo: 1,
+        },
         roles: [],
         artista: null,
         userMessage: {
@@ -64,6 +76,15 @@ const userReducer = (state: Session = initialState, action) => {
                 session: {
                     ...state.session,
                     userMessage: action.payload,
+                },
+            };
+
+        case SET_SESSION_USER:
+            return {
+                ...state,
+                session: {
+                    ...state.session,
+                    user: action.payload,
                 },
             };
         default:
