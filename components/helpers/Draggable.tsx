@@ -1,20 +1,30 @@
-import React, { useState, MouseEvent, useEffect } from 'react';
+import React, { useState, MouseEvent } from 'react';
 
 interface DraggableProps {
     children: React.ReactNode;
+    topY?: number;
+    leftX?: number;
 }
-
-export const Draggable: React.FC<DraggableProps> = ({ children }) => {
+/**
+ *
+ * @param param0
+ * @returns
+ */
+export const Draggable: React.FC<DraggableProps> = ({
+    children,
+    topY = 0,
+    leftX = 0,
+}) => {
     const [position, setPosition] = useState<{ x: number; y: number }>({
-        x: 0,
-        y: 0,
+        x: leftX,
+        y: topY,
     });
     const [isDragging, setIsDragging] = useState(false);
     const [offset, setOffset] = useState<{ x: number; y: number }>({
         x: 0,
         y: 0,
     });
-    const [hasMoved, setHasMoved] = useState(false);
+    /*     const [hasMoved, setHasMoved] = useState(false); */
 
     const startDrag = (e: MouseEvent<HTMLDivElement>) => {
         setIsDragging(true);
@@ -37,20 +47,23 @@ export const Draggable: React.FC<DraggableProps> = ({ children }) => {
         setIsDragging(false);
     };
 
-    useEffect(() => {
+    /*  useEffect(() => {
         if (!hasMoved) {
-            const rect = document.documentElement.getBoundingClientRect();
-            const centerX = rect.width / 1.7;
-            const centerY = rect.height / 6;
+            const centerX = 0;
+            const centerY = 0;
             setPosition({ x: centerX, y: centerY });
             setHasMoved(true);
         }
-    }, [hasMoved]);
+    }, [hasMoved]); */
 
     return (
         <div
             className="draggable"
-            style={{ position: 'fixed', top: position.y, left: position.x }}
+            style={{
+                position: 'absolute',
+                top: position.y,
+                left: position.x,
+            }}
             onMouseDown={startDrag}
             onMouseMove={drag}
             onMouseUp={endDrag}

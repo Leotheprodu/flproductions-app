@@ -41,7 +41,6 @@
         "pages/iniciar-sesion.tsx",
         "pages/registro-de-usuario.tsx",
         "components/users/AvatarSelection.tsx",
-        "components/users/AvatarUsers.tsx",
         "pages/panel-de-control/informacion-de-usuario.tsx",
         "pages/recuperar-password.tsx",
         "components/users/SessionPanel.tsx",

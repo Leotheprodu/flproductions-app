@@ -46,15 +46,14 @@ export * from './layout/social-icons';
 export * from './layout/testimonio';
 export * from './layout/NavLinks';
 export * from './layout/MessageComponent';
-export * from './layout/UserAvatar';
 /* Redux */
 export * from './redux/store';
 export * from './redux/userActions';
 export * from './redux/userReducer';
 export * from './redux/userTypes';
 /* Users */
+export * from './users/UserAvatar';
 export * from './users/AvatarSelection';
-export * from './users/AvatarUsers';
 export * from './users/LinksPanel';
 export * from './users/SessionPanel';
 export * from './users/TypeOfUser';

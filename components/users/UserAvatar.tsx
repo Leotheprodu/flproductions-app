@@ -30,9 +30,10 @@ export const UserAvatar = ({ user_id, size = 5 }: Props) => {
         height: `${size}rem`,
     };
     return (
-        <div className="AvatarUsers">
+        <div style={styles} className="AvatarUsers">
             <img
                 style={styles}
+                draggable="false"
                 src={`https://flproductionscr.com/build_main/img/perfil/avatar/${
                     avatar_id.avatar || 0
                 }.avif`}

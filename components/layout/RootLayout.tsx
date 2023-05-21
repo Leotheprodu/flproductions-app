@@ -18,6 +18,7 @@ function Layout({ children }: Props) {
             <Header />
 
             <main className="contenedor-main">{children}</main>
+
             <MessageComponent
                 message={message.message}
                 messageType={message.messageType}

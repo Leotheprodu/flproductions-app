@@ -33,6 +33,12 @@ export async function fetchAPI<T>({
 
         if (response.status === 200) {
             return { data, error: null, status: 200 };
+        } else if (response.status === 429) {
+            return {
+                data,
+                error: 'Ha excedido el limite de consultas permitido',
+                status: 429,
+            };
         } else {
             const error = data.message || 'Error desconocido';
             return { data: null, error, status: response.status };
