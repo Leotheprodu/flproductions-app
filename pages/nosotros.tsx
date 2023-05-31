@@ -55,6 +55,9 @@ function AboutPage({ headInfo }) {
         setClickInfoButton,
         selectedSong,
     ] = useHandleAppMusic();
+    const producciones = produccionesDestacadas.filter(
+        (element) => element.id === parseInt(infoProduccion.id)
+    );
 
     return (
         <>
@@ -165,7 +168,7 @@ function AboutPage({ headInfo }) {
 
                     {!ended && playing && (
                         <DetalleProducciones
-                            infoProduccion={infoProduccion}
+                            infoProduccion={producciones[0]}
                             tipo_obra_general={tipo_obra_general}
                         />
                     )}

@@ -73,7 +73,7 @@
     background-color: v.$gris;
     color: v.$negro;
     .MessageComponent-close {
-        color: v.$secundario;
+        color: v.$primario;
     }
 }
 
@@ -87,7 +87,7 @@
 
 .MessageComponentIcon-content {
     cursor: pointer;
-    opacity: 0.5;
+    opacity: 0.75;
     transition: opacity 0.5s ease-in-out;
     &:hover {
         opacity: 1;

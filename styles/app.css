@@ -2194,7 +2194,7 @@ input {
   color: #000000;
 }
 .notification .MessageComponent-close {
-  color: #ebc246;
+  color: #1ab5e6;
 }
 
 .error:hover,
@@ -2205,7 +2205,7 @@ input {
 
 .MessageComponentIcon-content {
   cursor: pointer;
-  opacity: 0.5;
+  opacity: 0.75;
   transition: opacity 0.5s ease-in-out;
 }
 .MessageComponentIcon-content:hover {

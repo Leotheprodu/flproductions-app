@@ -46,7 +46,7 @@ export const MessageComponent: React.FC<MessageComponentProps> = ({
             ? process.env.NEXT_PUBLIC_PROD_RESPONSES
             : process.env.NEXT_PUBLIC_DEV_RESPONSES;
     const dispatch = useDispatch();
-    const [userConvesations, setUserCoversations] = useState(null);
+    const [userConvesations, setUserCoversations] = useState([]);
     const [other_user_id, setOtherUserId] = useState(44);
     const [disparador, seDisparador] = useState(Date.now());
     const [isVisible, setIsVisible] = useState<boolean>(false);
@@ -226,7 +226,7 @@ export const MessageComponent: React.FC<MessageComponentProps> = ({
                 </div>
             )}
             <div onClick={handleFAQ} className="MessageComponentIcon-content">
-                <UserAvatar user_id={44} size={8} />
+                <UserAvatar user_id={44} size={5} />
             </div>
         </div>
     );
