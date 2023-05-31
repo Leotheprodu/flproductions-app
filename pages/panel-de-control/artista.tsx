@@ -6,6 +6,7 @@ import {
     CrearArtistaForm,
     RootState,
     EditarArtista,
+    ArtistMusicHandle,
 } from '../../components';
 import { useSelector } from 'react-redux';
 
@@ -59,6 +60,8 @@ function Artista({ headInfo }) {
                         <EditarArtista />
                     </div>
                 )}
+
+                <ArtistMusicHandle />
             </div>
         </ControlPanel>
     );

@@ -3078,13 +3078,6 @@ input {
   margin-bottom: 100vh;
   padding: 0 4rem;
 }
-@media (min-width: 768px) {
-  .Panel-de-control__Artista {
-    flex-direction: row;
-    align-items: normal;
-    flex-wrap: wrap;
-  }
-}
 
 .Panel-de-control__Artista__elemento {
   margin: 6rem 1rem;

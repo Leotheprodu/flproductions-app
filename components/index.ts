@@ -7,6 +7,7 @@ export * from './app_music/ItemAppMusic';
 export * from './app_music/StyleList';
 /* artista */
 export * from './artista/EditarArtista';
+export * from './artista/ArtistMusicHandle';
 /* database_temp */
 export * from './database_temp/database';
 /* forms */

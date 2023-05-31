@@ -8,11 +8,6 @@
     justify-content: center;
     margin-bottom: 100vh;
     padding: 0 4rem;
-    @include m.tablet {
-        flex-direction: row;
-        align-items: normal;
-        flex-wrap: wrap;
-    }
 }
 
 .Panel-de-control__Artista__elemento {
