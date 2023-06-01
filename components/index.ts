@@ -8,6 +8,7 @@ export * from './app_music/StyleList';
 /* artista */
 export * from './artista/EditarArtista';
 export * from './artista/ArtistMusicHandle';
+export * from './artista/FormMusicControl';
 /* database_temp */
 export * from './database_temp/database';
 /* forms */

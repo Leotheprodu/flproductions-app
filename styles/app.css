@@ -1058,6 +1058,75 @@ input {
   text-overflow: ellipsis;
 }
 
+.ArtistMusicHandle {
+  display: flex;
+  flex-flow: wrap;
+  gap: 1rem;
+}
+
+.ArtistMusicHandle__song {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+.ArtistMusicHandle__song:hover {
+  transform: scale(1.1);
+}
+.ArtistMusicHandle__song img {
+  height: 15rem;
+  width: 15rem;
+  margin: 0;
+  border-radius: 25%;
+  object-fit: cover;
+}
+.ArtistMusicHandle__song p {
+  margin: 0;
+}
+
+.ArtistMusicHandle__UpdateArtist__container {
+  position: fixed;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  margin: 2rem;
+  /*  @include m.tablet {
+      top: auto;
+      right: auto;
+  } */
+}
+
+.ArtistMusicHandle__UpdateArtist {
+  position: relative;
+  background-color: #ebc246;
+  padding: 2rem;
+  border-radius: 1rem;
+  width: 100%;
+}
+
+.ArtistMusicHandle__UpdateArtist-cerrar {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  cursor: pointer;
+}
+.ArtistMusicHandle__UpdateArtist-cerrar:hover {
+  color: #1ab5e6;
+}
+
+.ArtistMusicHandle__UpdateArtist__difuminado {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Cambia el valor alpha para ajustar la opacidad */
+  backdrop-filter: blur(10px); /* Aplica un efecto de difuminado */
+  z-index: 0; /* Asegura que el fondo difuminado se muestre por encima del contenido centrado */
+}
+
 .pagelayer-shape-fill {
   fill: #FFFFFF;
   height: 100%;
