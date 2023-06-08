@@ -57,7 +57,7 @@ export const ArtistMusicHandle = () => {
             }
         };
         fetchData();
-    }, []);
+    }, [isEditing.status]);
 
     const handleElementEdit = (element) => {
         setIsEditing({
@@ -74,38 +74,73 @@ export const ArtistMusicHandle = () => {
             },
         });
     };
+    const createSong = () => {
+        setIsEditing({
+            status: true,
+            song: {
+                id: null,
+                nombre: '',
+                descripcion: '',
+                spotify_link: '',
+                youtube_id: '',
+                estilo: '',
+                genero: '',
+                fecha_lanzamiento: '',
+            },
+        });
+    };
+    const handleDeleteItem = () => {
+        console.log('eliminar item');
+    };
 
     return (
         <div className="ArtistMusicHandle">
-            {dataFetch &&
+            {!isEditing.status &&
+                dataFetch &&
                 dataFetch.map((element) => (
                     <div
-                        className="ArtistMusicHandle__song"
-                        onClick={() => handleElementEdit(element)}
+                        className="ArtistMusicHandle__container"
                         key={element.id}
                     >
-                        <img
-                            src={`https://img.youtube.com/vi/${element.youtube_id}/mqdefault.jpg`}
-                            alt={`imagen de ${element.nombre}`}
-                        />
-                        <p>{element.nombre}</p>
-                        <p>id: {element.id}</p>
-                        {/* <p className="ArtistMusicHandle__table__descripcion">
-                            {element.descripcion}
-                        </p>
-                        <p>{element.spotify_link}</p>
-                        <p>{element.youtube_id}</p>
-                        <p>{element.estilo}</p>
-                        <p>{element.genero}</p>
-                        <p>{element.fecha_lanzamiento}</p> */}
+                        <div
+                            className="ArtistMusicHandle__deleteButtom"
+                            onClick={handleDeleteItem}
+                        >
+                            X
+                        </div>
+                        <div
+                            className="ArtistMusicHandle__song"
+                            onClick={() => handleElementEdit(element)}
+                        >
+                            <img
+                                src={`https://img.youtube.com/vi/${element.youtube_id}/mqdefault.jpg`}
+                                alt={`imagen de ${element.nombre}`}
+                            />
+                            <p>{element.nombre}</p>
+                            <p>id: {element.id}</p>
+                        </div>
                     </div>
                 ))}
+            {!isEditing.status && (
+                <div
+                    className="ArtistMusicHandle__createSong"
+                    onClick={createSong}
+                >
+                    <div>
+                        <p>+</p>
+                    </div>
+                    <p>Agregar Cancion</p>
+                </div>
+            )}
 
             {isEditing.status && (
                 <div className="ArtistMusicHandle__UpdateArtist__container">
                     <div className="ArtistMusicHandle__UpdateArtist__difuminado"></div>
                     <div className="ArtistMusicHandle__UpdateArtist">
-                        <FormMusicControl isEditing={isEditing} />
+                        <FormMusicControl
+                            isEditing={isEditing}
+                            setIsEditing={setIsEditing}
+                        />
                         <div
                             className="ArtistMusicHandle__UpdateArtist-cerrar"
                             onClick={() => {

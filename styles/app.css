@@ -1062,6 +1062,15 @@ input {
   display: flex;
   flex-flow: wrap;
   gap: 1rem;
+  justify-content: center;
+}
+
+.ArtistMusicHandle__container {
+  position: relative;
+  transition: transform 0.2s ease-in-out;
+}
+.ArtistMusicHandle__container:hover {
+  transform: scale(1.1);
 }
 
 .ArtistMusicHandle__song {
@@ -1070,27 +1079,49 @@ input {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: transform 0.2s ease-in-out;
-}
-.ArtistMusicHandle__song:hover {
-  transform: scale(1.1);
 }
 .ArtistMusicHandle__song img {
   height: 15rem;
   width: 15rem;
   margin: 0;
-  border-radius: 25%;
+  border-radius: 5px;
   object-fit: cover;
 }
 .ArtistMusicHandle__song p {
   margin: 0;
 }
 
+.ArtistMusicHandle__createSong {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+.ArtistMusicHandle__createSong:hover {
+  transform: scale(1.1);
+}
+.ArtistMusicHandle__createSong div {
+  height: 15rem;
+  width: 15rem;
+  margin: 0;
+  border-radius: 5px;
+  background-color: #1ab5e6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ArtistMusicHandle__createSong div p {
+  color: #FFFFFF;
+  font-size: 10rem;
+}
+.ArtistMusicHandle__createSong p {
+  margin: 0;
+}
+
 .ArtistMusicHandle__UpdateArtist__container {
-  position: fixed;
   z-index: 3;
-  top: 50%;
-  left: 50%;
   margin: 2rem;
   /*  @include m.tablet {
       top: auto;
@@ -1102,7 +1133,7 @@ input {
   position: relative;
   background-color: #ebc246;
   padding: 2rem;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   width: 100%;
 }
 
@@ -1116,6 +1147,17 @@ input {
   color: #1ab5e6;
 }
 
+.ArtistMusicHandle__deleteButtom {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  color: #ebc246;
+  cursor: pointer;
+}
+.ArtistMusicHandle__deleteButtom:hover {
+  color: #1ab5e6;
+}
+
 .ArtistMusicHandle__UpdateArtist__difuminado {
   position: fixed;
   top: 0;
@@ -1125,6 +1167,21 @@ input {
   background-color: rgba(0, 0, 0, 0.5); /* Cambia el valor alpha para ajustar la opacidad */
   backdrop-filter: blur(10px); /* Aplica un efecto de difuminado */
   z-index: 0; /* Asegura que el fondo difuminado se muestre por encima del contenido centrado */
+}
+
+.FormMusicControl {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  padding: 2rem;
+}
+
+.FormMusicControl__element {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border: 1px solid rgb(238, 238, 238);
+  width: 25rem;
 }
 
 .pagelayer-shape-fill {

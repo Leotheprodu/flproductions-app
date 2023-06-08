@@ -5,6 +5,14 @@
     display: flex;
     flex-flow: wrap;
     gap: 1rem;
+    justify-content: center;
+}
+.ArtistMusicHandle__container {
+    position: relative;
+    transition: transform 0.2s ease-in-out;
+    &:hover {
+        transform: scale(1.1);
+    }
 }
 .ArtistMusicHandle__song {
     display: flex;
@@ -12,16 +20,40 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    transition: transform 0.2s ease-in-out;
-    &:hover {
-        transform: scale(1.1);
-    }
     img {
         height: 15rem;
         width: 15rem;
         margin: 0;
-        border-radius: 25%;
+        border-radius: 5px;
         object-fit: cover;
+    }
+    p {
+        margin: 0;
+    }
+}
+.ArtistMusicHandle__createSong {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: v.$blanco;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    &:hover {
+        transform: scale(1.1);
+    }
+    div {
+        height: 15rem;
+        width: 15rem;
+        margin: 0;
+        border-radius: 5px;
+        background-color: v.$primario;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        p {
+            color: v.$blanco;
+            font-size: 10rem;
+        }
     }
     p {
         margin: 0;
@@ -29,10 +61,7 @@
 }
 
 .ArtistMusicHandle__UpdateArtist__container {
-    position: fixed;
     z-index: 3;
-    top: 50%;
-    left: 50%;
     margin: 2rem;
     /*  @include m.tablet {
         top: auto;
@@ -44,13 +73,23 @@
     position: relative;
     background-color: v.$secundario;
     padding: 2rem;
-    border-radius: 1rem;
+    border-radius: 0.5rem;
     width: 100%;
 }
 .ArtistMusicHandle__UpdateArtist-cerrar {
     position: absolute;
     right: 1rem;
     top: 1rem;
+    cursor: pointer;
+    &:hover {
+        color: v.$primario;
+    }
+}
+.ArtistMusicHandle__deleteButtom {
+    position: absolute;
+    right: 0.5rem;
+    top: 0.5rem;
+    color: v.$secundario;
     cursor: pointer;
     &:hover {
         color: v.$primario;

@@ -1,0 +1,17 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.FormMusicControl {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+.FormMusicControl__element {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border: 1px solid v.$gris;
+    width: 25rem;
+}

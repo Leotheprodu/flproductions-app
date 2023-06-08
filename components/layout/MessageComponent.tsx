@@ -48,7 +48,6 @@ export const MessageComponent: React.FC<MessageComponentProps> = ({
     const dispatch = useDispatch();
     const [userConvesations, setUserCoversations] = useState([]);
     const [other_user_id, setOtherUserId] = useState(44);
-    const [disparador, seDisparador] = useState(Date.now());
     const [isVisible, setIsVisible] = useState<boolean>(false);
     const [inputText, setInputText] = useState<string>('Hazme una pregunta');
     const [clickUserQuestion, setClickUserQuestion] = useState<boolean>(false);
@@ -85,7 +84,6 @@ export const MessageComponent: React.FC<MessageComponentProps> = ({
             });
             if (data) {
                 setDataFetch(data);
-                seDisparador(Date.now());
 
                 setIsRequested(false);
             }
@@ -138,8 +136,10 @@ export const MessageComponent: React.FC<MessageComponentProps> = ({
                 );
             }
         };
-        BringConversation();
-    }, [other_user_id, disparador]);
+        if (isLoggedIn) {
+            BringConversation();
+        }
+    }, [other_user_id, isLoggedIn]);
     useEffect(() => {
         setIsVisible(true); // Mostrar el componente cuando se recibe un nuevo mensaje
         /* playNotificationSound(); */
