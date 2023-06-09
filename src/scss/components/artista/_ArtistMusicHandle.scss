@@ -63,17 +63,13 @@
 .ArtistMusicHandle__UpdateArtist__container {
     z-index: 3;
     margin: 2rem;
-    /*  @include m.tablet {
-        top: auto;
-        right: auto;
-    } */
 }
 
 .ArtistMusicHandle__UpdateArtist {
     position: relative;
-    background-color: v.$secundario;
-    padding: 2rem;
-    border-radius: 0.5rem;
+    background-color: v.$blanco;
+    padding: 1rem;
+    border-radius: 1rem;
     width: 100%;
 }
 .ArtistMusicHandle__UpdateArtist-cerrar {
@@ -109,4 +105,41 @@
     ); /* Cambia el valor alpha para ajustar la opacidad */
     backdrop-filter: blur(10px); /* Aplica un efecto de difuminado */
     z-index: 0; /* Asegura que el fondo difuminado se muestre por encima del contenido centrado */
+}
+.ArtistMusicHandle__DeleteArtist_buttons {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    button {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        border-radius: 5px;
+        height: 3rem;
+        width: 10rem;
+        padding: 1rem;
+        color: v.$negro;
+        background-color: v.$primario;
+        opacity: 1;
+        transition: opacity 0.3s ease-in-out;
+        transition: box-shadow 0.5s;
+        cursor: pointer;
+
+        &:active {
+            opacity: 0.5;
+            transform: scale(0.8);
+        }
+
+        &:hover {
+            opacity: 0.9;
+            box-shadow: 2px 2px 2px #0000001f;
+        }
+
+        &:focus {
+            outline-color: v.$primario;
+        }
+    }
 }

@@ -1123,17 +1123,13 @@ input {
 .ArtistMusicHandle__UpdateArtist__container {
   z-index: 3;
   margin: 2rem;
-  /*  @include m.tablet {
-      top: auto;
-      right: auto;
-  } */
 }
 
 .ArtistMusicHandle__UpdateArtist {
   position: relative;
-  background-color: #ebc246;
-  padding: 2rem;
-  border-radius: 0.5rem;
+  background-color: #FFFFFF;
+  padding: 1rem;
+  border-radius: 1rem;
   width: 100%;
 }
 
@@ -1169,19 +1165,98 @@ input {
   z-index: 0; /* Asegura que el fondo difuminado se muestre por encima del contenido centrado */
 }
 
+.ArtistMusicHandle__DeleteArtist_buttons {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+}
+.ArtistMusicHandle__DeleteArtist_buttons button {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 5px;
+  height: 3rem;
+  width: 10rem;
+  padding: 1rem;
+  color: #000000;
+  background-color: #1ab5e6;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+  transition: box-shadow 0.5s;
+  cursor: pointer;
+}
+.ArtistMusicHandle__DeleteArtist_buttons button:active {
+  opacity: 0.5;
+  transform: scale(0.8);
+}
+.ArtistMusicHandle__DeleteArtist_buttons button:hover {
+  opacity: 0.9;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1215686275);
+}
+.ArtistMusicHandle__DeleteArtist_buttons button:focus {
+  outline-color: #1ab5e6;
+}
+
 .FormMusicControl {
   display: flex;
   gap: 1rem;
   flex-direction: column;
+  align-items: center;
   padding: 2rem;
+}
+.FormMusicControl button {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 5px;
+  height: 3rem;
+  width: 10rem;
+  padding: 1rem;
+  color: #000000;
+  background-color: #1ab5e6;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+  transition: box-shadow 0.5s;
+  cursor: pointer;
+}
+.FormMusicControl button:active {
+  opacity: 0.5;
+  transform: scale(0.8);
+}
+.FormMusicControl button:hover {
+  opacity: 0.9;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1215686275);
+}
+.FormMusicControl button:focus {
+  outline-color: #1ab5e6;
 }
 
 .FormMusicControl__element {
+  position: relative;
   display: flex;
   flex-direction: column;
   padding: 1rem;
   border: 1px solid rgb(238, 238, 238);
+  border-radius: 1rem;
   width: 25rem;
+  background-color: #ebc246;
+}
+
+.FormMusicControl_informacionButton {
+  position: absolute;
+  right: 0.5rem;
+  top: -1.5rem;
+  color: rgb(102, 102, 102);
+  cursor: pointer;
+}
+.FormMusicControl_informacionButton:hover {
+  color: #1ab5e6;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1215686275);
 }
 
 .pagelayer-shape-fill {

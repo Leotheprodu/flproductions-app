@@ -51,7 +51,7 @@ export const MessageComponent: React.FC<MessageComponentProps> = ({
     const [isVisible, setIsVisible] = useState<boolean>(false);
     const [inputText, setInputText] = useState<string>('Hazme una pregunta');
     const [clickUserQuestion, setClickUserQuestion] = useState<boolean>(false);
-    const [timerToClose, setTimerToClose] = useState<number>(10000);
+    const [timerToClose, setTimerToClose] = useState<number>(20000);
     const chatRef = useRef(null);
     useEffect(() => {
         const timer = setTimeout(() => {

@@ -7,27 +7,27 @@ const apiUrl_Producciones =
     process.env.NODE_ENV === 'production'
         ? process.env.NEXT_PUBLIC_PROD_PRODUCCIONES_ARTIST
         : process.env.NEXT_PUBLIC_DEV_PRODUCCIONES_ARTIST;
+const apiUrl_DeleteSong =
+    process.env.NODE_ENV === 'production'
+        ? process.env.NEXT_PUBLIC_PROD_PRODUCCIONES_DELETE
+        : process.env.NEXT_PUBLIC_DEV_PRODUCCIONES_DELETE;
 
-interface NewDataState {
-    nombre_artista: string;
-    info: string;
-    instagram: string;
-    spotify: string;
-}
 export const ArtistMusicHandle = () => {
-    const [
-        errorFetch,
-        setErrorFetch,
-        dataFetch,
-        setDataFetch,
-        isRequested,
-        setIsRequested,
-    ] = useFetchAPI();
+    const [dataFetch, setDataFetch, isRequested, setIsRequested] =
+        useFetchAPI();
     const dispatch = useDispatch();
     const artista = useSelector(
         (state: RootState) => state.user.session.artista
     );
+    const usuario = useSelector((state: RootState) => state.user.session.user);
 
+    const [isDeleting, setIsDeleting] = useState({
+        status: false,
+        song: {
+            id: null,
+            nombre: '',
+        },
+    });
     const [isEditing, setIsEditing] = useState({
         status: false,
         song: {
@@ -36,16 +36,12 @@ export const ArtistMusicHandle = () => {
             descripcion: '',
             spotify_link: '',
             youtube_id: '',
-            estilo: '',
+            estilo: 'secular',
             genero: '',
             fecha_lanzamiento: '',
+            key: 'indefinido',
+            bpm: null,
         },
-    });
-    const [newData, setNewData] = useState<NewDataState>({
-        nombre_artista: artista.nombre_artista,
-        info: artista.info,
-        instagram: artista.instagram,
-        spotify: artista.spotify,
     });
     useEffect(() => {
         const fetchData = async () => {
@@ -57,20 +53,34 @@ export const ArtistMusicHandle = () => {
             }
         };
         fetchData();
-    }, [isEditing.status]);
+    }, [isEditing.status, isDeleting.status]);
 
     const handleElementEdit = (element) => {
+        const {
+            id,
+            nombre,
+            descripcion,
+            spotify_link,
+            youtube_id,
+            estilo,
+            genero,
+            fecha_lanzamiento,
+            key,
+            bpm,
+        } = element;
         setIsEditing({
             status: true,
             song: {
-                id: element.id,
-                nombre: element.nombre,
-                descripcion: element.descripcion,
-                spotify_link: element.spotify_link,
-                youtube_id: element.youtube_id,
-                estilo: element.estilo,
-                genero: element.genero,
-                fecha_lanzamiento: element.fecha_lanzamiento,
+                id,
+                nombre,
+                descripcion,
+                spotify_link,
+                youtube_id,
+                estilo,
+                genero,
+                fecha_lanzamiento,
+                key,
+                bpm,
             },
         });
     };
@@ -86,16 +96,53 @@ export const ArtistMusicHandle = () => {
                 estilo: '',
                 genero: '',
                 fecha_lanzamiento: '',
+                key: 'indefinido',
+                bpm: null,
             },
         });
     };
-    const handleDeleteItem = () => {
-        console.log('eliminar item');
+    const handleDeleteItem = (element) => {
+        const { id, nombre } = element;
+        setIsDeleting({
+            status: true,
+            song: {
+                id,
+                nombre,
+            },
+        });
+    };
+    const handleDeleteSong = async (e) => {
+        e.preventDefault();
+        const songInfo = isDeleting.song;
+        const { data, error } = await fetchAPI({
+            url: apiUrl_DeleteSong,
+            method: 'DELETE',
+            body: songInfo,
+        });
+
+        if (data) {
+            dispatch(
+                setSessionUserMessage({
+                    message: data.message,
+                    messageType: 'notification',
+                })
+            );
+            setIsDeleting({ ...isDeleting, status: false });
+        }
+        if (error) {
+            dispatch(
+                setSessionUserMessage({
+                    message: error,
+                    messageType: 'error',
+                })
+            );
+        }
     };
 
     return (
         <div className="ArtistMusicHandle">
             {!isEditing.status &&
+                !isDeleting.status &&
                 dataFetch &&
                 dataFetch.map((element) => (
                     <div
@@ -103,12 +150,14 @@ export const ArtistMusicHandle = () => {
                         key={element.id}
                     >
                         <div
+                            title="Eliminar"
                             className="ArtistMusicHandle__deleteButtom"
-                            onClick={handleDeleteItem}
+                            onClick={() => handleDeleteItem(element)}
                         >
                             X
                         </div>
                         <div
+                            title="Editar Elemento"
                             className="ArtistMusicHandle__song"
                             onClick={() => handleElementEdit(element)}
                         >
@@ -121,15 +170,16 @@ export const ArtistMusicHandle = () => {
                         </div>
                     </div>
                 ))}
-            {!isEditing.status && (
+            {!isEditing.status && !isDeleting.status && (
                 <div
+                    title="Nueva Cancion"
                     className="ArtistMusicHandle__createSong"
                     onClick={createSong}
                 >
                     <div>
                         <p>+</p>
                     </div>
-                    <p>Agregar Cancion</p>
+                    <p>Nueva Cancion</p>
                 </div>
             )}
 
@@ -145,6 +195,42 @@ export const ArtistMusicHandle = () => {
                             className="ArtistMusicHandle__UpdateArtist-cerrar"
                             onClick={() => {
                                 setIsEditing({ ...isEditing, status: false });
+                            }}
+                        >
+                            X
+                        </div>
+                    </div>
+                </div>
+            )}
+            {isDeleting.status && (
+                <div className="ArtistMusicHandle__UpdateArtist__container">
+                    <div className="ArtistMusicHandle__UpdateArtist__difuminado"></div>
+                    <div className="ArtistMusicHandle__UpdateArtist">
+                        <div>
+                            <p>
+                                {usuario.username}, ¿realmente quieres eliminar
+                                "{isDeleting.song.nombre}"?
+                            </p>
+                            <div className="ArtistMusicHandle__DeleteArtist_buttons">
+                                <button onClick={handleDeleteSong}>
+                                    Aceptar
+                                </button>
+                                <button
+                                    onClick={() => {
+                                        setIsDeleting({
+                                            ...isDeleting,
+                                            status: false,
+                                        });
+                                    }}
+                                >
+                                    Cancelar
+                                </button>
+                            </div>
+                        </div>
+                        <div
+                            className="ArtistMusicHandle__UpdateArtist-cerrar"
+                            onClick={() => {
+                                setIsDeleting({ ...isDeleting, status: false });
                             }}
                         >
                             X

@@ -38,13 +38,22 @@ function SessionPanel() {
             ? process.env.NEXT_PUBLIC_PROD_AUTH_LOGOUT
             : process.env.NEXT_PUBLIC_DEV_AUTH_LOGOUT;
     const checkLoggedIn = async () => {
-        const { data } = await fetchAPI({ url: apiUrlCheckSession });
-        if (data.isLoggedIn) {
-            dispatch(setSession({ ...data }));
+        try {
+            const { data } = await fetchAPI({ url: apiUrlCheckSession });
+            if (data.isLoggedIn) {
+                dispatch(setSession({ ...data }));
+                dispatch(
+                    setSessionUserMessage({
+                        message: `Volviste! ${data.user.username}, espero que la pases Pura Vida!`,
+                        messageType: 'notification',
+                    })
+                );
+            }
+        } catch (error) {
             dispatch(
                 setSessionUserMessage({
-                    message: `Volviste! ${data.user.username}, espero que la pases Pura Vida!`,
-                    messageType: 'notification',
+                    message: 'Debes Iniciar sesion',
+                    messageType: 'error',
                 })
             );
         }

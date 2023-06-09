@@ -60,3 +60,67 @@ export const mainBannerSlider = [
             '¡Nuevo instrumental de trap latino disponible ahora! Consigue "Bichote" y lleva tu música al siguiente nivel con su distintivo ritmo que combina lo tradicional y lo moderno. ¡Obtén este instrumento imprescindible para tu próxima canción hoy mismo!',
     },
 ];
+
+export const musickeys = [
+    'indefinido',
+    'C',
+    'Cm',
+    'C#',
+    'C#m',
+    'D',
+    'Dm',
+    'D#',
+    'D#m',
+    'E',
+    'Em',
+    'F',
+    'Fm',
+    'F#',
+    'F#m',
+    'G',
+    'Gm',
+    'G#',
+    'G#m',
+    'A',
+    'Am',
+    'A#',
+    'A#m',
+    'B',
+    'Bm',
+];
+
+export const generosMusicales = [
+    'Dancehall',
+    'Reggaeton',
+    'HipHop',
+    'Trap',
+    'Afrobeat',
+    'R&B',
+    'EDM',
+    'Salsa',
+    'Cumbia',
+    'Bachata',
+    'Merengue',
+    'Rock',
+    'Pop',
+    'Vallenato',
+    'Banda',
+    'Ranchera',
+    'Corrido',
+];
+
+export const infoCampos = {
+    nombre: 'Este Campo es para que pongas el nombre de tu cancion',
+    descripcion:
+        'Es bueno poner una descripcion a tu cancion, algo que la describa, o un resumen del mensaje o cuenta algo sobre ella',
+    spotify_link:
+        'Pon el link de tu cancion pero el de spotify, de esa manera tus seguidores pueden encontrarla mas facilmente',
+    youtube_id:
+        'Este es el campo mas importante porque el reproductor de musica funciona con youtube, debes poner el link de tu cancion de youtube y nosotros extraemos el id o directamente puedes poner el id de youtube, en google puedes encontrar mas informacion de como obtener tu ID de youtube',
+    estilo: 'Esto es solamente para separar 2 grupos musicales, secular es la mayoria de musica, por eso esta por default y el otro grupo seria el cristiano, de esa manera las personas que solo escuchan musica cristiana pueden encontrar mas facilmente su musica favorita',
+    genero: 'Selecciona el genero musical de tu cancion, si no lo encuentras, escoge alguno que mas se acerque',
+    key: 'Aqui puedes poner en cual escala esta tu cancion, puede ser interesante para oyentes musicos',
+    bpm: 'Beats por Minuto, este dato puede ser interesante para productores, musicos, djs, les puede facilitar el trabajo si quieren usar esta cancion para algo mas que solo escucharla',
+    fecha_lanzamiento:
+        'Es la fecha en que fue lanzada esta cancion, para tener un orden cronologico de tu musica, es importante',
+};
