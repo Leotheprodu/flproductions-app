@@ -6,12 +6,22 @@ export const MainNavLinks = () => {
             <NavLink href="/" className="header__links__link">
                 Inicio
             </NavLink>
-            <NavLink href="/nosotros" className="header__links__link">
-                Nosotros
-            </NavLink>
-            <NavLink href="/contacto" className="header__links__link">
-                Contacto
-            </NavLink>
+            <div className="header__submenu-parent">
+                <p className="header__links__link__musica">Nosotros</p>
+
+                <nav className="header__submenu">
+                    <NavLink
+                        href="/estudio-flproductions"
+                        className="header__links__link"
+                    >
+                        Estudio FLProductions
+                    </NavLink>
+                    <NavLink href="/contacto" className="header__links__link">
+                        Contacto
+                    </NavLink>
+                </nav>
+            </div>
+
             <div className="header__submenu-parent">
                 <p className="header__links__link__musica">Musica</p>
 
@@ -41,8 +51,11 @@ export const MovilNavLinks = ({ onClickMovilUser }) => {
             <NavLink href="/" className="header__links__link">
                 Inicio
             </NavLink>
-            <NavLink href="/nosotros" className="header__links__link">
-                Nosotros
+            <NavLink
+                href="/estudio-flproductions"
+                className="header__links__link"
+            >
+                Estudio Flproductions
             </NavLink>
             <NavLink href="/contacto" className="header__links__link">
                 Contacto

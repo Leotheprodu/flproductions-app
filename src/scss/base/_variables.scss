@@ -17,6 +17,12 @@ $blanco: #ffffff;
 $beige: #eaf0ceff;
 $oscurecer: rgb(102, 102, 102);
 $gris: rgb(238, 238, 238);
+$gradient-primario: linear-gradient(
+    127deg,
+    rgba(243, 222, 63, 1) 0%,
+    rgba(195, 65, 63, 1) 50%,
+    rgba(31, 146, 234, 1) 100%
+);
 
 $gradient-top: linear-gradient(
     0deg,
@@ -33,12 +39,6 @@ $gradient-right: linear-gradient(
     #c3423fff,
     #f3de3fff,
     #eaf0ceff
-);
-$gradient-primario: linear-gradient(
-    127deg,
-    rgba(243, 222, 63, 1) 0%,
-    rgba(195, 65, 63, 1) 50%,
-    rgba(31, 146, 234, 1) 100%
 );
 $gradient-left: linear-gradient(
     270deg,

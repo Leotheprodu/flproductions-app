@@ -48,6 +48,7 @@ export * from './layout/social-icons';
 export * from './layout/testimonio';
 export * from './layout/NavLinks';
 export * from './layout/MessageComponent';
+export * from './layout/InicioLinkCards';
 /* Redux */
 export * from './redux/store';
 export * from './redux/userActions';

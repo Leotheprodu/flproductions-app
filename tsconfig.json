@@ -58,7 +58,7 @@
         "components/layout/social-icons.tsx",
         "components/layout/testimonio.tsx",
         "components/index.ts",
-        "pages/nosotros.tsx",
+        "pages/estudio-flproductions.tsx",
         "pages/contacto.tsx",
         "pages/canciones.tsx",
         "components/layout/panel-de-control.tsx",
