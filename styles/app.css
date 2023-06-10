@@ -486,15 +486,15 @@ input {
   width: 64px;
   height: 64px;
   margin: 8px;
-  border: 8px solid #ebc246;
+  border: 8px solid #f3de3f;
   border-radius: 50%;
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: #ebc246 transparent transparent transparent;
+  border-color: #f3de3f transparent transparent transparent;
 }
 .lds-ring div p {
   font-size: 1rem;
   text-align: center;
-  color: #1ab5e6;
+  color: #1f92ea;
 }
 
 .lds-ring div:nth-child(1) {
@@ -541,7 +541,7 @@ input {
   margin: 0;
 }
 .artist-detail__title .artistdetail__socialicons {
-  color: #ebc246;
+  color: #f3de3f;
 }
 
 .artistdetail__info {
@@ -554,7 +554,7 @@ input {
 }
 .artistdetail__music h2 {
   font-size: 3rem;
-  color: #1ab5e6;
+  color: #1f92ea;
 }
 
 .ArtistList__Main {
@@ -587,10 +587,10 @@ input {
   cursor: pointer;
 }
 .ArtistList option {
-  background-color: #1ab5e6;
+  background-color: #1f92ea;
   padding: 0.4rem;
   margin: 0;
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 1.6rem;
   border-radius: 2px;
   cursor: pointer;
@@ -609,13 +609,13 @@ input {
   }
 }
 .ArtistList__reset p {
-  background-color: #ebc246;
+  background-color: #f3de3f;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 0.2rem;
   margin: 0;
-  color: #FFFFFF;
+  color: #ffffff;
   width: 15rem;
   height: 4rem;
   font-size: 1.4rem;
@@ -655,7 +655,7 @@ input {
   width: 3rem;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1215686275);
   color: rgb(102, 102, 102);
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
   transition: transform 0.2s;
@@ -784,7 +784,7 @@ input {
 .detalle-producciones {
   display: flex;
   flex-direction: column;
-  color: #1ab5e6;
+  color: #1f92ea;
   border-radius: 10px;
   margin-bottom: 2rem;
   padding: 1rem;
@@ -812,7 +812,7 @@ input {
   text-align: center;
 }
 .detalle-producciones__texto h3 span {
-  color: #ebc246;
+  color: #f3de3f;
 }
 .detalle-producciones__texto p {
   color: gray;
@@ -829,8 +829,8 @@ input {
   gap: 2rem;
 }
 .detalle-producciones__appmusic__masdetalles p {
-  background-color: #ebc246;
-  color: #FFFFFF;
+  background-color: #f3de3f;
+  color: #ffffff;
   margin: 0;
   padding: 1rem;
   border-radius: 2px;
@@ -872,7 +872,7 @@ input {
   flex-direction: column;
   top: 4.5rem;
   left: 9rem;
-  color: #ebc246;
+  color: #f3de3f;
   transition: opacity 1s;
   opacity: 1%;
 }
@@ -885,7 +885,7 @@ input {
   transform: scale(1.5);
   margin-bottom: 5rem;
   box-shadow: 2px 2px 1rem rgba(0, 0, 0, 0.9843137255);
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 
 .ItemAppMusic__texto {
@@ -996,7 +996,7 @@ input {
   font-size: 4rem;
 }
 .EditarArtista_input_nombre_artista:focus {
-  outline-color: #1ab5e6;
+  outline-color: #1f92ea;
 }
 
 .EditarArtista_input_info {
@@ -1006,7 +1006,7 @@ input {
   border: none;
 }
 .EditarArtista_input_info:focus {
-  outline-color: #1ab5e6;
+  outline-color: #1f92ea;
 }
 
 .EditarArtista_input_generic {
@@ -1014,7 +1014,7 @@ input {
   border: none;
 }
 .EditarArtista_input_generic:focus {
-  outline-color: #1ab5e6;
+  outline-color: #1f92ea;
 }
 
 .EditarArtista_texto_Text {
@@ -1030,11 +1030,11 @@ input {
 }
 
 .EditarArtista_texto_iconEdit {
-  color: #1ab5e6;
+  color: #1f92ea;
 }
 
 .EditarArtista_imagen_iconEdit {
-  color: #1ab5e6;
+  color: #1f92ea;
   position: absolute;
   right: 2rem;
   top: 2rem;
@@ -1067,10 +1067,10 @@ input {
 
 .ArtistMusicHandle__container {
   position: relative;
-  transition: transform 0.2s ease-in-out;
+  transition: transform 0.1s ease-in;
 }
 .ArtistMusicHandle__container:hover {
-  transform: scale(1.1);
+  transform: rotate3d(1, 0.3, 0.5, 10deg);
 }
 
 .ArtistMusicHandle__song {
@@ -1095,7 +1095,7 @@ input {
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
 }
@@ -1107,13 +1107,13 @@ input {
   width: 15rem;
   margin: 0;
   border-radius: 5px;
-  background-color: #1ab5e6;
+  background-color: #1f92ea;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .ArtistMusicHandle__createSong div p {
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 10rem;
 }
 .ArtistMusicHandle__createSong p {
@@ -1127,7 +1127,7 @@ input {
 
 .ArtistMusicHandle__UpdateArtist {
   position: relative;
-  background-color: #FFFFFF;
+  background-color: #f3de3f;
   padding: 1rem;
   border-radius: 1rem;
   width: 100%;
@@ -1138,20 +1138,32 @@ input {
   right: 1rem;
   top: 1rem;
   cursor: pointer;
+  color: #c3423f;
+  transition: transform 0.5s ease-out;
 }
 .ArtistMusicHandle__UpdateArtist-cerrar:hover {
-  color: #1ab5e6;
+  transform: rotate(10deg) scale(1.3);
 }
 
 .ArtistMusicHandle__deleteButtom {
   position: absolute;
-  right: 0.5rem;
-  top: 0.5rem;
-  color: #ebc246;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  right: 0rem;
+  top: 0rem;
+  height: 2rem;
+  width: 2rem;
+  color: #ffffff;
+  background-color: #c3423f;
+  border-radius: 50%;
   cursor: pointer;
+  transition: transform 0.2s ease-out;
 }
 .ArtistMusicHandle__deleteButtom:hover {
-  color: #1ab5e6;
+  color: #273043;
+  transform: scale(1.2);
 }
 
 .ArtistMusicHandle__UpdateArtist__difuminado {
@@ -1182,7 +1194,7 @@ input {
   width: 10rem;
   padding: 1rem;
   color: #000000;
-  background-color: #1ab5e6;
+  background-color: #1f92ea;
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
   transition: box-shadow 0.5s;
@@ -1197,7 +1209,7 @@ input {
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1215686275);
 }
 .ArtistMusicHandle__DeleteArtist_buttons button:focus {
-  outline-color: #1ab5e6;
+  outline-color: #1f92ea;
 }
 
 .FormMusicControl {
@@ -1218,7 +1230,7 @@ input {
   width: 10rem;
   padding: 1rem;
   color: #000000;
-  background-color: #1ab5e6;
+  background-color: #1f92ea;
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
   transition: box-shadow 0.5s;
@@ -1233,7 +1245,7 @@ input {
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1215686275);
 }
 .FormMusicControl button:focus {
-  outline-color: #1ab5e6;
+  outline-color: #1f92ea;
 }
 
 .FormMusicControl__element {
@@ -1244,7 +1256,7 @@ input {
   border: 1px solid rgb(238, 238, 238);
   border-radius: 1rem;
   width: 25rem;
-  background-color: #ebc246;
+  background-color: #f3de3f;
 }
 
 .FormMusicControl_informacionButton {
@@ -1255,12 +1267,12 @@ input {
   cursor: pointer;
 }
 .FormMusicControl_informacionButton:hover {
-  color: #1ab5e6;
+  color: #1f92ea;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1215686275);
 }
 
 .pagelayer-shape-fill {
-  fill: #FFFFFF;
+  fill: #ffffff;
   height: 100%;
 }
 
@@ -1303,7 +1315,7 @@ input {
 }
 .contacto_info-Icons a {
   text-decoration: none;
-  color: #ebc246;
+  color: #f3de3f;
 }
 
 .formulario {
@@ -1336,12 +1348,12 @@ input {
   width: 100%;
   border: none;
   height: 3rem;
-  border-color: #1ab5e6;
+  border-color: #1f92ea;
   border-radius: 5px;
   color: rgb(27, 27, 27);
 }
 .formulario .form-control:focus {
-  outline-color: #1ab5e6;
+  outline-color: #1f92ea;
 }
 .formulario .mb-3 {
   margin-bottom: 2rem;
@@ -1354,7 +1366,7 @@ input {
   border-radius: 5px;
 }
 .formulario .form-control2:focus {
-  outline-color: #1ab5e6;
+  outline-color: #1f92ea;
 }
 
 .contact__button {
@@ -1363,12 +1375,12 @@ input {
 }
 .contact__button button {
   font-size: 2rem;
-  background-color: #1ab5e6;
+  background-color: #1f92ea;
   margin: 1rem;
   padding: 0.5rem 2rem;
   border: none;
   border-radius: 0.5rem;
-  color: #FFFFFF;
+  color: #ffffff;
   transition-property: color;
   transition-duration: 1s;
   transition-timing-function: ease-out;
@@ -1380,7 +1392,7 @@ input {
   transform: scale(1.1);
 }
 .contact__button button:focus {
-  outline-color: #ebc246;
+  outline-color: #f3de3f;
 }
 
 .recaptcha {
@@ -1428,7 +1440,7 @@ input {
   height: 3rem;
   padding: 1rem;
   color: #000000;
-  background-color: #ebc246;
+  background-color: #f3de3f;
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
   transition: box-shadow 0.5s;
@@ -1444,7 +1456,7 @@ input {
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1215686275);
 }
 .contenedor__UserBasicInfo button:focus {
-  outline-color: #1ab5e6;
+  outline-color: #1f92ea;
 }
 
 .UserBasicInfo__Error {
@@ -1458,7 +1470,7 @@ input {
   flex-direction: column;
 }
 .UserBasicInfo__form__input input:focus {
-  outline-color: #1ab5e6;
+  outline-color: #1f92ea;
 }
 
 .UserBasicInfo__form__input__verified {
@@ -1520,7 +1532,7 @@ input {
   height: 3rem;
   padding: 1rem;
   color: #000000;
-  background-color: #ebc246;
+  background-color: #f3de3f;
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
   transition: box-shadow 0.5s;
@@ -1536,7 +1548,7 @@ input {
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1215686275);
 }
 .CrearArtistaForm button:focus {
-  outline-color: #1ab5e6;
+  outline-color: #1f92ea;
 }
 
 .CrearArtistaForm__form__input {
@@ -1546,7 +1558,7 @@ input {
   flex-direction: column;
 }
 .CrearArtistaForm__form__input input:focus {
-  outline-color: #1ab5e6;
+  outline-color: #1f92ea;
 }
 .CrearArtistaForm__form__input textarea {
   height: 15rem;
@@ -1554,7 +1566,7 @@ input {
   border: none;
 }
 .CrearArtistaForm__form__input textarea:focus {
-  outline-color: #1ab5e6;
+  outline-color: #1f92ea;
 }
 
 .CountdownTimer p {
@@ -1622,23 +1634,24 @@ input {
   }
 }
 .BannerSlider__div-texto h2 {
-  color: #ebc246;
+  color: #f3de3f;
   margin: 0;
 }
 .BannerSlider__div-texto p {
-  color: #FFFFFF;
+  color: #eaf0ce;
   font-size: 1.7rem;
   padding: 0;
   text-align: justify;
 }
 .BannerSlider__div-texto a {
   font-size: 2rem;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   width: 19rem;
   padding: 1rem;
   border-radius: 1rem;
   text-align: center;
   margin: 0 auto;
+  color: #273043;
 }
 
 .contact-info {
@@ -1650,7 +1663,7 @@ input {
 
 .contact-info__icon {
   display: flex;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   border-radius: 50%;
   width: 9rem;
   height: 9rem;
@@ -1673,7 +1686,7 @@ input {
 }
 
 .footer {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   height: 6rem;
   width: 100%;
   display: flex;
@@ -1751,15 +1764,13 @@ input {
 
 .header__nav__top-main-message {
   height: 3rem;
-  background: rgb(131, 58, 180);
-  background: linear-gradient(127deg, rgb(131, 58, 180) 0%, rgb(253, 29, 29) 50%, rgb(252, 176, 69) 100%);
+  background: linear-gradient(127deg, rgb(243, 222, 63) 0%, rgb(195, 65, 63) 50%, rgb(31, 146, 234) 100%);
 }
 .header__nav__top-main-message p {
   z-index: 4;
-  color: #FFFFFF;
+  color: #ffffff;
   margin: 0;
   text-align: center;
-  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #0ff;
 }
 
 .header__nav {
@@ -1767,7 +1778,7 @@ input {
   display: flex;
   background-color: rgba(255, 255, 255, 0.815);
   backdrop-filter: blur(14px);
-  color: #FFFFFF;
+  color: #ffffff;
   justify-content: center;
   height: 8rem;
   border-bottom: 1px solid rgb(238, 238, 238);
@@ -1776,7 +1787,7 @@ input {
 .header__nav button {
   appearance: none;
   border: none;
-  color: #1ab5e6;
+  color: #1f92ea;
   border-radius: 3px;
 }
 .header__nav button:active {
@@ -1805,7 +1816,7 @@ input {
   margin: 0 auto;
   font-size: 2.8rem;
   margin: 0;
-  color: #1ab5e6;
+  color: #1f92ea;
   font-family: "Titan One", cursive;
 }
 @media (min-width: 768px) {
@@ -1835,7 +1846,7 @@ input {
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.308);
 }
 .header__nav .header__links__movil a:hover {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 .header__nav .header__links__movil.selected {
   visibility: visible;
@@ -1868,11 +1879,11 @@ input {
 }
 @media (min-width: 768px) {
   .header__nav .header__links .header__links__link:hover {
-    color: #1ab5e6;
+    color: #1f92ea;
   }
 }
 .header__nav .header__links .header__links__link:focus {
-  outline-color: #1ab5e6;
+  outline-color: #1f92ea;
 }
 .header__nav .header__links .header__links__link__musica {
   color: #000000;
@@ -1890,14 +1901,14 @@ input {
   font-size: 1.4rem;
 }
 .header__nav .header__links .header__links__link__musica:focus {
-  outline-color: #1ab5e6;
+  outline-color: #1f92ea;
 }
 .header__nav .header__links .header__links__link__musica:hover {
   cursor: pointer;
   transition-property: color;
   transition-duration: 1s;
   transition-timing-function: ease-out;
-  color: #1ab5e6;
+  color: #1f92ea;
 }
 .header__nav .active {
   padding: 0.5rem;
@@ -1942,7 +1953,7 @@ input {
 }
 .header__submenu-parent:hover .header__submenu a:hover,
 .header__submenu-parent[aria-expanded=true] .header__submenu a:hover {
-  color: #1ab5e6;
+  color: #1f92ea;
 }
 
 .header__nav_boton_usuarios {
@@ -2036,7 +2047,7 @@ input {
   box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.144);
 }
 .info-card .info-card_icon {
-  color: rgb(102, 102, 102);
+  color: #c3423f;
 }
 .info-card .info-card_titulo {
   text-align: center;
@@ -2058,8 +2069,8 @@ input {
 .panel-de-control__menu {
   visibility: hidden;
   top: 6rem;
-  width: 100%;
-  background-color: #FFFFFF;
+  min-width: 20rem;
+  background-color: #ffffff;
   margin: 0;
   padding: 1rem;
   opacity: 0;
@@ -2121,7 +2132,7 @@ input {
   transition: ease-in-out;
 }
 .links-panel a:focus {
-  outline-color: #1ab5e6;
+  outline-color: #1f92ea;
 }
 @media (min-width: 768px) {
   .links-panel {
@@ -2186,8 +2197,8 @@ input {
 .palabras-del-equipo_foto img {
   object-fit: contain;
   border-radius: 4px;
-  filter: grayscale(90%);
-  background-color: #1ab5e6;
+  /* filter: grayscale(90%); */
+  background-color: #c3423f;
   box-shadow: 2px 1px 5px rgba(0, 0, 0, 0.295);
 }
 
@@ -2367,7 +2378,7 @@ input {
   transform: scale(0.8);
 }
 .MessageComponent-close:focus {
-  outline-color: #1ab5e6;
+  outline-color: #1f92ea;
 }
 .MessageComponent-close:hover {
   opacity: 0.9;
@@ -2376,14 +2387,14 @@ input {
 
 .error {
   background-color: rgb(207, 34, 34);
-  color: #FFFFFF;
+  color: #ffffff;
 }
 .error .MessageComponent-close {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .warning {
-  background-color: #ebc246;
+  background-color: #f3de3f;
   color: #000000;
 }
 .warning .MessageComponent-close {
@@ -2395,7 +2406,7 @@ input {
   color: #000000;
 }
 .notification .MessageComponent-close {
-  color: #1ab5e6;
+  color: #1f92ea;
 }
 
 .error:hover,
@@ -2425,7 +2436,7 @@ input {
   border: none;
   padding: 1rem;
   width: 30rem;
-  background-color: #1ab5e6;
+  background-color: #1f92ea;
   border-bottom-right-radius: 1rem;
   border-bottom-left-radius: 1rem;
   color: #000000;
@@ -2433,7 +2444,7 @@ input {
   opacity: 0.9;
 }
 .MessageComponentIcon-input textarea:focus {
-  outline-color: #1ab5e6;
+  outline-color: #1f92ea;
 }
 .MessageComponentIcon-input textarea:hover {
   opacity: 1;
@@ -2448,7 +2459,7 @@ input {
   position: absolute;
   right: 0rem;
   bottom: 1rem;
-  color: #ebc246;
+  color: #f3de3f;
   opacity: 0.8;
   height: 4rem;
   width: 4rem;
@@ -2460,7 +2471,7 @@ input {
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1215686275);
 }
 .MessageComponentIcon-input button:focus {
-  outline-color: #ebc246;
+  outline-color: #f3de3f;
 }
 
 .MessageComponent-lastChatFaq {
@@ -2622,12 +2633,12 @@ input {
   position: absolute;
   border: none;
   background-color: rgba(255, 255, 255, 0);
-  color: #1ab5e6;
+  color: #1f92ea;
   transition: transform ease-in 0.1s;
 }
 .AvatarSelection__boton0:focus,
 .AvatarSelection__boton2:focus {
-  outline-color: #1ab5e6;
+  outline-color: #1f92ea;
 }
 
 .AvatarSelection__boton1 {
@@ -2641,7 +2652,7 @@ input {
   width: 100%;
   padding: 1rem;
   color: #000000;
-  background-color: #ebc246;
+  background-color: #f3de3f;
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
   transition: box-shadow 0.5s;
@@ -2656,7 +2667,7 @@ input {
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1215686275);
 }
 .AvatarSelection__boton1:focus {
-  outline-color: #1ab5e6;
+  outline-color: #1f92ea;
 }
 
 .AvatarUsers img {
@@ -2702,10 +2713,10 @@ input {
   }
 }
 .login_container input:focus {
-  outline-color: #1ab5e6;
+  outline-color: #1f92ea;
 }
 .login_container a:focus {
-  outline-color: #1ab5e6;
+  outline-color: #1f92ea;
 }
 .login_container .login_buttons {
   display: flex;
@@ -2759,7 +2770,7 @@ input {
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1215686275);
 }
 .login_container .login_buttons button:focus {
-  outline-color: #1ab5e6;
+  outline-color: #1f92ea;
 }
 
 .login__form {
@@ -2784,7 +2795,7 @@ input {
 .RecuperarPassword-contenedor h2 {
   margin: 7rem 0 0 0;
   font-size: 2rem;
-  color: #ebc246;
+  color: #f3de3f;
 }
 
 .RecuperarPassword {
@@ -2810,7 +2821,7 @@ input {
   gap: 2rem;
 }
 .RecuperarPassword .login_container_input input:focus {
-  outline-color: #1ab5e6;
+  outline-color: #1f92ea;
 }
 .RecuperarPassword .login_buttons__button {
   display: flex;
@@ -2827,7 +2838,7 @@ input {
   width: 100%;
   padding: 1rem;
   color: #000000;
-  background-color: #ebc246;
+  background-color: #f3de3f;
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
   transition: box-shadow 0.5s;
@@ -2842,7 +2853,7 @@ input {
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1215686275);
 }
 .RecuperarPassword .login_buttons__button button:focus {
-  outline-color: #1ab5e6;
+  outline-color: #1f92ea;
 }
 
 .signUp {
@@ -2873,7 +2884,7 @@ input {
 .signUp .signUp__form button {
   width: 100%;
   font-size: 2rem;
-  background-color: #1ab5e6;
+  background-color: #1f92ea;
   margin: 1rem;
   padding: 0.5rem 2rem;
   border: none;
@@ -2891,7 +2902,7 @@ input {
   transform: scale(1.1);
 }
 .signUp .signUp__form button:focus {
-  outline-color: #ebc246;
+  outline-color: #f3de3f;
 }
 
 .signUp__form__input input {
@@ -2902,7 +2913,7 @@ input {
   color: #000000;
 }
 .signUp__form__input input:focus {
-  outline-color: #1ab5e6;
+  outline-color: #1f92ea;
 }
 @media (min-width: 768px) {
   .signUp__form__input input {
@@ -2913,7 +2924,7 @@ input {
 .login_buttons__button__registrar {
   width: 100%;
   font-size: 2rem;
-  background-color: #ebc246;
+  background-color: #f3de3f;
   margin: 0;
   margin-top: 1rem;
   padding: 0.5rem 2rem;
@@ -2932,7 +2943,7 @@ input {
   transform: scale(1.1);
 }
 .login_buttons__button__registrar:focus {
-  outline-color: #ebc246;
+  outline-color: #f3de3f;
 }
 
 .login_buttons__button__status {
@@ -2985,7 +2996,7 @@ input {
 }
 
 .TypeOfUser__input:checked {
-  background-color: #1ab5e6;
+  background-color: #1f92ea;
 }
 
 .TypeOfUser__buttons {
@@ -3004,7 +3015,7 @@ input {
   width: 100%;
   padding: 1rem;
   color: #000000;
-  background-color: #ebc246;
+  background-color: #f3de3f;
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
   transition: box-shadow 0.5s;
@@ -3020,7 +3031,7 @@ input {
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1215686275);
 }
 .TypeOfUser__button:focus {
-  outline-color: #1ab5e6;
+  outline-color: #1f92ea;
 }
 
 /* app_music */
@@ -3034,7 +3045,7 @@ input {
   margin-top: 9rem;
 }
 .instrumentales h2 {
-  color: #ebc246;
+  color: #f3de3f;
   margin-bottom: 1rem;
 }
 
@@ -3069,7 +3080,7 @@ input {
 }
 
 .contacto-container {
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   overflow: hidden;
   padding-bottom: 20rem;
 }
@@ -3091,7 +3102,7 @@ input {
 }
 
 .error-page {
-  background-color: #1ab5e6;
+  background-color: #1f92ea;
   height: 100vh;
   text-align: center;
   display: flex;
@@ -3107,19 +3118,19 @@ input {
   margin: 0 auto;
 }
 .error-page h1 {
-  color: #ebc246;
+  color: #f3de3f;
   font-size: 13rem;
   z-index: 1;
   margin: 0;
 }
 .error-page h2 {
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 3rem;
   font-weight: 700;
   z-index: 1;
 }
 .error-page p {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .error-page__redirigir {
@@ -3128,8 +3139,8 @@ input {
 }
 .error-page__redirigir .error-page__redirigir__button {
   border: 0;
-  color: #FFFFFF;
-  background-color: #ebc246;
+  color: #ffffff;
+  background-color: #f3de3f;
   height: 10rem;
   width: 10rem;
   font-weight: 700;
@@ -3144,7 +3155,7 @@ input {
   transform: scale(1.03);
 }
 .error-page__redirigir .error-page__redirigir__button a {
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 3rem;
 }
 
@@ -3178,7 +3189,7 @@ input {
 }
 
 .nosotros__testimonios {
-  background-color: #ebc246;
+  background-color: #f3de3f;
   margin-top: 10rem;
   padding-top: 10rem;
   overflow: hidden;
@@ -3188,7 +3199,7 @@ input {
 }
 
 .nosotros__pagelayer-shape-fill {
-  fill: #ebc246;
+  fill: #f3de3f;
 }
 
 .panel-de-control {

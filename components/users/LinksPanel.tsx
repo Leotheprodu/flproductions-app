@@ -1,5 +1,6 @@
 import {
     IconAddressBook,
+    IconHeadphonesFilled,
     IconMusic,
     IconSettingsFilled,
 } from '@tabler/icons-react';
@@ -29,6 +30,14 @@ export const LinksPanel = () => {
                     <NavLink href="/panel-de-control/artista">
                         <IconMusic />
                         <p>Artista</p>
+                    </NavLink>
+                </div>
+            )}
+            {userRoles.includes(4) && (
+                <div className="links-panel__element">
+                    <NavLink href="/panel-de-control/productor-musical">
+                        <IconHeadphonesFilled />
+                        <p>Productor Musical</p>
                     </NavLink>
                 </div>
             )}

@@ -14,19 +14,17 @@
 
 .header__nav__top-main-message {
     height: 3rem;
-    background: rgb(131,58,180);
-background: linear-gradient(127deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
-    p{
+
+    background: v.$gradient-primario;
+    p {
         z-index: 4;
         color: v.$blanco;
         margin: 0;
         text-align: center;
-        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #0ff;
     }
 }
 
 .header__nav {
-
     flex-direction: column;
 
     display: flex;
@@ -49,7 +47,6 @@ background: linear-gradient(127deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%
         }
     }
 
-
     @include m.tablet {
         flex-direction: row;
     }
@@ -63,7 +60,6 @@ background: linear-gradient(127deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%
         align-items: center;
 
         @include m.tablet {
-
             padding-left: 10rem;
         }
     }
@@ -77,21 +73,18 @@ background: linear-gradient(127deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%
         margin: 0;
         color: v.$primario;
         font-family: 'Titan One', cursive;
-
     }
-
 
     @include m.tablet {
         padding-right: 5rem;
         justify-content: space-between;
-
     }
 
     .header__links__movil {
         display: flex;
         visibility: hidden;
         opacity: 0;
-        transition: visibility 1s ease-in-out, opacity .5s linear;
+        transition: visibility 1s ease-in-out, opacity 0.5s linear;
         flex-direction: column;
         align-items: center;
         justify-content: center;
@@ -112,17 +105,11 @@ background: linear-gradient(127deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%
                 color: v.$blanco;
             }
         }
-
-
-
     }
 
     .header__links__movil.selected {
         visibility: visible;
         opacity: 1;
-
-
-
     }
 
     .header__links {
@@ -138,21 +125,19 @@ background: linear-gradient(127deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%
             color: v.$negro;
             text-transform: uppercase;
             transition-property: color;
-            transition-duration: .1s;
+            transition-duration: 0.1s;
             transition-timing-function: ease-out;
             /*  background-color: v.$gris; */
-            padding: .5rem;
+            padding: 0.5rem;
             border-radius: 5px;
-
 
             &:hover {
                 cursor: pointer;
                 transition-property: color;
-                transition-duration: .4s;
+                transition-duration: 0.4s;
                 transition-timing-function: ease-out;
 
                 @include m.tablet {
-
                     color: v.$primario;
                 }
             }
@@ -173,7 +158,7 @@ background: linear-gradient(127deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%
             transition-timing-function: ease-out;
             margin: 0;
             /*  background-color: v.$gris; */
-            padding: .5rem;
+            padding: 0.5rem;
             border-radius: 5px;
             font-size: 1.4rem;
 
@@ -181,30 +166,22 @@ background: linear-gradient(127deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%
                 outline-color: v.$primario;
             }
 
-
-
             &:hover {
                 cursor: pointer;
                 transition-property: color;
                 transition-duration: 1s;
                 transition-timing-function: ease-out;
                 color: v.$primario;
-
             }
         }
-
-
     }
-
 
     .active {
-        padding: .5rem;
+        padding: 0.5rem;
         box-shadow: 1px 3px 7px rgba(0, 0, 0, 0.197);
         border-radius: 5px;
-
     }
 }
-
 
 .header__submenu {
     display: flex;
@@ -214,8 +191,8 @@ background: linear-gradient(127deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%
     align-items: center;
     width: 15rem;
     height: 8rem;
-    margin: .5rem;
-    gap: .7rem;
+    margin: 0.5rem;
+    gap: 0.7rem;
     background-color: rgba(255, 255, 255, 0.548);
     backdrop-filter: blur(14px);
     z-index: 1;
@@ -226,7 +203,7 @@ background: linear-gradient(127deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%
     box-shadow: 2px 2px 2px #0000001f;
     visibility: hidden;
     opacity: 0;
-    transition: visibility 1s ease-in-out, opacity .5s linear;
+    transition: visibility 1s ease-in-out, opacity 0.5s linear;
 }
 
 .header__submenu-parent {
@@ -237,12 +214,9 @@ background: linear-gradient(127deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%
 }
 
 .header__submenu-parent:hover .header__submenu,
-.header__submenu-parent[aria-expanded="true"] .header__submenu {
+.header__submenu-parent[aria-expanded='true'] .header__submenu {
     visibility: visible;
     opacity: 1;
-
-
-
 
     a:hover {
         color: v.$primario;
@@ -252,7 +226,6 @@ background: linear-gradient(127deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%
 .header__nav_boton_usuarios {
     /* position: relative; */
     display: flex;
-
 
     .header__nav_boton {
         z-index: 5;
@@ -268,39 +241,33 @@ background: linear-gradient(127deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%
         height: 3.5rem;
         border-radius: 50%;
         box-shadow: 1px 1px 1rem rgba(0, 0, 0, 0.192);
-        transition: transform .5s;
+        transition: transform 0.5s;
         transition-timing-function: ease-in;
-
 
         @include m.tablet {
             bottom: 2rem;
             right: 48%;
-
         }
 
         &:hover {
             box-shadow: 1px 1px 1rem rgba(0, 0, 0, 0.203);
             transform: scale(1.1);
             transition-duration: 1s;
-
         }
 
         &:active {
             transition-timing-function: ease-out;
-            transform: scale(.8);
-
-
+            transform: scale(0.8);
         }
     }
 
     .header__nav_boton_usuarios_login {
-
         visibility: hidden;
         opacity: 0;
         display: flex;
 
         color: v.$negro;
-        padding: .5rem;
+        padding: 0.5rem;
         z-index: 1;
         width: 100%;
         height: 20rem;
@@ -312,31 +279,24 @@ background: linear-gradient(127deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%
         position: absolute;
         top: 100%;
         left: 0;
-        transition: visibility 1s ease-in-out, opacity .4s linear;
+        transition: visibility 1s ease-in-out, opacity 0.4s linear;
 
         @include m.tablet {
             left: 5%;
             width: 90%;
             height: 7rem;
-
-
         }
 
         box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.125);
     }
-
 }
 
 .header__nav_boton_usuarios_login.selected {
     visibility: visible;
     opacity: 1;
-
-
 }
-
 
 .menu_celular {
     position: absolute;
     right: 1rem;
-    
 }

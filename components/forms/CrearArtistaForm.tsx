@@ -1,29 +1,32 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {
     setSessionArtista,
     useFetchAPI,
     fetchAPI,
     Spinner,
+    setSessionUserMessage,
 } from '../../components';
 
-export const CrearArtistaForm = () => {
+export const CrearArtistaForm = ({ tipo }) => {
+    const [sujeto, setSujeto] = useState(null);
+    useEffect(() => {
+        setSujeto(() => {
+            if (tipo === 1) return 'Artista';
+            if (tipo === 0) return 'Productor Musical';
+            return null;
+        });
+    }, [tipo]);
     const [formulario, setFormulario] = useState({
         nombre_artista: '',
         spotify: '',
         instagram: '',
         info: '',
         imagen: undefined,
-        tipo: '1',
+        tipo,
     });
-    const [
-        errorFetch,
-        setErrorFetch,
-        dataFetch,
-        setDataFetch,
-        isRequested,
-        setIsRequested,
-    ] = useFetchAPI();
+    const [dataFetch, setDataFetch, isRequested, setIsRequested] =
+        useFetchAPI();
     const dispatch = useDispatch();
     const apiUrl =
         process.env.NODE_ENV === 'production'
@@ -42,9 +45,25 @@ export const CrearArtistaForm = () => {
             body: formData,
             isFormData: true,
         });
-        setDataFetch(data);
-        setErrorFetch(error);
-        dispatch(setSessionArtista(data));
+        if (data) {
+            setDataFetch(data);
+            dispatch(setSessionArtista(data));
+            console.log(data);
+            dispatch(
+                setSessionUserMessage({
+                    message: `${sujeto} creado exitosamente`,
+                    messageType: 'warning',
+                })
+            );
+        }
+        if (error) {
+            dispatch(
+                setSessionUserMessage({
+                    message: error,
+                    messageType: 'error',
+                })
+            );
+        }
     };
     const handleOnChange = (e) => {
         const { name, value } = e.target;
@@ -61,23 +80,13 @@ export const CrearArtistaForm = () => {
         }
     };
 
-    if (errorFetch)
-        return (
-            <div>
-                <p>Error: {errorFetch}</p>
-                <button onClick={() => setErrorFetch(null)}>
-                    Volver a intentar
-                </button>
-            </div>
-        );
-
     return (
         <>
             <form className="CrearArtistaForm" onSubmit={handleSubmit}>
-                <h3>Crear Artista</h3>
+                <h3>Crear {sujeto}</h3>
                 <div className="CrearArtistaForm__form__input">
                     <label className="mb-3" htmlFor="name">
-                        Nombre de Artista:
+                        Nombre:
                     </label>
                     <input
                         tabIndex={1}
@@ -91,7 +100,7 @@ export const CrearArtistaForm = () => {
                 </div>
                 <div className="CrearArtistaForm__form__input">
                     <label className="mb-3" htmlFor="name">
-                        Perfil de Spotify:
+                        Link del perfil de Spotify:
                     </label>
                     <input
                         tabIndex={2}
@@ -104,7 +113,7 @@ export const CrearArtistaForm = () => {
                 </div>
                 <div className="CrearArtistaForm__form__input">
                     <label className="mb-3" htmlFor="name">
-                        Perfil de Instagram:
+                        Link del perfil de Instagram:
                     </label>
                     <input
                         tabIndex={3}

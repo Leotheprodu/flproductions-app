@@ -1,39 +1,36 @@
 @use 'base/mixins' as m;
 @use 'base/variables' as v;
 
-.info-card{
+.info-card {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 30rem;
     height: 40rem;
     padding: 1rem;
-    transition: transform .2s;
+    transition: transform 0.2s;
     border-radius: 1rem;
-    border-style:solid;
+    border-style: solid;
     border-width: 1px;
     border-color: v.$gris;
-    &:hover{
+    &:hover {
         box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.144);
     }
 
-
-    .info-card_icon{
-        color: v.$oscurecer;
+    .info-card_icon {
+        color: v.$cuaternario;
     }
-    .info-card_titulo{
+    .info-card_titulo {
         text-align: center;
-        
-        
+
         h2 {
             font-size: 1.7rem;
             font-weight: 700;
             margin-bottom: 0;
         }
     }
-    .info-card_texto{
-        
-        p{
+    .info-card_texto {
+        p {
             font-size: 1.4rem;
             line-height: 1.7;
             text-align: justify;

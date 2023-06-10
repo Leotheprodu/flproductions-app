@@ -12,15 +12,10 @@ const apiUrl_DeleteSong =
         ? process.env.NEXT_PUBLIC_PROD_PRODUCCIONES_DELETE
         : process.env.NEXT_PUBLIC_DEV_PRODUCCIONES_DELETE;
 
-export const ArtistMusicHandle = () => {
-    const [dataFetch, setDataFetch, isRequested, setIsRequested] =
-        useFetchAPI();
+export const ArtistMusicHandle = ({ artista }) => {
+    const [dataFetch, setDataFetch] = useFetchAPI();
     const dispatch = useDispatch();
-    const artista = useSelector(
-        (state: RootState) => state.user.session.artista
-    );
     const usuario = useSelector((state: RootState) => state.user.session.user);
-
     const [isDeleting, setIsDeleting] = useState({
         status: false,
         song: {
@@ -36,6 +31,8 @@ export const ArtistMusicHandle = () => {
             descripcion: '',
             spotify_link: '',
             youtube_id: '',
+            id_artista: null,
+            tipo_obra: null,
             estilo: 'secular',
             genero: '',
             fecha_lanzamiento: '',
@@ -52,14 +49,16 @@ export const ArtistMusicHandle = () => {
                 setDataFetch(data);
             }
         };
-        fetchData();
-    }, [isEditing.status, isDeleting.status]);
+        artista && fetchData();
+    }, [isEditing.status, isDeleting.status, artista]);
 
     const handleElementEdit = (element) => {
         const {
             id,
             nombre,
             descripcion,
+            id_artista,
+            tipo_obra,
             spotify_link,
             youtube_id,
             estilo,
@@ -74,6 +73,8 @@ export const ArtistMusicHandle = () => {
                 id,
                 nombre,
                 descripcion,
+                id_artista,
+                tipo_obra,
                 spotify_link,
                 youtube_id,
                 estilo,
@@ -91,12 +92,14 @@ export const ArtistMusicHandle = () => {
                 id: null,
                 nombre: '',
                 descripcion: '',
+                id_artista: artista.id,
+                tipo_obra: artista.tipo === 0 ? 1 : 0,
                 spotify_link: '',
                 youtube_id: '',
                 estilo: '',
                 genero: '',
                 fecha_lanzamiento: '',
-                key: 'indefinido',
+                key: '',
                 bpm: null,
             },
         });
@@ -170,7 +173,7 @@ export const ArtistMusicHandle = () => {
                         </div>
                     </div>
                 ))}
-            {!isEditing.status && !isDeleting.status && (
+            {!isEditing.status && !isDeleting.status && artista && (
                 <div
                     title="Nueva Cancion"
                     className="ArtistMusicHandle__createSong"

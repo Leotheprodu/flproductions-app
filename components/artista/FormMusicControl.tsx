@@ -15,6 +15,8 @@ interface IsEditingData {
         id: number | null;
         nombre: string;
         descripcion: string;
+        id_artista: number;
+        tipo_obra: number;
         spotify_link: string;
         youtube_id: string;
         estilo: string;
@@ -34,15 +36,16 @@ export const FormMusicControl: React.FC<MyComponentProps> = ({
 }) => {
     const dispatch = useDispatch();
     const { status, song } = isEditing;
-
     const [songData, setSongData] = useState({
         id: null,
         nombre: '',
         descripcion: '',
         spotify_link: '',
         youtube_id: '',
+        id_artista: null,
+        tipo_obra: null,
         estilo: 'secular',
-        genero: '',
+        genero: 'pop',
         fecha_lanzamiento: '',
         key: 'indefinido',
         bpm: null,
@@ -52,10 +55,12 @@ export const FormMusicControl: React.FC<MyComponentProps> = ({
             ? process.env.NEXT_PUBLIC_PROD_PRODUCCIONES_HANDLE
             : process.env.NEXT_PUBLIC_DEV_PRODUCCIONES_HANDLE;
     useEffect(() => {
-        if (status) {
+        if (status && song.nombre !== '') {
             setSongData({
                 id: song.id || undefined,
                 nombre: song.nombre || undefined,
+                id_artista: song.id_artista,
+                tipo_obra: song.tipo_obra,
                 descripcion: song.descripcion || undefined,
                 spotify_link: song.spotify_link || undefined,
                 youtube_id: song.youtube_id || undefined,
@@ -65,21 +70,23 @@ export const FormMusicControl: React.FC<MyComponentProps> = ({
                 key: song.key || 'indefinido',
                 bpm: song.bpm || undefined,
             });
-        } else if (status && songData.nombre === '') {
+        } else if (status && song.nombre === '') {
             setSongData({
                 id: undefined,
                 nombre: '',
                 descripcion: undefined,
                 spotify_link: undefined,
+                id_artista: song.id_artista,
+                tipo_obra: song.tipo_obra,
                 youtube_id: '',
                 estilo: 'secular',
-                genero: '',
+                genero: 'reggaeton',
                 fecha_lanzamiento: '',
                 key: 'indefinido',
                 bpm: null,
             });
         }
-    }, [status]);
+    }, [status, song]);
     const handleFormChange = (e) => {
         const { name, value } = e.target;
         setSongData({ ...songData, [name]: value });

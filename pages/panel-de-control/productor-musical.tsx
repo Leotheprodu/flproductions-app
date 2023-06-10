@@ -18,7 +18,7 @@ function Artista({ headInfo }) {
 
     useEffect(() => {
         if (Array.isArray(artistas)) {
-            setArtista(artistas.find((artist) => artist.tipo === 1));
+            setArtista(artistas.find((artist) => artist.tipo === 0) ?? null);
         }
     }, [artistas]);
     const {
@@ -58,7 +58,7 @@ function Artista({ headInfo }) {
             <div className="Panel-de-control__Artista">
                 {!artista && (
                     <div className="Panel-de-control__Artista__elemento">
-                        <CrearArtistaForm tipo={1} />
+                        <CrearArtistaForm tipo={0} />
                     </div>
                 )}
                 {artista && (

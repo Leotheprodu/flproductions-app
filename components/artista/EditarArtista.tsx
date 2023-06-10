@@ -1,11 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { useSelector } from 'react-redux';
-import {
-    RootState,
-    fetchAPI,
-    setSessionArtista,
-    setSessionUserMessage,
-} from '../';
+import { fetchAPI, setSessionArtista, setSessionUserMessage } from '../';
 import { IconEdit } from '@tabler/icons-react';
 import { useDispatch } from 'react-redux';
 
@@ -16,12 +10,9 @@ interface NewDataState {
     spotify: string;
 }
 
-export const EditarArtista = () => {
+export const EditarArtista = ({ artista }) => {
     const dispatch = useDispatch();
     const fileInputRef = useRef(null);
-    const artista = useSelector(
-        (state: RootState) => state.user.session.artista
-    );
     const apiUrlUpdateImage =
         process.env.NODE_ENV === 'production'
             ? process.env.NEXT_PUBLIC_PROD_UDPATE_ARTIST_IMAGE
