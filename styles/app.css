@@ -1942,6 +1942,7 @@ input {
   align-items: center;
   align-content: center;
   position: relative;
+  text-align: center;
 }
 
 .header__submenu-parent:hover .header__submenu,
@@ -1951,6 +1952,7 @@ input {
 }
 .header__submenu-parent:hover .header__submenu a,
 .header__submenu-parent[aria-expanded=true] .header__submenu a {
+  text-align: center;
   color: #000000;
 }
 .header__submenu-parent:hover .header__submenu a:hover,
