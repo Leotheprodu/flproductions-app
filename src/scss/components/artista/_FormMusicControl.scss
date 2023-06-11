@@ -1,0 +1,63 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.FormMusicControl {
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    button {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        border-radius: 5px;
+        height: 3rem;
+        width: 10rem;
+        padding: 1rem;
+        color: v.$negro;
+        background-color: v.$primario;
+        opacity: 1;
+        transition: opacity 0.3s ease-in-out;
+        transition: box-shadow 0.5s;
+        cursor: pointer;
+
+        &:active {
+            opacity: 0.5;
+            transform: scale(0.8);
+        }
+
+        &:hover {
+            opacity: 0.9;
+            box-shadow: 2px 2px 2px #0000001f;
+        }
+
+        &:focus {
+            outline-color: v.$primario;
+        }
+    }
+}
+
+.FormMusicControl__element {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    border: 1px solid v.$gris;
+    border-radius: 1rem;
+    width: 25rem;
+    background-color: v.$secundario;
+}
+.FormMusicControl_informacionButton {
+    position: absolute;
+    right: 0.5rem;
+    top: -1.5rem;
+    color: v.$oscurecer;
+    cursor: pointer;
+    &:hover {
+        color: v.$primario;
+        box-shadow: 2px 2px 2px #0000001f;
+    }
+}

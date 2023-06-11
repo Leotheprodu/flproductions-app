@@ -1,0 +1,72 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+.CrearArtistaForm {
+    background-color: v.$gris;
+    border-radius: 2rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    @include m.tablet {
+        max-width: 40rem;
+    }
+    h3 {
+        text-transform: uppercase;
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    button {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        border-radius: 5px;
+        height: 3rem;
+        padding: 1rem;
+        color: v.$negro;
+        background-color: v.$secundario;
+        opacity: 1;
+        transition: opacity 0.3s ease-in-out;
+        transition: box-shadow 0.5s;
+        cursor: pointer;
+        text-transform: uppercase;
+
+        &:active {
+            opacity: 0.5;
+            transform: scale(0.8);
+        }
+
+        &:hover {
+            opacity: 0.9;
+            box-shadow: 2px 2px 2px #0000001f;
+        }
+        &:focus {
+            outline-color: v.$primario;
+        }
+    }
+}
+
+.CrearArtistaForm__form__input {
+    border-radius: 5px;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    input {
+        &:focus {
+            outline-color: v.$primario;
+        }
+    }
+
+    textarea {
+        height: 15rem;
+        width: 30rem;
+        border: none;
+        &:focus {
+            outline-color: v.$primario;
+        }
+    }
+}

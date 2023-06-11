@@ -18,7 +18,6 @@ body {
     font-family: v.$fuente_principal;
     font-size: 1.6rem;
 
-
     &.fijar-body {
         overflow: hidden;
     }
@@ -42,11 +41,13 @@ p {
 .contenedor-basic {
     width: 97%;
     margin: 0 auto;
-    
 }
 
 .contenedor-main {
-    padding-top: 10rem;
+    padding-top: 11rem;
+    position: relative;
+}
+.root-container {
     position: relative;
 }
 
@@ -63,20 +64,17 @@ p {
     transform: scale(1.05);
 } */
 
-
-
-
 a {
     text-decoration: none;
     color: v.$negro;
     transition-property: color;
-    transition-duration: .3s;
+    transition-duration: 0.3s;
     transition-timing-function: ease-out;
 
     &:hover {
         color: rgb(61, 61, 61);
         transition-property: color;
-        transition-duration: .3s;
+        transition-duration: 0.3s;
         transition-timing-function: ease-out;
     }
 }
@@ -119,12 +117,11 @@ img {
     max-height: 50rem;
     overflow: hidden;
 }
-.vh100{
+.vh100 {
     height: 100vh;
 }
 
-input{
+input {
     border: 0;
-    margin: .5rem;
+    margin: 0.5rem;
 }
-

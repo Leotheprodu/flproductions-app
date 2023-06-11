@@ -1,0 +1,16 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.Panel-de-control__Artista {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 100vh;
+    padding: 0 4rem;
+}
+
+.Panel-de-control__Artista__elemento {
+    margin: 6rem 1rem;
+    gap: 2rem;
+}

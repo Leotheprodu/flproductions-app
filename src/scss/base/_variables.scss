@@ -3,20 +3,93 @@
 
 $fuente_principal: 'Roboto', sans-serif;
 
-
-
-
 //Colores
-$secundario: #ebc246;
-$primario: #1ab5e6;
+$primario: #1f92eaff;
+$secundario: #f3de3fff;
+$terciario: #273043ff;
+$cuaternario: #c3423fff;
+$primario-transparente: rgba(31, 146, 234, 0.5);
+$secundario-transparente: rgba(243, 222, 63, 0.5);
+$terciario-transparente: rgba(39, 48, 67, 0.5);
+$cuaternario-transparente: rgba(195, 65, 63, 0.5);
 $negro: #000000;
-$blanco: #FFFFFF;
+$blanco: #ffffff;
+$beige: #eaf0ceff;
 $oscurecer: rgb(102, 102, 102);
 $gris: rgb(238, 238, 238);
+$gradient-primario: linear-gradient(
+    127deg,
+    rgba(243, 222, 63, 1) 0%,
+    rgba(195, 65, 63, 1) 50%,
+    rgba(31, 146, 234, 1) 100%
+);
 
+$gradient-top: linear-gradient(
+    0deg,
+    #1f92eaff,
+    #273043ff,
+    #c3423fff,
+    #f3de3fff,
+    #eaf0ceff
+);
+$gradient-right: linear-gradient(
+    90deg,
+    #1f92eaff,
+    #273043ff,
+    #c3423fff,
+    #f3de3fff,
+    #eaf0ceff
+);
+$gradient-left: linear-gradient(
+    270deg,
+    #1f92eaff,
+    #273043ff,
+    #c3423fff,
+    #f3de3fff,
+    #eaf0ceff
+);
+$gradient-top-right: linear-gradient(
+    45deg,
+    #1f92eaff,
+    #273043ff,
+    #c3423fff,
+    #f3de3fff,
+    #eaf0ceff
+);
+$gradient-bottom-right: linear-gradient(
+    135deg,
+    #1f92eaff,
+    #273043ff,
+    #c3423fff,
+    #f3de3fff,
+    #eaf0ceff
+);
+$gradient-top-left: linear-gradient(
+    225deg,
+    #1f92eaff,
+    #273043ff,
+    #c3423fff,
+    #f3de3fff,
+    #eaf0ceff
+);
+$gradient-bottom-left: linear-gradient(
+    315deg,
+    #1f92eaff,
+    #273043ff,
+    #c3423fff,
+    #f3de3fff,
+    #eaf0ceff
+);
+$gradient-radial: radial-gradient(
+    #1f92eaff,
+    #273043ff,
+    #c3423fff,
+    #f3de3fff,
+    #eaf0ceff
+);
 //Tamanos de patallas para Media Queries
 
 $celular: 480px;
 $tablet: 768px;
 $desktop: 992px;
-$desktopXL:1200px;
+$desktopXL: 1200px;

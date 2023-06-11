@@ -1,0 +1,199 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.MessageComponentContainer {
+    z-index: 13;
+    position: fixed;
+    right: 1rem;
+    bottom: 7rem;
+}
+.MessageComponent {
+    left: -30rem;
+    bottom: 11rem;
+    border-radius: 1rem;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.308);
+    cursor: pointer;
+    z-index: 15;
+    p {
+        margin: 0;
+    }
+}
+.visible {
+    transition: opacity 0.5s ease-out;
+    opacity: 1;
+}
+
+.hidden {
+    transition: opacity 0.5s ease-out;
+    opacity: 0;
+}
+
+.MessageComponent-content {
+    padding: 2rem;
+    position: relative;
+}
+
+.MessageComponent-close {
+    border: none;
+    background: none;
+    position: absolute;
+    right: 0;
+    top: 0.2rem;
+    cursor: pointer;
+    &:active {
+        opacity: 0.5;
+        transform: scale(0.8);
+    }
+    &:focus {
+        outline-color: v.$primario;
+    }
+    &:hover {
+        opacity: 0.9;
+        box-shadow: 2px 2px 2px #0000001f;
+    }
+}
+
+.error {
+    background-color: rgb(207, 34, 34);
+    color: v.$blanco;
+    .MessageComponent-close {
+        color: v.$blanco;
+    }
+}
+
+.warning {
+    background-color: v.$secundario;
+    color: v.$negro;
+    .MessageComponent-close {
+        color: v.$negro;
+    }
+}
+
+.notification {
+    background-color: v.$gris;
+    color: v.$negro;
+    .MessageComponent-close {
+        color: v.$primario;
+    }
+}
+
+.error,
+.waring,
+.notification {
+    &:hover {
+        box-shadow: 2px 2px 10px #0000005e;
+    }
+}
+
+.MessageComponentIcon-content {
+    cursor: pointer;
+    opacity: 0.75;
+    transition: opacity 0.5s ease-in-out;
+    &:hover {
+        opacity: 1;
+    }
+}
+.MessageComponentIcon-input {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    left: -30rem;
+    bottom: 2rem;
+    textarea {
+        resize: none;
+        border: none;
+        padding: 1rem;
+        width: 30rem;
+        background-color: v.$primario;
+        border-bottom-right-radius: 1rem;
+        border-bottom-left-radius: 1rem;
+        color: v.$negro;
+        transition: opacity 0.5s ease-in-out;
+        opacity: 0.9;
+        &:focus {
+            outline-color: v.$primario;
+        }
+        &:hover {
+            opacity: 1;
+            box-shadow: 2px 2px 2px #0000001f;
+        }
+    }
+    button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: none;
+        background: none;
+        position: absolute;
+        right: 0rem;
+        bottom: 1rem;
+        color: v.$secundario;
+        opacity: 0.8;
+        height: 4rem;
+        width: 4rem;
+        border-radius: 50%;
+        cursor: pointer;
+        &:hover {
+            opacity: 1;
+            box-shadow: 2px 2px 2px #0000001f;
+        }
+        &:focus {
+            outline-color: v.$secundario;
+        }
+    }
+}
+.MessageComponent-lastChatFaq {
+    display: flex;
+    flex-direction: column;
+    z-index: 8;
+    width: 30rem;
+    height: 20rem;
+    padding: 2rem 2rem 2rem 2rem;
+    background-color: v.$gris;
+
+    overflow-y: auto;
+    overflow-x: hidden;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+    p {
+        margin: 0;
+    }
+}
+.MessageComponent-lastChatFaq_question {
+    background-color: #1ab6e673;
+    width: 20rem;
+}
+.MessageComponent-lastChatFaq_response {
+    background-color: #ebc24675;
+    width: 20rem;
+    scroll-snap-align: end;
+}
+.MessageComponent-lastChatFaq_response,
+.MessageComponent-lastChatFaq_question {
+    border-radius: 1rem;
+    padding: 1.5rem;
+}
+.MessageComponent-lastChatFaq-chat {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    justify-content: center;
+}
+.MessageComponent-lastChatFaq_avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    p {
+        margin: 0;
+        font-size: 1rem;
+    }
+}
+.MessageComponent-lastChatFaq-messages {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}

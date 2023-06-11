@@ -1,0 +1,158 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.ArtistMusicHandle {
+    display: flex;
+    flex-flow: wrap;
+    gap: 1rem;
+    justify-content: center;
+}
+.ArtistMusicHandle__container {
+    position: relative;
+    transition: transform 0.1s ease-in;
+    &:hover {
+        transform: rotate3d(1, 0.3, 0.5, 10deg);
+    }
+}
+.ArtistMusicHandle__song {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    img {
+        height: 15rem;
+        width: 15rem;
+        margin: 0;
+        border-radius: 5px;
+        object-fit: cover;
+    }
+    p {
+        margin: 0;
+    }
+}
+.ArtistMusicHandle__createSong {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: v.$blanco;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    &:hover {
+        transform: scale(1.1);
+    }
+    div {
+        height: 15rem;
+        width: 15rem;
+        margin: 0;
+        border-radius: 5px;
+        background-color: v.$primario;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        p {
+            color: v.$blanco;
+            font-size: 10rem;
+        }
+    }
+    p {
+        margin: 0;
+    }
+}
+
+.ArtistMusicHandle__UpdateArtist__container {
+    z-index: 3;
+    margin: 2rem;
+}
+
+.ArtistMusicHandle__UpdateArtist {
+    position: relative;
+    background-color: v.$secundario;
+    padding: 1rem;
+    border-radius: 1rem;
+    width: 100%;
+}
+.ArtistMusicHandle__UpdateArtist-cerrar {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    cursor: pointer;
+    color: v.$cuaternario;
+    transition: transform 0.5s ease-out;
+    &:hover {
+        transform: rotate(10deg) scale(1.3);
+    }
+}
+.ArtistMusicHandle__deleteButtom {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS',
+        sans-serif;
+    right: 0rem;
+    top: 0rem;
+    height: 2rem;
+    width: 2rem;
+    color: v.$blanco;
+    background-color: v.$cuaternario;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s ease-out;
+    &:hover {
+        color: v.$terciario;
+        transform: scale(1.2);
+    }
+}
+.ArtistMusicHandle__UpdateArtist__difuminado {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(
+        0,
+        0,
+        0,
+        0.5
+    ); /* Cambia el valor alpha para ajustar la opacidad */
+    backdrop-filter: blur(10px); /* Aplica un efecto de difuminado */
+    z-index: 0; /* Asegura que el fondo difuminado se muestre por encima del contenido centrado */
+}
+.ArtistMusicHandle__DeleteArtist_buttons {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    button {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        border-radius: 5px;
+        height: 3rem;
+        width: 10rem;
+        padding: 1rem;
+        color: v.$negro;
+        background-color: v.$primario;
+        opacity: 1;
+        transition: opacity 0.3s ease-in-out;
+        transition: box-shadow 0.5s;
+        cursor: pointer;
+
+        &:active {
+            opacity: 0.5;
+            transform: scale(0.8);
+        }
+
+        &:hover {
+            opacity: 0.9;
+            box-shadow: 2px 2px 2px #0000001f;
+        }
+
+        &:focus {
+            outline-color: v.$primario;
+        }
+    }
+}

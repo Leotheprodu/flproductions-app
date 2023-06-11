@@ -1,0 +1,46 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.BannerSlider {
+    display: flex;
+}
+.BannerSlider__div {
+    height: 70vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.BannerSlider__div-texto {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(0, 0, 0, 0.575);
+    max-width: 50%;
+    min-width: 30rem;
+    padding: 2rem;
+    border-radius: 2rem;
+
+    @include m.tablet {
+        margin-top: 20rem;
+    }
+    h2 {
+        color: v.$secundario;
+        margin: 0;
+    }
+    p {
+        color: v.$beige;
+        font-size: 1.7rem;
+        padding: 0;
+        text-align: justify;
+    }
+    a {
+        font-size: 2rem;
+        background-color: v.$blanco;
+        width: 19rem;
+        padding: 1rem;
+        border-radius: 1rem;
+        text-align: center;
+        margin: 0 auto;
+        color: v.$terciario;
+    }
+}

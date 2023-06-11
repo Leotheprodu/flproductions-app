@@ -1,0 +1,97 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.contenedor__UserBasicInfo {
+    background-color: v.$gris;
+    border-radius: 2rem;
+    margin: 6rem 1rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    @include m.tablet {
+        max-width: 40rem;
+    }
+    h3 {
+        text-transform: uppercase;
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    button {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        border-radius: 5px;
+        height: 3rem;
+        padding: 1rem;
+        color: v.$negro;
+        background-color: v.$secundario;
+        opacity: 1;
+        transition: opacity 0.3s ease-in-out;
+        transition: box-shadow 0.5s;
+        cursor: pointer;
+        text-transform: uppercase;
+
+        &:active {
+            opacity: 0.5;
+            transform: scale(0.8);
+        }
+
+        &:hover {
+            opacity: 0.9;
+            box-shadow: 2px 2px 2px #0000001f;
+        }
+        &:focus {
+            outline-color: v.$primario;
+        }
+    }
+}
+
+.UserBasicInfo__Error {
+    border: 1px solid red;
+}
+
+.UserBasicInfo__form__input {
+    border-radius: 5px;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    input {
+        &:focus {
+            outline-color: v.$primario;
+        }
+    }
+}
+
+.UserBasicInfo__form__input__verified {
+    display: flex;
+    flex-direction: column;
+    div {
+        display: flex;
+        gap: 1rem;
+        color: v.$oscurecer;
+        align-items: center;
+    }
+    @include m.tablet {
+        flex-direction: row;
+    }
+}
+.UserBasicInfo__Email-No-verificado {
+    display: flex;
+    flex-direction: column;
+
+    button {
+        box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.596);
+    }
+}
+
+.UserBasicInfo__form__submit {
+    display: flex;
+    justify-content: center;
+}

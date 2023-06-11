@@ -1,0 +1,93 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.EditarArtista {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    @include m.tablet {
+        flex-direction: row;
+    }
+    img {
+        width: 40rem;
+        height: 40rem;
+        border-radius: 20%;
+        box-shadow: 2px 3px 3px #00000031;
+        object-fit: cover;
+    }
+    h4 {
+        text-transform: uppercase;
+        font-size: 3rem;
+        margin: 0;
+    }
+    p {
+        font-size: 2rem;
+        margin: 0;
+        text-align: justify;
+    }
+}
+.EditarArtista_BloqueInformacion {
+    display: flex;
+    flex-direction: column;
+}
+.EditarArtista_input_nombre_artista {
+    font-size: 4rem;
+    &:focus {
+        outline-color: v.$primario;
+    }
+}
+.EditarArtista_input_info {
+    font-size: 2rem;
+    height: 15rem;
+    width: 30rem;
+    &:focus {
+        outline-color: v.$primario;
+    }
+    border: none;
+}
+.EditarArtista_input_generic {
+    font-size: 2rem;
+    &:focus {
+        outline-color: v.$primario;
+    }
+    border: none;
+}
+.EditarArtista_texto_Text {
+    display: flex;
+    flex-direction: row;
+    max-width: 30rem;
+    overflow: hidden;
+}
+.EditarArtista_texto_iconEdit,
+.EditarArtista_imagen_iconEdit {
+    &:hover {
+        cursor: pointer;
+    }
+}
+.EditarArtista_texto_iconEdit {
+    color: v.$primario;
+}
+.EditarArtista_imagen_iconEdit {
+    color: v.$primario;
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
+}
+.EditarArtista_imagen_container {
+    position: relative;
+    cursor: pointer;
+}
+.EditarArtista_imagen_container {
+    transition: transform 0.5s ease-in-out;
+    &:hover {
+        transform: scale(1.01);
+    }
+}
+
+.EditarArtista_link {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

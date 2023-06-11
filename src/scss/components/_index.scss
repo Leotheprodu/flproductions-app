@@ -1,0 +1,44 @@
+/* app_music */
+@forward './app_music/AppMusic';
+@forward './app_music/artist-detail';
+@forward './app_music/ArtistList';
+@forward './app_music/BotonesAppMusic';
+@forward './app_music/detalle-producciones';
+@forward './app_music/ItemAppMusic';
+@forward './app_music/songDetail';
+/* artista */
+@forward './artista/EditarArtista';
+@forward './artista/ArtistMusicHandle';
+@forward './artista/FormMusicControl';
+/* forms */
+@forward './forms/contact-form';
+@forward './forms/UserBasicInfo';
+@forward './forms/CrearArtistaForm';
+/* helpers */
+@forward './helpers/CountdownTimer';
+@forward './helpers/mensajes-del-sistema__bloque';
+@forward './helpers/Draggable';
+/* layout */
+@forward './layout/BannerSlider';
+@forward './layout/contact-info';
+@forward './layout/footer';
+@forward './layout/galeria-de-imagenes';
+@forward './layout/header__nav';
+@forward './layout/info-card';
+@forward './layout/LinksPanel';
+@forward './layout/nuestras-caracteristicas';
+@forward './layout/palabras-del-equipo';
+@forward './layout/simple-text';
+@forward './layout/social-icons';
+@forward './layout/testimonio';
+@forward './layout/MessageComponent';
+@forward './layout/RootLayout';
+@forward './layout/InicioLinkCards';
+/* users */
+@forward './users/AvatarSelection';
+@forward './users/AvatarUsers';
+@forward './users/login';
+@forward './users/RecuperarPassword';
+@forward './users/SignUp';
+@forward './users/VerificarCorreo';
+@forward './users/TypeOfUser';
