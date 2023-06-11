@@ -79,7 +79,7 @@ function InicioPaneldeControl({ headInfo }) {
 
 export default InicioPaneldeControl;
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
     const headInfo = {
         imgWidth: '400',
         imgHeight: '300',
