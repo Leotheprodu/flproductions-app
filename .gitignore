@@ -38,3 +38,5 @@ dist.zip
 .next/
 app.zip
 *.mp3
+# Local Netlify folder
+.netlify

@@ -1807,6 +1807,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@netlify/next@npm:^1.4.6":
+  version: 1.4.6
+  resolution: "@netlify/next@npm:1.4.6"
+  peerDependencies:
+    next: ">=12.2.0"
+  checksum: 7eb3587aeeaf9e7e65f6e1b6f571611dc36e7b3c8846ec73d9476153a05ebe9d2e612201b8ed38dfcc673dd7ab0b7ed6fe21df7360c513f36a59ca8f2bfdfd13
+  languageName: node
+  linkType: hard
+
 "@next/env@npm:13.3.0":
   version: 13.3.0
   resolution: "@next/env@npm:13.3.0"
@@ -5930,6 +5939,7 @@ __metadata:
     "@babel/node": ^7.20.0
     "@babel/preset-env": ^7.19.4
     "@babel/preset-react": ^7.18.6
+    "@netlify/next": ^1.4.6
     "@reduxjs/toolkit": ^1.9.3
     "@tabler/icons": ^1.103.0
     "@tabler/icons-react": ^2.4.0
