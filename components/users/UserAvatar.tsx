@@ -34,9 +34,9 @@ export const UserAvatar = ({ user_id, size = 5 }: Props) => {
             <img
                 style={styles}
                 draggable="false"
-                src={`https://flproductionscr.com/build_main/img/perfil/avatar/${
-                    avatar_id.avatar || 0
-                }.avif`}
+                src={`${
+                    process.env.NEXT_PUBLIC_PROD_LINK
+                }/build_main/img/perfil/avatar/${avatar_id.avatar || 0}.avif`}
                 alt={`Avatar de ${avatar_id.username || 'usuario'}`}
             />
         </div>

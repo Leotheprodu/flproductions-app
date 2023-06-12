@@ -176,8 +176,8 @@ function AboutPage({ headInfo }) {
                     "
                     nombre="Leo Serrano"
                     puesto="Productor Musical"
-                    foto="https://flproductionscr.com/build_main/img/leo-serrano1.png"
-                    firma="https://flproductionscr.com/build_main/img/leoserrano-signature.png"
+                    foto={`${process.env.NEXT_PUBLIC_PROD_LINK}/build_main/img/leo-serrano1.png`}
+                    firma={`${process.env.NEXT_PUBLIC_PROD_LINK}/build_main/img/leoserrano-signature.png`}
                 />
             </div>
 
@@ -250,7 +250,7 @@ export const getServerSideProps = async () => {
             'Estudio de grabación y producción musical en Costa Rica. Ofrecemos un enfoque personalizado y profesional para ayudar a artistas y músicos a realizar sus proyectos. Visítanos para saber más',
         type: 'website',
         url: 'https://flproductionscr.com/nosotros',
-        image: 'https://flproductionscr.com/build_main/img/header-main.png',
+        image: `${process.env.NEXT_PUBLIC_PROD_LINK}/build_main/img/header-main.png`,
         keywords:
             'musica, artistas, estudio de grabacion, produccion musical, acerca de nosotros, nosotros, instrumentales, beats',
         robots: 'index, follow',

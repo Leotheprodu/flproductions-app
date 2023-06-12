@@ -84,7 +84,7 @@ export const getServerSideProps = async () => {
             'Pagina de configuracion de los artistas de FLProductions Costa Rica',
         type: 'website',
         url: 'https://flproductionscr.com/panel-de-control/artista',
-        image: 'https://flproductionscr.com/build_main/img/header-main.png',
+        image: `${process.env.NEXT_PUBLIC_PROD_LINK}/build_main/img/header-main.png`,
         keywords:
             'panel de control, artista, usuarios, flproductions, music, Costa Rica',
         robots: 'index, follow',

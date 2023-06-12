@@ -68,7 +68,7 @@ export const getServerSideProps = async () => {
             'Información de contacto de los estudios de FLProductions Costa Rica',
         type: 'website',
         url: 'https://flproductionscr.com/contacto',
-        image: 'https://flproductionscr.com/build_main/img/header-main.png',
+        image: `${process.env.NEXT_PUBLIC_PROD_LINK}/build_main/img/header-main.png`,
         keywords: 'musica, artistas, destacados, producciones, music',
         robots: 'index, follow',
     };

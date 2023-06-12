@@ -102,7 +102,7 @@ function SongDetail({ headInfo, producciones }) {
                         tipo_obra_general={0}
                     />
                 </div>
-                {/* <img src={`https://flproductionscr.com/build_main/img/banners/music/${id}.webp`} alt="" /> */}
+
                 <DetalleProducciones
                     infoProduccion={produccionActual[0]}
                     tipo_obra_general={0}
@@ -142,7 +142,7 @@ export const getServerSideProps = async ({ query }) => {
         url: `https://flproductionscr.com/cancion/${id}`,
         image:
             `https://img.youtube.com/vi/${produccion.youtube_id}/mqdefault.jpg` ||
-            'https://flproductionscr.com/build_main/img/header-main.png',
+            `${process.env.NEXT_PUBLIC_PROD_LINK}/build_main/img/header-main.png`,
         keywords: `musica, artistas, destacados, producciones, music, ${produccion.nombre}, ${produccion.artista.nombre_artista}`,
         robots: 'index, follow',
     };

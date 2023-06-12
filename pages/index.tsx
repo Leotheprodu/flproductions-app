@@ -73,7 +73,7 @@ export const getServerSideProps = async () => {
             'FLProductions tu app para artistas y productores de Costa Rica, comparte, escucha, mira los videos, aprende con tutoriales, instrumentales, stream de sesiones, etc',
         type: 'website',
         url: 'https://flproductionscr.com/',
-        image: 'https://flproductionscr.com/build_main/img/header-main.png',
+        image: `${process.env.NEXT_PUBLIC_PROD_LINK}/build_main/img/header-main.png`,
         keywords:
             'musica, artistas, estudio de grabacion, produccion musical, beats, costa rica',
         robots: 'index, follow',

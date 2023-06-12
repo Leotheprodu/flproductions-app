@@ -102,19 +102,19 @@ export const AvatarSelection = (): JSX.Element | null => {
                 <div className="AvatarSelection__images">
                     <div className="AvatarSelection__item0">
                         <img
-                            src={`https://flproductionscr.com/build_main/img/perfil/avatar/${avatarIzq}.webp`}
+                            src={`${process.env.NEXT_PUBLIC_PROD_LINK}/build_main/img/perfil/avatar/${avatarIzq}.webp`}
                             alt={`Avatar # ${avatarIzq}`}
                         />
                     </div>
                     <div className="AvatarSelection__item1">
                         <img
-                            src={`https://flproductionscr.com/build_main/img/perfil/avatar/${avatar}.webp`}
+                            src={`${process.env.NEXT_PUBLIC_PROD_LINK}/build_main/img/perfil/avatar/${avatar}.webp`}
                             alt={`Avatar # ${avatar}`}
                         />
                     </div>
                     <div className="AvatarSelection__item2">
                         <img
-                            src={`https://flproductionscr.com/build_main/img/perfil/avatar/${avatarDer}.webp`}
+                            src={`${process.env.NEXT_PUBLIC_PROD_LINK}/build_main/img/perfil/avatar/${avatarDer}.webp`}
                             alt={`Avatar # ${avatarDer}`}
                         />
                     </div>

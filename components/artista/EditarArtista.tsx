@@ -22,7 +22,7 @@ export const EditarArtista = ({ artista }) => {
             ? process.env.NEXT_PUBLIC_PROD_UDPATE_ARTIST_TEXT
             : process.env.NEXT_PUBLIC_DEV_UDPATE_ARTIST_TEXT;
     const [imageUrl, setImageUrl] = useState<string>(
-        'https://flproductionscr.com/build_main/img/perfil/avatar/10.webp'
+        `${process.env.NEXT_PUBLIC_PROD_LINK}/build_main/img/perfil/avatar/10.webp`
     );
 
     const [isEditing, setIsEditing] = useState({

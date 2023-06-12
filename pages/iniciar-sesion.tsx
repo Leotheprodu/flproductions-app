@@ -178,7 +178,7 @@ export const getServerSideProps = async () => {
         description: 'Incio de Session',
         type: 'website',
         url: 'https://flproductionscr.com/iniciar-sesion',
-        image: 'https://flproductionscr.com/build_main/img/header-main.png',
+        image: `${process.env.NEXT_PUBLIC_PROD_LINK}/build_main/img/header-main.png`,
         keywords:
             'estudio de grabacion, produccion musical, sesion, login, usuario',
         robots: 'index, follow',

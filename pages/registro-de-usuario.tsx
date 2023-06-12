@@ -250,7 +250,7 @@ export const getServerSideProps = async () => {
         description: 'Pagina de Registro de Usuario de FLProductions',
         type: 'website',
         url: 'https://flproductionscr.com/registro-de-usuario',
-        image: 'https://flproductionscr.com/build_main/img/header-main.png',
+        image: `${process.env.NEXT_PUBLIC_PROD_LINK}/build_main/img/header-main.png`,
         keywords:
             'estudio de grabacion, produccion musical, registro, signup, usuario',
         robots: 'index, follow',

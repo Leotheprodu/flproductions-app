@@ -140,7 +140,7 @@ export const getServerSideProps = async ({ query }) => {
         url: `https://flproductionscr.com/instrumental/${id}`,
         image:
             `https://img.youtube.com/vi/${produccion.youtube_id}/mqdefault.jpg` ||
-            'https://flproductionscr.com/build_main/img/header-main.png',
+            `${process.env.NEXT_PUBLIC_PROD_LINK}/build_main/img/header-main.png`,
         keywords: `musica, artistas, destacados, producciones, music, ${produccion.nombre}, ${produccion.artista.nombre_artista}`,
         robots: 'index, follow',
     };

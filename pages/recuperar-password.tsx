@@ -319,7 +319,7 @@ export const getServerSideProps = async () => {
         description: 'Recupera tu password para acceder a FLProductions',
         type: 'website',
         url: 'https://flproductionscr.com/recuperar-password',
-        image: 'https://flproductionscr.com/build_main/img/header-main.png',
+        image: `${process.env.NEXT_PUBLIC_PROD_LINK}/build_main/img/header-main.png`,
         keywords: 'musica, artistas, auth, recuperar password',
         robots: 'index, follow',
     };

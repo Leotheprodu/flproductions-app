@@ -173,7 +173,7 @@ export const getServerSideProps = async ({ query }) => {
         description: artista.info,
         image:
             artista.imagen ||
-            'https://flproductionscr.com/build_main/img/header-main.png',
+            `${process.env.NEXT_PUBLIC_PROD_LINK}/build_main/img/header-main.png`,
         keywords: `musica, artistas,artista, cantante, Costa Rica, music, ${artista.nombre_artista}`,
         robots: 'index, follow',
     };
