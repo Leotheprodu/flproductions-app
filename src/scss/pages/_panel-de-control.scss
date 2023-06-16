@@ -3,13 +3,10 @@
 
 .panel-de-control {
     position: relative;
-
     @include m.tablet {
         display: grid;
         grid-template-columns: 1fr 6fr;
-
     }
-
 }
 
 .panel-de-control__menu_celular {
@@ -18,17 +15,18 @@
     top: 11rem;
     right: 0;
     z-index: 2;
-    
+
     button {
-        border-radius: 0 0 50% 50%;
+        background-color: v.$cuaternario;
+        border-radius: 0 0 0 50%;
         appearance: none;
         border: none;
         height: 5rem;
         width: 5rem;
         box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.082);
-
+        color: v.$beige;
         &:active {
-            transform: scale(.9);
+            transform: scale(0.9);
             transition: all 0.2s ease-in-out;
         }
     }
@@ -37,13 +35,9 @@
 .InicioPaneldeControl__div {
     display: flex;
     flex-direction: column;
-    height: 100vh;
     @include m.desktopXL {
         padding: 0 30rem;
-        
-        
     }
-    
 }
 
 .InicioPaneldeControl {
@@ -52,10 +46,8 @@
     justify-content: center;
     gap: 3rem;
     align-items: center;
-    
 
     h1 {
-
         color: v.$negro;
         text-align: center;
         font-size: 2rem;

@@ -13,7 +13,7 @@ import { RootState } from '../redux/store';
 import Link from 'next/link';
 import { fetchAPI } from '../';
 
-function SessionPanel() {
+function SessionPanel({ setUserButton }) {
     const dispatch = useDispatch();
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
@@ -91,6 +91,7 @@ function SessionPanel() {
                 })
             );
             setSpinner(false);
+            setUserButton(false);
         } else {
             dispatch(
                 setSessionUserMessage({
@@ -107,6 +108,7 @@ function SessionPanel() {
     const handleLogout = async (e) => {
         e.preventDefault();
         setSpinner(true);
+        setUserButton(false);
         const { data } = await fetchAPI({ url: apiUrlLogout });
         if (data) {
             dispatch(setSession({ ...data }));
@@ -122,12 +124,16 @@ function SessionPanel() {
     if (isLoggedIn) {
         return (
             <div className="login_container">
-                <p> {userInfo.username}, sesión iniciada</p>
                 <div className="login_buttons">
                     <div className="login_buttons__button">
-                        <p></p>
                         <Link href="/panel-de-control">
-                            <button type="button" title="Panel de Control">
+                            <button
+                                onClick={() => {
+                                    setUserButton(false);
+                                }}
+                                type="button"
+                                title="Panel de Control"
+                            >
                                 {<IconSettingsFilled />}Panel de Control
                             </button>
                         </Link>

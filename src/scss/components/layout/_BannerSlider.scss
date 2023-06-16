@@ -3,6 +3,7 @@
 
 .BannerSlider {
     display: flex;
+    z-index: 1;
 }
 .BannerSlider__div {
     height: 70vh;

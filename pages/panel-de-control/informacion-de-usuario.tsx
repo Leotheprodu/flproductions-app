@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Head from 'next/head';
 import {
     TypeofUser,
@@ -8,9 +8,12 @@ import {
     ControlPanel,
     PropsHead,
     setSessionUserMessage,
+    RootState,
+    UserAvatar,
 } from '../../components';
 
 function InfodeUsuario({ headInfo }) {
+    const user = useSelector((state: RootState) => state.user.session.user);
     const {
         imgWidth,
         imgHeight,

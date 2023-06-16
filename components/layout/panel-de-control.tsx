@@ -68,7 +68,9 @@ export const ControlPanel = ({ children }: Props) => {
                             onClickMovilUser ? 'selected' : ''
                         } ${!isMovilUser ? 'normal' : ''}`}
                     >
-                        <LinksPanel />
+                        <LinksPanel
+                            handleClickMovilUser={handleClickMovilUser}
+                        />
                     </div>
                     {isMovilUser && (
                         <div className="panel-de-control__menu_celular">

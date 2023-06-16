@@ -58,14 +58,7 @@ function InicioPaneldeControl({ headInfo }) {
                 <meta property="og:image:height" content={imgHeight} />
             </Head>
             {isLoggedIn && (
-                <div className="InicioPaneldeControl__div contenedor">
-                    <div className="InicioPaneldeControl">
-                        <UserAvatar user_id={user.id} size={10} />
-
-                        <div className="InicioPaneldeControl_textos">
-                            <h1>{user.username}</h1>
-                        </div>
-                    </div>
+                <div className=" vh100 InicioPaneldeControl__div contenedor">
                     <div className="InicioPaneldeControl__mensajes">
                         <MensajesDelSistema />
                     </div>

@@ -41,31 +41,41 @@ export const MainNavLinks = () => {
     );
 };
 
-export const MovilNavLinks = ({ onClickMovilUser }) => {
+export const MovilNavLinks = ({ onClickMovilUser, setOnClickMovilUser }) => {
     return (
         <nav
             className={`header__links__movil ${
                 onClickMovilUser ? 'selected' : ''
             }`}
         >
-            <NavLink href="/" className="header__links__link">
-                Inicio
-            </NavLink>
-            <NavLink
-                href="/estudio-flproductions"
-                className="header__links__link"
-            >
-                Estudio Flproductions
-            </NavLink>
-            <NavLink href="/contacto" className="header__links__link">
-                Contacto
-            </NavLink>
-            <NavLink href="/canciones" className="header__links__link">
-                Canciones
-            </NavLink>
-            <NavLink href="/instrumentales" className="header__links__link">
-                Instrumentales
-            </NavLink>
+            <div onClick={() => setOnClickMovilUser(false)}>
+                <NavLink href="/" className="header__links__link">
+                    Inicio
+                </NavLink>
+            </div>
+            <div onClick={() => setOnClickMovilUser(false)}>
+                <NavLink
+                    href="/estudio-flproductions"
+                    className="header__links__link"
+                >
+                    Estudio de Grabacion
+                </NavLink>
+            </div>
+            <div onClick={() => setOnClickMovilUser(false)}>
+                <NavLink href="/contacto" className="header__links__link">
+                    Contacto
+                </NavLink>
+            </div>
+            <div onClick={() => setOnClickMovilUser(false)}>
+                <NavLink href="/canciones" className="header__links__link">
+                    Canciones
+                </NavLink>
+            </div>
+            <div onClick={() => setOnClickMovilUser(false)}>
+                <NavLink href="/instrumentales" className="header__links__link">
+                    Instrumentales
+                </NavLink>
+            </div>
         </nav>
     );
 };

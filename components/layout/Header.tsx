@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store';
 import Link from 'next/link';
 import SessionPanel from '../users/SessionPanel';
-import { MainNavLinks, MovilNavLinks, fetchAPI } from '../';
+import { MainNavLinks, MovilNavLinks, UserAvatar, fetchAPI } from '../';
 export function Header() {
     const [UserButton, setUserButton] = useState<boolean>(false);
     const [isMovilUser, setIsMovilUser] = useState<boolean>(false);
@@ -35,9 +35,7 @@ export function Header() {
                 setMainMensaje(mensaje_General_Todos[0].mensaje);
 
                 if (isLoggedIn) {
-                    setMainMensaje(
-                        `Hey ${user.username}, ${mensaje_General_Todos[0].mensaje}`
-                    );
+                    setMainMensaje(`${mensaje_General_Todos[0].mensaje}`);
                 }
             } else {
                 setMainMensaje('Bienvenid(a) a FLProductions');
@@ -72,8 +70,14 @@ export function Header() {
                             className="header__nav_boton"
                         >
                             <div style={{ opacity: '1' }}>
-                                {<IconUser size={20} />}
+                                {!isLoggedIn ? (
+                                    <IconUser size={20} />
+                                ) : (
+                                    <UserAvatar user_id={user.id} size={4} />
+                                )}
                             </div>
+
+                            <p className="header__nav_boton__text">Usuario</p>
                         </div>
 
                         <div
@@ -81,7 +85,7 @@ export function Header() {
                                 UserButton ? 'selected' : ''
                             }`}
                         >
-                            <SessionPanel />
+                            <SessionPanel setUserButton={setUserButton} />
                         </div>
                     </div>
                     {!isMovilUser && <MainNavLinks />}
@@ -97,7 +101,10 @@ export function Header() {
                             </button>
                         </div>
                     )}
-                    <MovilNavLinks onClickMovilUser={onClickMovilUser} />
+                    <MovilNavLinks
+                        onClickMovilUser={onClickMovilUser}
+                        setOnClickMovilUser={setOnClickMovilUser}
+                    />
                 </div>
             </div>
         </>

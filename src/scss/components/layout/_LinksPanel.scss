@@ -4,53 +4,66 @@
 .panel-de-control__menu {
     visibility: hidden;
     top: 6rem;
-    min-width: 20rem;
     background-color: v.$blanco;
+
     margin: 0;
     padding: 1rem;
     opacity: 0;
     z-index: 0;
     display: flex;
-    justify-content: baseline;
+    justify-content: center;
+    position: fixed;
     transition: visibility 1s ease-in-out, opacity 0.4s linear;
     @include m.tablet {
+        position: unset;
+        min-width: 20rem;
         visibility: visible;
         opacity: 1;
     }
 }
 .panel-de-control__menu.selected {
-    display: flex;
     visibility: visible;
+    display: flex;
+    justify-content: center;
     position: fixed;
     top: 11rem;
     opacity: 1;
     z-index: 2;
-    background-color: v.$gris;
+    background-color: v.$terciario;
+
     box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.082);
+    width: 100%;
 }
 .panel-de-control__menu.normal {
-    position: relative;
     display: flex;
     z-index: 0;
     @include m.tablet {
         border-right: 1px solid v.$gris;
-        top: 0;
     }
 }
 .links-panel {
-    z-index: 10;
+    margin-top: 1rem;
     a {
+        color: v.$beige;
         border-radius: 10px;
         display: flex;
         align-items: center;
         transition: background-color 0.2s ease-in-out;
         padding: 1rem;
         gap: 1rem;
+
+        @include m.tablet {
+            color: v.$negro;
+        }
         &:hover {
             background-color: rgba(0, 0, 0, 0.048);
         }
         p {
+            color: v.$blanco;
             margin: 0;
+            @include m.tablet {
+                color: v.$negro;
+            }
         }
         &:active {
             background-color: rgba(0, 0, 0, 0.219);
