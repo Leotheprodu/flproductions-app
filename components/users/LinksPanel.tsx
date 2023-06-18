@@ -10,13 +10,15 @@ import NavLink from '../helpers/NavLink';
 import { RootState } from '../redux/store';
 import { useSelector } from 'react-redux';
 
-export const LinksPanel = ({ handleClickMovilUser }) => {
+export const LinksPanel = ({ handleClickMovilUser, isMovilUser }) => {
     const userRoles: [number] =
         useSelector((state: RootState) => state.user.session.roles) || [];
     return (
         <nav className="links-panel">
             <div
-                onClick={handleClickMovilUser}
+                onClick={() => {
+                    isMovilUser ?? handleClickMovilUser;
+                }}
                 className="links-panel__element"
             >
                 <NavLink href="/panel-de-control">
@@ -25,7 +27,9 @@ export const LinksPanel = ({ handleClickMovilUser }) => {
                 </NavLink>
             </div>
             <div
-                onClick={handleClickMovilUser}
+                onClick={() => {
+                    isMovilUser ?? handleClickMovilUser;
+                }}
                 className="links-panel__element"
             >
                 <NavLink href="/panel-de-control/informacion-de-usuario">
@@ -35,7 +39,9 @@ export const LinksPanel = ({ handleClickMovilUser }) => {
             </div>
             {userRoles.includes(3) && (
                 <div
-                    onClick={handleClickMovilUser}
+                    onClick={() => {
+                        isMovilUser ?? handleClickMovilUser;
+                    }}
                     className="links-panel__element"
                 >
                     <NavLink href="/panel-de-control/artista">
@@ -46,7 +52,9 @@ export const LinksPanel = ({ handleClickMovilUser }) => {
             )}
             {userRoles.includes(4) && (
                 <div
-                    onClick={handleClickMovilUser}
+                    onClick={() => {
+                        isMovilUser ?? handleClickMovilUser;
+                    }}
                     className="links-panel__element"
                 >
                     <NavLink href="/panel-de-control/productor-musical">

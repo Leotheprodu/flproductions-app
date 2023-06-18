@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSession } from '../components/redux/userActions';
+import {
+    setSession,
+    setSessionUserMessage,
+} from '../components/redux/userActions';
 import { useRouter } from 'next/router';
 import { RootState } from '../components/redux/store';
 import { Spinner, fetchAPI } from '../components';
@@ -47,17 +50,26 @@ function Login({ headInfo }) {
         });
         if (status === 429) {
             setSpinner(false);
-            alert(
-                'muchos intentos de inicio de sesion, espere 15 minutos para volver a intentar o puede probar cambiar la contraseña'
+            dispatch(
+                setSessionUserMessage({
+                    message:
+                        'muchos intentos de inicio de sesion, espere 15 minutos para volver a intentar o puede probar cambiar la contraseña',
+                    messageType: 'error',
+                })
             );
             return;
         } else if (error) {
-            alert(error);
+            dispatch(
+                setSessionUserMessage({
+                    message: error,
+                    messageType: 'error',
+                })
+            );
             setBotonOlvideContra(true);
             setSpinner(false);
         }
         try {
-            if (data.isLoggedIn) {
+            if (data) {
                 dispatch(setSession(data));
                 setSpinner(false);
 

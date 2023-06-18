@@ -1987,9 +1987,9 @@ input {
   width: 3.5rem;
   height: 3.5rem;
   border-radius: 50%;
-  box-shadow: 1px 1px 1px 2px rgba(0, 0, 0, 0.192);
-  transition: box-shadow 0.2s;
-  transition-timing-function: linear;
+  box-shadow: 1px 1px 1px 2px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.2s, transform 0.1s;
+  transition-timing-function: ease-in-out;
 }
 @media (min-width: 768px) {
   .header__nav_boton_usuarios .header__nav_boton {
@@ -1998,7 +1998,7 @@ input {
   }
 }
 .header__nav_boton_usuarios .header__nav_boton:hover {
-  box-shadow: 2px 2px 2px 4px rgba(0, 0, 0, 0.192);
+  box-shadow: 1px 1px 1px 2px rgba(0, 0, 0, 0.4);
 }
 .header__nav_boton_usuarios .header__nav_boton:active {
   box-shadow: none;
@@ -2008,10 +2008,18 @@ input {
 .header__nav_boton_usuarios .header__nav_boton__text {
   position: absolute;
   color: rgb(102, 102, 102);
-  bottom: -3.5rem;
-  left: -0.5rem;
+  bottom: -3rem;
+  left: -0.6rem;
+  font-size: 1rem;
   text-transform: uppercase;
-  font-size: 1.2rem;
+}
+@media (min-width: 768px) {
+  .header__nav_boton_usuarios .header__nav_boton__text {
+    left: unset;
+    font-size: 1.2rem;
+    margin: 0 auto;
+    bottom: -2rem;
+  }
 }
 .header__nav_boton_usuarios .header__nav_boton_usuarios_login {
   visibility: hidden;
@@ -2874,7 +2882,7 @@ input {
 .RecuperarPassword-contenedor h2 {
   margin: 7rem 0 0 0;
   font-size: 2rem;
-  color: #f3de3f;
+  color: #273043;
 }
 
 .RecuperarPassword {
@@ -2914,7 +2922,7 @@ input {
   border: none;
   border-radius: 5px;
   height: 3rem;
-  width: 100%;
+  max-width: 15rem;
   padding: 1rem;
   color: #000000;
   background-color: #f3de3f;
