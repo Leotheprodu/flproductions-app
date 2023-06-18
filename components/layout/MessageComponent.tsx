@@ -23,6 +23,8 @@ export const MessageComponent: React.FC<MessageComponentProps> = ({
     message,
     messageType = 'notification',
 }) => {
+    const numeroRandom = Math.random();
+    console.log(numeroRandom);
     let conversation = [];
     const [
         isRequested,
@@ -110,11 +112,6 @@ export const MessageComponent: React.FC<MessageComponentProps> = ({
         }
         setInputText('Alguna otra pregunta?');
     };
-    /*   useEffect(() => {
-        if (chatRef.current) {
-            chatRef.current.scrollTop = chatRef.current.scrollHeight;
-        }
-    }, [disparador, clickUserQuestion]); */
     useEffect(() => {
         const BringConversation = async () => {
             const { data, error } = await fetchAPI({
@@ -139,15 +136,10 @@ export const MessageComponent: React.FC<MessageComponentProps> = ({
         if (isLoggedIn) {
             BringConversation();
         }
-    }, [other_user_id, isLoggedIn]);
+    }, [other_user_id, isLoggedIn, dataFetch]);
     useEffect(() => {
-        setIsVisible(true); // Mostrar el componente cuando se recibe un nuevo mensaje
-        /* playNotificationSound(); */
+        setIsVisible(true);
     }, [message]);
-    /* const playNotificationSound = () => {
-        const audio = new Audio('../../public/notification.mp3');
-        audio.play();
-    }; */
     return (
         <div className={`MessageComponentContainer`}>
             <Draggable topY={-100} leftX={-300}>
@@ -169,8 +161,8 @@ export const MessageComponent: React.FC<MessageComponentProps> = ({
                     )}
                 </div>
             </Draggable>
-            {clickUserQuestion && isRequested && <Spinner />}
-            {clickUserQuestion && !isRequested && (
+
+            {clickUserQuestion && (
                 <div className="MessageComponentIcon-input">
                     <div ref={chatRef} className="MessageComponent-lastChatFaq">
                         {userConvesations.map((message) => (
@@ -202,27 +194,35 @@ export const MessageComponent: React.FC<MessageComponentProps> = ({
                             </div>
                         ))}
                     </div>
-
-                    <textarea
-                        autoFocus
-                        value={inputText}
-                        onChange={(e) => setInputText(e.target.value)}
-                        /* onBlur={() => setClickUserQuestion(false)} */
-                        onKeyDown={(e) => {
-                            if (e.key === 'Enter') {
-                                handleOnBlur();
-                                e.preventDefault();
-                            }
-                            if (e.key === 'Escape') {
-                                setClickUserQuestion(false);
-                                e.preventDefault();
-                            }
-                        }}
-                        onFocus={() => setInputText('')}
-                    />
-                    <button onClick={handleOnBlur}>
-                        <IconSend />
-                    </button>
+                    {clickUserQuestion && isRequested && <Spinner />}
+                    {clickUserQuestion && !isRequested && (
+                        <div>
+                            <textarea
+                                autoFocus
+                                value={inputText}
+                                onChange={(e) => setInputText(e.target.value)}
+                                onKeyDown={(e) => {
+                                    if (
+                                        inputText === 'Hazme una pregunta' ||
+                                        inputText === 'Alguna otra pregunta?'
+                                    ) {
+                                        setInputText('');
+                                    }
+                                    if (e.key === 'Enter') {
+                                        handleOnBlur();
+                                        e.preventDefault();
+                                    }
+                                    if (e.key === 'Escape') {
+                                        setClickUserQuestion(false);
+                                        e.preventDefault();
+                                    }
+                                }}
+                            />
+                            <button onClick={handleOnBlur}>
+                                <IconSend />
+                            </button>
+                        </div>
+                    )}
                 </div>
             )}
             <div onClick={handleFAQ} className="MessageComponentIcon-content">

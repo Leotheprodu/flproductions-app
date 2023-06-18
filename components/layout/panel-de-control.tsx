@@ -70,6 +70,7 @@ export const ControlPanel = ({ children }: Props) => {
                     >
                         <LinksPanel
                             handleClickMovilUser={handleClickMovilUser}
+                            isMovilUser={isMovilUser}
                         />
                     </div>
                     {isMovilUser && (

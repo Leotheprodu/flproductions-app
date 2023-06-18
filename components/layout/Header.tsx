@@ -73,11 +73,13 @@ export function Header() {
                                 {!isLoggedIn ? (
                                     <IconUser size={20} />
                                 ) : (
-                                    <UserAvatar user_id={user.id} size={4} />
+                                    <UserAvatar user_id={user.id} size={3} />
                                 )}
                             </div>
 
-                            <p className="header__nav_boton__text">Usuario</p>
+                            <p className="header__nav_boton__text">
+                                {isLoggedIn ? user.username : 'Usuario'}
+                            </p>
                         </div>
 
                         <div

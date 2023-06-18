@@ -1,13 +1,16 @@
 import { useRef, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { useRouter } from 'next/router';
-import { useDispatch } from 'react-redux';
-import { setSession } from '../components/redux/userActions';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+    setSession,
+    setSessionUserMessage,
+} from '../components/redux/userActions';
 import { Spinner } from '../components/helpers/Spinner';
 import Link from 'next/link';
 import { PropsHead } from '../components/helpers/HeadMetaInfo';
 import Head from 'next/head';
-import { fetchAPI } from '../components';
+import { RootState, fetchAPI } from '../components';
 
 function SignUp({ headInfo }) {
     const {
@@ -24,13 +27,15 @@ function SignUp({ headInfo }) {
         robots,
     }: PropsHead = headInfo;
     const dispatch = useDispatch();
+    const isLoggedIn = useSelector(
+        (state: RootState) => state.user.session.isLoggedIn
+    );
     const router = useRouter();
     const [username, setUserName] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const fecha_creacion: string = new Date().toISOString().slice(0, 10);
     const captcha = useRef(null);
-    const [formStatus, setFormStatus] = useState<string>('');
     const [statusenviado, setStatusEnviado] = useState<boolean>(false);
     const [spinner, setSpinner] = useState<boolean>(false);
     const urlApiLogin =
@@ -41,11 +46,6 @@ function SignUp({ headInfo }) {
         process.env.NODE_ENV === 'production'
             ? process.env.NEXT_PUBLIC_PROD_USER_SIGNUP
             : process.env.NEXT_PUBLIC_DEV_USER_SIGNUP;
-    const onChange = () => {
-        if (captcha.current.getValue()) {
-            setFormStatus('');
-        }
-    };
     const loginNewUser = async () => {
         const { error, data } = await fetchAPI({
             url: urlApiLogin,
@@ -54,6 +54,7 @@ function SignUp({ headInfo }) {
         });
         if (data) {
             dispatch(setSession(data));
+            setStatusEnviado(true);
         } else {
             alert(error);
         }
@@ -63,8 +64,12 @@ function SignUp({ headInfo }) {
         e.preventDefault();
         setSpinner(true);
         if (username.length > 15) {
-            setFormStatus(
-                'el nombre de usuario debe tener maximo 15 caracteres'
+            dispatch(
+                setSessionUserMessage({
+                    message:
+                        'El nombre de usuario debe tener maximo 15 caracteres',
+                    messageType: 'error',
+                })
             );
             setSpinner(false);
             return;
@@ -86,27 +91,46 @@ function SignUp({ headInfo }) {
                 setPassword('');
                 setUserName('');
                 setSpinner(false);
-                setFormStatus(
-                    'Listo!, te hemos enviado un correo de verificacion, porfavor verifica tu email'
+
+                dispatch(
+                    setSessionUserMessage({
+                        message:
+                            'Listo!, te hemos enviado un correo de verificacion, porfavor verifica tu email',
+                        messageType: 'notification',
+                    })
                 );
                 setStatusEnviado(true);
                 loginNewUser();
             } else if (error) {
-                setFormStatus(error);
+                dispatch(
+                    setSessionUserMessage({
+                        message: error,
+                        messageType: 'error',
+                    })
+                );
                 setSpinner(false);
                 return;
             }
-        } else setFormStatus('Por favor acepta el captcha');
+        } else {
+            dispatch(
+                setSessionUserMessage({
+                    message: 'Acepta el captcha para continuar',
+                    messageType: 'warning',
+                })
+            );
+        }
     };
 
     const handleOnChangeNombreUsuario = (e) => {
         setUserName(e.target.value.trim());
         if (e.target.value.length > 15) {
-            setFormStatus(
-                'No esta permitido tener mas de 15 caracteres en el nombre de usuario'
+            dispatch(
+                setSessionUserMessage({
+                    message:
+                        'No esta permitido tener mas de 15 caracteres en el nombre de usuario',
+                    messageType: 'error',
+                })
             );
-        } else {
-            setFormStatus('');
         }
     };
 
@@ -132,7 +156,7 @@ function SignUp({ headInfo }) {
             </Head>
 
             <div className="contenedor signUp">
-                {!statusenviado && (
+                {!statusenviado && !isLoggedIn && (
                     <>
                         <form className="signUp__form" onSubmit={handleSubmit}>
                             <div className="signUp__form__input">
@@ -177,13 +201,7 @@ function SignUp({ headInfo }) {
                                 <ReCAPTCHA
                                     ref={captcha}
                                     sitekey="6LdqhcAiAAAAAE8hwgEptpxIcQHsW_c2S_AfkFmw"
-                                    onChange={onChange}
                                 />
-                            </div>
-                            <div>
-                                <p className="contact-form__mensaje-status">
-                                    {formStatus}
-                                </p>
                             </div>
                             {!spinner ? (
                                 <button type="submit">Registrar</button>
@@ -205,34 +223,33 @@ function SignUp({ headInfo }) {
                         </div>
                     </>
                 )}
-                {statusenviado && (
-                    <div className="contenedor">
-                        <p className="contact-form__mensaje-status__signup">
-                            {formStatus}
-                        </p>
-                        <div className="login_buttons__button__status">
-                            <button
-                                className="login_buttons__button__registrar"
-                                onClick={() => {
-                                    router.back();
-                                }}
-                                type="button"
-                                title="Volver atrás"
-                            >
-                                Volver
-                            </button>
-                            <Link href="/panel-de-control">
+
+                {statusenviado ||
+                    (isLoggedIn && (
+                        <div className="contenedor">
+                            <div className="login_buttons__button__status">
                                 <button
                                     className="login_buttons__button__registrar"
+                                    onClick={() => {
+                                        router.back();
+                                    }}
                                     type="button"
-                                    title="ir a Panel de Control"
+                                    title="Volver atrás"
                                 >
-                                    Panel de Control
+                                    Volver
                                 </button>
-                            </Link>
+                                <Link href="/panel-de-control">
+                                    <button
+                                        className="login_buttons__button__registrar"
+                                        type="button"
+                                        title="ir a Panel de Control"
+                                    >
+                                        Panel de Control
+                                    </button>
+                                </Link>
+                            </div>
                         </div>
-                    </div>
-                )}
+                    ))}
             </div>
         </>
     );

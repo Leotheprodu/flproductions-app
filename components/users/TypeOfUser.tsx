@@ -26,7 +26,6 @@ export const TypeofUser = (): JSX.Element | null => {
             setSelectedOptions(userRoles);
         }
     }, [userRoles]);
-    console.log(selectedOptions);
 
     const handleOptionChange = (event) => {
         const value: number = parseInt(event.target.value);
