@@ -71,10 +71,7 @@ function ArtistDetail({ artistafiltrado, headInfo, producciones }) {
                 <meta name="author" content={author} />
                 <meta name="copyright" content={copyright} />
                 <meta property="og:description" content={description} />
-                <meta
-                    property="og:title"
-                    content={`${title} | FLProductions`}
-                />
+                <meta property="og:title" content={title} />
                 <meta property="og:type" content={type} />
                 <meta property="og:url" content={url} />
                 <meta property="og:image" content={image} />
@@ -139,7 +136,7 @@ export const getServerSideProps = async ({ query }) => {
         }`
     );
     const data = await res.json();
-    const artistafiltrado = data.artistas.filter(
+    const artistafiltrado = data.filter(
         (element) =>
             element.nombre_artista.toLowerCase().replace(/\s+/g, '-') ===
             artist_name
