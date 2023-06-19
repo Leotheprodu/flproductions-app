@@ -37,7 +37,9 @@ export function BannerSlider({ datos }: Props) {
                         <div className="BannerSlider__div-texto">
                             <h2>{title}</h2>
                             <p>{description}</p>
-                            <a href={link}>Mas información</a>
+                            <a target="_blank" href={link}>
+                                Mas información
+                            </a>
                         </div>
                     </div>
                 ))}

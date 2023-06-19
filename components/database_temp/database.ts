@@ -53,10 +53,17 @@ export const fotosDelEstudio: ImageStudio[] = [
 export const mainBannerSlider = [
     {
         img_link: `${process.env.NEXT_PUBLIC_PROD_LINK}/build_main/img/banners/music/28.webp`,
-        link: '/instrumental/28',
+        link: 'https://www.youtube.com/watch?v=URtP7jMs9M0',
         title: 'Nuevo Beat: "Bichote"',
         description:
             '¡Nuevo instrumental de trap latino disponible ahora! Consigue "Bichote" y lleva tu música al siguiente nivel con su distintivo ritmo que combina lo tradicional y lo moderno. ¡Obtén este instrumento imprescindible para tu próxima canción hoy mismo!',
+    },
+    {
+        img_link: `${process.env.NEXT_PUBLIC_PROD_LINK}/build_main/img/banners/music/descuento-img.webp`,
+        link: 'https://wa.me/50663017707?text=Me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20el%20descuento',
+        title: 'Descuentos de un 50%',
+        description:
+            '¡Vuelven los descuentos de hasta un 50% de descuento, esta vez solo grabaciones de voz! aprovecha y ven a grabar tu nueva cancion en FLProductions!',
     },
 ];
 

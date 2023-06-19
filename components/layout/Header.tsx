@@ -5,6 +5,7 @@ import { RootState } from '../redux/store';
 import Link from 'next/link';
 import SessionPanel from '../users/SessionPanel';
 import { MainNavLinks, MovilNavLinks, UserAvatar, fetchAPI } from '../';
+import { IconLogin } from '@tabler/icons-react';
 export function Header() {
     const [UserButton, setUserButton] = useState<boolean>(false);
     const [isMovilUser, setIsMovilUser] = useState<boolean>(false);
@@ -71,14 +72,14 @@ export function Header() {
                         >
                             <div style={{ opacity: '1' }}>
                                 {!isLoggedIn ? (
-                                    <IconUser size={20} />
+                                    <IconLogin size={20} />
                                 ) : (
                                     <UserAvatar user_id={user.id} size={3} />
                                 )}
                             </div>
 
                             <p className="header__nav_boton__text">
-                                {isLoggedIn ? user.username : 'Usuario'}
+                                {isLoggedIn ? null : 'Acceder'}
                             </p>
                         </div>
 
@@ -101,6 +102,7 @@ export function Header() {
                             >
                                 <IconMenu2 />
                             </button>
+                            <p>menu</p>
                         </div>
                     )}
                     <MovilNavLinks

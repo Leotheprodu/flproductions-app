@@ -40,14 +40,29 @@
     z-index: 15;
     border: 1px solid v.$gris;
 
-    button {
-        appearance: none;
-        border: none;
-        color: v.$primario;
-        border-radius: 3px;
+    .menu_celular {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem;
+        position: absolute;
+        right: 1rem;
+        border: 1px solid v.$gris;
 
-        &:active {
-            transform: scale(0.9);
+        button {
+            appearance: none;
+            border: none;
+            color: v.$primario;
+            border-radius: 3px;
+
+            &:active {
+                transform: scale(0.9);
+            }
+        }
+        p {
+            margin: 0;
+            color: v.$cuaternario;
         }
     }
 
@@ -94,13 +109,14 @@
         height: 20rem;
         width: 100%;
         background-color: v.$primario;
+
         position: absolute;
         top: 7rem;
         left: 0;
         box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.308);
 
         a {
-            color: v.$negro;
+            color: v.$beige;
             &:hover {
                 color: v.$primario;
             }
@@ -232,12 +248,11 @@
     }
     .header__nav_boton {
         z-index: 5;
-        position: absolute;
         display: flex;
         align-items: center;
         justify-content: center;
-        bottom: 2.5rem;
-        left: 1rem;
+        bottom: 3.4rem;
+        left: 2.3rem;
         cursor: pointer;
         color: v.$terciario;
         background-color: rgb(255, 255, 255);
@@ -251,6 +266,7 @@
         @include m.tablet {
             position: absolute;
             left: unset;
+            bottom: 2.5rem;
         }
 
         &:hover {
@@ -264,15 +280,13 @@
         }
     }
     .header__nav_boton__text {
-        position: absolute;
-        color: v.$oscurecer;
+        color: v.$cuaternario;
         bottom: -3rem;
-        left: -0.6rem;
-        font-size: 1rem;
+        font-size: 1.1rem;
         text-transform: uppercase;
+        position: absolute;
 
         @include m.tablet {
-            left: unset;
             font-size: 1.2rem;
             margin: 0 auto;
             bottom: -2rem;
@@ -311,9 +325,4 @@
 .header__nav_boton_usuarios_login.selected {
     visibility: visible;
     opacity: 1;
-}
-
-.menu_celular {
-    position: absolute;
-    right: 1rem;
 }

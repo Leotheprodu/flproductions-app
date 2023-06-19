@@ -23,9 +23,6 @@ export const MessageComponent: React.FC<MessageComponentProps> = ({
     message,
     messageType = 'notification',
 }) => {
-    const numeroRandom = Math.random();
-    console.log(numeroRandom);
-    let conversation = [];
     const [
         isRequested,
         setIsRequested,

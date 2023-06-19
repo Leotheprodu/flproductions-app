@@ -4,7 +4,7 @@ import { PropsHead } from '../../components/helpers/HeadMetaInfo';
 import Head from 'next/head';
 import AppMusic from '../../components/app_music/AppMusic';
 
-function ArtistDetail({ artistafiltrado, headInfo, producciones }) {
+function ArtistDetail({ artista, headInfo, producciones }) {
     const {
         imgWidth,
         imgHeight,
@@ -39,10 +39,10 @@ function ArtistDetail({ artistafiltrado, headInfo, producciones }) {
     ] = useHandleAppMusic();
 
     useEffect(() => {
-        if (artistafiltrado) {
-            setArtistaActual(artistafiltrado);
+        if (artista) {
+            setArtistaActual(artista);
         }
-    }, [artistafiltrado]);
+    }, [artista]);
 
     if (!artistaActual) {
         return (
@@ -55,11 +55,11 @@ function ArtistDetail({ artistafiltrado, headInfo, producciones }) {
         );
     }
 
-    if (!artistaActual.length) {
+    if (!artistaActual) {
         return <div>Lo sentimos, No se encontraron datos</div>;
     }
 
-    const { nombre_artista, instagram, spotify, info } = artistaActual[0];
+    const { nombre_artista, instagram, spotify, info, imagen } = artistaActual;
 
     return (
         <>
@@ -71,33 +71,41 @@ function ArtistDetail({ artistafiltrado, headInfo, producciones }) {
                 <meta name="author" content={author} />
                 <meta name="copyright" content={copyright} />
                 <meta property="og:description" content={description} />
-                <meta
-                    property="og:title"
-                    content={`${title} | FLProductions`}
-                />
+                <meta property="og:title" content={title} />
                 <meta property="og:type" content={type} />
                 <meta property="og:url" content={url} />
                 <meta property="og:image" content={image} />
                 <meta property="og:image:width" content={imgWidth} />
                 <meta property="og:image:height" content={imgHeight} />
             </Head>
-            <div className="contenedor">
-                <div className="artist-detail__title">
-                    <h1>{nombre_artista}</h1>
-
-                    <SocialIcons
-                        instagram={instagram}
-                        claseCSS="artistdetail__socialicons"
-                        size={35}
-                        spotify={spotify}
-                        facebook=""
-                        youtube=""
-                        twitch=""
-                    />
-                </div>
-
-                <div className="artistdetail__info">
-                    <p>{info}</p>
+            <div className="contenedor artist-detail 100vh">
+                <div className="artist-detail__contenedor">
+                    <div className="artist-detail__image">
+                        <img
+                            src={
+                                imagen ||
+                                'https://api.leotheprodu.com/build_main/img/perfil/avatar/5.webp'
+                            }
+                            alt={nombre_artista}
+                        />
+                    </div>
+                    <div className="artist-detail__title">
+                        <h1>{nombre_artista}</h1>
+                        <div className="artistdetail__info">
+                            <p>{info}</p>
+                        </div>
+                        <div className="artist-detail_contenedor_social">
+                            <SocialIcons
+                                instagram={instagram}
+                                claseCSS="artistdetail__socialicons"
+                                size={35}
+                                spotify={spotify}
+                                facebook=""
+                                youtube=""
+                                twitch=""
+                            />
+                        </div>
+                    </div>
                 </div>
 
                 <div className="artistdetail__music contenedor-basic">
@@ -144,6 +152,7 @@ export const getServerSideProps = async ({ query }) => {
             element.nombre_artista.toLowerCase().replace(/\s+/g, '-') ===
             artist_name
     );
+
     const artista = artistafiltrado[0];
     const tipo_obra_general: number = 0;
     const res2 = await fetch(
@@ -178,7 +187,7 @@ export const getServerSideProps = async ({ query }) => {
 
     return {
         props: {
-            artistafiltrado,
+            artista,
             headInfo,
             producciones,
         },
