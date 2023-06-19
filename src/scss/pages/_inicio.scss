@@ -1,8 +1,8 @@
 @use 'base/mixins' as m;
 @use 'base/variables' as v;
 
-
-.inicio_info1_servicios-cards{
+.inicio_info1_servicios-cards {
+    margin-top: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,10 +15,9 @@
         gap: 2.5rem;
     }
 }
-.acerca-de-nosotros{
+.acerca-de-nosotros {
     scroll-snap-align: center;
 }
-.inicio__Caracteristicas{
+.inicio__Caracteristicas {
     scroll-snap-align: center;
 }
-

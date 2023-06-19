@@ -529,19 +529,55 @@ input {
   position: relative;
 }
 
-.artist-detail__title {
-  margin-top: 6rem;
+.artist-detail {
+  margin-top: 3rem;
 }
-.artist-detail__title h1 {
+
+.artist-detail__contenedor {
   display: flex;
   flex-direction: column;
-  text-align: center;
+  position: relative;
   align-items: center;
   justify-content: center;
+  gap: 1rem;
+}
+@media (min-width: 768px) {
+  .artist-detail__contenedor {
+    align-items: unset;
+    justify-content: unset;
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 768px) {
+  .artist-detail__title {
+    margin-top: 6rem;
+  }
+}
+.artist-detail__title h1 {
+  margin: 0;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .artist-detail__title h1 {
+    text-align: unset;
+  }
+}
+.artist-detail__title p {
   margin: 0;
 }
+.artist-detail__title .artist-detail_contenedor_social {
+  position: unset;
+  left: unset;
+}
+@media (min-width: 768px) {
+  .artist-detail__title .artist-detail_contenedor_social {
+    position: absolute;
+    left: 6rem;
+  }
+}
 .artist-detail__title .artistdetail__socialicons {
-  color: #f3de3f;
+  color: #c3423f;
 }
 
 .artistdetail__info {
@@ -555,6 +591,18 @@ input {
 .artistdetail__music h2 {
   font-size: 3rem;
   color: #1f92ea;
+}
+
+.artist-detail__image {
+  width: 20rem;
+  height: 20rem;
+}
+.artist-detail__image img {
+  margin: 0;
+  border-radius: 1rem;
+  box-shadow: 2px 3px 1px rgba(0, 0, 0, 0.1921568627);
+  object-fit: cover;
+  object-position: top;
 }
 
 .ArtistList__Main {
@@ -1791,14 +1839,28 @@ input {
   border: 1px solid rgb(238, 238, 238);
   /* margin: 0 0 1rem 0; */
 }
-.header__nav button {
+.header__nav .menu_celular {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  position: absolute;
+  right: 1rem;
+  border: 1px solid rgb(238, 238, 238);
+}
+.header__nav .menu_celular button {
   appearance: none;
   border: none;
   color: #1f92ea;
   border-radius: 3px;
 }
-.header__nav button:active {
+.header__nav .menu_celular button:active {
   transform: scale(0.9);
+}
+.header__nav .menu_celular p {
+  margin: 0;
+  color: #c3423f;
 }
 @media (min-width: 768px) {
   .header__nav {
@@ -1847,7 +1909,7 @@ input {
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.308);
 }
 .header__nav .header__links__movil a {
-  color: #000000;
+  color: #eaf0ce;
 }
 .header__nav .header__links__movil a:hover {
   color: #1f92ea;
@@ -1975,12 +2037,11 @@ input {
 }
 .header__nav_boton_usuarios .header__nav_boton {
   z-index: 5;
-  position: absolute;
   display: flex;
   align-items: center;
   justify-content: center;
-  bottom: 2.5rem;
-  left: 1rem;
+  bottom: 3.4rem;
+  left: 2.3rem;
   cursor: pointer;
   color: #273043;
   background-color: rgb(255, 255, 255);
@@ -1995,6 +2056,7 @@ input {
   .header__nav_boton_usuarios .header__nav_boton {
     position: absolute;
     left: unset;
+    bottom: 2.5rem;
   }
 }
 .header__nav_boton_usuarios .header__nav_boton:hover {
@@ -2006,16 +2068,14 @@ input {
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.342);
 }
 .header__nav_boton_usuarios .header__nav_boton__text {
-  position: absolute;
-  color: rgb(102, 102, 102);
+  color: #c3423f;
   bottom: -3rem;
-  left: -0.6rem;
-  font-size: 1rem;
+  font-size: 1.1rem;
   text-transform: uppercase;
+  position: absolute;
 }
 @media (min-width: 768px) {
   .header__nav_boton_usuarios .header__nav_boton__text {
-    left: unset;
     font-size: 1.2rem;
     margin: 0 auto;
     bottom: -2rem;
@@ -2052,11 +2112,6 @@ input {
 .header__nav_boton_usuarios_login.selected {
   visibility: visible;
   opacity: 1;
-}
-
-.menu_celular {
-  position: absolute;
-  right: 1rem;
 }
 
 .info-card {
@@ -2809,8 +2864,6 @@ input {
 .login_container .login_buttons {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }
 @media (min-width: 768px) {
   .login_container .login_buttons {
@@ -2819,10 +2872,10 @@ input {
 }
 .login_container .login_buttons .login_buttons__button {
   display: flex;
+  flex-direction: column;
   margin: 0;
   margin-bottom: 2rem;
-  align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
   padding: 5px;
   border-radius: 5px;
   height: 70%;
@@ -3252,6 +3305,7 @@ input {
 }
 
 .inicio_info1_servicios-cards {
+  margin-top: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3302,17 +3356,24 @@ input {
 .panel-de-control__menu_celular {
   border: none;
   position: fixed;
-  top: 11rem;
-  right: 0;
-  z-index: 2;
+  top: 4rem;
+  left: 0;
+  z-index: 20;
+}
+.panel-de-control__menu_celular p {
+  margin: 0;
+  position: absolute;
+  left: -0.5rem;
+  color: #eaf0ce;
+  transform: rotate(270deg);
 }
 .panel-de-control__menu_celular button {
   background-color: #c3423f;
-  border-radius: 0 0 0 50%;
+  border-radius: 0 50% 50% 0;
   appearance: none;
   border: none;
-  height: 5rem;
-  width: 5rem;
+  height: 8rem;
+  width: 7rem;
   box-shadow: 1px 1px 7px rgba(0, 0, 0, 0.082);
   color: #eaf0ce;
 }

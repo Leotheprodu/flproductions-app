@@ -64,9 +64,9 @@ export const ControlPanel = ({ children }: Props) => {
             <>
                 <div className="panel-de-control">
                     <div
-                        className={`panel-de-control__menu ${
+                        className={`panel-de-control__menu normal ${
                             onClickMovilUser ? 'selected' : ''
-                        } ${!isMovilUser ? 'normal' : ''}`}
+                        }`}
                     >
                         <LinksPanel
                             handleClickMovilUser={handleClickMovilUser}
@@ -76,6 +76,7 @@ export const ControlPanel = ({ children }: Props) => {
                     {isMovilUser && (
                         <div className="panel-de-control__menu_celular">
                             <button onClick={handleClickMovilUser}>
+                                <p>Menu</p>
                                 <IconSettingsFilled />
                             </button>
                         </div>

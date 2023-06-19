@@ -4,6 +4,8 @@ import {
     IconUserPlus,
     IconSettingsFilled,
     IconCloudLockOpen,
+    IconMicrophone2,
+    IconHeadphonesFilled,
 } from '@tabler/icons-react';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -22,6 +24,8 @@ function SessionPanel({ setUserButton }) {
         false;
 
     const userInfo = useSelector((state: RootState) => state.user.session.user);
+    const userRoles: [number] =
+        useSelector((state: RootState) => state.user.session.roles) || [];
     const [botonOlvideContra, setBotonOlvideContra] = useState<boolean>(false);
     const [spinner, setSpinner] = useState<boolean>(false);
     const apiUrlCheckSession =
@@ -126,20 +130,44 @@ function SessionPanel({ setUserButton }) {
             <div className="login_container">
                 <div className="login_buttons">
                     <div className="login_buttons__button">
-                        <Link href="/panel-de-control">
+                        <Link href="/panel-de-control/informacion-de-usuario">
                             <button
                                 onClick={() => {
                                     setUserButton(false);
                                 }}
                                 type="button"
-                                title="Panel de Control"
+                                title="Configurar Usuario"
                             >
-                                {<IconSettingsFilled />}Panel de Control
+                                {<IconSettingsFilled />}Configurar Usuario
                             </button>
                         </Link>
-                    </div>
-                    <div className="login_buttons__button">
-                        <p></p>
+                        {userRoles.includes(4) && (
+                            <Link href="/panel-de-control/productor-musical">
+                                <button
+                                    onClick={() => {
+                                        setUserButton(false);
+                                    }}
+                                    type="button"
+                                    title="Configurar Productor"
+                                >
+                                    {<IconHeadphonesFilled />}Configurar
+                                    Productor
+                                </button>
+                            </Link>
+                        )}
+                        {userRoles.includes(3) && (
+                            <Link href="/panel-de-control/artista">
+                                <button
+                                    onClick={() => {
+                                        setUserButton(false);
+                                    }}
+                                    type="button"
+                                    title="Configurar Artista"
+                                >
+                                    {<IconMicrophone2 />}Configurar Artista
+                                </button>
+                            </Link>
+                        )}
                         <button title="Cerrar Sesión" onClick={handleLogout}>
                             {<IconLogout />}Cerrar Sesión
                         </button>

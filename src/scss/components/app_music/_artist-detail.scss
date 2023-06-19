@@ -1,31 +1,71 @@
 @use 'base/mixins' as m;
 @use 'base/variables' as v;
 
-.artist-detail__title {
-
-    margin-top: 6rem;
-
-    h1 {
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        align-items: center;
-        justify-content: center;
-        margin: 0;
-    }
-    .artistdetail__socialicons{
-        color: v.$secundario;
+.artist-detail {
+    margin-top: 3rem;
+}
+.artist-detail__contenedor {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    @include m.tablet {
+        align-items: unset;
+        justify-content: unset;
+        flex-direction: row;
     }
 }
 
-.artistdetail__info{
+.artist-detail__title {
+    @include m.tablet {
+        margin-top: 6rem;
+    }
+
+    h1 {
+        margin: 0;
+        text-align: center;
+        @include m.tablet {
+            text-align: unset;
+        }
+    }
+    p {
+        margin: 0;
+    }
+
+    .artist-detail_contenedor_social {
+        position: unset;
+        left: unset;
+        @include m.tablet {
+            position: absolute;
+            left: 6rem;
+        }
+    }
+    .artistdetail__socialicons {
+        color: v.$cuaternario;
+    }
+}
+
+.artistdetail__info {
     display: flex;
     justify-content: center;
 }
-.artistdetail__music{
+.artistdetail__music {
     margin-top: 10rem;
-    h2{
+    h2 {
         font-size: 3rem;
         color: v.$primario;
+    }
+}
+.artist-detail__image {
+    width: 20rem;
+    height: 20rem;
+    img {
+        margin: 0;
+        border-radius: 1rem;
+        box-shadow: 2px 3px 1px #00000031;
+        object-fit: cover;
+        object-position: top;
     }
 }
