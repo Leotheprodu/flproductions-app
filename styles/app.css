@@ -877,7 +877,7 @@ input {
   gap: 2rem;
 }
 .detalle-producciones__appmusic__masdetalles p {
-  background-color: #f3de3f;
+  background-color: #273043;
   color: #ffffff;
   margin: 0;
   padding: 1rem;
@@ -1958,8 +1958,8 @@ input {
   justify-content: center;
   text-transform: uppercase;
   transition-property: color;
-  transition-duration: 1s;
-  transition-timing-function: ease-out;
+  transition-duration: 0.5s;
+  transition-timing-function: ease-in;
   margin: 0;
   /*  background-color: v.$gris; */
   padding: 0.5rem;
@@ -1972,7 +1972,7 @@ input {
 .header__nav .header__links .header__links__link__musica:hover {
   cursor: pointer;
   transition-property: color;
-  transition-duration: 1s;
+  transition-duration: 0.5s;
   transition-timing-function: ease-out;
   color: #1f92ea;
 }
@@ -1998,7 +1998,7 @@ input {
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1215686275);
   visibility: hidden;
   opacity: 0;
-  transition: visibility 1s ease-in-out, opacity 0.5s linear;
+  transition: visibility 0.2s ease-in-out, opacity 0.3s linear;
 }
 
 .header__submenu-parent {
@@ -2658,8 +2658,8 @@ input {
   border-radius: 0.5rem;
 }
 .InicioLinkCards__Card img {
-  transition: transform 1s ease-in-out;
-  transform: scale(1.3);
+  transition: transform 0.1s ease-in-out;
+  transform: scale(1.1);
   height: 40rem;
   object-fit: cover;
   transform-origin: top center;

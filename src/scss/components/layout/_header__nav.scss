@@ -169,8 +169,8 @@
             justify-content: center;
             text-transform: uppercase;
             transition-property: color;
-            transition-duration: 1s;
-            transition-timing-function: ease-out;
+            transition-duration: 0.5s;
+            transition-timing-function: ease-in;
             margin: 0;
             /*  background-color: v.$gris; */
             padding: 0.5rem;
@@ -184,7 +184,7 @@
             &:hover {
                 cursor: pointer;
                 transition-property: color;
-                transition-duration: 1s;
+                transition-duration: 0.5s;
                 transition-timing-function: ease-out;
                 color: v.$primario;
             }
@@ -214,7 +214,7 @@
     box-shadow: 2px 2px 2px #0000001f;
     visibility: hidden;
     opacity: 0;
-    transition: visibility 1s ease-in-out, opacity 0.5s linear;
+    transition: visibility 0.2s ease-in-out, opacity 0.3s linear;
 }
 
 .header__submenu-parent {
