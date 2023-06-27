@@ -24,7 +24,9 @@ export const useHandleItemAppMusic = ({
 }: Props) => {
     const [duration, setDuration] = useState<string>('0:00');
     const playerRef = useRef(null);
-    const [volume, setVolume] = useState<number>(0.5);
+    const [volume, setVolume] = useState<number>(0.75);
+    const [itemKey, setItemKey] = useState<number>(null);
+    const [idCompInfo, setIdCompInfo] = useState<number>(null);
 
     const handleStopButtonClick = (e) => {
         e.preventDefault();
@@ -34,7 +36,11 @@ export const useHandleItemAppMusic = ({
     };
     const handlePlayButtonClick = (e) => {
         e.preventDefault();
-        setPlaying(!playing);
+        if (playing) {
+            setPlaying(false);
+        } else {
+            setPlaying(true);
+        }
         setEnded(false);
     };
     const handlePlay = () => {
@@ -81,9 +87,16 @@ export const useHandleItemAppMusic = ({
 
         setprogressDuration(`${minutes}:${formattedSeconds}`);
     };
-    const handleInfoButton = (e) => {
-        e.preventDefault();
-        setClickInfoButton(!clickInfoButton);
+    const handleInfoButton = (compInfo, idSong) => {
+        if (clickInfoButton) {
+            setClickInfoButton(false);
+            setItemKey(null);
+            setIdCompInfo(null);
+            return;
+        }
+        setItemKey(idSong);
+        setIdCompInfo(compInfo);
+        setClickInfoButton(true);
     };
 
     return {
@@ -98,5 +111,7 @@ export const useHandleItemAppMusic = ({
         handleonChangeRange,
         handleProgress,
         handleInfoButton,
+        itemKey,
+        idCompInfo,
     };
 };

@@ -48,7 +48,9 @@ export const MessageComponent: React.FC<MessageComponentProps> = ({
     const [userConvesations, setUserCoversations] = useState([]);
     const [other_user_id, setOtherUserId] = useState(44);
     const [isVisible, setIsVisible] = useState<boolean>(false);
-    const [inputText, setInputText] = useState<string>('Hazme una pregunta');
+    const [inputText, setInputText] = useState<string>(
+        'Hazme una pregunta sobre el Estudio de Grabacion'
+    );
     const [clickUserQuestion, setClickUserQuestion] = useState<boolean>(false);
     const [timerToClose, setTimerToClose] = useState<number>(20000);
     const chatRef = useRef(null);
@@ -71,7 +73,7 @@ export const MessageComponent: React.FC<MessageComponentProps> = ({
     const handleOnBlur = async () => {
         if (
             inputText &&
-            inputText !== 'Hazme una pregunta' &&
+            inputText !== 'Hazme una pregunta sobre el Estudio de Grabacion' &&
             inputText !== 'Alguna otra pregunta?'
         ) {
             setIsRequested(true);
@@ -200,7 +202,8 @@ export const MessageComponent: React.FC<MessageComponentProps> = ({
                                 onChange={(e) => setInputText(e.target.value)}
                                 onKeyDown={(e) => {
                                     if (
-                                        inputText === 'Hazme una pregunta' ||
+                                        inputText ===
+                                            'Hazme una pregunta sobre el Estudio de Grabacion' ||
                                         inputText === 'Alguna otra pregunta?'
                                     ) {
                                         setInputText('');

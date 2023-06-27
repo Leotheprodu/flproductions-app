@@ -1,0 +1,160 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.MusicPlayer {
+    display: flex;
+    position: sticky;
+    bottom: 0;
+    height: 5rem;
+    background-color: rgba(230, 230, 230, 0.685);
+    backdrop-filter: blur(6px);
+    z-index: 10;
+}
+
+.MusicPlayer__Reproductor {
+    height: 15rem;
+    width: 20rem;
+    position: absolute;
+    bottom: 5rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    overflow: hidden;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.4s ease-in;
+    z-index: 9;
+}
+.MusicPlayer__react-player {
+    transition: transform 0.1s ease-in;
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+.MusicPlayer__Reproductor.selected {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.4s ease-out;
+}
+
+.MusicPlayer__Reproductor__buttoms {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+.MusicPlayer__Reproductor__buttoms-playstop {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    height: 4rem;
+    left: calc(50% - 2rem);
+    margin: 0 auto;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.137);
+    cursor: pointer;
+    z-index: 10;
+    &:active {
+        opacity: 0.5;
+        transform: scale(0.8);
+    }
+    &:hover {
+        opacity: 0.9;
+    }
+}
+.MusicPlayer__Reproductor__buttoms__showVideo {
+    position: absolute;
+    margin-left: 10rem;
+    z-index: 10;
+    cursor: pointer;
+}
+.MusicPlayer__Reproductor__buttoms-volumen {
+    position: absolute;
+    left: 5%;
+    cursor: pointer;
+    z-index: 10;
+    -webkit-appearance: none;
+    background: v.$gris;
+    height: 0.5rem;
+    outline: none;
+    &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        height: 2rem;
+        width: 0.5rem;
+        background: v.$terciario;
+    }
+
+    @include m.tablet {
+        left: 25%;
+    }
+}
+.MusicPlayer__Reproductor__buttoms-barra-de-progreso {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+}
+.MusicPlayer__Reproductor__buttoms-barra-de-despazamiento {
+    position: absolute;
+    top: 0rem;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    margin: 0;
+    outline: none;
+    cursor: pointer;
+    -webkit-appearance: none;
+    background: none;
+    height: 0.2rem;
+    border-radius: 1rem;
+    outline: none;
+    opacity: 1;
+    z-index: 10;
+    cursor: pointer;
+    -webkit-transition: 0.2s;
+    transition: opacity 0.2s;
+    &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        height: 2rem;
+        width: 2rem;
+    }
+}
+.MusicPlayer__Reproductor__buttoms-barra-de-despazamiento:hover
+    .MusicPlayer__Reproductor__buttoms-barra-de-progreso-derecha {
+    height: 2rem;
+}
+.MusicPlayer__Reproductor__buttoms-barra-de-progreso-fill {
+    position: absolute;
+    height: 0.5rem;
+    background-color: v.$primario;
+    top: -0.1rem;
+}
+.MusicPlayer__Reproductor__buttoms-barra-de-progreso-derecha {
+    background-color: v.$cuaternario;
+    position: absolute;
+    height: 0.5rem;
+    top: -0.1rem;
+    opacity: 0.3;
+    right: 0;
+}
+.MusicPlayer__Reproductor__buttoms-progressduration {
+    position: absolute;
+    left: 0;
+    top: 0rem;
+    color: v.$oscurecer;
+    margin: 0;
+}
+.MusicPlayer__Reproductor__buttoms-duration {
+    position: absolute;
+    right: 0;
+    top: 0rem;
+    color: v.$oscurecer;
+    margin: 0;
+}

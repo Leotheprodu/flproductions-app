@@ -33,7 +33,7 @@
     position: relative;
     display: flex;
     background-color: rgba(255, 255, 255, 0.815);
-    backdrop-filter: blur(14px);
+    backdrop-filter: blur(6px);
     color: v.$blanco;
     justify-content: center;
     height: 8rem;
@@ -254,7 +254,7 @@
         bottom: 3.4rem;
         left: 2.3rem;
         cursor: pointer;
-        color: v.$terciario;
+        color: v.$beige;
         background-color: rgb(255, 255, 255);
         width: 3.5rem;
         height: 3.5rem;
@@ -264,6 +264,7 @@
         transition-timing-function: ease-in-out;
 
         @include m.tablet {
+            color: v.$terciario;
             position: absolute;
             left: unset;
             bottom: 2.5rem;
@@ -281,8 +282,8 @@
     }
     .header__nav_boton__text {
         color: v.$cuaternario;
-        bottom: -3rem;
-        font-size: 1.1rem;
+        bottom: 0.8rem;
+        font-size: 0.8rem;
         text-transform: uppercase;
         position: absolute;
 

@@ -36,13 +36,14 @@
 }
 .panel-de-control__menu.normal {
     display: flex;
-    z-index: 0;
+    z-index: 2;
     @include m.tablet {
         border-right: 1px solid v.$gris;
     }
 }
 .links-panel {
     margin-top: 1rem;
+
     a {
         color: v.$beige;
         border-radius: 10px;

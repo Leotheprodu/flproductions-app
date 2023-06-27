@@ -12,7 +12,7 @@ import {
 } from '../components';
 import { PropsHead } from '../components/helpers/HeadMetaInfo';
 import Head from 'next/head';
-import { Suspense } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { lazy } from 'react';
 const AppMusic = lazy(() => import('../components/app_music/AppMusic'));
 
@@ -60,10 +60,15 @@ function AboutPage({ headInfo }) {
         setClickInfoButton,
         selectedSong,
     ] = useHandleAppMusic();
-    const producciones = produccionesDestacadas.filter(
+    /* const producciones = produccionesDestacadas.filter(
         (element) => element.id === parseInt(infoProduccion.id)
-    );
-
+    ); */
+    const [produccionActual, setproduccionActual] = useState(null);
+    useEffect(() => {
+        if (infoProduccion) {
+            setproduccionActual(infoProduccion);
+        }
+    }, [infoProduccion]);
     return (
         <main>
             <Head>
@@ -221,13 +226,6 @@ function AboutPage({ headInfo }) {
                             tipo_obra_general={tipo_obra_general}
                         />
                     </Suspense>
-
-                    {!ended && playing && (
-                        <DetalleProducciones
-                            infoProduccion={producciones[0]}
-                            tipo_obra_general={tipo_obra_general}
-                        />
-                    )}
                 </div>
             </div>
 

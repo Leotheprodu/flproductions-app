@@ -5,7 +5,7 @@
     z-index: 13;
     position: fixed;
     right: 1rem;
-    bottom: 7rem;
+    bottom: 12rem;
 }
 .MessageComponent {
     left: -30rem;
@@ -109,7 +109,7 @@
         border-bottom-left-radius: 1rem;
         color: v.$negro;
         transition: opacity 0.5s ease-in-out;
-        opacity: 0.9;
+        opacity: 1;
         &:focus {
             outline-color: v.$primario;
         }
@@ -148,9 +148,8 @@
     z-index: 8;
     width: 30rem;
     height: 20rem;
-    padding: 2rem 2rem 2rem 2rem;
+    padding: 2rem;
     background-color: v.$gris;
-
     overflow-y: auto;
     overflow-x: hidden;
     justify-content: center;
@@ -158,6 +157,7 @@
     gap: 2rem;
     border-top-right-radius: 1rem;
     border-top-left-radius: 1rem;
+    border: 1px solid v.$terciario;
     p {
         margin: 0;
     }

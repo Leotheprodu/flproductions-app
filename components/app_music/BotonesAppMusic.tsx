@@ -13,50 +13,50 @@ interface Props {
     clickInfoButton: boolean;
     infoProduccion: any;
     handleInfoButton: any;
-    volume: number;
-    setVolume: Function;
+    tipo_obra_general: number;
+    song: any;
+    idComp: number;
+    idCompActual: number;
     handlePlayButtonClick: any;
     pause: boolean;
-    progressDuration: number;
-    progress: number;
-    handleonChangeRange: any;
-    duration: string;
-    tipo_obra_general: number;
     playing: boolean;
     ended: boolean;
+    selectedSong: Function;
+    itemKey: number;
+    idCompInfo: number;
 }
 
 export const BotonesAppMusic = ({
     clickInfoButton,
     infoProduccion,
     handleInfoButton,
-    volume,
-    setVolume,
+    tipo_obra_general,
+    song,
+    idComp,
+    idCompActual,
     handlePlayButtonClick,
     pause,
-    progressDuration,
-    progress,
-    handleonChangeRange,
-    duration,
-    tipo_obra_general,
     playing,
     ended,
+    selectedSong,
+    itemKey,
+    idCompInfo,
 }: Props) => {
     return (
         <div className="BotonesAppMusic">
             {tipo_obra_general === 0 && (
                 <div
                     className={`BotonesAppMusic__elementos-info-reproductor ${
-                        clickInfoButton ? 'selected' : ''
+                        clickInfoButton &&
+                        idCompInfo === idComp &&
+                        itemKey === song.id
+                            ? 'selected'
+                            : ''
                     }`}
                 >
                     <ul>
                         <li>
-                            <Link
-                                href={formatLink(
-                                    `/cancion/${infoProduccion.id}`
-                                )}
-                            >
+                            <Link href={formatLink(`/cancion/${song.id}`)}>
                                 <IconPlaylist size={15} />
                                 <p>info de la Cancion</p>
                             </Link>
@@ -64,7 +64,7 @@ export const BotonesAppMusic = ({
                         <li>
                             <Link
                                 href={formatLink(
-                                    `/artista/${infoProduccion.nombre_artista}`
+                                    `/artista/${song.artista.nombre_artista}`
                                 )}
                             >
                                 <IconMicrophone size={15} />
@@ -73,7 +73,7 @@ export const BotonesAppMusic = ({
                         </li>
                         <li>
                             <a
-                                href={`https://www.y2mate.com/es/youtube-mp3/${infoProduccion.youtube_id}`}
+                                href={`https://www.y2mate.com/es/youtube-mp3/${song.youtube_id}`}
                                 rel="noopener noreferrer"
                                 target={'_blank'}
                             >
@@ -87,16 +87,16 @@ export const BotonesAppMusic = ({
             {tipo_obra_general === 1 && (
                 <div
                     className={`BotonesAppMusic__elementos-info-reproductor ${
-                        clickInfoButton ? 'selected' : ''
+                        clickInfoButton &&
+                        idComp === idCompActual &&
+                        infoProduccion.id === song.id
+                            ? 'selected'
+                            : ''
                     }`}
                 >
                     <ul>
                         <li>
-                            <Link
-                                href={formatLink(
-                                    `/instrumental/${infoProduccion.id}`
-                                )}
-                            >
+                            <Link href={formatLink(`/instrumental/${song.id}`)}>
                                 <IconPlaylist size={15} />
                                 <p>info del Instrumental</p>
                             </Link>
@@ -104,7 +104,7 @@ export const BotonesAppMusic = ({
                         <li>
                             <Link
                                 href={formatLink(
-                                    `/productor-musical/${infoProduccion.nombre_artista}`
+                                    `/productor-musical/${song.artista.nombre_artista}`
                                 )}
                             >
                                 <IconMicrophone size={15} />
@@ -113,7 +113,7 @@ export const BotonesAppMusic = ({
                         </li>
                         <li>
                             <a
-                                href={`https://www.y2mate.com/es/youtube-mp3/${infoProduccion.youtube_id}`}
+                                href={`https://www.y2mate.com/es/youtube-mp3/${song.youtube_id}`}
                                 rel="noopener noreferrer"
                                 target={'_blank'}
                             >
@@ -126,12 +126,20 @@ export const BotonesAppMusic = ({
             )}
             <button
                 type="button"
-                onClick={handleInfoButton}
+                onClick={() => handleInfoButton(idComp, song.id)}
                 className="BotonesAppMusic__boton-info-reproductor"
             >
                 <IconDotsVertical />
             </button>
-            <input
+            <button
+                type="button"
+                className="BotonesAppMusic__boton-playstop-listadoproducciones"
+                onClick={() => selectedSong(song, idComp)}
+            >
+                <IconPlayerPlay />
+            </button>
+
+            {/* <input
                 type="range"
                 min={0}
                 max={1}
@@ -166,7 +174,7 @@ export const BotonesAppMusic = ({
             />
             <p className="BotonesAppMusic__duration-listadoproducciones">
                 {duration}
-            </p>
+            </p> */}
         </div>
     );
 };
