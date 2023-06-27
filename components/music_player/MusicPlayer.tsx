@@ -114,7 +114,7 @@ export const MusicPlayer = () => {
                     className="MusicPlayer__Reproductor__buttoms__showVideo"
                     onClick={() => setShowVideo(!showVideo)}
                 >
-                    {showVideo ? <IconDeviceTv /> : <IconDeviceTvOff />}
+                    {showVideo ? <IconDeviceTvOff /> : <IconDeviceTv />}
                 </div>
                 <div className="MusicPlayer__Reproductor__buttoms-barra-de-progreso">
                     <div

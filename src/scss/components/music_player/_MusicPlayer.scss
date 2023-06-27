@@ -57,6 +57,8 @@
     border: none;
     border-radius: 50%;
     box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.137);
+    color: v.$cuaternario;
+    background: v.$terciario;
     cursor: pointer;
     z-index: 10;
     &:active {
@@ -65,13 +67,19 @@
     }
     &:hover {
         opacity: 0.9;
+        transform: scale(1.05);
     }
 }
 .MusicPlayer__Reproductor__buttoms__showVideo {
     position: absolute;
     margin-left: 10rem;
     z-index: 10;
+    color: v.$cuaternario;
     cursor: pointer;
+    &:hover {
+        transform: scale(1.05);
+        opacity: 0.9;
+    }
 }
 .MusicPlayer__Reproductor__buttoms-volumen {
     position: absolute;
@@ -79,18 +87,21 @@
     cursor: pointer;
     z-index: 10;
     -webkit-appearance: none;
-    background: v.$gris;
+    background: v.$oscurecer;
     height: 0.5rem;
     outline: none;
     &::-webkit-slider-thumb {
         -webkit-appearance: none;
         height: 2rem;
         width: 0.5rem;
-        background: v.$terciario;
+        background: v.$cuaternario;
     }
-
+    &:hover {
+        transform: scale(1.05);
+        opacity: 0.9;
+    }
     @include m.tablet {
-        left: 25%;
+        left: 41%;
     }
 }
 .MusicPlayer__Reproductor__buttoms-barra-de-progreso {
@@ -137,11 +148,11 @@
     top: -0.1rem;
 }
 .MusicPlayer__Reproductor__buttoms-barra-de-progreso-derecha {
-    background-color: v.$cuaternario;
+    background-color: v.$secundario;
     position: absolute;
     height: 0.5rem;
     top: -0.1rem;
-    opacity: 0.3;
+
     right: 0;
 }
 .MusicPlayer__Reproductor__buttoms-progressduration {
