@@ -74,7 +74,7 @@
     position: absolute;
     margin-left: 10rem;
     z-index: 10;
-    color: v.$cuaternario;
+    color: v.$oscurecer;
     cursor: pointer;
     &:hover {
         transform: scale(1.05);
@@ -83,25 +83,27 @@
 }
 .MusicPlayer__Reproductor__buttoms-volumen {
     position: absolute;
-    left: 5%;
+    left: 20%;
     cursor: pointer;
     z-index: 10;
     -webkit-appearance: none;
     background: v.$oscurecer;
-    height: 0.5rem;
+    height: 1px;
+    width: 7rem;
     outline: none;
     &::-webkit-slider-thumb {
         -webkit-appearance: none;
         height: 2rem;
         width: 0.5rem;
-        background: v.$cuaternario;
+        border-radius: 2px;
+        background: v.$oscurecer;
     }
     &:hover {
         transform: scale(1.05);
         opacity: 0.9;
     }
     @include m.tablet {
-        left: 41%;
+        left: 44%;
     }
 }
 .MusicPlayer__Reproductor__buttoms-barra-de-progreso {
@@ -143,14 +145,14 @@
 }
 .MusicPlayer__Reproductor__buttoms-barra-de-progreso-fill {
     position: absolute;
-    height: 0.5rem;
+    height: 1px;
     background-color: v.$primario;
     top: -0.1rem;
 }
 .MusicPlayer__Reproductor__buttoms-barra-de-progreso-derecha {
     background-color: v.$secundario;
     position: absolute;
-    height: 0.5rem;
+    height: 1px;
     top: -0.1rem;
 
     right: 0;

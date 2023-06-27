@@ -593,7 +593,7 @@ input {
   position: absolute;
   margin-left: 10rem;
   z-index: 10;
-  color: #c3423f;
+  color: rgb(102, 102, 102);
   cursor: pointer;
 }
 .MusicPlayer__Reproductor__buttoms__showVideo:hover {
@@ -603,19 +603,21 @@ input {
 
 .MusicPlayer__Reproductor__buttoms-volumen {
   position: absolute;
-  left: 5%;
+  left: 20%;
   cursor: pointer;
   z-index: 10;
   -webkit-appearance: none;
   background: rgb(102, 102, 102);
-  height: 0.5rem;
+  height: 1px;
+  width: 7rem;
   outline: none;
 }
 .MusicPlayer__Reproductor__buttoms-volumen::-webkit-slider-thumb {
   -webkit-appearance: none;
   height: 2rem;
   width: 0.5rem;
-  background: #c3423f;
+  border-radius: 2px;
+  background: rgb(102, 102, 102);
 }
 .MusicPlayer__Reproductor__buttoms-volumen:hover {
   transform: scale(1.05);
@@ -623,7 +625,7 @@ input {
 }
 @media (min-width: 768px) {
   .MusicPlayer__Reproductor__buttoms-volumen {
-    left: 41%;
+    left: 44%;
   }
 }
 
@@ -668,7 +670,7 @@ input {
 
 .MusicPlayer__Reproductor__buttoms-barra-de-progreso-fill {
   position: absolute;
-  height: 0.5rem;
+  height: 1px;
   background-color: #1f92ea;
   top: -0.1rem;
 }
@@ -676,7 +678,7 @@ input {
 .MusicPlayer__Reproductor__buttoms-barra-de-progreso-derecha {
   background-color: #f3de3f;
   position: absolute;
-  height: 0.5rem;
+  height: 1px;
   top: -0.1rem;
   right: 0;
 }
