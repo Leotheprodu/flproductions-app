@@ -34,6 +34,8 @@ interface HookItem {
     handleonChangeRange: any;
     handleProgress: any;
     handleInfoButton: any;
+    itemKey: number;
+    idCompInfo: number;
 }
 
 const AppMusic = ({
@@ -67,6 +69,8 @@ const AppMusic = ({
         handleonChangeRange,
         handleProgress,
         handleInfoButton,
+        itemKey,
+        idCompInfo,
     }: HookItem = useHandleItemAppMusic({
         setPlaying,
         setEnded,
@@ -107,6 +111,8 @@ const AppMusic = ({
                         handlePlayButtonClick={handlePlayButtonClick}
                         handleonChangeRange={handleonChangeRange}
                         duration={duration}
+                        itemKey={itemKey}
+                        idCompInfo={idCompInfo}
                     />
                 </Suspense>
             ))}

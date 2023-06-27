@@ -517,11 +517,180 @@ input {
     transform: rotate(360deg);
   }
 }
+.MusicPlayer {
+  display: flex;
+  position: sticky;
+  bottom: 0;
+  height: 5rem;
+  background-color: rgba(230, 230, 230, 0.685);
+  backdrop-filter: blur(6px);
+  z-index: 10;
+}
+
+.MusicPlayer__Reproductor {
+  height: 15rem;
+  width: 20rem;
+  position: absolute;
+  bottom: 5rem;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  overflow: hidden;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.4s ease-in;
+  z-index: 9;
+}
+
+.MusicPlayer__react-player {
+  transition: transform 0.1s ease-in;
+}
+.MusicPlayer__react-player:hover {
+  transform: scale(1.1);
+}
+
+.MusicPlayer__Reproductor.selected {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.4s ease-out;
+}
+
+.MusicPlayer__Reproductor__buttoms {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.MusicPlayer__Reproductor__buttoms-playstop {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  left: calc(50% - 2rem);
+  margin: 0 auto;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 1px 1px 5px 2px rgba(0, 0, 0, 0.137);
+  cursor: pointer;
+  z-index: 10;
+}
+.MusicPlayer__Reproductor__buttoms-playstop:active {
+  opacity: 0.5;
+  transform: scale(0.8);
+}
+.MusicPlayer__Reproductor__buttoms-playstop:hover {
+  opacity: 0.9;
+}
+
+.MusicPlayer__Reproductor__buttoms__showVideo {
+  position: absolute;
+  margin-left: 10rem;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.MusicPlayer__Reproductor__buttoms-volumen {
+  position: absolute;
+  left: 5%;
+  cursor: pointer;
+  z-index: 10;
+  -webkit-appearance: none;
+  background: rgb(238, 238, 238);
+  height: 0.5rem;
+  outline: none;
+}
+.MusicPlayer__Reproductor__buttoms-volumen::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 2rem;
+  width: 0.5rem;
+  background: #273043;
+}
+@media (min-width: 768px) {
+  .MusicPlayer__Reproductor__buttoms-volumen {
+    left: 25%;
+  }
+}
+
+.MusicPlayer__Reproductor__buttoms-barra-de-progreso {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.MusicPlayer__Reproductor__buttoms-barra-de-despazamiento {
+  position: absolute;
+  top: 0rem;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  margin: 0;
+  outline: none;
+  cursor: pointer;
+  -webkit-appearance: none;
+  background: none;
+  height: 0.2rem;
+  border-radius: 1rem;
+  outline: none;
+  opacity: 1;
+  z-index: 10;
+  cursor: pointer;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+.MusicPlayer__Reproductor__buttoms-barra-de-despazamiento::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 2rem;
+  width: 2rem;
+}
+
+.MusicPlayer__Reproductor__buttoms-barra-de-despazamiento:hover .MusicPlayer__Reproductor__buttoms-barra-de-progreso-derecha {
+  height: 2rem;
+}
+
+.MusicPlayer__Reproductor__buttoms-barra-de-progreso-fill {
+  position: absolute;
+  height: 0.5rem;
+  background-color: #1f92ea;
+  top: -0.1rem;
+}
+
+.MusicPlayer__Reproductor__buttoms-barra-de-progreso-derecha {
+  background-color: #c3423f;
+  position: absolute;
+  height: 0.5rem;
+  top: -0.1rem;
+  opacity: 0.3;
+  right: 0;
+}
+
+.MusicPlayer__Reproductor__buttoms-progressduration {
+  position: absolute;
+  left: 0;
+  top: 0rem;
+  color: rgb(102, 102, 102);
+  margin: 0;
+}
+
+.MusicPlayer__Reproductor__buttoms-duration {
+  position: absolute;
+  right: 0;
+  top: 0rem;
+  color: rgb(102, 102, 102);
+  margin: 0;
+}
+
 .AppMusic {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 3rem;
   padding: 1rem;
   flex-flow: wrap;
   margin-bottom: 6rem;
@@ -673,40 +842,37 @@ input {
 }
 
 .BotonesAppMusic {
+  position: relative;
   display: flex;
-  position: absolute;
   align-items: center;
   gap: 0.5rem;
-  top: -0.8rem;
-  left: 1.2rem;
   /*   .BotonesAppMusic__boton-stop-listadoproducciones {
-        position: absolute;
-        right: 15.2rem;
-        bottom: 1.4rem;
-        transform: scale(.7);
-        &:active {
+      position: absolute;
+      right: 15.2rem;
+      bottom: 1.4rem;
+      transform: scale(.7);
+      &:active {
 
-            transform: scale(1);
-        }
-    } */
+          transform: scale(1);
+      }
+  } */
 }
 .BotonesAppMusic .BotonesAppMusic__boton-playstop-listadoproducciones {
   display: flex;
   position: absolute;
   left: -2rem;
-  bottom: 2.5rem;
+  bottom: 12rem;
   align-items: center;
   justify-content: center;
   border: none;
-  border-radius: 50%;
-  height: 3rem;
-  width: 3rem;
+  border-radius: 1rem;
+  height: 5rem;
+  width: 5rem;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1215686275);
-  color: rgb(102, 102, 102);
+  color: #c3423f;
   background-color: #ffffff;
   opacity: 1;
-  transition: opacity 0.3s ease-in-out;
-  transition: transform 0.2s;
+  transition: transform 0.1s ease-in-out, opacity 0.1s ease-in-out;
   cursor: pointer;
 }
 .BotonesAppMusic .BotonesAppMusic__boton-playstop-listadoproducciones:active {
@@ -729,7 +895,8 @@ input {
 .BotonesAppMusic .BotonesAppMusic__barra-de-progreso {
   position: absolute;
 }
-.BotonesAppMusic .BotonesAppMusic__barra-de-despazamiento-listadoproducciones, .BotonesAppMusic .BotonesAppMusic__control-volumen-listadoproducciones {
+.BotonesAppMusic .BotonesAppMusic__barra-de-despazamiento-listadoproducciones,
+.BotonesAppMusic .BotonesAppMusic__control-volumen-listadoproducciones {
   -webkit-appearance: none;
   width: 100%;
   background: rgb(238, 238, 238);
@@ -741,10 +908,12 @@ input {
   -webkit-transition: 0.2s;
   transition: opacity 0.2s;
 }
-.BotonesAppMusic .BotonesAppMusic__barra-de-despazamiento-listadoproducciones:hover, .BotonesAppMusic .BotonesAppMusic__control-volumen-listadoproducciones:hover {
+.BotonesAppMusic .BotonesAppMusic__barra-de-despazamiento-listadoproducciones:hover,
+.BotonesAppMusic .BotonesAppMusic__control-volumen-listadoproducciones:hover {
   opacity: 0.9;
 }
-.BotonesAppMusic .BotonesAppMusic__barra-de-despazamiento-listadoproducciones::-webkit-slider-thumb, .BotonesAppMusic .BotonesAppMusic__control-volumen-listadoproducciones::-webkit-slider-thumb {
+.BotonesAppMusic .BotonesAppMusic__barra-de-despazamiento-listadoproducciones::-webkit-slider-thumb,
+.BotonesAppMusic .BotonesAppMusic__control-volumen-listadoproducciones::-webkit-slider-thumb {
   -webkit-appearance: none;
   height: 1rem;
   width: 1rem;
@@ -769,19 +938,18 @@ input {
   visibility: hidden;
   opacity: 0;
   align-items: flex-start;
-  right: -3rem;
+  right: -10rem;
+  min-width: 15rem;
   top: -4.5rem;
-  height: 9rem;
-  width: 18rem;
   z-index: 5;
-  background-color: rgb(238, 238, 238);
+  background-color: #273043;
   border-radius: 1rem;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1568627451);
   transition: visibility 1s ease-in-out, opacity 0.3s linear;
+  padding: 1rem;
 }
 .BotonesAppMusic__elementos-info-reproductor ul {
   padding: 0;
-  width: 18rem;
   margin: 0;
 }
 .BotonesAppMusic__elementos-info-reproductor li {
@@ -799,11 +967,13 @@ input {
 .BotonesAppMusic__elementos-info-reproductor a {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
+  color: #ffffff;
 }
 .BotonesAppMusic__elementos-info-reproductor a p {
   font-size: 1.1rem;
-  color: #000000;
+  color: #eaf0ce;
   margin: 0;
 }
 
@@ -814,13 +984,13 @@ input {
 
 .BotonesAppMusic__boton-info-reproductor {
   position: absolute;
-  bottom: 8rem;
-  right: -4.5rem;
+  right: -12rem;
+  top: -7rem;
   display: flex;
   align-items: center;
   border: none;
   background: none;
-  color: rgb(102, 102, 102);
+  color: #c3423f;
 }
 .BotonesAppMusic__boton-info-reproductor:hover {
   cursor: pointer;
@@ -894,12 +1064,12 @@ input {
   height: 23rem;
   align-items: center;
   justify-content: flex-start;
-  transition: box-shadow 0.5s linear, transform 1s ease-in-out;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.11);
+  transition: box-shadow 0.1s linear, transform 0.2s ease-in-out;
   border-radius: 2rem;
-  transform: scale(1);
 }
 .ItemAppMusic:hover {
-  box-shadow: 1px 1px 1rem #000000;
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
 }
 .ItemAppMusic .ItemAppMusic__imagen {
   height: 14rem;
@@ -912,27 +1082,11 @@ input {
   object-fit: cover;
   border-radius: 2rem;
 }
-.ItemAppMusic .ItemAppMusic__playboton {
-  display: flex;
-  align-items: center;
-  position: absolute;
-  justify-content: center;
-  flex-direction: column;
-  top: 4.5rem;
-  left: 9rem;
-  color: #f3de3f;
-  transition: opacity 1s;
-  opacity: 1%;
-}
-.ItemAppMusic .ItemAppMusic__playboton:hover {
-  opacity: 100%;
-}
 
 .ItemAppMusic.selected {
   z-index: 2;
-  transform: scale(1.5);
-  margin-bottom: 5rem;
-  box-shadow: 2px 2px 1rem rgba(0, 0, 0, 0.9843137255);
+  transform: scale(1.1);
+  box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
   background-color: #ffffff;
 }
 
@@ -967,28 +1121,8 @@ input {
 
 .ItemAppMusic__botones {
   position: relative;
-  height: 8rem;
-  width: 19rem;
   margin: 0;
   padding: 0;
-}
-
-.ItemAppMusic__player-wrapper {
-  position: relative;
-  height: 12rem;
-  width: 23rem;
-  padding-top: 56.25%;
-  border-radius: 2rem;
-  overflow: hidden;
-}
-
-.ItemAppMusic__react-player {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  border-radius: 2rem;
 }
 
 .songDetail__appmusic {
@@ -1831,7 +1965,7 @@ input {
   position: relative;
   display: flex;
   background-color: rgba(255, 255, 255, 0.815);
-  backdrop-filter: blur(14px);
+  backdrop-filter: blur(6px);
   color: #ffffff;
   justify-content: center;
   height: 8rem;
@@ -2043,7 +2177,7 @@ input {
   bottom: 3.4rem;
   left: 2.3rem;
   cursor: pointer;
-  color: #273043;
+  color: #eaf0ce;
   background-color: rgb(255, 255, 255);
   width: 3.5rem;
   height: 3.5rem;
@@ -2054,6 +2188,7 @@ input {
 }
 @media (min-width: 768px) {
   .header__nav_boton_usuarios .header__nav_boton {
+    color: #273043;
     position: absolute;
     left: unset;
     bottom: 2.5rem;
@@ -2069,8 +2204,8 @@ input {
 }
 .header__nav_boton_usuarios .header__nav_boton__text {
   color: #c3423f;
-  bottom: -3rem;
-  font-size: 1.1rem;
+  bottom: 0.8rem;
+  font-size: 0.8rem;
   text-transform: uppercase;
   position: absolute;
 }
@@ -2187,7 +2322,7 @@ input {
 
 .panel-de-control__menu.normal {
   display: flex;
-  z-index: 0;
+  z-index: 2;
 }
 @media (min-width: 768px) {
   .panel-de-control__menu.normal {
@@ -2433,7 +2568,7 @@ input {
   z-index: 13;
   position: fixed;
   right: 1rem;
-  bottom: 7rem;
+  bottom: 12rem;
 }
 
 .MessageComponent {
@@ -2539,7 +2674,7 @@ input {
   border-bottom-left-radius: 1rem;
   color: #000000;
   transition: opacity 0.5s ease-in-out;
-  opacity: 0.9;
+  opacity: 1;
 }
 .MessageComponentIcon-input textarea:focus {
   outline-color: #1f92ea;
@@ -2578,7 +2713,7 @@ input {
   z-index: 8;
   width: 30rem;
   height: 20rem;
-  padding: 2rem 2rem 2rem 2rem;
+  padding: 2rem;
   background-color: rgb(238, 238, 238);
   overflow-y: auto;
   overflow-x: hidden;
@@ -2587,6 +2722,7 @@ input {
   gap: 2rem;
   border-top-right-radius: 1rem;
   border-top-left-radius: 1rem;
+  border: 1px solid #273043;
 }
 .MessageComponent-lastChatFaq p {
   margin: 0;
@@ -3174,6 +3310,7 @@ input {
   outline-color: #1f92ea;
 }
 
+/* MusicPlayer */
 /* app_music */
 /* artista */
 /* forms */

@@ -1,44 +1,39 @@
 @use 'base/mixins' as m;
 @use 'base/variables' as v;
 
-
 .BotonesAppMusic {
+    position: relative;
     display: flex;
-    position: absolute;
     align-items: center;
-    gap: .5rem;
-    top: -.8rem;
-    left: 1.2rem;
-    
+    gap: 0.5rem;
 
-    .BotonesAppMusic__boton-playstop-listadoproducciones{
+    .BotonesAppMusic__boton-playstop-listadoproducciones {
         display: flex;
         position: absolute;
         left: -2rem;
-        bottom: 2.5rem;
+        bottom: 12rem;
         align-items: center;
         justify-content: center;
         border: none;
-        border-radius: 50%;
-        height: 3rem;
-        width: 3rem;
+        border-radius: 1rem;
+        height: 5rem;
+        width: 5rem;
         box-shadow: 2px 2px 2px #0000001f;
-        color: v.$oscurecer;
+        color: v.$cuaternario;
         background-color: v.$blanco;
         opacity: 1;
-        transition: opacity 0.3s ease-in-out;
-        transition: transform .2s;
+        transition: transform 0.1s ease-in-out, opacity 0.1s ease-in-out;
         cursor: pointer;
 
         &:active {
-            opacity: .5;
-            transform: scale(.8);
+            opacity: 0.5;
+            transform: scale(0.8);
         }
         &:hover {
-            opacity: .9;
+            opacity: 0.9;
         }
     }
-  /*   .BotonesAppMusic__boton-stop-listadoproducciones {
+    /*   .BotonesAppMusic__boton-stop-listadoproducciones {
         position: absolute;
         right: 15.2rem;
         bottom: 1.4rem;
@@ -48,38 +43,37 @@
             transform: scale(1);
         }
     } */
-    .BotonesAppMusic__duration-listadoproducciones{
+    .BotonesAppMusic__duration-listadoproducciones {
         position: absolute;
         right: -2.2rem;
         color: v.$negro;
         font-size: 1rem;
     }
-    .BotonesAppMusic__progressduration-listadoproducciones{
+    .BotonesAppMusic__progressduration-listadoproducciones {
         color: v.$negro;
         font-size: 1rem;
-          
     }
-    .BotonesAppMusic__barra-de-progreso{
+    .BotonesAppMusic__barra-de-progreso {
         position: absolute;
     }
 
-    .BotonesAppMusic__barra-de-despazamiento-listadoproducciones,.BotonesAppMusic__control-volumen-listadoproducciones {
+    .BotonesAppMusic__barra-de-despazamiento-listadoproducciones,
+    .BotonesAppMusic__control-volumen-listadoproducciones {
         -webkit-appearance: none;
         width: 100%;
         background: v.$gris;
-        height: .2rem;
+        height: 0.2rem;
         border-radius: 1rem;
         outline: none;
         opacity: 1;
         cursor: pointer;
-        -webkit-transition: .2s;
-        transition: opacity .2s;
-
+        -webkit-transition: 0.2s;
+        transition: opacity 0.2s;
 
         &:hover {
-            opacity: .9;
+            opacity: 0.9;
         }
-        
+
         &::-webkit-slider-thumb {
             -webkit-appearance: none;
             height: 1rem;
@@ -91,89 +85,81 @@
         }
     }
 
-    .BotonesAppMusic__control-volumen-listadoproducciones{
-        position:absolute;
+    .BotonesAppMusic__control-volumen-listadoproducciones {
+        position: absolute;
         left: -5rem;
         bottom: 6rem;
         transform: rotate(-90deg);
         width: 3em;
-        height: .2rem;
+        height: 0.2rem;
         margin: 0;
     }
-    
-    
-    
-    
-    
 }
-.BotonesAppMusic__elementos-info-reproductor{
+.BotonesAppMusic__elementos-info-reproductor {
     position: absolute;
     display: flex;
     visibility: hidden;
     opacity: 0;
-    align-items:flex-start;
-    right: -3rem;
+    align-items: flex-start;
+    right: -10rem;
+    min-width: 15rem;
     top: -4.5rem;
-    height: 9rem;
-    width: 18rem;
     z-index: 5;
-    background-color: v.$gris;
+    background-color: v.$terciario;
     border-radius: 1rem;
     box-shadow: 2px 2px 6px #00000028;
-    transition: visibility 1s ease-in-out, opacity .3s linear;
+    transition: visibility 1s ease-in-out, opacity 0.3s linear;
+    padding: 1rem;
     ul {
         padding: 0;
-        width: 18rem;
-        margin: 0 ;
+        margin: 0;
     }
     li {
         display: flex;
-        gap: .5rem;
+        gap: 0.5rem;
         list-style: none;
-        align-items:flex-start;
-        justify-content:flex-start;
+        align-items: flex-start;
+        justify-content: flex-start;
         cursor: pointer;
-        margin: .5rem;
-        
-        &:hover{
+        margin: 0.5rem;
+
+        &:hover {
             box-shadow: 2px 2px 6px #0000005e;
         }
-        
     }
-    
+
     a {
         display: flex;
         align-items: center;
+        justify-content: center;
         gap: 1rem;
+        color: v.$blanco;
         p {
             font-size: 1.1rem;
-            color: v.$negro;
+            color: v.$beige;
             margin: 0;
         }
     }
 }
-.BotonesAppMusic__elementos-info-reproductor.selected{
+.BotonesAppMusic__elementos-info-reproductor.selected {
     visibility: visible;
     opacity: 1;
 }
 
-.BotonesAppMusic__boton-info-reproductor{
-    position:absolute;
-    bottom: 8rem;
-    right: -4.5rem;
+.BotonesAppMusic__boton-info-reproductor {
+    position: absolute;
+    right: -12rem;
+    top: -7rem;
     display: flex;
     align-items: center;
     border: none;
     background: none;
-    color: v.$oscurecer;
-    
-    &:hover{
+    color: v.$cuaternario;
+
+    &:hover {
         cursor: pointer;
     }
     &:active {
-        
-        transform: scale(.8);
+        transform: scale(0.8);
     }
-
-    
 }

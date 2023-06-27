@@ -5,6 +5,9 @@ export * from './app_music/DetalleProducciones';
 export * from './app_music/GenreList';
 export * from './app_music/ItemAppMusic';
 export * from './app_music/StyleList';
+/* AppMusic */
+export * from './music_player/MusicPlayer';
+
 /* artista */
 export * from './artista/EditarArtista';
 export * from './artista/ArtistMusicHandle';

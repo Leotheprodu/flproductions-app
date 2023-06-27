@@ -2,17 +2,13 @@
 @use 'base/variables' as v;
 
 .AppMusic {
-    
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: 3rem;
     padding: 1rem;
     flex-flow: wrap;
     margin-bottom: 6rem;
     padding-bottom: 10rem;
     position: relative;
-
 }
-
-

@@ -1,15 +1,18 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Footer } from './Footer';
 import { Header } from './Header';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store';
-import { MessageComponent } from '../';
+import { MessageComponent, MusicPlayer } from '../';
 
 interface Props {
     children: React.ReactNode;
 }
-
 function Layout({ children }: Props) {
+    const produccionActual = useSelector(
+        (state: RootState) => state.user.session.music.produccionActual
+    );
+
     const message = useSelector(
         (state: RootState) => state.user.session.userMessage
     );
@@ -23,7 +26,7 @@ function Layout({ children }: Props) {
                 message={message.message}
                 messageType={message.messageType}
             />
-
+            {produccionActual && <MusicPlayer />}
             <Footer />
         </div>
     );

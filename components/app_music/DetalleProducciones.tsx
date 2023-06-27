@@ -1,5 +1,6 @@
 import { IconMicrophone, IconBrandSpotify } from '@tabler/icons';
 import { formatLink } from '../helpers/formatLink';
+import { useEffect, useState } from 'react';
 
 interface Props {
     infoProduccion: any;
@@ -10,6 +11,9 @@ export const DetalleProducciones = ({
     infoProduccion,
     tipo_obra_general,
 }: Props) => {
+    if (!infoProduccion) {
+        return <div></div>;
+    }
     const {
         descripcion,
         artista,

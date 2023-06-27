@@ -22,7 +22,7 @@ function SessionPanel({ setUserButton }) {
     const isLoggedIn =
         useSelector((state: RootState) => state.user.session.isLoggedIn) ||
         false;
-
+    const music = useSelector((state: RootState) => state.user.session.music);
     const userInfo = useSelector((state: RootState) => state.user.session.user);
     const userRoles: [number] =
         useSelector((state: RootState) => state.user.session.roles) || [];
@@ -45,7 +45,7 @@ function SessionPanel({ setUserButton }) {
         try {
             const { data } = await fetchAPI({ url: apiUrlCheckSession });
             if (data.isLoggedIn) {
-                dispatch(setSession({ ...data }));
+                dispatch(setSession({ ...data, music }));
                 dispatch(
                     setSessionUserMessage({
                         message: `Volviste! ${data.user.username}, espero que la pases Pura Vida!`,
@@ -87,7 +87,7 @@ function SessionPanel({ setUserButton }) {
             return;
         }
         if (data) {
-            dispatch(setSession({ ...data }));
+            dispatch(setSession({ ...data, music }));
             dispatch(
                 setSessionUserMessage({
                     message: `Hey! ${data.user.username}, espero que la pases tuannis!`,
@@ -115,7 +115,7 @@ function SessionPanel({ setUserButton }) {
         setUserButton(false);
         const { data } = await fetchAPI({ url: apiUrlLogout });
         if (data) {
-            dispatch(setSession({ ...data }));
+            dispatch(setSession({ ...data, music }));
             setSpinner(false);
             dispatch(
                 setSessionUserMessage({

@@ -30,6 +30,7 @@ function SignUp({ headInfo }) {
     const isLoggedIn = useSelector(
         (state: RootState) => state.user.session.isLoggedIn
     );
+    const music = useSelector((state: RootState) => state.user.session.music);
     const router = useRouter();
     const [username, setUserName] = useState<string>('');
     const [email, setEmail] = useState<string>('');
@@ -53,7 +54,7 @@ function SignUp({ headInfo }) {
             body: { email, password },
         });
         if (data) {
-            dispatch(setSession(data));
+            dispatch(setSession({ ...data, music }));
             setStatusEnviado(true);
         } else {
             alert(error);

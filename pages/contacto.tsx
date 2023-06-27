@@ -57,7 +57,7 @@ function ContactPage({ headInfo }) {
 
 export default ContactPage;
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
     const headInfo = {
         imgWidth: '400',
         imgHeight: '300',

@@ -1,16 +1,29 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState, setSessionMusic } from '../';
 
 export const useHandleAppMusic = () => {
-    const [playing, setPlaying] = useState<boolean>(false);
+    const [playing, setPlaying] = useState<boolean>(true);
     const [pause, setPause] = useState<boolean>(false);
-    const [infoProduccion, setInfoProduccion] = useState<any>({});
+    const [infoProduccion, setInfoProduccion] = useState<any>(null);
     const [idCompActual, setidCompActual] = useState<number>(null);
     const [ended, setEnded] = useState<boolean>(false);
     const [progressDuration, setprogressDuration] = useState<string>('0:00');
     const [progress, setProgress] = useState<number>(0);
     const [clickInfoButton, setClickInfoButton] = useState<boolean>(false);
-
+    const music = useSelector((state: RootState) => state.user.session.music);
+    const dispatch = useDispatch();
     const selectedSong = (song: any, idComp: number) => {
+        if (infoProduccion) {
+            if (infoProduccion.id === song.id) {
+                dispatch(
+                    setSessionMusic({
+                        ...music,
+                        produccionActual: null,
+                    })
+                );
+            }
+        }
         const {
             id,
             nombre,
@@ -25,7 +38,6 @@ export const useHandleAppMusic = () => {
             bpm,
         } = song;
         const { nombre_artista, instagram, spotify_link } = artista;
-        /* playing && setPlaying(false) */
         setInfoProduccion({
             nombre,
             descripcion,
@@ -42,9 +54,19 @@ export const useHandleAppMusic = () => {
             bpm,
         });
         setidCompActual(idComp);
-        /* playing && setEnded(false); */
-        clickInfoButton && setClickInfoButton(!clickInfoButton);
     };
+
+    useEffect(() => {
+        if (infoProduccion) {
+            dispatch(
+                setSessionMusic({
+                    ...music,
+                    produccionActual: infoProduccion,
+                })
+            );
+        }
+    }, [infoProduccion]);
+
     return [
         playing,
         setPlaying,

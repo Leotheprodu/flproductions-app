@@ -5,6 +5,7 @@ import {
     SET_SESSION_ARTISTA,
     SET_SESSION_USER_MESSAGE,
     SET_SESSION_USER,
+    SET_SESSION_MUSIC,
 } from './userTypes';
 
 export const setSession = (session: SessionState) => {
@@ -37,5 +38,11 @@ export const setSessionUser = (user) => {
     return {
         type: SET_SESSION_USER,
         payload: user,
+    };
+};
+export const setSessionMusic = (music) => {
+    return {
+        type: SET_SESSION_MUSIC,
+        payload: music,
     };
 };

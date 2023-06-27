@@ -29,6 +29,7 @@ function Login({ headInfo }) {
     const isLoggedIn = useSelector(
         (state: RootState) => state.user.session.isLoggedIn
     );
+    const music = useSelector((state: RootState) => state.user.session.music);
     const router = useRouter();
     const formStatus: string =
         'Ya has iniciado sesion, le vamos a dirigir a la pagina anterior.';
@@ -70,7 +71,7 @@ function Login({ headInfo }) {
         }
         try {
             if (data) {
-                dispatch(setSession(data));
+                dispatch(setSession({ ...data, music }));
                 setSpinner(false);
 
                 setTimeout(() => {
