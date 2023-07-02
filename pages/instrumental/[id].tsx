@@ -126,6 +126,7 @@ export const getServerSideProps = async ({ query }) => {
     const producciones = data.producciones.filter(
         (element) =>
             element.tipo_obra === tipo_obra_general &&
+            element.status === 1 &&
             element.id === parseInt(id)
     );
     const produccion = producciones[0];

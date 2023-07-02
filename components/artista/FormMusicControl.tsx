@@ -24,6 +24,7 @@ interface IsEditingData {
         fecha_lanzamiento: string;
         key: string | null;
         bpm: number | null;
+        status: number;
     };
 }
 interface MyComponentProps {
@@ -49,6 +50,7 @@ export const FormMusicControl: React.FC<MyComponentProps> = ({
         fecha_lanzamiento: '',
         key: 'indefinido',
         bpm: null,
+        status: null,
     });
     const apiUrl_Producciones =
         process.env.NODE_ENV === 'production'
@@ -69,6 +71,7 @@ export const FormMusicControl: React.FC<MyComponentProps> = ({
                 fecha_lanzamiento: song.fecha_lanzamiento || undefined,
                 key: song.key || 'indefinido',
                 bpm: song.bpm || undefined,
+                status: song.status,
             });
         } else if (status && song.nombre === '') {
             setSongData({
@@ -84,6 +87,7 @@ export const FormMusicControl: React.FC<MyComponentProps> = ({
                 fecha_lanzamiento: '',
                 key: 'indefinido',
                 bpm: null,
+                status: song.status,
             });
         }
     }, [status, song]);

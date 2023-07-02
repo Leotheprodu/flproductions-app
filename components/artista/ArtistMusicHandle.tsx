@@ -21,6 +21,7 @@ export const ArtistMusicHandle = ({ artista }) => {
         song: {
             id: null,
             nombre: '',
+            tipo_obra: null,
         },
     });
     const [isEditing, setIsEditing] = useState({
@@ -38,6 +39,7 @@ export const ArtistMusicHandle = ({ artista }) => {
             fecha_lanzamiento: '',
             key: 'indefinido',
             bpm: null,
+            status: 1,
         },
     });
     useEffect(() => {
@@ -66,6 +68,7 @@ export const ArtistMusicHandle = ({ artista }) => {
             fecha_lanzamiento,
             key,
             bpm,
+            status,
         } = element;
         setIsEditing({
             status: true,
@@ -82,6 +85,7 @@ export const ArtistMusicHandle = ({ artista }) => {
                 fecha_lanzamiento,
                 key,
                 bpm,
+                status,
             },
         });
     };
@@ -101,16 +105,18 @@ export const ArtistMusicHandle = ({ artista }) => {
                 fecha_lanzamiento: '',
                 key: '',
                 bpm: null,
+                status: artista.tipo === 0 ? 2 : 1,
             },
         });
     };
     const handleDeleteItem = (element) => {
-        const { id, nombre } = element;
+        const { id, nombre, tipo_obra } = element;
         setIsDeleting({
             status: true,
             song: {
                 id,
                 nombre,
+                tipo_obra,
             },
         });
     };
@@ -152,13 +158,29 @@ export const ArtistMusicHandle = ({ artista }) => {
                         className="ArtistMusicHandle__container"
                         key={element.id}
                     >
-                        <div
-                            title="Eliminar"
-                            className="ArtistMusicHandle__deleteButtom"
-                            onClick={() => handleDeleteItem(element)}
-                        >
-                            X
-                        </div>
+                        {element.status === 1 ? (
+                            <div
+                                title="Eliminar"
+                                className="ArtistMusicHandle__deleteButtom"
+                                onClick={() => handleDeleteItem(element)}
+                            >
+                                X
+                            </div>
+                        ) : element.status === 0 ? (
+                            <div
+                                title="Instrumental Inactivo"
+                                className="ArtistMusicHandle__inactivo"
+                            >
+                                Inactivo
+                            </div>
+                        ) : (
+                            <div
+                                title="Instrumental Inactivo"
+                                className="ArtistMusicHandle__inactivo"
+                            >
+                                Evaluacion
+                            </div>
+                        )}
                         <div
                             title="Editar Elemento"
                             className="ArtistMusicHandle__song"

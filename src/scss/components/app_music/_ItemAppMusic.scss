@@ -11,6 +11,7 @@
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.11);
     transition: box-shadow 0.1s linear, transform 0.2s ease-in-out;
     border-radius: 2rem;
+    background: v.$blanco;
 
     &:hover {
         box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
@@ -18,21 +19,21 @@
     .ItemAppMusic__imagen {
         height: 14rem;
         width: 23rem;
-        position: relative;
+        overflow: hidden;
     }
 
     img {
         height: 100%;
         width: 100%;
         object-fit: cover;
-        border-radius: 2rem;
+        border-top-left-radius: 2rem;
+        border-top-right-radius: 2rem;
     }
 }
 .ItemAppMusic.selected {
     z-index: 2;
     transform: scale(1.1);
     box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
-    background-color: v.$blanco;
 }
 .ItemAppMusic__texto {
     position: relative;

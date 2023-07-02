@@ -625,7 +625,7 @@ input {
 }
 @media (min-width: 768px) {
   .MusicPlayer__Reproductor__buttoms-volumen {
-    left: 44%;
+    left: 55rem;
   }
 }
 
@@ -1080,6 +1080,7 @@ input {
   box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.11);
   transition: box-shadow 0.1s linear, transform 0.2s ease-in-out;
   border-radius: 2rem;
+  background: #ffffff;
 }
 .ItemAppMusic:hover {
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
@@ -1087,20 +1088,20 @@ input {
 .ItemAppMusic .ItemAppMusic__imagen {
   height: 14rem;
   width: 23rem;
-  position: relative;
+  overflow: hidden;
 }
 .ItemAppMusic img {
   height: 100%;
   width: 100%;
   object-fit: cover;
-  border-radius: 2rem;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
 }
 
 .ItemAppMusic.selected {
   z-index: 2;
   transform: scale(1.1);
   box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.3);
-  background-color: #ffffff;
 }
 
 .ItemAppMusic__texto {
@@ -1338,6 +1339,16 @@ input {
 }
 .ArtistMusicHandle__UpdateArtist-cerrar:hover {
   transform: rotate(10deg) scale(1.3);
+}
+
+.ArtistMusicHandle__inactivo {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  color: #f3de3f;
+  padding: 0.2rem;
+  border-radius: 5px;
+  background-color: #000000;
 }
 
 .ArtistMusicHandle__deleteButtom {

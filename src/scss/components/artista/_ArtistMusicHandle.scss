@@ -83,6 +83,15 @@
         transform: rotate(10deg) scale(1.3);
     }
 }
+.ArtistMusicHandle__inactivo {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    color: v.$secundario;
+    padding: 0.2rem;
+    border-radius: 5px;
+    background-color: v.$negro;
+}
 .ArtistMusicHandle__deleteButtom {
     position: absolute;
     display: flex;

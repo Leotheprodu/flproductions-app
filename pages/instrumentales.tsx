@@ -31,7 +31,8 @@ function Instrumentales({ headInfo }) {
         process.env.NEXT_PUBLIC_DEV_PRODUCCIONES
     );
     const produccionesArtistas = producciones_HTTP_Fetch.filter(
-        (element) => element.tipo_obra === tipo_obra_general
+        (element) =>
+            element.tipo_obra === tipo_obra_general && element.status === 1
     );
     const [produccioneFiltradas, setProduccioneFiltradas] =
         useState(produccionesArtistas);
