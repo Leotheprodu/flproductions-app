@@ -3,6 +3,7 @@ import { BannerSlider, SimpleText, InicioLinkCards } from '../components';
 import { mainBannerSlider } from '../components/database_temp/database';
 import { PropsHead } from '../components/helpers/HeadMetaInfo';
 import Head from 'next/head';
+import Link from 'next/link';
 
 function Home({ headInfo }) {
     const {
@@ -43,13 +44,15 @@ function Home({ headInfo }) {
             <div className="contenedor">
                 <SimpleText
                     tipo={1}
-                    titulo="FLProductions, la app para Artistas y Productores musicales de Costa Rica!"
+                    titulo="FLProductions, Estudio de Grabación y Producción Musical en Costa Rica"
                     texto={
                         <p>
-                            Bienvenidos a Flproductions, la app para musicos,
-                            Artista, DJs, Productores de Costa Rica. Una
-                            comunidad creada para conectar el talento musical de
-                            Costa Rica.
+                            Bienvenidos a FLProductions, somos un estudio de
+                            Grabación y producción Musical de Costa Rica, con
+                            mas de 15 años de experiencia,{' '}
+                            <Link href={'/estudio'}>
+                                click aqui para mas información
+                            </Link>
                         </p>
                     }
                 />
@@ -70,7 +73,7 @@ export const getServerSideProps = async () => {
         copyright: 'FLProductions',
         title: 'Inicio',
         description:
-            'FLProductions tu app para artistas y productores de Costa Rica, comparte, escucha, mira los videos, aprende con tutoriales, instrumentales, stream de sesiones, etc',
+            'Somos un estudio de Grabación y producción Musical de Costa Rica, con mas de 15 años de experiencia',
         type: 'website',
         url: 'https://flproductionscr.com/',
         image: `${process.env.NEXT_PUBLIC_PROD_LINK}/build_main/img/header-main.png`,

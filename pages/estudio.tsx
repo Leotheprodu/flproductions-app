@@ -1,3 +1,4 @@
+import React from 'react';
 import { IconVideo, IconMicrophone, IconZoomMoney } from '@tabler/icons';
 import {
     GaleriaDeImagenes,
@@ -32,7 +33,7 @@ function AboutPage({ headInfo }) {
         keywords,
         robots,
     }: PropsHead = headInfo;
-    const tipo_obra_general: number = 0;
+    const tipo_obra_general: number = 1;
     const [producciones_HTTP_Fetch] = useProducciones_HTTP_Fetch(
         process.env.NEXT_PUBLIC_PROD_PRODUCCIONES,
         process.env.NEXT_PUBLIC_DEV_PRODUCCIONES
@@ -247,7 +248,7 @@ export const getServerSideProps = async () => {
         description:
             'Estudio de grabación y producción musical en Costa Rica. Ofrecemos un enfoque personalizado y profesional para ayudar a artistas y músicos a realizar sus proyectos. Visítanos para saber más',
         type: 'website',
-        url: 'https://flproductionscr.com/nosotros',
+        url: 'https://flproductionscr.com/estudio',
         image: `${process.env.NEXT_PUBLIC_PROD_LINK}/build_main/img/header-main.png`,
         keywords:
             'musica, artistas, estudio de grabacion, produccion musical, acerca de nosotros, nosotros, instrumentales, beats',

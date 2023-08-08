@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 
 export const useProducciones_HTTP_Fetch = (
-    ENV_PROD: string,
-    ENV_DEV: string
+    ENV_PROD?: string,
+    ENV_DEV?: string
 ) => {
     const [producciones_HTTP_Fetch, setProducciones_HTTP_Fetch] = useState([]);
 

@@ -27,7 +27,7 @@ function Canciones({ headInfo }) {
         keywords,
         robots,
     }: PropsHead = headInfo;
-    const tipo_obra_general: number = 0;
+    const tipo_obra_general: number = 1;
     // IMPORTAMOS LAS PRODUCCIONES DE LA BASE DE DATOS
 
     const [producciones_HTTP_Fetch] = useProducciones_HTTP_Fetch(

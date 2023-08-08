@@ -68,7 +68,7 @@ export const ArtistList = ({
     if (!artistas.length) {
         <Spinner />;
     }
-    if (tipo_obra_general === 1) {
+    if (tipo_obra_general === 2) {
         return (
             <div className="ArtistList__Main">
                 <h4>Productor Musical</h4>

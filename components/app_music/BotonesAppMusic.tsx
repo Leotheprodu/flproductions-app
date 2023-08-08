@@ -44,7 +44,7 @@ export const BotonesAppMusic = ({
 }: Props) => {
     return (
         <div className="BotonesAppMusic">
-            {tipo_obra_general === 0 && (
+            {tipo_obra_general === 1 && (
                 <div
                     className={`BotonesAppMusic__elementos-info-reproductor ${
                         clickInfoButton &&
@@ -84,12 +84,12 @@ export const BotonesAppMusic = ({
                     </ul>
                 </div>
             )}
-            {tipo_obra_general === 1 && (
+            {tipo_obra_general === 2 && (
                 <div
                     className={`BotonesAppMusic__elementos-info-reproductor ${
                         clickInfoButton &&
-                        idComp === idCompActual &&
-                        infoProduccion.id === song.id
+                        idCompInfo === idComp &&
+                        itemKey === song.id
                             ? 'selected'
                             : ''
                     }`}

@@ -10,11 +10,8 @@ export const MainNavLinks = () => {
                 <p className="header__links__link__musica">Nosotros</p>
 
                 <nav className="header__submenu">
-                    <NavLink
-                        href="/estudio-flproductions"
-                        className="header__links__link"
-                    >
-                        Estudio FLProductions
+                    <NavLink href="/estudio" className="header__links__link">
+                        Estudio
                     </NavLink>
                     <NavLink href="/contacto" className="header__links__link">
                         Contacto
@@ -54,11 +51,8 @@ export const MovilNavLinks = ({ onClickMovilUser, setOnClickMovilUser }) => {
                 </NavLink>
             </div>
             <div onClick={() => setOnClickMovilUser(false)}>
-                <NavLink
-                    href="/estudio-flproductions"
-                    className="header__links__link"
-                >
-                    Estudio de Grabacion
+                <NavLink href="/estudio" className="header__links__link">
+                    Estudio
                 </NavLink>
             </div>
             <div onClick={() => setOnClickMovilUser(false)}>

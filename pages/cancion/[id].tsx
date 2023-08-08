@@ -99,13 +99,13 @@ function SongDetail({ headInfo, producciones }) {
                         setProgress={setProgress}
                         clickInfoButton={clickInfoButton}
                         setClickInfoButton={setClickInfoButton}
-                        tipo_obra_general={0}
+                        tipo_obra_general={1}
                     />
                 </div>
 
                 <DetalleProducciones
                     infoProduccion={produccionActual[0]}
-                    tipo_obra_general={0}
+                    tipo_obra_general={1}
                 />
             </div>
         </>
@@ -116,7 +116,7 @@ export default SongDetail;
 
 export const getServerSideProps = async ({ query }) => {
     const { id } = query;
-    const tipo_obra_general: number = 0;
+    const tipo_obra_general: number = 1;
     const res = await fetch(
         `${
             process.env.NODE_ENV === 'production'

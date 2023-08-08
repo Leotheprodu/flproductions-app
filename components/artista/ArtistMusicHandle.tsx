@@ -97,7 +97,7 @@ export const ArtistMusicHandle = ({ artista }) => {
                 nombre: '',
                 descripcion: '',
                 id_artista: artista.id,
-                tipo_obra: artista.tipo === 0 ? 1 : 0,
+                tipo_obra: artista.tipo === 0 ? 2 : 1,
                 spotify_link: '',
                 youtube_id: '',
                 estilo: '',

@@ -59,13 +59,13 @@ export const DetalleProducciones = ({
                     </a>
                 )}
 
-                {tipo_obra_general !== 1 && (
+                {tipo_obra_general !== 2 && (
                     <a href={`/artista/${formatLink(nombre_artista)}`}>
                         <IconMicrophone stroke={1} size={30} />
                         <p>{`mas de ${nombre_artista}`}</p>
                     </a>
                 )}
-                {tipo_obra_general === 1 && (
+                {tipo_obra_general === 2 && (
                     <a
                         href={`/productor-musical/${formatLink(
                             nombre_artista

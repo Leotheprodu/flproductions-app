@@ -121,7 +121,7 @@ function ProducerDetail({ artistafiltrado, headInfo, producciones }) {
                         setProgress={setProgress}
                         clickInfoButton={clickInfoButton}
                         setClickInfoButton={setClickInfoButton}
-                        tipo_obra_general={1}
+                        tipo_obra_general={2}
                     />
                 </div>
             </div>
@@ -147,7 +147,7 @@ export const getServerSideProps = async ({ query }) => {
             artist_name
     );
     const artista = artistafiltrado[0];
-    const tipo_obra_general: number = 1;
+    const tipo_obra_general: number = 2;
     const res2 = await fetch(
         `${
             process.env.NODE_ENV === 'production'

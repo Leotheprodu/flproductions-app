@@ -23,7 +23,7 @@ interface HookItem {
 }
 export const MusicPlayer = () => {
     const music = useSelector((state: RootState) => state.user.session.music);
-    const [showVideo, setShowVideo] = useState(false);
+    const [showVideo, setShowVideo] = useState(true);
     const [
         playing,
         setPlaying,
@@ -114,7 +114,7 @@ export const MusicPlayer = () => {
                     className="MusicPlayer__Reproductor__buttoms__showVideo"
                     onClick={() => setShowVideo(!showVideo)}
                 >
-                    {showVideo ? <IconDeviceTvOff /> : <IconDeviceTv />}
+                    {showVideo ? <IconDeviceTv /> : <IconDeviceTvOff />}
                 </div>
                 <div className="MusicPlayer__Reproductor__buttoms-barra-de-progreso">
                     <div

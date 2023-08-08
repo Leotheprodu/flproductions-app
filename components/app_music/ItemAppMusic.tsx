@@ -81,11 +81,11 @@ const ItemAppMusic = ({
             <div className="ItemAppMusic__texto">
                 <div className="ItemAppMusic__texto__titulo">
                     <p className="ItemAppMusic__texto-1">{song.nombre}</p>
-                    {tipo_obra_general === 0 && (
+                    {tipo_obra_general === 1 && (
                         <p className="ItemAppMusic__texto-2">{`${song.artista.nombre_artista}`}</p>
                     )}
                 </div>
-                {tipo_obra_general === 1 && (
+                {tipo_obra_general === 2 && (
                     <p className="ItemAppMusic__texto-3">{song.genero}</p>
                 )}
             </div>

@@ -25,7 +25,7 @@ function Instrumentales({ headInfo }) {
         robots,
     }: PropsHead = headInfo;
 
-    const tipo_obra_general: number = 1;
+    const tipo_obra_general: number = 2;
     const [producciones_HTTP_Fetch] = useProducciones_HTTP_Fetch(
         process.env.NEXT_PUBLIC_PROD_PRODUCCIONES,
         process.env.NEXT_PUBLIC_DEV_PRODUCCIONES
