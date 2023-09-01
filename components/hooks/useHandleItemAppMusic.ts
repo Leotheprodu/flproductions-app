@@ -11,7 +11,20 @@ interface Props {
     setprogressDuration: Function;
     clickInfoButton: any;
 }
-
+interface HookItem {
+    duration: string;
+    volume: number;
+    setVolume: Function;
+    playerRef: any;
+    handlePlayButtonClick: any;
+    handlePlay: any;
+    handleDuration: any;
+    handleonChangeRange: any;
+    handleProgress: any;
+    handleInfoButton: any;
+    itemKey: number;
+    idCompInfo: number;
+}
 export const useHandleItemAppMusic = ({
     setPlaying,
     setEnded,

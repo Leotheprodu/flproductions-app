@@ -18,6 +18,6 @@ module.exports = {
     },
     trailingSlash: true,
     experimental: {
-        forceSwcTransforms: false,
+        forceSwcTransforms: true,
     },
 };

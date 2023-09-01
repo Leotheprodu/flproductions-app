@@ -7,17 +7,26 @@ import {
     IconMicrophone2,
     IconHeadphonesFilled,
 } from '@tabler/icons-react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSession, setSessionUserMessage } from '../redux/userActions';
-import { Spinner } from '../helpers/Spinner';
+import { useRouter } from 'next/router';
 import { RootState } from '../redux/store';
-import Link from 'next/link';
 import { fetchAPI } from '../';
-
-function SessionPanel({ setUserButton }) {
+import { Button } from '@nextui-org/react';
+import { Input } from '@nextui-org/react';
+function SessionPanel() {
+    const router = useRouter();
     const dispatch = useDispatch();
     const [email, setEmail] = useState<string>('');
+    const validateEmail = (email) =>
+        email.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i);
+
+    const validationState = React.useMemo(() => {
+        if (email === '') return undefined;
+
+        return validateEmail(email) ? 'valid' : 'invalid';
+    }, [email]);
     const [password, setPassword] = useState<string>('');
     const isLoggedIn =
         useSelector((state: RootState) => state.user.session.isLoggedIn) ||
@@ -95,7 +104,6 @@ function SessionPanel({ setUserButton }) {
                 })
             );
             setSpinner(false);
-            setUserButton(false);
         } else {
             dispatch(
                 setSessionUserMessage({
@@ -112,7 +120,6 @@ function SessionPanel({ setUserButton }) {
     const handleLogout = async (e) => {
         e.preventDefault();
         setSpinner(true);
-        setUserButton(false);
         const { data } = await fetchAPI({ url: apiUrlLogout });
         if (data) {
             dispatch(setSession({ ...data, music }));
@@ -127,69 +134,112 @@ function SessionPanel({ setUserButton }) {
     };
     if (isLoggedIn) {
         return (
-            <div className="login_container">
-                <div className="login_buttons">
-                    <div className="login_buttons__button">
-                        <Link href="/panel-de-control/informacion-de-usuario">
-                            <button
-                                onClick={() => {
-                                    setUserButton(false);
-                                }}
-                                type="button"
-                                title="Configurar Usuario"
-                            >
-                                {<IconSettingsFilled />}Configurar Usuario
-                            </button>
-                        </Link>
+            <div className="container w-80 my-0 mx-auto">
+                <div className="">
+                    <div className=" flex flex-col gap-2 ">
+                        <Button
+                            onClick={() => {
+                                router.push(
+                                    '/panel-de-control/informacion-de-usuario'
+                                );
+                            }}
+                            type="button"
+                            title="Configurar Usuario"
+                            className="text-2xl"
+                            isLoading={spinner}
+                            color="primary"
+                        >
+                            {<IconSettingsFilled />}Configurar Usuario
+                        </Button>
+
                         {userRoles.includes(4) && (
-                            <Link href="/panel-de-control/productor-musical">
-                                <button
-                                    onClick={() => {
-                                        setUserButton(false);
-                                    }}
-                                    type="button"
-                                    title="Configurar Productor"
-                                >
-                                    {<IconHeadphonesFilled />}Configurar
-                                    Productor
-                                </button>
-                            </Link>
+                            <Button
+                                onClick={() => {
+                                    router.push(
+                                        '/panel-de-control/productor-musical'
+                                    );
+                                }}
+                                isLoading={spinner}
+                                className="text-2xl"
+                                color="primary"
+                                type="button"
+                                title="Configurar Productor"
+                            >
+                                {<IconHeadphonesFilled />}Configurar Productor
+                            </Button>
                         )}
                         {userRoles.includes(3) && (
-                            <Link href="/panel-de-control/artista">
-                                <button
-                                    onClick={() => {
-                                        setUserButton(false);
-                                    }}
-                                    type="button"
-                                    title="Configurar Artista"
-                                >
-                                    {<IconMicrophone2 />}Configurar Artista
-                                </button>
-                            </Link>
+                            <Button
+                                onClick={() => {
+                                    router.push('/panel-de-control/artista');
+                                }}
+                                isLoading={spinner}
+                                type="button"
+                                className="text-2xl"
+                                color="primary"
+                                title="Configurar Artista"
+                            >
+                                {<IconMicrophone2 />}Configurar Artista
+                            </Button>
                         )}
-                        <button title="Cerrar Sesión" onClick={handleLogout}>
+                        <Button
+                            isLoading={spinner}
+                            title="Cerrar Sesión"
+                            color="warning"
+                            className="text-2xl"
+                            onClick={handleLogout}
+                        >
                             {<IconLogout />}Cerrar Sesión
-                        </button>
+                        </Button>
                     </div>
                 </div>
             </div>
         );
     } else {
         return (
-            <form className="login_container" onSubmit={handleLogin}>
-                <div className="login__form">
-                    <div className="login_container_input">
-                        <label htmlFor="email">Correo electrónico:</label>
-                        <input
+            <form
+                className="flex flex-col justify-center items-center container gap-10 p-2 text-center"
+                onSubmit={handleLogin}
+            >
+                <div className="flex flex-col md:flex-row gap-2">
+                    <div className="flex items-center justify-center text-2xl md:w-[20rem]">
+                        <Input
+                            label="Correo Electrónico"
+                            placeholder="Escribe tu correo electrónico"
+                            classNames={{
+                                label: 'text-2xl',
+                                input: ['text-2xl'],
+                                errorMessage: 'text-2xl absolute',
+                                inputWrapper: 'h-20',
+                            }}
+                            radius="sm"
                             type="email"
+                            color={
+                                validationState === 'invalid'
+                                    ? 'danger'
+                                    : 'primary'
+                            }
+                            errorMessage={
+                                validationState === 'invalid' &&
+                                'Ingrese un correo válido'
+                            }
+                            validationState={validationState}
+                            onValueChange={setEmail}
                             value={email}
-                            onChange={(e) => setEmail(e.target.value)}
                         />
                     </div>
-                    <div className="login_container_input">
-                        <label htmlFor="password">Contraseña:</label>
-                        <input
+                    <div className="flex items-center justify-center text-2xl md:w-[20rem]">
+                        <Input
+                            placeholder="Escribe tu contraseña"
+                            label="Contraseña"
+                            color="primary"
+                            classNames={{
+                                label: 'text-2xl',
+                                input: ['text-2xl'],
+                                errorMessage: 'text-2xl',
+                                inputWrapper: 'h-20',
+                            }}
+                            radius="sm"
                             type="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
@@ -197,43 +247,53 @@ function SessionPanel({ setUserButton }) {
                     </div>
                 </div>
 
-                {!spinner && (
-                    <div className="login_buttons">
-                        {botonOlvideContra && (
-                            <div className="login_buttons__button">
-                                <Link href="/recuperar-password">
-                                    <button
-                                        type="button"
-                                        title="He olvidado mi contraseña"
-                                    >
-                                        <IconCloudLockOpen />
-                                        He olvidado mi contraseña
-                                    </button>
-                                </Link>
-                            </div>
-                        )}
-                        <div className="login_buttons__button">
-                            <button type="submit" title="Iniciar Sesión">
-                                <IconUserCheck />
-                                Iniciar Sesión
-                            </button>
+                <div className="flex flex-col md:flex-row gap-2 flex-wrap justify-center items-center">
+                    {botonOlvideContra && (
+                        <div className="">
+                            <Button
+                                onClick={() => {
+                                    router.push('/recuperar-password');
+                                }}
+                                className="text-2xl"
+                                color="warning"
+                                type="button"
+                                title="He olvidado mi contraseña"
+                                isLoading={spinner}
+                            >
+                                <IconCloudLockOpen />
+                                He olvidado mi contraseña
+                            </Button>
                         </div>
+                    )}
+                    <div className="">
+                        <Button
+                            className="text-2xl"
+                            color="primary"
+                            type="submit"
+                            title="Iniciar Sesión"
+                            isLoading={spinner}
+                        >
+                            <IconUserCheck />
+                            Iniciar Sesión
+                        </Button>
+                    </div>
 
-                        <div className="login_buttons__button">
-                            <Link href="/registro-de-usuario">
-                                <button type="button" title="Registrarse">
-                                    <IconUserPlus />
-                                    Registrarse
-                                </button>
-                            </Link>
-                        </div>
+                    <div className="">
+                        <Button
+                            onClick={() => {
+                                router.push('/registro-de-usuario');
+                            }}
+                            className="text-2xl"
+                            color="primary"
+                            type="button"
+                            title="Registrarse"
+                            isLoading={spinner}
+                        >
+                            <IconUserPlus />
+                            Registrarse
+                        </Button>
                     </div>
-                )}
-                {spinner && (
-                    <div className="login_buttons">
-                        <Spinner />
-                    </div>
-                )}
+                </div>
             </form>
         );
     }

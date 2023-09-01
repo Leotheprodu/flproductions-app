@@ -16,7 +16,7 @@ export function SimpleText({ titulo, texto, tipo = 2 }: Props) {
             <div className={'simple-text_info'}>
                 <h1>{titulo}</h1>
 
-                {texto}
+                <div>{texto}</div>
             </div>
         );
     } else if (tipo === 2) {

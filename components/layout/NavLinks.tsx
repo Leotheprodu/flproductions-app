@@ -1,11 +1,9 @@
 import React from 'react';
 import NavLink from '../helpers/NavLink';
+import SessionPanel from '../users/SessionPanel';
 export const MainNavLinks = () => {
     return (
         <nav className="header__links">
-            <NavLink href="/" className="header__links__link">
-                Inicio
-            </NavLink>
             <div className="header__submenu-parent">
                 <p className="header__links__link__musica">Nosotros</p>
 
@@ -41,15 +39,10 @@ export const MainNavLinks = () => {
 export const MovilNavLinks = ({ onClickMovilUser, setOnClickMovilUser }) => {
     return (
         <nav
-            className={`header__links__movil ${
-                onClickMovilUser ? 'selected' : ''
+            className={` p-6 flex flex-col gap-4 justify-center items-center absolute  top-32 inset-x-0 bg-gris backdrop-blur ${
+                onClickMovilUser ? 'visible opacity-100' : 'invisible opacity-0'
             }`}
         >
-            <div onClick={() => setOnClickMovilUser(false)}>
-                <NavLink href="/" className="header__links__link">
-                    Inicio
-                </NavLink>
-            </div>
             <div onClick={() => setOnClickMovilUser(false)}>
                 <NavLink href="/estudio" className="header__links__link">
                     Estudio
@@ -69,6 +62,10 @@ export const MovilNavLinks = ({ onClickMovilUser, setOnClickMovilUser }) => {
                 <NavLink href="/instrumentales" className="header__links__link">
                     Instrumentales
                 </NavLink>
+            </div>
+
+            <div className="bg-terciario w-full m-0 p-4 rounded-3xl ">
+                <SessionPanel />
             </div>
         </nav>
     );

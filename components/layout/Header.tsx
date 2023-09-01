@@ -5,9 +5,7 @@ import { RootState } from '../redux/store';
 import Link from 'next/link';
 import SessionPanel from '../users/SessionPanel';
 import { MainNavLinks, MovilNavLinks, UserAvatar, fetchAPI } from '../';
-import { IconLogin } from '@tabler/icons-react';
 export function Header() {
-    const [UserButton, setUserButton] = useState<boolean>(false);
     const [isMovilUser, setIsMovilUser] = useState<boolean>(false);
     const [onClickMovilUser, setOnClickMovilUser] = useState<boolean>(false);
     const isLoggedIn = useSelector(
@@ -61,54 +59,53 @@ export function Header() {
                             FLProductions
                         </Link>
                     </div>
-
-                    <div className="header__nav_boton_usuarios">
-                        <div
-                            title="Opciones de Sesión"
-                            onClick={() => {
-                                setUserButton(!UserButton);
-                            }}
-                            className="header__nav_boton"
-                        >
-                            <div style={{ opacity: '1' }}>
-                                {!isLoggedIn ? (
-                                    <IconLogin size={20} />
-                                ) : (
-                                    <UserAvatar user_id={user.id} size={3} />
-                                )}
+                    {!isMovilUser && (
+                        <div className=" flex justify-center items-center absolute right-[21.5rem] inset-y-0 group  ">
+                            <div
+                                title="Opciones de Sesión"
+                                className=" flex justify-center items-center gap-2 cursor-pointer"
+                            >
+                                {isLoggedIn ? (
+                                    <div style={{ opacity: '1' }}>
+                                        <UserAvatar
+                                            user_id={user.id}
+                                            size={3}
+                                        />
+                                    </div>
+                                ) : null}
+                                <p className="uppercase text-2xl hover:text-primario transition-colors ease-in duration-500	">
+                                    Usuario
+                                </p>
                             </div>
 
-                            <p className="header__nav_boton__text">
-                                {isLoggedIn ? null : 'Acceder'}
-                            </p>
+                            <div
+                                className={` absolute top-24 w-auto p-8 bg-gris rounded-xl shadow-xl opacity-0 invisible transition-all duration-300 group-hover:opacity-100 group-hover:visible`}
+                            >
+                                <SessionPanel />
+                            </div>
                         </div>
+                    )}
 
-                        <div
-                            className={`header__nav_boton_usuarios_login ${
-                                UserButton ? 'selected' : ''
-                            }`}
-                        >
-                            <SessionPanel setUserButton={setUserButton} />
-                        </div>
-                    </div>
                     {!isMovilUser && <MainNavLinks />}
 
                     {isMovilUser && (
-                        <div className="menu_celular">
-                            <button
-                                onClick={() => {
-                                    setOnClickMovilUser(!onClickMovilUser);
-                                }}
-                            >
-                                <IconMenu2 />
-                            </button>
-                            <p>menu</p>
-                        </div>
+                        <>
+                            <div className="menu_celular">
+                                <button
+                                    onClick={() => {
+                                        setOnClickMovilUser(!onClickMovilUser);
+                                    }}
+                                >
+                                    <IconMenu2 />
+                                </button>
+                                <p>Menu</p>
+                            </div>
+                            <MovilNavLinks
+                                onClickMovilUser={onClickMovilUser}
+                                setOnClickMovilUser={setOnClickMovilUser}
+                            />
+                        </>
                     )}
-                    <MovilNavLinks
-                        onClickMovilUser={onClickMovilUser}
-                        setOnClickMovilUser={setOnClickMovilUser}
-                    />
                 </div>
             </div>
         </>

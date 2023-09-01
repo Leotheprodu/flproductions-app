@@ -6,7 +6,8 @@
     z-index: 1;
 }
 .BannerSlider__div {
-    height: 70vh;
+    height: 42rem;
+    padding: 4rem;
     width: 100%;
     display: flex;
     align-items: center;
@@ -16,10 +17,32 @@
     display: flex;
     flex-direction: column;
     background-color: rgba(0, 0, 0, 0.575);
+    backdrop-filter: blur(10px);
     max-width: 50%;
     min-width: 30rem;
     padding: 2rem;
     border-radius: 2rem;
+    animation-name: borrachera;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+
+    @keyframes borrachera {
+        0% {
+            transform: translateX(0);
+        }
+
+        25% {
+            transform: translateX(-1rem);
+        }
+        50% {
+            transform: translateX(0);
+        }
+
+        75% {
+            transform: translateX(1rem);
+        }
+    }
 
     @include m.tablet {
         margin-top: 20rem;

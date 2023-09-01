@@ -46,7 +46,7 @@ function Home({ headInfo }) {
                     tipo={1}
                     titulo="FLProductions, Estudio de Grabación y Producción Musical en Costa Rica"
                     texto={
-                        <p>
+                        <p className="">
                             Bienvenidos a FLProductions, somos un estudio de
                             Grabación y producción Musical de Costa Rica, con
                             mas de 15 años de experiencia,{' '}
@@ -71,9 +71,9 @@ export const getServerSideProps = async () => {
         imgHeight: '300',
         author: 'Leonardo Serrano',
         copyright: 'FLProductions',
-        title: 'Inicio',
+        title: 'Estudio de grabacion y produccion musical en Costa Rica',
         description:
-            'Somos un estudio de Grabación y producción Musical de Costa Rica, con mas de 15 años de experiencia',
+            'Somos un estudio de Grabación y producción Musical de Costa Rica, con mas de 15 años de experiencia, mezcla, mastering, produccion musical, beats, edicion, videos, marketing y mucho mas',
         type: 'website',
         url: 'https://flproductionscr.com/',
         image: `${process.env.NEXT_PUBLIC_PROD_LINK}/build_main/img/header-main.png`,

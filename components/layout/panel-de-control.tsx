@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
 import { LinksPanel, useUserMovilDeviceChecker, RootState } from '..';
-import { IconSettingsFilled } from '@tabler/icons-react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 
@@ -73,14 +72,6 @@ export const ControlPanel = ({ children }: Props) => {
                             isMovilUser={isMovilUser}
                         />
                     </div>
-                    {isMovilUser && (
-                        <div className="panel-de-control__menu_celular">
-                            <button onClick={handleClickMovilUser}>
-                                <p>Menu</p>
-                                <IconSettingsFilled />
-                            </button>
-                        </div>
-                    )}
                     <div className="panel-de-control__contenedor-Pages">
                         {children}
                     </div>

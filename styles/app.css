@@ -517,6 +517,7 @@ input {
     transform: rotate(360deg);
   }
 }
+/* MusicPlayer */
 .MusicPlayer {
   display: flex;
   position: sticky;
@@ -699,6 +700,7 @@ input {
   margin: 0;
 }
 
+/* app_music */
 .AppMusic {
   display: flex;
   justify-content: center;
@@ -1153,6 +1155,7 @@ input {
   }
 }
 
+/* artista */
 .EditarArtista {
   display: flex;
   flex-direction: column;
@@ -1477,6 +1480,7 @@ input {
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1215686275);
 }
 
+/* forms */
 .pagelayer-shape-fill {
   fill: #ffffff;
   height: 100%;
@@ -1775,6 +1779,7 @@ input {
   outline-color: #1f92ea;
 }
 
+/* helpers */
 .CountdownTimer p {
   color: rgb(102, 102, 102);
   text-align: center;
@@ -1813,13 +1818,15 @@ input {
   z-index: 13;
 }
 
+/* layout */
 .BannerSlider {
   display: flex;
   z-index: 1;
 }
 
 .BannerSlider__div {
-  height: 70vh;
+  height: 42rem;
+  padding: 4rem;
   width: 100%;
   display: flex;
   align-items: center;
@@ -1830,10 +1837,29 @@ input {
   display: flex;
   flex-direction: column;
   background-color: rgba(0, 0, 0, 0.575);
+  backdrop-filter: blur(10px);
   max-width: 50%;
   min-width: 30rem;
   padding: 2rem;
   border-radius: 2rem;
+  animation-name: borrachera;
+  animation-duration: 4s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+@keyframes borrachera {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-1rem);
+  }
+  50% {
+    transform: translateX(0);
+  }
+  75% {
+    transform: translateX(1rem);
+  }
 }
 @media (min-width: 768px) {
   .BannerSlider__div-texto {
@@ -1970,7 +1996,7 @@ input {
 }
 
 .header__nav__top-main-message {
-  height: 4rem;
+  height: 3.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1984,14 +2010,14 @@ input {
 }
 
 .header__nav {
-  flex-direction: column;
+  display: flex;
+  flex-direction: row;
   padding: 0 3rem;
   position: relative;
-  display: flex;
   background-color: rgba(255, 255, 255, 0.815);
   backdrop-filter: blur(6px);
   color: #ffffff;
-  justify-content: center;
+  justify-content: space-between;
   height: 8rem;
   z-index: 15;
   border: 1px solid rgb(238, 238, 238);
@@ -2081,7 +2107,7 @@ input {
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   z-index: 1;
   order: 0;
 }
@@ -2841,6 +2867,7 @@ input {
   margin: 0;
 }
 
+/* users */
 .contenedor__AvatarSelection {
   background-color: rgb(238, 238, 238);
   border-radius: 2rem;
@@ -3337,13 +3364,6 @@ input {
   outline-color: #1f92ea;
 }
 
-/* MusicPlayer */
-/* app_music */
-/* artista */
-/* forms */
-/* helpers */
-/* layout */
-/* users */
 .instrumentales {
   min-height: 100vh;
   margin-top: 9rem;

@@ -13,7 +13,7 @@
 }
 
 .header__nav__top-main-message {
-    height: 4rem;
+    height: 3.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -28,14 +28,14 @@
 }
 
 .header__nav {
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
     padding: 0 3rem;
     position: relative;
-    display: flex;
     background-color: rgba(255, 255, 255, 0.815);
     backdrop-filter: blur(6px);
     color: v.$blanco;
-    justify-content: center;
+    justify-content: space-between;
     height: 8rem;
     z-index: 15;
     border: 1px solid v.$gris;
@@ -132,7 +132,7 @@
         align-items: center;
         justify-content: center;
         gap: 2rem;
-        font-size: 1.4rem;
+        font-size: 1.5rem;
         z-index: 1;
         order: 0;
 

@@ -1,5 +1,7 @@
+import { Button } from '@nextui-org/react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import { useRouter } from 'next/router';
 
 interface mainBannerSlider {
     img_link: string;
@@ -12,6 +14,7 @@ interface Props {
 }
 
 export function BannerSlider({ datos }: Props) {
+    const router = useRouter();
     return (
         <>
             <Carousel
@@ -37,9 +40,18 @@ export function BannerSlider({ datos }: Props) {
                         <div className="BannerSlider__div-texto">
                             <h2>{title}</h2>
                             <p>{description}</p>
-                            <a target="_blank" href={link}>
-                                Mas información
-                            </a>
+                            <div className="w-30">
+                                <Button
+                                    className="text-4xl"
+                                    color="primary"
+                                    type="button"
+                                    onClick={() => {
+                                        router.push(link);
+                                    }}
+                                >
+                                    Mas información
+                                </Button>
+                            </div>
                         </div>
                     </div>
                 ))}
