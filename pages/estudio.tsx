@@ -182,7 +182,7 @@ function AboutPage({ headInfo }) {
                     "
                     nombre="Leo Serrano"
                     puesto="Productor Musical"
-                    foto={`${process.env.NEXT_PUBLIC_PROD_LINK}/build_main/img/leo-serrano1.png`}
+                    foto={`${process.env.NEXT_PUBLIC_PROD_LINK}/1686639572895.png`}
                     firma={`${process.env.NEXT_PUBLIC_PROD_LINK}/build_main/img/leoserrano-signature.png`}
                 />
             </div>
@@ -204,7 +204,9 @@ function AboutPage({ headInfo }) {
 
             <div className="contenedor">
                 <div className="algunas-producciones">
-                    <h2>Algunas producciones hechas por nosotros</h2>
+                    <h2 className="text-center ">
+                        Algunas producciones hechas por nosotros
+                    </h2>
                     <Suspense fallback={<Loading />}>
                         <AppMusic
                             songArray={produccionesDestacadas}

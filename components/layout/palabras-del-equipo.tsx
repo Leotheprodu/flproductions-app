@@ -1,5 +1,4 @@
 import { useRef } from 'react';
-import { useFxElement } from '../hooks/useFxElement';
 
 interface Props {
     titulo: string;
@@ -19,7 +18,7 @@ export function PalabrasDelEquipo({
     firma,
 }: Props) {
     const ref = useRef(null);
-    useFxElement(ref, 'fxMostrarArriba');
+
     return (
         <div ref={ref} className="palabras-del-equipo">
             <div className="palabras-del-equipo_foto">

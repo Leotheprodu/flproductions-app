@@ -1,5 +1,4 @@
 import { useRef } from 'react';
-import { useFxElement } from '../hooks/useFxElement';
 
 interface Props {
     titulo: string;
@@ -9,7 +8,6 @@ interface Props {
 
 export function SimpleText({ titulo, texto, tipo = 2 }: Props) {
     const ref = useRef(null);
-    tipo === 2 && useFxElement(ref, 'fxMostrarIzquierda');
 
     if (tipo === 1) {
         return (

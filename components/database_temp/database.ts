@@ -63,7 +63,7 @@ export const mainBannerSlider = [
         link: 'https://wa.me/50663017707?text=Me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20el%20descuento',
         title: 'Descuentos en todos los servicios',
         description:
-            '¡Por todo Agosto tenemos descuentos en todos los servicios, reserva tu cita hoy!, solo en FLProductions!',
+            '¡Por todo Septiembre tenemos descuentos en todos los servicios, reserva tu cita hoy!, solo en FLProductions!',
     },
 ];
 

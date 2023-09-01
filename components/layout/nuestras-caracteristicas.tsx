@@ -7,14 +7,13 @@ import {
     IconHeart,
 } from '@tabler/icons';
 import { useRef } from 'react';
-import { InfoCard, useFxElement } from '..';
+import { InfoCard } from '..';
 
 const InfoCardSize: number = 40;
 const infoCardStroke: number = 2;
 
 export function NuestrasCaracteristicas() {
     const ref = useRef(null);
-    useFxElement(ref);
     return (
         <div ref={ref} className="contenedor nuestras-caracteristicas">
             <div className="nuestras-caracteristicas__titulo">
