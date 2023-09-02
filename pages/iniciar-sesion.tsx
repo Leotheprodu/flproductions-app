@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
     setSession,
@@ -7,9 +7,10 @@ import {
 import { useRouter } from 'next/router';
 import { RootState } from '../components/redux/store';
 import { Spinner, fetchAPI } from '../components';
-import Link from 'next/link';
+
 import { PropsHead } from '../components/helpers/HeadMetaInfo';
 import Head from 'next/head';
+import { Button, Input } from '@nextui-org/react';
 
 function Login({ headInfo }) {
     const {
@@ -29,6 +30,7 @@ function Login({ headInfo }) {
     const isLoggedIn = useSelector(
         (state: RootState) => state.user.session.isLoggedIn
     );
+
     const music = useSelector((state: RootState) => state.user.session.music);
     const router = useRouter();
     const formStatus: string =
@@ -37,10 +39,37 @@ function Login({ headInfo }) {
     const [password, setPassword] = useState<string>('');
     const [botonOlvideContra, setBotonOlvideContra] = useState<boolean>(false);
     const [spinner, setSpinner] = useState<boolean>(false);
+    const inputConfig = {
+        label: 'text-3xl p-2',
+        input: ['text-3xl p-2 rounded-xl'],
+        innerWrapper: 'bg-transparent',
+        errorMessage: 'text-2xl absolute',
+        inputWrapper: [
+            'h-20',
+            'shadow-xl',
+            'bg-default-200/50',
+            'dark:bg-default/60',
+            'backdrop-blur-xl',
+            'backdrop-saturate-200',
+            'hover:bg-default-200/70',
+            'dark:hover:bg-default/70',
+            'group-data-[focused=true]:bg-default-200/50',
+            'dark:group-data-[focused=true]:bg-default/60',
+            '!cursor-text',
+        ],
+    };
+    const validateEmail = (email) =>
+        email.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i);
+    const validationState = React.useMemo(() => {
+        if (email === '') return undefined;
+
+        return validateEmail(email) ? 'valid' : 'invalid';
+    }, [email]);
     const urlAPI =
         process.env.NODE_ENV === 'production'
             ? process.env.NEXT_PUBLIC_PROD_AUTH_LOGIN
             : process.env.NEXT_PUBLIC_DEV_AUTH_LOGIN;
+
     const handleLogin = async (e) => {
         e.preventDefault();
         setSpinner(true);
@@ -115,26 +144,42 @@ function Login({ headInfo }) {
                 )}
                 {!isLoggedIn && (
                     <>
-                        <form className="signUp__form" onSubmit={handleLogin}>
-                            <div className=" signUp__form__input">
-                                <label className="mb-3" htmlFor="email">
-                                    Correo:
-                                </label>
-                                <input
+                        <form
+                            className="md:w-[30rem] container my-[6rem] flex flex-col gap-14 rounded-xl border-1 border-gris p-6 shadow-md"
+                            onSubmit={handleLogin}
+                        >
+                            <h2 className="mb-1 text-4xl text-center text-terciario">
+                                Iniciar Sesión
+                            </h2>
+                            <div className=" mt-7">
+                                <Input
                                     type="email"
+                                    label="Correo electrónico"
                                     value={email}
-                                    className="mb-3"
+                                    labelPlacement="outside"
+                                    variant="faded"
+                                    classNames={inputConfig}
+                                    color={
+                                        validationState === 'invalid'
+                                            ? 'danger'
+                                            : 'primary'
+                                    }
+                                    errorMessage={
+                                        validationState === 'invalid' &&
+                                        'Ingrese un correo válido'
+                                    }
                                     onChange={(e) => setEmail(e.target.value)}
                                     required
                                 />
                             </div>
-                            <div className="signUp__form__input">
-                                <label className="mb-3" htmlFor="password">
-                                    Contraseña:
-                                </label>
-                                <input
+                            <div className="">
+                                <Input
+                                    label="Contraseña"
                                     type="password"
-                                    className="mb-3"
+                                    color="primary"
+                                    labelPlacement="outside"
+                                    variant="faded"
+                                    classNames={inputConfig}
                                     value={password}
                                     onChange={(e) =>
                                         setPassword(e.target.value)
@@ -142,35 +187,46 @@ function Login({ headInfo }) {
                                     required
                                 />
                             </div>
-                            {!spinner && (
-                                <button type="submit">Iniciar Sesión</button>
-                            )}
-                            {spinner && <Spinner />}
+                            <div className="flex justify-center">
+                                <Button
+                                    className="text-2xl w-60"
+                                    color="primary"
+                                    isLoading={spinner}
+                                    type="submit"
+                                >
+                                    Iniciar Sesión
+                                </Button>
+                            </div>
                         </form>
-                        <p>o</p>
-                        {botonOlvideContra && (
-                            <div className="login_buttons__button">
-                                <Link href="/recuperar-password">
-                                    <button
-                                        className="login_buttons__button__registrar"
+                        <div className="flex flex-col gap-6 items-center">
+                            {botonOlvideContra && (
+                                <div className="">
+                                    <Button
+                                        className="text-2xl"
+                                        color="secondary"
                                         type="button"
                                         title="He olvidado mi contraseña"
+                                        onClick={() => {
+                                            router.push('/recuperar-password');
+                                        }}
                                     >
                                         He olvidado mi contraseña
-                                    </button>
-                                </Link>
-                            </div>
-                        )}
-                        <div className="login_buttons__button">
-                            <Link href="/registro-de-usuario">
-                                <button
-                                    className="login_buttons__button__registrar"
+                                    </Button>
+                                </div>
+                            )}
+                            <div className="">
+                                <Button
+                                    className="text-2xl"
+                                    color="secondary"
                                     type="button"
                                     title="Registrarse"
+                                    onClick={() => {
+                                        router.push('/registro-de-usuario');
+                                    }}
                                 >
                                     Registrarse
-                                </button>
-                            </Link>
+                                </Button>
+                            </div>
                         </div>
                     </>
                 )}

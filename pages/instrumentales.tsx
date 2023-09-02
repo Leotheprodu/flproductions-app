@@ -141,7 +141,7 @@ export const getServerSideProps = async () => {
         author: 'Leonardo Serrano',
         copyright: 'FLProductions',
         title: 'Instrumentales',
-        description: 'Musica de clientes del estudio FLProductions',
+        description: 'Beats creados en el estudio FLProductions',
         type: 'website',
         url: 'https://flproductionscr.com/instrumentales',
         image: `${process.env.NEXT_PUBLIC_PROD_LINK}/build_main/img/header-main.png`,

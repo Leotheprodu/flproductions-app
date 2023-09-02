@@ -56,16 +56,15 @@ function InfodeUsuario({ headInfo }) {
                 <meta property="og:image:width" content={imgWidth} />
                 <meta property="og:image:height" content={imgHeight} />
             </Head>
-            <div className="InfodeUsuario">
+            <div className="InfodeUsuario gap-6">
                 <div className="InfodeUsuario__elemento">
-                    <UserBasicInfo />
+                    <TypeofUser />
                 </div>
-
                 <div className="InfodeUsuario__elemento">
                     <AvatarSelection />
                 </div>
                 <div className="InfodeUsuario__elemento">
-                    <TypeofUser />
+                    <UserBasicInfo />
                 </div>
             </div>
         </ControlPanel>

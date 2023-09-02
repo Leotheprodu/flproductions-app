@@ -2,7 +2,8 @@
 @use 'base/variables' as v;
 
 .contenedor__AvatarSelection {
-    background-color: v.$gris;
+    border: 1px solid rgba(128, 128, 128, 0.144);
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.096);
     border-radius: 2rem;
     margin: 6rem 1rem;
     padding: 2rem;

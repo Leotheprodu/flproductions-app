@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setSessionUserMessage, setSessionUser } from '../redux/userActions';
 import { RootState } from '../redux/store';
 import { fetchAPI } from '../helpers/fetchAPI';
+import { Button, Input } from '@nextui-org/react';
 
 export const UserBasicInfo = () => {
     const dispatch = useDispatch();
@@ -17,6 +18,25 @@ export const UserBasicInfo = () => {
     const [password1, setPassword1] = useState('');
     const [statusenviado, setStatusEnviado] = useState(false);
     const [clasePass, setClasePass] = useState('');
+    const inputConfig = {
+        label: 'text-3xl p-2',
+        input: ['text-3xl p-2 rounded-xl'],
+        innerWrapper: 'bg-transparent',
+        errorMessage: 'text-2xl absolute',
+        inputWrapper: [
+            'h-20',
+            'shadow-xl',
+            'bg-default-200/50',
+            'dark:bg-default/60',
+            'backdrop-blur-xl',
+            'backdrop-saturate-200',
+            'hover:bg-default-200/70',
+            'dark:hover:bg-default/70',
+            'group-data-[focused=true]:bg-default-200/50',
+            'dark:group-data-[focused=true]:bg-default/60',
+            '!cursor-text',
+        ],
+    };
     const apiUrlUpdateUser = `${
         process.env.NODE_ENV === 'production'
             ? process.env.NEXT_PUBLIC_PROD_USER_UPDATE_USERS_ID
@@ -167,30 +187,34 @@ export const UserBasicInfo = () => {
 
     return (
         <>
-            <div className="contenedor__UserBasicInfo">
+            <div className="md:w-[30rem] container my-[6rem] flex flex-col rounded-xl border-1 border-gris p-4 shadow-md">
                 <div>
-                    <h3>Configuracion Basica</h3>
+                    <h3 className="mb-20 text-center text-cuaternario text-3xl">
+                        Actualizar datos de usuario
+                    </h3>
                 </div>
-                <form className="UserBasicInfo__form" onSubmit={handleSubmit}>
-                    <div className="UserBasicInfo__form__input">
-                        <label className="mb-3" htmlFor="name">
-                            Nombre de Usuario:
-                        </label>
-                        <input
+                <form className="" onSubmit={handleSubmit}>
+                    <div className="mb-16">
+                        <Input
+                            label="Nombre de Usuario"
+                            labelPlacement="outside"
+                            variant="faded"
+                            classNames={inputConfig}
                             tabIndex={1}
+                            className=""
                             type="text"
-                            className="mb-3"
                             value={username}
                             onChange={handleOnChangeNombreUsuario}
                             required
                         />
                     </div>
-                    <div className=" UserBasicInfo__form__input">
-                        <label className="mb-3" htmlFor="email">
-                            Correo Electronico:
-                        </label>
-                        <div className="UserBasicInfo__form__input__verified">
-                            <input
+                    <div className="">
+                        <div className="mb-12">
+                            <Input
+                                labelPlacement="outside"
+                                variant="faded"
+                                classNames={inputConfig}
+                                label="Correo Electronico"
                                 tabIndex={-1}
                                 type="email"
                                 value={email}
@@ -198,38 +222,40 @@ export const UserBasicInfo = () => {
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                             {userRoles.includes(1) && (
-                                <div>
+                                <div className="flex items-center">
                                     <IconCircleCheck
                                         size={30}
                                         stroke={1}
                                         color="green"
                                     />
-                                    Verificado
+                                    <p>Correo electrónico verificado</p>
                                 </div>
                             )}
 
                             {!userRoles.includes(1) && (
-                                <div className="UserBasicInfo__Email-No-verificado">
+                                <div className="flex flex-row gap-2 mt-14 justify-center items-center">
                                     <IconBan size={30} stroke={1} color="red" />
                                     No Verificado
-                                    {!statusenviado && (
-                                        <button
-                                            tabIndex={-1}
-                                            onClick={handleVerificarEmail}
-                                            type="button"
-                                        >
-                                            Verificar?
-                                        </button>
-                                    )}
+                                    <Button
+                                        className="text-2xl"
+                                        color="secondary"
+                                        tabIndex={-1}
+                                        onClick={handleVerificarEmail}
+                                        type="button"
+                                        disabled={statusenviado}
+                                    >
+                                        Verificar
+                                    </Button>
                                 </div>
                             )}
                         </div>
                     </div>
-                    <div className="UserBasicInfo__form__input">
-                        <label className="mb-3" htmlFor="password">
-                            Nueva Contraseña:
-                        </label>
-                        <input
+                    <div className="mb-16">
+                        <Input
+                            labelPlacement="outside"
+                            variant="faded"
+                            classNames={inputConfig}
+                            label="Nueva Contraseña"
                             tabIndex={3}
                             type="password"
                             className={`mb-3 ${clasePass}`}
@@ -237,11 +263,12 @@ export const UserBasicInfo = () => {
                             onChange={(e) => setPassword1(e.target.value)}
                         />
                     </div>
-                    <div className="UserBasicInfo__form__input">
-                        <label className="mb-3" htmlFor="password">
-                            Nueva Contraseña:
-                        </label>
-                        <input
+                    <div className="mb-16">
+                        <Input
+                            labelPlacement="outside"
+                            variant="faded"
+                            classNames={inputConfig}
+                            label="Confirmar Contraseña"
                             type="password"
                             className={`mb-3 ${clasePass}`}
                             tabIndex={4}
@@ -250,12 +277,16 @@ export const UserBasicInfo = () => {
                             onBlur={hanldeOnBlurPassword}
                         />
                     </div>
-                    <div className="UserBasicInfo__form__submit">
-                        {!statusenviado && (
-                            <button tabIndex={5} type="submit">
-                                Guardar
-                            </button>
-                        )}
+                    <div className=" flex items-center justify-center">
+                        <Button
+                            color="primary"
+                            className="text-2xl uppercase"
+                            isDisabled={statusenviado}
+                            tabIndex={5}
+                            type="submit"
+                        >
+                            Guardar
+                        </Button>
                     </div>
                 </form>
             </div>

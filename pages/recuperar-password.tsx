@@ -1,10 +1,11 @@
 import { IconLockSquareRoundedFilled, IconMail } from '@tabler/icons-react';
-import { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CountdownTimer, Spinner, fetchAPI } from '../components';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { PropsHead } from '../components/helpers/HeadMetaInfo';
 import Head from 'next/head';
+import { Button, Input } from '@nextui-org/react';
 
 function RecuperarPassword({ headInfo }) {
     const {
@@ -37,6 +38,36 @@ function RecuperarPassword({ headInfo }) {
         process.env.NODE_ENV === 'production'
             ? process.env.NEXT_PUBLIC_PROD_USER_RECUPERAR_PASSWORD_PASO2
             : process.env.NEXT_PUBLIC_DEV_USER_RECUPERAR_PASSWORD_PASO2;
+
+    const inputConfig = {
+        label: 'text-3xl p-2',
+        input: ['text-3xl p-2 rounded-xl'],
+        innerWrapper: 'bg-transparent',
+        errorMessage: 'text-2xl absolute',
+        inputWrapper: [
+            'h-20',
+            'shadow-xl',
+            'bg-default-200/50',
+            'dark:bg-default/60',
+            'backdrop-blur-xl',
+            'backdrop-saturate-200',
+            'hover:bg-default-200/70',
+            'dark:hover:bg-default/70',
+            'group-data-[focused=true]:bg-default-200/50',
+            'dark:group-data-[focused=true]:bg-default/60',
+            '!cursor-text',
+        ],
+    };
+    const validateEmail = (email) =>
+        email.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i);
+    const validationState = React.useMemo(() => {
+        if (email === '') return undefined;
+
+        return validateEmail(email) ? 'valid' : 'invalid';
+    }, [email]);
+    useEffect(() => {
+        setFormStatus('');
+    }, [pin, email, password, password1]);
     const handleEmail = async (e) => {
         e.preventDefault();
         setSpinner(true);
@@ -145,54 +176,78 @@ function RecuperarPassword({ headInfo }) {
                 <meta property="og:image:width" content={imgWidth} />
                 <meta property="og:image:height" content={imgHeight} />
             </Head>
-            <div className="RecuperarPassword-contenedor">
+            <div className="h-[100vh]">
                 {procesoTerminado && (
-                    <div className="RecuperarPassword-contenedor">
+                    <div className="">
                         {formStatus && (
                             <div>
                                 <h4>{formStatus}</h4>
                             </div>
                         )}
-                        <div className="login_buttons__button__status">
-                            <button
-                                className="login_buttons__button__registrar"
+                        <div className=" my-[10rem] mx-auto items-center md:max-w-[35rem] container flex flex-col gap-14 rounded-xl border-1 border-gris py-20 shadow-md">
+                            <Button
                                 onClick={() => {
                                     router.back();
                                 }}
                                 type="button"
+                                color="warning"
+                                className="text-2xl"
                                 title="Volver atrás"
                             >
                                 Atras
-                            </button>
-                            <Link href="/panel-de-control">
-                                <button
-                                    className="login_buttons__button__registrar"
-                                    type="button"
-                                    title="ir a Panel de Control"
-                                >
-                                    Panel de Control
-                                </button>
-                            </Link>
-                            <Link href="/iniciar-sesion">
-                                <button
-                                    className="login_buttons__button__registrar"
-                                    type="button"
-                                    title="ir a login"
-                                >
-                                    Iniciar Sesion
-                                </button>
-                            </Link>
+                            </Button>
+
+                            <Button
+                                onClick={() => {
+                                    router.push('/panel-de-control');
+                                }}
+                                className="text-2xl"
+                                color="primary"
+                                type="button"
+                                title="ir a Panel de Control"
+                            >
+                                Panel de Control
+                            </Button>
+
+                            <Button
+                                className="text-2xl"
+                                color="primary"
+                                isLoading={spinner}
+                                onClick={() => {
+                                    router.push('/iniciar-sesion');
+                                }}
+                                type="button"
+                                title="ir a login"
+                            >
+                                Iniciar Sesion
+                            </Button>
                         </div>
                     </div>
                 )}
                 {!switchButton && !procesoTerminado && (
-                    <form className="RecuperarPassword" onSubmit={handleEmail}>
-                        <div className="login__form">
-                            <div className="login_container_input">
-                                <label htmlFor="email">
-                                    Correo electrónico:
-                                </label>
-                                <input
+                    <form
+                        className="w-[30rem] flex flex-col items-center gap-10 my-10 md:w-[30rem] container rounded-xl border-1 border-gris p-6 shadow-md mx-auto"
+                        onSubmit={handleEmail}
+                    >
+                        <div className="">
+                            <h3 className="text-4xl text-center text-terciario">
+                                Recupera tu Contraseña
+                            </h3>
+                            <div className="">
+                                <Input
+                                    labelPlacement="outside"
+                                    variant="faded"
+                                    classNames={inputConfig}
+                                    color={
+                                        validationState === 'invalid'
+                                            ? 'danger'
+                                            : 'primary'
+                                    }
+                                    errorMessage={
+                                        validationState === 'invalid' &&
+                                        'Ingrese un correo válido'
+                                    }
+                                    label="Correo electrónico"
                                     tabIndex={1}
                                     type="email"
                                     value={email}
@@ -209,85 +264,97 @@ function RecuperarPassword({ headInfo }) {
                         )}
 
                         {!formStatus && (
-                            <div className="login_buttons">
-                                <div className="login_buttons__button">
-                                    {!spinner && (
-                                        <button
-                                            tabIndex={2}
-                                            type="submit"
-                                            title="Iniciar Sesión"
-                                        >
-                                            <IconMail />
-                                            Enviar Correo
-                                        </button>
-                                    )}
-                                    {spinner && <Spinner />}
+                            <div className="">
+                                <div className="">
+                                    <Button
+                                        className="text-2xl w-60"
+                                        color="primary"
+                                        isLoading={spinner}
+                                        tabIndex={2}
+                                        type="submit"
+                                        title="Iniciar Sesión"
+                                    >
+                                        <IconMail />
+                                        Enviar Correo
+                                    </Button>
                                 </div>
                             </div>
                         )}
                     </form>
                 )}
                 {switchButton && !procesoTerminado && (
-                    <>
-                        <h2>
+                    <div className=" flex flex-col items-center mt-40">
+                        <h2 className="mb-32">
                             Revisa tu bandeja de correo electrónico y copia el
                             PIN
                         </h2>
                         <form
-                            className="RecuperarPassword"
+                            className="items-center md:max-w-[35rem] container flex flex-col gap-14 rounded-xl border-1 border-gris py-20 shadow-md"
                             onSubmit={handleNewPassword}
                         >
-                            <div className="login__form">
-                                <div className="login_container_input">
-                                    <label htmlFor="text">PIN:</label>
-                                    <input
+                            <div className="flex flex-col items-center gap-20">
+                                <div className="">
+                                    <Input
+                                        label="PIN"
                                         tabIndex={1}
                                         type="text"
+                                        color="primary"
+                                        labelPlacement="outside"
+                                        variant="faded"
+                                        classNames={inputConfig}
                                         value={pin}
                                         onChange={(e) => setPin(e.target.value)}
                                     />
                                 </div>
 
-                                <div className="login_container_input">
-                                    <label htmlFor="password">
-                                        Nueva Contraseña:
-                                    </label>
-                                    <input
+                                <div className="">
+                                    <Input
+                                        label="Nueva Contraseña"
                                         tabIndex={2}
                                         type="password"
+                                        color="primary"
+                                        labelPlacement="outside"
+                                        variant="faded"
+                                        classNames={inputConfig}
                                         value={password1}
                                         onChange={(e) =>
                                             setPassword1(e.target.value)
                                         }
                                     />
                                 </div>
-                                <div className="login_container_input">
-                                    <label htmlFor="password">
-                                        Nueva Contraseña:
-                                    </label>
-                                    <input
+                                <div className="">
+                                    <Input
+                                        label="Verificar Contraseña"
                                         tabIndex={3}
                                         onBlur={hanldeOnBlur}
                                         type="password"
                                         value={password}
+                                        color="primary"
+                                        labelPlacement="outside"
+                                        variant="faded"
+                                        classNames={inputConfig}
                                         onChange={(e) =>
                                             setPassword(e.target.value)
                                         }
                                     />
                                 </div>
                             </div>
-                            <CountdownTimer segundos={600} />
+                            <div className="mt-8">
+                                <CountdownTimer segundos={600} />
+                            </div>
                             {!formStatus && (
-                                <div className="login_buttons">
-                                    <div className="login_buttons__button">
-                                        <button
+                                <div className=" my-10">
+                                    <div className="">
+                                        <Button
+                                            className="text-2xl w-60"
+                                            color="primary"
                                             type="submit"
                                             tabIndex={4}
-                                            title="Iniciar Sesión"
+                                            title="Enviar"
                                         >
                                             <IconLockSquareRoundedFilled />
                                             Enviar
-                                        </button>
+                                        </Button>
                                     </div>
                                 </div>
                             )}
@@ -295,12 +362,10 @@ function RecuperarPassword({ headInfo }) {
 
                         {formStatus && (
                             <div>
-                                <p className="contact-form__mensaje-status">
-                                    {formStatus}
-                                </p>
+                                <p className="">{formStatus}</p>
                             </div>
                         )}
-                    </>
+                    </div>
                 )}
             </div>
         </>

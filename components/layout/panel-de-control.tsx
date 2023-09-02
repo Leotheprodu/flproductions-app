@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import { LinksPanel, useUserMovilDeviceChecker, RootState } from '..';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { Button } from '@nextui-org/react';
 
 interface Props {
     children: React.ReactNode;
@@ -22,31 +23,38 @@ export const ControlPanel = ({ children }: Props) => {
 
     if (!isLoggedIn) {
         return (
-            <div className="vh100 contenedor">
-                <p className="contact-form__mensaje-status__signup">
+            <div className=" vh100 contenedor flex flex-col items-center">
+                <p className="my-20 contact-form__mensaje-status__signup">
                     Debes iniciar sesión para entrar al panel de control
                 </p>
-                <div className="login_buttons__button__status">
-                    <Link href="/iniciar-sesion">
-                        <button
-                            className="login_buttons__button__registrar"
-                            type="button"
-                            title="Iniciar Sesión"
-                        >
-                            Iniciar Sesión
-                        </button>
-                    </Link>
-                    <Link href="/registro-de-usuario">
-                        <button
-                            className="login_buttons__button__registrar"
-                            type="button"
-                            title="Registro de Usuario"
-                        >
-                            Registrarse
-                        </button>
-                    </Link>
-                    <button
-                        className="login_buttons__button__registrar"
+                <div className=" flex flex-col gap-4">
+                    <Button
+                        className="text-3xl w-[20rem] "
+                        color="danger"
+                        type="button"
+                        title="Iniciar Sesión"
+                        onClick={() => {
+                            router.push('/iniciar-sesion');
+                        }}
+                    >
+                        Iniciar Sesión
+                    </Button>
+
+                    <Button
+                        className="text-3xl w-[20rem] "
+                        color="danger"
+                        type="button"
+                        title="Registro de Usuario"
+                        onClick={() => {
+                            router.push('/registro-de-usuario');
+                        }}
+                    >
+                        Registrarse
+                    </Button>
+
+                    <Button
+                        className="text-3xl w-[20rem] "
+                        color="danger"
                         onClick={() => {
                             router.back;
                         }}
@@ -54,7 +62,7 @@ export const ControlPanel = ({ children }: Props) => {
                         title="Volver atrás"
                     >
                         Atrás
-                    </button>
+                    </Button>
                 </div>
             </div>
         );

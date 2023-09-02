@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
@@ -6,11 +6,10 @@ import {
     setSession,
     setSessionUserMessage,
 } from '../components/redux/userActions';
-import { Spinner } from '../components/helpers/Spinner';
-import Link from 'next/link';
 import { PropsHead } from '../components/helpers/HeadMetaInfo';
 import Head from 'next/head';
 import { RootState, fetchAPI } from '../components';
+import { Button, Input, Checkbox } from '@nextui-org/react';
 
 function SignUp({ headInfo }) {
     const {
@@ -39,6 +38,11 @@ function SignUp({ headInfo }) {
     const captcha = useRef(null);
     const [statusenviado, setStatusEnviado] = useState<boolean>(false);
     const [spinner, setSpinner] = useState<boolean>(false);
+    const [isSelected, setIsSelected] = useState(false);
+    useEffect(() => {
+        setSpinner(false);
+    }, [username, email, password]);
+
     const urlApiLogin =
         process.env.NODE_ENV === 'production'
             ? process.env.NEXT_PUBLIC_PROD_AUTH_LOGIN
@@ -47,6 +51,33 @@ function SignUp({ headInfo }) {
         process.env.NODE_ENV === 'production'
             ? process.env.NEXT_PUBLIC_PROD_USER_SIGNUP
             : process.env.NEXT_PUBLIC_DEV_USER_SIGNUP;
+
+    const inputConfig = {
+        label: 'text-3xl p-2',
+        input: ['text-3xl p-2 rounded-xl'],
+        innerWrapper: 'bg-transparent',
+        errorMessage: 'text-2xl absolute',
+        inputWrapper: [
+            'h-20',
+            'shadow-xl',
+            'bg-default-200/50',
+            'dark:bg-default/60',
+            'backdrop-blur-xl',
+            'backdrop-saturate-200',
+            'hover:bg-default-200/70',
+            'dark:hover:bg-default/70',
+            'group-data-[focused=true]:bg-default-200/50',
+            'dark:group-data-[focused=true]:bg-default/60',
+            '!cursor-text',
+        ],
+    };
+    const validateEmail = (email) =>
+        email.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i);
+    const validationState = React.useMemo(() => {
+        if (email === '') return undefined;
+
+        return validateEmail(email) ? 'valid' : 'invalid';
+    }, [email]);
     const loginNewUser = async () => {
         const { error, data } = await fetchAPI({
             url: urlApiLogin,
@@ -84,7 +115,7 @@ function SignUp({ headInfo }) {
                     email,
                     password,
                     username,
-                    fecha_creacion,
+                    role: isSelected ? 3 : null,
                 },
             });
             if (status === 200) {
@@ -119,6 +150,9 @@ function SignUp({ headInfo }) {
                     messageType: 'warning',
                 })
             );
+            setTimeout(() => {
+                setSpinner(false);
+            }, 3000);
         }
     };
 
@@ -159,12 +193,17 @@ function SignUp({ headInfo }) {
             <div className="contenedor signUp">
                 {!statusenviado && !isLoggedIn && (
                     <>
-                        <form className="signUp__form" onSubmit={handleSubmit}>
-                            <div className="signUp__form__input">
-                                <label className="mb-3" htmlFor="name">
-                                    Nombre de Usuario:
-                                </label>
-                                <input
+                        <form
+                            className="md:max-w-[35rem] container mt-[6rem] flex flex-col gap-14 rounded-xl border-1 border-gris p-6 shadow-md"
+                            onSubmit={handleSubmit}
+                        >
+                            <div className="">
+                                <Input
+                                    color="primary"
+                                    label="Nombre de Usuario"
+                                    labelPlacement="outside"
+                                    variant="faded"
+                                    classNames={inputConfig}
                                     type="text"
                                     className="mb-3"
                                     value={username}
@@ -172,11 +211,21 @@ function SignUp({ headInfo }) {
                                     required
                                 />
                             </div>
-                            <div className=" signUp__form__input">
-                                <label className="mb-3" htmlFor="email">
-                                    Correo:
-                                </label>
-                                <input
+                            <div className="">
+                                <Input
+                                    labelPlacement="outside"
+                                    label="Correo"
+                                    variant="faded"
+                                    classNames={inputConfig}
+                                    color={
+                                        validationState === 'invalid'
+                                            ? 'danger'
+                                            : 'primary'
+                                    }
+                                    errorMessage={
+                                        validationState === 'invalid' &&
+                                        'Ingrese un correo válido'
+                                    }
                                     type="email"
                                     value={email}
                                     className="mb-3"
@@ -184,11 +233,13 @@ function SignUp({ headInfo }) {
                                     required
                                 />
                             </div>
-                            <div className="signUp__form__input">
-                                <label className="mb-3" htmlFor="password">
-                                    Contraseña:
-                                </label>
-                                <input
+                            <div className="">
+                                <Input
+                                    color="primary"
+                                    label="Contraseña"
+                                    labelPlacement="outside"
+                                    variant="faded"
+                                    classNames={inputConfig}
                                     type="password"
                                     className="mb-3"
                                     value={password}
@@ -204,53 +255,75 @@ function SignUp({ headInfo }) {
                                     sitekey="6LdqhcAiAAAAAE8hwgEptpxIcQHsW_c2S_AfkFmw"
                                 />
                             </div>
-                            {!spinner ? (
-                                <button type="submit">Registrar</button>
-                            ) : (
-                                <Spinner />
-                            )}
+                            <div>
+                                <Checkbox
+                                    size="lg"
+                                    isSelected={isSelected}
+                                    onValueChange={setIsSelected}
+                                    classNames={{
+                                        label: 'text-1xl text-primario',
+                                    }}
+                                >
+                                    Eres un artista/cantante?
+                                </Checkbox>
+                            </div>
+                            <div className=" flex justify-center">
+                                <Button
+                                    className="text-2xl  w-60"
+                                    color="primary"
+                                    isLoading={spinner}
+                                    type="submit"
+                                >
+                                    Registrar
+                                </Button>
+                            </div>
                         </form>
                         <p>o</p>
-                        <div className="login_buttons__button">
-                            <Link href="/iniciar-sesion">
-                                <button
-                                    className="login_buttons__button__registrar"
-                                    type="button"
-                                    title="Registrarse"
-                                >
-                                    Iniciar Sesión
-                                </button>
-                            </Link>
+                        <div className=" flex justify-center mb-[6rem]">
+                            <Button
+                                className="text-2xl w-60"
+                                color="secondary"
+                                type="button"
+                                onClick={() => {
+                                    router.push('/iniciar-sesion');
+                                }}
+                                title="iniciar sesion"
+                            >
+                                Iniciar Sesión
+                            </Button>
                         </div>
                     </>
                 )}
 
-                {statusenviado ||
-                    (isLoggedIn && (
-                        <div className="contenedor">
-                            <div className="login_buttons__button__status">
-                                <button
-                                    className="login_buttons__button__registrar"
-                                    onClick={() => {
-                                        router.back();
-                                    }}
-                                    type="button"
-                                    title="Volver atrás"
-                                >
-                                    Volver
-                                </button>
-                                <Link href="/panel-de-control">
-                                    <button
-                                        className="login_buttons__button__registrar"
-                                        type="button"
-                                        title="ir a Panel de Control"
-                                    >
-                                        Panel de Control
-                                    </button>
-                                </Link>
-                            </div>
+                {(statusenviado || isLoggedIn) && (
+                    <div className="">
+                        <div className=" flex flex-col gap-10 items-center ">
+                            <Button
+                                className="text-2xl w-60"
+                                color="primary"
+                                onClick={() => {
+                                    router.back();
+                                }}
+                                type="button"
+                                title="Volver atrás"
+                            >
+                                Volver
+                            </Button>
+
+                            <Button
+                                onClick={() => {
+                                    router.push('/panel-de-control');
+                                }}
+                                className="text-2xl w-60"
+                                color="warning"
+                                type="button"
+                                title="ir a Panel de Control"
+                            >
+                                Panel de Control
+                            </Button>
                         </div>
-                    ))}
+                    </div>
+                )}
             </div>
         </>
     );

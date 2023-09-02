@@ -5,8 +5,8 @@ import {
     setSessionUserMessage,
     setSessionRoles,
     RootState,
-    Spinner,
 } from '../';
+import { Button } from '@nextui-org/react';
 
 export const TypeofUser = (): JSX.Element | null => {
     const dispatch = useDispatch();
@@ -28,6 +28,7 @@ export const TypeofUser = (): JSX.Element | null => {
     }, [userRoles]);
 
     const handleOptionChange = (event) => {
+        setStatusEnviado(false);
         const value: number = parseInt(event.target.value);
         if (selectedOptions.includes(value)) {
             setSelectedOptions(
@@ -73,12 +74,17 @@ export const TypeofUser = (): JSX.Element | null => {
     if (userRoles.includes(1)) {
         return (
             <>
-                <div className="TypeOfUser__container">
+                <div className="container md:w-[20rem] my-[6rem] flex flex-col rounded-xl border-1 border-gris p-4 shadow-md">
                     <div>
-                        <h3>Tipo de usuario</h3>
+                        <h3 className="mb-20 text-center text-cuaternario text-3xl">
+                            Tipo de usuario
+                        </h3>
                     </div>
-                    <form onSubmit={handleSubmit}>
-                        <div>
+                    <form
+                        className="flex flex-col gap-4"
+                        onSubmit={handleSubmit}
+                    >
+                        <div className="">
                             <input
                                 type="checkbox"
                                 className="TypeOfUser__input"
@@ -102,7 +108,7 @@ export const TypeofUser = (): JSX.Element | null => {
                             />
                             <label htmlFor="option3">Artista</label>
                         </div>
-                        <div>
+                        {/* <div>
                             <input
                                 type="checkbox"
                                 className="TypeOfUser__input"
@@ -113,22 +119,19 @@ export const TypeofUser = (): JSX.Element | null => {
                                 checked={selectedOptions.includes(4)}
                             />
                             <label htmlFor="option4">Productor Musical</label>
+                        </div> */}
+
+                        <div className=" flex justify-center items-center mt-6">
+                            <Button
+                                isLoading={spinner}
+                                type="submit"
+                                color="primary"
+                                className="text-2xl uppercase"
+                                isDisabled={statusenviado}
+                            >
+                                Aceptar
+                            </Button>
                         </div>
-                        {!spinner && !statusenviado && (
-                            <div className="TypeOfUser__buttons">
-                                <button
-                                    className="TypeOfUser__button"
-                                    type="submit"
-                                >
-                                    Enviar
-                                </button>
-                            </div>
-                        )}
-                        {spinner && (
-                            <div className="login_buttons">
-                                <Spinner />
-                            </div>
-                        )}
                     </form>
                 </div>
             </>

@@ -2,8 +2,9 @@
 @use 'base/variables' as v;
 
 .contenedor__UserBasicInfo {
-    background-color: v.$gris;
     border-radius: 2rem;
+    border: 1px solid rgba(128, 128, 128, 0.144);
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.096);
     margin: 6rem 1rem;
     padding: 2rem;
     display: flex;
@@ -11,7 +12,6 @@
     align-items: center;
     justify-content: center;
     position: relative;
-
     @include m.tablet {
         max-width: 40rem;
     }

@@ -16,7 +16,7 @@ export * from './artista/FormMusicControl';
 export * from './database_temp/database';
 /* forms */
 export * from './forms/contact-form';
-export * from './forms/UserBasicInfo';
+export * from './users/UserBasicInfo';
 export * from './forms/CrearArtistaForm';
 /* Helpers */
 export * from './helpers/CountdownTimer';

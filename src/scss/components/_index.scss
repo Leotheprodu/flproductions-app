@@ -14,7 +14,6 @@
 @forward './artista/FormMusicControl';
 /* forms */
 @forward './forms/contact-form';
-@forward './forms/UserBasicInfo';
 @forward './forms/CrearArtistaForm';
 /* helpers */
 @forward './helpers/CountdownTimer';
@@ -37,6 +36,7 @@
 @forward './layout/RootLayout';
 @forward './layout/InicioLinkCards';
 /* users */
+@forward './users/UserBasicInfo';
 @forward './users/AvatarSelection';
 @forward './users/AvatarUsers';
 @forward './users/login';

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/store';
 import { fetchAPI, setSessionUserMessage } from '../';
+import { Button } from '@nextui-org/react';
 
 export const AvatarSelection = (): JSX.Element | null => {
     const maxAvatarLength: number = 9;
@@ -95,9 +96,11 @@ export const AvatarSelection = (): JSX.Element | null => {
     };
     if (userRoles.includes(1)) {
         return (
-            <div className="contenedor__AvatarSelection">
+            <div className=" relative md:max-w-[40rem] container my-[6rem] flex flex-col rounded-xl border-1 border-gris p-4 shadow-md">
                 <div>
-                    <h3>Avatar</h3>
+                    <h3 className="mb-20 text-center text-cuaternario text-3xl">
+                        Cambiar de Avatar
+                    </h3>
                 </div>
                 <div className="AvatarSelection__images">
                     <div className="AvatarSelection__item0">
@@ -127,15 +130,18 @@ export const AvatarSelection = (): JSX.Element | null => {
                     >
                         <IconChevronLeft size={50} />
                     </button>
-                    {!datoActualizado && (
-                        <button
+                    <div className="flex items-center justify-center">
+                        <Button
                             tabIndex={7}
-                            className="AvatarSelection__boton1"
+                            color="primary"
+                            className="text-2xl uppercase"
                             onClick={handleClickSelect}
+                            disabled={datoActualizado}
                         >
                             SELECCIONAR
-                        </button>
-                    )}
+                        </Button>
+                    </div>
+
                     <button
                         tabIndex={6}
                         className="AvatarSelection__boton2"
