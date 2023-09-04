@@ -267,7 +267,7 @@ function RecuperarPassword({ headInfo }) {
                             <div className="">
                                 <div className="">
                                     <Button
-                                        className="text-2xl w-60"
+                                        className="text-2xl w-60 uppercase"
                                         color="primary"
                                         isLoading={spinner}
                                         tabIndex={2}
@@ -275,7 +275,7 @@ function RecuperarPassword({ headInfo }) {
                                         title="Iniciar Sesión"
                                     >
                                         <IconMail />
-                                        Enviar Correo
+                                        Recuperar
                                     </Button>
                                 </div>
                             </div>

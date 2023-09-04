@@ -7,10 +7,11 @@ export function Footer() {
     const actualYear = copyright.getFullYear();
 
     return (
-        <footer className="footer">
+        <footer className="footer dark:bg-terciario dark:text-blanco dark:border-none">
             <div className="footer_content">
-                <p>
-                    © 2013 - {actualYear} <span>FLProductions</span> by
+                <p className="dark:text-secundario">
+                    © 2013 - {actualYear}{' '}
+                    <span className="dark:text-primario">FLProductions</span> by
                     LeotheProdu
                 </p>
             </div>

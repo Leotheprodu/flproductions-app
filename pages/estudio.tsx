@@ -7,15 +7,13 @@ import {
     SimpleText,
     Testimonio,
     NuestrasCaracteristicas,
-    DetalleProducciones,
     useHandleAppMusic,
     useProducciones_HTTP_Fetch,
 } from '../components';
 import { PropsHead } from '../components/helpers/HeadMetaInfo';
 import Head from 'next/head';
-import { Suspense, useEffect, useState } from 'react';
-import { lazy } from 'react';
-const AppMusic = lazy(() => import('../components/app_music/AppMusic'));
+import { useEffect, useState } from 'react';
+import AppMusic from '../components/app_music/AppMusic';
 
 function AboutPage({ headInfo }) {
     const InfoCardSize: number = 40;
@@ -207,28 +205,27 @@ function AboutPage({ headInfo }) {
                     <h2 className="text-center ">
                         Algunas producciones hechas por nosotros
                     </h2>
-                    <Suspense fallback={<Loading />}>
-                        <AppMusic
-                            songArray={produccionesDestacadas}
-                            playing={playing}
-                            infoProduccion={infoProduccion}
-                            selectedSong={selectedSong}
-                            idComp={1}
-                            idCompActual={idCompActual}
-                            pause={pause}
-                            setPause={setPause}
-                            ended={ended}
-                            setEnded={setEnded}
-                            setPlaying={setPlaying}
-                            progressDuration={progressDuration}
-                            setprogressDuration={setprogressDuration}
-                            progress={progress}
-                            setProgress={setProgress}
-                            clickInfoButton={clickInfoButton}
-                            setClickInfoButton={setClickInfoButton}
-                            tipo_obra_general={tipo_obra_general}
-                        />
-                    </Suspense>
+
+                    <AppMusic
+                        songArray={produccionesDestacadas}
+                        playing={playing}
+                        infoProduccion={infoProduccion}
+                        selectedSong={selectedSong}
+                        idComp={1}
+                        idCompActual={idCompActual}
+                        pause={pause}
+                        setPause={setPause}
+                        ended={ended}
+                        setEnded={setEnded}
+                        setPlaying={setPlaying}
+                        progressDuration={progressDuration}
+                        setprogressDuration={setprogressDuration}
+                        progress={progress}
+                        setProgress={setProgress}
+                        clickInfoButton={clickInfoButton}
+                        setClickInfoButton={setClickInfoButton}
+                        tipo_obra_general={tipo_obra_general}
+                    />
                 </div>
             </div>
 

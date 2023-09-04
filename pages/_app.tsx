@@ -1,6 +1,6 @@
 import React from 'react';
-import '../styles/globals.css';
 import '../styles/app.css';
+import '../styles/globals.css';
 import { NextUIProvider } from '@nextui-org/react';
 import RootLayout from '../components/layout/RootLayout';
 import { Provider } from 'react-redux';

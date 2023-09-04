@@ -46,7 +46,7 @@ function Home({ headInfo }) {
                     tipo={1}
                     titulo="FLProductions, Estudio de Grabación y Producción Musical en Costa Rica"
                     texto={
-                        <p className="">
+                        <p className="dark:text-beige">
                             Bienvenidos a FLProductions, somos un estudio de
                             Grabación y producción Musical de Costa Rica, con
                             mas de 15 años de experiencia,{' '}

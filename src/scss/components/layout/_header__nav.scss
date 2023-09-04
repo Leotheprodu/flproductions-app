@@ -32,13 +32,11 @@
     flex-direction: row;
     padding: 0 3rem;
     position: relative;
-    background-color: rgba(255, 255, 255, 0.815);
     backdrop-filter: blur(6px);
     color: v.$blanco;
     justify-content: space-between;
-    height: 8rem;
+    height: 7.5rem;
     z-index: 15;
-    border: 1px solid v.$gris;
 
     .menu_celular {
         display: flex;
@@ -163,7 +161,6 @@
         }
 
         .header__links__link__musica {
-            color: v.$negro;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -186,7 +183,6 @@
                 transition-property: color;
                 transition-duration: 0.5s;
                 transition-timing-function: ease-out;
-                color: v.$primario;
             }
         }
     }
@@ -204,7 +200,6 @@
     align-items: center;
     margin: 0.5rem;
     gap: 0.7rem;
-    background-color: v.$gris;
     backdrop-filter: blur(14px);
     z-index: 1;
     border-radius: 5%;
@@ -231,10 +226,6 @@
     opacity: 1;
     a {
         text-align: center;
-        color: v.$negro;
-        &:hover {
-            color: v.$primario;
-        }
     }
 }
 

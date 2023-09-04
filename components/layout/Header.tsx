@@ -45,7 +45,7 @@ export function Header() {
 
     return (
         <>
-            <div className="contenedor__header__nav">
+            <div className="contenedor__header__nav dark:text-blanco dark:bg-terciario/75 bg-blanco/75 ">
                 <div className="header__nav__top-main-message">
                     <p>{mainMensaje}</p>
                 </div>
@@ -54,7 +54,7 @@ export function Header() {
                         <Link
                             tabIndex={-1}
                             href="/"
-                            className="header__web-tittle"
+                            className="header__web-tittle dark:text-secundario"
                         >
                             FLProductions
                         </Link>
@@ -73,13 +73,13 @@ export function Header() {
                                         />
                                     </div>
                                 ) : null}
-                                <p className="uppercase text-2xl hover:text-primario transition-colors ease-in duration-500	">
+                                <p className="uppercase text-2xl hover:text-primario transition-colors ease-in duration-500	text-negro dark:text-blanco dark:hover:text-secundario">
                                     Usuario
                                 </p>
                             </div>
 
                             <div
-                                className={` absolute top-24 w-auto p-8 bg-gris rounded-xl shadow-xl opacity-0 invisible transition-all duration-300 group-hover:opacity-100 group-hover:visible`}
+                                className={` absolute top-24 w-auto p-8 bg-gris dark:bg-terciario rounded-xl shadow-xl opacity-0 invisible transition-all duration-300 group-hover:opacity-100 group-hover:visible`}
                             >
                                 <SessionPanel />
                             </div>

@@ -20,7 +20,9 @@ function Layout({ children }: Props) {
         <div className="root-container">
             <Header />
 
-            <main className="contenedor-main">{children}</main>
+            <main className="contenedor-main dark:bg-negro dark:text-blanco">
+                {children}
+            </main>
 
             <MessageComponent
                 message={message.message}

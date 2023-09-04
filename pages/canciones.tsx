@@ -93,7 +93,9 @@ function Canciones({ headInfo }) {
             <div className="canciones contenedor">
                 <div className="instrumentales__destacados ">
                     <div className="contenedor">
-                        <h2>Destacados</h2>
+                        <h2 className="text-center uppercase text-4xl">
+                            Destacados
+                        </h2>
                     </div>
 
                     <AppMusic
