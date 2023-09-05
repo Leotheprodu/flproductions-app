@@ -17,7 +17,9 @@ export function NuestrasCaracteristicas() {
     return (
         <div ref={ref} className="contenedor nuestras-caracteristicas">
             <div className="nuestras-caracteristicas__titulo">
-                <h2>Nuestras Características</h2>
+                <h2 className="dark:text-blanco text-5xl uppercase">
+                    Nuestras Características
+                </h2>
             </div>
 
             <div className="nuestras-caracteristicas__elemento">

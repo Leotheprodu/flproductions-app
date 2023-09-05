@@ -129,7 +129,7 @@ function AboutPage({ headInfo }) {
                     titulo="Algo de Historia"
                     texto={
                         <>
-                            <p>
+                            <p className="dark:text-beige">
                                 ¿Te has preguntado cómo algunas de las mejores
                                 canciones de la música vienen a la vida? en
                                 FLProductions, estamos seguros de estar detrás
@@ -143,7 +143,7 @@ function AboutPage({ headInfo }) {
                                 del proceso ha impulsado la creación musical.
                             </p>
 
-                            <p>
+                            <p className="dark:text-beige">
                                 vamos un poco mas atras... El productor musical
                                 o mejor dicho yo, Leo Serrano, un músico
                                 apasionado, buscaba una manera de hacer de vivir
@@ -158,7 +158,7 @@ function AboutPage({ headInfo }) {
                                 una aventura que nunca ha dejado de crecer.
                             </p>
 
-                            <p>
+                            <p className="dark:text-beige">
                                 A lo largo de los años, hemos trabajado con
                                 artistas de todos los géneros y hemos ayudado a
                                 crear algunas canciones increíbles. Aunque ha
@@ -181,7 +181,6 @@ function AboutPage({ headInfo }) {
                     nombre="Leo Serrano"
                     puesto="Productor Musical"
                     foto={`${process.env.NEXT_PUBLIC_PROD_LINK}/1686639572895.png`}
-                    firma={`${process.env.NEXT_PUBLIC_PROD_LINK}/build_main/img/leoserrano-signature.png`}
                 />
             </div>
 
@@ -189,9 +188,13 @@ function AboutPage({ headInfo }) {
                 <NuestrasCaracteristicas />
             </div>
 
-            <div className="nosotros__testimonios">
+            <div className="bg-secundario mt-40 pt-40 overflow-hidden dark:bg-terciario pb-20">
                 <Testimonio />
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <svg
+                    className="dark:absolute dark:invisible scale-125"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 1440 320"
+                >
                     <path
                         fill="#ffffff"
                         fillOpacity="1"
@@ -201,8 +204,8 @@ function AboutPage({ headInfo }) {
             </div>
 
             <div className="contenedor">
-                <div className="algunas-producciones">
-                    <h2 className="text-center ">
+                <div className="algunas-producciones mt-40 uppercase">
+                    <h2 className="text-center text-4xl mb-20">
                         Algunas producciones hechas por nosotros
                     </h2>
 

@@ -32,7 +32,6 @@ function SessionPanel() {
         useSelector((state: RootState) => state.user.session.isLoggedIn) ||
         false;
     const music = useSelector((state: RootState) => state.user.session.music);
-    const userInfo = useSelector((state: RootState) => state.user.session.user);
     const userRoles: [number] =
         useSelector((state: RootState) => state.user.session.roles) || [];
     const [botonOlvideContra, setBotonOlvideContra] = useState<boolean>(false);
@@ -55,12 +54,6 @@ function SessionPanel() {
             const { data } = await fetchAPI({ url: apiUrlCheckSession });
             if (data.isLoggedIn) {
                 dispatch(setSession({ ...data, music }));
-                dispatch(
-                    setSessionUserMessage({
-                        message: `Volviste! ${data.user.username}, espero que la pases Pura Vida!`,
-                        messageType: 'notification',
-                    })
-                );
             }
         } catch (error) {
             dispatch(
@@ -97,12 +90,6 @@ function SessionPanel() {
         }
         if (data) {
             dispatch(setSession({ ...data, music }));
-            dispatch(
-                setSessionUserMessage({
-                    message: `Hey! ${data.user.username}, espero que la pases tuannis!`,
-                    messageType: 'notification',
-                })
-            );
             setSpinner(false);
         } else {
             dispatch(
@@ -124,12 +111,6 @@ function SessionPanel() {
         if (data) {
             dispatch(setSession({ ...data, music }));
             setSpinner(false);
-            dispatch(
-                setSessionUserMessage({
-                    message: `Listo! ${userInfo.username}, espero que vuelvas pronto!`,
-                    messageType: 'notification',
-                })
-            );
         }
     };
     if (isLoggedIn) {

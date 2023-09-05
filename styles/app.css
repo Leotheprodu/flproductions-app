@@ -1872,8 +1872,7 @@ input {
 }
 
 .galeria-de-imagenes {
-  margin-bottom: 5rem;
-  padding: 3rem;
+  padding: 6rem;
 }
 .galeria-de-imagenes h3 {
   margin-top: 10rem;
@@ -2407,35 +2406,6 @@ input {
 .palabras-del-equipo_firma-firma {
   width: 10rem;
   height: 15rem;
-}
-
-.simple-text_info {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  padding: 1rem;
-}
-.simple-text_info h1 {
-  text-transform: uppercase;
-  font-weight: 700;
-  text-align: center;
-  margin-bottom: 0;
-  font-size: 2.5rem;
-  margin-top: 2rem;
-}
-@media (min-width: 768px) {
-  .simple-text_info h1 {
-    font-size: 4rem;
-    margin-top: 7rem;
-  }
-}
-.simple-text_info h3 {
-  text-transform: uppercase;
-  margin-bottom: 0;
-  margin-top: 12rem;
-}
-.simple-text_info p {
-  text-align: justify;
 }
 
 .socialIcons {
@@ -3505,20 +3475,6 @@ input {
 
 .inicio__Caracteristicas {
   scroll-snap-align: center;
-}
-
-.nosotros__testimonios {
-  background-color: #f3de3f;
-  margin-top: 10rem;
-  padding-top: 10rem;
-  overflow: hidden;
-}
-.nosotros__testimonios svg {
-  transform: scale(1.2);
-}
-
-.nosotros__pagelayer-shape-fill {
-  fill: #f3de3f;
 }
 
 .panel-de-control {

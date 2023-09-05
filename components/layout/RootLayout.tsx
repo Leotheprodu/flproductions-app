@@ -20,7 +20,7 @@ function Layout({ children }: Props) {
         <div className="root-container">
             <Header />
 
-            <main className="contenedor-main dark:bg-negro dark:text-blanco">
+            <main className="contenedor-main dark:bg-negro/90 dark:text-blanco">
                 {children}
             </main>
 

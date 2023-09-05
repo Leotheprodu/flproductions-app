@@ -6,7 +6,6 @@ interface Props {
     nombre: string;
     puesto: string;
     foto: string;
-    firma: string;
 }
 
 export function PalabrasDelEquipo({
@@ -15,7 +14,6 @@ export function PalabrasDelEquipo({
     nombre,
     puesto,
     foto,
-    firma,
 }: Props) {
     const ref = useRef(null);
 
@@ -26,20 +24,15 @@ export function PalabrasDelEquipo({
             </div>
             <div className="contenedor">
                 <h4>{titulo}</h4>
-                <p className="palabras-del-equipo_parrafo-principal">
-                    <span>&quot; </span>
+                <p className="palabras-del-equipo_parrafo-principal dark:text-beige">
+                    <span className="dark:text-blanco">&quot; </span>
                     {texto}
-                    <span> &quot;</span>
+                    <span className="dark:text-blanco"> &quot;</span>
                 </p>
 
                 <div className="palabras-del-equipo_firma">
-                    <img
-                        className="palabras-del-equipo_firma-firma"
-                        src={firma}
-                        alt={nombre + ' firma'}
-                    />
                     <div>
-                        <p>{nombre}</p>
+                        <p className="dark:text-beige">{nombre}</p>
 
                         <p className="palabras-del-equipo_firma_titulo">
                             {puesto}
