@@ -10,11 +10,11 @@ import store from '../components/redux/store';
 export default function App({ Component, pageProps }: AppProps) {
     return (
         <Provider store={store}>
-            <NextUIProvider>
-                <RootLayout>
-                    <Component {...pageProps} />
-                </RootLayout>
-            </NextUIProvider>
+            {/* <NextUIProvider> */}
+            <RootLayout>
+                <Component {...pageProps} />
+            </RootLayout>
+            {/* </NextUIProvider> */}
         </Provider>
     );
 }
