@@ -4,7 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setSessionUserMessage, setSessionUser } from '../redux/userActions';
 import { RootState } from '../redux/store';
 import { fetchAPI } from '../helpers/fetchAPI';
-import { Button, Input } from '@nextui-org/react';
+import { Button } from '@nextui-org/button';
+import { Input } from '@nextui-org/input';
 
 export const UserBasicInfo = () => {
     const dispatch = useDispatch();

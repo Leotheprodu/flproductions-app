@@ -1,7 +1,7 @@
 import React from 'react';
 import NavLink from '../helpers/NavLink';
 import SessionPanel from '../users/SessionPanel';
-import { Link } from '@nextui-org/react';
+import { Link } from '@nextui-org/link';
 import NextLink from 'next/link';
 export const MainNavLinks = () => {
     return (

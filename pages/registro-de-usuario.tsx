@@ -9,7 +9,9 @@ import {
 import { PropsHead } from '../components/helpers/HeadMetaInfo';
 import Head from 'next/head';
 import { RootState, fetchAPI } from '../components';
-import { Button, Input, Checkbox } from '@nextui-org/react';
+import { Checkbox } from '@nextui-org/checkbox';
+import { Button } from '@nextui-org/button';
+import { Input } from '@nextui-org/input';
 
 function SignUp({ headInfo }) {
     const {

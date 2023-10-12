@@ -13,8 +13,8 @@ import { setSession, setSessionUserMessage } from '../redux/userActions';
 import { useRouter } from 'next/router';
 import { RootState } from '../redux/store';
 import { fetchAPI } from '../';
-import { Button } from '@nextui-org/react';
-import { Input } from '@nextui-org/react';
+import { Button } from '@nextui-org/button';
+import { Input } from '@nextui-org/input';
 function SessionPanel() {
     const router = useRouter();
     const dispatch = useDispatch();

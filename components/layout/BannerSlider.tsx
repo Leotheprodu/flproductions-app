@@ -1,4 +1,4 @@
-import { Button } from '@nextui-org/react';
+import { Button } from '@nextui-org/button';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { useRouter } from 'next/router';

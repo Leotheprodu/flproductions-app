@@ -5,7 +5,8 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { PropsHead } from '../components/helpers/HeadMetaInfo';
 import Head from 'next/head';
-import { Button, Input } from '@nextui-org/react';
+import { Button } from '@nextui-org/button';
+import { Input } from '@nextui-org/input';
 
 function RecuperarPassword({ headInfo }) {
     const {

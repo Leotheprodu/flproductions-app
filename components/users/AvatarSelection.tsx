@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/store';
 import { fetchAPI, setSessionUserMessage } from '../';
-import { Button } from '@nextui-org/react';
+import { Button } from '@nextui-org/button';
 
 export const AvatarSelection = (): JSX.Element | null => {
     const maxAvatarLength: number = 9;

@@ -10,7 +10,8 @@ import { Spinner, fetchAPI } from '../components';
 
 import { PropsHead } from '../components/helpers/HeadMetaInfo';
 import Head from 'next/head';
-import { Button, Input } from '@nextui-org/react';
+import { Button } from '@nextui-org/button';
+import { Input } from '@nextui-org/input';
 
 function Login({ headInfo }) {
     const {
