@@ -226,6 +226,7 @@ function SessionPanel() {
                             validationState={validationState}
                             onValueChange={setEmail}
                             value={email}
+                            autoComplete="email"
                         />
                     </div>
                     <div className="flex items-center justify-center text-2xl md:w-[20rem]">
@@ -241,6 +242,7 @@ function SessionPanel() {
                             }}
                             radius="sm"
                             type="password"
+                            autoComplete="current-password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                         />

@@ -12,7 +12,6 @@
         "format": "prettier --write \"src/**/*.js\""
     },
     "dependencies": {
-        "@netlify/next": "^1.4.6",
         "@nextui-org/react": "^2.1.7",
         "@reduxjs/toolkit": "^1.9.3",
         "@tabler/icons": "^1.103.0",
