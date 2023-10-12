@@ -12,13 +12,13 @@
         "format": "prettier --write \"src/**/*.js\""
     },
     "dependencies": {
-        "@nextui-org/react": "^2.1.7",
+        "@nextui-org/react": "^2.1.13",
         "@reduxjs/toolkit": "^1.9.3",
         "@tabler/icons": "^1.103.0",
         "@tabler/icons-react": "^2.4.0",
         "axios": "^1.4.0",
         "emailjs-com": "^3.2.0",
-        "framer-motion": "^10.16.1",
+        "framer-motion": "^10.16.4",
         "next": "^13.5.3",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
