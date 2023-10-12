@@ -1,20 +1,15 @@
 const { src, dest, watch, parallel } = require('gulp');
 
-//CSS
 const sass = require('gulp-sass')(require('sass'));
 const plumber = require('gulp-plumber');
 
-//Imagenes
 const cache = require('gulp-cache');
 const imagemin = require('gulp-imagemin');
 const webp = require('gulp-webp');
 const avif = require('gulp-avif');
 
 function css(done) {
-    src('src/scss/**/*.scss') //ideantificar archivo de sass
-        .pipe(plumber()) //para que siga ejecutando aunque hayan errores
-        .pipe(sass()) //compilarlo
-        .pipe(dest('styles')); //almacenar en hd
+    src('src/scss/**/*.scss').pipe(plumber()).pipe(sass()).pipe(dest('styles'));
 
     done();
 }
