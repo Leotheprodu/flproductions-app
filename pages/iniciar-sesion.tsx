@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setSession } from '../components/redux/userActions';
 import { useRouter } from 'next/router';
 import { RootState } from '../components/redux/store';
-import { Spinner, fetchAPI } from '../components';
+import { fetchAPI } from '../components';
 
 import { PropsHead } from '../components/helpers/HeadMetaInfo';
 import Head from 'next/head';
 import { Button } from '@nextui-org/button';
 import { Input } from '@nextui-org/input';
 import { toast } from 'react-hot-toast';
+import { redirect } from 'next/navigation';
 function Login({ headInfo }) {
     const {
         imgWidth,
@@ -44,6 +45,11 @@ function Login({ headInfo }) {
         errorMessage: 'text-2xl absolute',
         inputWrapper: [''],
     };
+    useEffect(() => {
+        if (isLoggedIn) {
+            router.back();
+        }
+    }, [isLoggedIn]);
     const validateEmail = (email) =>
         email.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i);
     const validationState = React.useMemo(() => {
@@ -79,10 +85,6 @@ function Login({ headInfo }) {
             if (data) {
                 dispatch(setSession({ ...data, music }));
                 setSpinner(false);
-
-                setTimeout(() => {
-                    router.back();
-                }, 3000);
             }
         } catch (error) {
             setBotonOlvideContra(true);
