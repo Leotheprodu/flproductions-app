@@ -12,7 +12,7 @@ export const MessageComponent = () => {
                     <UserAvatar user_id={44} size={5} />
                 </div>
                 <span className="text-primario uppercase font-semibold bg-blanco rounded-xl p-2 mt-[-.5rem]">
-                    Whatsapp
+                    Chatea con Leo
                 </span>
             </a>
         </div>

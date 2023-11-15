@@ -52,8 +52,10 @@ function SessionPanel() {
     };
 
     useEffect(() => {
-        checkLoggedIn();
-    }, []);
+        if (!isLoggedIn) {
+            checkLoggedIn();
+        }
+    }, [isLoggedIn]);
     const handleLogout = async (e) => {
         e.preventDefault();
         setSpinner(true);
