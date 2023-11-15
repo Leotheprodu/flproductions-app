@@ -150,7 +150,7 @@ function SessionPanel() {
                             </Button>
                         </div>
                     )}
-                    <div className="">
+                    <div className="w-[15rem]">
                         <Link
                             className="text-2xl"
                             color="primary"
