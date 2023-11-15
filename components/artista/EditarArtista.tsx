@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
-import { fetchAPI, setSessionArtista, setSessionUserMessage } from '../';
+import { fetchAPI, setSessionArtista } from '../';
 import { IconEdit } from '@tabler/icons-react';
 import { useDispatch } from 'react-redux';
+import { toast } from 'react-hot-toast';
 
 interface NewDataState {
     nombre_artista: string;
@@ -41,14 +42,6 @@ export const EditarArtista = ({ artista }) => {
     useEffect(() => {
         artista.imagen && setImageUrl(artista.imagen);
     }, []);
-    useEffect(() => {
-        dispatch(
-            setSessionUserMessage({
-                message: `Edita aqui tu informacion de artista!, como la imagen, el Nombre, el link de tu instagram, etc...`,
-                messageType: 'warning',
-            })
-        );
-    }, []);
     const handleInputBlur = async (e) => {
         const { name } = e.target;
         setIsEditing((prevData) => ({
@@ -64,21 +57,11 @@ export const EditarArtista = ({ artista }) => {
             if (data) {
                 const artistaActualizado = { ...artista, [name]: data[name] };
                 dispatch(setSessionArtista(artistaActualizado));
-                dispatch(
-                    setSessionUserMessage({
-                        message: `el campo ${name} actualizado con exito`,
-                        messageType: 'warning',
-                    })
-                );
+                toast.success(`el campo ${name} actualizado con exito`);
             }
             if (error) {
                 console.log(error);
-                dispatch(
-                    setSessionUserMessage({
-                        message: error,
-                        messageType: 'error',
-                    })
-                );
+                toast.error('Ocurrio un error, intenta mas tarde');
             }
         }
     };
@@ -97,31 +80,17 @@ export const EditarArtista = ({ artista }) => {
             const artistaActualizado = { ...artista, imagen: data.imagen };
             dispatch(setSessionArtista(artistaActualizado));
             setImageUrl(data.imagen);
-            dispatch(
-                setSessionUserMessage({
-                    message: 'Imagen Actualizada con exito',
-                    messageType: 'warning',
-                })
-            );
+            toast.success('Imagen Actualizada con exito');
         }
         if (error) {
             if (status === 500) {
-                dispatch(
-                    setSessionUserMessage({
-                        message: 'el archivo es muy grande, mas de 1mb',
-                        messageType: 'error',
-                    })
+                toast.error(
+                    'El es muy pesado, intenta con una imagen mas ligera de menos de 1mb'
                 );
-
                 return;
             }
             console.log(error);
-            dispatch(
-                setSessionUserMessage({
-                    message: error,
-                    messageType: 'error',
-                })
-            );
+            toast.error('Ocurrio un error, intenta mas tarde');
         }
         // Aquí puedes procesar el archivo seleccionado, por ejemplo, cargarlo al servidor
     };

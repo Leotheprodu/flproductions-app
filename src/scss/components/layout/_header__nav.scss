@@ -161,6 +161,7 @@
         }
 
         .header__links__link__musica {
+            color: v.$negro;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -172,7 +173,7 @@
             /*  background-color: v.$gris; */
             padding: 0.5rem;
             border-radius: 5px;
-            font-size: 1.4rem;
+            font-size: 1.5rem;
 
             &:focus {
                 outline-color: v.$primario;

@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Titan+One&display=swap");
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap'); */
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -1732,7 +1732,7 @@ input {
 }
 
 .BannerSlider__div {
-  height: 42rem;
+  height: 100vh;
   padding: 4rem;
   width: 100%;
   display: flex;
@@ -1756,16 +1756,16 @@ input {
 }
 @keyframes borrachera {
   0% {
-    transform: translateX(0);
+    transform: translateY(0);
   }
   25% {
-    transform: translateX(-1rem);
+    transform: translateY(-1rem);
   }
   50% {
-    transform: translateX(0);
+    transform: translateY(0);
   }
   75% {
-    transform: translateX(1rem);
+    transform: translateY(1rem);
   }
 }
 @media (min-width: 768px) {
@@ -2041,6 +2041,7 @@ input {
   outline-color: #1f92ea;
 }
 .header__nav .header__links .header__links__link__musica {
+  color: #000000;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2052,7 +2053,7 @@ input {
   /*  background-color: v.$gris; */
   padding: 0.5rem;
   border-radius: 5px;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
 }
 .header__nav .header__links .header__links__link__musica:focus {
   outline-color: #1f92ea;

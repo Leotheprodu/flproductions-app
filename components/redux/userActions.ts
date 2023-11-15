@@ -3,7 +3,6 @@ import {
     SET_SESSION,
     SET_SESSION_ROLES,
     SET_SESSION_ARTISTA,
-    SET_SESSION_USER_MESSAGE,
     SET_SESSION_USER,
     SET_SESSION_MUSIC,
 } from './userTypes';
@@ -25,13 +24,6 @@ export const setSessionArtista = (artista) => {
     return {
         type: SET_SESSION_ARTISTA,
         payload: artista,
-    };
-};
-
-export const setSessionUserMessage = (userMessage) => {
-    return {
-        type: SET_SESSION_USER_MESSAGE,
-        payload: userMessage,
     };
 };
 export const setSessionUser = (user) => {

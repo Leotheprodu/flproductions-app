@@ -5,8 +5,8 @@ import {
     useFetchAPI,
     fetchAPI,
     Spinner,
-    setSessionUserMessage,
 } from '../../components';
+import { toast } from 'react-hot-toast';
 
 export const CrearArtistaForm = ({ tipo }) => {
     const [sujeto, setSujeto] = useState(null);
@@ -49,20 +49,11 @@ export const CrearArtistaForm = ({ tipo }) => {
             setDataFetch(data);
             dispatch(setSessionArtista(data));
             console.log(data);
-            dispatch(
-                setSessionUserMessage({
-                    message: `${sujeto} creado exitosamente`,
-                    messageType: 'warning',
-                })
-            );
+            toast.success(`${sujeto} creado exitosamente`);
         }
         if (error) {
-            dispatch(
-                setSessionUserMessage({
-                    message: error,
-                    messageType: 'error',
-                })
-            );
+            console.log(error);
+            toast.error('Error al crear el Artista');
         }
     };
     const handleOnChange = (e) => {

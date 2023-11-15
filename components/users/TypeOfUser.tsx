@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-    fetchAPI,
-    setSessionUserMessage,
-    setSessionRoles,
-    RootState,
-} from '../';
+import { fetchAPI, setSessionRoles, RootState } from '../';
 import { Button } from '@nextui-org/react';
+import { toast } from 'react-hot-toast';
 
 export const TypeofUser = (): JSX.Element | null => {
     const dispatch = useDispatch();
@@ -55,20 +51,12 @@ export const TypeofUser = (): JSX.Element | null => {
             setSpinner(false);
             setStatusEnviado(true);
             dispatch(setSessionRoles(data.roles));
-            dispatch(
-                setSessionUserMessage({
-                    message: `Roles Actualizados`,
-                    messageType: 'warning',
-                })
-            );
+            toast.success(`Roles Actualizados`);
+
             setSessionRoles;
         } else {
-            dispatch(
-                setSessionUserMessage({
-                    message: error,
-                    messageType: 'error',
-                })
-            );
+            console.log(error);
+            toast.error('Error al actualizar los roles');
         }
     };
     if (userRoles.includes(1)) {

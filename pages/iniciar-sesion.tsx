@@ -1,9 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-    setSession,
-    setSessionUserMessage,
-} from '../components/redux/userActions';
+import { setSession } from '../components/redux/userActions';
 import { useRouter } from 'next/router';
 import { RootState } from '../components/redux/store';
 import { Spinner, fetchAPI } from '../components';
@@ -12,7 +9,7 @@ import { PropsHead } from '../components/helpers/HeadMetaInfo';
 import Head from 'next/head';
 import { Button } from '@nextui-org/button';
 import { Input } from '@nextui-org/input';
-
+import { toast } from 'react-hot-toast';
 function Login({ headInfo }) {
     const {
         imgWidth,
@@ -41,23 +38,11 @@ function Login({ headInfo }) {
     const [botonOlvideContra, setBotonOlvideContra] = useState<boolean>(false);
     const [spinner, setSpinner] = useState<boolean>(false);
     const inputConfig = {
-        label: 'text-3xl p-2',
-        input: ['text-3xl p-2 rounded-xl'],
-        innerWrapper: 'bg-transparent',
+        label: 'text-xl text-terciario',
+        input: ['text-xl text-terciario bg-blanco/0'],
+        innerWrapper: '',
         errorMessage: 'text-2xl absolute',
-        inputWrapper: [
-            'h-20',
-            'shadow-xl',
-            'bg-default-200/50',
-            'dark:bg-default/60',
-            'backdrop-blur-xl',
-            'backdrop-saturate-200',
-            'hover:bg-default-200/70',
-            'dark:hover:bg-default/70',
-            'group-data-[focused=true]:bg-default-200/50',
-            'dark:group-data-[focused=true]:bg-default/60',
-            '!cursor-text',
-        ],
+        inputWrapper: [''],
     };
     const validateEmail = (email) =>
         email.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i);
@@ -81,21 +66,12 @@ function Login({ headInfo }) {
         });
         if (status === 429) {
             setSpinner(false);
-            dispatch(
-                setSessionUserMessage({
-                    message:
-                        'muchos intentos de inicio de sesion, espere 15 minutos para volver a intentar o puede probar cambiar la contraseña',
-                    messageType: 'error',
-                })
-            );
+            toast.error('Muchos intentos de inicio de sesion');
+            console.log('Muchos intentos de inicio de sesion');
             return;
         } else if (error) {
-            dispatch(
-                setSessionUserMessage({
-                    message: error,
-                    messageType: 'error',
-                })
-            );
+            toast.error('Error al iniciar sesion');
+            console.log(error);
             setBotonOlvideContra(true);
             setSpinner(false);
         }
@@ -144,12 +120,20 @@ function Login({ headInfo }) {
                     </div>
                 )}
                 {!isLoggedIn && (
-                    <>
+                    <div
+                        className="contenedor signUp flex justify-center items-center rounded-2xl shadow-lg"
+                        style={{
+                            background: `url(${process.env.NEXT_PUBLIC_PROD_LINK}/build_main/img/colorfull_tropical_beach_perfect_postale_1.jpg)`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                            backgroundRepeat: 'no-repeat',
+                        }}
+                    >
                         <form
-                            className="md:w-[30rem] container my-[6rem] flex flex-col gap-14 rounded-xl border-1 border-gris p-6 shadow-md"
+                            className="md:w-[30rem] container my-[6rem] flex flex-col gap-8 rounded-xl border-1 border-gris p-6 shadow-xl backdrop-blur-sm bg-blanco/10"
                             onSubmit={handleLogin}
                         >
-                            <h2 className="mb-1 text-4xl text-center text-terciario">
+                            <h2 className="mb-1 uppercase text-2xl text-center text-terciario">
                                 Iniciar Sesión
                             </h2>
                             <div className=" mt-7">
@@ -158,7 +142,8 @@ function Login({ headInfo }) {
                                     label="Correo electrónico"
                                     value={email}
                                     labelPlacement="outside"
-                                    variant="faded"
+                                    variant="underlined"
+                                    isRequired
                                     classNames={inputConfig}
                                     color={
                                         validationState === 'invalid'
@@ -173,13 +158,14 @@ function Login({ headInfo }) {
                                     required
                                 />
                             </div>
-                            <div className="">
+                            <div className="mt-4">
                                 <Input
                                     label="Contraseña"
                                     type="password"
                                     color="primary"
                                     labelPlacement="outside"
-                                    variant="faded"
+                                    variant="underlined"
+                                    isRequired
                                     classNames={inputConfig}
                                     value={password}
                                     onChange={(e) =>
@@ -198,38 +184,40 @@ function Login({ headInfo }) {
                                     Iniciar Sesión
                                 </Button>
                             </div>
-                        </form>
-                        <div className="flex flex-col gap-6 items-center">
-                            {botonOlvideContra && (
+                            <div className="flex flex-col gap-6 items-center">
+                                {botonOlvideContra && (
+                                    <div className="">
+                                        <Button
+                                            className="text-2xl text-terciario"
+                                            variant="light"
+                                            type="button"
+                                            title="He olvidado mi contraseña"
+                                            onClick={() => {
+                                                router.push(
+                                                    '/recuperar-password'
+                                                );
+                                            }}
+                                        >
+                                            He olvidado mi contraseña
+                                        </Button>
+                                    </div>
+                                )}
                                 <div className="">
                                     <Button
-                                        className="text-2xl"
-                                        color="secondary"
+                                        className="text-2xl text-terciario"
+                                        variant="light"
                                         type="button"
-                                        title="He olvidado mi contraseña"
+                                        title="Registrarse"
                                         onClick={() => {
-                                            router.push('/recuperar-password');
+                                            router.push('/registro-de-usuario');
                                         }}
                                     >
-                                        He olvidado mi contraseña
+                                        Registrarse
                                     </Button>
                                 </div>
-                            )}
-                            <div className="">
-                                <Button
-                                    className="text-2xl"
-                                    color="secondary"
-                                    type="button"
-                                    title="Registrarse"
-                                    onClick={() => {
-                                        router.push('/registro-de-usuario');
-                                    }}
-                                >
-                                    Registrarse
-                                </Button>
                             </div>
-                        </div>
-                    </>
+                        </form>
+                    </div>
                 )}
             </div>
         </>

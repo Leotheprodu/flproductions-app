@@ -1,12 +1,9 @@
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import {
     MensajesDelSistema,
-    setSessionUserMessage,
     ControlPanel,
     RootState,
     PropsHead,
-    UserAvatar,
 } from '../../components';
 import Head from 'next/head';
 function InicioPaneldeControl({ headInfo }) {
@@ -23,19 +20,9 @@ function InicioPaneldeControl({ headInfo }) {
         keywords,
         robots,
     }: PropsHead = headInfo;
-    const dispatch = useDispatch();
-    const user = useSelector((state: RootState) => state.user.session.user);
     const isLoggedIn = useSelector(
         (state: RootState) => state.user.session.isLoggedIn || false
     );
-    useEffect(() => {
-        dispatch(
-            setSessionUserMessage({
-                message: `En el panel de control, puedes configurar tu cuenta`,
-                messageType: 'warning',
-            })
-        );
-    }, []);
 
     return (
         <ControlPanel>

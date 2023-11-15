@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import {
-    fetchAPI,
-    setSessionUserMessage,
-    musickeys,
-    generosMusicales,
-    infoCampos,
-} from '../';
+import { toast } from 'react-hot-toast';
+
+import { fetchAPI, musickeys, generosMusicales, infoCampos } from '../';
 interface IsEditingData {
     status: boolean;
     song: {
@@ -120,13 +116,7 @@ export const FormMusicControl: React.FC<MyComponentProps> = ({
 
                 return null; // Si no se encuentra el ID del video, devolver null
             } catch (error) {
-                dispatch(
-                    setSessionUserMessage({
-                        message:
-                            'Debes agregar un link valido de youtube o el youtube ID',
-                        messageType: 'warning',
-                    })
-                );
+                toast.error('Ocurrio un error, Debes agregar un link valido');
             }
         }
         setSongData({
@@ -134,13 +124,7 @@ export const FormMusicControl: React.FC<MyComponentProps> = ({
             youtube_id: obtenerIdDeYouTube(songData.youtube_id),
         });
         if (songData.youtube_id !== null) {
-            dispatch(
-                setSessionUserMessage({
-                    message:
-                        'se ha obtenido el id de youtube, por medio del link que has compartido',
-                    messageType: 'warning',
-                })
-            );
+            toast.success('Se ha obtenido el id de youtube');
         }
     };
 
@@ -154,30 +138,16 @@ export const FormMusicControl: React.FC<MyComponentProps> = ({
         });
 
         if (data) {
-            dispatch(
-                setSessionUserMessage({
-                    message: data.message,
-                    messageType: 'notification',
-                })
-            );
+            toast.success(data.message);
             setIsEditing({ ...isEditing, status: false });
         }
         if (error) {
-            dispatch(
-                setSessionUserMessage({
-                    message: error,
-                    messageType: 'error',
-                })
-            );
+            toast.error('Ocurrio un error, intenta mas tarde');
+            console.log(error);
         }
     };
     const handleInfoCampo = (campo) => {
-        dispatch(
-            setSessionUserMessage({
-                message: infoCampos[campo],
-                messageType: 'warning',
-            })
-        );
+        toast.success(infoCampos[campo]);
     };
 
     return (

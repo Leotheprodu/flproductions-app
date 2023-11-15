@@ -6,7 +6,7 @@
     z-index: 1;
 }
 .BannerSlider__div {
-    height: 42rem;
+    height: 100vh;
     padding: 4rem;
     width: 100%;
     display: flex;
@@ -29,18 +29,18 @@
 
     @keyframes borrachera {
         0% {
-            transform: translateX(0);
+            transform: translateY(0);
         }
 
         25% {
-            transform: translateX(-1rem);
+            transform: translateY(-1rem);
         }
         50% {
-            transform: translateX(0);
+            transform: translateY(0);
         }
 
         75% {
-            transform: translateX(1rem);
+            transform: translateY(1rem);
         }
     }
 

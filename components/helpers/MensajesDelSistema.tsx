@@ -1,7 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { RootState } from '../redux/store';
-import { UserAvatar, fetchAPI, setSessionUserMessage } from '../';
+import { UserAvatar, fetchAPI } from '../';
+import { toast } from 'react-hot-toast';
 
 export const MensajesDelSistema = () => {
     const dispatch = useDispatch();
@@ -63,12 +64,8 @@ export const MensajesDelSistema = () => {
                 setMainMensaje(Mensaje_General_Todos[0].mensaje);
             } else {
                 setMainMensaje('');
-                dispatch(
-                    setSessionUserMessage({
-                        message: error,
-                        messageType: 'error',
-                    })
-                );
+                toast.error('Error al cargar los mensajes del sistema');
+                console.log(error);
             }
         };
         fetchData();

@@ -9,25 +9,17 @@ import {
 } from '@tabler/icons-react';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { setSession, setSessionUserMessage } from '../redux/userActions';
+import { setSession } from '../redux/userActions';
 import { useRouter } from 'next/router';
 import { RootState } from '../redux/store';
 import { fetchAPI } from '../';
 import { Button } from '@nextui-org/button';
-import { Input } from '@nextui-org/input';
+import { toast } from 'react-hot-toast';
+import { Link } from '@nextui-org/react';
+
 function SessionPanel() {
     const router = useRouter();
     const dispatch = useDispatch();
-    const [email, setEmail] = useState<string>('');
-    const validateEmail = (email) =>
-        email.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i);
-
-    const validationState = React.useMemo(() => {
-        if (email === '') return undefined;
-
-        return validateEmail(email) ? 'valid' : 'invalid';
-    }, [email]);
-    const [password, setPassword] = useState<string>('');
     const isLoggedIn =
         useSelector((state: RootState) => state.user.session.isLoggedIn) ||
         false;
@@ -41,10 +33,6 @@ function SessionPanel() {
         process.env.NODE_ENV === 'production'
             ? process.env.NEXT_PUBLIC_PROD_AUTH_CHECK_SESSION
             : process.env.NEXT_PUBLIC_DEV_AUTH_CHECK_SESSION;
-    const apiUrlLogin =
-        process.env.NODE_ENV === 'production'
-            ? process.env.NEXT_PUBLIC_PROD_AUTH_LOGIN
-            : process.env.NEXT_PUBLIC_DEV_AUTH_LOGIN;
 
     const apiUrlLogout =
         process.env.NODE_ENV === 'production'
@@ -55,68 +43,17 @@ function SessionPanel() {
             const { data } = await fetchAPI({ url: apiUrlCheckSession });
             if (data.isLoggedIn) {
                 dispatch(setSession({ ...data, music }));
-                dispatch(
-                    setSessionUserMessage({
-                        message: `Volviste! ${data.user.username}, espero que la pases Pura Vida!`,
-                        messageType: 'notification',
-                    })
-                );
+                toast.success(`Bienvenido! ${data.user.username}`);
             }
         } catch (error) {
-            dispatch(
-                setSessionUserMessage({
-                    message: 'Debes Iniciar sesion',
-                    messageType: 'error',
-                })
-            );
+            console.log(error);
+            toast.error('Debes Iniciar sesion');
         }
     };
 
     useEffect(() => {
         checkLoggedIn();
     }, []);
-
-    const handleLogin = async (e) => {
-        e.preventDefault();
-        setSpinner(true);
-        const { data, status } = await fetchAPI({
-            url: apiUrlLogin,
-            method: 'POST',
-            body: { email, password },
-        });
-        if (status === 429) {
-            setSpinner(false);
-            dispatch(
-                setSessionUserMessage({
-                    message:
-                        'muchos intentos de inicio de sesion, espere 15 minutos',
-                    messageType: 'error',
-                })
-            );
-            return;
-        }
-        if (data) {
-            dispatch(setSession({ ...data, music }));
-            dispatch(
-                setSessionUserMessage({
-                    message: `Hey! ${data.user.username}, espero que la pases tuannis!`,
-                    messageType: 'notification',
-                })
-            );
-            setSpinner(false);
-        } else {
-            dispatch(
-                setSessionUserMessage({
-                    message:
-                        'Datos inválidos, correo o contraseña incorrecta o regístrate',
-                    messageType: 'error',
-                })
-            );
-            setBotonOlvideContra(true);
-            setSpinner(false);
-        }
-    };
-
     const handleLogout = async (e) => {
         e.preventDefault();
         setSpinner(true);
@@ -124,11 +61,8 @@ function SessionPanel() {
         if (data) {
             dispatch(setSession({ ...data, music }));
             setSpinner(false);
-            dispatch(
-                setSessionUserMessage({
-                    message: `Listo! ${userInfo.username}, espero que vuelvas pronto!`,
-                    messageType: 'notification',
-                })
+            toast.success(
+                `Adios! ${userInfo.username}, espero que vuelvas pronto!`
             );
         }
     };
@@ -197,58 +131,7 @@ function SessionPanel() {
         );
     } else {
         return (
-            <form
-                className="flex flex-col justify-center items-center container gap-10 p-2 text-center"
-                onSubmit={handleLogin}
-            >
-                <div className="flex flex-col md:flex-row gap-2">
-                    <div className="flex items-center justify-center text-2xl md:w-[20rem]">
-                        <Input
-                            label="Correo Electrónico"
-                            placeholder="Escribe tu correo electrónico"
-                            classNames={{
-                                label: 'text-2xl',
-                                input: ['text-2xl'],
-                                errorMessage: 'text-2xl absolute',
-                                inputWrapper: 'h-20',
-                            }}
-                            radius="sm"
-                            type="email"
-                            color={
-                                validationState === 'invalid'
-                                    ? 'danger'
-                                    : 'primary'
-                            }
-                            errorMessage={
-                                validationState === 'invalid' &&
-                                'Ingrese un correo válido'
-                            }
-                            validationState={validationState}
-                            onValueChange={setEmail}
-                            value={email}
-                            autoComplete="email"
-                        />
-                    </div>
-                    <div className="flex items-center justify-center text-2xl md:w-[20rem]">
-                        <Input
-                            placeholder="Escribe tu contraseña"
-                            label="Contraseña"
-                            color="primary"
-                            classNames={{
-                                label: 'text-2xl',
-                                input: ['text-2xl'],
-                                errorMessage: 'text-2xl',
-                                inputWrapper: 'h-20',
-                            }}
-                            radius="sm"
-                            type="password"
-                            autoComplete="current-password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-                    </div>
-                </div>
-
+            <form className="flex flex-col justify-center items-center container gap-10 p-2 text-center">
                 <div className="flex flex-col md:flex-row gap-2 flex-wrap justify-center items-center">
                     {botonOlvideContra && (
                         <div className="">
@@ -268,32 +151,27 @@ function SessionPanel() {
                         </div>
                     )}
                     <div className="">
-                        <Button
+                        <Link
                             className="text-2xl"
                             color="primary"
-                            type="submit"
                             title="Iniciar Sesión"
-                            isLoading={spinner}
+                            href="/iniciar-sesion"
                         >
                             <IconUserCheck />
                             Iniciar Sesión
-                        </Button>
+                        </Link>
                     </div>
 
                     <div className="">
-                        <Button
-                            onClick={() => {
-                                router.push('/registro-de-usuario');
-                            }}
+                        <Link
                             className="text-2xl"
                             color="primary"
-                            type="button"
                             title="Registrarse"
-                            isLoading={spinner}
+                            href="/registro-de-usuario"
                         >
                             <IconUserPlus />
                             Registrarse
-                        </Button>
+                        </Link>
                     </div>
                 </div>
             </form>

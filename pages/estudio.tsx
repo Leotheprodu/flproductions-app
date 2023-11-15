@@ -180,7 +180,7 @@ function AboutPage({ headInfo }) {
                     "
                     nombre="Leo Serrano"
                     puesto="Productor Musical"
-                    foto={`${process.env.NEXT_PUBLIC_PROD_LINK}/1686639572895.png`}
+                    foto={`${process.env.NEXT_PUBLIC_PROD_LINK}/build_main/img/1686639572895.png`}
                     firma={`${process.env.NEXT_PUBLIC_PROD_LINK}/build_main/img/leoserrano-signature.png`}
                 />
             </div>

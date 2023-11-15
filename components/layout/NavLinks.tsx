@@ -1,17 +1,21 @@
 import React from 'react';
-import NavLink from '../helpers/NavLink';
-import SessionPanel from '../users/SessionPanel';
 import { Link } from '@nextui-org/link';
 import NextLink from 'next/link';
+import { useSelector } from 'react-redux';
+import { RootState } from '../redux/store';
+import SessionPanel from '../users/SessionPanel';
 export const MainNavLinks = () => {
+    const isLoggedIn =
+        useSelector((state: RootState) => state.user.session.isLoggedIn) ||
+        false;
     return (
         <nav className="header__links">
             <div className="header__submenu-parent">
-                <p className="header__links__link__musica text-negro dark:text-blanco dark:hover:text-secundario hover:text-primario">
+                <p className="header__links__link text-negro dark:text-blanco dark:hover:text-secundario hover:text-primario">
                     Nosotros
                 </p>
 
-                <nav className="header__submenu dark:bg-terciario bg-gris">
+                <div className="header__submenu dark:bg-terciario bg-gris">
                     <Link
                         href="/estudio"
                         color="primary"
@@ -32,15 +36,15 @@ export const MainNavLinks = () => {
                     >
                         Contacto
                     </Link>
-                </nav>
+                </div>
             </div>
 
             <div className="header__submenu-parent">
-                <p className="header__links__link__musica text-negro dark:text-blanco dark:hover:text-secundario hover:text-primario">
+                <p className="header__links__link text-negro dark:text-blanco dark:hover:text-secundario hover:text-primario">
                     Musica
                 </p>
 
-                <nav className="header__submenu bg-gris dark:bg-terciario ">
+                <div className="header__submenu bg-gris dark:bg-terciario ">
                     <Link
                         href="/canciones"
                         color="primary"
@@ -51,17 +55,16 @@ export const MainNavLinks = () => {
                     >
                         Canciones
                     </Link>
-                    <Link
-                        href="/instrumentales"
-                        color="primary"
-                        underline="active"
-                        size="lg"
-                        className="text-2xl uppercase text-negro dark:text-beige hover:text-primario dark:hover:text-secundario"
-                        as={NextLink}
-                    >
-                        Instrumentales
-                    </Link>
-                </nav>
+                </div>
+            </div>
+            <div className="header__submenu-parent">
+                <p className="header__links__link text-negro dark:text-blanco dark:hover:text-secundario hover:text-primario">
+                    Sesion
+                </p>
+
+                <div className="header__submenu dark:bg-terciario bg-gris">
+                    <SessionPanel />
+                </div>
             </div>
         </nav>
     );
@@ -115,21 +118,7 @@ export const MovilNavLinks = ({ onClickMovilUser, setOnClickMovilUser }) => {
                 Canciones
             </Link>
 
-            <Link
-                href="/instrumentales"
-                color="primary"
-                underline="hover"
-                size="lg"
-                className="text-3xl"
-                as={NextLink}
-                onClick={handleCloseClick}
-            >
-                Instrumentales
-            </Link>
-
-            <div className=" w-full m-0 p-4 rounded-3xl ">
-                <SessionPanel />
-            </div>
+            <SessionPanel />
         </nav>
     );
 };

@@ -1,11 +1,12 @@
 import { IconBan, IconCircleCheck } from '@tabler/icons-react';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setSessionUserMessage, setSessionUser } from '../redux/userActions';
+import { setSessionUser } from '../redux/userActions';
 import { RootState } from '../redux/store';
 import { fetchAPI } from '../helpers/fetchAPI';
 import { Button } from '@nextui-org/button';
 import { Input } from '@nextui-org/input';
+import { toast } from 'react-hot-toast';
 
 export const UserBasicInfo = () => {
     const dispatch = useDispatch();
@@ -52,23 +53,12 @@ export const UserBasicInfo = () => {
         e.preventDefault();
         //Validaciones
         if (password !== password1) {
-            dispatch(
-                setSessionUserMessage({
-                    message: 'Las contraseñas deben coincidir',
-                    messageType: 'error',
-                })
-            );
+            toast.error('Las contraseñas deben coincidir');
 
             return;
         }
         if (username.length > 15) {
-            dispatch(
-                setSessionUserMessage({
-                    message:
-                        'el nombre de usuario debe tener maximo 15 caracteres',
-                    messageType: 'error',
-                })
-            );
+            toast.error('El nombre de usuario debe tener maximo 15 caracteres');
             return;
         }
         const password2 =
@@ -85,43 +75,24 @@ export const UserBasicInfo = () => {
             body: datosActualizadosDeUsuario,
         });
         if (status === 429) {
-            dispatch(
-                setSessionUserMessage({
-                    message: 'Muchos intentos, intentelo de nuevo en mas tarde',
-                    messageType: 'error',
-                })
-            );
+            toast.error('Muchos intentos, intentelo de nuevo en mas tarde');
             return;
         }
         if (data) {
-            dispatch(
-                setSessionUserMessage({
-                    message: 'Se han actualizado los datos correctamente',
-                    messageType: 'notification',
-                })
-            );
+            toast.success('Datos Actualizados');
             dispatch(setSessionUser(data.user));
 
             setStatusEnviado(true);
         } else {
-            dispatch(
-                setSessionUserMessage({
-                    message: error,
-                    messageType: 'error',
-                })
-            );
+            console.log(error);
+            toast.error('Error al actualizar los datos');
         }
     };
 
     const hanldeOnBlurPassword = () => {
         if (password !== password1) {
             setClasePass('UserBasicInfo__Error');
-            dispatch(
-                setSessionUserMessage({
-                    message: 'Las contraseñas deben coincidir',
-                    messageType: 'error',
-                })
-            );
+            toast.error('Las contraseñas deben coincidir');
         } else {
             setClasePass('');
         }
@@ -129,13 +100,7 @@ export const UserBasicInfo = () => {
     const handleOnChangeNombreUsuario = (e) => {
         setUserName(e.target.value.trim());
         if (e.target.value.length > 15) {
-            dispatch(
-                setSessionUserMessage({
-                    message:
-                        'No esta permitido tener mas de 15 caracteres en el nombre de usuario',
-                    messageType: 'error',
-                })
-            );
+            toast.error('El nombre de usuario debe tener maximo 15 caracteres');
         }
     };
     const handleVerificarEmail = async () => {
@@ -155,31 +120,20 @@ export const UserBasicInfo = () => {
                 url: apiUrlVerifyEmail,
             });
             if (status === 200) {
-                dispatch(
-                    setSessionUserMessage({
-                        message:
-                            'Hemos reenviado el correo de verificacion, ve a revisarlo y verifica tu correo',
-                        messageType: 'warning',
-                    })
-                );
+                toast.success('Correo de verificacion enviado', {
+                    duration: 10000,
+                });
                 setStatusEnviado(true);
             } else if (error) {
-                dispatch(
-                    setSessionUserMessage({
-                        message: error,
-                        messageType: 'error',
-                    })
-                );
+                console.log(error);
+                toast.error('Error al enviar el correo de verificacion');
                 setStatusEnviado(true);
                 return;
             }
         } else {
-            dispatch(
-                setSessionUserMessage({
-                    message:
-                        'Para volver a enviar el correo de verificacion, debe haber pasado 15 minutos desde el ultimo cambio',
-                    messageType: 'error',
-                })
+            toast.error(
+                'Correo de verificacion enviado hace menos de 15 minutos',
+                { duration: 10000 }
             );
             setStatusEnviado(true);
             return;

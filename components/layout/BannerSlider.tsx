@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 
 interface mainBannerSlider {
     img_link: string;
-    link: string;
+    link?: string;
     title: string;
     description: string;
 }
@@ -40,18 +40,20 @@ export function BannerSlider({ datos }: Props) {
                         <div className="BannerSlider__div-texto">
                             <h2>{title}</h2>
                             <p>{description}</p>
-                            <div className="w-30">
-                                <Button
-                                    className="text-4xl"
-                                    color="primary"
-                                    type="button"
-                                    onClick={() => {
-                                        router.push(link);
-                                    }}
-                                >
-                                    Mas información
-                                </Button>
-                            </div>
+                            {link && (
+                                <div className="w-30 mt-4">
+                                    <Button
+                                        className="text-4xl text-blanco dark:text-negro bg-transparent hover:bg-terciario border border-blanco"
+                                        color="default"
+                                        type="button"
+                                        onClick={() => {
+                                            router.push(link);
+                                        }}
+                                    >
+                                        Mas información
+                                    </Button>
+                                </div>
+                            )}
                         </div>
                     </div>
                 ))}

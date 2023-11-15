@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { IconEdit } from '@tabler/icons-react';
-import { fetchAPI, useFetchAPI, setSessionUserMessage, RootState } from '../';
+import { fetchAPI, useFetchAPI, RootState } from '../';
 import { FormMusicControl } from './FormMusicControl';
+import { toast } from 'react-hot-toast';
+
 const apiUrl_Producciones =
     process.env.NODE_ENV === 'production'
         ? process.env.NEXT_PUBLIC_PROD_PRODUCCIONES_ARTIST
@@ -130,21 +132,14 @@ export const ArtistMusicHandle = ({ artista }) => {
         });
 
         if (data) {
-            dispatch(
-                setSessionUserMessage({
-                    message: data.message,
-                    messageType: 'notification',
-                })
-            );
+            toast.success(data.message);
             setIsDeleting({ ...isDeleting, status: false });
         }
         if (error) {
-            dispatch(
-                setSessionUserMessage({
-                    message: error,
-                    messageType: 'error',
-                })
+            toast.error(
+                'Ocurrio un error al intentar borrar la cancion, intenta mas tarde'
             );
+            console.log(error);
         }
     };
 

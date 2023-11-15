@@ -2,8 +2,9 @@ import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../redux/store';
-import { fetchAPI, setSessionUserMessage } from '../';
+import { fetchAPI } from '../';
 import { Button } from '@nextui-org/button';
+import { toast } from 'react-hot-toast';
 
 export const AvatarSelection = (): JSX.Element | null => {
     const maxAvatarLength: number = 9;
@@ -78,19 +79,9 @@ export const AvatarSelection = (): JSX.Element | null => {
         });
         if (status === 200) {
             setDatoActualizado(true);
-            dispatch(
-                setSessionUserMessage({
-                    message: `Avatar Actualizado!`,
-                    messageType: 'warning',
-                })
-            );
+            toast.success('Avatar Actualizado!');
         } else {
-            dispatch(
-                setSessionUserMessage({
-                    message: `Lo Siento, solo usuarios verificados pueden cambiar su Avatar.`,
-                    messageType: 'error',
-                })
-            );
+            toast.error('Error al actualizar el Avatar');
             return;
         }
     };

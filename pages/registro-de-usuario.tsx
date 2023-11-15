@@ -2,16 +2,14 @@ import React, { useEffect, useRef, useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-    setSession,
-    setSessionUserMessage,
-} from '../components/redux/userActions';
+import { setSession } from '../components/redux/userActions';
 import { PropsHead } from '../components/helpers/HeadMetaInfo';
 import Head from 'next/head';
 import { RootState, fetchAPI } from '../components';
 import { Checkbox } from '@nextui-org/checkbox';
 import { Button } from '@nextui-org/button';
 import { Input } from '@nextui-org/input';
+import { toast } from 'react-hot-toast';
 
 function SignUp({ headInfo }) {
     const {
@@ -55,23 +53,11 @@ function SignUp({ headInfo }) {
             : process.env.NEXT_PUBLIC_DEV_USER_SIGNUP;
 
     const inputConfig = {
-        label: 'text-3xl p-2',
-        input: ['text-3xl p-2 rounded-xl'],
-        innerWrapper: 'bg-transparent',
+        label: 'text-xl text-terciario',
+        input: ['text-xl text-terciario bg-blanco/0'],
+        innerWrapper: '',
         errorMessage: 'text-2xl absolute',
-        inputWrapper: [
-            'h-20',
-            'shadow-xl',
-            'bg-default-200/50',
-            'dark:bg-default/60',
-            'backdrop-blur-xl',
-            'backdrop-saturate-200',
-            'hover:bg-default-200/70',
-            'dark:hover:bg-default/70',
-            'group-data-[focused=true]:bg-default-200/50',
-            'dark:group-data-[focused=true]:bg-default/60',
-            '!cursor-text',
-        ],
+        inputWrapper: [''],
     };
     const validateEmail = (email) =>
         email.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i);
@@ -98,13 +84,7 @@ function SignUp({ headInfo }) {
         e.preventDefault();
         setSpinner(true);
         if (username.length > 15) {
-            dispatch(
-                setSessionUserMessage({
-                    message:
-                        'El nombre de usuario debe tener maximo 15 caracteres',
-                    messageType: 'error',
-                })
-            );
+            toast.error('El nombre de usuario debe tener maximo 15 caracteres');
             setSpinner(false);
             return;
         }
@@ -125,33 +105,21 @@ function SignUp({ headInfo }) {
                 setPassword('');
                 setUserName('');
                 setSpinner(false);
-
-                dispatch(
-                    setSessionUserMessage({
-                        message:
-                            'Listo!, te hemos enviado un correo de verificacion, porfavor verifica tu email',
-                        messageType: 'notification',
-                    })
+                toast.success(
+                    'Usuario creado exitosamente, verifica tu email',
+                    { duration: 20000 }
                 );
+
                 setStatusEnviado(true);
                 loginNewUser();
             } else if (error) {
-                dispatch(
-                    setSessionUserMessage({
-                        message: error,
-                        messageType: 'error',
-                    })
-                );
+                console.log(error);
+                toast.error('Ocurrio un error, intenta mas tarde');
                 setSpinner(false);
                 return;
             }
         } else {
-            dispatch(
-                setSessionUserMessage({
-                    message: 'Acepta el captcha para continuar',
-                    messageType: 'warning',
-                })
-            );
+            toast.error('Acepta el captcha para continuar');
             setTimeout(() => {
                 setSpinner(false);
             }, 3000);
@@ -161,13 +129,7 @@ function SignUp({ headInfo }) {
     const handleOnChangeNombreUsuario = (e) => {
         setUserName(e.target.value.trim());
         if (e.target.value.length > 15) {
-            dispatch(
-                setSessionUserMessage({
-                    message:
-                        'No esta permitido tener mas de 15 caracteres en el nombre de usuario',
-                    messageType: 'error',
-                })
-            );
+            toast.error('El nombre de usuario debe tener maximo 15 caracteres');
         }
     };
 
@@ -192,11 +154,19 @@ function SignUp({ headInfo }) {
                 <meta property="og:image:height" content={imgHeight} />
             </Head>
 
-            <div className="contenedor signUp">
+            <div
+                className="contenedor signUp w-full flex justify-center items-center rounded-2xl shadow-lg "
+                style={{
+                    background: `url(${process.env.NEXT_PUBLIC_PROD_LINK}/build_main/img/tropical_forest_perfect_postale_co_2.jpg)`,
+                    backgroundSize: 'cover',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                }}
+            >
                 {!statusenviado && !isLoggedIn && (
                     <>
                         <form
-                            className="md:max-w-[35rem] container mt-[6rem] flex flex-col gap-14 rounded-xl border-1 border-gris p-6 shadow-md"
+                            className="md:max-w-[35rem] container mt-[6rem] flex flex-col gap-14 rounded-xl border-1 border-gris p-6 shadow-md backdrop-blur-sm bg-blanco/10"
                             onSubmit={handleSubmit}
                         >
                             <div className="">
@@ -251,27 +221,27 @@ function SignUp({ headInfo }) {
                                     required
                                 />
                             </div>
-                            <div className="mb-3 recaptcha">
-                                <ReCAPTCHA
-                                    ref={captcha}
-                                    sitekey="6LdqhcAiAAAAAE8hwgEptpxIcQHsW_c2S_AfkFmw"
-                                />
-                            </div>
                             <div>
                                 <Checkbox
                                     size="lg"
                                     isSelected={isSelected}
                                     onValueChange={setIsSelected}
                                     classNames={{
-                                        label: 'text-1xl text-primario',
+                                        label: 'text-1xl text-terciario',
                                     }}
                                 >
                                     Eres un artista/cantante?
                                 </Checkbox>
                             </div>
+                            <div className="mb-3 recaptcha">
+                                <ReCAPTCHA
+                                    ref={captcha}
+                                    sitekey="6LdqhcAiAAAAAE8hwgEptpxIcQHsW_c2S_AfkFmw"
+                                />
+                            </div>
                             <div className=" flex justify-center">
                                 <Button
-                                    className="text-2xl  w-60"
+                                    className="text-2xl w-60"
                                     color="primary"
                                     isLoading={spinner}
                                     type="submit"
@@ -279,21 +249,20 @@ function SignUp({ headInfo }) {
                                     Registrar
                                 </Button>
                             </div>
+                            <div className=" flex justify-center mb-[6rem]">
+                                <Button
+                                    className="text-2xl text-terciario"
+                                    variant="light"
+                                    type="button"
+                                    onClick={() => {
+                                        router.push('/iniciar-sesion');
+                                    }}
+                                    title="iniciar sesion"
+                                >
+                                    tienes una cuenta?
+                                </Button>
+                            </div>
                         </form>
-                        <p>o</p>
-                        <div className=" flex justify-center mb-[6rem]">
-                            <Button
-                                className="text-2xl w-60"
-                                color="secondary"
-                                type="button"
-                                onClick={() => {
-                                    router.push('/iniciar-sesion');
-                                }}
-                                title="iniciar sesion"
-                            >
-                                Iniciar Sesión
-                            </Button>
-                        </div>
                     </>
                 )}
 

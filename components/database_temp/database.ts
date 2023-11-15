@@ -8,13 +8,13 @@ export const testimonios = [
     {
         imagen: `${process.env.NEXT_PUBLIC_PROD_LINK}/build_main/img/artistas/rousses1.webp`,
         nombre: 'Rousses',
-        texto: 'FLProductions es uno de los mejores estudios y me quedo corto, en este estudio he crecido mucho, lo recomiendo para todo artista que quiera sonar con calidad y que quiera crecer en la industria musical.',
+        texto: 'FLProductions es uno de los mejores estudios en Costa Rica, lo recomiendo para todo artista que quiera sonar con calidad y que quiera crecer en la industria musical.',
         link: 'https://www.instagram.com/roussesofficial/',
     },
     {
         imagen: `${process.env.NEXT_PUBLIC_PROD_LINK}/build_main/img/artistas/cesarjs1.webp`,
         nombre: 'Cesar JS',
-        texto: 'El estudio que ofrece el sonido mas profesional de Limon y uno de los mejores en Costa Rica, Leo Serrano es un productor a otro nivel... con todo eso se puede lograr musica de alta calidad.',
+        texto: 'El estudio y Leo definitivamente es uno de los mejores en Costa Rica, mis canciones no estan en mejores manos.',
         link: 'https://www.instagram.com/cesar_js506/',
     },
 ];
@@ -53,17 +53,10 @@ export const fotosDelEstudio: ImageStudio[] = [
 export const mainBannerSlider = [
     {
         img_link: `${process.env.NEXT_PUBLIC_PROD_LINK}/build_main/img/banners/music/28.webp`,
-        link: 'https://www.youtube.com/watch?v=URtP7jMs9M0',
-        title: 'Nuevo Beat: "Bichote"',
+        title: 'Bienvenidos a FLProductions',
+        link: '/contacto',
         description:
-            '¡Instrumental de trap latino disponible ahora! Consigue "Bichote" y lleva tu música al siguiente nivel con su distintivo ritmo que combina lo tradicional y lo moderno. ¡Obtén este instrumento imprescindible para tu próxima canción hoy mismo!',
-    },
-    {
-        img_link: `${process.env.NEXT_PUBLIC_PROD_LINK}/build_main/img/banners/music/descuento-img.webp`,
-        link: 'https://wa.me/50663017707?text=Me%20gustar%C3%ADa%20saber%20m%C3%A1s%20sobre%20el%20descuento',
-        title: 'Descuentos en todos los servicios',
-        description:
-            '¡Por todo Septiembre tenemos descuentos en todos los servicios, reserva tu cita hoy!, solo en FLProductions!',
+            'Queremos ayudarte a que tu musica suene profesional, por eso te ofrecemos nuestros servicios de produccion musical, mezcla y masterizacion, para que tu musica suene al nivel de los grandes artistas.',
     },
 ];
 

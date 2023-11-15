@@ -1,18 +1,15 @@
-import { IconUser, IconMenu2 } from '@tabler/icons';
+import { IconMenu2 } from '@tabler/icons';
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store';
 import Link from 'next/link';
-import SessionPanel from '../users/SessionPanel';
-import { MainNavLinks, MovilNavLinks, UserAvatar, fetchAPI } from '../';
+import { MainNavLinks, MovilNavLinks, fetchAPI } from '../';
 export function Header() {
     const [isMovilUser, setIsMovilUser] = useState<boolean>(false);
     const [onClickMovilUser, setOnClickMovilUser] = useState<boolean>(false);
     const isLoggedIn = useSelector(
         (state: RootState) => state.user.session.isLoggedIn
     );
-
-    const user = useSelector((state: RootState) => state.user.session.user);
     const [mainMensaje, setMainMensaje] = useState<string>('');
     const apiUrl =
         process.env.NODE_ENV === 'production'
@@ -59,32 +56,6 @@ export function Header() {
                             FLProductions
                         </Link>
                     </div>
-                    {!isMovilUser && (
-                        <div className=" flex justify-center items-center absolute right-[21.5rem] inset-y-0 group  ">
-                            <div
-                                title="Opciones de Sesión"
-                                className=" flex justify-center items-center gap-2 cursor-pointer"
-                            >
-                                {isLoggedIn ? (
-                                    <div style={{ opacity: '1' }}>
-                                        <UserAvatar
-                                            user_id={user.id}
-                                            size={3}
-                                        />
-                                    </div>
-                                ) : null}
-                                <p className="uppercase text-2xl hover:text-primario transition-colors ease-in duration-500	text-negro dark:text-blanco dark:hover:text-secundario">
-                                    Usuario
-                                </p>
-                            </div>
-
-                            <div
-                                className={` absolute top-24 w-auto p-8 bg-gris dark:bg-terciario rounded-xl shadow-xl opacity-0 invisible transition-all duration-300 group-hover:opacity-100 group-hover:visible`}
-                            >
-                                <SessionPanel />
-                            </div>
-                        </div>
-                    )}
 
                     {!isMovilUser && <MainNavLinks />}
 

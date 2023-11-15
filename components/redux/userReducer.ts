@@ -2,7 +2,6 @@ import {
     SET_SESSION,
     SET_SESSION_ROLES,
     SET_SESSION_ARTISTA,
-    SET_SESSION_USER_MESSAGE,
     SET_SESSION_USER,
     SET_SESSION_MUSIC,
 } from './userTypes';
@@ -10,16 +9,11 @@ import {
 interface Session {
     session: SessionState;
 }
-interface UserMessage {
-    message: string;
-    messageType?: 'error' | 'warning' | 'notification';
-}
 export interface SessionState {
     isLoggedIn: boolean;
     user: Users;
     roles: number[];
     artista: any;
-    userMessage: UserMessage;
     music: Music;
 }
 export interface Users {
@@ -47,11 +41,6 @@ const initialState: {
         },
         roles: [],
         artista: null,
-        userMessage: {
-            message:
-                'Puedes preguntarme cualquier cosa que tenga que ver con el estudio',
-            messageType: 'notification',
-        },
         music: {
             producciones: [],
             artistas: [],
@@ -86,14 +75,6 @@ const userReducer = (state: Session = initialState, action) => {
                 session: {
                     ...state.session,
                     artista: action.payload,
-                },
-            };
-        case SET_SESSION_USER_MESSAGE:
-            return {
-                ...state,
-                session: {
-                    ...state.session,
-                    userMessage: action.payload,
                 },
             };
 
