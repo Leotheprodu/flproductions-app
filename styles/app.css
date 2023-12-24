@@ -2515,8 +2515,11 @@ input {
 .MessageComponentContainer {
   z-index: 13;
   position: fixed;
-  right: 1rem;
+  right: 2rem;
   bottom: 12rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .MessageComponent {
@@ -2594,15 +2597,6 @@ input {
 .waring:hover,
 .notification:hover {
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.368627451);
-}
-
-.MessageComponentIcon-content {
-  cursor: pointer;
-  opacity: 0.75;
-  transition: opacity 0.5s ease-in-out;
-}
-.MessageComponentIcon-content:hover {
-  opacity: 1;
 }
 
 .MessageComponentIcon-input {
